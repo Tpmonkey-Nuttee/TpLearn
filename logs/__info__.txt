@@ -1,0 +1,4 @@
+This Folder is for Bot Logs.
+
+Log file will be create here.
+I use 1 Log files per month.

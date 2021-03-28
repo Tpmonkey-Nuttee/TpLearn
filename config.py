@@ -1,0 +1,8 @@
+prefix = "!"
+
+
+main_guild_id = 562976873685057546
+
+log_channel_id = 797471940411392061
+dm_channel_id = 797471965891264592
+image_channel = 810802238682824744
