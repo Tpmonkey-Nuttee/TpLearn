@@ -1,10 +1,10 @@
 # Bot Extensions
 # Made by Python Discord
 
+from typing import Iterator, NoReturn
 import importlib
 import inspect
 import pkgutil
-from typing import Iterator, NoReturn
 
 import exts
 

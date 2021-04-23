@@ -1,14 +1,14 @@
 # Paginator
 # Made by Python Discord
 
-import asyncio
-import logging
-import typing as t
-from contextlib import suppress
-
-import discord
-from discord.abc import User
 from discord.ext.commands import Context, Paginator
+from discord.abc import User
+import discord
+
+from contextlib import suppress
+import typing as t
+import logging
+import asyncio
 
 FIRST_EMOJI = "\u23EE"   # [:track_previous:]
 LEFT_EMOJI = "\u2B05"    # [:arrow_left:]
@@ -195,7 +195,6 @@ class LinePaginator(Paginator):
         max_size: int = 500,
         scale_to_size: int = 2000,
         empty: bool = True,
-        restrict_to_user: User = None,
         timeout: int = 300,
         footer_text: str = None,
         url: str = None,
@@ -218,15 +217,10 @@ class LinePaginator(Paginator):
         """
         def event_check(reaction_: discord.Reaction, user_: discord.Member) -> bool:
             """Make sure that this reaction is what we want to operate on."""
-            no_restrictions = (
-                # Pagination is not restricted
-                not restrict_to_user
-                # The reaction was by a whitelisted user
-                or user_.id == restrict_to_user.id
-            )
 
             return (
                 # Conditions for a successful pagination:
+                ctx.author.id == user_.id and \
                 all((
                     # Reaction is on this message
                     reaction_.message.id == message.id,
@@ -234,8 +228,6 @@ class LinePaginator(Paginator):
                     str(reaction_.emoji) in PAGINATION_EMOJI,
                     # Reaction was not made by the Bot
                     user_.id != ctx.bot.user.id,
-                    # There were no restrictions
-                    no_restrictions
                 ))
             )
 

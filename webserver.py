@@ -1,8 +1,8 @@
 # Bot webserver
 # Made by Tpmonkey
 
-from flask import Flask
 from threading import Thread
+from flask import Flask
 import logging
 
 app = Flask('')

@@ -1,8 +1,9 @@
-# Bot direct message manager
+# Bot direct message manager.
+# Will redirect dm message to mod channel.
 # Made by Tpmonkey
 
 from discord.ext.commands import Cog, Context, command, is_owner
-from discord import Message, Embed, Colour
+from discord import Message, Embed, Colour, User
 
 from bot import Bot
 
@@ -13,42 +14,47 @@ class VoiceChannel(Cog):
     
     @Cog.listener()
     async def on_ready(self) -> None:
+        # Get DM Channel 
         self.channel = self.bot.get_channel(self.bot.config.dm_channel_id)
-        self.me = self.bot.get_user(self.bot.owner_id)
 
     @Cog.listener()
     async def on_message(self, message: Message) -> None:
         # Listening for dm.
-        if not self.channel:
-            self.channel = self.bot.get_channel(self.bot.config.dm_channel_id)
-        if message.author.bot or message.author.id == self.bot.owner_id or message.guild != None:
+        if not self.channel: self.channel = self.bot.get_channel(self.bot.config.dm_channel_id)
+
+        if any((message.author.bot, # Author must not be a bot
+            message.author.id == self.bot.owner_id, # Ignore owner.
+            message.guild != None # Need to be direct message.
+        )):
             return
         
         user = message.author
 
+        # Create an Embed
         embed = Embed(colour=Colour.blue())
-        embed.set_author(name= f"New message from {user}", icon_url = user.avatar_url)
-        embed.description = user.id
+        embed.set_author(name= f"New message from {user}#{user.discriminator}", icon_url = user.avatar_url)
+        embed.description = user.id # You can hold down an embed in phone, and It will copy description
         embed.add_field(name = "Message:", value = message.content)
 
-        await self.channel.send(embed=embed)
-
+        await self.channel.send(embed=embed) # Send to mod channel
     
     @command(name = "reply", aliases = ("r", ))
     @is_owner()
-    async def reply(self, ctx: Context, user_id: int, *, message: str):
-        user = self.bot.get_user(user_id)
-        if not user:
-            await ctx.send(":x: Unable to get User Object from the API!")
-            return
+    async def reply(self, ctx: Context, user: User, *, message: str):
+        """Reply message to User."""
         
+        # Send the message
         await user.send(message)
+
+        # Send back to mod channel
         embed = Embed(colour=Colour.dark_red())
         embed.set_author(name= f"Replied to {user}", icon_url = ctx.author.avatar_url)
         embed.description = user.id
         embed.add_field(name = "Message:", value= message)
 
         await ctx.send(embed=embed)
+
+        # Delete the comamnd message when It's done.
         await ctx.message.delete()
 
 def setup(bot: Bot) -> None:

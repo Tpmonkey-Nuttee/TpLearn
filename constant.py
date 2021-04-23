@@ -2,13 +2,12 @@
 # Made by Tpmonkey
 # Credit: Repl.it database
 
-import pytz
-import logging
-import datetime
-import traceback
 from typing import Any, Optional
-
 from replit import db
+import traceback
+import datetime
+import logging
+import pytz
 
 log = logging.getLogger(__name__)
 
@@ -16,17 +15,13 @@ def today(raw=False) -> datetime.datetime:
     # Return today date/time
     r = pytz.utc.localize(datetime.datetime.utcnow()).astimezone(
         pytz.timezone("Etc/GMT-1"))
-    if not raw:
-        r = str(r)[:10].strip()
-    return r
+    return r if raw else str(r)[:10].strip()
 
 def today_th(raw=False) -> datetime.datetime:
     # Return today date/time
     r = pytz.utc.localize(datetime.datetime.utcnow()).astimezone(
         pytz.timezone("Etc/GMT-7"))
-    if not raw:
-        r = str(r)[:10].strip()
-    return r
+    return r if raw else str(r)[:10].strip()
 
 class Database:
     async def load(self, key: str) -> Any:
@@ -34,7 +29,6 @@ class Database:
         try:
             r = db[key]
         except:
-            traceback.print_exc()
             log.warning(traceback.format_exc())
             return None
         return r
@@ -44,7 +38,6 @@ class Database:
         try:
             db[key] = value
         except:
-            traceback.print_exc()
             log.warning(traceback.format_exc())
             return False
         return True
@@ -53,7 +46,6 @@ class Database:
         try:
             ret = db[key]
         except:
-            traceback.print_exc()
             log.warning(traceback.format_exc())
         return ret
 
@@ -61,7 +53,6 @@ class Database:
         try:
             db[key] = value
         except:
-            traceback.print_exc()
             log.warning(traceback.format_exc())
             return False
         return True

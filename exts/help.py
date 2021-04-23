@@ -2,9 +2,9 @@
 # Made by Tpmonkey
 # Credit: Python Discord
 
-import itertools
 from contextlib import suppress
 from typing import List, Union
+import itertools
 
 from discord.ext.commands import Cog, HelpCommand, Command
 from discord import Embed, Colour
@@ -90,7 +90,7 @@ class CustomHelpCommand(HelpCommand):
 
         embed = Embed(
             title = ":grey_question: Command Help",
-            colour = Colour.magenta()
+            colour = Colour.teal()
         )
 
         filter_commands = await self.filter_commands(bot.commands, sort=True, key=self._category_key)

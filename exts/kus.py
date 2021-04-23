@@ -1,15 +1,25 @@
-from discord.ext.commands import Cog, Context, command
+# KUS Announcement system
+# Hook to http://www.kus.ku.ac.th/news.php
+
+# Made by Tpmonkey
+
+from discord.ext.commands import (
+    Cog, Context, command, is_owner, has_permissions, BucketType
+)
+from discord.ext.commands import cooldown as cd
 from discord.ext.tasks import loop
 from discord import Embed, Colour
 
 from bot import Bot
+from utils.utils import limit
 
-from aiohttp import ClientSession
-from bs4 import BeautifulSoup
 from datetime import datetime
+from bs4 import BeautifulSoup
+import traceback
 
 MAIN_URL = "http://www.kus.ku.ac.th/"
 NEWS_URL = "http://www.kus.ku.ac.th/news.php"
+COOLDOWN = 8 # hours
 
 class KUSNews(Cog):
     def __init__(self, bot: Bot):
@@ -17,6 +27,7 @@ class KUSNews(Cog):
         self.data = None
         self.ids = None
         self.channels = None
+        self.enable = True
         self.looping.start()
     
     def cog_unload(self):
@@ -30,14 +41,8 @@ class KUSNews(Cog):
         self.ids = await self.bot.database.load("NEWS-IDS")
 
     async def __fetch__(self):
-        async with ClientSession() as sess:
-            async with sess.get(NEWS_URL) as r:
-                respone_text = await r.text()
-                await sess.close()
-
-        # await self.bot.log(__name__, "Fetching data")
-
-        return respone_text
+        r = await self.bot.trust_session.get(NEWS_URL)
+        return await r.text()
     
     async def __get__data(self):
         respone_text = await self.__fetch__()
@@ -45,10 +50,12 @@ class KUSNews(Cog):
         soup = BeautifulSoup(respone_text, "html.parser")
         home = soup.find(attrs={"class":"home-news"})
 
+        if home is None:
+            self.enable = False
+            return None
+
         news = home.find_all("div", attrs={"class":"headline left"})
         pics = home.find_all("div", attrs={"class":"img-container left"})
-
-        # await self.bot.log(__name__, "Formatted data")
 
         return [
             ( 
@@ -59,43 +66,51 @@ class KUSNews(Cog):
             ) for new, pic in zip(news, pics)
         ]
     
-    @loop(hours=1)
+    @loop(hours=COOLDOWN)
     async def looping(self) -> None:
         if self.channels is None or self.ids is None:
             await self.load_data()
         
         self.data = await self.__get__data()
 
+        if not self.enable: # Sometimes, website prevend bot to acces.
+            return
+
         news = {id: (n, u, p) for n, u, p, id in self.data}
         new_ids = [i for n, u, p, i in self.data]
 
-        # print(self.ids)
-        # print(new_ids)
-
+        # If the existing data in database is not the same as present one.
         if new_ids != self.ids:
-            # Place Holder
-            _p = new_ids
-
             await self.bot.log(__name__, "New data detected")
+            await self.bot.log(__name__, 
+                f"\n**From** `{new_ids}`" + \
+                f"\n**To** `{self.ids}`"
+            )
 
+            # Remove all prevoius data.
             for _ in self.ids:
-                if _ in _p:
-                    _p.remove(_)
+                if _ in new_ids: new_ids.remove(_)
             
-            datas = [news[key] for key in _p]
+            datas = [news[key] for key in new_ids]
             
             embeds = [self.create_embed(n, u, p) for n, u, p in datas]
 
             for _ in self.channels:
                 channel = self.bot.get_channel(_)
-                if channel is not None:
+                if channel is not None: 
                     await self.bot.log(__name__, f"Sending news to {channel}//{_}")
 
                     # Send news
                     for embed in embeds[::-1]:
-                        await channel.send(embed=embed)
-                else:
-                    await self.bot.log(__name__, f"Unable to send news with channel ID: {_}", True)
+                        try:
+                            await channel.send(embed=embed)
+                        except:
+                            await self.bot.log(
+                                __name__, 
+                                f":negative_squared_cross_mark: Unable to send news embed to `{channel}`" +\
+                                f"with traceback: \n{traceback.format_exc()}"
+                            )
+                            break
                 
             await self.bot.log(__name__, "Sended news to all channels, saving data...")
             ids = [id for n, u, p, id in self.data]
@@ -103,78 +118,119 @@ class KUSNews(Cog):
             self.ids = ids
             await self.bot.log(__name__, "Confirmed, Saved all data.")
     
-    def create_embed(self, name, url, pic) -> Embed:
+    def create_embed_(self, name, url, pic) -> Embed:        
         embed = Embed(
             colour = Colour.from_rgb(170, 3, 250),
             description = name.replace("...อ่านต่อ", f"[...อ่านต่อ]({url})"),
             timestamp = datetime.utcnow()
         )
-        # embed.set_author(name=name, url=url)
+        embed.set_author(name = "ข่าวประชาสัมพันธ์", url = MAIN_URL, icon_url= MAIN_URL + "images_kus/kus_logo.png")
         embed.set_thumbnail(url=pic)
-        embed.set_footer(text = "โรงเรียนสาธิตแห่งมหาวิทยาลัยเกษตรศาสตร์", icon_url= MAIN_URL + "images_kus/kus_logo.png")
+        embed.set_footer(text = "โรงเรียนสาธิตแห่งมหาวิทยาลัยเกษตรศาสตร์")
 
         return embed
     
-    def create_embed__(self, name, url, pic) -> Embed:
+    def create_embed(self, name, url, pic) -> Embed:
+        if url.startswith("news_detail"):
+            url = MAIN_URL + url
+        
         embed = Embed(
             colour = Colour.from_rgb(170, 3, 250),
             description = name.replace("...อ่านต่อ", f"[...อ่านต่อ]({url})"),
             timestamp = datetime.utcnow()
         )
-        embed.set_author(name = "โรงเรียนสาธิตแห่งมหาวิทยาลัยเกษตรศาสตร์", url = "http://www.kus.ku.ac.th/", icon_url= MAIN_URL + "images_kus/kus_logo.png")
-        embed.set_thumbnail(url=pic)
-        embed.set_footer(text="ข่าวประชาสัมพันธ์")
+        embed.set_author(
+            name = "ข่าวประชาสัมพันธ์", 
+            url = MAIN_URL, 
+            icon_url= MAIN_URL + "images_kus/kus_logo.png"
+        )
+        embed.set_image(url=pic)
+        embed.set_footer(text = "โรงเรียนสาธิตแห่งมหาวิทยาลัยเกษตรศาสตร์")
 
         return embed
     
     @command(name="set-news")
+    @has_permissions(manage_guild=True)
+    @cd(1, 20)
     async def set_news(self, ctx: Context) -> None:
+        """Add News-Channel, Run this on it"""
         channel_id = ctx.channel.id
 
         if channel_id in self.channels:
-            await ctx.send("Already added")
+            await ctx.send("Already added.")
             return
         
         self.channels.append(channel_id)
-        await ctx.send("Added Channel")
+        await ctx.send("Added Channel.")
         await self.save()
         await self.bot.log(__name__, f"New news Channel has been added, {ctx.channel}//{channel_id}")
     
     @command(name="remove-news")
+    @has_permissions(manage_guild=True)
+    @cd(1, 20)
     async def remove_news(self, ctx: Context) -> None:
+        """Remove News-Channel, Run this on it."""
         channel_id = ctx.channel.id
 
         if channel_id not in self.channels:
-            await ctx.send("Already removed")
+            await ctx.send("Already removed.")
             return
         
         self.channels.remove(channel_id)
-        await ctx.send("Removed Channel")
+        await ctx.send("Removed Channel.")
         await self.save()
         await self.bot.log(__name__, f"New news Channel has been removed, {ctx.channel}//{channel_id}")
     
     @command(name="news")
-    async def news_embed(self, ctx: Context) -> None:
-        embeds = [self.create_embed(n, u, p) for n, u, p, id in self.data]
-        for embed in embeds:
+    @cd(1, 30, BucketType.guild)
+    async def news_embed(self, ctx: Context, amount: int = 3) -> None:
+        """Show 3 Newest Announcements."""
+        if not self.enable:
+            embed = Embed(
+                title = "คำสั่งนี้ ได้ถูกปิดการใช้งานชั่วคราว",
+                description = f"เนื่องจากทางโรงเรียน มีการจำกัดการเข้าใช้งานของบอทไว้ \nจึงไม่สามารถดึงข้อมูลดังกล่าวได้\n\nหากต้องการอ่านประชาสัมพันธ์ สามารถคลิกได้[ที่นี่]({NEWS_URL})",
+                timestamp = ctx.message.created_at,
+                colour = Colour.from_rgb(170, 3, 250)
+            )
             await ctx.send(embed=embed)
+            return
+        elif self.data is None:
+            await ctx.send("กำลังโหลดข้อมูล - กรุณารอสักครู่...")
+            return
+
+        amount = limit(amount, 1, 10)
+        embeds = [self.create_embed(n, u, p) for n, u, p, id in self.data]
+        for _ in range(amount):
+            await ctx.send(embed=embeds[_])
     
     @command(name="embeds")
+    @is_owner()
     async def embeds_(self, ctx: Context) -> None:
-
+        """Admin command for test embeds."""
         n, u, p, id = self.data[0]
         embed1 = self.create_embed(n, u, p)
-        embed2 = self.create_embed__(n, u, p)
+        embed2 = self.create_embed_(n, u, p)
 
         await ctx.send(embed=embed1)
         await ctx.send(embed=embed2)
     
-    @command(name="id")
-    async def get_id(self, ctx: Context) -> None:
+    @command()
+    @is_owner()
+    async def fixpls(self, ctx: Context) -> None:      
+        message_id = 834338721750188073
+        channel_id = 728489165565591562
 
-       
-        ids = [id for n, u, p, id in self.data]
-        await ctx.send(ids)
+        async for mess in self.bot.get_channel(channel_id).history(limit=10):
+            if mess.id == message_id:
+                message = mess
+            break
+        
+        embed = self.create_embed(
+            "เปิดระบบการชำระค่าใช้จ่ายทางการศึกษา ภาคต้น ปีการศึกษา ๒๕๖๔ ตั้งแต่วันที่ ๒๗ เมษายน ๒๕๖๔ เป็นต้นไป ...อ่านต่อ"
+            , "https://bp.kus.ku.ac.th/",
+            "https://www.kus.ku.ac.th/images_kus/news/ban64-1-20210421133032.gif"
+        )
+        await message.edit(embed=embed)
 
 
 def setup(bot: Bot) -> None:

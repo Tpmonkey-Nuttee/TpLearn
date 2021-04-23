@@ -2,20 +2,20 @@
 # Made by Tpmonkey
 
 from discord.ext.commands import is_owner, command, Cog, Context
-from discord import Embed, Color
+from discord import Embed, Color, TextChannel
 
 from utils.extensions import EXTENSIONS
-import config
 from bot import Bot
 
 import logging
 
 # These library is for admin eval command
+import importlib
 import traceback
 import datetime
 import inspect
-import importlib
 import discord
+import asyncio
 import os
 
 log = logging.getLogger(__name__)
@@ -24,24 +24,113 @@ class AdminCommands(Cog):
     def __init__(self, bot: Bot):
         self.bot = bot
         self.eval_jobs = {}
-    
+        self.clearing = False
     
     def delete_eval_job(self, id: int) -> None:
-        # Delete existing eval job.
+        """Delete existing eval job."""
         # Need except if the command has been run twice at the same time
         try:
             del self.eval_jobs[id]
         except Exception as e:
             log.trace(f"Couldn't delete eval job; {e}")
             pass
-    
-    @command(name="findembed")
+        
+    @command(aliases = ("sc", ))
     @is_owner()
-    async def find_embed(self, ctx: Context, message_id: int, channel_id: int) -> None:
-        message = await self.bot.find_message(message_id, channel_id)
+    async def stop_clearing(self, ctx: Context) -> None:
+        if not self.clearing:
+            await ctx.send("No clearing to stop :/")
+            return
+        self.clearing = False
+        await ctx.send("Should be stop now.")
 
-        embed = message.embeds[0]
-        await ctx.send(embed.to_dict())
+    
+    @command(aliases = ("cm", ))
+    @is_owner()
+    async def clear_messages(self, ctx: Context, channel: TextChannel, limit: int, *kwargs: str) -> None:
+        """Clear Messages that contain given keywords."""
+        if self.clearing:
+            await ctx.send("There is a clearing in progres, please wait.\nto stop type: `!sc`")
+            return
+
+        count = 0
+        total = 0
+        self.clearing = True
+
+        await ctx.send("Clearing - may take a long time.")
+
+        async for message in channel.history(limit=limit):
+            if not self.clearing:
+                break
+            
+            total += 1
+            # Checking for any matching kwargs in normal message content.
+            if any(word in message.content for word in kwargs):
+                try:
+                    await message.delete()
+                except Exception as e:
+                    await ctx.send(f"Couldn't delete `{message.content}`\n|\n{e}")
+                count += 1
+                print("Deleted:", message.content)
+                
+                await asyncio.sleep(1) # Prevent rate limit, sometimes didn't work :/
+                continue
+            
+            # Checking for any matching kwargs in 'embed' content.
+            # Will be searching for title, description and author.
+            if len(message.embeds) > 0:
+                embed = message.embeds[0]
+                embed_dict = embed.to_dict()
+
+                content = str(embed.title) + str(embed.description)
+
+                if 'author' in embed_dict:
+                    content += str(embed_dict['author']['name'])                
+
+                if any(word in content for word in kwargs):
+                    try:
+                        await message.delete()
+                    except Exception as e:
+                        await ctx.send(f"Couldn't delete `{content}`\n|\n{e}")
+                    count += 1
+                    print("Deleted:", content)
+                    
+                    await asyncio.sleep(1)
+            
+            
+        self.clearing = False
+        await ctx.send(f"Found {count} messages, from total of {total} messages.")
+    
+    @command()
+    @is_owner()
+    async def count(self, ctx: Context, channel: TextChannel, limit: int, *kwargs: str) -> None:
+        """Count Messages that contain given keywords."""
+
+        count = 0
+
+        async for message in channel.history(limit=limit):
+            
+            # Checking for any matching kwargs in normal message content.
+            if any(word in message.content for word in kwargs):
+                count += 1
+                print(count)
+            
+            # Checking for any matching kwargs in 'embed' content.
+            # Will be searching for title, description and author.
+            if len(message.embeds) > 0:
+                embed = message.embeds[0]
+                embed_dict = embed.to_dict()
+
+                content = str(embed.title) + str(embed.description)
+
+                if 'author' in embed_dict:
+                    content += str(embed_dict['author']['name'])                
+
+                if any(word in content for word in kwargs):
+                    count += 1
+                    print(count)
+            
+        await ctx.send(f"Count: {count}")
 
     @command(name="say")
     @is_owner()
@@ -178,7 +267,6 @@ class AdminCommands(Cog):
         embed.add_field(name="Input:", value=f"```python\n\n{code}\n\n\n```", inline=False)
         return embed
 
-
     @command(name = "reload")
     @is_owner()
     async def reload(self, ctx: Context, *, file: str) -> None:
@@ -205,7 +293,7 @@ class AdminCommands(Cog):
                     v = e
 
                 embed.add_field(name = i, value = v)
-            await m.edit(embed=embed)
+            await m.edit(content=reload, embed=embed)
             return
         
         # Only one extension

@@ -7,9 +7,9 @@ from discord import Embed, Colour
 
 from utils.post_eval import post_eval
 
-import re
 import textwrap
 import logging
+import re
 
 ESCAPE_REGEX = re.compile("[`\u202E\u200B]{3,}")
 

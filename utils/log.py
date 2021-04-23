@@ -2,14 +2,14 @@
 # Made by Tpmonkey
 # Credit: Python Discord
 
-import logging
-import os
-import sys
 from logging import Logger, handlers
 from pathlib import Path
-import datetime
-
 import coloredlogs
+import datetime
+import logging
+import sys
+import os
+
 TRACE_LEVEL = 5
 
 DATE = str(datetime.date.today())[:-3]

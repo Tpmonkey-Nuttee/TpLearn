@@ -1,3 +1,0 @@
-This Folder is for Bot Extensions.
-
-Will be load in bot.py by utils.extensions
