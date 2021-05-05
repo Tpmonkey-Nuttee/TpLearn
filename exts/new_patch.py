@@ -18,6 +18,8 @@ class NewPatch(Cog):
         await self.check()
 
     async def check(self) -> None:
+        await self.bot.wait_until_ready()
+
         current_version = await self.bot.database.load("VERSION")
         system_version = self.bot.config.version
 
@@ -31,9 +33,12 @@ class NewPatch(Cog):
             colour = Colour.teal(),
             timestamp = datetime.utcnow()
         )
-        embed.description = "Version **{}** → **{}**".format(old_version, new_version)
-        embed.add_field(name = "Patch Note:", value="\n".join(self.bot.config.note))
 
+        patch_notes = "\n".join(self.bot.config.note) if len(self.bot.config.note) != 0 else "No patch note were found."
+
+        embed.description = "Version **{}** → **{}**".format(old_version, new_version)        
+        embed.add_field(name = "Patch Note:", value=patch_notes)
+        
         await self.bot.get_channel(797479575944167444).send(embed=embed)
 
 def setup(bot: Bot) -> None:

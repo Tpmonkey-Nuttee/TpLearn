@@ -65,16 +65,7 @@ class AdminCommands(Cog):
             
             total += 1
             # Checking for any matching kwargs in normal message content.
-            if any(word in message.content for word in kwargs):
-                try:
-                    await message.delete()
-                except Exception as e:
-                    await ctx.send(f"Couldn't delete `{message.content}`\n|\n{e}")
-                count += 1
-                print("Deleted:", message.content)
-                
-                await asyncio.sleep(1) # Prevent rate limit, sometimes didn't work :/
-                continue
+            content = message.content
             
             # Checking for any matching kwargs in 'embed' content.
             # Will be searching for title, description and author.
@@ -82,20 +73,20 @@ class AdminCommands(Cog):
                 embed = message.embeds[0]
                 embed_dict = embed.to_dict()
 
-                content = str(embed.title) + str(embed.description)
+                content += str(embed.title) + str(embed.description)
 
                 if 'author' in embed_dict:
                     content += str(embed_dict['author']['name'])                
 
-                if any(word in content for word in kwargs):
-                    try:
-                        await message.delete()
-                    except Exception as e:
-                        await ctx.send(f"Couldn't delete `{content}`\n|\n{e}")
-                    count += 1
-                    print("Deleted:", content)
-                    
-                    await asyncio.sleep(1)
+            if any(word in content.lower() for word in kwargs):
+                try:
+                    await message.delete()
+                except Exception as e:
+                    await ctx.send(f"Couldn't delete `{content}`\n|\n{e}")
+                count += 1
+                print("Deleted:", content)
+                
+                await asyncio.sleep(1)
             
             
         self.clearing = False
@@ -111,9 +102,7 @@ class AdminCommands(Cog):
         async for message in channel.history(limit=limit):
             
             # Checking for any matching kwargs in normal message content.
-            if any(word in message.content for word in kwargs):
-                count += 1
-                print(count)
+            content = message.content
             
             # Checking for any matching kwargs in 'embed' content.
             # Will be searching for title, description and author.
@@ -121,14 +110,14 @@ class AdminCommands(Cog):
                 embed = message.embeds[0]
                 embed_dict = embed.to_dict()
 
-                content = str(embed.title) + str(embed.description)
+                content += str(embed.title) + str(embed.description)
 
                 if 'author' in embed_dict:
                     content += str(embed_dict['author']['name'])                
 
-                if any(word in content for word in kwargs):
-                    count += 1
-                    print(count)
+            if any(word in content.lower() for word in kwargs):
+                count += 1
+
             
         await ctx.send(f"Count: {count}")
 
@@ -305,7 +294,7 @@ class AdminCommands(Cog):
         except Exception as e:
             reload = e
         await m.edit(content=reload)
-    
+
     @command(name="shutdown")
     @is_owner()
     async def _shutdown(self, ctx: Context):

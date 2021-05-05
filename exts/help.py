@@ -55,7 +55,7 @@ class CustomHelpCommand(HelpCommand):
         # Return Embed of command
         embed = Embed(
             title = ":grey_question: Command Help",
-            colour = Colour.magenta()
+            colour = Colour.teal()
         )
 
         parent = command.full_parent_name

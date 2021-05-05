@@ -1,0 +1,241 @@
+2021-05-01 00:12:56,361 | asyncio | DEBUG | Using selector: EpollSelector
+2021-05-01 00:12:56,443 | discord.client | WARNING | PyNaCl is not installed, voice will NOT be supported
+2021-05-01 00:12:56,801 | bot | INFO | Bot Subclass Created.
+2021-05-01 00:12:56,805 | bot | INFO | Cog loaded: DayLoop
+2021-05-01 00:12:56,825 | bot | INFO | Cog loaded: Snekbox
+2021-05-01 00:12:56,832 | bot | INFO | Cog loaded: SetUp
+2021-05-01 00:12:56,844 | bot | INFO | Cog loaded: Latency
+2021-05-01 00:12:56,857 | bot | INFO | Cog loaded: Assignments
+2021-05-01 00:12:56,864 | bot | INFO | Cog loaded: AdminCommands
+2021-05-01 00:12:56,870 | bot | INFO | Cog loaded: Updater
+2021-05-01 00:12:56,877 | bot | INFO | Cog loaded: ErrorHandler
+2021-05-01 00:12:56,892 | bot | INFO | Cog loaded: VoiceChannel
+2021-05-01 00:12:56,929 | bot | INFO | Cog loaded: Help
+2021-05-01 00:12:56,937 | bot | INFO | Cog loaded: Settings
+2021-05-01 00:12:57,214 | bot | INFO | Cog loaded: KUSNews
+2021-05-01 00:12:57,217 | bot | INFO | Cog loaded: NewPatch
+2021-05-01 00:12:59,945 | bot | INFO | Connected successfully
+2021-05-01 01:42:06,444 | bot | INFO | Resumed Connection
+2021-05-01 03:33:30,207 | bot | INFO | Resumed Connection
+2021-05-01 03:57:49,521 | bot | INFO | Resumed Connection
+2021-05-01 07:11:36,269 | bot | INFO | Resumed Connection
+2021-05-01 08:17:37,512 | bot | INFO | Resumed Connection
+2021-05-01 10:57:02,395 | bot | INFO | Resumed Connection
+2021-05-01 11:29:57,431 | bot | INFO | Resumed Connection
+2021-05-01 12:58:45,875 | bot | INFO | Resumed Connection
+2021-05-01 14:52:52,235 | asyncio | DEBUG | Using selector: EpollSelector
+2021-05-01 14:52:52,267 | discord.client | WARNING | PyNaCl is not installed, voice will NOT be supported
+2021-05-01 14:52:52,364 | bot | INFO | Bot Subclass Created.
+2021-05-01 14:52:52,370 | bot | INFO | Cog loaded: AdminCommands
+2021-05-01 14:52:52,373 | bot | WARNING | Couldn't load exts.dayloop with an error: Extension 'exts.dayloop' raised an error: NameError: name 'MINUTES' is not defined
+2021-05-01 14:52:52,374 | bot | INFO | Cog loaded: VoiceChannel
+2021-05-01 14:52:52,375 | bot | INFO | Cog loaded: Settings
+2021-05-01 14:52:52,573 | bot | WARNING | Couldn't load exts.kus with an error: Extension 'exts.kus' raised an error: NameError: name 'COOLDOWN' is not defined
+2021-05-01 14:52:52,574 | bot | INFO | Cog loaded: NewPatch
+2021-05-01 14:52:52,578 | bot | WARNING | Couldn't load exts.update with an error: Extension 'exts.update' raised an error: NameError: name 'MINUTES' is not defined
+2021-05-01 14:52:52,581 | bot | INFO | Cog loaded: Snekbox
+2021-05-01 14:52:52,584 | bot | INFO | Cog loaded: Help
+2021-05-01 14:52:52,587 | bot | INFO | Cog loaded: Assignments
+2021-05-01 14:52:52,589 | bot | INFO | Cog loaded: Latency
+2021-05-01 14:52:52,626 | bot | INFO | Cog loaded: ErrorHandler
+2021-05-01 14:52:52,629 | bot | INFO | Cog loaded: SetUp
+2021-05-01 14:52:55,068 | bot | INFO | Connected successfully
+2021-05-01 14:56:27,247 | asyncio | DEBUG | Using selector: EpollSelector
+2021-05-01 14:56:27,274 | discord.client | WARNING | PyNaCl is not installed, voice will NOT be supported
+2021-05-01 14:56:27,378 | bot | INFO | Bot Subclass Created.
+2021-05-01 14:56:27,381 | bot | INFO | Cog loaded: Latency
+2021-05-01 14:56:27,384 | bot | INFO | Cog loaded: Assignments
+2021-05-01 14:56:27,386 | bot | INFO | Cog loaded: DayLoop
+2021-05-01 14:56:27,388 | bot | INFO | Cog loaded: Help
+2021-05-01 14:56:27,567 | bot | INFO | Cog loaded: KUSNews
+2021-05-01 14:56:27,570 | bot | INFO | Cog loaded: Updater
+2021-05-01 14:56:27,574 | bot | INFO | Cog loaded: Snekbox
+2021-05-01 14:56:27,576 | bot | INFO | Cog loaded: AdminCommands
+2021-05-01 14:56:27,627 | bot | INFO | Cog loaded: Settings
+2021-05-01 14:56:27,629 | bot | INFO | Cog loaded: SetUp
+2021-05-01 14:56:27,631 | bot | INFO | Cog loaded: VoiceChannel
+2021-05-01 14:56:27,632 | bot | INFO | Cog loaded: NewPatch
+2021-05-01 14:56:27,633 | bot | INFO | Cog loaded: ErrorHandler
+2021-05-01 14:56:30,095 | bot | INFO | Connected successfully
+2021-05-01 15:14:41,152 | asyncio | DEBUG | Using selector: EpollSelector
+2021-05-01 15:14:41,239 | discord.client | WARNING | PyNaCl is not installed, voice will NOT be supported
+2021-05-01 15:14:41,406 | bot | INFO | Bot Subclass Created.
+2021-05-01 15:14:41,412 | bot | INFO | Cog loaded: ErrorHandler
+2021-05-01 15:14:41,429 | bot | INFO | Cog loaded: Updater
+2021-05-01 15:14:41,440 | bot | INFO | Cog loaded: Snekbox
+2021-05-01 15:14:41,442 | bot | INFO | Cog loaded: DayLoop
+2021-05-01 15:14:41,691 | bot | INFO | Cog loaded: KUSNews
+2021-05-01 15:14:41,694 | bot | INFO | Cog loaded: VoiceChannel
+2021-05-01 15:14:41,727 | bot | INFO | Cog loaded: NewPatch
+2021-05-01 15:14:41,729 | bot | INFO | Cog loaded: Latency
+2021-05-01 15:14:41,735 | bot | INFO | Cog loaded: Settings
+2021-05-01 15:14:41,741 | bot | INFO | Cog loaded: SetUp
+2021-05-01 15:14:41,746 | bot | INFO | Cog loaded: Help
+2021-05-01 15:14:41,757 | bot | INFO | Cog loaded: Assignments
+2021-05-01 15:14:41,762 | bot | INFO | Cog loaded: AdminCommands
+2021-05-01 15:14:44,407 | bot | INFO | Connected successfully
+2021-05-01 15:16:28,979 | bot | INFO | Cog loaded: Updater
+2021-05-01 15:17:37,403 | asyncio | DEBUG | Using selector: EpollSelector
+2021-05-01 15:17:37,483 | discord.client | WARNING | PyNaCl is not installed, voice will NOT be supported
+2021-05-01 15:17:37,562 | bot | INFO | Bot Subclass Created.
+2021-05-01 15:17:37,568 | bot | INFO | Cog loaded: VoiceChannel
+2021-05-01 15:17:37,575 | bot | INFO | Cog loaded: ErrorHandler
+2021-05-01 15:17:37,594 | bot | INFO | Cog loaded: Assignments
+2021-05-01 15:17:37,598 | bot | INFO | Cog loaded: AdminCommands
+2021-05-01 15:17:37,609 | bot | INFO | Cog loaded: Snekbox
+2021-05-01 15:17:37,610 | bot | INFO | Cog loaded: Settings
+2021-05-01 15:17:37,611 | bot | INFO | Cog loaded: Latency
+2021-05-01 15:17:37,614 | bot | INFO | Cog loaded: Help
+2021-05-01 15:17:37,615 | bot | INFO | Cog loaded: SetUp
+2021-05-01 15:17:37,870 | bot | INFO | Cog loaded: KUSNews
+2021-05-01 15:17:37,872 | bot | INFO | Cog loaded: DayLoop
+2021-05-01 15:17:37,875 | bot | INFO | Cog loaded: NewPatch
+2021-05-01 15:17:37,877 | bot | INFO | Cog loaded: Updater
+2021-05-01 15:17:40,575 | bot | INFO | Connected successfully
+2021-05-01 15:24:59,297 | exts.muleval | DEBUG | Eval command; Ignore black list: True
+2021-05-01 15:24:59,297 | exts.muleval | INFO | 'py' highlighted code block
+2021-05-01 15:24:59,298 | exts.muleval | TRACE | Eval command: Tpmonkey#2682(518063131096907813) with code:
+import replit
+
+print(replit.db["WORKS"])
+2021-05-01 15:27:56,358 | bot | INFO | Resumed Connection
+2021-05-01 15:28:55,497 | exts.admin | DEBUG | Admin Eval from Tpmonkey#2682; code: [k, v for k, n in {"Hey":"TESt"}]
+2021-05-01 15:29:04,761 | exts.admin | DEBUG | Admin Eval from Tpmonkey#2682; code: [(k, v) for k, n in {"Hey":"TESt"}]
+2021-05-01 15:29:12,418 | exts.admin | DEBUG | Admin Eval from Tpmonkey#2682; code: [(k, v) for k, n in {"Hey":"TESt"}.items()]
+2021-05-01 15:29:20,255 | exts.admin | DEBUG | Admin Eval from Tpmonkey#2682; code: [(k, v) for k, v in {"Hey":"TESt"}.items()]
+2021-05-01 15:31:34,459 | exts.admin | DEBUG | Admin Eval from Tpmonkey#2682; code: self.bot.in_days(self.bot.planner.get(ctx.guild.id, "eafe92e3"))
+2021-05-01 15:31:45,289 | exts.admin | DEBUG | Admin Eval from Tpmonkey#2682; code: self.bot.in_days(self.bot.planner.get(ctx.guild.id, "eafe92e3")['date'])
+2021-05-01 16:01:33,824 | bot | INFO | Resumed Connection
+2021-05-01 16:15:27,731 | asyncio | DEBUG | Using selector: EpollSelector
+2021-05-01 16:15:27,772 | discord.client | WARNING | PyNaCl is not installed, voice will NOT be supported
+2021-05-01 16:15:27,873 | bot | INFO | Bot Subclass Created.
+2021-05-01 16:15:27,878 | bot | INFO | Cog loaded: AdminCommands
+2021-05-01 16:15:27,887 | bot | INFO | Cog loaded: Updater
+2021-05-01 16:15:28,154 | bot | INFO | Cog loaded: KUSNews
+2021-05-01 16:15:28,156 | bot | INFO | Cog loaded: Settings
+2021-05-01 16:15:28,159 | bot | INFO | Cog loaded: DayLoop
+2021-05-01 16:15:28,164 | bot | INFO | Cog loaded: Snekbox
+2021-05-01 16:15:28,166 | bot | INFO | Cog loaded: Latency
+2021-05-01 16:15:28,177 | bot | INFO | Cog loaded: Assignments
+2021-05-01 16:15:28,180 | bot | INFO | Cog loaded: Help
+2021-05-01 16:15:28,188 | bot | INFO | Cog loaded: ErrorHandler
+2021-05-01 16:15:28,189 | bot | INFO | Cog loaded: NewPatch
+2021-05-01 16:15:28,192 | bot | INFO | Cog loaded: SetUp
+2021-05-01 16:15:28,193 | bot | INFO | Cog loaded: VoiceChannel
+2021-05-01 16:15:30,799 | bot | INFO | Connected successfully
+2021-05-01 18:30:42,930 | utils.planner | DEBUG | Added Assignment from `562976873685057546` with key `182dad0e`
+2021-05-01 18:41:57,681 | exts.admin | DEBUG | Admin Eval from Tpmonkey#2682; code: self.bot.planner.main_data
+2021-05-01 18:46:23,846 | asyncio | DEBUG | Using selector: EpollSelector
+2021-05-01 18:46:23,882 | discord.client | WARNING | PyNaCl is not installed, voice will NOT be supported
+2021-05-01 18:46:23,973 | bot | INFO | Bot Subclass Created.
+2021-05-01 18:46:23,977 | bot | INFO | Cog loaded: VoiceChannel
+2021-05-01 18:46:23,983 | bot | INFO | Cog loaded: DayLoop
+2021-05-01 18:46:23,984 | bot | INFO | Cog loaded: Settings
+2021-05-01 18:46:23,987 | bot | INFO | Cog loaded: ErrorHandler
+2021-05-01 18:46:23,997 | bot | INFO | Cog loaded: Assignments
+2021-05-01 18:46:24,027 | bot | INFO | Cog loaded: Snekbox
+2021-05-01 18:46:24,029 | bot | INFO | Cog loaded: NewPatch
+2021-05-01 18:46:24,033 | bot | INFO | Cog loaded: Updater
+2021-05-01 18:46:24,035 | bot | INFO | Cog loaded: Latency
+2021-05-01 18:46:24,039 | bot | INFO | Cog loaded: SetUp
+2021-05-01 18:46:24,275 | bot | INFO | Cog loaded: KUSNews
+2021-05-01 18:46:24,278 | bot | INFO | Cog loaded: AdminCommands
+2021-05-01 18:46:24,281 | bot | INFO | Cog loaded: Help
+2021-05-01 18:46:26,850 | bot | INFO | Connected successfully
+2021-05-01 18:52:34,608 | bot | INFO | Cog loaded: Assignments
+2021-05-01 18:53:58,255 | utils.planner | DEBUG | Added Assignment from `562976873685057546` with key `eafe92e3`
+2021-05-01 18:55:53,252 | bot | INFO | Cog loaded: Assignments
+2021-05-01 18:58:16,432 | asyncio | DEBUG | Using selector: EpollSelector
+2021-05-01 18:58:16,466 | discord.client | WARNING | PyNaCl is not installed, voice will NOT be supported
+2021-05-01 18:58:16,593 | bot | INFO | Bot Subclass Created.
+2021-05-01 18:58:16,597 | bot | INFO | Cog loaded: VoiceChannel
+2021-05-01 18:58:16,600 | bot | INFO | Cog loaded: Help
+2021-05-01 18:58:16,602 | bot | INFO | Cog loaded: DayLoop
+2021-05-01 18:58:16,606 | bot | INFO | Cog loaded: Assignments
+2021-05-01 18:58:16,608 | bot | INFO | Cog loaded: Latency
+2021-05-01 18:58:16,610 | bot | INFO | Cog loaded: Updater
+2021-05-01 18:58:16,790 | bot | INFO | Cog loaded: KUSNews
+2021-05-01 18:58:16,791 | bot | INFO | Cog loaded: Settings
+2021-05-01 18:58:16,827 | bot | INFO | Cog loaded: SetUp
+2021-05-01 18:58:16,829 | bot | INFO | Cog loaded: NewPatch
+2021-05-01 18:58:16,834 | bot | INFO | Cog loaded: Snekbox
+2021-05-01 18:58:16,837 | bot | INFO | Cog loaded: AdminCommands
+2021-05-01 18:58:16,839 | bot | INFO | Cog loaded: ErrorHandler
+2021-05-01 18:58:19,453 | bot | INFO | Connected successfully
+2021-05-01 19:01:52,923 | bot | INFO | Cog loaded: Assignments
+2021-05-01 19:02:24,660 | utils.planner | DEBUG | Added Assignment from `562976873685057546` with key `772a4ed3`
+2021-05-01 21:42:30,388 | asyncio | DEBUG | Using selector: EpollSelector
+2021-05-01 21:42:30,408 | discord.client | WARNING | PyNaCl is not installed, voice will NOT be supported
+2021-05-01 21:42:30,482 | bot | INFO | Bot Subclass Created.
+2021-05-01 21:42:30,487 | bot | INFO | Cog loaded: SetUp
+2021-05-01 21:42:30,488 | bot | INFO | Cog loaded: ErrorHandler
+2021-05-01 21:42:30,493 | bot | INFO | Cog loaded: AdminCommands
+2021-05-01 21:42:30,495 | bot | INFO | Cog loaded: VoiceChannel
+2021-05-01 21:42:30,495 | bot | INFO | Cog loaded: NewPatch
+2021-05-01 21:42:30,497 | bot | INFO | Cog loaded: Latency
+2021-05-01 21:42:30,504 | bot | INFO | Cog loaded: Assignments
+2021-05-01 21:42:30,506 | bot | INFO | Cog loaded: Updater
+2021-05-01 21:42:30,506 | bot | INFO | Cog loaded: Settings
+2021-05-01 21:42:30,508 | bot | INFO | Cog loaded: Help
+2021-05-01 21:42:30,709 | bot | INFO | Cog loaded: KUSNews
+2021-05-01 21:42:30,712 | bot | INFO | Cog loaded: Snekbox
+2021-05-01 21:42:30,714 | bot | INFO | Cog loaded: DayLoop
+2021-05-01 21:42:33,162 | bot | INFO | Connected successfully
+2021-05-01 22:29:50,435 | bot | INFO | Resumed Connection
+2021-05-02 00:35:36,412 | bot | INFO | Resumed Connection
+2021-05-02 03:57:06,278 | bot | INFO | Resumed Connection
+2021-05-02 04:41:55,075 | asyncio | DEBUG | Using selector: EpollSelector
+2021-05-02 04:41:55,129 | discord.client | WARNING | PyNaCl is not installed, voice will NOT be supported
+2021-05-02 04:41:55,178 | bot | INFO | Bot Subclass Created.
+2021-05-02 04:41:55,185 | bot | INFO | Cog loaded: Assignments
+2021-05-02 04:41:55,186 | bot | INFO | Cog loaded: ErrorHandler
+2021-05-02 04:41:55,187 | bot | INFO | Cog loaded: Updater
+2021-05-02 04:41:55,189 | bot | INFO | Cog loaded: SetUp
+2021-05-02 04:41:55,191 | bot | INFO | Cog loaded: AdminCommands
+2021-05-02 04:41:55,191 | bot | INFO | Cog loaded: NewPatch
+2021-05-02 04:41:55,416 | bot | INFO | Cog loaded: KUSNews
+2021-05-02 04:41:55,417 | bot | INFO | Cog loaded: DayLoop
+2021-05-02 04:41:55,419 | bot | INFO | Cog loaded: VoiceChannel
+2021-05-02 04:41:55,423 | bot | INFO | Cog loaded: Snekbox
+2021-05-02 04:41:55,426 | bot | INFO | Cog loaded: Help
+2021-05-02 04:41:55,427 | bot | INFO | Cog loaded: Latency
+2021-05-02 04:41:55,428 | bot | INFO | Cog loaded: Settings
+2021-05-02 04:41:57,921 | bot | INFO | Connected successfully
+2021-05-04 04:13:00,615 | asyncio | DEBUG | Using selector: EpollSelector
+2021-05-04 04:13:00,694 | discord.client | WARNING | PyNaCl is not installed, voice will NOT be supported
+2021-05-04 04:13:00,747 | bot | INFO | Bot Subclass Created.
+2021-05-04 04:13:00,774 | bot | INFO | Cog loaded: Updater
+2021-05-04 04:13:01,025 | bot | INFO | Cog loaded: KUSNews
+2021-05-04 04:13:01,028 | bot | INFO | Cog loaded: Latency
+2021-05-04 04:13:01,031 | bot | INFO | Cog loaded: SetUp
+2021-05-04 04:13:01,032 | bot | INFO | Cog loaded: ErrorHandler
+2021-05-04 04:13:01,035 | bot | INFO | Cog loaded: NewPatch
+2021-05-04 04:13:01,038 | bot | INFO | Cog loaded: DayLoop
+2021-05-04 04:13:01,043 | bot | INFO | Cog loaded: Help
+2021-05-04 04:13:01,050 | bot | INFO | Cog loaded: AdminCommands
+2021-05-04 04:13:01,087 | bot | INFO | Cog loaded: Snekbox
+2021-05-04 04:13:01,091 | bot | INFO | Cog loaded: VoiceChannel
+2021-05-04 04:13:01,094 | bot | INFO | Cog loaded: Settings
+2021-05-04 04:13:01,104 | bot | INFO | Cog loaded: Assignments
+2021-05-04 04:13:03,710 | bot | INFO | Connected successfully
+2021-05-04 05:01:56,648 | bot | INFO | Resumed Connection
+2021-05-04 05:35:57,046 | bot | INFO | Resumed Connection
+2021-05-04 06:19:26,384 | bot | INFO | Resumed Connection
+2021-05-04 07:02:35,449 | bot | INFO | Resumed Connection
+2021-05-05 07:44:28,269 | asyncio | DEBUG | Using selector: EpollSelector
+2021-05-05 07:44:28,339 | discord.client | WARNING | PyNaCl is not installed, voice will NOT be supported
+2021-05-05 07:44:28,556 | bot | INFO | Bot Subclass Created.
+2021-05-05 07:44:28,558 | bot | INFO | Cog loaded: NewPatch
+2021-05-05 07:44:28,560 | bot | INFO | Cog loaded: Help
+2021-05-05 07:44:28,562 | bot | INFO | Cog loaded: Updater
+2021-05-05 07:44:28,566 | bot | INFO | Cog loaded: AdminCommands
+2021-05-05 07:44:28,567 | bot | INFO | Cog loaded: DayLoop
+2021-05-05 07:44:28,568 | bot | INFO | Cog loaded: ErrorHandler
+2021-05-05 07:44:28,570 | bot | INFO | Cog loaded: Assignments
+2021-05-05 07:44:28,571 | bot | INFO | Cog loaded: VoiceChannel
+2021-05-05 07:44:28,572 | bot | INFO | Cog loaded: SetUp
+2021-05-05 07:44:28,575 | bot | INFO | Cog loaded: Snekbox
+2021-05-05 07:44:28,576 | bot | INFO | Cog loaded: Settings
+2021-05-05 07:44:28,577 | bot | INFO | Cog loaded: Latency
+2021-05-05 07:44:28,742 | bot | INFO | Cog loaded: KUSNews
+2021-05-05 07:44:31,530 | bot | INFO | Connected successfully

@@ -14,12 +14,10 @@ class Manager:
         Create a new guild data and store it into database.
         Only works if guild is not existed.
         """
-
         if str(guild_id) not in self.main_data:
             self.main_data[str(guild_id)] = {}
             self.save()
-            return True
-        
+            return True        
         return False
 
     def check(self, guild_id) -> bool:
@@ -38,9 +36,7 @@ class Manager:
             return False
         
         # Get the channels.
-        if self.bot.get_channel(a) is None or self.bot.get_channel(p) is None:
-            return False
-        return True
+        return False if self.bot.get_channel(a) is None or self.bot.get_channel(p) is None else True
 
     def get_all(self) -> dict:
         """
@@ -60,8 +56,8 @@ class Manager:
         Set Work Channel ID into targeted Guild.
         """
         self.create_guild(guild_id)
-
         self.main_data[str(guild_id)][type_] = channel_id
+        
         self.save()
 
     def save(self) -> None:

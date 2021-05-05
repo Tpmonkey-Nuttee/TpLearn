@@ -26,8 +26,7 @@ def today_th(raw=False) -> datetime.datetime:
 class Database:
     async def load(self, key: str) -> Any:
         # Load data from database
-        try:
-            r = db[key]
+        try: r = db[key]
         except:
             log.warning(traceback.format_exc())
             return None
@@ -35,23 +34,20 @@ class Database:
 
     async def dump(self, key: str, value: Any) -> bool:
         # Dump data to database
-        try:
-            db[key] = value
+        try: db[key] = value
         except:
             log.warning(traceback.format_exc())
             return False
         return True
     
     def loads(self, key: str) -> Optional[Any]:
-        try:
-            ret = db[key]
+        try: ret = db[key]
         except:
             log.warning(traceback.format_exc())
         return ret
 
     def dumps(self, key: str, value: Any) -> bool:
-        try:
-            db[key] = value
+        try: db[key] = value
         except:
             log.warning(traceback.format_exc())
             return False

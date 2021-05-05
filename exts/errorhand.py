@@ -40,15 +40,11 @@ class ErrorHandler(Cog):
             await ctx.send(":x: **Something went wrong while processing your request!**")        
 
         log.debug(            
-            f"Command {command} invoked by {ctx.message.author} with error "
-            f"{error.__class__.__name__}: {error}"
-        )
-        await self.bot.log(
-            __name__,
-            f":negative_squared_cross_mark: Command `{command}` invoked by `{ctx.message.author}` with error \n"
-            f"`{error.__class__.__name__}`: {error}",
-            True
-        )
+            f"Command {command} invoked by {ctx.author} with error "
+            f"{error.__class__.__name__}: {error}")
+        await self.bot.log(__name__,
+            f":negative_squared_cross_mark: Command `{command}` invoked by `{ctx.author}` with error \n"
+            f"`{error.__class__.__name__}`: {error}", True)
     
     async def handle_user_input_error(self, ctx: Context, e: errors.UserInputError) -> None:
         if isinstance(e, errors.MissingRequiredArgument):

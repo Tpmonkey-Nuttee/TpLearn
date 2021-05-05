@@ -19,7 +19,6 @@ class Planner:
         """
         Get count of all available works.
         """
-
         c = 0
         for i in self.main_data:
             c += len(self.get_all(i))
@@ -118,7 +117,7 @@ class Planner:
             "date": date,
             "image-url": image_url,
             "readable-date": self.get_readable_date(date),
-            "already-passed": self.check_passed_date(date)
+            "already-passed": False
         }
 
         log.debug("Added Assignment from `{}` with key `{}`".format(guild_id, key))
@@ -134,6 +133,8 @@ class Planner:
             return 
         data = self.main_data[str(guild_id)][key]
         data["key"] = key 
+
+        log.trace("Removed {} from {}".format(key, guild_id))
 
         del self.main_data[str(guild_id)][key]        
         self.save()
@@ -152,13 +153,40 @@ class Planner:
                 already_passed = self.check_passed_date(date)
 
                 if already_passed != self.main_data[guild_id][key]['already-passed']:
-                    if guild_id not in changes:
-                        changes[guild_id] = {}
+                    if guild_id not in changes: changes[guild_id] = {}
 
                     self.main_data[guild_id][key]['already-passed'] = already_passed
                     changes[guild_id][key] =  self.main_data[guild_id][key]
+        
         self.save()
-        return changes        
+        return changes
+    
+    async def delete_old_work(self) -> int:
+        """
+        Delete the passed works data if It has reached the maximum days which defined in config.py
+        Will return amount of deleted work.
+        """
+        # We need to define what to delete then delete later to avoid RuntimeError.
+        need_to_delete = {}
+        count = 0
+        for guild_id in self.main_data:
+            for key, data in self.main_data[guild_id].items():
+                if data['already-passed']:
+                    day_passed = self.bot.in_days(data['date'])
+
+                    if abs(day_passed) >= self.bot.config.maximum_days: # If It's already passed and more than maximum days.
+                        count += 1
+                        if guild_id not in need_to_delete:
+                            need_to_delete[guild_id] = [key]
+                            continue
+                        need_to_delete[guild_id].append(key)
+        
+        for guild_id in need_to_delete:
+            for key in need_to_delete[guild_id]:
+                await self.remove(guild_id, key)
+
+
+        return count
 
     def save(self) -> None:
         """
@@ -211,8 +239,7 @@ class Planner:
         Generate a key base on char limit.
         Normally set to 8
         """
-        key = secrets.token_hex(nbytes=char_limit)
-        return key[:char_limit]
+        return secrets.token_hex(nbytes=char_limit)[:char_limit]
 
     def strp_able(self, unreadable: str) -> bool:
         """
@@ -228,17 +255,13 @@ class Planner:
         """
         Try to Strip given Date, If can't return the given.
         """
-        if len(unreadable) < 3:
-            return None
+        if len(unreadable) < 3: return None
         p = unreadable[2]
-        try:
-            strp = datetime.datetime.strptime(unreadable, f"%d{p}%m{p}%Y")
+        try: strp = datetime.datetime.strptime(unreadable, f"%d{p}%m{p}%Y")
         except:
             p = unreadable[1]
-            try:
-                strp = datetime.datetime.strptime(unreadable, f"%d{p}%m{p}%Y")
-            except:
-                return None
+            try: strp = datetime.datetime.strptime(unreadable, f"%d{p}%m{p}%Y")
+            except: return None
         return strp
 
     def get_readable_date(self, unreadable: str) -> str:
@@ -246,8 +269,4 @@ class Planner:
         Get a normal-human format date.
         """
         strp = self.try_strp_date(unreadable)
-
-        if strp is None:
-            return unreadable
-
-        return strp.strftime("%A %d %B %Y")
+        return unreadable if strp is None else strp.strftime("%A %d %B %Y")

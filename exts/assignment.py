@@ -32,9 +32,7 @@ class Assignments(Cog):
         """Init data when using menu."""
         self.tasks[ctx.author.id] = {
             "details":{
-                "type": type_,
-                "state": 1,
-                "key": kwargs.get("key"),
+                "type": type_, "state": 1, "key": kwargs.get("key"),
                 "image": "Not Attached" if kwargs.get('image') is None else kwargs.get('image'),
                 "headers":{
                     "title": "Untitled" if kwargs.get('title') is None else kwargs.get('title'),
@@ -42,14 +40,13 @@ class Assignments(Cog):
                     "date": "Unknown" if kwargs.get('date') is None else kwargs.get('date'),
                 }},
             "info":{                
-                "ctx": ctx,
-                "message": None
+                "ctx": ctx, "message": None
             }}
     
     @staticmethod
-    def close_embed(reason: str) -> Embed:
+    def close_embed(reason: str, colour: Colour = Colour.dark_red()) -> Embed:
         """Create a Closed Embed."""
-        embed = Embed(colour = Colour.dark_red())
+        embed = Embed(colour = colour)
         embed.title = "[Closed Menu]" if reason is None else reason
 
         return embed
@@ -83,7 +80,6 @@ class Assignments(Cog):
         for n in header:
             name = self.get_title_from_key(n, state)
             value = self.bot.planner.get_readable_date(header[n])
-
             embed.add_field(name=name, value=value, inline=False)
 
         # Check if Image Attached or not
@@ -94,11 +90,10 @@ class Assignments(Cog):
             # If not, Add field instead.
             embed.add_field(
                 name=self.get_title_from_key("image", state), value = details["image"], inline=False
-            ) 
-
+            )
         return embed
     
-    async def listed_embed(self, ctx: Context, data: dict = None) -> None:
+    async def listed_embed(self, ctx: Context, data: dict = None) -> tuple:
         """Create a list embed with all the works."""
 
         # If data wasn't provided, Get it from system
@@ -106,34 +101,38 @@ class Assignments(Cog):
 
         embed = Embed()
         embed.colour = Colour.blue()
-        embed.timestamp = ctx.message.created_at    
+        embed.timestamp = ctx.message.created_at
 
-        for a in data: # Some random letter, Why not?
-            name = self.bot.get_title(a.get('title'), a.get('date'))
-            value = str(
-                f"**description**: {a.get('desc')}\n"
-                f"**date**: {a.get('readable-date')}\n"
-                f"**key**: {a.get('key')}\n"
-            )
-            embed.add_field(name=name, value=value)
+        if len(data) == 0:
+            type_ = True
+            embed.description = "Nothing to do at the moment! :heart:"
+        else:
+            type_ = False
+            for a in data: # Some random letter, Why not?
+                name = self.bot.get_title(a.get('title'), a.get('date'))
+                value = str(
+                    f"**description**: {a.get('desc')}\n"
+                    f"**date**: {a.get('readable-date')}\n"
+                    f"**key**: {a.get('key')}\n"
+                )
+                embed.add_field(name=name, value=value)
         
-        return embed
+        return type_, embed
 
     async def update_embed(self, ctx: Context) -> None:
         """Update Embed (Menu)"""
         message = self.tasks[ctx.author.id]["info"]["message"]
-        if message is None: # If embed has been deleted or not in the data yet.
-            return
+         # If embed has been deleted or not in the data yet.
+        if message is None: return
      
         embed = self.base_embed(ctx)
-        try:
-            await message.edit(embed=embed)
+        try: await message.edit(embed=embed)
         except HTTPException: # Embed has been deleted, Will close everything.
             await ctx.send(":x: **Something went wrong - canceled all actions!**")
             await self.close(ctx)
             return  
     
-    async def close(self, ctx: Context, reason: str = None) -> None:
+    async def close(self, ctx: Context, reason: str = None, colour: Colour = Colour.dark_red()) -> None:
         """Close the menu."""
         if ctx.author.id not in self.tasks or \
         self.tasks[ctx.author.id]['details']['state'] == 0: 
@@ -145,16 +144,14 @@ class Assignments(Cog):
         message = self.tasks[ctx.author.id]["info"]["message"]
         try:
             await message.clear_reactions()
-            await message.edit(embed=self.close_embed(reason))
-        except: # Ignore all exception, Our task is already done.
-            pass
-
+            await message.edit(embed=self.close_embed(reason, colour))
+        except: pass
+        # Ignore all exception, Our task is already done.
         
         await sleep(2) # this is a cooldown system.
         
-        if ctx.author.id in self.tasks: # Can also use try but this is easier.
-            del self.tasks[ctx.author.id]
-
+         # Can also use try but this is easier.
+        if ctx.author.id in self.tasks: del self.tasks[ctx.author.id]
         ctx.command.reset_cooldown(ctx)
     
     @command()
@@ -163,8 +160,7 @@ class Assignments(Cog):
     @cooldown(1, 30, BucketType.guild)
     async def add(self, ctx: Context) -> None:
         """Add an Assignment Command."""
-        if ctx.author.id in self.tasks:
-            del self.tasks[ctx.author.id]
+        if ctx.author.id in self.tasks: del self.tasks[ctx.author.id]
 
         self.init_data(ctx, 'add')
         embed = self.base_embed(ctx)
@@ -179,15 +175,18 @@ class Assignments(Cog):
     @cooldown(1, 30, BucketType.guild)
     async def edit(self, ctx: Context, key: str = None) -> None:
         """Edit an Assignment Command."""
-        if ctx.author.id in self.tasks:
-            del self.tasks[ctx.author.id]
+        if ctx.author.id in self.tasks: del self.tasks[ctx.author.id]
         
         if key is None or not self.bot.planner.check_valid_key(ctx.guild.id, key):
-            embed = await self.listed_embed(ctx) 
-            await ctx.send("Please enter the key.", embed=embed)
+            type_, embed = await self.listed_embed(ctx) 
+            content = None if type_ else "Please enter a key."
+            await ctx.send(content, embed=embed)
             return
         
         d = self.bot.planner.get(ctx.guild.id, key)
+        if d['already-passed']:
+            await ctx.send(":x: **You shouldn't edit already passed assignment.**")
+            return
         self.init_data(ctx, 'edit', **d)
 
         embed = self.base_embed(ctx)
@@ -212,8 +211,8 @@ class Assignments(Cog):
         embed.timestamp = ctx.message.created_at
     
         if not self.bot.planner.check_valid_key(ctx.guild.id, key):
-            embed = await self.listed_embed(ctx, data)
-            content = "Please enter the key." 
+            type_, embed = await self.listed_embed(ctx, data)
+            content = None if type_ else "Please enter a key."
         else:
             d = await self.bot.planner.remove(ctx.guild.id, key)
             embed.description = f"**Removed** `{d.get('key')}`"
@@ -225,16 +224,9 @@ class Assignments(Cog):
     @guild_only()
     async def allworks(self, ctx: Context) -> None:
         """Show all Assignments"""
-        embed = Embed()
-        embed.color = Colour.blue()
-        embed.timestamp = ctx.message.created_at
 
         d = self.bot.planner.get_all(ctx.guild.id)
-
-        if len(d) == 0:
-            embed.description = "Nothing to do at the moment! :heart:"
-        else:        
-            embed = await self.listed_embed(ctx, d)
+        type_, embed = await self.listed_embed(ctx, d)
 
         await ctx.send(embed=embed)
 
@@ -251,14 +243,16 @@ class Assignments(Cog):
         embed = Embed()
         embed.colour = Colour.blue()
         embed.timestamp = ctx.message.created_at
-    
+
+        content = None
         if not self.bot.planner.check_valid_key(ctx.guild.id, key):
-            embed = await self.listed_embed(ctx, data)
+            content = "Please enter a key."
+            type_, embed = await self.listed_embed(ctx, data)
         else:
             info = self.bot.planner.get(ctx.guild.id, key)
             embed = self.bot.get_embed(**info)
         
-        await ctx.send(embed=embed)
+        await ctx.send(content, embed=embed)
 
     @Cog.listener()
     async def on_raw_reaction_add(self, payload: RawReactionActionEvent) -> None:
@@ -293,6 +287,9 @@ class Assignments(Cog):
             return        
         elif emoji == "✅":
             type_ = self.tasks[ctx.author.id]['details']['type']
+            if self.bot.planner.check_passed_date(self.tasks[ctx.author.id]["details"]["headers"]["date"]):
+                await self.close(ctx, "Cannot add/edit already passed assignment.")
+                return
             try:
                 ret = await self.bot.planner.add(
                     ctx.guild.id,
@@ -306,12 +303,14 @@ class Assignments(Cog):
             except Exception:                
                 text = f"Unable to {type_} Assignment, Problem has been reported."
                 await self.bot.log(__name__, f"An Exception were found while finishing adding assignment\n```py\n{traceback.format_exc()}\n```", True)
+                colour = Colour.default()
 
             else:
                 text = f"Successfully Added Assignment with key `{ ret }`" if type_ == 'add' \
                 else "Successfully Edited Assignment."
+                colour = Colour.teal()
 
-            await self.close(ctx, text)
+            await self.close(ctx, text, colour)
             return
 
         elif emoji == "1️⃣":
@@ -333,7 +332,7 @@ class Assignments(Cog):
         """
         while self.tasks[ctx.author.id]["details"]["state"] != 0:
             try:
-                message = await self.bot.wait_for_message(ctx, timeout = 60)
+                message = await self.bot.wait_for_message(ctx, timeout = 300)
             except: # Timeout, or something went wrong.
                 await self.close(ctx)
                 return
@@ -358,8 +357,7 @@ class Assignments(Cog):
             elif state == 3:
                 self.tasks[ctx.author.id]["details"]["headers"]["date"] = content
             else:
-                if len(message.attachments) < 1:
-                    continue
+                if len(message.attachments) < 1: continue
                 else:
                     image = message.attachments[0]
                     image_url = await self.bot.get_image_url(image)

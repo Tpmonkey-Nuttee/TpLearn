@@ -10,6 +10,7 @@ from discord.ext.commands import cooldown as cd
 from discord.ext.tasks import loop
 from discord import Embed, Colour
 
+import config
 from bot import Bot
 from utils.utils import limit
 
@@ -17,9 +18,10 @@ from datetime import datetime
 from bs4 import BeautifulSoup
 import traceback
 
-MAIN_URL = "http://www.kus.ku.ac.th/"
-NEWS_URL = "http://www.kus.ku.ac.th/news.php"
-COOLDOWN = 8 # hours
+MAIN_URL = config.main_url
+NEWS_URL = config.news_url
+
+COOLDOWN = config.kus_news_cooldown
 
 class KUSNews(Cog):
     def __init__(self, bot: Bot):
@@ -68,13 +70,12 @@ class KUSNews(Cog):
     
     @loop(hours=COOLDOWN)
     async def looping(self) -> None:
-        if self.channels is None or self.ids is None:
-            await self.load_data()
+        if self.channels is None: await self.load_data()
         
         self.data = await self.__get__data()
 
-        if not self.enable: # Sometimes, website prevend bot to acces.
-            return
+        # Sometimes, website prevend bot to acces.
+        if not self.enable: return
 
         news = {id: (n, u, p) for n, u, p, id in self.data}
         new_ids = [i for n, u, p, i in self.data]
@@ -83,40 +84,39 @@ class KUSNews(Cog):
         if new_ids != self.ids:
             await self.bot.log(__name__, "New data detected")
             await self.bot.log(__name__, 
-                f"\n**From** `{new_ids}`" + \
-                f"\n**To** `{self.ids}`"
-            )
+                f"\n**From** `{self.ids}`" \
+                f"\n**To** `{new_ids}`")
 
             # Remove all prevoius data.
             for _ in self.ids:
                 if _ in new_ids: new_ids.remove(_)
             
-            datas = [news[key] for key in new_ids]
-            
+            datas = [news[key] for key in new_ids]            
             embeds = [self.create_embed(n, u, p) for n, u, p in datas]
 
-            for _ in self.channels:
-                channel = self.bot.get_channel(_)
-                if channel is not None: 
+            if len(embeds) != 0:
+                for _ in self.channels:
+                    channel = self.bot.get_channel(_)
+                    if channel is None: continue
                     await self.bot.log(__name__, f"Sending news to {channel}//{_}")
 
                     # Send news
                     for embed in embeds[::-1]:
-                        try:
-                            await channel.send(embed=embed)
+                        try: await channel.send(embed=embed)
                         except:
-                            await self.bot.log(
-                                __name__, 
-                                f":negative_squared_cross_mark: Unable to send news embed to `{channel}`" +\
-                                f"with traceback: \n{traceback.format_exc()}"
-                            )
-                            break
-                
-            await self.bot.log(__name__, "Sended news to all channels, saving data...")
+                            await self.bot.log(__name__, 
+                                f":negative_squared_cross_mark: Unable to send news embed to `{channel}`" \
+                                f"with traceback: \n{traceback.format_exc()}")
+                            break        
+                        
+                await self.bot.log(__name__, f"Sended news to all channels. (Total of {len(self.channels)})")
+            else:
+                await self.bot.log(__name__, "Ghost-News detected, No messages were sended.")
+            
             ids = [id for n, u, p, id in self.data]
             await self.bot.database.dump("NEWS-IDS", ids)
             self.ids = ids
-            await self.bot.log(__name__, "Confirmed, Saved all data.")
+            await self.bot.log(__name__, "Saved new data.")
     
     def create_embed_(self, name, url, pic) -> Embed:        
         embed = Embed(
@@ -157,7 +157,7 @@ class KUSNews(Cog):
         channel_id = ctx.channel.id
 
         if channel_id in self.channels:
-            await ctx.send("Already added.")
+            await ctx.send(":x: **Already added.**")
             return
         
         self.channels.append(channel_id)
@@ -173,7 +173,7 @@ class KUSNews(Cog):
         channel_id = ctx.channel.id
 
         if channel_id not in self.channels:
-            await ctx.send("Already removed.")
+            await ctx.send(":x: **Already removed.**")
             return
         
         self.channels.remove(channel_id)
@@ -213,24 +213,6 @@ class KUSNews(Cog):
 
         await ctx.send(embed=embed1)
         await ctx.send(embed=embed2)
-    
-    @command()
-    @is_owner()
-    async def fixpls(self, ctx: Context) -> None:      
-        message_id = 834338721750188073
-        channel_id = 728489165565591562
-
-        async for mess in self.bot.get_channel(channel_id).history(limit=10):
-            if mess.id == message_id:
-                message = mess
-            break
-        
-        embed = self.create_embed(
-            "เปิดระบบการชำระค่าใช้จ่ายทางการศึกษา ภาคต้น ปีการศึกษา ๒๕๖๔ ตั้งแต่วันที่ ๒๗ เมษายน ๒๕๖๔ เป็นต้นไป ...อ่านต่อ"
-            , "https://bp.kus.ku.ac.th/",
-            "https://www.kus.ku.ac.th/images_kus/news/ban64-1-20210421133032.gif"
-        )
-        await message.edit(embed=embed)
 
 
 def setup(bot: Bot) -> None:
