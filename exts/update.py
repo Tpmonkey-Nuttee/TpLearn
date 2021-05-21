@@ -1,5 +1,7 @@
-# Update Works system.
-# Made by Tpmonkey
+"""
+Bot's Active-Works Updater.
+Made by Tpmonkey
+"""
 
 from discord.ext.commands import Cog, Context, command, is_owner
 from discord.ext.tasks import loop
@@ -10,7 +12,9 @@ from bot import Bot
 
 import traceback
 import asyncio
+import logging
 
+log = logging.getLogger(__name__)
 MINUTES = config.update_work_cooldown
 
 class Updater(Cog):
@@ -19,18 +23,57 @@ class Updater(Cog):
         self.updating = False
         self.loop.start()
     
+    def cog_unload(self):
+        self.loop.cancel()
+    
+    @Cog.listener()
+    async def on_resumed(self) -> None:
+        """
+        Check if loop running correctly.
+        """
+        try: l = self.loop.is_running()
+        except:
+            await self.bot.log(__name__, "Error occured while getting loop method.", mention=True)
+            log.error(traceback.format_exc())
+            return
+
+        if not l:
+            await self.bot.log(__name__, "Updater Loop is not running, Trying to restart...")
+            await self.bot.log(__name__, traceback.format_exc())
+            try: self.loop.restart()
+            except: 
+                await self.bot.log(__name__, "Restart failed with traceback:", mention=True)
+                await self.bot.log(__name__, traceback.format_exc())
+            else:
+                await self.bot.log(__name__, "Restart successfully.")
+                return
+    
     def check(self, message: Message, **work: dict) -> bool:
         """Check if the bot should update works embed or not to prevent rate limit."""
         if len(message.embeds) == 0: return False
         
         embed = message.embeds[0].to_dict()
-        footer = embed['footer']['text']
-        title = embed['author']['name']
+
+        key_embed = embed['footer']['text'][-8:]
+        key = work.get('key')
+
         colour_embed = embed['color']
         colour = self.bot.get_colour(work.get('date')).value
-        title_ = self.bot.get_title(work.get('title'), work.get('date'))
 
-        return footer[-8:] == work.get('key') and colour_embed == colour and title == title_
+        title_embed = embed['author']['name']
+        title = self.bot.get_title(work.get('title'), work.get('date'))
+
+        desc_embed = embed['fields'][1]['value']
+        desc = work.get('desc')
+
+        try: 
+            image_check = embed['image']['url'] == work.get('image-url')
+        except KeyError: image_check = True
+        
+
+        return all(
+            (key_embed == key, colour_embed == colour, title_embed == title, desc_embed == desc, image_check)
+        )
 
     @loop(minutes = MINUTES)
     async def loop(self) -> None:
@@ -38,6 +81,7 @@ class Updater(Cog):
 
         # We need to check if the bot already updating or not.
         if not self.updating: await self.update()
+        else: await self.bot.log(__name__, "Cannot keep up with update work system. Some Guild maybe affected.")
 
     async def get_messages(self, channel: TextChannel) -> list:
         """Get messages from active-works channel, Wil only get its own messages."""
@@ -49,23 +93,20 @@ class Updater(Cog):
     
     async def update(self) -> None:
         self.updating = True
+        data = self.bot.manager.get_all()
 
-        data = self.bot.manager.main_data
-
-        for gid in data:
+        for gid in self.bot.planner.need_update:
             # Check if the channel valid or not.
             if not self.bot.manager.check(gid): continue
             
             works = self.bot.planner.get_sorted(gid)
             try: ret = await self.update_active(works, data[gid])
             except:
-                await self.bot.log(__name__, 
-                    f":negative_squared_cross_mark: Unable to update works at {gid} with error: \n{traceback.format_exc()}")
+                await self.bot.log(__name__, f":negative_squared_cross_mark: Unable to update works at {gid} with error: \n{traceback.format_exc()}")
             else:
-                if len(ret) != 2:
-                    await self.bot.log(__name__,
-                        f":white_check_mark: Sucessfully update works at {gid} :\n" \
-                        ", ".join(ret))
+                if len(ret) != 2: 
+                    await self.bot.log(__name__, f":white_check_mark: Sucessfully update works at {gid} :\n"+", ".join(ret))
+                    log.debug(f"updated active-works for {gid}")
 
         self.updating = False
     
@@ -120,8 +161,7 @@ class Updater(Cog):
             works.reverse()
             for index, work in enumerate(works):        
                 embed = self.bot.get_embed(**work)
-                try:
-                    message = messages[index]                    
+                try: message = messages[index]                    
                 except IndexError: # Ran out of embeds to edit.
                     await channel.send(embed=embed)
                     messages_output.append("`S` w>m")
@@ -147,13 +187,12 @@ class Updater(Cog):
         
         return messages_output
 
-    @command(name='update')
+    @command(name='fupdate')
     @is_owner()
     async def _update(self, ctx: Context, gid: str, bypass: bool = False) -> None:
         """Force update command, can be bypass system."""
         if self.updating and not bypass:
-            await ctx.send(
-                "The bot currently updating data, Please try again later.\nPlease keep in mind that, bypassing the system will may result in bot getting rate limited.")
+            await ctx.send("The bot currently updating data, Please try again later.\nPlease keep in mind that, bypassing the system will may result in bot getting rate limited.")
             return
         
         m = await ctx.send("Trying to update...")
@@ -167,6 +206,10 @@ class Updater(Cog):
         else: content = "\n".join(result)
 
         await m.edit(content=content)
+    
+    @command(hidden=True)
+    async def hide(self, ctx: Context) -> None:
+        await ctx.send("Yes, I'm hiding... Don't tell anyone! :shushing_face:")
 
 
 def setup(bot: Bot) -> None:

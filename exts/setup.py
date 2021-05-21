@@ -1,3 +1,8 @@
+"""
+Bot Setup, Fix Command.
+Made by Tpmonkey
+"""
+
 from discord.ext.commands import (
     Cog, Context, command, guild_only, has_permissions, cooldown, BucketType
 )
@@ -31,6 +36,7 @@ class SetUp(Cog):
         except Forbidden:
             await ctx.send(":x: **Unable to create channel, Manage Channels Perm required.**")
             return
+        await self.bot.log(__name__, f'Successfully setup bot in {ctx.guild.id}')
         await ctx.send(":white_check_mark: Successfully setup the bot!")
     
     @command()

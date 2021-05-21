@@ -1,5 +1,7 @@
-# Admin stuff for the bot
-# Made by Tpmonkey
+"""
+An Admin Commands Extension.
+Made by Tpmonkey
+"""
 
 from discord.ext.commands import is_owner, command, Cog, Context
 from discord import Embed, Color, TextChannel
@@ -316,6 +318,9 @@ class AdminCommands(Cog):
 
         await self.bot.logout()
 
+    @command(hidden=True)
+    async def me(self, ctx: Context) -> None:
+        await ctx.send("You?")
 
 def setup(bot: Bot) -> None:
     bot.add_cog(AdminCommands(bot))

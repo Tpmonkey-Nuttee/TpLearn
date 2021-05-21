@@ -1,5 +1,8 @@
-# Paginator
-# Made by Python Discord
+"""
+Paginator, used for help command.
+Made by Python Discord Bot team on Github.
+Credit: https://github.com/python-discord/bot
+"""
 
 from discord.ext.commands import Context, Paginator
 from discord.abc import User
@@ -22,7 +25,7 @@ log = logging.getLogger(__name__)
 
 
 class EmptyPaginatorEmbed(Exception):
-    """Raised when attempting to paginate with empty contents."""
+    """ Raised when attempting to paginate with empty contents. """
     pass
 
 

@@ -1,7 +1,11 @@
-# Error handler
-# Made by Tpmonkey
+"""
+Bot's Commands Error Handler.
+Idea from Python Discord Bot team on Github.
+Credit: https://github.com/python-discord/bot
+Re-created By Tpmonkey
+"""
 
-from discord.ext.commands import Cog, Context, errors
+from discord.ext.commands import Cog, Context, errors, command
 from discord import Embed, Colour
 
 from bot import Bot
@@ -77,6 +81,10 @@ class ErrorHandler(Cog):
             await ctx.send(":x: **It looks like I don't have permission to do that!**")
         else:
             await ctx.send(f":x: **{e}**")
+
+    @command(name='error', hidden=True)
+    async def _error(self, ctx: Context) -> None:
+        await ctx.send(":x: **Error, Command Error!**")
 
 def setup(bot: Bot) -> None:
     bot.add_cog(ErrorHandler(bot))

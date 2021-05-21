@@ -1,6 +1,8 @@
-# Logging setup
-# Made by Tpmonkey
-# Credit: Python Discord
+"""
+Logging Setup
+Made by Python Discord Bot team on Github.
+Credit: https://github.com/python-discord/bot
+"""
 
 from logging import Logger, handlers
 from pathlib import Path
@@ -15,7 +17,7 @@ TRACE_LEVEL = 5
 DATE = str(datetime.date.today())[:-3]
 
 def setup() -> None:
-    """Set up loggers."""
+    """ Set up loggers. """
     logging.TRACE = TRACE_LEVEL
     logging.addLevelName(TRACE_LEVEL, "TRACE")
     Logger.trace = _monkeypatch_trace

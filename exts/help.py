@@ -1,12 +1,15 @@
-# Custom Help command for the Bot
-# Made by Tpmonkey
-# Credit: Python Discord
+"""
+Bot Help Command
+Idea from Python Discord Bot team on Github.
+Credit: https://github.com/python-discord/bot
+Re-created by Tpmonkey
+"""
 
 from contextlib import suppress
 from typing import List, Union
 import itertools
 
-from discord.ext.commands import Cog, HelpCommand, Command
+from discord.ext.commands import Cog, HelpCommand, Command, command, Context
 from discord import Embed, Colour
 
 from bot import Bot
@@ -41,10 +44,10 @@ class CustomHelpCommand(HelpCommand):
         return_as_list is helpful for passing these command details into the paginator as a list of command details.
         """
         details = []
-        for command in commands_:
-            signature = f" {command.signature}" if command.signature else ""
+        for _command in commands_:
+            signature = f" {_command.signature}" if _command.signature else ""
             details.append(
-                f"\n**`{PREFIX}{command.qualified_name}{signature}`**\n*{command.short_doc or 'No details provided'}*"
+                f"\n**`{PREFIX}{_command.qualified_name}{signature}`**\n*{_command.short_doc or 'No details provided'}*"
             )
         if return_as_list:
             return details
@@ -146,6 +149,10 @@ class Help(Cog):
     def cog_unload(self) -> None:
         # Reset the help command when the cog is unloaded.
         self.bot.help_command = self.old_help_command
+    
+    @command(hidden=True)
+    async def helpme(self, ctx: Context) -> None:
+        await ctx.send("How?")
 
 
 def setup(bot: Bot) -> None:

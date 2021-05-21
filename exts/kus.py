@@ -1,7 +1,8 @@
-# KUS Announcement system
-# Hook to http://www.kus.ku.ac.th/news.php
-
-# Made by Tpmonkey
+"""
+KUS Announcement Monitor system.
+Monitoring: http://www.kus.ku.ac.th/news.php
+Made by Tpmonkey
+"""
 
 from discord.ext.commands import (
     Cog, Context, command, is_owner, has_permissions, BucketType
@@ -17,6 +18,9 @@ from utils.utils import limit
 from datetime import datetime
 from bs4 import BeautifulSoup
 import traceback
+import logging
+
+log = logging.getLogger(__name__)
 
 MAIN_URL = config.main_url
 NEWS_URL = config.news_url
@@ -37,10 +41,12 @@ class KUSNews(Cog):
     
     async def save(self) -> None:
         await self.bot.database.dump("NEWS-CHANNELS", self.channels)
+        log.debug('saved news channels')
     
     async def load_data(self) -> None:
         self.channels = await self.bot.database.load("NEWS-CHANNELS")
         self.ids = await self.bot.database.load("NEWS-IDS")
+        log.debug('loaded data')
 
     async def __fetch__(self):
         r = await self.bot.trust_session.get(NEWS_URL)
@@ -52,9 +58,13 @@ class KUSNews(Cog):
         soup = BeautifulSoup(respone_text, "html.parser")
         home = soup.find(attrs={"class":"home-news"})
 
-        if home is None:
+        if home is None and self.enable:
             self.enable = False
+            await self.bot.log(__name__, 'Unable to fetch kus data, disabled system.')
             return None
+        elif home is None and not self.enable:
+            self.enable = True
+            await self.bot.log(__name__, 'successfully fecthed kus data, enabled system.')
 
         news = home.find_all("div", attrs={"class":"headline left"})
         pics = home.find_all("div", attrs={"class":"img-container left"})
@@ -62,7 +72,7 @@ class KUSNews(Cog):
         return [
             ( 
                 new.get_text(), 
-                MAIN_URL+new.find('a').get("href"), 
+                new.find('a').get("href"), 
                 MAIN_URL + pic.find("img").get("src"),
                 new.find('a').get("href")
             ) for new, pic in zip(news, pics)
@@ -75,7 +85,9 @@ class KUSNews(Cog):
         self.data = await self.__get__data()
 
         # Sometimes, website prevend bot to acces.
-        if not self.enable: return
+        if not self.enable:
+            log.debug('trying to update news but is not enable, passing...')
+            return
 
         news = {id: (n, u, p) for n, u, p, id in self.data}
         new_ids = [i for n, u, p, i in self.data]
@@ -91,8 +103,9 @@ class KUSNews(Cog):
             for _ in self.ids:
                 if _ in new_ids: new_ids.remove(_)
             
-            datas = [news[key] for key in new_ids]            
+            datas = [news[key] for key in new_ids] 
             embeds = [self.create_embed(n, u, p) for n, u, p in datas]
+            await self.bot.log(__name__, f"**Found:** {datas}")
 
             if len(embeds) != 0:
                 for _ in self.channels:
@@ -131,8 +144,7 @@ class KUSNews(Cog):
         return embed
     
     def create_embed(self, name, url, pic) -> Embed:
-        if url.startswith("news_detail"):
-            url = MAIN_URL + url
+        if url.startswith("news_detail"): url = MAIN_URL + url
         
         embed = Embed(
             colour = Colour.from_rgb(170, 3, 250),
@@ -213,6 +225,26 @@ class KUSNews(Cog):
 
         await ctx.send(embed=embed1)
         await ctx.send(embed=embed2)
+    
+    @command(hidden=True)
+    async def tada(self, ctx: Context) -> None:
+        await ctx.send(":tada:")
+
+    @command(hidden=True)
+    async def lenny(self, ctx: Context) -> None:
+        await ctx.send("( ͡° ͜ʖ ͡°)")
+    
+    @command(hidden=True)
+    @is_owner()
+    async def quickfix(self, ctx: Context) -> None:
+        async for mess in self.bot.get_channel(728489165565591562).history(limit=3):
+            if mess.id == 841860207117074462:
+                message = mess
+                break
+            
+        n, u, p, id = self.data[0]
+        embed = self.create_embed(n, u, p)
+        await message.edit(embed=embed)
 
 
 def setup(bot: Bot) -> None:

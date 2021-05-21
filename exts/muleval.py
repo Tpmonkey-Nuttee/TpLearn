@@ -1,6 +1,9 @@
-# Eval command, Run python code in Discord
-# Made by Tpmonkey
-# Credit: Python Discord
+"""
+Eval Command
+Idea from Python Discord Bot team on Github.
+Credit: https://github.com/python-discord/bot
+Re-created by Tpmonkey
+"""
 
 from discord.ext.commands import Cog, command, Context, guild_only, is_owner
 from discord import Embed, Colour

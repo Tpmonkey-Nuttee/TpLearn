@@ -1,6 +1,7 @@
-# Utilitys function
-# Made by Tpmonkey
-
+"""
+Utility Functions
+Made by Tpmonkey
+"""
 from typing import Union
 
 int_or_float = Union[int, float] 

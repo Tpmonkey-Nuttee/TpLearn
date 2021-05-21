@@ -1,5 +1,7 @@
-# Ping display
-# Made by Tpmonkey
+"""
+Bot Ping Display, and Socket Session command for Admin
+Made by Tpmonkey
+"""
 
 from discord.ext.commands import command, Cog, Context, is_owner
 from discord import Embed, Color
@@ -9,7 +11,7 @@ from bot import Bot
 from collections import Counter
 from datetime import datetime
 
-description = (
+DESCRIPTION = (
     "Discord API latency",
     "Command processing time"
 )
@@ -27,7 +29,7 @@ class Latency(Cog):
             self.socket_event_total += 1
             self.socket_events[event_type] += 1
     
-    @command(name = "ping")
+    @command()
     async def ping(self, ctx: Context) -> None:
         """Display API ping and Command Process time."""
         discord_ping = f"{ (self.bot.latency*1000):.{3}f} ms"
@@ -40,7 +42,7 @@ class Latency(Cog):
             color = Color.magenta()
         )
         
-        for des, val in zip(description, [discord_ping, bot_ping]):
+        for des, val in zip(DESCRIPTION, [discord_ping, bot_ping]):
             embed.add_field(name = des, value = val, inline = False)
 
         await ctx.send(embed=embed)
@@ -65,6 +67,9 @@ class Latency(Cog):
 
         await ctx.send(embed=stats_embed)
 
+    @command(hidden=True)
+    async def pong(self, ctx: Context) -> None:
+        await ctx.send("You meant... ping right...?")
 
 def setup(bot: Bot) -> None:
     bot.add_cog(Latency(bot))

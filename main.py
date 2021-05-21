@@ -1,9 +1,10 @@
-# Discord bot TpLearn [BETA]
-# @ KUS Senior Project
-# Made by Tpmonkey
+"""
+Discord bot TpLearn [BETA]
+@KUS Senior Project
+Made by Tpmonkey (Nuttee) KUS48
 
-# Extra Credit to Python Discord & IdleRPG
-# For an example of codes.
+* Extra Credit to Python Discord & IdleRPG, for providing example of discord bot.
+"""
 
 import os
 

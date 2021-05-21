@@ -1,6 +1,7 @@
-# Bot direct message manager.
-# Will redirect dm message to mod channel.
-# Made by Tpmonkey
+"""
+Bot DM Manager.
+Made by Tpmonkey
+"""
 
 from discord.ext.commands import Cog, Context, command, is_owner
 from discord import Message, Embed, Colour, User
@@ -14,19 +15,25 @@ class VoiceChannel(Cog):
     
     @Cog.listener()
     async def on_ready(self) -> None:
-        # Get DM Channel 
+        """ Get Bot's DM-Channel. """
         self.channel = self.bot.get_channel(self.bot.config.dm_channel_id)
 
     @Cog.listener()
     async def on_message(self, message: Message) -> None:
-        # Listening for dm.
+        """ Listening for DM. """
         if not self.channel: self.channel = self.bot.get_channel(self.bot.config.dm_channel_id)
+
+        """
+        RULES/CHECKS
+        - Author must not be a bot.
+        - Author must not be owner.
+        - Guild needs to be None, that means It's on Bot DM or GROUP.
+        """
 
         if any((message.author.bot, # Author must not be a bot
             message.author.id == self.bot.owner_id, # Ignore owner.
             message.guild != None # Need to be direct message.
-        )):
-            return
+        )):  return
         
         user = message.author
 
@@ -41,7 +48,7 @@ class VoiceChannel(Cog):
     @command(name = "reply", aliases = ("r", ))
     @is_owner()
     async def reply(self, ctx: Context, user: User, *, message: str):
-        """Reply message to User."""
+        """ Reply message to User DM. """
         
         # Send the message
         await user.send(message)

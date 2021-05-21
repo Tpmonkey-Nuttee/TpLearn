@@ -1,5 +1,8 @@
-# Command Checks
-# Made by Tpmonkey
+"""
+Command Check, Mainly used for add command.
+May add more.
+Made by Tpmonkey
+"""
 
 from discord.ext import commands
 

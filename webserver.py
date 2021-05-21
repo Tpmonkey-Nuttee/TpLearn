@@ -1,5 +1,7 @@
-# Bot webserver
-# Made by Tpmonkey
+"""
+Bot Webserver to keep the bot alive.
+Made by ??? (can be found across replit.com)
+"""
 
 from threading import Thread
 from flask import Flask

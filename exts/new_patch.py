@@ -1,9 +1,18 @@
+"""
+Bot Patch checker, Monitoring Version Change and Patch Notes.
+Used for logging and moderating.
+Made by Tpmonkey
+"""
+
 from discord.ext.commands import Cog
 from discord import Embed, Colour
 
 from bot import Bot
 
 from datetime import datetime
+import logging
+
+log = logging.getLogger(__name__)
 
 class NewPatch(Cog):
     def __init__(self, bot: Bot):
@@ -21,9 +30,13 @@ class NewPatch(Cog):
         await self.bot.wait_until_ready()
 
         current_version = await self.bot.database.load("VERSION")
+        if current_version is None:
+            log.debug("Couldn't load bot version from database, ignoring...")
+            return
         system_version = self.bot.config.version
 
         if current_version != system_version:
+            log.debug("Version change found, annoucing..")
             await self.push_version_change(current_version, system_version)
             await self.bot.database.dump("VERSION", system_version)
     
