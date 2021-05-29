@@ -361,6 +361,7 @@ class Assignments(Cog):
             elif state == 3:
                 self.tasks[ctx.author.id]["details"]["headers"]["date"] = content
             else:
+                image_url = self.tasks[ctx.author.id]["details"]["image"] 
                 if len(message.attachments) < 1:
                     if ("http://" in content or "https://" in content) and "." in content:
                         image_url = content

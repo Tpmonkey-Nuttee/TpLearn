@@ -3,7 +3,7 @@ Bot Constant, contained Database and some datetime.
 Made by Tpmonkey
 """
 
-from typing import Any, Optional, List, Optional, Union, Callable, Iterator, Dict
+from typing import Any, Optional, List, Union, Callable, Iterator, Dict
 from replit import db
 import traceback
 import datetime
@@ -30,11 +30,10 @@ class Database:
     
     async def load(self, key: str) -> Any:
         """ Load data safely from database. """
-        try: r = db[key]
+        try: return db[key]
         except:
             _log.warning(traceback.format_exc())
-            return None
-        return r
+            return None        
 
     async def dump(self, key: str, value: Any) -> bool:
         """ Dump data safely to database. """
@@ -46,10 +45,9 @@ class Database:
     
     def loads(self, key: str) -> Optional[Any]:
         """ Load data cautiously to database. """
-        try: ret = db[key]
+        try: return db[key]
         except:
-            _log.warning(traceback.format_exc())
-        return ret
+            _log.warning(traceback.format_exc())        
 
     def dumps(self, key: str, value: Any) -> bool:
         """ Dump data cautiously to database. """

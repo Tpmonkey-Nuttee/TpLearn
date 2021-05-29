@@ -49,7 +49,11 @@ class Updater(Cog):
                 return
     
     def check(self, message: Message, **work: dict) -> bool:
-        """Check if the bot should update works embed or not to prevent rate limit."""
+        """
+        Check if the bot should update works embed or not to prevent rate limit.
+        Bot will need to check if details of the target work still the same as in embed or not.
+        If something were change, It will return False meaning that, the update system will update the embed.
+        """
         if len(message.embeds) == 0: return False
         
         embed = message.embeds[0].to_dict()
@@ -196,7 +200,7 @@ class Updater(Cog):
             return
         
         m = await ctx.send("Trying to update...")
-        d = self.bot.manager.main_data
+        d = self.bot.manager.get_all()
         works = self.bot.planner.get_sorted(gid)
 
         try: result = await self.update_active(works, d[gid], True)

@@ -2,11 +2,11 @@
 name = "tplearn-beta"
 version = "0.1.0"
 description = ""
-authors = ["Your Name <you@example.com>"]
+authors = ["Tpmonkey"]
 
 [tool.poetry.dependencies]
 python = "^3.8"
-replit = "^2.0.0"
+replit = "^3.0.0"
 pytz = "^2021.1"
 coloredlogs = "^15.0"
 discord = "^1.0.1"

@@ -37,10 +37,10 @@ class Planner:
         """
         Get count of all available works.
         """
-        c = 0
+        amount = 0
         for i in self.__data:
-            c += len(self.get_all(i))
-        return c
+            amount += len(self.get_all(i))
+        return amount
 
     def get_all(self, guild_id: int) -> dict:
         """
@@ -129,10 +129,10 @@ class Planner:
 
         while index < len(sorted): # Sorted data first, So It can be easily use later!
             dic = sorted[index]
-            date_key = self.try_strp_date(dic['date']).strftime("%d-%m-%Y") if self.strp_able(dic['readable-date']) else "unknown"
+            date_key = self.try_strp_date( dic['date'] ).strftime("%d-%m-%Y") if self.strp_able( dic['readable-date'] ) else "unknown"
 
-            if date_key not in formatted: formatted[date_key] = [dic['key']]
-            else: formatted[date_key].append(dic['key'])
+            if date_key not in formatted: formatted[date_key] = [ dic['key'] ]
+            else: formatted[date_key].append( dic['key'] )
             
             index += 1
         
