@@ -4,6 +4,9 @@ from discord import File
 from bot import Bot
 
 import json
+import logging
+
+log = logging.getLogger(__name__)
 
 class Debug(Cog):
     def __init__(self, bot: Bot) -> None:
@@ -27,6 +30,10 @@ class Debug(Cog):
         
         json.dump(work, open("evals/work_debug.json", "w"), indent=2)
         await ctx.send(file=File("evals/work_debug.json"))
+    
+    @Cog.listener()
+    async def on_socket_raw_send(self, payload) -> None:
+        log.debug(payload)
 
 
 def setup(bot: Bot) -> None:

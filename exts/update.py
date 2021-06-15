@@ -67,16 +67,21 @@ class Updater(Cog):
         title_embed = embed['author']['name']
         title = self.bot.get_title(work.get('title'), work.get('date'))
 
-        desc_embed = embed['fields'][1]['value']
+        try:
+            desc_embed = embed['fields'][1]['value']
+        except IndexError:
+            desc_embed = "No Description Provied"
         desc = work.get('desc')
 
+        # False if needed update, True if doesn't need an update
         try: 
-            image_check = embed['image']['url'] == work.get('image-url')
-        except KeyError: image_check = True
+            image = embed['image']['url'] 
+        except KeyError:
+            image = "Not Attached"
         
 
         return all(
-            (key_embed == key, colour_embed == colour, title_embed == title, desc_embed == desc, image_check)
+            (key_embed == key, colour_embed == colour, title_embed == title, desc_embed == desc, work.get('image-url') == image)
         )
 
     @loop(minutes = MINUTES)
@@ -109,7 +114,7 @@ class Updater(Cog):
                 await self.bot.log(__name__, f":negative_squared_cross_mark: Unable to update works at {gid} with error: \n{traceback.format_exc()}")
             else:
                 if len(ret) != 2: 
-                    await self.bot.log(__name__, f":white_check_mark: Sucessfully update works at {gid} :\n"+", ".join(ret))
+                    await self.bot.log(__name__, f":white_check_mark: Sucessfully update works at {gid} :\n"+"".join(ret))
                     log.debug(f"updated active-works for {gid}")
 
         self.updating = False
@@ -141,21 +146,21 @@ class Updater(Cog):
         cm = len(messages)
 
         # To use for logging.
-        messages_output = ["Tw `{}`".format(cw), "Tm `{}`".format(cm)]
+        messages_output = ["`{}`".format(cw), "`{}`".format(cm)]
 
         if cw < cm: # Case 1
             for index, message in enumerate(messages):
                 try:
-                    work = works[index]
-                    embed = self.bot.get_embed(**works[index])
+                    work = works[index]                    
                 except IndexError: # Ran out of works.
                     await message.delete()
-                    messages_output.append("`D` w<m")
+                    messages_output.append("D")
                 else:
                     if self.check(message, **work) and not bypass: continue
 
+                    embed = self.bot.get_embed(**works[index])
                     await message.edit(embed=embed)
-                    messages_output.append("`E` w<m")
+                    messages_output.append("E")
                 
                 # Wait a bit before doing next operation.
                 await asyncio.sleep(1)
@@ -168,12 +173,12 @@ class Updater(Cog):
                 try: message = messages[index]                    
                 except IndexError: # Ran out of embeds to edit.
                     await channel.send(embed=embed)
-                    messages_output.append("`S` w>m")
+                    messages_output.append("S")
                 else:
                     if self.check(message, **work) and not bypass: continue
                     
                     await messages[index].edit(embed=embed) 
-                    messages_output.append("`E` w>m")
+                    messages_output.append("E")
                 
                 # Wait a bit before doing next operation.
                 await asyncio.sleep(1)
@@ -184,7 +189,7 @@ class Updater(Cog):
                 
                 embed = self.bot.get_embed(**work)
                 await message.edit(embed=embed)
-                messages_output.append("`E` w=m")
+                messages_output.append("E")
 
                 # Wait a bit before doing next operation.
                 await asyncio.sleep(1)

@@ -62,9 +62,11 @@ class KUSNews(Cog):
             self.enable = False
             await self.bot.log(__name__, 'Unable to fetch kus data, disabled system.')
             return None
-        elif home is None and not self.enable:
+        elif home is not None and not self.enable:
             self.enable = True
             await self.bot.log(__name__, 'successfully fecthed kus data, enabled system.')
+        elif home is None and not self.enable:
+            return None
 
         news = home.find_all("div", attrs={"class":"headline left"})
         pics = home.find_all("div", attrs={"class":"img-container left"})

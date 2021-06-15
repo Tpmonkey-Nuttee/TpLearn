@@ -291,7 +291,10 @@ class Bot(commands.Bot):
         embed.colour = self.get_colour(kwargs.get('date'))    
         
         embed.add_field(name = "Date: ", value= kwargs.get('readable-date'), inline = False)
-        embed.add_field(name = "Description: ", value = kwargs.get('desc'), inline = False)
+
+        desc = kwargs.get('desc')
+        if desc != "No Description Provied":
+            embed.add_field(name = "Description: ", value = desc, inline = False)
 
         embed.set_footer(text = f"Key: {kwargs.get('key')}")
 

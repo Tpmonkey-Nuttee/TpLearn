@@ -5,9 +5,9 @@ Made by Tpmonkey
 
 ### ---------- General ---------- ###
 
-version = "1.1.5"
+version = "1.1.8"
 note = [
-    "- Fixed problem with `active-works` channel and datetime system."
+    "- Assignment Embed will now hide description field if not provided."
 ]
 
 prefix = "," # Bot Prefix.
@@ -32,7 +32,7 @@ kus_news_cooldown = 4 # hours
 
 # KUS News URL
 main_url = "http://www.kus.ku.ac.th/"
-news_url = "http://www.kus.ku.ac.th/news.php"
+news_url = "http://www.kus.ku.ac.th/news.php?type=0"
 # --------------------------------- #
 
 ### ----- System limitation ----- ###

@@ -12,13 +12,13 @@ import pytz
 
 _log = logging.getLogger(__name__)
 
-def today(raw=False) -> datetime.datetime:
+def today(raw: bool = False) -> datetime.datetime:
     """ Return today date/time. """
     r = pytz.utc.localize(datetime.datetime.utcnow()).astimezone(
         pytz.timezone("Etc/GMT-1"))
     return r if raw else str(r)[:10].strip()
 
-def today_th(raw=False) -> datetime.datetime:
+def today_th(raw: bool = False) -> datetime.datetime:
     """ Return today date/time. """
     r = pytz.utc.localize(datetime.datetime.utcnow()).astimezone(
         pytz.timezone("Etc/GMT-7"))

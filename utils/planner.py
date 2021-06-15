@@ -4,11 +4,13 @@ Add, Remove, Keep track of all assignments.
 Made by Tpmonkey
 """
 
+from functools import lru_cache
 from typing import Optional
 import datetime
 import secrets
 import discord
 import random
+import time
 
 from constant import today_th
 
@@ -25,7 +27,9 @@ class Planner:
     @property
     def need_update(self) -> list:
         """ Return Guild IDs that need an update. """
+        # Remove duplicate ID.
         p = list( dict.fromkeys( [str(i) for i in self.__need_update] ) )
+        # Update value, In this case It should be reset to empty list.
         self.__need_update = [str(i) for i in self.__need_update if str(i) not in p]
         return p
     
@@ -51,8 +55,8 @@ class Planner:
         
         d = []
         for i in self.__data[str(guild_id)]:
-            if self.__data[str(guild_id)][i]['already-passed']:
-                continue
+            if self.__data[str(guild_id)][i]['already-passed']: continue
+
             value = self.__data[str(guild_id)][i]
             value['key'] = i
             d.append(value)
@@ -111,10 +115,12 @@ class Planner:
         log.debug(f'returning sorted date for {guild_id}')
         return unknown_date + final
     
+    @lru_cache
     def get_embed(self, guild_id: int) -> discord.Embed:
         """
         Embed contained a List of all works in that targeted guild.
         """
+        t = time.time()
         if len(self.get_all(guild_id)) == 0:
             log.debug(f'getting embed return nothing for {guild_id}')
             return discord.Embed(
@@ -139,6 +145,7 @@ class Planner:
         # Let's create base Embed.
         embed = discord.Embed()
         embed.title = "Upcoming Assignment" if len(sorted) == 1 else "Upcoming Assignments"
+        embed.title = ":calendar_spiral: " + embed.title + " :calendar_spiral:"
         embed.timestamp = datetime.datetime.utcnow()
         embed.set_footer(text = "Take a look at #active-works channel for more info!")
         embed.description = random.choice( self.bot.config.facts )
@@ -166,6 +173,8 @@ class Planner:
         
         embed.colour = self.bot.get_colour(gap=closest_day)
         log.debug(f'return embed for {guild_id}')
+        
+        print(time.time() - t)
         return embed
 
     def check_valid_key(self, guild_id: int, key: str) -> bool:
@@ -231,8 +240,7 @@ class Planner:
         changes = dict()
         for guild_id in self.__data:
             for key in self.__data[guild_id]:
-                date = self.__data[guild_id][key]["date"]
-                already_passed = self.check_passed_date(date)
+                already_passed = self.check_passed_date(self.__data[guild_id][key]["date"])
 
                 if already_passed != self.__data[guild_id][key]['already-passed']:
                     if guild_id not in changes: changes[guild_id] = {}
@@ -249,26 +257,33 @@ class Planner:
         Delete the passed works data if It has reached the maximum days which defined in config.py
         Will return amount of deleted work.
         """
-        # We need to define what to delete then delete later to avoid RuntimeError.
         log.debug('checking old work to delete')
         need_to_delete = {}
         count = 0
+
+        # Finding work to delete.
         for guild_id in self.__data:
             for key, data in self.__data[guild_id].items():
                 day_passed = self.bot.in_days(  data.get( "date-tracker", data.get("date") )  )
-                if day_passed is None: continue
+
+                if day_passed is None: continue # Unable to identify date.
+                if day_passed >= 0: continue
 
                 if abs(day_passed) >= self.bot.config.maximum_days: # If It's already passed and more than maximum days.
                     count += 1
+
                     if guild_id not in need_to_delete:
                         need_to_delete[guild_id] = [key]
                         continue
+                    
                     need_to_delete[guild_id].append(key)
-    
+
+        # Actually Delete the work to avoid RunTimeError
         for guild_id in need_to_delete:
             for key in need_to_delete[guild_id]:
                 await self.remove(guild_id, key)
 
+        log.debug(f'found {count}')
         return count
 
     def save(self) -> None:
@@ -284,8 +299,11 @@ class Planner:
         if str(guild_id) in self.__data:
             del self.__data[str(guild_id)]
             self.save()
+            
             log.debug(f'deleted {guild_id}')
+
             return True
+        
         log.debug(f'unable to delete {guild_id}')
         return False
 
@@ -294,10 +312,10 @@ class Planner:
         Create a Guild Data if not Existed in the database.
         """
         if str(guild_id) not in self.__data:
-            self.__data[str(guild_id)] = {}
-            log.info("added new guild {}".format(guild_id))
-
+            self.__data[str(guild_id)] = {}            
             self.save()
+
+            log.info("added new guild {}".format(guild_id))
             return True
         return False
 
@@ -310,7 +328,8 @@ class Planner:
 
         try:
             return thatday < today_
-        except:
+        except Exception as e:
+            log.debug(f"Check passed date error; {e}")
             return False
 
     def check_valid_guild(self, guild_id: int) -> bool:
@@ -319,7 +338,7 @@ class Planner:
         """
         return str(guild_id) in self.__data
 
-    def generate_key(self, char_limit: int = 8) -> None:
+    def generate_key(self, char_limit: int = 8) -> str:
         """
         Generate a key base on char limit.
         Normally set to 8
@@ -337,15 +356,15 @@ class Planner:
             return False
         return True
 
-    def try_strp_date(self, unreadable: str) -> Optional[str]:
+    def try_strp_date(self, unreadable: str) -> Optional[datetime.datetime]:
         """
         Try to Strip given Date, If can't return the given.
-        """
-        
+        """        
         if len(unreadable) < 3: return None
+
         p = unreadable[2]
         try: strp = datetime.datetime.strptime(unreadable, f"%d{p}%m{p}%Y")
-        except:
+        except:            
             p = unreadable[1]
             try: strp = datetime.datetime.strptime(unreadable, f"%d{p}%m{p}%Y")
             except: return None

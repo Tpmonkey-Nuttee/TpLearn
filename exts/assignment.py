@@ -212,10 +212,12 @@ class Assignments(Cog):
     async def allworks(self, ctx: Context) -> None:
         """Show all Assignments"""
 
+        m = await ctx.send("Creating Embed...")
+
         d = self.bot.planner.get_all(ctx.guild.id)
         type_, embed = await self.listed_embed(ctx, d)
 
-        await ctx.send(embed=embed)
+        await m.edit(content=None, embed=embed)
 
     @command(aliases = ('inf', 'detail', 'check', ))
     @guild_only()
