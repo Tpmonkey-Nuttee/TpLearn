@@ -37,11 +37,11 @@ class Assignments(Cog):
         self.tasks[ctx.author.id] = {
             "details":{
                 "type": type_, "state": 1, "key": kwargs.get("key"),
-                "image": "Not Attached" if kwargs.get('image') is None else kwargs.get('image'),
+                "image": kwargs.get('image-url', "Not Attached"),
                 "headers":{
-                    "title": "Untitled" if kwargs.get('title') is None else kwargs.get('title'),
-                    "description": "No Description Provied" if kwargs.get('desc') is None else kwargs.get('desc'),
-                    "date": "Unknown" if kwargs.get('date') is None else kwargs.get('date'),
+                    "title": kwargs.get('title', "Untitled"),
+                    "description": kwargs.get('desc', "No Description Provied"),
+                    "date": kwargs.get('date', "Unknown"),
                 }},
             "info":{                
                 "ctx": ctx, "message": None
@@ -351,11 +351,18 @@ class Assignments(Cog):
                 * State of menu needs to be valid.
             """
             if ctx.author.id not in self.tasks or \
-            self.tasks[ctx.author.id]['details']['state'] == 0 or \
-            message.content.startswith(ctx.prefix):
+            self.tasks[ctx.author.id]['details']['state'] == 0:
                 return
             
+            if content is not None and content.startswith(self.bot.command_prefix): return
+            
             state = self.tasks[ctx.author.id]["details"]["state"]
+
+            # If the content is None, It's likely to be a picture file.
+            if not content.strip():
+                log.debug("empty message, likely to be picture")
+                state = 4
+
             if state == 1:
                 self.tasks[ctx.author.id]["details"]["headers"]["title"] = content
             elif state == 2:
@@ -367,8 +374,9 @@ class Assignments(Cog):
                 if len(message.attachments) < 1:
                     if ("http://" in content or "https://" in content) and "." in content:
                         image_url = content
-                        log.debug(f'{ctx.author.id} added image with url: {image_url}')
+                        log.debug(f'{ctx.author.id} added image using url: {image_url}')
                 else:
+                    log.debug(f'{ctx.author.id} added image using file')
                     image = message.attachments[0]
                     image_url = await self.bot.get_image_url(image)
                 self.tasks[ctx.author.id]["details"]["image"] = image_url

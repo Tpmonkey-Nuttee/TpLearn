@@ -41,7 +41,8 @@ class ErrorHandler(Cog):
             await ctx.send(f":x: **{error}**")
             return
         else:
-            await ctx.send(":x: **Something went wrong while processing your request!**")        
+            try: await ctx.send(":x: **Something went wrong while processing your request!**")        
+            except: log.warning("couldn't send message.")
 
         log.debug(            
             f"Command {command} invoked by {ctx.author} with error "

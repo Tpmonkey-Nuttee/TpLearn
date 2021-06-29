@@ -5,6 +5,7 @@ from bot import Bot
 
 import json
 import logging
+import asyncio
 
 log = logging.getLogger(__name__)
 
@@ -34,6 +35,18 @@ class Debug(Cog):
     @Cog.listener()
     async def on_socket_raw_send(self, payload) -> None:
         log.debug(payload)
+    
+    @command()
+    @is_owner()
+    async def edit_test(self, ctx: Context, time: float) -> None:
+        m = await ctx.send("Hey")
+        for i in range(20):
+            try:
+                await m.edit(content = i)
+            except:
+                await ctx.send("too often")
+                break
+            await asyncio.sleep(time)
 
 
 def setup(bot: Bot) -> None:

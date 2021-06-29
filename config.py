@@ -5,9 +5,10 @@ Made by Tpmonkey
 
 ### ---------- General ---------- ###
 
-version = "1.1.8"
+version = "1.1.9"
 note = [
-    "- Assignment Embed will now hide description field if not provided."
+    "- Fix minor bugs.",
+    "- Add some aliases for commands."
 ]
 
 prefix = "," # Bot Prefix.

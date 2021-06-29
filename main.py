@@ -12,8 +12,8 @@ from utils.log import setup
 from bot import Bot
 
 # Create a webserver.
-from webserver import keep_alive
-keep_alive()
+# from webserver import keep_alive
+# keep_alive()
 
 # Setting up Logging.
 setup()

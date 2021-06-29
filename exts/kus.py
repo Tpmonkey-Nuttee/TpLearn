@@ -163,7 +163,7 @@ class KUSNews(Cog):
 
         return embed
     
-    @command(name="set-news")
+    @command(name="set-news", aliases = ("add-news", ))
     @has_permissions(manage_guild=True)
     @cd(1, 20)
     async def set_news(self, ctx: Context) -> None:
@@ -171,15 +171,15 @@ class KUSNews(Cog):
         channel_id = ctx.channel.id
 
         if channel_id in self.channels:
-            await ctx.send(":x: **Already added.**")
+            await ctx.send(":x: **This channel is already added.**")
             return
         
         self.channels.append(channel_id)
-        await ctx.send("Added Channel.")
+        await ctx.send("**Successfully Added Channel.**\nMonitoring: <http://www.kus.ku.ac.th/news.php>")
         await self.save()
         await self.bot.log(__name__, f"New news Channel has been added, {ctx.channel}//{channel_id}")
     
-    @command(name="remove-news")
+    @command(name="remove-news", aliases=("delete-news", ))
     @has_permissions(manage_guild=True)
     @cd(1, 20)
     async def remove_news(self, ctx: Context) -> None:
@@ -187,11 +187,11 @@ class KUSNews(Cog):
         channel_id = ctx.channel.id
 
         if channel_id not in self.channels:
-            await ctx.send(":x: **Already removed.**")
+            await ctx.send(":x: **This channel is already removed.**")
             return
         
         self.channels.remove(channel_id)
-        await ctx.send("Removed Channel.")
+        await ctx.send("**Successfully Removed Channel.**")
         await self.save()
         await self.bot.log(__name__, f"New news Channel has been removed, {ctx.channel}//{channel_id}")
     

@@ -36,10 +36,20 @@ class Utility(Cog):
         value = "\n".join(self.bot.config.note) if len(self.bot.config.note) != 0 else "No patch note were found."
         embed.add_field(name="Patch Notes:", value = value)
         await ctx.send(embed=embed)
+    
+    @command(aliases = ('inv', ) )
+    async def invite(self, ctx: Context) -> None:
+        embed = Embed(
+            title = "Invite Link",
+            description = "[Click Here](https://discord.com/oauth2/authorize?client_id=728482604747194418&scope=bot&permissions=76816)",
+            colour = Colour.blue()
+        )
+        await ctx.send(embed=embed)
 
     @command(hidden=True)
     async def hello(self, ctx: Context) -> None:
         await ctx.send("Hello World!")
+    
 
 def setup(bot: Bot) -> None:
     bot.add_cog(Utility(bot))

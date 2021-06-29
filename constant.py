@@ -44,7 +44,7 @@ class Database:
         return True
     
     def loads(self, key: str) -> Optional[Any]:
-        """ Load data cautiously to database. """
+        """ Load data cautiously from database. """
         try: return db[key]
         except:
             _log.warning(traceback.format_exc())        

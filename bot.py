@@ -41,6 +41,16 @@ class Bot(commands.Bot):
 
         self.log_channel = None
         self.dump_channel = None        
+        
+        """import cProfile
+        import pstats
+
+        with cProfile.Profile() as pr:
+            self.planner.get_embed(728482381215826000)
+        
+        stats = pstats.Stats(pr)
+        stats.sort_stats(pstats.SortKey.TIME)
+        stats.dump_stats("stats.prof")"""
 
         log.debug("bot subclass Created.")
 
@@ -100,11 +110,13 @@ class Bot(commands.Bot):
     async def on_ready(self) -> None:
         """ on Ready event, Use to log and change bot status. """
         log.info("Connected successfully")
+        # await self.log(__name__, "connected")
         await self.change_status()
     
     async def on_resumed(self) -> None:
         """ on Edit event, Use to log and change bot status. """
         log.info("Resumed Connection")
+        # await self.log(__name__, "resumed connection")
         await self.change_status()
     
     async def change_status(self) -> None:

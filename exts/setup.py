@@ -26,7 +26,7 @@ class SetUp(Cog):
     @has_permissions(manage_guild=True)
     async def setup(self, ctx: Context) -> None:
         """Setup the bot in one command."""
-        if str(ctx.guild.id) in self.bot.manager.main_data:
+        if str(ctx.guild.id) in self.bot.manager.get_all():
             await ctx.send(f":x: **You've already setup the bot!**\nYou can type `{ctx.prefix}fix` to fix simple problem!")
             return
         

@@ -20,7 +20,7 @@ log = logging.getLogger(__name__)
 class Planner:
     def __init__(self, bot):
         self.bot = bot
-        self.__data = bot.database.loads("WORKS")
+        self.__data = dict(bot.database.loads("WORKS"))
         self.__need_update = []
         self.trigger_update()
     
@@ -129,6 +129,8 @@ class Planner:
                 timestamp = datetime.datetime.utcnow()
             ).set_footer(text = "Use add command to add one!")
         
+        print("First check", time.time() - t)
+        
         sorted = self.get_sorted(guild_id)
         formatted = {}
         index = 0
@@ -141,6 +143,7 @@ class Planner:
             else: formatted[date_key].append( dic['key'] )
             
             index += 1
+        print("Second sort", time.time() - t)
         
         # Let's create base Embed.
         embed = discord.Embed()
@@ -171,10 +174,12 @@ class Planner:
             elif closest_day is None: closest_day = in_days
             elif in_days < closest_day: closest_day = in_days
         
+        print("last loop", time.time() - t)
+        
         embed.colour = self.bot.get_colour(gap=closest_day)
         log.debug(f'return embed for {guild_id}')
         
-        print(time.time() - t)
+        log.debug(f"took {time.time() - t} second for {guild_id}")
         return embed
 
     def check_valid_key(self, guild_id: int, key: str) -> bool:

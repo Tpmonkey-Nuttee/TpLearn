@@ -13,6 +13,7 @@ from bot import Bot
 import traceback
 import asyncio
 import logging
+import time
 
 log = logging.getLogger(__name__)
 MINUTES = config.update_work_cooldown
@@ -58,18 +59,20 @@ class Updater(Cog):
         
         embed = message.embeds[0].to_dict()
 
-        key_embed = embed['footer']['text'][-8:]
+        try: key_embed = embed['footer']['text'][-8:]
+        except (KeyError, IndexError): key_embed = None
         key = work.get('key')
 
         colour_embed = embed['color']
         colour = self.bot.get_colour(work.get('date')).value
 
-        title_embed = embed['author']['name']
+        try: title_embed = embed['author']['name']
+        except KeyError: title_embed = None
         title = self.bot.get_title(work.get('title'), work.get('date'))
 
         try:
             desc_embed = embed['fields'][1]['value']
-        except IndexError:
+        except (IndexError, KeyError):
             desc_embed = "No Description Provied"
         desc = work.get('desc')
 
@@ -101,10 +104,16 @@ class Updater(Cog):
         return messages
     
     async def update(self) -> None:
+        # Disable function until It's completed
         self.updating = True
-        data = self.bot.manager.get_all()
+        # Time took for debugging
+        _s_ = time.time()
 
-        for gid in self.bot.planner.need_update:
+        # Get data
+        data = self.bot.manager.get_all()
+        need_update = self.bot.planner.need_update
+
+        for gid in need_update:
             # Check if the channel valid or not.
             if not self.bot.manager.check(gid): continue
             
@@ -117,6 +126,11 @@ class Updater(Cog):
                     await self.bot.log(__name__, f":white_check_mark: Sucessfully update works at {gid} :\n"+"".join(ret))
                     log.debug(f"updated active-works for {gid}")
 
+        # If Actually updated something, log it
+        if len(need_update) > 0 and time.time() - _s_ > 30: 
+            await self.bot.log(__name__, f"Time took to update all works: {time.time() - _s_} sec")
+
+        # Enable this function again
         self.updating = False
     
     async def update_active(self, works: list, channels: dict, bypass: bool = False) -> list:  
@@ -146,7 +160,7 @@ class Updater(Cog):
         cm = len(messages)
 
         # To use for logging.
-        messages_output = ["`{}`".format(cw), "`{}`".format(cm)]
+        messages_output = ["{}".format(cw), "{}".format(cm)]
 
         if cw < cm: # Case 1
             for index, message in enumerate(messages):
