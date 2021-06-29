@@ -32,10 +32,6 @@ class Debug(Cog):
         json.dump(work, open("evals/work_debug.json", "w"), indent=2)
         await ctx.send(file=File("evals/work_debug.json"))
     
-    @Cog.listener()
-    async def on_socket_raw_send(self, payload) -> None:
-        log.debug(payload)
-    
     @command()
     @is_owner()
     async def edit_test(self, ctx: Context, time: float) -> None:
