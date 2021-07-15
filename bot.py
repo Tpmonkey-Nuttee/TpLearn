@@ -39,18 +39,10 @@ class Bot(commands.Bot):
         self.manager = manager.Manager(self)
         self.config = config
 
-        self.log_channel = None
-        self.dump_channel = None        
-        
-        """import cProfile
-        import pstats
+        self.last_check = {}
 
-        with cProfile.Profile() as pr:
-            self.planner.get_embed(728482381215826000)
-        
-        stats = pstats.Stats(pr)
-        stats.sort_stats(pstats.SortKey.TIME)
-        stats.dump_stats("stats.prof")"""
+        self.log_channel = None
+        self.dump_channel = None
 
         log.debug("bot subclass Created.")
 
@@ -171,7 +163,7 @@ class Bot(commands.Bot):
         await self.wait_until_ready()
         while self.log_channel is None: self.log_channel = self.get_channel(config.log_channel_id)
         
-        mention = f"<@{self.owner_id}>\n" if mention else "\n"
+        mention = f"<!@{self.owner_id}>\n" if mention else "\n"
         text = f"**[{today_th(True)}] | [{name}]:** "+ mention + message
         try: await self.log_channel.send(text, embed=embed)
         except:

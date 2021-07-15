@@ -132,6 +132,8 @@ class KUSNews(Cog):
             await self.bot.database.dump("NEWS-IDS", ids)
             self.ids = ids
             await self.bot.log(__name__, "Saved new data.")
+
+        self.bot.last_check['kus-news'] = datetime.utcnow()
     
     def create_embed_(self, name, url, pic) -> Embed:        
         embed = Embed(

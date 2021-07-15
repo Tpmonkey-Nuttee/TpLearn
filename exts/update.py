@@ -10,6 +10,7 @@ from discord import Message, TextChannel
 import config
 from bot import Bot
 
+from datetime import datetime
 import traceback
 import asyncio
 import logging
@@ -21,6 +22,8 @@ MINUTES = config.update_work_cooldown
 class Updater(Cog):
     def __init__(self, bot: Bot):
         self.bot = bot
+        self.bot.last_check['update'] = {}
+
         self.updating = False
         self.loop.start()
     
@@ -117,6 +120,7 @@ class Updater(Cog):
             # Check if the channel valid or not.
             if not self.bot.manager.check(gid): continue
             
+            self.bot.last_check['update'][gid] = datetime.utcnow()
             works = self.bot.planner.get_sorted(gid)
             try: ret = await self.update_active(works, data[gid])
             except:

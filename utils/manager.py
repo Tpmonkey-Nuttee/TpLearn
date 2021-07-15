@@ -23,7 +23,7 @@ class Manager:
             return True        
         return False
 
-    def check(self, guild_id) -> bool:
+    def check(self, guild_id: int) -> bool:
         """ Check if Work Channels in targeted guild valid or not. """
         # If the guild is not exist, there no need to check any further.
         if self.create_guild(guild_id):

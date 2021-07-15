@@ -1,8 +1,9 @@
 from discord.ext.commands import Cog, Context, command, is_owner, guild_only
-from discord import File
+from discord import File, Embed
 
 from bot import Bot
 
+from datetime import datetime
 import json
 import logging
 import asyncio
@@ -13,6 +14,50 @@ class Debug(Cog):
     def __init__(self, bot: Bot) -> None:
         self.bot = bot
     
+    @command(hidden=True)
+    @guild_only()
+    async def debug(self, ctx: Context) -> None:
+        embed = Embed(
+            title = "Server Debug",
+            description = "Hello, Hacker man \:)",
+            timestamp = ctx.message.created_at
+        )
+
+        # Assignment Data
+        valid = len(self.bot.planner.get_all(ctx.guild.id))
+        invalid = self.bot.planner.get_number_all_passed(ctx.guild.id)
+        embed.add_field(
+            name="Assignments",
+            value = f"total: {valid+invalid}/{self.bot.config.assignment_limit}+{invalid}"
+            f"\nvalid: {valid}\ninvalid: {invalid}",
+            inline=False
+        )
+
+        # Assignment Channels
+        is_valid = self.bot.manager.check(ctx.guild.id)
+        embed.add_field(
+            name="Channels",
+            value = f"valid: {is_valid}",
+            inline=False
+        )
+
+        # Time
+        kus_last = self.bot.last_check.get("kus-news")
+        if kus_last is not None: kus_last = datetime.utcnow() - kus_last
+        update_last = self.bot.last_check["update"].get(str(ctx.guild.id))
+        if update_last is not None: update_last = datetime.utcnow() - update_last
+        embed.add_field(
+            name="Time",
+            value = f"kus-news: {kus_last}/{self.bot.config.kus_news_cooldown}\nupdate: {update_last}/{self.bot.config.update_work_cooldown}",
+            inline=False
+        )
+
+        embed.set_footer(text=f"ver: {self.bot.config.version}")
+
+
+        await ctx.send(embed=embed)
+
+
     @command(aliases = ("wdebug", "adebug", ), hidden=True)
     @is_owner()
     @guild_only()

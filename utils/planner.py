@@ -46,12 +46,12 @@ class Planner:
             amount += len(self.get_all(i))
         return amount
 
-    def get_all(self, guild_id: int) -> dict:
+    def get_all(self, guild_id: int) -> list:
         """
         Get all the assignments that exist and still valid from targeted Guild ID.
         """
         if self.create_guild_data_if_not_exist(guild_id):
-            return {}
+            return []
         
         d = []
         for i in self.__data[str(guild_id)]:
@@ -60,6 +60,19 @@ class Planner:
             value = self.__data[str(guild_id)][i]
             value['key'] = i
             d.append(value)
+
+        return d
+    
+    def get_number_all_passed(self, guild_id: int) -> int:
+        """
+        Get amount the assignments that is invalid from targeted Guild ID.
+        """
+        if self.create_guild_data_if_not_exist(guild_id):
+            return 0
+        
+        d = 0
+        for i in self.__data[str(guild_id)]:
+            if self.__data[str(guild_id)][i]['already-passed']: d += 1            
 
         return d
 
