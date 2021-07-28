@@ -50,9 +50,10 @@ class Planner:
         """
         Get all the assignments that exist and still valid from targeted Guild ID.
         """
-        if self.create_guild_data_if_not_exist(guild_id):
+
+        if str(guild_id) not in self.__data:
             return []
-        
+                
         d = []
         for i in self.__data[str(guild_id)]:
             if self.__data[str(guild_id)][i]['already-passed']: continue
@@ -67,7 +68,7 @@ class Planner:
         """
         Get amount the assignments that is invalid from targeted Guild ID.
         """
-        if self.create_guild_data_if_not_exist(guild_id):
+        if str(guild_id) not in self.__data:
             return 0
         
         d = 0
@@ -80,7 +81,7 @@ class Planner:
         """
         Get an Assignment base on key from targeted Guild ID.
         """
-        if self.create_guild_data_if_not_exist(guild_id):
+        if str(guild_id) not in self.__data:
             return {}
         
         d = self.__data[str(guild_id)][key]
@@ -207,7 +208,7 @@ class Planner:
         Need to provide all Assignment Attribute.
         """
 
-        self.create_guild_data_if_not_exist(guild_id)
+        self._create_if_nexist(guild_id)
         title = kwargs.get("title") or "Untitled"
         description = kwargs.get("description") or  "No Description"
         date = kwargs.get("date") or "Unknown"
@@ -227,7 +228,7 @@ class Planner:
         }
 
         log.debug("added Assignment from `{}` with key `{}`".format(guild_id, key))
-        self.save() # don't forget to save!
+        self._save() # don't forget to save!
         self.__need_update.append(guild_id)
         
         return key
@@ -236,7 +237,7 @@ class Planner:
         """
         Remove an Assignment base on key from targeted Guild ID.
         """
-        if self.create_guild_data_if_not_exist(guild_id):
+        if self._create_if_nexist(guild_id):
             return 
         data = self.__data[str(guild_id)][key]
         data["key"] = key 
@@ -244,7 +245,7 @@ class Planner:
         log.trace("removed {} from {}".format(key, guild_id))
 
         del self.__data[str(guild_id)][key]        
-        self.save()
+        self._save()
         self.__need_update.append(guild_id)
         
         return data
@@ -266,7 +267,7 @@ class Planner:
                     self.__data[guild_id][key]['already-passed'] = already_passed
                     changes[guild_id][key] =  self.__data[guild_id][key]
         
-        self.save()
+        self._save()
         self.__need_update.append([int(i) for i in changes])
         return changes
     
@@ -304,7 +305,7 @@ class Planner:
         log.debug(f'found {count}')
         return count
 
-    def save(self) -> None:
+    def _save(self) -> None:
         """
         SAVE!, WHAT DO YOU THINK IT WILL DO?
         """
@@ -316,7 +317,7 @@ class Planner:
         """
         if str(guild_id) in self.__data:
             del self.__data[str(guild_id)]
-            self.save()
+            self._save()
             
             log.debug(f'deleted {guild_id}')
 
@@ -325,13 +326,13 @@ class Planner:
         log.debug(f'unable to delete {guild_id}')
         return False
 
-    def create_guild_data_if_not_exist(self, guild_id: int) -> bool:
+    def _create_if_nexist(self, guild_id: int) -> bool:
         """
         Create a Guild Data if not Existed in the database.
         """
         if str(guild_id) not in self.__data:
             self.__data[str(guild_id)] = {}            
-            self.save()
+            self._save()
 
             log.info("added new guild {}".format(guild_id))
             return True

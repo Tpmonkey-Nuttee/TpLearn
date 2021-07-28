@@ -1,0 +1,563 @@
+2021-07-15 07:23:35,145 | asyncio | DEBUG | Using selector: EpollSelector
+2021-07-15 07:23:35,148 | bot | DEBUG | created bot base.
+2021-07-15 07:23:35,186 | discord.client | WARNING | PyNaCl is not installed, voice will NOT be supported
+2021-07-15 07:23:35,187 | constant | DEBUG | init database succesful
+2021-07-15 07:23:35,231 | utils.planner | DEBUG | triggered update
+2021-07-15 07:23:35,240 | bot | DEBUG | bot subclass Created.
+2021-07-15 07:23:35,248 | bot | INFO | Cog loaded: Help
+2021-07-15 07:23:35,251 | bot | INFO | Cog loaded: Updater
+2021-07-15 07:23:35,253 | bot | INFO | Cog loaded: ErrorHandler
+2021-07-15 07:23:35,255 | bot | INFO | Cog loaded: Debug
+2021-07-15 07:23:35,256 | bot | INFO | Cog loaded: VoiceChannel
+2021-07-15 07:23:35,266 | bot | INFO | Cog loaded: Snekbox
+2021-07-15 07:23:35,269 | bot | INFO | Cog loaded: AdminCommands
+2021-07-15 07:23:35,271 | bot | INFO | Cog loaded: DayLoop
+2021-07-15 07:23:35,420 | bot | INFO | Cog loaded: KUSNews
+2021-07-15 07:23:35,421 | bot | INFO | Cog loaded: NewPatch
+2021-07-15 07:23:35,423 | bot | INFO | Cog loaded: Latency
+2021-07-15 07:23:35,424 | bot | INFO | Cog loaded: Utility
+2021-07-15 07:23:35,426 | bot | INFO | Cog loaded: SetUp
+2021-07-15 07:23:35,428 | bot | INFO | Cog loaded: Assignments
+2021-07-15 07:23:35,475 | exts.kus | DEBUG | loaded data
+2021-07-15 07:23:37,978 | utils.planner | DEBUG | returning sorted date for 562976873685057546
+2021-07-15 07:23:37,992 | bot | INFO | Connected successfully
+2021-07-15 07:23:38,170 | bot | DEBUG | changed bot status
+2021-07-15 07:23:38,193 | utils.planner | DEBUG | returning sorted date for 728482381215826000
+2021-07-15 07:23:38,312 | utils.planner | DEBUG | returning sorted date for 829749071891005512
+2021-07-15 15:21:56,538 | asyncio | DEBUG | Using selector: EpollSelector
+2021-07-15 15:21:56,543 | bot | DEBUG | created bot base.
+2021-07-15 15:21:56,603 | discord.client | WARNING | PyNaCl is not installed, voice will NOT be supported
+2021-07-15 15:21:56,603 | constant | DEBUG | init database succesful
+2021-07-15 15:21:56,702 | utils.planner | DEBUG | triggered update
+2021-07-15 15:21:56,711 | bot | DEBUG | bot subclass Created.
+2021-07-15 15:21:56,742 | bot | INFO | Cog loaded: Assignments
+2021-07-15 15:21:56,744 | bot | INFO | Cog loaded: ErrorHandler
+2021-07-15 15:21:56,750 | bot | INFO | Cog loaded: Help
+2021-07-15 15:21:56,754 | bot | INFO | Cog loaded: SetUp
+2021-07-15 15:21:56,758 | bot | INFO | Cog loaded: Updater
+2021-07-15 15:21:56,760 | bot | INFO | Cog loaded: NewPatch
+2021-07-15 15:21:56,762 | bot | INFO | Cog loaded: VoiceChannel
+2021-07-15 15:21:56,774 | bot | INFO | Cog loaded: Debug
+2021-07-15 15:21:57,174 | bot | INFO | Cog loaded: KUSNews
+2021-07-15 15:21:57,183 | bot | INFO | Cog loaded: AdminCommands
+2021-07-15 15:21:57,191 | bot | INFO | Cog loaded: Snekbox
+2021-07-15 15:21:57,195 | bot | INFO | Cog loaded: Utility
+2021-07-15 15:21:57,199 | bot | INFO | Cog loaded: Latency
+2021-07-15 15:21:57,201 | bot | INFO | Cog loaded: DayLoop
+2021-07-15 15:21:57,300 | exts.kus | DEBUG | loaded data
+2021-07-15 15:21:59,956 | utils.planner | DEBUG | returning sorted date for 562976873685057546
+2021-07-15 15:21:59,970 | bot | INFO | Connected successfully
+2021-07-15 15:22:00,058 | bot | DEBUG | changed bot status
+2021-07-15 15:22:00,080 | utils.planner | DEBUG | returning sorted date for 728482381215826000
+2021-07-15 15:22:00,166 | utils.planner | DEBUG | returning sorted date for 829749071891005512
+2021-07-15 15:26:36,424 | bot | INFO | Resumed Connection
+2021-07-15 15:26:36,645 | bot | DEBUG | changed bot status
+2021-07-15 16:03:44,196 | bot | INFO | Resumed Connection
+2021-07-15 16:03:44,365 | bot | DEBUG | changed bot status
+2021-07-20 00:08:51,726 | asyncio | DEBUG | Using selector: EpollSelector
+2021-07-20 00:08:51,729 | bot | DEBUG | created bot base.
+2021-07-20 00:08:51,769 | discord.client | WARNING | PyNaCl is not installed, voice will NOT be supported
+2021-07-20 00:08:51,771 | constant | DEBUG | init database succesful
+2021-07-20 00:08:51,810 | utils.planner | DEBUG | triggered update
+2021-07-20 00:08:51,819 | bot | DEBUG | bot subclass Created.
+2021-07-20 00:08:51,825 | bot | INFO | Cog loaded: Snekbox
+2021-07-20 00:08:51,828 | bot | INFO | Cog loaded: ErrorHandler
+2021-07-20 00:08:51,832 | bot | INFO | Cog loaded: Latency
+2021-07-20 00:08:51,836 | bot | INFO | Cog loaded: Assignments
+2021-07-20 00:08:51,838 | bot | INFO | Cog loaded: SetUp
+2021-07-20 00:08:51,842 | bot | INFO | Cog loaded: AdminCommands
+2021-07-20 00:08:51,844 | bot | INFO | Cog loaded: Utility
+2021-07-20 00:08:51,847 | bot | INFO | Cog loaded: DayLoop
+2021-07-20 00:08:51,849 | bot | INFO | Cog loaded: Updater
+2021-07-20 00:08:51,852 | bot | INFO | Cog loaded: Debug
+2021-07-20 00:08:52,016 | bot | INFO | Cog loaded: KUSNews
+2021-07-20 00:08:52,019 | bot | INFO | Cog loaded: NewPatch
+2021-07-20 00:08:52,024 | bot | INFO | Cog loaded: Help
+2021-07-20 00:08:52,026 | bot | INFO | Cog loaded: VoiceChannel
+2021-07-20 00:08:52,066 | exts.kus | DEBUG | loaded data
+2021-07-20 00:08:54,584 | utils.planner | DEBUG | returning sorted date for 562976873685057546
+2021-07-20 00:08:54,603 | bot | INFO | Connected successfully
+2021-07-20 00:08:54,690 | bot | DEBUG | changed bot status
+2021-07-20 00:08:54,700 | utils.planner | DEBUG | returning sorted date for 728482381215826000
+2021-07-20 00:08:54,786 | utils.planner | DEBUG | returning sorted date for 829749071891005512
+2021-07-20 01:29:27,258 | bot | INFO | Resumed Connection
+2021-07-20 01:29:27,399 | bot | DEBUG | changed bot status
+2021-07-20 01:36:29,351 | exts.admin | DEBUG | Admin Eval from Tpmonkey#2682; code: self.bot.manager.get_all()
+2021-07-20 01:39:18,914 | bot | INFO | Cog loaded: SetUp
+2021-07-20 01:39:33,921 | bot | DEBUG | exts.setup Successfully setup bot in 773426467492069386
+2021-07-20 01:40:12,864 | utils.planner | INFO | added new guild 773426467492069386
+2021-07-20 01:40:12,865 | exts.assignment | DEBUG | init dat for 518063131096907813
+2021-07-20 01:40:14,902 | bot | DEBUG | waiting for message...
+2021-07-20 01:40:25,870 | exts.assignment | DEBUG | update embed successfully for 518063131096907813
+2021-07-20 01:40:25,870 | bot | DEBUG | waiting for message...
+2021-07-20 01:40:29,657 | exts.assignment | DEBUG | update embed successfully for 518063131096907813
+2021-07-20 01:40:29,657 | bot | DEBUG | waiting for message...
+2021-07-20 01:40:37,043 | exts.assignment | DEBUG | update embed successfully for 518063131096907813
+2021-07-20 01:40:37,045 | bot | DEBUG | waiting for message...
+2021-07-20 01:40:38,494 | exts.assignment | DEBUG | processing ✅ for 518063131096907813
+2021-07-20 01:40:38,494 | utils.planner | DEBUG | generated new key
+2021-07-20 01:40:38,494 | utils.planner | DEBUG | added Assignment from `773426467492069386` with key `3b42e7a5`
+2021-07-20 01:40:38,509 | exts.assignment | DEBUG | 518063131096907813 add/edit new assignment and passed in successfully.
+2021-07-20 01:40:52,037 | utils.planner | DEBUG | returning sorted date for 773426467492069386
+2021-07-20 01:40:52,125 | bot | DEBUG | creating assignment embed...
+2021-07-20 01:40:52,125 | bot | DEBUG | successfully created assignment embed
+2021-07-20 01:40:53,281 | bot | DEBUG | exts.update :white_check_mark: Sucessfully update works at 773426467492069386 :
+10S
+2021-07-20 01:40:53,414 | exts.update | DEBUG | updated active-works for 773426467492069386
+2021-07-20 01:41:34,689 | exts.assignment | DEBUG | init dat for 518063131096907813
+2021-07-20 01:41:36,843 | bot | DEBUG | waiting for message...
+2021-07-20 01:41:39,253 | exts.assignment | DEBUG | update embed successfully for 518063131096907813
+2021-07-20 01:41:39,253 | bot | DEBUG | waiting for message...
+2021-07-20 01:41:43,135 | exts.assignment | DEBUG | update embed successfully for 518063131096907813
+2021-07-20 01:41:43,135 | bot | DEBUG | waiting for message...
+2021-07-20 01:41:46,641 | exts.assignment | DEBUG | update embed successfully for 518063131096907813
+2021-07-20 01:41:46,641 | bot | DEBUG | waiting for message...
+2021-07-20 01:41:48,351 | exts.assignment | DEBUG | processing ✅ for 518063131096907813
+2021-07-20 01:41:48,351 | utils.planner | DEBUG | generated new key
+2021-07-20 01:41:48,352 | utils.planner | DEBUG | added Assignment from `773426467492069386` with key `74487dc4`
+2021-07-20 01:41:48,367 | exts.assignment | DEBUG | 518063131096907813 add/edit new assignment and passed in successfully.
+2021-07-20 01:41:52,029 | utils.planner | DEBUG | returning sorted date for 773426467492069386
+2021-07-20 01:41:52,151 | bot | DEBUG | creating assignment embed...
+2021-07-20 01:41:52,152 | bot | DEBUG | successfully created assignment embed
+2021-07-20 01:41:52,153 | bot | DEBUG | creating assignment embed...
+2021-07-20 01:41:52,154 | bot | DEBUG | successfully created assignment embed
+2021-07-20 01:41:53,358 | bot | DEBUG | exts.update :white_check_mark: Sucessfully update works at 773426467492069386 :
+21S
+2021-07-20 01:41:53,509 | exts.update | DEBUG | updated active-works for 773426467492069386
+2021-07-20 01:43:22,902 | exts.assignment | DEBUG | init dat for 518063131096907813
+2021-07-20 01:43:24,931 | bot | DEBUG | waiting for message...
+2021-07-20 01:43:32,500 | exts.assignment | DEBUG | processing ❎ for 518063131096907813
+2021-07-20 01:43:40,802 | exts.assignment | DEBUG | init dat for 518063131096907813
+2021-07-20 01:43:42,919 | bot | DEBUG | waiting for message...
+2021-07-20 01:43:43,901 | exts.assignment | DEBUG | processing 2️⃣ for 518063131096907813
+2021-07-20 01:43:44,024 | exts.assignment | DEBUG | update embed successfully for 518063131096907813
+2021-07-20 01:43:49,686 | exts.assignment | DEBUG | update embed successfully for 518063131096907813
+2021-07-20 01:43:49,687 | bot | DEBUG | waiting for message...
+2021-07-20 01:43:52,433 | exts.assignment | DEBUG | processing ✅ for 518063131096907813
+2021-07-20 01:43:52,434 | utils.planner | DEBUG | added Assignment from `773426467492069386` with key `3b42e7a5`
+2021-07-20 01:43:52,469 | exts.assignment | DEBUG | 518063131096907813 add/edit new assignment and passed in successfully.
+2021-07-20 01:43:55,414 | exts.assignment | DEBUG | init dat for 518063131096907813
+2021-07-20 01:43:57,650 | bot | DEBUG | waiting for message...
+2021-07-20 01:44:02,787 | exts.assignment | DEBUG | update embed successfully for 518063131096907813
+2021-07-20 01:44:02,787 | bot | DEBUG | waiting for message...
+2021-07-20 01:44:14,169 | exts.assignment | DEBUG | processing 3️⃣ for 518063131096907813
+2021-07-20 01:44:14,298 | exts.assignment | DEBUG | update embed successfully for 518063131096907813
+2021-07-20 01:44:17,845 | exts.assignment | DEBUG | update embed successfully for 518063131096907813
+2021-07-20 01:44:17,846 | bot | DEBUG | waiting for message...
+2021-07-20 01:44:19,135 | exts.assignment | DEBUG | processing 2️⃣ for 518063131096907813
+2021-07-20 01:44:19,252 | exts.assignment | DEBUG | update embed successfully for 518063131096907813
+2021-07-20 01:44:26,463 | exts.assignment | DEBUG | update embed successfully for 518063131096907813
+2021-07-20 01:44:26,465 | bot | DEBUG | waiting for message...
+2021-07-20 01:44:27,994 | exts.assignment | DEBUG | processing ✅ for 518063131096907813
+2021-07-20 01:44:27,995 | utils.planner | DEBUG | generated new key
+2021-07-20 01:44:27,995 | utils.planner | DEBUG | added Assignment from `773426467492069386` with key `7c3e9ff1`
+2021-07-20 01:44:31,082 | exts.assignment | DEBUG | 518063131096907813 add/edit new assignment and passed in successfully.
+2021-07-20 01:44:52,038 | utils.planner | DEBUG | returning sorted date for 773426467492069386
+2021-07-20 01:44:52,152 | bot | DEBUG | creating assignment embed...
+2021-07-20 01:44:52,153 | bot | DEBUG | successfully created assignment embed
+2021-07-20 01:44:53,255 | bot | DEBUG | creating assignment embed...
+2021-07-20 01:44:53,255 | bot | DEBUG | successfully created assignment embed
+2021-07-20 01:44:54,378 | bot | DEBUG | creating assignment embed...
+2021-07-20 01:44:54,379 | bot | DEBUG | successfully created assignment embed
+2021-07-20 01:44:55,558 | bot | DEBUG | exts.update :white_check_mark: Sucessfully update works at 773426467492069386 :
+32EES
+2021-07-20 01:44:55,718 | exts.update | DEBUG | updated active-works for 773426467492069386
+2021-07-20 07:23:24,009 | asyncio | DEBUG | Using selector: EpollSelector
+2021-07-20 07:23:24,012 | bot | DEBUG | created bot base.
+2021-07-20 07:23:24,039 | discord.client | WARNING | PyNaCl is not installed, voice will NOT be supported
+2021-07-20 07:23:24,041 | constant | DEBUG | init database succesful
+2021-07-20 07:23:24,132 | utils.planner | DEBUG | triggered update
+2021-07-20 07:23:24,138 | bot | DEBUG | bot subclass Created.
+2021-07-20 07:23:24,143 | bot | INFO | Cog loaded: AdminCommands
+2021-07-20 07:23:24,146 | bot | INFO | Cog loaded: Assignments
+2021-07-20 07:23:24,147 | bot | INFO | Cog loaded: VoiceChannel
+2021-07-20 07:23:24,149 | bot | INFO | Cog loaded: Debug
+2021-07-20 07:23:24,150 | bot | INFO | Cog loaded: NewPatch
+2021-07-20 07:23:24,238 | bot | INFO | Cog loaded: KUSNews
+2021-07-20 07:23:24,240 | bot | INFO | Cog loaded: Utility
+2021-07-20 07:23:24,241 | bot | INFO | Cog loaded: DayLoop
+2021-07-20 07:23:24,242 | bot | INFO | Cog loaded: ErrorHandler
+2021-07-20 07:23:24,246 | bot | INFO | Cog loaded: Snekbox
+2021-07-20 07:23:24,247 | bot | INFO | Cog loaded: Updater
+2021-07-20 07:23:24,250 | bot | INFO | Cog loaded: Help
+2021-07-20 07:23:24,251 | bot | INFO | Cog loaded: Latency
+2021-07-20 07:23:24,253 | bot | INFO | Cog loaded: SetUp
+2021-07-20 07:23:24,268 | exts.kus | DEBUG | loaded data
+2021-07-20 07:23:26,802 | utils.planner | DEBUG | returning sorted date for 562976873685057546
+2021-07-20 07:23:26,809 | bot | INFO | Connected successfully
+2021-07-20 07:23:26,877 | bot | DEBUG | changed bot status
+2021-07-20 07:23:26,890 | utils.planner | DEBUG | returning sorted date for 728482381215826000
+2021-07-20 07:23:26,964 | utils.planner | DEBUG | returning sorted date for 829749071891005512
+2021-07-20 07:24:23,680 | exts.admin | DEBUG | Admin Eval from Tpmonkey#2682; code: 55/70
+2021-07-20 07:25:47,798 | exts.admin | DEBUG | Admin Eval from Tpmonkey#2682; code: 27.5/70
+2021-07-20 07:26:37,904 | exts.admin | DEBUG | Admin Eval from Tpmonkey#2682; code: 13.75/70
+2021-07-20 07:28:08,902 | exts.admin | DEBUG | Admin Eval from Tpmonkey#2682; code: ( 80/22.4 - 25/22.4)/70
+2021-07-20 07:28:25,847 | exts.admin | DEBUG | Admin Eval from Tpmonkey#2682; code: ( 80/22.4/.5 - 25/22.4*.5)/70
+2021-07-20 07:29:46,273 | exts.admin | DEBUG | Admin Eval from Tpmonkey#2682; code: ( 0.080/22.4 - 0.025 / 22.4)/70
+2021-07-20 07:30:25,779 | exts.admin | DEBUG | Admin Eval from Tpmonkey#2682; code: 0.055/22.4
+2021-07-20 07:32:51,578 | exts.admin | DEBUG | Admin Eval from Tpmonkey#2682; code: 70*5.1
+2021-07-20 07:33:26,899 | exts.muleval | DEBUG | Eval command; Ignore black list: True
+2021-07-20 07:33:26,900 | exts.muleval | INFO | 'py' highlighted code block
+2021-07-20 07:33:26,900 | exts.muleval | TRACE | Eval command: Tpmonkey#2682(518063131096907813) with code:
+print("Hello World, This is a scam")
+2021-07-20 07:39:15,483 | exts.admin | DEBUG | Admin Eval from Tpmonkey#2682; code: (0.080 / 22.4 - .025 / 22.4)/60
+2021-07-20 07:39:44,068 | exts.admin | DEBUG | Admin Eval from Tpmonkey#2682; code: 0.080 / 22.4 / 60
+2021-07-20 07:39:59,114 | exts.admin | DEBUG | Admin Eval from Tpmonkey#2682; code: 0.080 / 22.4 / 70
+2021-07-20 07:46:10,889 | exts.muleval | DEBUG | Eval command; Ignore black list: True
+2021-07-20 07:46:10,889 | exts.muleval | INFO | 'py' highlighted code block
+2021-07-20 07:46:10,890 | exts.muleval | TRACE | Eval command: Tpmonkey#2682(518063131096907813) with code:
+a = 2 ** 200_000_000
+2021-07-20 07:46:23,365 | exts.muleval | DEBUG | Eval command; Ignore black list: True
+2021-07-20 07:46:23,365 | exts.muleval | INFO | 'py' highlighted code block
+2021-07-20 07:46:23,365 | exts.muleval | TRACE | Eval command: Tpmonkey#2682(518063131096907813) with code:
+a = 2 ** 200_000_000
+print(a)
+2021-07-20 07:46:43,323 | exts.muleval | DEBUG | Eval command; Ignore black list: True
+2021-07-20 07:46:43,323 | exts.muleval | INFO | 'py' highlighted code block
+2021-07-20 07:46:43,324 | exts.muleval | TRACE | Eval command: Tpmonkey#2682(518063131096907813) with code:
+a = 2 ** 200_000_000_000_000
+print(a)
+2021-07-20 07:47:00,911 | exts.muleval | DEBUG | Eval command; Ignore black list: True
+2021-07-20 07:47:00,911 | exts.muleval | INFO | 'py' highlighted code block
+2021-07-20 07:47:00,911 | exts.muleval | TRACE | Eval command: Tpmonkey#2682(518063131096907813) with code:
+raise Exception from None
+2021-07-20 07:47:15,287 | exts.muleval | DEBUG | Eval command; Ignore black list: True
+2021-07-20 07:47:15,287 | exts.muleval | INFO | 'py' highlighted code block
+2021-07-20 07:47:15,288 | exts.muleval | TRACE | Eval command: Tpmonkey#2682(518063131096907813) with code:
+raise MemoryError
+2021-07-20 07:47:52,109 | exts.muleval | DEBUG | Eval command; Ignore black list: True
+2021-07-20 07:47:52,109 | exts.muleval | INFO | 'py' highlighted code block
+2021-07-20 07:47:52,110 | exts.muleval | TRACE | Eval command: Tpmonkey#2682(518063131096907813) with code:
+a = 2 ** 2_000_000_000_000
+2021-07-20 08:13:04,954 | exts.assignment | DEBUG | init dat for 518063131096907813
+2021-07-20 08:13:07,005 | bot | DEBUG | waiting for message...
+2021-07-20 08:13:11,050 | exts.assignment | DEBUG | update embed successfully for 518063131096907813
+2021-07-20 08:13:11,050 | bot | DEBUG | waiting for message...
+2021-07-20 08:13:14,204 | exts.assignment | DEBUG | update embed successfully for 518063131096907813
+2021-07-20 08:13:14,204 | bot | DEBUG | waiting for message...
+2021-07-20 08:13:22,044 | exts.assignment | DEBUG | update embed successfully for 518063131096907813
+2021-07-20 08:13:22,045 | bot | DEBUG | waiting for message...
+2021-07-20 08:13:27,577 | exts.assignment | DEBUG | processing ✅ for 518063131096907813
+2021-07-20 08:13:27,578 | utils.planner | DEBUG | generated new key
+2021-07-20 08:13:27,596 | utils.planner | DEBUG | added Assignment from `562976873685057546` with key `6784308f`
+2021-07-20 08:13:27,611 | exts.assignment | DEBUG | 518063131096907813 add/edit new assignment and passed in successfully.
+2021-07-20 08:13:29,655 | exts.assignment | DEBUG | init dat for 518063131096907813
+2021-07-20 08:13:31,734 | exts.errorhand | DEBUG | Command add invoked by Tpmonkey#2682 with error CommandInvokeError: Command raised an exception: KeyError: 518063131096907813
+2021-07-20 08:13:31,734 | bot | DEBUG | exts.errorhand :negative_squared_cross_mark: Command `add` invoked by `Tpmonkey#2682` with error 
+`CommandInvokeError`: Command raised an exception: KeyError: 518063131096907813
+2021-07-20 08:14:24,328 | utils.planner | DEBUG | returning sorted date for 562976873685057546
+2021-07-20 08:14:24,435 | bot | DEBUG | creating assignment embed...
+2021-07-20 08:14:24,436 | bot | DEBUG | successfully created assignment embed
+2021-07-20 08:14:25,547 | bot | DEBUG | creating assignment embed...
+2021-07-20 08:14:25,548 | bot | DEBUG | successfully created assignment embed
+2021-07-20 08:14:26,671 | bot | DEBUG | creating assignment embed...
+2021-07-20 08:14:26,673 | bot | DEBUG | successfully created assignment embed
+2021-07-20 08:14:27,823 | bot | DEBUG | creating assignment embed...
+2021-07-20 08:14:27,824 | bot | DEBUG | successfully created assignment embed
+2021-07-20 08:14:28,920 | bot | DEBUG | creating assignment embed...
+2021-07-20 08:14:28,921 | bot | DEBUG | successfully created assignment embed
+2021-07-20 08:14:30,003 | bot | DEBUG | creating assignment embed...
+2021-07-20 08:14:30,003 | bot | DEBUG | successfully created assignment embed
+2021-07-20 08:14:31,169 | bot | DEBUG | exts.update :white_check_mark: Sucessfully update works at 562976873685057546 :
+65EEEEES
+2021-07-20 08:14:31,280 | exts.update | DEBUG | updated active-works for 562976873685057546
+2021-07-20 08:17:06,805 | exts.assignment | DEBUG | init dat for 518063131096907813
+2021-07-20 08:17:08,805 | bot | DEBUG | waiting for message...
+2021-07-20 08:17:11,083 | exts.assignment | DEBUG | update embed successfully for 518063131096907813
+2021-07-20 08:17:11,083 | bot | DEBUG | waiting for message...
+2021-07-20 08:17:16,490 | exts.assignment | DEBUG | update embed successfully for 518063131096907813
+2021-07-20 08:17:16,491 | bot | DEBUG | waiting for message...
+2021-07-20 08:17:21,429 | exts.assignment | DEBUG | update embed successfully for 518063131096907813
+2021-07-20 08:17:21,429 | bot | DEBUG | waiting for message...
+2021-07-20 08:17:23,609 | exts.assignment | DEBUG | processing 3️⃣ for 518063131096907813
+2021-07-20 08:17:23,699 | exts.assignment | DEBUG | update embed successfully for 518063131096907813
+2021-07-20 08:17:30,658 | exts.assignment | DEBUG | update embed successfully for 518063131096907813
+2021-07-20 08:17:30,658 | bot | DEBUG | waiting for message...
+2021-07-20 08:17:33,048 | exts.assignment | DEBUG | processing 2️⃣ for 518063131096907813
+2021-07-20 08:17:33,152 | exts.assignment | DEBUG | update embed successfully for 518063131096907813
+2021-07-20 08:17:34,610 | exts.assignment | DEBUG | update embed successfully for 518063131096907813
+2021-07-20 08:17:34,610 | bot | DEBUG | waiting for message...
+2021-07-20 08:17:37,723 | exts.assignment | DEBUG | update embed successfully for 518063131096907813
+2021-07-20 08:17:37,723 | bot | DEBUG | waiting for message...
+2021-07-20 08:17:39,033 | exts.assignment | DEBUG | processing ✅ for 518063131096907813
+2021-07-20 08:17:39,034 | utils.planner | DEBUG | generated new key
+2021-07-20 08:17:39,051 | utils.planner | DEBUG | added Assignment from `562976873685057546` with key `cfb243a7`
+2021-07-20 08:17:39,065 | exts.assignment | DEBUG | 518063131096907813 add/edit new assignment and passed in successfully.
+2021-07-20 08:17:54,704 | exts.assignment | DEBUG | init dat for 518063131096907813
+2021-07-20 08:17:56,924 | bot | DEBUG | waiting for message...
+2021-07-20 08:17:58,513 | exts.assignment | DEBUG | processing 3️⃣ for 518063131096907813
+2021-07-20 08:17:58,639 | exts.assignment | DEBUG | update embed successfully for 518063131096907813
+2021-07-20 08:18:06,935 | exts.assignment | DEBUG | update embed successfully for 518063131096907813
+2021-07-20 08:18:06,935 | bot | DEBUG | waiting for message...
+2021-07-20 08:18:08,621 | exts.assignment | DEBUG | processing ✅ for 518063131096907813
+2021-07-20 08:18:08,635 | utils.planner | DEBUG | added Assignment from `562976873685057546` with key `8aca8ba8`
+2021-07-20 08:18:08,647 | exts.assignment | DEBUG | 518063131096907813 add/edit new assignment and passed in successfully.
+2021-07-20 08:18:24,388 | utils.planner | DEBUG | returning sorted date for 562976873685057546
+2021-07-20 08:18:24,522 | bot | DEBUG | creating assignment embed...
+2021-07-20 08:18:24,523 | bot | DEBUG | successfully created assignment embed
+2021-07-20 08:18:25,637 | bot | DEBUG | creating assignment embed...
+2021-07-20 08:18:25,637 | bot | DEBUG | successfully created assignment embed
+2021-07-20 08:18:26,731 | bot | DEBUG | creating assignment embed...
+2021-07-20 08:18:26,731 | bot | DEBUG | successfully created assignment embed
+2021-07-20 08:18:27,825 | bot | DEBUG | creating assignment embed...
+2021-07-20 08:18:27,825 | bot | DEBUG | successfully created assignment embed
+2021-07-20 08:18:28,933 | bot | DEBUG | creating assignment embed...
+2021-07-20 08:18:28,933 | bot | DEBUG | successfully created assignment embed
+2021-07-20 08:18:30,041 | bot | DEBUG | creating assignment embed...
+2021-07-20 08:18:30,042 | bot | DEBUG | successfully created assignment embed
+2021-07-20 08:18:31,144 | bot | DEBUG | creating assignment embed...
+2021-07-20 08:18:31,144 | bot | DEBUG | successfully created assignment embed
+2021-07-20 08:18:32,366 | bot | DEBUG | exts.update :white_check_mark: Sucessfully update works at 562976873685057546 :
+76EEEEEES
+2021-07-20 08:18:32,466 | exts.update | DEBUG | updated active-works for 562976873685057546
+2021-07-20 08:21:20,193 | exts.admin | DEBUG | Admin Eval from Tpmonkey#2682; code: self.bot.planner.get_number_all()
+2021-07-20 08:21:36,393 | exts.admin | DEBUG | Admin Eval from Tpmonkey#2682; code: dir(self.bot.planner)
+2021-07-21 00:43:30,959 | asyncio | DEBUG | Using selector: EpollSelector
+2021-07-21 00:43:30,960 | bot | DEBUG | created bot base.
+2021-07-21 00:43:30,987 | discord.client | WARNING | PyNaCl is not installed, voice will NOT be supported
+2021-07-21 00:43:30,988 | constant | DEBUG | init database succesful
+2021-07-21 00:43:31,015 | utils.planner | DEBUG | triggered update
+2021-07-21 00:43:31,022 | bot | DEBUG | bot subclass Created.
+2021-07-21 00:43:31,115 | bot | INFO | Cog loaded: KUSNews
+2021-07-21 00:43:31,117 | bot | INFO | Cog loaded: DayLoop
+2021-07-21 00:43:31,119 | bot | INFO | Cog loaded: AdminCommands
+2021-07-21 00:43:31,120 | bot | INFO | Cog loaded: ErrorHandler
+2021-07-21 00:43:31,122 | bot | INFO | Cog loaded: Snekbox
+2021-07-21 00:43:31,123 | bot | INFO | Cog loaded: NewPatch
+2021-07-21 00:43:31,125 | bot | INFO | Cog loaded: Assignments
+2021-07-21 00:43:31,126 | bot | INFO | Cog loaded: Debug
+2021-07-21 00:43:31,127 | bot | INFO | Cog loaded: SetUp
+2021-07-21 00:43:31,129 | bot | INFO | Cog loaded: Updater
+2021-07-21 00:43:31,131 | bot | INFO | Cog loaded: Help
+2021-07-21 00:43:31,132 | bot | INFO | Cog loaded: Latency
+2021-07-21 00:43:31,133 | bot | INFO | Cog loaded: Utility
+2021-07-21 00:43:31,134 | bot | INFO | Cog loaded: VoiceChannel
+2021-07-21 00:43:31,148 | exts.kus | DEBUG | loaded data
+2021-07-21 00:43:33,669 | utils.planner | DEBUG | returning sorted date for 562976873685057546
+2021-07-21 00:43:33,677 | bot | INFO | Connected successfully
+2021-07-21 00:43:33,769 | bot | DEBUG | changed bot status
+2021-07-21 00:43:33,785 | utils.planner | DEBUG | returning sorted date for 728482381215826000
+2021-07-21 00:43:33,959 | utils.planner | DEBUG | returning sorted date for 829749071891005512
+2021-07-21 02:10:40,348 | bot | INFO | Resumed Connection
+2021-07-21 02:10:40,496 | bot | DEBUG | changed bot status
+2021-07-21 02:29:44,351 | bot | INFO | Resumed Connection
+2021-07-21 02:29:44,530 | bot | DEBUG | changed bot status
+2021-07-21 02:45:17,660 | exts.admin | DEBUG | Admin Eval from Tpmonkey#2682; code: self.bot.planner.get_all()
+2021-07-21 02:45:25,743 | exts.admin | DEBUG | Admin Eval from Tpmonkey#2682; code: self.bot.planner.get_all(773426467492069386)
+2021-07-21 02:45:26,166 | utils.planner | INFO | added new guild 773426467492069386
+2021-07-21 02:46:05,778 | exts.admin | DEBUG | Admin Eval from Tpmonkey#2682; code: self.bot.planner._Planner__data
+2021-07-21 02:50:22,629 | exts.assignment | DEBUG | init dat for 518063131096907813
+2021-07-21 02:50:24,856 | bot | DEBUG | waiting for message...
+2021-07-21 02:50:26,805 | exts.assignment | DEBUG | update embed successfully for 518063131096907813
+2021-07-21 02:50:26,806 | bot | DEBUG | waiting for message...
+2021-07-21 02:50:29,485 | exts.assignment | DEBUG | update embed successfully for 518063131096907813
+2021-07-21 02:50:29,485 | bot | DEBUG | waiting for message...
+2021-07-21 02:50:31,259 | exts.assignment | DEBUG | processing ✅ for 518063131096907813
+2021-07-21 02:50:31,260 | utils.planner | DEBUG | Check passed date error; '<' not supported between instances of 'NoneType' and 'datetime.datetime'
+2021-07-21 02:50:31,260 | utils.planner | DEBUG | generated new key
+2021-07-21 02:50:31,260 | utils.planner | DEBUG | added Assignment from `773426467492069386` with key `9b236a52`
+2021-07-21 02:50:31,302 | exts.assignment | DEBUG | 518063131096907813 add/edit new assignment and passed in successfully.
+2021-07-21 02:50:39,169 | exts.admin | DEBUG | Admin Eval from Tpmonkey#2682; code: self.bot.planner.trigger_update
+2021-07-21 02:50:41,212 | exts.admin | DEBUG | Admin Eval from Tpmonkey#2682; code: self.bot.planner.trigger_update()
+2021-07-21 02:50:41,212 | utils.planner | DEBUG | triggered update
+2021-07-21 02:51:31,259 | utils.planner | DEBUG | returning sorted date for 562976873685057546
+2021-07-21 02:51:31,437 | utils.planner | DEBUG | returning sorted date for 728482381215826000
+2021-07-21 02:51:31,518 | utils.planner | DEBUG | returning sorted date for 829749071891005512
+2021-07-21 02:51:31,661 | utils.planner | DEBUG | returning sorted date for 773426467492069386
+2021-07-21 02:51:31,747 | bot | DEBUG | creating assignment embed...
+2021-07-21 02:51:31,748 | bot | DEBUG | successfully created assignment embed
+2021-07-21 02:51:33,005 | bot | DEBUG | exts.update :white_check_mark: Sucessfully update works at 773426467492069386 :
+10S
+2021-07-21 02:51:33,299 | exts.update | DEBUG | updated active-works for 773426467492069386
+2021-07-21 02:52:37,452 | exts.assignment | DEBUG | init dat for 518063131096907813
+2021-07-21 02:52:39,531 | bot | DEBUG | waiting for message...
+2021-07-21 02:52:44,304 | exts.assignment | DEBUG | processing 3️⃣ for 518063131096907813
+2021-07-21 02:52:44,452 | exts.assignment | DEBUG | update embed successfully for 518063131096907813
+2021-07-21 02:52:47,190 | exts.assignment | DEBUG | update embed successfully for 518063131096907813
+2021-07-21 02:52:47,190 | bot | DEBUG | waiting for message...
+2021-07-21 02:52:48,624 | exts.assignment | DEBUG | processing 1️⃣ for 518063131096907813
+2021-07-21 02:52:48,734 | exts.assignment | DEBUG | update embed successfully for 518063131096907813
+2021-07-21 02:52:53,265 | exts.assignment | DEBUG | update embed successfully for 518063131096907813
+2021-07-21 02:52:53,266 | bot | DEBUG | waiting for message...
+2021-07-21 02:52:57,679 | exts.assignment | DEBUG | update embed successfully for 518063131096907813
+2021-07-21 02:52:57,680 | bot | DEBUG | waiting for message...
+2021-07-21 02:52:59,453 | exts.assignment | DEBUG | processing ✅ for 518063131096907813
+2021-07-21 02:52:59,454 | utils.planner | DEBUG | added Assignment from `773426467492069386` with key `9b236a52`
+2021-07-21 02:52:59,492 | exts.assignment | DEBUG | 518063131096907813 add/edit new assignment and passed in successfully.
+2021-07-21 02:53:02,055 | exts.assignment | DEBUG | init dat for 518063131096907813
+2021-07-21 02:53:04,224 | bot | DEBUG | waiting for message...
+2021-07-21 02:53:09,850 | exts.assignment | DEBUG | update embed successfully for 518063131096907813
+2021-07-21 02:53:09,850 | bot | DEBUG | waiting for message...
+2021-07-21 02:53:15,587 | exts.assignment | DEBUG | update embed successfully for 518063131096907813
+2021-07-21 02:53:15,587 | bot | DEBUG | waiting for message...
+2021-07-21 02:53:22,164 | exts.assignment | DEBUG | update embed successfully for 518063131096907813
+2021-07-21 02:53:22,164 | bot | DEBUG | waiting for message...
+2021-07-21 02:53:29,231 | exts.assignment | DEBUG | processing 3️⃣ for 518063131096907813
+2021-07-21 02:53:29,323 | exts.assignment | DEBUG | update embed successfully for 518063131096907813
+2021-07-21 02:53:31,137 | utils.planner | DEBUG | returning sorted date for 773426467492069386
+2021-07-21 02:53:31,246 | bot | DEBUG | creating assignment embed...
+2021-07-21 02:53:31,246 | bot | DEBUG | successfully created assignment embed
+2021-07-21 02:53:32,377 | bot | DEBUG | exts.update :white_check_mark: Sucessfully update works at 773426467492069386 :
+11E
+2021-07-21 02:53:32,539 | exts.assignment | DEBUG | update embed successfully for 518063131096907813
+2021-07-21 02:53:32,540 | bot | DEBUG | waiting for message...
+2021-07-21 02:53:32,666 | exts.update | DEBUG | updated active-works for 773426467492069386
+2021-07-21 02:53:34,801 | exts.assignment | DEBUG | processing ✅ for 518063131096907813
+2021-07-21 02:53:34,802 | utils.planner | DEBUG | generated new key
+2021-07-21 02:53:34,802 | utils.planner | DEBUG | added Assignment from `773426467492069386` with key `87f3c702`
+2021-07-21 02:53:34,816 | exts.assignment | DEBUG | 518063131096907813 add/edit new assignment and passed in successfully.
+2021-07-21 02:53:42,775 | exts.assignment | DEBUG | init dat for 518063131096907813
+2021-07-21 02:53:44,897 | bot | DEBUG | waiting for message...
+2021-07-21 02:53:47,826 | exts.assignment | DEBUG | update embed successfully for 518063131096907813
+2021-07-21 02:53:47,826 | bot | DEBUG | waiting for message...
+2021-07-21 02:53:51,465 | exts.assignment | DEBUG | update embed successfully for 518063131096907813
+2021-07-21 02:53:51,466 | bot | DEBUG | waiting for message...
+2021-07-21 02:53:58,474 | exts.assignment | DEBUG | update embed successfully for 518063131096907813
+2021-07-21 02:53:58,475 | bot | DEBUG | waiting for message...
+2021-07-21 02:53:59,560 | exts.assignment | DEBUG | processing ✅ for 518063131096907813
+2021-07-21 02:53:59,560 | utils.planner | DEBUG | generated new key
+2021-07-21 02:53:59,561 | utils.planner | DEBUG | added Assignment from `773426467492069386` with key `2102d98e`
+2021-07-21 02:53:59,576 | exts.assignment | DEBUG | 518063131096907813 add/edit new assignment and passed in successfully.
+2021-07-21 02:54:31,138 | utils.planner | DEBUG | returning sorted date for 773426467492069386
+2021-07-21 02:54:31,310 | bot | DEBUG | creating assignment embed...
+2021-07-21 02:54:31,310 | bot | DEBUG | successfully created assignment embed
+2021-07-21 02:54:32,427 | bot | DEBUG | creating assignment embed...
+2021-07-21 02:54:32,428 | bot | DEBUG | successfully created assignment embed
+2021-07-21 02:54:33,621 | bot | DEBUG | creating assignment embed...
+2021-07-21 02:54:33,622 | bot | DEBUG | successfully created assignment embed
+2021-07-21 02:54:34,870 | bot | DEBUG | exts.update :white_check_mark: Sucessfully update works at 773426467492069386 :
+31ESS
+2021-07-21 02:54:35,027 | exts.update | DEBUG | updated active-works for 773426467492069386
+2021-07-21 02:54:54,021 | exts.assignment | DEBUG | init dat for 518063131096907813
+2021-07-21 02:54:56,039 | bot | DEBUG | waiting for message...
+2021-07-21 02:54:58,241 | exts.assignment | DEBUG | update embed successfully for 518063131096907813
+2021-07-21 02:54:58,242 | bot | DEBUG | waiting for message...
+2021-07-21 02:55:02,009 | exts.assignment | DEBUG | update embed successfully for 518063131096907813
+2021-07-21 02:55:02,010 | bot | DEBUG | waiting for message...
+2021-07-21 02:55:04,749 | exts.assignment | DEBUG | update embed successfully for 518063131096907813
+2021-07-21 02:55:04,750 | bot | DEBUG | waiting for message...
+2021-07-21 02:55:06,983 | exts.assignment | DEBUG | processing ✅ for 518063131096907813
+2021-07-21 02:55:06,983 | utils.planner | DEBUG | generated new key
+2021-07-21 02:55:06,984 | utils.planner | DEBUG | added Assignment from `773426467492069386` with key `d51adec4`
+2021-07-21 02:55:07,024 | exts.assignment | DEBUG | 518063131096907813 add/edit new assignment and passed in successfully.
+2021-07-21 02:55:31,147 | utils.planner | DEBUG | returning sorted date for 773426467492069386
+2021-07-21 02:55:31,274 | bot | DEBUG | creating assignment embed...
+2021-07-21 02:55:31,274 | bot | DEBUG | successfully created assignment embed
+2021-07-21 02:55:32,369 | bot | DEBUG | creating assignment embed...
+2021-07-21 02:55:32,369 | bot | DEBUG | successfully created assignment embed
+2021-07-21 02:55:33,458 | bot | DEBUG | creating assignment embed...
+2021-07-21 02:55:33,458 | bot | DEBUG | successfully created assignment embed
+2021-07-21 02:55:34,552 | bot | DEBUG | creating assignment embed...
+2021-07-21 02:55:34,553 | bot | DEBUG | successfully created assignment embed
+2021-07-21 02:55:35,726 | bot | DEBUG | exts.update :white_check_mark: Sucessfully update works at 773426467492069386 :
+43EEES
+2021-07-21 02:55:35,936 | exts.update | DEBUG | updated active-works for 773426467492069386
+2021-07-21 02:56:19,718 | exts.assignment | DEBUG | init dat for 518063131096907813
+2021-07-21 02:56:21,971 | exts.assignment | DEBUG | processing 3️⃣ for 518063131096907813
+2021-07-21 02:56:22,080 | bot | DEBUG | waiting for message...
+2021-07-21 02:56:22,113 | exts.assignment | DEBUG | update embed successfully for 518063131096907813
+2021-07-21 02:56:25,445 | exts.assignment | DEBUG | update embed successfully for 518063131096907813
+2021-07-21 02:56:25,445 | bot | DEBUG | waiting for message...
+2021-07-21 02:56:26,840 | exts.assignment | DEBUG | processing 1️⃣ for 518063131096907813
+2021-07-21 02:56:26,948 | exts.assignment | DEBUG | update embed successfully for 518063131096907813
+2021-07-21 02:56:30,556 | exts.assignment | DEBUG | update embed successfully for 518063131096907813
+2021-07-21 02:56:30,556 | bot | DEBUG | waiting for message...
+2021-07-21 02:56:32,869 | exts.assignment | DEBUG | update embed successfully for 518063131096907813
+2021-07-21 02:56:32,869 | bot | DEBUG | waiting for message...
+2021-07-21 02:56:34,437 | exts.assignment | DEBUG | processing ✅ for 518063131096907813
+2021-07-21 02:56:34,437 | utils.planner | DEBUG | generated new key
+2021-07-21 02:56:34,438 | utils.planner | DEBUG | added Assignment from `773426467492069386` with key `35cdb16a`
+2021-07-21 02:56:34,468 | exts.assignment | DEBUG | 518063131096907813 add/edit new assignment and passed in successfully.
+2021-07-21 02:56:42,969 | exts.assignment | DEBUG | init dat for 518063131096907813
+2021-07-21 02:56:45,078 | bot | DEBUG | waiting for message...
+2021-07-21 02:56:47,557 | exts.assignment | DEBUG | update embed successfully for 518063131096907813
+2021-07-21 02:56:47,557 | bot | DEBUG | waiting for message...
+2021-07-21 02:56:50,354 | exts.assignment | DEBUG | update embed successfully for 518063131096907813
+2021-07-21 02:56:50,354 | bot | DEBUG | waiting for message...
+2021-07-21 02:56:57,552 | exts.assignment | DEBUG | update embed successfully for 518063131096907813
+2021-07-21 02:56:57,552 | bot | DEBUG | waiting for message...
+2021-07-21 02:57:06,626 | exts.assignment | DEBUG | processing ✅ for 518063131096907813
+2021-07-21 02:57:06,626 | utils.planner | DEBUG | generated new key
+2021-07-21 02:57:06,627 | utils.planner | DEBUG | added Assignment from `773426467492069386` with key `a2023c25`
+2021-07-21 02:57:06,639 | exts.assignment | DEBUG | 518063131096907813 add/edit new assignment and passed in successfully.
+2021-07-21 02:57:31,143 | utils.planner | DEBUG | returning sorted date for 773426467492069386
+2021-07-21 02:57:31,262 | bot | DEBUG | creating assignment embed...
+2021-07-21 02:57:31,265 | bot | DEBUG | successfully created assignment embed
+2021-07-21 02:57:32,362 | bot | DEBUG | creating assignment embed...
+2021-07-21 02:57:32,363 | bot | DEBUG | successfully created assignment embed
+2021-07-21 02:57:33,537 | bot | DEBUG | creating assignment embed...
+2021-07-21 02:57:33,538 | bot | DEBUG | successfully created assignment embed
+2021-07-21 02:57:34,647 | bot | DEBUG | creating assignment embed...
+2021-07-21 02:57:34,648 | bot | DEBUG | successfully created assignment embed
+2021-07-21 02:57:35,778 | bot | DEBUG | creating assignment embed...
+2021-07-21 02:57:35,779 | bot | DEBUG | successfully created assignment embed
+2021-07-21 02:57:36,985 | bot | DEBUG | creating assignment embed...
+2021-07-21 02:57:36,986 | bot | DEBUG | successfully created assignment embed
+2021-07-21 02:57:38,238 | bot | DEBUG | exts.update :white_check_mark: Sucessfully update works at 773426467492069386 :
+64EEEESS
+2021-07-21 02:57:38,437 | exts.update | DEBUG | updated active-works for 773426467492069386
+2021-07-21 02:58:10,535 | asyncio | DEBUG | Using selector: EpollSelector
+2021-07-21 02:58:10,536 | bot | DEBUG | created bot base.
+2021-07-21 02:58:10,567 | discord.client | WARNING | PyNaCl is not installed, voice will NOT be supported
+2021-07-21 02:58:10,569 | constant | DEBUG | init database succesful
+2021-07-21 02:58:10,604 | utils.planner | DEBUG | triggered update
+2021-07-21 02:58:10,612 | bot | DEBUG | bot subclass Created.
+2021-07-21 02:58:10,737 | bot | INFO | Cog loaded: KUSNews
+2021-07-21 02:58:10,741 | bot | INFO | Cog loaded: Snekbox
+2021-07-21 02:58:10,742 | bot | INFO | Cog loaded: ErrorHandler
+2021-07-21 02:58:10,744 | bot | INFO | Cog loaded: Assignments
+2021-07-21 02:58:10,745 | bot | INFO | Cog loaded: Latency
+2021-07-21 02:58:10,746 | bot | INFO | Cog loaded: Updater
+2021-07-21 02:58:10,748 | bot | INFO | Cog loaded: Utility
+2021-07-21 02:58:10,749 | bot | INFO | Cog loaded: VoiceChannel
+2021-07-21 02:58:10,751 | bot | INFO | Cog loaded: AdminCommands
+2021-07-21 02:58:10,752 | bot | INFO | Cog loaded: DayLoop
+2021-07-21 02:58:10,753 | bot | INFO | Cog loaded: NewPatch
+2021-07-21 02:58:10,755 | bot | INFO | Cog loaded: Help
+2021-07-21 02:58:10,756 | bot | INFO | Cog loaded: Debug
+2021-07-21 02:58:10,758 | bot | INFO | Cog loaded: SetUp
+2021-07-21 02:58:10,779 | exts.kus | DEBUG | loaded data
+2021-07-21 02:58:13,319 | utils.planner | DEBUG | returning sorted date for 562976873685057546
+2021-07-21 02:58:13,326 | bot | INFO | Connected successfully
+2021-07-21 02:58:13,573 | bot | DEBUG | changed bot status
+2021-07-21 02:58:13,595 | utils.planner | DEBUG | returning sorted date for 728482381215826000
+2021-07-21 02:58:13,683 | utils.planner | DEBUG | returning sorted date for 829749071891005512
+2021-07-21 02:58:13,864 | utils.planner | DEBUG | returning sorted date for 773426467492069386
+2021-07-28 06:03:05,749 | asyncio | DEBUG | Using selector: EpollSelector
+2021-07-28 06:03:05,750 | bot | DEBUG | created bot base.
+2021-07-28 06:03:05,772 | discord.client | WARNING | PyNaCl is not installed, voice will NOT be supported
+2021-07-28 06:03:05,774 | constant | DEBUG | init database succesful
+2021-07-28 06:03:05,803 | utils.planner | DEBUG | triggered update
+2021-07-28 06:03:05,809 | bot | DEBUG | bot subclass Created.
+2021-07-28 06:03:05,814 | bot | INFO | Cog loaded: Help
+2021-07-28 06:03:05,815 | bot | INFO | Cog loaded: Debug
+2021-07-28 06:03:05,819 | bot | INFO | Cog loaded: Snekbox
+2021-07-28 06:03:05,821 | bot | INFO | Cog loaded: AdminCommands
+2021-07-28 06:03:05,823 | bot | INFO | Cog loaded: VoiceChannel
+2021-07-28 06:03:05,824 | bot | INFO | Cog loaded: ErrorHandler
+2021-07-28 06:03:05,825 | bot | INFO | Cog loaded: Latency
+2021-07-28 06:03:05,827 | bot | INFO | Cog loaded: SetUp
+2021-07-28 06:03:05,829 | bot | INFO | Cog loaded: Updater
+2021-07-28 06:03:05,830 | bot | INFO | Cog loaded: NewPatch
+2021-07-28 06:03:05,923 | bot | INFO | Cog loaded: KUSNews
+2021-07-28 06:03:05,925 | bot | INFO | Cog loaded: Utility
+2021-07-28 06:03:05,927 | bot | INFO | Cog loaded: Assignments
+2021-07-28 06:03:05,929 | bot | INFO | Cog loaded: DayLoop
+2021-07-28 06:03:05,944 | exts.kus | DEBUG | loaded data
+2021-07-28 06:03:06,891 | bot | DEBUG | exts.kus Unable to fetch kus data, disabled system.
+2021-07-28 06:03:08,338 | utils.planner | DEBUG | returning sorted date for 562976873685057546
+2021-07-28 06:03:08,348 | bot | INFO | Connected successfully
+2021-07-28 06:03:08,455 | bot | DEBUG | changed bot status
+2021-07-28 06:03:08,472 | utils.planner | DEBUG | returning sorted date for 728482381215826000
+2021-07-28 06:03:08,596 | exts.kus | DEBUG | trying to update news but is not enable, passing...
+2021-07-28 06:03:09,314 | utils.planner | DEBUG | returning sorted date for 829749071891005512
+2021-07-28 06:03:09,488 | utils.planner | DEBUG | returning sorted date for 773426467492069386
+2021-07-28 07:53:26,427 | bot | INFO | Resumed Connection
+2021-07-28 07:53:26,630 | bot | DEBUG | changed bot status
+2021-07-28 09:07:51,816 | bot | INFO | Resumed Connection
+2021-07-28 09:07:51,967 | bot | DEBUG | changed bot status
+2021-07-28 10:03:06,907 | exts.kus | DEBUG | trying to update news but is not enable, passing...
+2021-07-28 10:34:57,458 | bot | INFO | Resumed Connection
+2021-07-28 10:34:57,632 | bot | DEBUG | changed bot status
+2021-07-28 11:33:38,967 | bot | INFO | Resumed Connection
+2021-07-28 11:33:42,027 | bot | DEBUG | changed bot status

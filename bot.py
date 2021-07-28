@@ -144,7 +144,7 @@ class Bot(commands.Bot):
         except:
             try:
                 await self.dump_channel.send(
-                    "<!@518063131096907813> Unhandle error occured, Please check the bot logs." \
+                    "<@!518063131096907813> Unhandle error occured, Please check the bot logs." \
                     f"error with `{len(message)}` letters long."
                 )
             except: pass
@@ -163,14 +163,14 @@ class Bot(commands.Bot):
         await self.wait_until_ready()
         while self.log_channel is None: self.log_channel = self.get_channel(config.log_channel_id)
         
-        mention = f"<!@{self.owner_id}>\n" if mention else "\n"
+        mention = f"<@!{self.owner_id}>\n" if mention else "\n"
         text = f"**[{today_th(True)}] | [{name}]:** "+ mention + message
         try: await self.log_channel.send(text, embed=embed)
         except:
             log.error(f"unable to log a message with error\n{traceback.format_exc()}")
             rn = today_th(True)
         else: return
-        error_text = f"**[{today_th(True)}] | [Bot] **" + f"<@{self.owner_id}>" \
+        error_text = f"**[{today_th(True)}] | [Bot] **" + f"<@!{self.owner_id}>" \
             f"\nLog connection went out for little while. ({rn})" \
             f"\n{traceback.format_exc()}"
 
@@ -180,7 +180,7 @@ class Bot(commands.Bot):
                 await self.log_channel.send(error_text)  
             except discord.HTTPException:
                 log.error(traceback.format_exc())
-                await self.log_channel.send(f"<@{self.owner_id}> An Exception is longer than 2000 characters, For more info check the log.")
+                await self.log_channel.send(f"<@!{self.owner_id}> An Exception is longer than 2000 characters, For more info check the log.")
                 await self.log_channel.send(error_text[:1996]+"...") # Log Error
                 await self.log_channel.send(text[:1996]+"...") # Original Log
                 break

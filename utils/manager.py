@@ -59,8 +59,10 @@ class Manager:
 
     def get(self, guild_id: int) -> dict:
         """ Get Guild Work Channels ID from Guild ID. """
-        self.create_guild(guild_id)
-        return self.__data[str(guild_id)]
+        try:
+            return self.__data[str(guild_id)]
+        except:
+            return {}       
 
     def set(self, guild_id: int, type_: str, channel_id: int) -> None:
         """ Set Work Channel ID into targeted Guild. """

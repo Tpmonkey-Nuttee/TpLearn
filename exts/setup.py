@@ -17,7 +17,7 @@ class SetUp(Cog):
     async def create_channels(self, ctx: Context, info: list) -> None:
         overwrites = { ctx.guild.default_role: PermissionOverwrite(send_messages=False) }
         for name, type_ in info:
-            ch = await ctx.guild.create_text_channel(name, overwrites = overwrites)        
+            ch = await ctx.guild.create_text_channel(name, overwrites = overwrites)
             self.bot.manager.set(ctx.guild.id, type_, ch.id)
         
     @command()
@@ -26,7 +26,8 @@ class SetUp(Cog):
     @has_permissions(manage_guild=True)
     async def setup(self, ctx: Context) -> None:
         """Setup the bot in one command."""
-        if str(ctx.guild.id) in self.bot.manager.get_all():
+        if str(ctx.guild.id) in self.bot.manager.get_all() and self.bot.manager.check(ctx.guild.id):
+
             await ctx.send(f":x: **You've already setup the bot!**\nYou can type `{ctx.prefix}fix` to fix simple problem!")
             return
         

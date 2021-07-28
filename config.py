@@ -5,10 +5,9 @@ Made by Tpmonkey
 
 ### ---------- General ---------- ###
 
-version = "1.1.9"
+version = "1.1.10"
 note = [
-    "- Fix minor bugs.",
-    "- Add some aliases for commands."
+    "- Fix setup commands and others backend system not working as intended."
 ]
 
 prefix = "," # Bot Prefix.
