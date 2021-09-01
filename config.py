@@ -5,9 +5,9 @@ Made by Tpmonkey
 
 ### ---------- General ---------- ###
 
-version = "1.1.10"
+version = "1.2.1"
 note = [
-    "- Fix setup commands and others backend system not working as intended."
+    "- Can now use `++[days]` to quickly set assignment date in homework menu."
 ]
 
 prefix = "," # Bot Prefix.

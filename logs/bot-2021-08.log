@@ -1,0 +1,459 @@
+2021-08-02 06:18:53,557 | asyncio | DEBUG | Using selector: EpollSelector
+2021-08-02 06:18:53,558 | bot | DEBUG | created bot base.
+2021-08-02 06:18:53,573 | discord.client | WARNING | PyNaCl is not installed, voice will NOT be supported
+2021-08-02 06:18:53,574 | constant | DEBUG | init database succesful
+2021-08-02 06:18:53,608 | utils.planner | DEBUG | triggered update
+2021-08-02 06:18:53,615 | bot | DEBUG | bot subclass Created.
+2021-08-02 06:18:53,619 | bot | INFO | Cog loaded: AdminCommands
+2021-08-02 06:18:53,706 | bot | INFO | Cog loaded: KUSNews
+2021-08-02 06:18:53,709 | bot | INFO | Cog loaded: Snekbox
+2021-08-02 06:18:53,710 | bot | INFO | Cog loaded: Debug
+2021-08-02 06:18:53,712 | bot | INFO | Cog loaded: Latency
+2021-08-02 06:18:53,714 | bot | INFO | Cog loaded: Assignments
+2021-08-02 06:18:53,716 | bot | INFO | Cog loaded: Help
+2021-08-02 06:18:53,718 | bot | INFO | Cog loaded: Updater
+2021-08-02 06:18:53,719 | bot | INFO | Cog loaded: ErrorHandler
+2021-08-02 06:18:53,720 | bot | INFO | Cog loaded: Utility
+2021-08-02 06:18:53,722 | bot | INFO | Cog loaded: DayLoop
+2021-08-02 06:18:53,724 | bot | INFO | Cog loaded: SetUp
+2021-08-02 06:18:53,725 | bot | INFO | Cog loaded: VoiceChannel
+2021-08-02 06:18:53,726 | bot | INFO | Cog loaded: NewPatch
+2021-08-02 06:18:53,741 | exts.kus | DEBUG | loaded data
+2021-08-02 06:18:55,544 | bot | DEBUG | exts.kus New data detected
+2021-08-02 06:18:56,142 | utils.planner | DEBUG | returning sorted date for 562976873685057546
+2021-08-02 06:18:56,149 | bot | INFO | Connected successfully
+2021-08-02 06:18:56,263 | bot | DEBUG | changed bot status
+2021-08-02 06:18:56,266 | utils.planner | DEBUG | returning sorted date for 728482381215826000
+2021-08-02 06:18:56,343 | utils.planner | DEBUG | returning sorted date for 829749071891005512
+2021-08-02 06:18:56,402 | bot | DEBUG | exts.kus 
+**From** `ObservedList(value=['news_detail.php?id=3019', 'news_detail.php?id=3012', 'news_detail.php?id=3015', 'news_detail.php?id=3013', 'news_detail.php?id=3005', 'news_detail.php?id=3014', 'news_detail.php?id=3004', 'news_detail.php?id=3003', 'news_detail.php?id=3006', 'news_detail.php?id=2983'])`
+**To** `['news_detail.php?id=3020', 'news_detail.php?id=3019', 'news_detail.php?id=3012', 'news_detail.php?id=3015', 'news_detail.php?id=3013', 'news_detail.php?id=3005', 'news_detail.php?id=3014', 'news_detail.php?id=3004', 'news_detail.php?id=3003', 'news_detail.php?id=3006']`
+2021-08-02 06:18:56,509 | utils.planner | DEBUG | returning sorted date for 773426467492069386
+2021-08-02 06:18:56,579 | bot | DEBUG | exts.kus **Found:** [('นักเรียนเกียรติบัตร ปีการศึกษา ๒๕๖๓ ...อ่านต่อ', 'news_detail.php?id=3020', 'http://www.kus.ku.ac.th/images_kus/news/ban1-20210802-20210802121443.gif')]
+2021-08-02 06:18:56,669 | bot | DEBUG | exts.kus Sending news to alert//728489165565591562
+2021-08-02 06:18:56,979 | bot | DEBUG | exts.kus Sending news to web-kus//855107375631827045
+2021-08-02 06:18:57,191 | bot | DEBUG | exts.kus Sending news to bot//857155128922210334
+2021-08-02 06:19:01,709 | bot | DEBUG | exts.kus Sending news to เว็บโรงเรียน//862148885908553738
+2021-08-02 06:19:02,050 | bot | DEBUG | exts.kus Sended news to all channels. (Total of 4)
+2021-08-02 06:19:02,178 | bot | DEBUG | exts.kus Saved new data.
+2021-08-02 07:03:12,431 | bot | INFO | Resumed Connection
+2021-08-02 07:03:12,557 | bot | DEBUG | changed bot status
+2021-08-02 07:10:22,949 | bot | INFO | Resumed Connection
+2021-08-02 07:10:23,064 | bot | DEBUG | changed bot status
+2021-08-02 09:25:34,080 | bot | INFO | Resumed Connection
+2021-08-02 09:25:34,256 | bot | DEBUG | changed bot status
+2021-08-02 09:59:56,767 | bot | INFO | Resumed Connection
+2021-08-02 09:59:56,943 | bot | DEBUG | changed bot status
+2021-08-02 10:03:23,168 | bot | INFO | Resumed Connection
+2021-08-02 10:03:23,314 | bot | DEBUG | changed bot status
+2021-08-02 10:23:58,070 | bot | INFO | Resumed Connection
+2021-08-02 10:23:58,194 | bot | DEBUG | changed bot status
+2021-08-02 10:52:37,327 | bot | INFO | Resumed Connection
+2021-08-02 10:52:37,449 | bot | DEBUG | changed bot status
+2021-08-02 12:36:21,492 | bot | INFO | Resumed Connection
+2021-08-02 12:36:21,630 | bot | DEBUG | changed bot status
+2021-08-02 14:51:46,513 | bot | INFO | Resumed Connection
+2021-08-02 14:51:46,645 | bot | DEBUG | changed bot status
+2021-08-02 14:59:40,405 | exts.admin | DEBUG | Admin Eval from Tpmonkey#2682; code: self.bot.load_extension("exts.antyPing")
+2021-08-02 14:59:40,407 | bot | INFO | Cog loaded: AntyPing
+2021-08-02 14:59:40,496 | bot | ERROR | Traceback (most recent call last):
+  File "/opt/virtualenvs/python3/lib/python3.8/site-packages/discord/client.py", line 343, in _run_event
+    await coro(*args, **kwargs)
+  File "/home/runner/TpLearn-BETA/exts/antyPing.py", line 17, in on_message
+    if str(MY_ID) in GUILD_ID:
+TypeError: argument of type 'int' is not iterable
+
+2021-08-02 15:00:02,511 | bot | ERROR | Traceback (most recent call last):
+  File "/opt/virtualenvs/python3/lib/python3.8/site-packages/discord/client.py", line 343, in _run_event
+    await coro(*args, **kwargs)
+  File "/home/runner/TpLearn-BETA/exts/antyPing.py", line 17, in on_message
+    if str(MY_ID) in message.content:
+TypeError: argument of type 'int' is not iterable
+
+2021-08-02 15:00:02,672 | bot | ERROR | Traceback (most recent call last):
+  File "/opt/virtualenvs/python3/lib/python3.8/site-packages/discord/client.py", line 343, in _run_event
+    await coro(*args, **kwargs)
+  File "/home/runner/TpLearn-BETA/exts/antyPing.py", line 17, in on_message
+    if str(MY_ID) in message.content:
+TypeError: argument of type 'int' is not iterable
+
+2021-08-02 15:00:02,799 | bot | INFO | Cog loaded: AntyPing
+2021-08-02 15:03:51,156 | bot | INFO | Cog loaded: AntyPing
+2021-08-06 01:18:16,546 | asyncio | DEBUG | Using selector: EpollSelector
+2021-08-06 01:18:16,547 | bot | DEBUG | created bot base.
+2021-08-06 01:18:16,561 | discord.client | WARNING | PyNaCl is not installed, voice will NOT be supported
+2021-08-06 01:18:16,561 | constant | DEBUG | init database succesful
+2021-08-06 01:18:16,606 | utils.planner | DEBUG | triggered update
+2021-08-06 01:18:16,613 | bot | DEBUG | bot subclass Created.
+2021-08-06 01:18:16,615 | bot | INFO | Cog loaded: ErrorHandler
+2021-08-06 01:18:16,616 | bot | INFO | Cog loaded: AntyPing
+2021-08-06 01:18:16,683 | bot | INFO | Cog loaded: KUSNews
+2021-08-06 01:18:16,684 | bot | INFO | Cog loaded: Updater
+2021-08-06 01:18:16,685 | bot | INFO | Cog loaded: SetUp
+2021-08-06 01:18:16,687 | bot | INFO | Cog loaded: Utility
+2021-08-06 01:18:16,687 | bot | INFO | Cog loaded: NewPatch
+2021-08-06 01:18:16,688 | bot | INFO | Cog loaded: DayLoop
+2021-08-06 01:18:16,690 | bot | INFO | Cog loaded: Debug
+2021-08-06 01:18:16,691 | bot | INFO | Cog loaded: Latency
+2021-08-06 01:18:16,694 | bot | INFO | Cog loaded: Snekbox
+2021-08-06 01:18:16,696 | bot | INFO | Cog loaded: Help
+2021-08-06 01:18:16,697 | bot | INFO | Cog loaded: AdminCommands
+2021-08-06 01:18:16,700 | bot | INFO | Cog loaded: Assignments
+2021-08-06 01:18:16,701 | bot | INFO | Cog loaded: VoiceChannel
+2021-08-06 01:18:16,717 | exts.kus | DEBUG | loaded data
+2021-08-06 01:18:19,352 | utils.planner | DEBUG | returning sorted date for 562976873685057546
+2021-08-06 01:18:19,411 | bot | INFO | Connected successfully
+2021-08-06 01:18:19,712 | bot | DEBUG | changed bot status
+2021-08-06 01:18:19,715 | utils.planner | DEBUG | returning sorted date for 728482381215826000
+2021-08-06 01:18:19,828 | utils.planner | DEBUG | returning sorted date for 829749071891005512
+2021-08-06 01:18:20,016 | utils.planner | DEBUG | returning sorted date for 773426467492069386
+2021-08-06 02:26:43,226 | bot | INFO | Resumed Connection
+2021-08-06 02:26:43,359 | bot | DEBUG | changed bot status
+2021-08-06 05:00:37,933 | bot | INFO | Resumed Connection
+2021-08-06 05:00:38,065 | bot | DEBUG | changed bot status
+2021-08-06 08:40:08,702 | bot | INFO | Resumed Connection
+2021-08-06 08:40:08,820 | bot | DEBUG | changed bot status
+2021-08-06 08:47:42,600 | bot | INFO | Resumed Connection
+2021-08-06 08:47:42,742 | bot | DEBUG | changed bot status
+2021-08-06 10:31:06,942 | exts.admin | DEBUG | Admin Eval from Tpmonkey#2682; code: 5 ** 10
+2021-08-06 10:34:28,268 | exts.admin | DEBUG | Admin Eval from Tpmonkey#2682; code: 4 ** 50
+2021-08-06 10:34:46,380 | exts.admin | DEBUG | Admin Eval from Tpmonkey#2682; code: "".format(1267650600228229401496703205376, ",")
+2021-08-06 10:34:53,525 | exts.admin | DEBUG | Admin Eval from Tpmonkey#2682; code: "{}".format(1267650600228229401496703205376, ",")
+2021-08-06 10:35:09,155 | exts.admin | DEBUG | Admin Eval from Tpmonkey#2682; code: self.bot.to_number(1267650600228229401496703205376)
+2021-08-06 10:35:27,575 | exts.admin | DEBUG | Admin Eval from Tpmonkey#2682; code: f"{format(1267650600228229401496703205376, ",")}"
+2021-08-06 12:19:51,424 | bot | INFO | Resumed Connection
+2021-08-06 12:19:51,549 | bot | DEBUG | changed bot status
+2021-08-06 13:40:00,383 | bot | INFO | Resumed Connection
+2021-08-06 13:40:00,519 | bot | DEBUG | changed bot status
+2021-08-06 14:07:34,421 | bot | INFO | Resumed Connection
+2021-08-06 14:07:34,556 | bot | DEBUG | changed bot status
+2021-08-06 15:08:19,723 | exts.admin | DEBUG | Admin Eval from Tpmonkey#2682; code: ctx.guild.created_at
+2021-08-06 15:13:23,694 | bot | INFO | Cog loaded: Utility
+2021-08-06 15:19:51,544 | bot | INFO | Cog loaded: Utility
+2021-08-06 15:21:18,115 | bot | INFO | Cog loaded: Utility
+2021-08-06 15:25:44,718 | bot | INFO | Cog loaded: Utility
+2021-08-06 15:25:45,038 | exts.errorhand | DEBUG | Command user 630963785976250388 invoked by Sugar#1490 with error CommandInvokeError: Command raised an exception: NameError: name 'user' is not defined
+2021-08-06 15:25:45,038 | bot | DEBUG | exts.errorhand :negative_squared_cross_mark: Command `user 630963785976250388` invoked by `Sugar#1490` with error 
+`CommandInvokeError`: Command raised an exception: NameError: name 'user' is not defined
+2021-08-06 15:26:09,006 | exts.errorhand | DEBUG | Command user 630963785976250388 invoked by Sugar#1490 with error CommandInvokeError: Command raised an exception: NameError: name 'user' is not defined
+2021-08-06 15:26:09,006 | bot | DEBUG | exts.errorhand :negative_squared_cross_mark: Command `user 630963785976250388` invoked by `Sugar#1490` with error 
+`CommandInvokeError`: Command raised an exception: NameError: name 'user' is not defined
+2021-08-06 15:26:26,475 | bot | INFO | Cog loaded: Utility
+2021-08-06 15:29:13,866 | bot | INFO | Cog loaded: Utility
+2021-08-06 15:47:17,599 | exts.admin | DEBUG | Admin Eval from Tpmonkey#2682; code: ctx.channel.history
+2021-08-06 15:47:55,935 | bot | INFO | Resumed Connection
+2021-08-06 15:47:56,047 | bot | DEBUG | changed bot status
+2021-08-06 15:49:04,194 | exts.admin | DEBUG | Admin Eval from Tpmonkey#2682; code: await ctx.channel.history(limit=5, oldest_first=True).flatten()
+2021-08-06 15:53:04,967 | exts.admin | DEBUG | Admin Eval from Tpmonkey#2682; code: await ctx.channel.history(limit=1, oldest_first=True).flatten()
+2021-08-06 15:58:08,841 | exts.admin | DEBUG | Admin Eval from Tpmonkey#2682; code: await ctx.guild.audit_logs(limit=1, oldest_first=True).flatten()
+2021-08-06 15:58:45,844 | exts.admin | DEBUG | Admin Eval from Tpmonkey#2682; code: await ctx.guild.audit_logs(limit=1).flatten()
+2021-08-06 15:59:47,538 | exts.admin | DEBUG | Admin Eval from Tpmonkey#2682; code: await ctx.channel.history(limit=1, oldest_first=True).flatten()
+2021-08-10 05:01:04,398 | asyncio | DEBUG | Using selector: EpollSelector
+2021-08-10 05:01:04,401 | bot | DEBUG | created bot base.
+2021-08-10 05:01:04,441 | discord.client | WARNING | PyNaCl is not installed, voice will NOT be supported
+2021-08-10 05:01:04,442 | constant | DEBUG | init database succesful
+2021-08-10 05:01:04,488 | utils.planner | DEBUG | triggered update
+2021-08-10 05:01:04,502 | bot | DEBUG | bot subclass Created.
+2021-08-10 05:01:04,509 | bot | INFO | Cog loaded: AdminCommands
+2021-08-10 05:01:04,510 | bot | INFO | Cog loaded: AntyPing
+2021-08-10 05:01:04,512 | bot | INFO | Cog loaded: ErrorHandler
+2021-08-10 05:01:04,516 | bot | INFO | Cog loaded: Help
+2021-08-10 05:01:04,518 | bot | INFO | Cog loaded: NewPatch
+2021-08-10 05:01:04,521 | bot | INFO | Cog loaded: Snekbox
+2021-08-10 05:01:04,523 | bot | INFO | Cog loaded: DayLoop
+2021-08-10 05:01:04,524 | bot | INFO | Cog loaded: Latency
+2021-08-10 05:01:04,527 | bot | INFO | Cog loaded: Updater
+2021-08-10 05:01:04,528 | bot | INFO | Cog loaded: Debug
+2021-08-10 05:01:04,531 | bot | INFO | Cog loaded: Assignments
+2021-08-10 05:01:04,533 | bot | INFO | Cog loaded: SetUp
+2021-08-10 05:01:04,535 | bot | INFO | Cog loaded: VoiceChannel
+2021-08-10 05:01:04,688 | bot | INFO | Cog loaded: KUSNews
+2021-08-10 05:01:04,691 | bot | INFO | Cog loaded: Utility
+2021-08-10 05:01:04,744 | exts.kus | DEBUG | loaded data
+2021-08-10 05:01:07,446 | utils.planner | DEBUG | returning sorted date for 562976873685057546
+2021-08-10 05:01:07,474 | bot | INFO | Connected successfully
+2021-08-10 05:01:07,654 | bot | DEBUG | changed bot status
+2021-08-10 05:01:07,658 | utils.planner | DEBUG | returning sorted date for 728482381215826000
+2021-08-10 05:01:07,807 | utils.planner | DEBUG | returning sorted date for 829749071891005512
+2021-08-10 05:01:07,976 | utils.planner | DEBUG | returning sorted date for 773426467492069386
+2021-08-10 06:18:10,246 | exts.admin | DEBUG | Admin Eval from Tpmonkey#2682; code: self.bot.get_guild(773426467492069386).get_membed(441848545210007554)
+2021-08-10 06:18:18,712 | exts.admin | DEBUG | Admin Eval from Tpmonkey#2682; code: dir(self.bot.get_guild(773426467492069386).get_member(441848545210007554))
+2021-08-10 06:19:03,371 | exts.admin | DEBUG | Admin Eval from Tpmonkey#2682; code: dir(self.bot.get_guild(773426467492069386).get_member(441848545210007554).voice)
+2021-08-10 06:19:19,583 | exts.admin | DEBUG | Admin Eval from Tpmonkey#2682; code: await self.bot.get_guild(773426467492069386).get_member(441848545210007554).voice.mute()
+2021-08-10 06:21:52,405 | exts.admin | DEBUG | Admin Eval from Tpmonkey#2682; code: await self.bot.get_guild(773426467492069386).get_member(441848545210007554).edit(mute=False)
+2021-08-10 08:20:53,420 | bot | INFO | Resumed Connection
+2021-08-10 08:20:53,833 | bot | DEBUG | changed bot status
+2021-08-10 10:32:09,871 | bot | INFO | Resumed Connection
+2021-08-10 10:32:10,050 | bot | DEBUG | changed bot status
+2021-08-10 10:44:32,186 | exts.admin | DEBUG | Admin Eval from Tpmonkey#2682; code: self.bot.uptime
+2021-08-10 12:23:48,785 | bot | INFO | Resumed Connection
+2021-08-10 12:23:49,025 | bot | DEBUG | changed bot status
+2021-08-10 13:06:04,335 | exts.admin | DEBUG | Admin Eval from Tpmonkey#2682; code: dir(self.bot.uptime)
+2021-08-10 14:42:48,739 | bot | INFO | Resumed Connection
+2021-08-10 14:42:49,477 | bot | DEBUG | changed bot status
+2021-08-10 15:14:26,540 | bot | INFO | Resumed Connection
+2021-08-10 15:14:26,734 | bot | DEBUG | changed bot status
+2021-08-10 15:40:52,349 | bot | INFO | Resumed Connection
+2021-08-10 15:40:52,747 | bot | DEBUG | changed bot status
+2021-08-10 16:58:52,634 | bot | INFO | Resumed Connection
+2021-08-10 16:58:53,041 | bot | DEBUG | changed bot status
+2021-08-10 17:00:04,696 | bot | DEBUG | exts.dayloop New day [UTC+7] detected.
+2021-08-10 17:00:04,920 | utils.planner | DEBUG | triggered update
+2021-08-10 17:01:04,752 | utils.planner | DEBUG | returning sorted date for 562976873685057546
+2021-08-10 17:01:04,936 | bot | DEBUG | creating assignment embed...
+2021-08-10 17:01:04,937 | bot | DEBUG | successfully created assignment embed
+2021-08-10 17:01:06,111 | bot | DEBUG | creating assignment embed...
+2021-08-10 17:01:06,112 | bot | DEBUG | successfully created assignment embed
+2021-08-10 17:01:07,222 | bot | DEBUG | exts.update :white_check_mark: Sucessfully update works at 562976873685057546 :
+33EE
+2021-08-10 17:01:07,348 | exts.update | DEBUG | updated active-works for 562976873685057546
+2021-08-10 17:01:07,348 | utils.planner | DEBUG | returning sorted date for 728482381215826000
+2021-08-10 17:01:07,456 | utils.planner | DEBUG | returning sorted date for 829749071891005512
+2021-08-10 17:01:07,720 | utils.planner | DEBUG | returning sorted date for 773426467492069386
+2021-08-10 17:01:07,903 | bot | DEBUG | creating assignment embed...
+2021-08-10 17:01:07,904 | bot | DEBUG | successfully created assignment embed
+2021-08-10 17:01:09,032 | bot | DEBUG | creating assignment embed...
+2021-08-10 17:01:09,033 | bot | DEBUG | successfully created assignment embed
+2021-08-10 17:01:10,163 | bot | DEBUG | creating assignment embed...
+2021-08-10 17:01:10,164 | bot | DEBUG | successfully created assignment embed
+2021-08-10 17:01:11,259 | bot | DEBUG | creating assignment embed...
+2021-08-10 17:01:11,260 | bot | DEBUG | successfully created assignment embed
+2021-08-10 17:01:12,356 | bot | DEBUG | creating assignment embed...
+2021-08-10 17:01:12,356 | bot | DEBUG | successfully created assignment embed
+2021-08-10 17:01:13,462 | bot | DEBUG | exts.update :white_check_mark: Sucessfully update works at 773426467492069386 :
+55EEEEE
+2021-08-10 17:01:13,586 | exts.update | DEBUG | updated active-works for 773426467492069386
+2021-08-10 18:18:32,769 | bot | INFO | Resumed Connection
+2021-08-10 18:18:32,953 | bot | DEBUG | changed bot status
+2021-08-10 18:26:06,722 | bot | INFO | Resumed Connection
+2021-08-10 18:26:06,990 | bot | DEBUG | changed bot status
+2021-08-10 20:06:18,422 | bot | INFO | Resumed Connection
+2021-08-10 20:06:18,900 | bot | DEBUG | changed bot status
+2021-08-10 20:16:47,609 | asyncio | DEBUG | Using selector: EpollSelector
+2021-08-10 20:16:47,612 | bot | DEBUG | created bot base.
+2021-08-10 20:16:47,693 | discord.client | WARNING | PyNaCl is not installed, voice will NOT be supported
+2021-08-10 20:16:47,701 | constant | DEBUG | init database succesful
+2021-08-10 20:16:47,769 | utils.planner | DEBUG | triggered update
+2021-08-10 20:16:47,785 | bot | DEBUG | bot subclass Created.
+2021-08-10 20:16:47,806 | bot | INFO | Cog loaded: Utility
+2021-08-10 20:16:48,449 | bot | INFO | Cog loaded: KUSNews
+2021-08-10 20:16:48,471 | bot | INFO | Cog loaded: DayLoop
+2021-08-10 20:16:48,485 | bot | INFO | Cog loaded: VoiceChannel
+2021-08-10 20:16:48,534 | bot | INFO | Cog loaded: Help
+2021-08-10 20:16:48,539 | bot | INFO | Cog loaded: Debug
+2021-08-10 20:16:48,544 | bot | INFO | Cog loaded: AdminCommands
+2021-08-10 20:16:48,557 | bot | INFO | Cog loaded: Assignments
+2021-08-10 20:16:48,570 | bot | INFO | Cog loaded: ErrorHandler
+2021-08-10 20:16:48,577 | bot | INFO | Cog loaded: AntyPing
+2021-08-10 20:16:48,592 | bot | INFO | Cog loaded: NewPatch
+2021-08-10 20:16:48,601 | bot | INFO | Cog loaded: Latency
+2021-08-10 20:16:48,608 | bot | INFO | Cog loaded: SetUp
+2021-08-10 20:16:48,615 | bot | INFO | Cog loaded: Updater
+2021-08-10 20:16:48,649 | bot | INFO | Cog loaded: Snekbox
+2021-08-10 20:16:48,705 | exts.kus | DEBUG | loaded data
+2021-08-10 20:16:51,472 | utils.planner | DEBUG | returning sorted date for 562976873685057546
+2021-08-10 20:16:51,491 | bot | INFO | Connected successfully
+2021-08-10 20:16:51,687 | bot | DEBUG | changed bot status
+2021-08-10 20:16:51,695 | utils.planner | DEBUG | returning sorted date for 728482381215826000
+2021-08-10 20:16:51,790 | utils.planner | DEBUG | returning sorted date for 829749071891005512
+2021-08-10 20:16:52,016 | utils.planner | DEBUG | returning sorted date for 773426467492069386
+2021-08-10 20:17:09,858 | utils.planner | DEBUG | returning sorted date for 562976873685057546
+2021-08-10 20:17:10,001 | bot | DEBUG | creating assignment embed...
+2021-08-10 20:17:10,001 | bot | DEBUG | successfully created assignment embed
+2021-08-10 20:17:11,189 | bot | DEBUG | creating assignment embed...
+2021-08-10 20:17:11,190 | bot | DEBUG | successfully created assignment embed
+2021-08-10 20:17:12,309 | bot | DEBUG | creating assignment embed...
+2021-08-10 20:17:12,311 | bot | DEBUG | successfully created assignment embed
+2021-08-23 09:14:21,697 | asyncio | DEBUG | Using selector: EpollSelector
+2021-08-23 09:14:21,698 | bot | DEBUG | created bot base.
+2021-08-23 09:14:21,721 | discord.client | WARNING | PyNaCl is not installed, voice will NOT be supported
+2021-08-23 09:14:21,722 | constant | DEBUG | init database succesful
+2021-08-23 09:14:21,749 | utils.planner | DEBUG | triggered update
+2021-08-23 09:14:21,936 | bot | DEBUG | bot subclass Created.
+2021-08-23 09:14:21,962 | bot | INFO | Cog loaded: Latency
+2021-08-23 09:14:21,964 | bot | INFO | Cog loaded: AdminCommands
+2021-08-23 09:14:21,967 | bot | INFO | Cog loaded: Snekbox
+2021-08-23 09:14:21,975 | bot | INFO | Cog loaded: Utility
+2021-08-23 09:14:21,976 | bot | INFO | Cog loaded: DayLoop
+2021-08-23 09:14:21,977 | bot | INFO | Cog loaded: SetUp
+2021-08-23 09:14:21,978 | bot | INFO | Cog loaded: Updater
+2021-08-23 09:14:21,980 | bot | INFO | Cog loaded: Assignments
+2021-08-23 09:14:21,981 | bot | INFO | Cog loaded: VoiceChannel
+2021-08-23 09:14:21,981 | bot | INFO | Cog loaded: NewPatch
+2021-08-23 09:14:21,982 | bot | INFO | Cog loaded: AntyPing
+2021-08-23 09:14:21,983 | bot | INFO | Cog loaded: ErrorHandler
+2021-08-23 09:14:21,985 | bot | INFO | Cog loaded: Help
+2021-08-23 09:14:21,986 | bot | INFO | Cog loaded: Debug
+2021-08-23 09:14:22,050 | bot | INFO | Cog loaded: KUSNews
+2021-08-23 09:14:22,168 | exts.kus | DEBUG | loaded data
+2021-08-23 09:14:24,797 | utils.planner | DEBUG | returning sorted date for 562976873685057546
+2021-08-23 09:14:24,803 | bot | INFO | Connected successfully
+2021-08-23 09:14:24,845 | bot | DEBUG | changed bot status
+2021-08-23 09:14:24,891 | utils.planner | DEBUG | returning sorted date for 728482381215826000
+2021-08-23 09:14:24,984 | utils.planner | DEBUG | returning sorted date for 829749071891005512
+2021-08-23 09:14:25,111 | utils.planner | DEBUG | returning sorted date for 773426467492069386
+2021-08-23 09:59:46,906 | exts.admin | DEBUG | Admin Eval from Tpmonkey#2682; code: 0.1 + 0.2
+2021-08-23 10:06:58,048 | utils.planner | DEBUG | getting embed return nothing for 728482381215826000
+2021-08-23 10:23:08,133 | asyncio | DEBUG | Using selector: EpollSelector
+2021-08-23 10:23:08,134 | bot | DEBUG | created bot base.
+2021-08-23 10:23:08,151 | discord.client | WARNING | PyNaCl is not installed, voice will NOT be supported
+2021-08-23 10:23:08,152 | constant | DEBUG | init database succesful
+2021-08-23 10:23:08,216 | utils.planner | DEBUG | triggered update
+2021-08-23 10:23:08,254 | bot | DEBUG | bot subclass Created.
+2021-08-23 10:23:08,257 | bot | INFO | Cog loaded: Assignments
+2021-08-23 10:23:08,258 | bot | INFO | Cog loaded: SetUp
+2021-08-23 10:23:08,258 | bot | INFO | Cog loaded: Latency
+2021-08-23 10:23:08,325 | bot | INFO | Cog loaded: KUSNews
+2021-08-23 10:23:08,326 | bot | INFO | Cog loaded: Help
+2021-08-23 10:23:08,327 | bot | INFO | Cog loaded: VoiceChannel
+2021-08-23 10:23:08,328 | bot | INFO | Cog loaded: Updater
+2021-08-23 10:23:08,329 | bot | INFO | Cog loaded: NewPatch
+2021-08-23 10:23:08,331 | bot | INFO | Cog loaded: Utility
+2021-08-23 10:23:08,332 | bot | INFO | Cog loaded: AntyPing
+2021-08-23 10:23:08,333 | bot | INFO | Cog loaded: Debug
+2021-08-23 10:23:08,333 | bot | INFO | Cog loaded: ErrorHandler
+2021-08-23 10:23:08,334 | bot | INFO | Cog loaded: DayLoop
+2021-08-23 10:23:08,335 | bot | INFO | Cog loaded: AdminCommands
+2021-08-23 10:23:08,337 | bot | INFO | Cog loaded: Snekbox
+2021-08-23 10:23:08,404 | exts.kus | DEBUG | loaded data
+2021-08-23 10:23:10,790 | utils.planner | DEBUG | returning sorted date for 562976873685057546
+2021-08-23 10:23:11,001 | bot | INFO | Connected successfully
+2021-08-23 10:23:11,315 | bot | DEBUG | changed bot status
+2021-08-23 10:23:11,317 | utils.planner | DEBUG | returning sorted date for 728482381215826000
+2021-08-23 10:23:11,388 | utils.planner | DEBUG | returning sorted date for 829749071891005512
+2021-08-23 10:23:11,613 | utils.planner | DEBUG | returning sorted date for 773426467492069386
+2021-08-31 22:56:58,524 | asyncio | DEBUG | Using selector: EpollSelector
+2021-08-31 22:56:58,525 | bot | DEBUG | created bot base.
+2021-08-31 22:56:58,542 | discord.client | WARNING | PyNaCl is not installed, voice will NOT be supported
+2021-08-31 22:56:58,543 | constant | DEBUG | init database succesful
+2021-08-31 22:56:58,567 | utils.planner | DEBUG | triggered update
+2021-08-31 22:56:58,574 | bot | DEBUG | bot subclass Created.
+2021-08-31 22:56:58,577 | bot | INFO | Cog loaded: DayLoop
+2021-08-31 22:56:58,578 | bot | INFO | Cog loaded: VoiceChannel
+2021-08-31 22:56:58,580 | bot | INFO | Cog loaded: AdminCommands
+2021-08-31 22:56:58,581 | bot | INFO | Cog loaded: Updater
+2021-08-31 22:56:58,582 | bot | INFO | Cog loaded: ErrorHandler
+2021-08-31 22:56:58,583 | bot | INFO | Cog loaded: SetUp
+2021-08-31 22:56:58,584 | bot | INFO | Cog loaded: NewPatch
+2021-08-31 22:56:58,588 | bot | INFO | Cog loaded: Utility
+2021-08-31 22:56:58,590 | bot | INFO | Cog loaded: Assignments
+2021-08-31 22:56:58,592 | bot | INFO | Cog loaded: Help
+2021-08-31 22:56:58,663 | bot | INFO | Cog loaded: KUSNews
+2021-08-31 22:56:58,664 | bot | INFO | Cog loaded: Latency
+2021-08-31 22:56:58,664 | bot | INFO | Cog loaded: AntyPing
+2021-08-31 22:56:58,667 | bot | INFO | Cog loaded: Snekbox
+2021-08-31 22:56:58,668 | bot | INFO | Cog loaded: Debug
+2021-08-31 22:56:58,827 | exts.kus | DEBUG | loaded data
+2021-08-31 22:57:01,429 | utils.planner | DEBUG | returning sorted date for 562976873685057546
+2021-08-31 22:57:01,525 | bot | INFO | Connected successfully
+2021-08-31 22:57:01,656 | bot | DEBUG | changed bot status
+2021-08-31 22:57:01,660 | utils.planner | DEBUG | returning sorted date for 728482381215826000
+2021-08-31 22:57:01,774 | utils.planner | DEBUG | returning sorted date for 829749071891005512
+2021-08-31 22:57:01,928 | utils.planner | DEBUG | returning sorted date for 773426467492069386
+2021-08-31 23:00:58,703 | bot | DEBUG | exts.dayloop New day [UTC+1] detected.
+2021-08-31 23:00:58,827 | exts.dayloop | DEBUG | updating passed work
+2021-08-31 23:00:58,828 | utils.planner | DEBUG | looping througth all assignment...
+2021-08-31 23:00:58,970 | exts.dayloop | DEBUG | updating 562976873685057546
+2021-08-31 23:00:58,971 | bot | DEBUG | creating assignment embed...
+2021-08-31 23:00:58,971 | bot | DEBUG | successfully created assignment embed
+2021-08-31 23:00:59,073 | exts.dayloop | DEBUG | updated 562976873685057546
+2021-08-31 23:00:59,074 | exts.dayloop | DEBUG | updating 773426467492069386
+2021-08-31 23:00:59,074 | bot | DEBUG | creating assignment embed...
+2021-08-31 23:00:59,074 | bot | DEBUG | successfully created assignment embed
+2021-08-31 23:00:59,289 | exts.dayloop | DEBUG | updated 773426467492069386
+2021-08-31 23:00:59,289 | utils.planner | DEBUG | checking old work to delete
+2021-08-31 23:00:59,290 | utils.planner | DEBUG | found 0
+2021-08-31 23:00:59,290 | utils.planner | DEBUG | triggered update
+2021-08-31 23:01:58,691 | utils.planner | DEBUG | returning sorted date for 562976873685057546
+2021-08-31 23:01:58,890 | bot | DEBUG | creating assignment embed...
+2021-08-31 23:01:58,891 | bot | DEBUG | successfully created assignment embed
+2021-08-31 23:02:01,186 | bot | DEBUG | exts.update :white_check_mark: Sucessfully update works at 562976873685057546 :
+12ED
+2021-08-31 23:02:01,321 | exts.update | DEBUG | updated active-works for 562976873685057546
+2021-08-31 23:02:01,321 | utils.planner | DEBUG | returning sorted date for 728482381215826000
+2021-08-31 23:02:01,483 | utils.planner | DEBUG | returning sorted date for 829749071891005512
+2021-08-31 23:02:01,790 | utils.planner | DEBUG | returning sorted date for 773426467492069386
+2021-08-31 23:02:01,872 | bot | DEBUG | creating assignment embed...
+2021-08-31 23:02:01,873 | bot | DEBUG | successfully created assignment embed
+2021-08-31 23:02:03,088 | bot | DEBUG | creating assignment embed...
+2021-08-31 23:02:03,089 | bot | DEBUG | successfully created assignment embed
+2021-08-31 23:02:04,189 | bot | DEBUG | creating assignment embed...
+2021-08-31 23:02:04,190 | bot | DEBUG | successfully created assignment embed
+2021-08-31 23:02:06,441 | bot | DEBUG | exts.update :white_check_mark: Sucessfully update works at 773426467492069386 :
+34EEED
+2021-08-31 23:02:06,552 | exts.update | DEBUG | updated active-works for 773426467492069386
+2021-08-31 23:33:22,604 | exts.assignment | DEBUG | init dat for 518063131096907813
+2021-08-31 23:33:25,232 | bot | DEBUG | waiting for message...
+2021-08-31 23:33:26,057 | exts.assignment | DEBUG | processing 3️⃣ for 518063131096907813
+2021-08-31 23:33:26,335 | exts.assignment | DEBUG | update embed successfully for 518063131096907813
+2021-08-31 23:33:40,952 | exts.assignment | DEBUG | update embed successfully for 518063131096907813
+2021-08-31 23:33:40,952 | bot | DEBUG | waiting for message...
+2021-08-31 23:33:43,515 | exts.assignment | DEBUG | processing 3️⃣ for 518063131096907813
+2021-08-31 23:33:43,607 | exts.assignment | DEBUG | update embed successfully for 518063131096907813
+2021-08-31 23:33:45,749 | exts.assignment | DEBUG | update embed successfully for 518063131096907813
+2021-08-31 23:33:45,749 | bot | DEBUG | waiting for message...
+2021-08-31 23:33:47,464 | exts.assignment | DEBUG | processing ✅ for 518063131096907813
+2021-08-31 23:33:47,480 | utils.planner | DEBUG | added Assignment from `562976873685057546` with key `2e403474`
+2021-08-31 23:33:47,491 | exts.assignment | DEBUG | 518063131096907813 add/edit new assignment and passed in successfully.
+2021-08-31 23:33:58,675 | utils.planner | DEBUG | returning sorted date for 562976873685057546
+2021-08-31 23:33:58,762 | bot | DEBUG | creating assignment embed...
+2021-08-31 23:33:58,763 | bot | DEBUG | successfully created assignment embed
+2021-08-31 23:33:59,913 | bot | DEBUG | exts.update :white_check_mark: Sucessfully update works at 562976873685057546 :
+11E
+2021-08-31 23:34:00,076 | exts.update | DEBUG | updated active-works for 562976873685057546
+2021-08-31 23:42:03,047 | bot | INFO | Cog loaded: Assignments
+2021-08-31 23:42:05,216 | exts.assignment | DEBUG | init dat for 518063131096907813
+2021-08-31 23:42:07,382 | bot | DEBUG | waiting for message...
+2021-08-31 23:42:07,691 | exts.assignment | DEBUG | update embed successfully for 518063131096907813
+2021-08-31 23:42:07,691 | bot | DEBUG | waiting for message...
+2021-08-31 23:42:13,319 | exts.assignment | DEBUG | processing ❎ for 518063131096907813
+2021-08-31 23:53:40,994 | bot | INFO | Cog loaded: Assignments
+2021-08-31 23:53:43,154 | exts.assignment | DEBUG | init dat for 518063131096907813
+2021-08-31 23:53:45,343 | bot | DEBUG | waiting for message...
+2021-08-31 23:53:46,819 | exts.assignment | DEBUG | update embed successfully for 518063131096907813
+2021-08-31 23:53:46,820 | bot | DEBUG | waiting for message...
+2021-08-31 23:53:49,415 | exts.assignment | DEBUG | update embed successfully for 518063131096907813
+2021-08-31 23:53:49,416 | bot | DEBUG | waiting for message...
+2021-08-31 23:53:53,796 | exts.assignment | DEBUG | update embed successfully for 518063131096907813
+2021-08-31 23:53:53,796 | bot | DEBUG | waiting for message...
+2021-08-31 23:53:56,107 | exts.assignment | DEBUG | update embed successfully for 518063131096907813
+2021-08-31 23:53:56,108 | bot | DEBUG | waiting for message...
+2021-08-31 23:53:58,843 | exts.assignment | DEBUG | update embed successfully for 518063131096907813
+2021-08-31 23:53:58,843 | bot | DEBUG | waiting for message...
+2021-08-31 23:58:46,587 | asyncio | DEBUG | Using selector: EpollSelector
+2021-08-31 23:58:46,589 | bot | DEBUG | created bot base.
+2021-08-31 23:58:46,613 | discord.client | WARNING | PyNaCl is not installed, voice will NOT be supported
+2021-08-31 23:58:46,614 | constant | DEBUG | init database succesful
+2021-08-31 23:58:46,638 | utils.planner | DEBUG | triggered update
+2021-08-31 23:58:46,760 | bot | DEBUG | bot subclass Created.
+2021-08-31 23:58:46,765 | bot | INFO | Cog loaded: Snekbox
+2021-08-31 23:58:46,767 | bot | INFO | Cog loaded: Updater
+2021-08-31 23:58:46,768 | bot | INFO | Cog loaded: SetUp
+2021-08-31 23:58:46,773 | bot | INFO | Cog loaded: Utility
+2021-08-31 23:58:46,774 | bot | INFO | Cog loaded: VoiceChannel
+2021-08-31 23:58:46,775 | bot | INFO | Cog loaded: DayLoop
+2021-08-31 23:58:46,776 | bot | INFO | Cog loaded: AntyPing
+2021-08-31 23:58:46,861 | bot | INFO | Cog loaded: KUSNews
+2021-08-31 23:58:46,863 | bot | INFO | Cog loaded: AdminCommands
+2021-08-31 23:58:46,864 | bot | INFO | Cog loaded: ErrorHandler
+2021-08-31 23:58:46,865 | bot | INFO | Cog loaded: Debug
+2021-08-31 23:58:46,867 | bot | INFO | Cog loaded: Help
+2021-08-31 23:58:46,867 | bot | INFO | Cog loaded: NewPatch
+2021-08-31 23:58:46,868 | bot | INFO | Cog loaded: Latency
+2021-08-31 23:58:46,874 | bot | INFO | Cog loaded: Assignments
+2021-08-31 23:58:46,902 | exts.kus | DEBUG | loaded data
+2021-08-31 23:58:49,376 | utils.planner | DEBUG | returning sorted date for 562976873685057546
+2021-08-31 23:58:49,384 | exts.new_patch | DEBUG | Version change found, annoucing..
+2021-08-31 23:58:49,386 | bot | INFO | Connected successfully
+2021-08-31 23:58:49,428 | bot | DEBUG | changed bot status
+2021-08-31 23:58:49,489 | utils.planner | DEBUG | returning sorted date for 728482381215826000
+2021-08-31 23:58:49,562 | utils.planner | DEBUG | returning sorted date for 829749071891005512
+2021-08-31 23:58:49,683 | utils.planner | DEBUG | returning sorted date for 773426467492069386
+2021-09-01 00:10:42,513 | bot | INFO | Cog loaded: Assignments
+2021-09-01 00:10:46,635 | exts.assignment | DEBUG | init dat for 518063131096907813
+2021-09-01 00:10:48,963 | bot | DEBUG | waiting for message...
+2021-09-01 00:10:52,488 | exts.assignment | DEBUG | update embed successfully for 518063131096907813
+2021-09-01 00:10:52,488 | bot | DEBUG | waiting for message...
+2021-09-01 00:11:00,252 | exts.assignment | DEBUG | update embed successfully for 518063131096907813
+2021-09-01 00:11:00,252 | bot | DEBUG | waiting for message...
+2021-09-01 00:11:10,000 | exts.assignment | DEBUG | processing ❎ for 518063131096907813

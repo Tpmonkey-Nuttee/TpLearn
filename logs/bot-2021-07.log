@@ -561,3 +561,86 @@ a = 2 ** 2_000_000_000_000
 2021-07-28 10:34:57,632 | bot | DEBUG | changed bot status
 2021-07-28 11:33:38,967 | bot | INFO | Resumed Connection
 2021-07-28 11:33:42,027 | bot | DEBUG | changed bot status
+2021-07-28 13:32:15,242 | asyncio | DEBUG | Using selector: EpollSelector
+2021-07-28 13:32:15,242 | bot | DEBUG | created bot base.
+2021-07-28 13:32:15,283 | discord.client | WARNING | PyNaCl is not installed, voice will NOT be supported
+2021-07-28 13:32:15,284 | constant | DEBUG | init database succesful
+2021-07-28 13:32:15,339 | utils.planner | DEBUG | triggered update
+2021-07-28 13:32:15,348 | bot | DEBUG | bot subclass Created.
+2021-07-28 13:32:15,352 | bot | INFO | Cog loaded: VoiceChannel
+2021-07-28 13:32:15,353 | bot | INFO | Cog loaded: NewPatch
+2021-07-28 13:32:15,357 | bot | INFO | Cog loaded: AdminCommands
+2021-07-28 13:32:15,360 | bot | INFO | Cog loaded: Debug
+2021-07-28 13:32:15,508 | bot | INFO | Cog loaded: KUSNews
+2021-07-28 13:32:15,511 | bot | INFO | Cog loaded: Help
+2021-07-28 13:32:15,512 | bot | INFO | Cog loaded: Latency
+2021-07-28 13:32:15,514 | bot | INFO | Cog loaded: Updater
+2021-07-28 13:32:15,517 | bot | INFO | Cog loaded: Assignments
+2021-07-28 13:32:15,518 | bot | INFO | Cog loaded: ErrorHandler
+2021-07-28 13:32:15,520 | bot | INFO | Cog loaded: Utility
+2021-07-28 13:32:15,536 | bot | INFO | Cog loaded: Snekbox
+2021-07-28 13:32:15,537 | bot | INFO | Cog loaded: SetUp
+2021-07-28 13:32:15,539 | bot | INFO | Cog loaded: DayLoop
+2021-07-28 13:32:15,571 | exts.kus | DEBUG | loaded data
+2021-07-28 13:32:16,531 | bot | DEBUG | exts.kus Unable to fetch kus data, disabled system.
+2021-07-28 13:32:18,222 | utils.planner | DEBUG | returning sorted date for 562976873685057546
+2021-07-28 13:32:18,233 | exts.new_patch | DEBUG | Version change found, annoucing..
+2021-07-28 13:32:18,235 | bot | INFO | Connected successfully
+2021-07-28 13:32:18,529 | bot | DEBUG | changed bot status
+2021-07-28 13:32:18,538 | utils.planner | DEBUG | returning sorted date for 728482381215826000
+2021-07-28 13:32:18,669 | utils.planner | DEBUG | returning sorted date for 829749071891005512
+2021-07-28 13:32:18,726 | exts.kus | DEBUG | trying to update news but is not enable, passing...
+2021-07-28 13:32:18,917 | utils.planner | DEBUG | returning sorted date for 773426467492069386
+2021-07-28 13:35:08,697 | exts.admin | DEBUG | Admin Eval from Tpmonkey#2682; code: datetime
+2021-07-28 13:35:15,910 | exts.admin | DEBUG | Admin Eval from Tpmonkey#2682; code: datetime.datetime.strptime("hey", "%A %d %B %Y")
+2021-07-29 01:41:49,957 | asyncio | DEBUG | Using selector: EpollSelector
+2021-07-29 01:41:49,959 | bot | DEBUG | created bot base.
+2021-07-29 01:41:49,992 | discord.client | WARNING | PyNaCl is not installed, voice will NOT be supported
+2021-07-29 01:41:49,993 | constant | DEBUG | init database succesful
+2021-07-29 01:41:50,042 | utils.planner | DEBUG | triggered update
+2021-07-29 01:41:50,053 | bot | DEBUG | bot subclass Created.
+2021-07-29 01:41:50,060 | bot | INFO | Cog loaded: DayLoop
+2021-07-29 01:41:50,216 | bot | INFO | Cog loaded: KUSNews
+2021-07-29 01:41:50,226 | bot | INFO | Cog loaded: Assignments
+2021-07-29 01:41:50,228 | bot | INFO | Cog loaded: Utility
+2021-07-29 01:41:50,232 | bot | INFO | Cog loaded: AdminCommands
+2021-07-29 01:41:50,234 | bot | INFO | Cog loaded: ErrorHandler
+2021-07-29 01:41:50,239 | bot | INFO | Cog loaded: Snekbox
+2021-07-29 01:41:50,241 | bot | INFO | Cog loaded: SetUp
+2021-07-29 01:41:50,242 | bot | INFO | Cog loaded: NewPatch
+2021-07-29 01:41:50,246 | bot | INFO | Cog loaded: Debug
+2021-07-29 01:41:50,250 | bot | INFO | Cog loaded: Latency
+2021-07-29 01:41:50,256 | bot | INFO | Cog loaded: Updater
+2021-07-29 01:41:50,259 | bot | INFO | Cog loaded: Help
+2021-07-29 01:41:50,261 | bot | INFO | Cog loaded: VoiceChannel
+2021-07-29 01:41:50,301 | exts.kus | DEBUG | loaded data
+2021-07-29 01:41:51,581 | bot | DEBUG | exts.kus Unable to fetch kus data, disabled system.
+2021-07-29 01:41:52,907 | utils.planner | DEBUG | returning sorted date for 562976873685057546
+2021-07-29 01:41:52,923 | bot | INFO | Connected successfully
+2021-07-29 01:41:53,113 | bot | DEBUG | changed bot status
+2021-07-29 01:41:53,120 | utils.planner | DEBUG | returning sorted date for 728482381215826000
+2021-07-29 01:41:53,262 | utils.planner | DEBUG | returning sorted date for 829749071891005512
+2021-07-29 01:41:53,285 | exts.kus | DEBUG | trying to update news but is not enable, passing...
+2021-07-29 01:41:53,472 | utils.planner | DEBUG | returning sorted date for 773426467492069386
+2021-07-29 02:05:38,025 | bot | INFO | Resumed Connection
+2021-07-29 02:05:38,182 | bot | DEBUG | changed bot status
+2021-07-29 03:18:41,295 | bot | INFO | Resumed Connection
+2021-07-29 03:18:41,481 | bot | DEBUG | changed bot status
+2021-07-29 03:48:48,784 | bot | INFO | Resumed Connection
+2021-07-29 03:48:48,984 | bot | DEBUG | changed bot status
+2021-07-29 05:41:28,008 | bot | INFO | Resumed Connection
+2021-07-29 05:41:28,200 | bot | DEBUG | changed bot status
+2021-07-29 05:41:51,873 | bot | DEBUG | exts.kus successfully fecthed kus data, enabled system.
+2021-07-29 05:41:52,158 | bot | DEBUG | exts.kus New data detected
+2021-07-29 05:41:52,264 | bot | DEBUG | exts.kus 
+**From** `ObservedList(value=['news_detail.php?id=3015', 'news_detail.php?id=3014', 'news_detail.php?id=3013', 'news_detail.php?id=3005', 'news_detail.php?id=3004', 'news_detail.php?id=3003', 'news_detail.php?id=3006', 'news_detail.php?id=2983', 'news_detail.php?id=2981', 'news_detail.php?id=2967'])`
+**To** `['news_detail.php?id=3012', 'news_detail.php?id=3015', 'news_detail.php?id=3014', 'news_detail.php?id=3013', 'news_detail.php?id=3005', 'news_detail.php?id=3004', 'news_detail.php?id=3003', 'news_detail.php?id=3006', 'news_detail.php?id=2983', 'news_detail.php?id=2981']`
+2021-07-29 05:41:52,383 | bot | DEBUG | exts.kus **Found:** [('บันทึกผลการเรียน ครั้งที่ ๑ ภาคต้น ปีการศึกษา ๒๕๖๔ ระหว่างวันที่ ๒๙ กรกฎาคม – ๑๕ สิงหาคม ๒๕๖๔ ...อ่านต่อ', 'news_detail.php?id=3012', 'http://www.kus.ku.ac.th/images_kus/news/ban1-20210721122612.gif')]
+2021-07-29 05:41:52,549 | bot | DEBUG | exts.kus Sending news to alert//728489165565591562
+2021-07-29 05:41:52,819 | bot | DEBUG | exts.kus Sending news to web-kus//855107375631827045
+2021-07-29 05:41:57,311 | bot | DEBUG | exts.kus Sending news to bot//857155128922210334
+2021-07-29 05:41:57,669 | bot | DEBUG | exts.kus Sending news to เว็บโรงเรียน//862148885908553738
+2021-07-29 05:41:57,975 | bot | DEBUG | exts.kus Sended news to all channels. (Total of 4)
+2021-07-29 05:41:58,092 | bot | DEBUG | exts.kus Saved new data.
+2021-07-29 06:11:02,019 | bot | INFO | Resumed Connection
+2021-07-29 06:11:02,141 | bot | DEBUG | changed bot status

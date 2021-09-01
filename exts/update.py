@@ -35,13 +35,7 @@ class Updater(Cog):
         """
         Check if loop running correctly.
         """
-        try: l = self.loop.is_running()
-        except:
-            await self.bot.log(__name__, "Error occured while getting loop method.", mention=True)
-            log.error(traceback.format_exc())
-            return
-
-        if not l:
+        if not self.loop.is_running():
             await self.bot.log(__name__, "Updater Loop is not running, Trying to restart...")
             await self.bot.log(__name__, traceback.format_exc())
             try: self.loop.restart()

@@ -1,0 +1,29 @@
+2021-09-01 00:12:08,813 | asyncio | DEBUG | Using selector: EpollSelector
+2021-09-01 00:12:08,814 | bot | DEBUG | created bot base.
+2021-09-01 00:12:08,847 | discord.client | WARNING | PyNaCl is not installed, voice will NOT be supported
+2021-09-01 00:12:08,847 | constant | DEBUG | init database succesful
+2021-09-01 00:12:08,874 | utils.planner | DEBUG | triggered update
+2021-09-01 00:12:08,912 | bot | DEBUG | bot subclass Created.
+2021-09-01 00:12:08,919 | bot | INFO | Cog loaded: Assignments
+2021-09-01 00:12:08,920 | bot | INFO | Cog loaded: AntyPing
+2021-09-01 00:12:08,922 | bot | INFO | Cog loaded: Debug
+2021-09-01 00:12:08,923 | bot | INFO | Cog loaded: VoiceChannel
+2021-09-01 00:12:08,928 | bot | INFO | Cog loaded: Snekbox
+2021-09-01 00:12:08,930 | bot | INFO | Cog loaded: Updater
+2021-09-01 00:12:08,931 | bot | INFO | Cog loaded: ErrorHandler
+2021-09-01 00:12:08,939 | bot | INFO | Cog loaded: Utility
+2021-09-01 00:12:09,054 | bot | INFO | Cog loaded: KUSNews
+2021-09-01 00:12:09,056 | bot | INFO | Cog loaded: SetUp
+2021-09-01 00:12:09,058 | bot | INFO | Cog loaded: Help
+2021-09-01 00:12:09,059 | bot | INFO | Cog loaded: DayLoop
+2021-09-01 00:12:09,060 | bot | INFO | Cog loaded: NewPatch
+2021-09-01 00:12:09,061 | bot | INFO | Cog loaded: Latency
+2021-09-01 00:12:09,063 | bot | INFO | Cog loaded: AdminCommands
+2021-09-01 00:12:09,081 | exts.kus | DEBUG | loaded data
+2021-09-01 00:12:11,793 | utils.planner | DEBUG | returning sorted date for 562976873685057546
+2021-09-01 00:12:11,806 | exts.new_patch | DEBUG | Version change found, annoucing..
+2021-09-01 00:12:11,808 | bot | INFO | Connected successfully
+2021-09-01 00:12:12,019 | bot | DEBUG | changed bot status
+2021-09-01 00:12:12,036 | utils.planner | DEBUG | returning sorted date for 728482381215826000
+2021-09-01 00:12:12,110 | utils.planner | DEBUG | returning sorted date for 829749071891005512
+2021-09-01 00:12:12,469 | utils.planner | DEBUG | returning sorted date for 773426467492069386

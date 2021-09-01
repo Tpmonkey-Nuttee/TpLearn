@@ -4,13 +4,15 @@ Made by Tpmonkey
 """
 
 from discord.ext.commands import Cog, Context, command, guild_only, cooldown, BucketType
-from discord import Embed, Colour, RawReactionActionEvent, HTTPException
+from discord import Embed, Colour, RawReactionActionEvent, HTTPException, Message
 
 from utils import checks
 from bot import Bot
+import constant
 
 from asyncio import sleep
 import traceback
+import datetime
 import logging
 import random
 
@@ -110,6 +112,7 @@ class Assignments(Cog):
 
     async def update_embed(self, ctx: Context) -> None:
         """Update Embed (Menu)"""
+        if ctx.author.id not in self.tasks: return
         message = self.tasks[ctx.author.id]["info"]["message"]
          # If embed has been deleted or not in the data yet.
         if message is None: return
@@ -134,7 +137,7 @@ class Assignments(Cog):
         try:
             await message.clear_reactions()
             await message.edit(embed=self.close_embed(reason, colour))
-        except: pass
+        except Exception: pass
         # Ignore all exception, Our task is already done.
         
         await sleep(2) # this is a cooldown system.
@@ -269,55 +272,10 @@ class Assignments(Cog):
         old_state = self.tasks[payload.user_id]["details"]["state"]
         log.debug(f'processing {emoji} for {ctx.author.id}')
 
-        if emoji == "❎": # Close menu
-            await self.close(ctx)
-            return        
+        if emoji == "❎": # Close menu            
+            return await self.close(ctx)    
         elif emoji == "✅":
-            type_ = self.tasks[ctx.author.id]['details']['type']
-
-            if self.bot.planner.check_passed_date(self.tasks[ctx.author.id]["details"]["headers"]["date"]):
-                log.debug(f'{ctx.author.id} tried to add/edit passed assignment.')
-                await self.close(ctx, "Cannot add/edit already passed assignment.")
-                return
-            
-            title = self.tasks[ctx.author.id]["details"]["headers"]["title"]
-            description = self.tasks[ctx.author.id]["details"]["headers"]["description"]
-            date = self.tasks[ctx.author.id]["details"]["headers"]["date"]
-            image_url = self.tasks[ctx.author.id]["details"]["image"]
-
-            if all( 
-                (title == "Untitled", description == "No Description Provied", 
-                date == "Unknown", image_url == "Not Attached") 
-            ): 
-                log.debug(f'{ctx.author.id} tried to add/edit to invalid assignement.')
-                await self.close(ctx, "Invalid Assignment")
-                return
-            
-            try:
-                ret = await self.bot.planner.add(
-                    ctx.guild.id,
-                    title = title,
-                    description = description,
-                    date = date,
-                    image_url = image_url,
-                    key = self.tasks[ctx.author.id]['details']['key']
-                )
-
-            except Exception:                
-                text = f"Unable to {type_} Assignment, Problem has been reported."
-                log.warning(f'something went wrong while {ctx.author.id} add/edit in homework menu')
-                log.warning(traceback.format_exc())
-                await self.bot.log(__name__, f"An Exception were found while finishing adding assignment\n```py\n{traceback.format_exc()}\n```", True)
-                colour = Colour.default()
-
-            else:
-                text = f"Successfully Added Assignment with key `{ ret }`" if type_ == 'add' \
-                else "Successfully Edited Assignment."
-                colour = Colour.teal()
-                log.debug(f'{ctx.author.id} add/edit new assignment and passed in successfully.')
-
-            await self.close(ctx, text, colour)
-            return
+            return await self.finish_request(ctx)
 
         elif emoji == "1️⃣":
             self.tasks[payload.user_id]["details"]["state"] = 1
@@ -342,6 +300,7 @@ class Assignments(Cog):
             except: # Timeout, or something went wrong.
                 await self.close(ctx)
                 return
+            
             content = message.content
 
             """
@@ -353,39 +312,122 @@ class Assignments(Cog):
             if ctx.author.id not in self.tasks or \
             self.tasks[ctx.author.id]['details']['state'] == 0:
                 return
+                        
+            if content is not None and content.startswith(self.bot.command_prefix): return         
             
-            if content is not None and content.startswith(self.bot.command_prefix): return
-            
-            state = self.tasks[ctx.author.id]["details"]["state"]
+            # Delete message
+            await message.delete()
 
-            # If the content is None, It's likely to be a picture file.
-            if not content.strip():
-                log.debug("empty message, likely to be picture")
-                state = 4
+            # Shortcuts
+            if content.startswith("-"):
+                content = content.lstrip("-")
+                args = content.split()
 
-            if state == 1:
-                self.tasks[ctx.author.id]["details"]["headers"]["title"] = content
-            elif state == 2:
-                self.tasks[ctx.author.id]["details"]["headers"]["description"] = content
-            elif state == 3:
-                self.tasks[ctx.author.id]["details"]["headers"]["date"] = content
-            else:
-                image_url = self.tasks[ctx.author.id]["details"]["image"] 
-                if len(message.attachments) < 1:
-                    if ("http://" in content or "https://" in content) and "." in content:
-                        image_url = content
-                        log.debug(f'{ctx.author.id} added image using url: {image_url}')
+                if len(args) < 1:
+                    await self.handle_request(ctx, message)
+
+                # goto command
+                elif args[0].lower() == "goto":
+                    try:
+                        _state = int(args[1])
+                    except IndexError:
+                        await ctx.send(":x: **Invalid args; state is needed.**")
+                    except ValueError:
+                        await ctx.send(":x: **Invalid args; state needs to be number**")
+                    else:
+                        if 1 <= _state <= 4:
+                            self.tasks[ctx.author.id]["details"]["state"] = _state
+                        else:
+                            await ctx.send(":x: **Invalid args: state need to be between 1 - 4.**")
+                elif args[0].lower() == "cancel" or args[0].lower() == "exit":
+                    return await self.close(ctx)
+                elif args[0].lower() == "finish" or args[0].lower() == "done":
+                    return await self.finish_request(ctx)
                 else:
-                    log.debug(f'{ctx.author.id} added image using file')
-                    image = message.attachments[0]
-                    image_url = await self.bot.get_image_url(image)
-                self.tasks[ctx.author.id]["details"]["image"] = image_url
+                    await self.handle_request(ctx, message)
+            else:
+                await self.handle_request(ctx, message)                   
+
             
-            # Update state.
-            self.tasks[ctx.author.id]["details"]["state"] = state + 1 if state < 4 else 1
-            if ctx.author.id in self.tasks:
-                await message.delete()
-                await self.update_embed(ctx)
+            await self.update_embed(ctx)
+    
+    async def handle_request(self, ctx: Context, message: Message) -> None:
+        content = message.content
+        state = self.tasks[ctx.author.id]["details"]["state"]
+
+        # If the content is None, It's likely to be a picture file.
+        if not content.strip():
+            log.debug("empty message, likely to be picture")
+            state = 4
+
+        if state == 1:
+            self.tasks[ctx.author.id]["details"]["headers"]["title"] = content
+        elif state == 2:
+            self.tasks[ctx.author.id]["details"]["headers"]["description"] = content
+        elif state == 3:
+            self.tasks[ctx.author.id]["details"]["headers"]["date"] = self.format(content)
+        else:
+            image_url = self.tasks[ctx.author.id]["details"]["image"] 
+            if len(message.attachments) < 1:
+                if ("http://" in content or "https://" in content) and "." in content:
+                    image_url = content
+                    log.debug(f'{ctx.author.id} added image using url: {image_url}')
+            else:
+                log.debug(f'{ctx.author.id} added image using file')
+                image = message.attachments[0]
+                image_url = await self.bot.get_image_url(image)
+            self.tasks[ctx.author.id]["details"]["image"] = image_url
+        
+        # Update state.
+        self.tasks[ctx.author.id]["details"]["state"] = state + 1 if state < 4 else 1   
+
+        return
+    
+    async def finish_request(self, ctx: Context) -> None:
+        type_ = self.tasks[ctx.author.id]['details']['type']
+
+        if self.bot.planner.check_passed_date(self.tasks[ctx.author.id]["details"]["headers"]["date"]):
+            log.debug(f'{ctx.author.id} tried to add/edit passed assignment.')
+            await self.close(ctx, "Cannot add/edit already passed assignment.")
+            return
+        
+        title = self.tasks[ctx.author.id]["details"]["headers"]["title"]
+        description = self.tasks[ctx.author.id]["details"]["headers"]["description"]
+        date = self.tasks[ctx.author.id]["details"]["headers"]["date"]
+        image_url = self.tasks[ctx.author.id]["details"]["image"]
+
+        if all( 
+            (title == "Untitled", description == "No Description Provied", 
+            date == "Unknown", image_url == "Not Attached") 
+        ): 
+            log.debug(f'{ctx.author.id} tried to add/edit to invalid assignement.')
+            await self.close(ctx, "Invalid Assignment")
+            return
+        
+        try:
+            ret = await self.bot.planner.add(
+                ctx.guild.id,
+                title = title,
+                description = description,
+                date = date,
+                image_url = image_url,
+                key = self.tasks[ctx.author.id]['details']['key']
+            )
+
+        except Exception:                
+            text = f"Unable to {type_} Assignment, Problem has been reported."
+            log.warning(f'something went wrong while {ctx.author.id} add/edit in homework menu')
+            log.warning(traceback.format_exc())
+            await self.bot.log(__name__, f"An Exception were found while finishing adding assignment\n```py\n{traceback.format_exc()}\n```", True)
+            colour = Colour.default()
+
+        else:
+            text = f"Successfully Added Assignment with key `{ ret }`" if type_ == 'add' \
+            else "Successfully Edited Assignment."
+            colour = Colour.teal()
+            log.debug(f'{ctx.author.id} add/edit new assignment and passed in successfully.')
+        
+        return await self.close(ctx, text, colour)
 
     @command(hidden=True)
     async def school(self, ctx: Context) -> None:
@@ -393,6 +435,19 @@ class Assignments(Cog):
             await ctx.send("Sucks")
         else:
             await ctx.send("Good place.")
+
+    @staticmethod
+    def format(text: str) -> str:
+        if text.startswith("++") and len(text.split()) == 1:
+            _text = text.lstrip("++").lstrip("-")
+
+            try:
+                _days = int(_text)
+            except ValueError:
+                return text
+            future = constant.today_th(True) + datetime.timedelta(days = _days)
+            return "{0.day}/{0.month}/{0.year}".format(future)
+        return
 
 
 def setup(bot: Bot) -> None:

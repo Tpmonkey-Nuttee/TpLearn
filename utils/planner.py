@@ -138,7 +138,8 @@ class Planner:
         if len(self.get_all(guild_id)) == 0:
             log.debug(f'getting embed return nothing for {guild_id}')
             return discord.Embed(
-                description = "Looks like You don't have any assignment! \nCongratuation! :heart:",
+                title = "Congratuation! :heart:",
+                description = "Looks like You don't have any assignment!",
                 colour = discord.Colour.blue(),
                 timestamp = datetime.datetime.utcnow()
             ).set_footer(text = "Use add command to add one!")
@@ -347,8 +348,7 @@ class Planner:
 
         try:
             return thatday < today_
-        except Exception as e:
-            log.debug(f"Check passed date error; {e}")
+        except TypeError:
             return False
 
     def check_valid_guild(self, guild_id: int) -> bool:
@@ -371,7 +371,7 @@ class Planner:
         """
         try:
             datetime.datetime.strptime(unreadable, "%A %d %B %Y")
-        except:
+        except ValueError:
             return False
         return True
 
@@ -383,10 +383,10 @@ class Planner:
 
         p = unreadable[2]
         try: strp = datetime.datetime.strptime(unreadable, f"%d{p}%m{p}%Y")
-        except:            
+        except ValueError:            
             p = unreadable[1]
             try: strp = datetime.datetime.strptime(unreadable, f"%d{p}%m{p}%Y")
-            except: return None
+            except ValueError: return None
         return strp
 
     def get_readable_date(self, unreadable: str) -> str:

@@ -33,7 +33,7 @@ class Manager:
         try: # Get the ID if possible
             a = d['active']
             p = d['passed']
-        except:
+        except KeyError:
             return False
         
         # Get the channels.
@@ -45,8 +45,8 @@ class Manager:
     
     def delete(self, guild_id: int) -> bool:
         try: del self.__data[str(guild_id)]
-        except:
-            log.warning(f'delete guild failed for {guild_id}')
+        except KeyError:
+            log.warning(f'no valid guild called "{guild_id}"')
             return False
         else:
             log.debug(f'deleted guild {guild_id} from system')
@@ -61,7 +61,7 @@ class Manager:
         """ Get Guild Work Channels ID from Guild ID. """
         try:
             return self.__data[str(guild_id)]
-        except:
+        except KeyError:
             return {}       
 
     def set(self, guild_id: int, type_: str, channel_id: int) -> None:

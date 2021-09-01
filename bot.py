@@ -294,11 +294,11 @@ class Bot(commands.Bot):
         embed.description = kwargs.get('key')
         embed.colour = self.get_colour(kwargs.get('date'))    
         
-        embed.add_field(name = "Date: ", value= kwargs.get('readable-date'), inline = False)
+        embed.add_field(name = ":calendar_spiral: Date: ", value= kwargs.get('readable-date'), inline = False)
 
         desc = kwargs.get('desc')
         if desc != "No Description Provied":
-            embed.add_field(name = "Description: ", value = desc, inline = False)
+            embed.add_field(name = ":clipboard: Description: ", value = desc, inline = False)
 
         embed.set_footer(text = f"Key: {kwargs.get('key')}")
 

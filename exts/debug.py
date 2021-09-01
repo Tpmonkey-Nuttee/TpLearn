@@ -76,19 +76,6 @@ class Debug(Cog):
         
         json.dump(work, open("evals/work_debug.json", "w"), indent=2)
         await ctx.send(file=File("evals/work_debug.json"))
-    
-    @command()
-    @is_owner()
-    async def edit_test(self, ctx: Context, time: float) -> None:
-        m = await ctx.send("Hey")
-        for i in range(20):
-            try:
-                await m.edit(content = i)
-            except:
-                await ctx.send("too often")
-                break
-            await asyncio.sleep(time)
-
 
 def setup(bot: Bot) -> None:
     bot.add_cog(Debug(bot))
