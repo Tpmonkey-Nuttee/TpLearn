@@ -34,9 +34,9 @@ class Bot(commands.Bot):
 
         # Define database here so It's easier to be use.
         self.database = Database()
-
         self.planner = planner.Planner(self)
         self.manager = manager.Manager(self)
+        
         self.config = config
 
         self.last_check = {}
@@ -55,7 +55,7 @@ class Bot(commands.Bot):
         log.debug("created bot base.")
 
         return cls(
-            loop= loop,
+            loop = loop,
             command_prefix= config.prefix,
             activity= discord.Activity(type=discord.ActivityType.watching, name="myself starting..."),
             status= discord.Status.dnd,
@@ -297,7 +297,7 @@ class Bot(commands.Bot):
         embed.add_field(name = ":calendar_spiral: Date: ", value= kwargs.get('readable-date'), inline = False)
 
         desc = kwargs.get('desc')
-        if desc != "No Description Provied":
+        if desc != "No Description Provided":
             embed.add_field(name = ":clipboard: Description: ", value = desc, inline = False)
 
         embed.set_footer(text = f"Key: {kwargs.get('key')}")

@@ -10,7 +10,7 @@ from utils import checks
 from bot import Bot
 import constant
 
-from asyncio import sleep
+from asyncio import sleep, create_task
 import traceback
 import datetime
 import logging
@@ -42,7 +42,7 @@ class Assignments(Cog):
                 "image": kwargs.get('image-url', "Not Attached"),
                 "headers":{
                     "title": kwargs.get('title', "Untitled"),
-                    "description": kwargs.get('desc', "No Description Provied"),
+                    "description": kwargs.get('desc', "No Description Provided"),
                     "date": kwargs.get('date', "Unknown"),
                 }},
             "info":{                
@@ -158,7 +158,7 @@ class Assignments(Cog):
 
         message = await ctx.send(embed=embed)
         self.tasks[ctx.author.id]["info"]["message"] = message
-        await self.bot.add_reactions(message, EMOJIS)
+        create_task(self.bot.add_reactions(message, EMOJIS))
         await self.adding(ctx)
     
     @command()
@@ -184,7 +184,7 @@ class Assignments(Cog):
         embed = self.base_embed(ctx)
         message = await ctx.send(embed=embed)
         self.tasks[ctx.author.id]["info"]["message"] = message
-        await self.bot.add_reactions(message, EMOJIS)
+        create_task(self.bot.add_reactions(message, EMOJIS))
         await self.adding(ctx)
     
     @command(aliases = ("delete", "del", ))
@@ -302,6 +302,7 @@ class Assignments(Cog):
                 return
             
             content = message.content
+            log.debug(f"Recieve message: {content}")
 
             """
             Checks:
@@ -331,14 +332,14 @@ class Assignments(Cog):
                     try:
                         _state = int(args[1])
                     except IndexError:
-                        await ctx.send(":x: **Invalid args; state is needed.**")
+                        await ctx.send(":x: **Invalid args; state is needed.**", delete_after=10)
                     except ValueError:
-                        await ctx.send(":x: **Invalid args; state needs to be number**")
+                        await ctx.send(":x: **Invalid args; state needs to be number**", delete_after=10)
                     else:
                         if 1 <= _state <= 4:
                             self.tasks[ctx.author.id]["details"]["state"] = _state
                         else:
-                            await ctx.send(":x: **Invalid args: state need to be between 1 - 4.**")
+                            await ctx.send(":x: **Invalid args: state need to be between 1 - 4.**", delete_after=10)
                 elif args[0].lower() == "cancel" or args[0].lower() == "exit":
                     return await self.close(ctx)
                 elif args[0].lower() == "finish" or args[0].lower() == "done":
@@ -447,7 +448,7 @@ class Assignments(Cog):
                 return text
             future = constant.today_th(True) + datetime.timedelta(days = _days)
             return "{0.day}/{0.month}/{0.year}".format(future)
-        return
+        return text
 
 
 def setup(bot: Bot) -> None:

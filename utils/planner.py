@@ -211,7 +211,7 @@ class Planner:
 
         self._create_if_nexist(guild_id)
         title = kwargs.get("title") or "Untitled"
-        description = kwargs.get("description") or  "No Description"
+        description = kwargs.get("description") or "No Description Provided"
         date = kwargs.get("date") or "Unknown"
         image_url = kwargs.get("image_url")
         key = kwargs.get('key') or self.generate_key()

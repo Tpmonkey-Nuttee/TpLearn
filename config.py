@@ -5,9 +5,10 @@ Made by Tpmonkey
 
 ### ---------- General ---------- ###
 
-version = "1.2.1"
+version = "1.2.3"
 note = [
-    "- Can now use `++[days]` to quickly set assignment date in homework menu."
+    "- Fix input problem, where you can't input while the bot is adding reactions to homework menu.",
+    "- Fix input problem, where you can't input normal date format when adding homework."
 ]
 
 prefix = "," # Bot Prefix.
