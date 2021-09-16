@@ -201,6 +201,8 @@ class Planner:
         """
         Check if a Assignment key valid on targeted Guild ID or not.
         """
+        if str(guild_id) not in self.__data:
+            return False
         return key in self.__data[str(guild_id)]
 
     async def add(self, guild_id: int, **kwargs) -> str:

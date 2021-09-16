@@ -29,12 +29,12 @@ class Database:
     def __init__(self):
         _log.debug("init database succesful")
     
-    async def load(self, key: str) -> Any:
+    async def load(self, key: str, go_back: Any = None) -> Any:
         """ Load data safely from database. """
         try: return db[key]
         except:
             _log.warning(traceback.format_exc())
-            return None        
+            return go_back
 
     async def dump(self, key: str, value: Any) -> bool:
         """ Dump data safely to database. """
@@ -44,12 +44,13 @@ class Database:
             return False
         return True
     
-    def loads(self, key: str) -> Optional[Any]:
+    def loads(self, key: str, go_back: Any = None) -> Optional[Any]:
         """ Load data cautiously from database. """
         try: 
             return db[key]
         except:
             _log.warning(traceback.format_exc())        
+            return go_back
 
     def dumps(self, key: str, value: Any) -> bool:
         """ Dump data cautiously to database. """

@@ -20,6 +20,49 @@ import config
 
 log = logging.getLogger(__name__)
 
+
+DEFAULT_SETTINGS = {
+    "timeout": 300,
+    "annouce_next_song": True,
+    "vote_skip": True
+}
+
+DEFAULT_ACCEPTED_VALUE = {
+    "timeout": int,
+    "annouce_next_song": bool,
+    "vote_skip": bool
+}
+
+class Settings:
+    def __init__(self, bot):
+        self._bot = bot
+        self._settings = bot.database.loads( "MUSIC", {} )
+
+    def __getitem__(self, item):
+        print("Get items")
+        return self._settings.get(item, DEFAULT_SETTINGS)
+    
+    def __iter__(self):
+        print("iter")
+        return self._settings.__iter__()
+    
+    def get(self, gid, sett):
+        gid = str(gid)
+        if gid not in self._settings:
+            self._settings[gid] = DEFAULT_SETTINGS
+        
+        return self._settings[gid][sett]
+    
+    def set(self, guild_id, setting, value):
+
+        value = DEFAULT_ACCEPTED_VALUE[setting](value)
+        if str(guild_id) not in self._settings:
+            self._settings[str(guild_id)] = DEFAULT_SETTINGS
+
+        self._settings[str(guild_id)][setting] = value
+
+        self._bot.database.dumps( "MUSIC", self._settings)
+
 class Bot(commands.Bot):
     # Subclass of commands.Bot
     def __init__(self, command_prefix, help_command=None, description=None, **options):
@@ -34,6 +77,7 @@ class Bot(commands.Bot):
 
         # Define database here so It's easier to be use.
         self.database = Database()
+        self.msettings = Settings(self)
         self.planner = planner.Planner(self)
         self.manager = manager.Manager(self)
         

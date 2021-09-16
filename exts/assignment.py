@@ -148,6 +148,7 @@ class Assignments(Cog):
     @command()
     @guild_only()
     @checks.assignment_limit()
+    @checks.is_setup()
     @cooldown(2, 45, BucketType.guild)
     async def add(self, ctx: Context) -> None:
         """Add an Assignment Command."""
@@ -163,6 +164,7 @@ class Assignments(Cog):
     
     @command()
     @guild_only()
+    @checks.is_setup()
     @cooldown(2, 45, BucketType.guild)
     async def edit(self, ctx: Context, key: str = None) -> None:
         """Edit an Assignment Command."""
@@ -189,6 +191,7 @@ class Assignments(Cog):
     
     @command(aliases = ("delete", "del", ))
     @guild_only()
+    @checks.is_setup()
     @cooldown(3, 15, BucketType.guild)
     async def remove(self, ctx: Context, key: str = None) -> None:
         """Remove an Assignments"""
@@ -211,6 +214,7 @@ class Assignments(Cog):
     
     @command(aliases = ("aw", "allassignments", )) # Why?
     @guild_only()
+    @checks.is_setup()
     @cooldown(2, 20, BucketType.guild)
     async def allworks(self, ctx: Context) -> None:
         """Show all Assignments"""
@@ -224,6 +228,7 @@ class Assignments(Cog):
 
     @command(aliases = ('inf', 'detail', 'check', ))
     @guild_only()
+    @checks.is_setup()
     @cooldown(5, 25, BucketType.guild)
     async def info(self, ctx: Context, key: str = None) -> None:
         """Info about the Assignments"""
@@ -398,7 +403,7 @@ class Assignments(Cog):
         image_url = self.tasks[ctx.author.id]["details"]["image"]
 
         if all( 
-            (title == "Untitled", description == "No Description Provied", 
+            (title == "Untitled", description == "No Description Provided", 
             date == "Unknown", image_url == "Not Attached") 
         ): 
             log.debug(f'{ctx.author.id} tried to add/edit to invalid assignement.')

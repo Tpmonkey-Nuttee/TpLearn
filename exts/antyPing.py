@@ -20,7 +20,7 @@ class AntyPing(Cog):
         if message.guild is None: return
         if message.guild.id != GUILD_ID: return
         
-        if str(MY_ID) in message.content: 
+        """if str(MY_ID) in message.content: 
             await message.delete()
             await self.channel.send(
                 f"{message.author} tried to ping you with message content:", 
@@ -28,7 +28,7 @@ class AntyPing(Cog):
                     title="content", 
                     description = message.content.replace(str(MY_ID), "MyName")
                     )
-                )
+                )"""
 
 def setup(bot: Bot) -> None:
     bot.add_cog(AntyPing(bot))

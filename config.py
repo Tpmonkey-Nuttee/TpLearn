@@ -5,10 +5,11 @@ Made by Tpmonkey
 
 ### ---------- General ---------- ###
 
-version = "1.2.3"
+version = "1.3"
 note = [
-    "- Fix input problem, where you can't input while the bot is adding reactions to homework menu.",
-    "- Fix input problem, where you can't input normal date format when adding homework."
+   "- Fixes assignment commands raise an error while in a non-setup server.",
+   "- Fixes Backend Functions raise an error when provided a wrong parameters."
+   "- TpLearn can now play music."
 ]
 
 prefix = "," # Bot Prefix.
