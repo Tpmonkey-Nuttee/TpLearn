@@ -63,7 +63,7 @@ class Settings:
 
         self._bot.database.dumps( "MUSIC", self._settings)
 
-class Bot(commands.Bot):
+class Bot(commands.AutoShardedBot):
     # Subclass of commands.Bot
     def __init__(self, command_prefix, help_command=None, description=None, **options):
         """ Overwrite Defualt __init__ """

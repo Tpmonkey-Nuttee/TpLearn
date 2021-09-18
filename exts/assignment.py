@@ -139,10 +139,6 @@ class Assignments(Cog):
             await message.edit(embed=self.close_embed(reason, colour))
         except Exception: pass
         # Ignore all exception, Our task is already done.
-        
-        await sleep(2) # this is a cooldown system.
-        
-         # Can also use try but this is easier.
         if ctx.author.id in self.tasks: del self.tasks[ctx.author.id]
     
     @command()

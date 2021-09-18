@@ -5,11 +5,9 @@ Made by Tpmonkey
 
 ### ---------- General ---------- ###
 
-version = "1.3"
+version = "1.3.1"
 note = [
-   "- Fixes assignment commands raise an error while in a non-setup server.",
-   "- Fixes Backend Functions raise an error when provided a wrong parameters."
-   "- TpLearn can now play music."
+   "Improved music player."
 ]
 
 prefix = "," # Bot Prefix.
@@ -28,7 +26,7 @@ dump_channel_id = 833825510219972638
 ### -------- Extensions -------- ###
 
 # Cooldown for loop
-update_work_cooldown = 1 # mins
+update_work_cooldown = 2 # mins
 check_day_cooldown = 1 # min
 kus_news_cooldown = 4 # hours
 
