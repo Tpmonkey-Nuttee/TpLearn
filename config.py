@@ -5,9 +5,9 @@ Made by Tpmonkey
 
 ### ---------- General ---------- ###
 
-version = "1.3.1"
+version = "1.3.2"
 note = [
-   "Improved music player."
+    "- You can now disconnect the bot from voicechannel without breaking it!"
 ]
 
 prefix = "," # Bot Prefix.
