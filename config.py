@@ -7,7 +7,8 @@ Made by Tpmonkey
 
 version = "1.3.2"
 note = [
-    "- You can now disconnect the bot from voicechannel without breaking it!"
+    "- You can now disconnect the bot from voicechannel without breaking it!",
+    "- Vote skip will need 50% of all users in the vc. (Except bots)"
 ]
 
 prefix = "," # Bot Prefix.

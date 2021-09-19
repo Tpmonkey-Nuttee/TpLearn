@@ -113,3 +113,15 @@
 AttributeError: 'Member' object has no attribute 'author'
 
 2021-09-19 15:57:17,521 | bot | INFO | Cog loaded: Music
+2021-09-19 16:19:46,608 | bot | INFO | Cog loaded: Music
+2021-09-19 16:21:19,264 | bot | INFO | Cog loaded: Music
+2021-09-19 16:23:40,791 | bot | INFO | Cog loaded: Music
+2021-09-19 16:23:40,814 | discord.player | ERROR | Calling the after function failed.
+Traceback (most recent call last):
+  File "/opt/virtualenvs/python3/lib/python3.8/site-packages/discord/player.py", line 616, in _call_after
+    self.after(error)
+  File "/home/runner/TpLearn-BETA/exts/music.py", line 285, in play_next_song
+    raise VoiceError(str(error))
+exts.music.VoiceError: [Errno 9] Bad file descriptor
+2021-09-19 16:24:44,033 | bot | INFO | Resumed Connection
+2021-09-19 16:24:44,195 | bot | DEBUG | changed bot status

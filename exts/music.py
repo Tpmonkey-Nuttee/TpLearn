@@ -203,7 +203,6 @@ class SongQueue(asyncio.Queue):
 
 class VoiceState:
     def __init__(self, bot: commands.Bot, ctx: commands.Context):
-        print("Init audio player")
         self.bot = bot
         self._ctx = ctx
 
@@ -219,7 +218,6 @@ class VoiceState:
         self.audio_player = bot.loop.create_task(self.audio_player_task())
 
     def __del__(self):
-        print("Cancel audio player")
         self.audio_player.cancel()
 
     @property
@@ -246,19 +244,15 @@ class VoiceState:
     async def audio_player_task(self):
         while True:
             self.next.clear()
-            print("Cleared, audio_player")
 
             if not self.loop:
-                print("not self.loop, audio_player")
-                # Try to get the next song within 3 minutes.
+                # Try to get the next song within timeout limit (defeault 3 mins).
                 # If no song will be added to the queue in time,
                 # the player will disconnect due to performance
                 # reasons.
-                try:
-                    print("trying, audio_player")
+                try:                    
                     async with timeout(self.bot.msettings.get(self._ctx.guild.id, "timeout")):
                         self.current = await self.songs.get()
-                        print("Got, audio_player")
                     
                 except asyncio.TimeoutError:
                     print("Timeout no more song, audio_player")
@@ -266,7 +260,8 @@ class VoiceState:
                     return
 
             else:
-                print("looping")
+                # If loop is on, get the source again. I don't know why but apparently 
+                # You can't use the same source twice, you need to create a new source everytime :/
                 try:
                     source = await YTDLSource.create_source(self._ctx, self.current.source.url, loop=self.bot.loop)
                 except YTDLError as e:
@@ -274,21 +269,21 @@ class VoiceState:
                 else:
                     self.current = Song(source)
 
-            print("Playing, audio_player")
+            # Set the volume, that nobody cares and play it
             self.current.source.volume = self._volume
             self.voice.play(self.current.source, after=self.play_next_song)
 
+            # If option "annouce next song" is on, annouce it
             if self.bot.msettings.get(self._ctx.guild.id, "annouce_next_song"):
                 await self.current.source.channel.send(embed=self.current.create_embed())     
 
-            print("wait")
             await self.next.wait()
 
     def play_next_song(self, error=None):
-        print("play_next_song called")
+        # Call when the song ended or and exception has been raised
         if error:
             raise VoiceError(str(error))
-        print("play_next_song setted")
+
         self.next.set()
 
     def skip(self):
@@ -299,9 +294,7 @@ class VoiceState:
             self.voice.stop()
 
     async def stop(self):
-        print("stopping audio_player")
         self.songs.clear()
-        print("clear audio_player")
 
         if self.voice:
             await self.voice.disconnect()
@@ -311,9 +304,12 @@ class VoiceState:
 class Music(commands.Cog):
     def __init__(self, bot: commands.Bot):
         self.bot = bot
+
+        # For keeping track of all voice states
         self.voice_states = {}
 
     def get_voice_state(self, ctx: commands.Context):
+        # Get voice state and embeded it to context.
         state = self.voice_states.get(ctx.guild.id)
         if not state:
             state = VoiceState(self.bot, ctx)
@@ -335,11 +331,12 @@ class Music(commands.Cog):
         ctx.voice_state = self.get_voice_state(ctx)
 
     async def cog_command_error(self, ctx: commands.Context, error: commands.CommandError):
-        error.handled = True
+        error.handled = True # So error_handle won't be call and send message twice
         await ctx.send(':x: **An error occurred:** {}'.format(str(error)))
     
     @commands.Cog.listener()
     async def on_voice_state_update(self, member: discord.Member, before: discord.VoiceState, after: discord.VoiceState) -> None:
+        # Prevend force disconnect the bot from breaking the bot.
         if member.id != self.bot.user.id:
             return
 
@@ -486,11 +483,14 @@ class Music(commands.Cog):
             ctx.voice_state.skip_votes.add(voter.id)
             total_votes = len(ctx.voice_state.skip_votes)
 
-            if total_votes >= 3:
+            needed_votes = int(len([i for i in ctx.author.voice.channel.members if not i.bot]) * 0.5 // 1)
+            print(needed_votes)
+
+            if total_votes >= needed_votes:
                 await ctx.message.add_reaction('⏭')
                 ctx.voice_state.skip()
             else:
-                await ctx.send('Skip vote added, currently at **{}/3**'.format(total_votes))
+                await ctx.send('Skip vote added, currently at **{}/{}**'.format(total_votes, needed_votes))
 
         else:
             await ctx.send('You have already voted to skip this song.')
