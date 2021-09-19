@@ -16,6 +16,7 @@ pip install -U discord.py pynacl youtube-dl
 You also need FFmpeg in your PATH environment variable or the FFmpeg.exe binary in your bot's directory on Windows.
 """
 
+import os
 import asyncio
 import functools
 import itertools
@@ -27,11 +28,13 @@ import youtube_dl
 from async_timeout import timeout
 from discord.ext import commands
 
-
+import googleapiclient.discovery
+from urllib.parse import parse_qs, urlparse
 
 # Silence useless bug reports messages
 youtube_dl.utils.bug_reports_message = lambda: ''
 
+YOUTUBE_API_KEY = os.getenv("YOUTUBE_API_KEY")
 
 class VoiceError(Exception):
     pass
@@ -572,15 +575,51 @@ class Music(commands.Cog):
             await ctx.invoke(self._join)
 
         async with ctx.typing():
-            try:
-                source = await YTDLSource.create_source(ctx, search, loop=self.bot.loop)
-            except YTDLError as e:
-                await ctx.send('An error occurred while processing this request: {}'.format(str(e)))
-            else:
-                song = Song(source)
+            if "youtube.com/playlist?" in search:
+                query = parse_qs(urlparse(search).query, keep_blank_values=True)
+                playlist_id = query["list"][0]
 
-                await ctx.voice_state.songs.put(song)
-                await ctx.send('Enqueued {}'.format(str(source)))
+                youtube = googleapiclient.discovery.build("youtube", "v3", developerKey = YOUTUBE_API_KEY)
+
+                request = youtube.playlistItems().list(
+                    part = "snippet",
+                    playlistId = playlist_id,
+                    maxResults = 50
+                )
+                response = request.execute()
+
+                playlist_items = []
+                while request is not None:
+                    response = request.execute()
+                    playlist_items += response["items"]
+                    request = youtube.playlistItems().list_next(request, response)
+                
+                sources = [f'https://www.youtube.com/watch?v={t["snippet"]["resourceId"]["videoId"]}&list={playlist_id}&t=0s' for t in playlist_items]
+                amount = 0
+
+                for s in sources:
+                    try:
+                        source = await YTDLSource.create_source(ctx, s, loop=self.bot.loop)
+                    except YTDLError:
+                        await ctx.send(f'An error occurred while loading a song ({s})\nI will skip it!')
+                        continue
+                    else:
+                        song = Song(source)
+                        await ctx.voice_state.songs.put(song)
+                    amount += 1
+                
+                await ctx.send("Enqueued {} songs.".format(amount))
+                
+            else:
+                try:
+                    source = await YTDLSource.create_source(ctx, search, loop=self.bot.loop)
+                except YTDLError as e:
+                    await ctx.send('An error occurred while processing this request: {}'.format(str(e)))
+                else:
+                    song = Song(source)
+
+                    await ctx.voice_state.songs.put(song)
+                    await ctx.send('Enqueued {}'.format(str(source)))
 
     @_join.before_invoke
     @_play.before_invoke

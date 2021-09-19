@@ -125,3 +125,118 @@ Traceback (most recent call last):
 exts.music.VoiceError: [Errno 9] Bad file descriptor
 2021-09-19 16:24:44,033 | bot | INFO | Resumed Connection
 2021-09-19 16:24:44,195 | bot | DEBUG | changed bot status
+2021-09-19 16:30:37,771 | exts.muleval | DEBUG | Eval command; Ignore black list: True
+2021-09-19 16:30:37,772 | exts.muleval | INFO | 'py' highlighted code block
+2021-09-19 16:30:37,772 | exts.muleval | TRACE | Eval command: Tpmonkey#2682(518063131096907813) with code:
+import requests
+
+r = requests.get("https://www.youtube.com/watch?v=ggFdVukUAbk&list=PLtfeVC7X93xYmiskD2M2_z5AqAh6voz3F")
+print(r.text)
+2021-09-19 16:32:01,977 | bot | INFO | Cog loaded: AdminCommands
+2021-09-19 16:32:22,607 | exts.admin | DEBUG | Admin Eval from Tpmonkey#2682; code: await selef.bot.trust_client.get("https://www.youtube.com/playlist?list=PLtfeVC7X93xYmiskD2M2_z5AqAh6voz3F")
+2021-09-19 16:32:26,927 | exts.admin | DEBUG | Admin Eval from Tpmonkey#2682; code: await self.bot.trust_client.get("https://www.youtube.com/playlist?list=PLtfeVC7X93xYmiskD2M2_z5AqAh6voz3F")
+2021-09-19 16:32:50,179 | exts.admin | DEBUG | Admin Eval from Tpmonkey#2682; code: await self.bot.trust_session.get("https://www.youtube.com/playlist?list=PLtfeVC7X93xYmiskD2M2_z5AqAh6voz3F")
+2021-09-19 16:32:58,006 | exts.admin | DEBUG | Admin Eval from Tpmonkey#2682; code: self.result.text
+2021-09-19 16:33:08,888 | exts.admin | DEBUG | Admin Eval from Tpmonkey#2682; code: self.result.text()
+2021-09-19 16:33:41,716 | exts.admin | DEBUG | Admin Eval from Tpmonkey#2682; code: await self.bot.trust_session.get("https://www.youtube.com/playlist?list=PLtfeVC7X93xYmiskD2M2_z5AqAh6voz3F")
+2021-09-19 16:33:47,059 | exts.admin | DEBUG | Admin Eval from Tpmonkey#2682; code: await self.result.text()
+2021-09-19 16:33:59,897 | exts.admin | DEBUG | Stop Admin Eval by Tpmonkey#2682
+2021-09-19 16:34:02,739 | exts.admin | TRACE | Couldn't delete eval job; 518063131096907813
+2021-09-19 16:46:58,766 | asyncio | ERROR | Task was destroyed but it is pending!
+task: <Task pending name='Task-22225' coro=<VoiceState.audio_player_task() running at /home/runner/TpLearn-BETA/exts/music.py:280> wait_for=<Future cancelled>>
+2021-09-19 16:55:52,720 | bot | INFO | Cog loaded: Music
+2021-09-19 16:56:33,206 | asyncio | DEBUG | Using selector: EpollSelector
+2021-09-19 16:56:33,207 | bot | DEBUG | created bot base.
+2021-09-19 16:56:33,224 | constant | DEBUG | init database succesful
+2021-09-19 16:56:33,254 | utils.planner | DEBUG | triggered update
+2021-09-19 16:56:33,260 | bot | DEBUG | bot subclass Created.
+2021-09-19 16:56:33,263 | bot | INFO | Cog loaded: Assignments
+2021-09-19 16:56:33,266 | bot | INFO | Cog loaded: Snekbox
+2021-09-19 16:56:33,267 | bot | INFO | Cog loaded: Latency
+2021-09-19 16:56:33,742 | bot | INFO | Cog loaded: Music
+2021-09-19 16:56:33,744 | bot | INFO | Cog loaded: Utility
+2021-09-19 16:56:33,746 | bot | INFO | Cog loaded: DayLoop
+2021-09-19 16:56:33,747 | bot | INFO | Cog loaded: Help
+2021-09-19 16:56:33,748 | bot | INFO | Cog loaded: Updater
+2021-09-19 16:56:33,749 | bot | INFO | Cog loaded: NewPatch
+2021-09-19 16:56:33,751 | bot | INFO | Cog loaded: AdminCommands
+2021-09-19 16:56:33,751 | bot | INFO | Cog loaded: ErrorHandler
+2021-09-19 16:56:33,753 | bot | INFO | Cog loaded: Debug
+2021-09-19 16:56:33,819 | bot | INFO | Cog loaded: KUSNews
+2021-09-19 16:56:33,820 | bot | INFO | Cog loaded: SetUp
+2021-09-19 16:56:33,821 | bot | INFO | Cog loaded: VoiceChannel
+2021-09-19 16:56:33,847 | exts.kus | DEBUG | loaded data
+2021-09-19 16:56:36,450 | utils.planner | DEBUG | returning sorted date for 562976873685057546
+2021-09-19 16:56:36,471 | exts.new_patch | DEBUG | Version change found, annoucing..
+2021-09-19 16:56:36,472 | bot | INFO | Connected successfully
+2021-09-19 16:56:36,612 | bot | DEBUG | changed bot status
+2021-09-19 16:56:36,676 | bot | DEBUG | creating assignment embed...
+2021-09-19 16:56:36,677 | bot | DEBUG | successfully created assignment embed
+2021-09-19 16:56:37,765 | bot | DEBUG | creating assignment embed...
+2021-09-19 16:56:37,765 | bot | DEBUG | successfully created assignment embed
+2021-09-19 16:56:38,887 | bot | DEBUG | creating assignment embed...
+2021-09-19 16:56:38,887 | bot | DEBUG | successfully created assignment embed
+2021-09-19 16:56:40,042 | bot | DEBUG | creating assignment embed...
+2021-09-19 16:56:40,043 | bot | DEBUG | successfully created assignment embed
+2021-09-19 16:56:41,146 | bot | DEBUG | exts.update :white_check_mark: Sucessfully update works at 562976873685057546 :
+99EEEE
+2021-09-19 16:56:41,290 | exts.update | DEBUG | updated active-works for 562976873685057546
+2021-09-19 16:56:41,315 | utils.planner | DEBUG | returning sorted date for 728482381215826000
+2021-09-19 16:56:41,441 | bot | DEBUG | creating assignment embed...
+2021-09-19 16:56:41,441 | bot | DEBUG | successfully created assignment embed
+2021-09-19 16:56:42,531 | bot | DEBUG | creating assignment embed...
+2021-09-19 16:56:42,531 | bot | DEBUG | successfully created assignment embed
+2021-09-19 16:56:43,676 | bot | DEBUG | exts.update :white_check_mark: Sucessfully update works at 728482381215826000 :
+22EE
+2021-09-19 16:56:43,786 | exts.update | DEBUG | updated active-works for 728482381215826000
+2021-09-19 16:56:43,786 | utils.planner | DEBUG | returning sorted date for 829749071891005512
+2021-09-19 16:56:44,027 | utils.planner | DEBUG | returning sorted date for 773426467492069386
+2021-09-19 16:56:51,192 | googleapiclient.discovery_cache | INFO | file_cache is only supported with oauth2client<4.0.0
+2021-09-19 16:56:51,198 | googleapiclient.discovery | DEBUG | URL being requested: GET https://youtube.googleapis.com/youtube/v3/playlistItems?part=snippet&playlistId=PLtfeVC7X93xYmiskD2M2_z5AqAh6voz3F&maxResults=50&key=AIzaSyAdxWpkjawZwkOoLZNdBKnaUQ1o3Wov2cg&alt=json
+2021-09-19 16:56:51,496 | exts.errorhand | TRACE | Command: p https://www.youtube.com/playlist?list=PLtfeVC7X93xYmiskD2M2_z5AqAh6voz3F; Already handled locally.
+2021-09-19 16:58:29,054 | bot | INFO | Cog loaded: Music
+2021-09-19 16:58:32,211 | googleapiclient.discovery_cache | INFO | file_cache is only supported with oauth2client<4.0.0
+2021-09-19 16:58:32,218 | googleapiclient.discovery | DEBUG | URL being requested: GET https://youtube.googleapis.com/youtube/v3/playlistItems?part=snippet&playlistId=PLtfeVC7X93xYmiskD2M2_z5AqAh6voz3F&maxResults=50&key=AIzaSyAdxWpkjawZwkOoLZNdBKnaUQ1o3Wov2cg&alt=json
+2021-09-19 16:58:32,504 | exts.errorhand | TRACE | Command: p https://www.youtube.com/playlist?list=PLtfeVC7X93xYmiskD2M2_z5AqAh6voz3F; Already handled locally.
+2021-09-19 17:00:33,824 | bot | DEBUG | exts.dayloop New day [UTC+7] detected.
+2021-09-19 17:00:34,159 | utils.planner | DEBUG | triggered update
+2021-09-19 17:01:32,379 | bot | INFO | Cog loaded: Music
+2021-09-19 17:01:39,658 | googleapiclient.discovery_cache | INFO | file_cache is only supported with oauth2client<4.0.0
+2021-09-19 17:01:39,665 | googleapiclient.discovery | DEBUG | URL being requested: GET https://youtube.googleapis.com/youtube/v3/playlistItems?part=snippet&playlistId=PLtfeVC7X93xYmiskD2M2_z5AqAh6voz3F&maxResults=50&key=AIzaSyAdxWpkjawZwkOoLZNdBKnaUQ1o3Wov2cg&alt=json
+2021-09-19 17:02:34,167 | utils.planner | DEBUG | returning sorted date for 562976873685057546
+2021-09-19 17:02:34,297 | bot | DEBUG | creating assignment embed...
+2021-09-19 17:02:34,298 | bot | DEBUG | successfully created assignment embed
+2021-09-19 17:02:35,383 | bot | DEBUG | creating assignment embed...
+2021-09-19 17:02:35,383 | bot | DEBUG | successfully created assignment embed
+2021-09-19 17:02:36,482 | bot | DEBUG | creating assignment embed...
+2021-09-19 17:02:36,483 | bot | DEBUG | successfully created assignment embed
+2021-09-19 17:02:37,590 | bot | DEBUG | creating assignment embed...
+2021-09-19 17:02:37,590 | bot | DEBUG | successfully created assignment embed
+2021-09-19 17:02:38,738 | bot | DEBUG | creating assignment embed...
+2021-09-19 17:02:38,739 | bot | DEBUG | successfully created assignment embed
+2021-09-19 17:02:39,896 | bot | DEBUG | creating assignment embed...
+2021-09-19 17:02:39,896 | bot | DEBUG | successfully created assignment embed
+2021-09-19 17:02:40,990 | bot | DEBUG | creating assignment embed...
+2021-09-19 17:02:40,990 | bot | DEBUG | successfully created assignment embed
+2021-09-19 17:02:42,148 | bot | DEBUG | creating assignment embed...
+2021-09-19 17:02:42,149 | bot | DEBUG | successfully created assignment embed
+2021-09-19 17:02:43,275 | bot | DEBUG | exts.update :white_check_mark: Sucessfully update works at 562976873685057546 :
+99EEEEEEEE
+2021-09-19 17:02:43,468 | exts.update | DEBUG | updated active-works for 562976873685057546
+2021-09-19 17:02:43,492 | utils.planner | DEBUG | returning sorted date for 728482381215826000
+2021-09-19 17:02:43,623 | bot | DEBUG | creating assignment embed...
+2021-09-19 17:02:43,623 | bot | DEBUG | successfully created assignment embed
+2021-09-19 17:02:44,709 | bot | DEBUG | creating assignment embed...
+2021-09-19 17:02:44,710 | bot | DEBUG | successfully created assignment embed
+2021-09-19 17:02:45,791 | bot | DEBUG | exts.update :white_check_mark: Sucessfully update works at 728482381215826000 :
+22EE
+2021-09-19 17:02:45,887 | exts.update | DEBUG | updated active-works for 728482381215826000
+2021-09-19 17:02:45,887 | utils.planner | DEBUG | returning sorted date for 829749071891005512
+2021-09-19 17:02:46,041 | utils.planner | DEBUG | returning sorted date for 773426467492069386
+2021-09-19 17:02:46,128 | bot | DEBUG | creating assignment embed...
+2021-09-19 17:02:46,128 | bot | DEBUG | successfully created assignment embed
+2021-09-19 17:02:47,235 | bot | DEBUG | creating assignment embed...
+2021-09-19 17:02:47,235 | bot | DEBUG | successfully created assignment embed
+2021-09-19 17:02:48,344 | bot | DEBUG | exts.update :white_check_mark: Sucessfully update works at 773426467492069386 :
+22EE
+2021-09-19 17:02:48,523 | exts.update | DEBUG | updated active-works for 773426467492069386

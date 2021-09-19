@@ -164,18 +164,18 @@ class AdminCommands(Cog):
             try:
                 self.mod = importlib.import_module(code_)
             except:
-                result = traceback.format_exc()
+                self.result = traceback.format_exc()
             else:
-                result = self.mod
+                self.result = self.mod
 
         else:            
             try:
-                result = await eval( str(code).replace("await ", "") ) if "await" in code else eval(code)
+                self.result = await eval( str(code).replace("await ", "") ) if "await" in code else eval(code)
             except:
-                result = traceback.format_exc()
+                self.result = traceback.format_exc()
 
         # In case of output is longer than Discord allowed, I use list of embed and send it one by one
-        embeds = await self._format(ctx, code, result)
+        embeds = await self._format(ctx, code, self.result)
         if not send:
             return
         
