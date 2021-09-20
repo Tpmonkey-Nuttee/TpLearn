@@ -17,6 +17,7 @@ You also need FFmpeg in your PATH environment variable or the FFmpeg.exe binary 
 """
 
 import os
+import enum
 import asyncio
 import functools
 import itertools
@@ -36,9 +37,13 @@ youtube_dl.utils.bug_reports_message = lambda: ''
 
 YOUTUBE_API_KEY = os.getenv("YOUTUBE_API_KEY")
 
+class Loop(enum.Enum):
+    NONE = 0
+    SINGLE = 1
+    QUEUE = 2
+
 class VoiceError(Exception):
     pass
-
 
 class YTDLError(Exception):
     pass
@@ -214,7 +219,7 @@ class VoiceState:
         self.next = asyncio.Event()
         self.songs = SongQueue()
 
-        self._loop = False
+        self._loop = Loop.NONE
         self._volume = 0.5
         self.skip_votes = set()
 
@@ -228,7 +233,7 @@ class VoiceState:
         return self._loop
 
     @loop.setter
-    def loop(self, value: bool):
+    def loop(self, value: Loop):
         self._loop = value
 
     @property
@@ -248,7 +253,8 @@ class VoiceState:
         while True:
             self.next.clear()
 
-            if not self.loop:
+            if self._loop == Loop.NONE:
+                print("No loop")
                 # Try to get the next song within timeout limit (defeault 3 mins).
                 # If no song will be added to the queue in time,
                 # the player will disconnect due to performance
@@ -263,14 +269,20 @@ class VoiceState:
                     return
 
             else:
+                print("Yes loop")
                 # If loop is on, get the source again. I don't know why but apparently 
                 # You can't use the same source twice, you need to create a new source everytime :/
                 try:
                     source = await YTDLSource.create_source(self._ctx, self.current.source.url, loop=self.bot.loop)
                 except YTDLError as e:
                     await self._ctx.send('An error occurred while processing this request: {}'.format(str(e)))
-                else:
-                    self.current = Song(source)
+                song = Song(source)
+
+                if self._loop == Loop.SINGLE:
+                    self.current = song
+                elif self._loop == Loop.QUEUE:
+                    await self.songs.put(song)
+                    self.current = await self.songs.get()
 
             # Set the volume, that nobody cares and play it
             self.current.source.volume = self._volume
@@ -552,12 +564,33 @@ class Music(commands.Cog):
         if not ctx.voice_state.is_playing:
             return await ctx.send('Nothing being played at the moment.')
 
-        # Inverse boolean value to loop and unloop.
-        ctx.voice_state.loop = not ctx.voice_state.loop
-        if ctx.voice_state.loop:
-            await ctx.send("Now Looping Current Song!")
+
+        if ctx.voice_state.loop == Loop.NONE:
+            ctx.voice_state.loop = Loop.SINGLE
+            await ctx.send(":repeat_one: Now Looping Current Song!")
+        elif ctx.voice_state.loop ==  Loop.SINGLE:
+            ctx.voice_state.loop = Loop.QUEUE
+            await ctx.send(":repeat: Now Looping Queue!")
         else:
-            await ctx.send("I'm not looping anymore :/")
+            ctx.voice_state.loop = Loop.NONE
+            await ctx.send("Disable Looping!")
+    
+    @commands.command(name='loopqueue')
+    async def _loopq(self, ctx: commands.Context):
+        """Loops the entire queue.
+
+        Invoke this command again to unloop the queue.
+        """
+
+        if not ctx.voice_state.is_playing:
+            return await ctx.send('Nothing being played at the moment.')
+
+        if ctx.voice_state.loop == Loop.SINGLE or ctx.voice_state.loop == Loop.NONE:
+            ctx.voice_state.loop = Loop.QUEUE
+            await ctx.send(":repeat: Now Looping Queue!")
+        else:
+            ctx.voice_state.loop = Loop.NONE
+            await ctx.send("Disable Looping!")
         
 
     @commands.command(name='play', aliases=['p'])
@@ -598,17 +631,25 @@ class Music(commands.Cog):
                 amount = 0
 
                 for s in sources:
+                    print("Loading", s)
                     try:
-                        source = await YTDLSource.create_source(ctx, s, loop=self.bot.loop)
-                    except YTDLError:
+                        source = await YTDLSource.create_source(ctx, s, loop=self.bot.loop)   
+                    except Exception as e:
+                        print("Error, passing", e)
                         await ctx.send(f'An error occurred while loading a song ({s})\nI will skip it!')
                         continue
                     else:
-                        song = Song(source)
+                        song = Song(source)                        
                         await ctx.voice_state.songs.put(song)
                     amount += 1
+
+
+                    await asyncio.sleep(1)
+                    
+                    if amount >= 20:
+                        break
                 
-                await ctx.send("Enqueued {} songs.".format(amount))
+                await ctx.send("Enqueued {} songs. (Maximum of 20 songs per playlist)".format(amount))
                 
             else:
                 try:

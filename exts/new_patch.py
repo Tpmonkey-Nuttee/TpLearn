@@ -53,6 +53,7 @@ class NewPatch(Cog):
         embed.add_field(name = "Patch Note:", value=patch_notes)
         
         await self.bot.get_channel(762326316455821363).send(embed=embed)
+        await self.bot.get_channel(889196845090365491).send(embed=embed)
 
 def setup(bot: Bot) -> None:
     bot.add_cog(NewPatch(bot))

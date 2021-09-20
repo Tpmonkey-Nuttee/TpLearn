@@ -5,10 +5,10 @@ Made by Tpmonkey
 
 ### ---------- General ---------- ###
 
-version = "1.3.2"
+version = "1.3.2b"
 note = [
-    "- You can now disconnect the bot from voicechannel without breaking it!",
-    "- Vote skip will need 50% of all users in the vc. (Except bots)"
+    "Loop queue is here with `,loopqueue` command",
+    "or You can toggle it with `,loop` too!"
 ]
 
 prefix = "," # Bot Prefix.
