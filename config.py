@@ -5,10 +5,10 @@ Made by Tpmonkey
 
 ### ---------- General ---------- ###
 
-version = "1.3.2b"
+version = "1.3.3"
 note = [
-    "Loop queue is here with `,loopqueue` command",
-    "or You can toggle it with `,loop` too!"
+    "- Improved YouTube playlist system.",
+    "- Fixed a bug where loop queue can get you stuck on the same song."
 ]
 
 prefix = "," # Bot Prefix.

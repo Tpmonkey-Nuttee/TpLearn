@@ -74,7 +74,6 @@ class YTDLSource(discord.PCMVolumeTransformer):
     ytdl = youtube_dl.YoutubeDL(YTDL_OPTIONS)
 
     def __init__(self, ctx: commands.Context, source: discord.FFmpegPCMAudio, *, data: dict, volume: float = 0.5):
-        print("Initing YouTubeDL")
         super().__init__(source, volume)
 
         self.requester = ctx.author
@@ -95,8 +94,6 @@ class YTDLSource(discord.PCMVolumeTransformer):
         self.likes = data.get('like_count')
         self.dislikes = data.get('dislike_count')
         self.stream_url = data.get('url')
-
-        print("Inited YouTubeDL")
 
     def __str__(self):
         return '**{0.title}** by **{0.uploader}**'.format(self)
@@ -161,13 +158,19 @@ class YTDLSource(discord.PCMVolumeTransformer):
 
         return ', '.join(duration)
 
+class PlaylistSong:
+    def __init__(self, ctx: commands.Context, url: str):
+        self.url = url
+        self.ctx = ctx
 
 class Song:
     __slots__ = ('source', 'requester')
 
-    def __init__(self, source: YTDLSource):
+    def __init__(self, source: YTDLSource = None, url: str = None):
+
         self.source = source
         self.requester = source.requester
+
 
     def create_embed(self):
         embed = discord.Embed(
@@ -246,12 +249,13 @@ class VoiceState:
 
     @property
     def is_playing(self):
-        return self.voice and self.current
-    
+        return self.voice and self.current    
 
     async def audio_player_task(self):
         while True:
+            print("at the start")
             self.next.clear()
+            print("now passed start")
 
             if self._loop == Loop.NONE:
                 print("No loop")
@@ -269,20 +273,37 @@ class VoiceState:
                     return
 
             else:
-                print("Yes loop")
+                print("yes loop")
                 # If loop is on, get the source again. I don't know why but apparently 
                 # You can't use the same source twice, you need to create a new source everytime :/
-                try:
-                    source = await YTDLSource.create_source(self._ctx, self.current.source.url, loop=self.bot.loop)
-                except YTDLError as e:
-                    await self._ctx.send('An error occurred while processing this request: {}'.format(str(e)))
-                song = Song(source)
+
+                song = None
+                if not isinstance(self.current, PlaylistSong):
+                    try:
+                        source = await YTDLSource.create_source(self._ctx, self.current.source.url, loop=self.bot.loop)
+                    except YTDLError as e:
+                        await self._ctx.send('An error occurred while processing this request: {}'.format(str(e)))
+                    song = Song(source)
 
                 if self._loop == Loop.SINGLE:
                     self.current = song
                 elif self._loop == Loop.QUEUE:
-                    await self.songs.put(song)
+                    if song is not None:
+                        await self.songs.put(song)
+                        print("put the song")
                     self.current = await self.songs.get()
+                    print("get a new one")
+            
+            if isinstance(self.current, PlaylistSong):
+                print("playist found")
+                try:
+                    source = await YTDLSource.create_source(self.current.ctx, self.current.url, loop=self.bot.loop)
+                except Exception:
+                    await self._ctx.send(f"Unable to load: {self.current.url}")
+                    print("continue")
+                    continue
+                print("is it continueing")
+                self.current = Song(source)
 
             # Set the volume, that nobody cares and play it
             self.current.source.volume = self._volume
@@ -617,7 +638,7 @@ class Music(commands.Cog):
                 request = youtube.playlistItems().list(
                     part = "snippet",
                     playlistId = playlist_id,
-                    maxResults = 50
+                    maxResults = 20
                 )
                 response = request.execute()
 
@@ -631,7 +652,7 @@ class Music(commands.Cog):
                 amount = 0
 
                 for s in sources:
-                    print("Loading", s)
+                    """print("Loading", s)
                     try:
                         source = await YTDLSource.create_source(ctx, s, loop=self.bot.loop)   
                     except Exception as e:
@@ -639,17 +660,12 @@ class Music(commands.Cog):
                         await ctx.send(f'An error occurred while loading a song ({s})\nI will skip it!')
                         continue
                     else:
-                        song = Song(source)                        
-                        await ctx.voice_state.songs.put(song)
+                        song = Song(source)   """      
+
+                    await ctx.voice_state.songs.put(PlaylistSong(ctx, s))
                     amount += 1
-
-
-                    await asyncio.sleep(1)
-                    
-                    if amount >= 20:
-                        break
                 
-                await ctx.send("Enqueued {} songs. (Maximum of 20 songs per playlist)".format(amount))
+                return await ctx.send("Enqueued {} songs. (Maximum of 20 songs per playlist)".format(amount))
                 
             else:
                 try:
