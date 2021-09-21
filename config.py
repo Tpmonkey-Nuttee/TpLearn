@@ -5,10 +5,9 @@ Made by Tpmonkey
 
 ### ---------- General ---------- ###
 
-version = "1.3.3"
+version = "1.3.4"
 note = [
-    "- Improved YouTube playlist system.",
-    "- Fixed a bug where loop queue can get you stuck on the same song."
+    "[**Hotfix**] - Fixed queue command broke when added YouTube playlist."
 ]
 
 prefix = "," # Bot Prefix.

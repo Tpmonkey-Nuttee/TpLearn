@@ -549,7 +549,10 @@ class Music(commands.Cog):
 
         queue = ''
         for i, song in enumerate(ctx.voice_state.songs[start:end], start=start):
-            queue += '`{0}.` [**{1.source.title}**]({1.source.url})\n'.format(i + 1, song)
+            if isinstance(song, Song):
+                queue += '**{0}.** [{1.source.title}]({1.source.url})\n'.format(i + 1, song)
+            else:
+                queue += f"**{i+1}.** [Not yet loaded]({song.url})\n"
 
         embed = (discord.Embed(description='**{} tracks:**\n\n{}'.format(len(ctx.voice_state.songs), queue))
                  .set_footer(text='Viewing page {}/{}'.format(page, pages)))
