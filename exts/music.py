@@ -176,6 +176,7 @@ class Song:
         embed.add_field(name='Requested by', value=self.requester.mention)
 
         embed.set_thumbnail(url=self.source.thumbnail)
+        embed.set_footer(text="Use ,p <song> to add more!")
 
         return embed
 

@@ -100,3 +100,51 @@ aiohttp.client_exceptions.ClientOSError: [Errno 104] Connection reset by peer
 2021-09-22 08:40:35,616 | googleapiclient.discovery_cache | INFO | file_cache is only supported with oauth2client<4.0.0
 2021-09-22 08:40:35,631 | googleapiclient.discovery | DEBUG | URL being requested: GET https://youtube.googleapis.com/youtube/v3/playlistItems?part=snippet&playlistId=PLtfeVC7X93xYmiskD2M2_z5AqAh6voz3F&maxResults=25&key=AIzaSyAdxWpkjawZwkOoLZNdBKnaUQ1o3Wov2cg&alt=json
 2021-09-22 08:41:21,501 | exts.errorhand | TRACE | Command: current; Already handled locally.
+2021-09-22 08:42:42,321 | asyncio | DEBUG | Using selector: EpollSelector
+2021-09-22 08:42:42,326 | bot | DEBUG | created bot base.
+2021-09-22 08:42:42,359 | constant | DEBUG | init database succesful
+2021-09-22 08:42:42,397 | utils.planner | DEBUG | triggered update
+2021-09-22 08:42:42,407 | bot | DEBUG | bot subclass Created.
+2021-09-22 08:42:42,414 | bot | INFO | Cog loaded: Assignments
+2021-09-22 08:42:42,419 | bot | INFO | Cog loaded: Updater
+2021-09-22 08:42:42,422 | bot | INFO | Cog loaded: Debug
+2021-09-22 08:42:43,069 | bot | INFO | Cog loaded: Music
+2021-09-22 08:42:43,070 | bot | INFO | Cog loaded: DayLoop
+2021-09-22 08:42:43,073 | bot | INFO | Cog loaded: AdminCommands
+2021-09-22 08:42:43,159 | bot | INFO | Cog loaded: KUSNews
+2021-09-22 08:42:43,162 | bot | INFO | Cog loaded: Snekbox
+2021-09-22 08:42:43,165 | bot | INFO | Cog loaded: Utility
+2021-09-22 08:42:43,168 | bot | INFO | Cog loaded: ErrorHandler
+2021-09-22 08:42:43,169 | bot | INFO | Cog loaded: NewPatch
+2021-09-22 08:42:43,170 | bot | INFO | Cog loaded: Latency
+2021-09-22 08:42:43,171 | bot | INFO | Cog loaded: SetUp
+2021-09-22 08:42:43,173 | bot | INFO | Cog loaded: Help
+2021-09-22 08:42:43,175 | bot | INFO | Cog loaded: VoiceChannel
+2021-09-22 08:42:43,209 | exts.kus | DEBUG | loaded data
+2021-09-22 08:42:46,034 | utils.planner | DEBUG | returning sorted date for 562976873685057546
+2021-09-22 08:42:46,046 | exts.new_patch | DEBUG | Version change found, annoucing..
+2021-09-22 08:42:46,047 | bot | INFO | Connected successfully
+2021-09-22 08:42:46,259 | bot | DEBUG | changed bot status
+2021-09-22 08:42:46,264 | bot | DEBUG | creating assignment embed...
+2021-09-22 08:42:46,264 | bot | DEBUG | successfully created assignment embed
+2021-09-22 08:42:47,369 | bot | DEBUG | creating assignment embed...
+2021-09-22 08:42:47,369 | bot | DEBUG | successfully created assignment embed
+2021-09-22 08:42:48,554 | bot | DEBUG | creating assignment embed...
+2021-09-22 08:42:48,554 | bot | DEBUG | successfully created assignment embed
+2021-09-22 08:42:49,680 | bot | DEBUG | creating assignment embed...
+2021-09-22 08:42:49,681 | bot | DEBUG | successfully created assignment embed
+2021-09-22 08:42:50,827 | bot | DEBUG | exts.update :white_check_mark: Sucessfully update works at 562976873685057546 :
+77EEEE
+2021-09-22 08:42:51,025 | exts.update | DEBUG | updated active-works for 562976873685057546
+2021-09-22 08:42:51,057 | utils.planner | DEBUG | returning sorted date for 728482381215826000
+2021-09-22 08:42:51,376 | bot | DEBUG | creating assignment embed...
+2021-09-22 08:42:51,376 | bot | DEBUG | successfully created assignment embed
+2021-09-22 08:42:52,486 | bot | DEBUG | creating assignment embed...
+2021-09-22 08:42:52,486 | bot | DEBUG | successfully created assignment embed
+2021-09-22 08:42:53,643 | bot | DEBUG | exts.update :white_check_mark: Sucessfully update works at 728482381215826000 :
+22EE
+2021-09-22 08:42:53,822 | exts.update | DEBUG | updated active-works for 728482381215826000
+2021-09-22 08:42:53,822 | utils.planner | DEBUG | returning sorted date for 829749071891005512
+2021-09-22 08:42:53,959 | utils.planner | DEBUG | returning sorted date for 773426467492069386
+2021-09-22 08:43:01,299 | googleapiclient.discovery_cache | INFO | file_cache is only supported with oauth2client<4.0.0
+2021-09-22 08:43:01,312 | googleapiclient.discovery | DEBUG | URL being requested: GET https://youtube.googleapis.com/youtube/v3/playlistItems?part=snippet&playlistId=PLtfeVC7X93xYmiskD2M2_z5AqAh6voz3F&maxResults=25&key=AIzaSyAdxWpkjawZwkOoLZNdBKnaUQ1o3Wov2cg&alt=json
