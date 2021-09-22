@@ -1,24 +1,14 @@
-# -*- coding: utf-8 -*-
-
 """
-Copyright (c) 2019 Valentin B.
+Private Music bot originally created by Valentin B.
+Link: https://gist.github.com/vbe0201/ade9b80f2d3b64643d854938d40a0a2d
 
-A simple music bot written in discord.py using youtube-dl.
-
-Though it's a simple example, music bots are complex and require much time and knowledge until they work perfectly.
-Use this as an example or a base for your own bot and extend it as you want. If there are any bugs, please let me know.
-
-Requirements:
-
-Python 3.5+
-pip install -U discord.py pynacl youtube-dl
-
-You also need FFmpeg in your PATH environment variable or the FFmpeg.exe binary in your bot's directory on Windows.
+Update and Develop by Tpmonkey for Education purpose.
 """
 
 import os
 import enum
 import asyncio
+import datetime
 import functools
 import itertools
 import math
@@ -176,14 +166,14 @@ class Song:
 
     def create_embed(self):
         embed = discord.Embed(
-            title='Now playing',
-            description='```css\n{0.source.title}\n```'.format(self),
-            color=discord.Color.blurple()
+            title = "Now Playing",
+            description = f"[**{self.source.title}**]({self.source.url})",
+            color = discord.Color.random(69), # Nice
+            timestamp = datetime.datetime.utcnow()
         )
+
         embed.add_field(name='Duration', value=self.source.duration)
         embed.add_field(name='Requested by', value=self.requester.mention)
-        embed.add_field(name='Uploader', value='[{0.source.uploader}]({0.source.uploader_url})'.format(self))
-        embed.add_field(name='URL', value='[Click]({0.source.url})'.format(self))
 
         embed.set_thumbnail(url=self.source.thumbnail)
 
@@ -553,8 +543,14 @@ class Music(commands.Cog):
             else:
                 queue += f"**{i+1}.** [Not yet loaded]({song.url})\n"
 
-        embed = (discord.Embed(description='**{} tracks:**\n\n{}'.format(len(ctx.voice_state.songs), queue))
-                 .set_footer(text='Viewing page {}/{}'.format(page, pages)))
+        embed = (
+            discord.Embed(
+                description='**{} tracks:**\n\n{}'.format(len(ctx.voice_state.songs), queue),
+                colour = discord.Colour.random(),
+                timestamp = ctx.message.created_at
+            )
+            .set_footer(text='Viewing page {}/{}'.format(page, pages))
+        )
         await ctx.send(embed=embed)
 
     @commands.command(name='shuffle')

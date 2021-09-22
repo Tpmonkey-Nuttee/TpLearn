@@ -5,9 +5,11 @@ Made by Tpmonkey
 
 ### ---------- General ---------- ###
 
-version = "1.3.4"
+version = "1.3.5"
 note = [
-    "[**Hotfix**] - Fixed queue command broke when added YouTube playlist."
+    "- Volume command now display song volume correctly.",
+    "- Volume command will affect the song in real-time.",
+    "- A change in an `Now Playing` Embed and `Queue` Embed"
 ]
 
 prefix = "," # Bot Prefix.
