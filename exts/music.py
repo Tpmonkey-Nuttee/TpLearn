@@ -168,7 +168,7 @@ class Song:
         embed = discord.Embed(
             title = "Now Playing",
             description = f"[**{self.source.title}**]({self.source.url})",
-            color = discord.Color.random(69), # Nice
+            color = discord.Color.random(seed=69), # Nice
             timestamp = datetime.datetime.utcnow()
         )
 
@@ -182,7 +182,6 @@ class Song:
 
 class SongQueue(asyncio.Queue):
     def __getitem__(self, item):
-        print("Getting item in SongQueue")
         if isinstance(item, slice):
             return list(itertools.islice(self._queue, item.start, item.stop, item.step))
         else:

@@ -5,11 +5,9 @@ Made by Tpmonkey
 
 ### ---------- General ---------- ###
 
-version = "1.3.5"
+version = "1.3.6"
 note = [
-    "- Volume command now display song volume correctly.",
-    "- Volume command will affect the song in real-time.",
-    "- A change in an `Now Playing` Embed and `Queue` Embed"
+    "I broke `Now Playing` embed, but it's fixed now."
 ]
 
 prefix = "," # Bot Prefix.
