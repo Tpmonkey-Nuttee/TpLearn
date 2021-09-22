@@ -159,6 +159,8 @@ class YTDLSource(discord.PCMVolumeTransformer):
         return ', '.join(duration)
 
 class PlaylistSong:
+    __slots__ = ("url", "ctx")
+
     def __init__(self, ctx: commands.Context, url: str):
         self.url = url
         self.ctx = ctx
@@ -253,12 +255,9 @@ class VoiceState:
 
     async def audio_player_task(self):
         while True:
-            print("at the start")
             self.next.clear()
-            print("now passed start")
 
             if self._loop == Loop.NONE:
-                print("No loop")
                 # Try to get the next song within timeout limit (defeault 3 mins).
                 # If no song will be added to the queue in time,
                 # the player will disconnect due to performance
@@ -268,12 +267,10 @@ class VoiceState:
                         self.current = await self.songs.get()
                     
                 except asyncio.TimeoutError:
-                    print("Timeout no more song, audio_player")
                     self.bot.loop.create_task(self.stop())
                     return
 
             else:
-                print("yes loop")
                 # If loop is on, get the source again. I don't know why but apparently 
                 # You can't use the same source twice, you need to create a new source everytime :/
 
@@ -290,19 +287,14 @@ class VoiceState:
                 elif self._loop == Loop.QUEUE:
                     if song is not None:
                         await self.songs.put(song)
-                        print("put the song")
                     self.current = await self.songs.get()
-                    print("get a new one")
             
             if isinstance(self.current, PlaylistSong):
-                print("playist found")
                 try:
                     source = await YTDLSource.create_source(self.current.ctx, self.current.url, loop=self.bot.loop)
                 except Exception:
                     await self._ctx.send(f"Unable to load: {self.current.url}")
-                    print("continue")
                     continue
-                print("is it continueing")
                 self.current = Song(source)
 
             # Set the volume, that nobody cares and play it
