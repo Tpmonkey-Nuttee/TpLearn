@@ -421,7 +421,9 @@ class Music(commands.Cog):
             await ctx.voice_state.voice.move_to(destination)
             return
 
+
         ctx.voice_state.voice = await destination.connect()
+
 
     @commands.command(name='summon')
     async def _summon(self, ctx: commands.Context, *, channel: discord.VoiceChannel = None):
@@ -458,12 +460,17 @@ class Music(commands.Cog):
             return await ctx.send('Nothing being played at the moment.')
         
         if volume is None:
-            return await ctx.send(f"Current Volume: {ctx.voice_state.volume}%")
+            return await ctx.send(f"Current Volume: {ctx.voice_state.volume * 100}%")
 
         if 0 > volume > 100:
             return await ctx.send('Volume must be between 0 and 100')
 
         ctx.voice_state.volume = volume / 100
+        try:
+            self.voice_states[ctx.guild.id].current.source.volume = volume / 100
+        except:
+            pass
+
         await ctx.send('Volume of the player set to {}%'.format(volume))
 
     @commands.command(name='now', aliases=['current', 'playing'])
@@ -632,7 +639,7 @@ class Music(commands.Cog):
             await ctx.invoke(self._join)
 
         async with ctx.typing():
-            if "youtube.com/playlist?" in search:
+            if "youtube.com/playlist?" in search or "&start_radio" in search: 
                 query = parse_qs(urlparse(search).query, keep_blank_values=True)
                 playlist_id = query["list"][0]
 
@@ -641,15 +648,24 @@ class Music(commands.Cog):
                 request = youtube.playlistItems().list(
                     part = "snippet",
                     playlistId = playlist_id,
-                    maxResults = 20
+                    maxResults = 25
                 )
                 response = request.execute()
+                
+                maximum = 8
+                if "&start_radio" in search:
+                    maximum = 1
 
                 playlist_items = []
+                current = 0
                 while request is not None:
                     response = request.execute()
                     playlist_items += response["items"]
                     request = youtube.playlistItems().list_next(request, response)
+
+                    current += 1
+                    if current >= maximum:
+                        break
                 
                 sources = [f'https://www.youtube.com/watch?v={t["snippet"]["resourceId"]["videoId"]}&list={playlist_id}&t=0s' for t in playlist_items]
                 amount = 0
@@ -668,7 +684,7 @@ class Music(commands.Cog):
                     await ctx.voice_state.songs.put(PlaylistSong(ctx, s))
                     amount += 1
                 
-                return await ctx.send("Enqueued {} songs. (Maximum of 20 songs per playlist)".format(amount))
+                return await ctx.send("Enqueued {} songs.".format(amount))
                 
             else:
                 try:
