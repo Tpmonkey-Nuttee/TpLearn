@@ -1,0 +1,94 @@
+2021-09-23 04:27:06,244 | asyncio | DEBUG | Using selector: EpollSelector
+2021-09-23 04:27:06,246 | bot | DEBUG | created bot base.
+2021-09-23 04:27:06,270 | constant | DEBUG | init database succesful
+2021-09-23 04:27:06,319 | utils.planner | DEBUG | triggered update
+2021-09-23 04:27:06,326 | bot | DEBUG | bot subclass Created.
+2021-09-23 04:27:06,329 | bot | INFO | Cog loaded: ErrorHandler
+2021-09-23 04:27:06,333 | bot | INFO | Cog loaded: VoiceChannel
+2021-09-23 04:27:06,868 | bot | INFO | Cog loaded: Music
+2021-09-23 04:27:06,873 | bot | INFO | Cog loaded: SetUp
+2021-09-23 04:27:06,879 | bot | INFO | Cog loaded: Snekbox
+2021-09-23 04:27:06,882 | bot | INFO | Cog loaded: Updater
+2021-09-23 04:27:06,969 | bot | INFO | Cog loaded: KUSNews
+2021-09-23 04:27:06,975 | bot | INFO | Cog loaded: Assignments
+2021-09-23 04:27:06,977 | bot | INFO | Cog loaded: NewPatch
+2021-09-23 04:27:06,978 | bot | INFO | Cog loaded: Latency
+2021-09-23 04:27:06,983 | bot | INFO | Cog loaded: Utility
+2021-09-23 04:27:06,984 | bot | INFO | Cog loaded: DayLoop
+2021-09-23 04:27:06,987 | bot | INFO | Cog loaded: Help
+2021-09-23 04:27:06,994 | bot | INFO | Cog loaded: Debug
+2021-09-23 04:27:06,998 | bot | INFO | Cog loaded: AdminCommands
+2021-09-23 04:27:07,032 | exts.kus | DEBUG | loaded data
+2021-09-23 04:27:09,638 | utils.planner | DEBUG | returning sorted date for 562976873685057546
+2021-09-23 04:27:09,646 | bot | INFO | Connected successfully
+2021-09-23 04:27:09,944 | bot | DEBUG | changed bot status
+2021-09-23 04:27:09,948 | bot | DEBUG | creating assignment embed...
+2021-09-23 04:27:09,948 | bot | DEBUG | successfully created assignment embed
+2021-09-23 04:27:11,045 | bot | DEBUG | creating assignment embed...
+2021-09-23 04:27:11,045 | bot | DEBUG | successfully created assignment embed
+2021-09-23 04:27:12,141 | bot | DEBUG | creating assignment embed...
+2021-09-23 04:27:12,142 | bot | DEBUG | successfully created assignment embed
+2021-09-23 04:27:13,236 | bot | DEBUG | creating assignment embed...
+2021-09-23 04:27:13,237 | bot | DEBUG | successfully created assignment embed
+2021-09-23 04:27:14,327 | bot | DEBUG | exts.update :white_check_mark: Sucessfully update works at 562976873685057546 :
+66EEEE
+2021-09-23 04:27:14,559 | exts.update | DEBUG | updated active-works for 562976873685057546
+2021-09-23 04:27:14,614 | utils.planner | DEBUG | returning sorted date for 728482381215826000
+2021-09-23 04:27:14,693 | bot | DEBUG | creating assignment embed...
+2021-09-23 04:27:14,694 | bot | DEBUG | successfully created assignment embed
+2021-09-23 04:27:15,824 | bot | DEBUG | creating assignment embed...
+2021-09-23 04:27:15,825 | bot | DEBUG | successfully created assignment embed
+2021-09-23 04:27:16,927 | bot | DEBUG | exts.update :white_check_mark: Sucessfully update works at 728482381215826000 :
+22EE
+2021-09-23 04:27:17,104 | exts.update | DEBUG | updated active-works for 728482381215826000
+2021-09-23 04:27:17,105 | utils.planner | DEBUG | returning sorted date for 829749071891005512
+2021-09-23 04:27:17,210 | utils.planner | DEBUG | returning sorted date for 773426467492069386
+2021-09-23 05:09:03,243 | exts.errorhand | TRACE | Command: settings "announce next song" 0; Already handled locally.
+2021-09-23 05:28:52,875 | exts.admin | DEBUG | Admin Eval from Tpmonkey#2682; code: self.bot.get_cog("Music").voice_states
+2021-09-23 05:29:02,185 | exts.admin | DEBUG | Admin Eval from Tpmonkey#2682; code: self.bot.guilds
+2021-09-23 05:30:07,225 | exts.admin | DEBUG | Admin Eval from Tpmonkey#2682; code: [i.name for i in self.bot.guilds]
+2021-09-23 05:31:01,345 | bot | INFO | Cog loaded: Music
+2021-09-23 05:31:14,421 | exts.admin | DEBUG | Admin Eval from Tpmonkey#2682; code: self.bot.get_guild(728482381215826000)
+2021-09-23 05:33:49,075 | bot | INFO | Cog loaded: Music
+2021-09-23 05:34:59,466 | exts.music | DEBUG | VoiceState created for ฟังเพลงไปเล่นเกมไป
+2021-09-23 05:35:25,869 | bot | INFO | Cog loaded: Music
+2021-09-23 05:35:29,078 | exts.music | DEBUG | VoiceState created for ฟังเพลงไปเล่นเกมไป
+2021-09-23 05:35:29,079 | exts.music | INFO | Audio Player Launched for ฟังเพลงไปเล่นเกมไป
+2021-09-23 05:53:32,996 | exts.music | DEBUG | VoiceState created for ฟังเพลงไปเล่นเกมไป
+2021-09-23 05:53:32,997 | exts.music | INFO | Audio Player Launched for ฟังเพลงไปเล่นเกมไป
+2021-09-23 06:09:44,905 | exts.music | DEBUG | VoiceState created for เรียนๆ
+2021-09-23 06:09:44,907 | exts.music | INFO | Audio Player Launched for เรียนๆ
+2021-09-23 06:09:46,972 | googleapiclient.discovery_cache | INFO | file_cache is only supported with oauth2client<4.0.0
+2021-09-23 06:09:46,979 | googleapiclient.discovery | DEBUG | URL being requested: GET https://youtube.googleapis.com/youtube/v3/playlistItems?part=snippet&playlistId=PLsQ-ipbXoFYm88bmZy4eyhuIZoTtU_I_Z&maxResults=25&key=AIzaSyAdxWpkjawZwkOoLZNdBKnaUQ1o3Wov2cg&alt=json
+2021-09-23 06:09:47,137 | googleapiclient.discovery | DEBUG | Next page request URL: list_next https://youtube.googleapis.com/youtube/v3/playlistItems?part=snippet&playlistId=PLsQ-ipbXoFYm88bmZy4eyhuIZoTtU_I_Z&maxResults=25&key=AIzaSyAdxWpkjawZwkOoLZNdBKnaUQ1o3Wov2cg&alt=json&pageToken=EAAaBlBUOkNCaw
+2021-09-23 06:09:47,188 | googleapiclient.discovery | DEBUG | Next page request URL: list_next https://youtube.googleapis.com/youtube/v3/playlistItems?part=snippet&playlistId=PLsQ-ipbXoFYm88bmZy4eyhuIZoTtU_I_Z&maxResults=25&key=AIzaSyAdxWpkjawZwkOoLZNdBKnaUQ1o3Wov2cg&alt=json&pageToken=EAAaBlBUOkNESQ
+2021-09-23 06:09:47,255 | googleapiclient.discovery | DEBUG | Next page request URL: list_next https://youtube.googleapis.com/youtube/v3/playlistItems?part=snippet&playlistId=PLsQ-ipbXoFYm88bmZy4eyhuIZoTtU_I_Z&maxResults=25&key=AIzaSyAdxWpkjawZwkOoLZNdBKnaUQ1o3Wov2cg&alt=json&pageToken=EAAaBlBUOkNFcw
+2021-09-23 06:09:47,292 | googleapiclient.discovery | DEBUG | Next page request URL: list_next https://youtube.googleapis.com/youtube/v3/playlistItems?part=snippet&playlistId=PLsQ-ipbXoFYm88bmZy4eyhuIZoTtU_I_Z&maxResults=25&key=AIzaSyAdxWpkjawZwkOoLZNdBKnaUQ1o3Wov2cg&alt=json&pageToken=EAAaBlBUOkNHUQ
+2021-09-23 06:09:47,356 | googleapiclient.discovery | DEBUG | Next page request URL: list_next https://youtube.googleapis.com/youtube/v3/playlistItems?part=snippet&playlistId=PLsQ-ipbXoFYm88bmZy4eyhuIZoTtU_I_Z&maxResults=25&key=AIzaSyAdxWpkjawZwkOoLZNdBKnaUQ1o3Wov2cg&alt=json&pageToken=EAAaBlBUOkNIMA
+2021-09-23 06:10:00,524 | exts.errorhand | TRACE | Command: queue; Already handled locally.
+2021-09-23 06:10:29,802 | bot | INFO | Cog loaded: Music
+2021-09-23 06:10:29,835 | discord.player | ERROR | Calling the after function failed.
+Traceback (most recent call last):
+  File "/opt/virtualenvs/python3/lib/python3.8/site-packages/discord/player.py", line 616, in _call_after
+    self.after(error)
+  File "/home/runner/TpLearn/exts/music.py", line 319, in play_next_song
+    raise VoiceError(str(error))
+exts.music.VoiceError: [Errno 9] Bad file descriptor
+2021-09-23 06:10:36,034 | exts.music | DEBUG | VoiceState created for เรียนๆ
+2021-09-23 06:10:36,034 | exts.music | INFO | Audio Player Launched for เรียนๆ
+2021-09-23 06:10:38,097 | googleapiclient.discovery_cache | INFO | file_cache is only supported with oauth2client<4.0.0
+2021-09-23 06:10:38,110 | googleapiclient.discovery | DEBUG | URL being requested: GET https://youtube.googleapis.com/youtube/v3/playlistItems?part=snippet&playlistId=PLsQ-ipbXoFYm88bmZy4eyhuIZoTtU_I_Z&maxResults=25&key=AIzaSyAdxWpkjawZwkOoLZNdBKnaUQ1o3Wov2cg&alt=json
+2021-09-23 06:10:38,293 | googleapiclient.discovery | DEBUG | Next page request URL: list_next https://youtube.googleapis.com/youtube/v3/playlistItems?part=snippet&playlistId=PLsQ-ipbXoFYm88bmZy4eyhuIZoTtU_I_Z&maxResults=25&key=AIzaSyAdxWpkjawZwkOoLZNdBKnaUQ1o3Wov2cg&alt=json&pageToken=EAAaBlBUOkNCaw
+2021-09-23 06:10:38,336 | googleapiclient.discovery | DEBUG | Next page request URL: list_next https://youtube.googleapis.com/youtube/v3/playlistItems?part=snippet&playlistId=PLsQ-ipbXoFYm88bmZy4eyhuIZoTtU_I_Z&maxResults=25&key=AIzaSyAdxWpkjawZwkOoLZNdBKnaUQ1o3Wov2cg&alt=json&pageToken=EAAaBlBUOkNESQ
+2021-09-23 06:10:38,404 | googleapiclient.discovery | DEBUG | Next page request URL: list_next https://youtube.googleapis.com/youtube/v3/playlistItems?part=snippet&playlistId=PLsQ-ipbXoFYm88bmZy4eyhuIZoTtU_I_Z&maxResults=25&key=AIzaSyAdxWpkjawZwkOoLZNdBKnaUQ1o3Wov2cg&alt=json&pageToken=EAAaBlBUOkNFcw
+2021-09-23 06:10:38,448 | googleapiclient.discovery | DEBUG | Next page request URL: list_next https://youtube.googleapis.com/youtube/v3/playlistItems?part=snippet&playlistId=PLsQ-ipbXoFYm88bmZy4eyhuIZoTtU_I_Z&maxResults=25&key=AIzaSyAdxWpkjawZwkOoLZNdBKnaUQ1o3Wov2cg&alt=json&pageToken=EAAaBlBUOkNHUQ
+2021-09-23 06:10:38,499 | googleapiclient.discovery | DEBUG | Next page request URL: list_next https://youtube.googleapis.com/youtube/v3/playlistItems?part=snippet&playlistId=PLsQ-ipbXoFYm88bmZy4eyhuIZoTtU_I_Z&maxResults=25&key=AIzaSyAdxWpkjawZwkOoLZNdBKnaUQ1o3Wov2cg&alt=json&pageToken=EAAaBlBUOkNIMA
+2021-09-23 06:25:19,421 | exts.music | DEBUG | VoiceState created for ฟังเพลงไปเล่นเกมไป
+2021-09-23 06:25:19,422 | exts.music | INFO | Audio Player Launched for ฟังเพลงไปเล่นเกมไป
+2021-09-23 06:25:21,512 | googleapiclient.discovery_cache | INFO | file_cache is only supported with oauth2client<4.0.0
+2021-09-23 06:25:21,518 | googleapiclient.discovery | DEBUG | URL being requested: GET https://youtube.googleapis.com/youtube/v3/playlistItems?part=snippet&playlistId=PLsQ-ipbXoFYm88bmZy4eyhuIZoTtU_I_Z&maxResults=25&key=AIzaSyAdxWpkjawZwkOoLZNdBKnaUQ1o3Wov2cg&alt=json
+2021-09-23 06:25:21,650 | googleapiclient.discovery | DEBUG | Next page request URL: list_next https://youtube.googleapis.com/youtube/v3/playlistItems?part=snippet&playlistId=PLsQ-ipbXoFYm88bmZy4eyhuIZoTtU_I_Z&maxResults=25&key=AIzaSyAdxWpkjawZwkOoLZNdBKnaUQ1o3Wov2cg&alt=json&pageToken=EAAaBlBUOkNCaw
+2021-09-23 06:25:21,716 | googleapiclient.discovery | DEBUG | Next page request URL: list_next https://youtube.googleapis.com/youtube/v3/playlistItems?part=snippet&playlistId=PLsQ-ipbXoFYm88bmZy4eyhuIZoTtU_I_Z&maxResults=25&key=AIzaSyAdxWpkjawZwkOoLZNdBKnaUQ1o3Wov2cg&alt=json&pageToken=EAAaBlBUOkNESQ
+2021-09-23 06:25:21,832 | googleapiclient.discovery | DEBUG | Next page request URL: list_next https://youtube.googleapis.com/youtube/v3/playlistItems?part=snippet&playlistId=PLsQ-ipbXoFYm88bmZy4eyhuIZoTtU_I_Z&maxResults=25&key=AIzaSyAdxWpkjawZwkOoLZNdBKnaUQ1o3Wov2cg&alt=json&pageToken=EAAaBlBUOkNFcw
+2021-09-23 06:25:21,905 | googleapiclient.discovery | DEBUG | Next page request URL: list_next https://youtube.googleapis.com/youtube/v3/playlistItems?part=snippet&playlistId=PLsQ-ipbXoFYm88bmZy4eyhuIZoTtU_I_Z&maxResults=25&key=AIzaSyAdxWpkjawZwkOoLZNdBKnaUQ1o3Wov2cg&alt=json&pageToken=EAAaBlBUOkNHUQ
+2021-09-23 06:25:21,956 | googleapiclient.discovery | DEBUG | Next page request URL: list_next https://youtube.googleapis.com/youtube/v3/playlistItems?part=snippet&playlistId=PLsQ-ipbXoFYm88bmZy4eyhuIZoTtU_I_Z&maxResults=25&key=AIzaSyAdxWpkjawZwkOoLZNdBKnaUQ1o3Wov2cg&alt=json&pageToken=EAAaBlBUOkNIMA

@@ -13,6 +13,7 @@ import functools
 import itertools
 import math
 import random
+import logging
 
 import discord
 import youtube_dl
@@ -26,6 +27,8 @@ from urllib.parse import parse_qs, urlparse
 youtube_dl.utils.bug_reports_message = lambda: ''
 
 YOUTUBE_API_KEY = os.getenv("YOUTUBE_API_KEY")
+
+log = logging.getLogger(__name__)
 
 class Loop(enum.Enum):
     NONE = 0
@@ -90,7 +93,6 @@ class YTDLSource(discord.PCMVolumeTransformer):
 
     @classmethod
     async def create_source(cls, ctx: commands.Context, search: str, *, loop: asyncio.BaseEventLoop = None):
-        print("Creating Source YouTubeDL")
         loop = loop or asyncio.get_event_loop()
 
         partial = functools.partial(cls.ytdl.extract_info, search, download=False, process=False)
@@ -173,7 +175,7 @@ class Song:
         embed = discord.Embed(
             title = "Now Playing",
             description = f"[**{self.source.title}**]({self.source.url})",
-            color = discord.Color.random(seed=69), # Nice
+            color = discord.Color.random(), # Nice
             timestamp = datetime.datetime.utcnow()
         )
 
@@ -211,6 +213,7 @@ class SongQueue(asyncio.Queue):
 
 class VoiceState:
     def __init__(self, bot: commands.Bot, ctx: commands.Context):
+        log.debug(f"VoiceState created for {ctx.guild}")
         self.bot = bot
         self._ctx = ctx
 
@@ -225,6 +228,7 @@ class VoiceState:
         self.skip_votes = set()
 
         self.audio_player = bot.loop.create_task(self.audio_player_task())
+        
 
     def __del__(self):
         self.audio_player.cancel()
@@ -250,7 +254,7 @@ class VoiceState:
         return self.voice and self.current    
 
     async def audio_player_task(self):
-        print("Audio Player created!")
+        log.info(f"Audio Player Launched for {self._ctx.guild}")
         while True:
             self.next.clear()
 
@@ -375,6 +379,13 @@ class Music(commands.Cog):
                 await self.voice_states[member.guild.id].stop()
                 del self.voice_states[member.guild.id]
 
+    @commands.command(name="musicdebug", hidden=True)
+    @commands.is_owner()
+    async def _music_debug(self, ctx: commands.Context):
+        await ctx.send(
+            f"Total of {len(self.voice_states)}\n"
+            "\n".join([str(i) for i in self.voice_states])
+        )
 
     @commands.command(name="settings")
     async def _settings(self, ctx: commands.Context, name: str = None, value: int = None):
@@ -542,7 +553,7 @@ class Music(commands.Cog):
         if len(ctx.voice_state.songs) == 0:
             return await ctx.send('Empty queue.')
 
-        items_per_page = 10
+        items_per_page = 8
         pages = math.ceil(len(ctx.voice_state.songs) / items_per_page)
 
         start = (page - 1) * items_per_page
@@ -557,12 +568,24 @@ class Music(commands.Cog):
 
         embed = (
             discord.Embed(
-                description='**{} tracks:**\n\n{}'.format(len(ctx.voice_state.songs), queue),
+                title = f"Queue for {ctx.guild}",
+                description='**{} tracks:**\nLoop: {} | Loop Queue: {} | Super Shuffle: {}'.format(
+                    len(ctx.voice_state.songs) + 1, 
+                    "✅" if ctx.voice_state.loop == Loop.SINGLE else "❌" ,
+                    "✅" if ctx.voice_state.loop == Loop.QUEUE else "❌" ,
+                    "✅" if ctx.voice_state.super_shuffle else "❌" ,
+                    ),
                 colour = discord.Colour.random(),
                 timestamp = ctx.message.created_at
             )
             .set_footer(text='Viewing page {}/{}'.format(page, pages))
         )
+
+        current = ctx.voice_state.current
+        embed.add_field(name = "Current:", value = f"[{current.source.title}]({current.source.url})", inline=False)
+
+        embed.add_field(name="Up Next:", value = queue)
+
         await ctx.send(embed=embed)
 
     @commands.command(name='shuffle')
