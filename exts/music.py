@@ -149,6 +149,10 @@ class YTDLSource(discord.PCMVolumeTransformer):
         return ', '.join(duration)
 
 class PlaylistSong:
+    """
+    A place holder for Playlist system. The song won't be load until it's at its queue.
+    After it's loaded, It will be <class 'Song'> instead.
+    """
     __slots__ = ("url", "ctx")
 
     def __init__(self, ctx: commands.Context, url: str):
@@ -156,6 +160,7 @@ class PlaylistSong:
         self.ctx = ctx
 
 class Song:
+    """Song class for storing the Source and Requester"""
     __slots__ = ('source', 'requester')
 
     def __init__(self, source: YTDLSource = None, url: str = None):
@@ -214,6 +219,7 @@ class VoiceState:
         self.next = asyncio.Event()
         self.songs = SongQueue()
 
+        self.super_shuffle = False
         self._loop = Loop.NONE
         self._volume = 0.5
         self.skip_votes = set()
@@ -244,6 +250,7 @@ class VoiceState:
         return self.voice and self.current    
 
     async def audio_player_task(self):
+        print("Audio Player created!")
         while True:
             self.next.clear()
 
@@ -273,8 +280,11 @@ class VoiceState:
                     song = Song(source)
 
                 if self._loop == Loop.SINGLE:
+                    # Set the current song to be the same as last one.
+                    # So it will play the same song again and again
                     self.current = song
                 elif self._loop == Loop.QUEUE:
+                    # Loop queue simply work by putting the ended song at the end of the queue.
                     if song is not None:
                         await self.songs.put(song)
                     self.current = await self.songs.get()
@@ -287,6 +297,8 @@ class VoiceState:
                     continue
                 self.current = Song(source)
 
+            if self.super_shuffle:
+                self.songs.shuffle()
             # Set the volume, that nobody cares and play it
             self.current.source.volume = self._volume
             self.voice.play(self.current.source, after=self.play_next_song)
@@ -449,7 +461,7 @@ class Music(commands.Cog):
 
         ctx.voice_state.volume = volume / 100
         try:
-            self.voice_states[ctx.guild.id].current.source.volume = volume / 100
+            ctx.voice_state.current.source.volume = volume / 100
         except:
             pass
 
@@ -562,6 +574,18 @@ class Music(commands.Cog):
 
         ctx.voice_state.songs.shuffle()
         await ctx.message.add_reaction('✅')
+    
+    @commands.command(name="sshuffle")
+    async def _sshuffle(self, ctx: commands.Context):
+        """Shuffles the queue everytimes the song ended."""
+        if len(ctx.voice_state.songs) == 0:
+            return await ctx.send('Empty queue.')
+
+        ctx.voice_state.super_shuffle = not ctx.voice_state.super_shuffle
+        await ctx.send(
+            f"✅ Turn {'on' if ctx.voice_state.super_shuffle else 'off'} super shuffle!"
+        )
+
 
     @commands.command(name='removes')
     async def _remove(self, ctx: commands.Context, index: int):
