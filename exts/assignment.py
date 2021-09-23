@@ -316,7 +316,7 @@ class Assignments(Cog):
                 return
                         
             if content is not None and content.startswith(self.bot.command_prefix):
-                return await self.close(ctx, reason = "Use anothe bot's command.")     
+                return await self.close(ctx, reason = "Use another bot's command.")     
             
             # Delete message
             await message.delete()
