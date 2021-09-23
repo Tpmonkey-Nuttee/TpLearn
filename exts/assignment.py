@@ -315,7 +315,8 @@ class Assignments(Cog):
             self.tasks[ctx.author.id]['details']['state'] == 0:
                 return
                         
-            if content is not None and content.startswith(self.bot.command_prefix): return         
+            if content is not None and content.startswith(self.bot.command_prefix):
+                return await self.close(ctx, reason = "Use anothe bot's command.")     
             
             # Delete message
             await message.delete()

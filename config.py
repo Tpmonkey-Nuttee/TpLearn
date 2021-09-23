@@ -5,9 +5,12 @@ Made by Tpmonkey
 
 ### ---------- General ---------- ###
 
-version = "1.3.6"
+version = "1.3.8"
 note = [
-    "I broke `Now Playing` embed, but it's fixed now."
+    "- Bot will now try to load YouTube Playlist in the Background.",
+    "**Dev Note:**",
+    "Download speed depends on amouth of servers that the bot is in.",
+    "This implementation should fix `Not yet loaded` while viewing queue."
 ]
 
 prefix = "," # Bot Prefix.

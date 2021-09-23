@@ -39,11 +39,9 @@ class Settings:
         self._settings = bot.database.loads( "MUSIC", {} )
 
     def __getitem__(self, item):
-        print("Get items")
         return self._settings.get(item, DEFAULT_SETTINGS)
     
     def __iter__(self):
-        print("iter")
         return self._settings.__iter__()
     
     def get(self, gid, sett):
