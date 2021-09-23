@@ -92,3 +92,10 @@ exts.music.VoiceError: [Errno 9] Bad file descriptor
 2021-09-23 06:25:21,832 | googleapiclient.discovery | DEBUG | Next page request URL: list_next https://youtube.googleapis.com/youtube/v3/playlistItems?part=snippet&playlistId=PLsQ-ipbXoFYm88bmZy4eyhuIZoTtU_I_Z&maxResults=25&key=AIzaSyAdxWpkjawZwkOoLZNdBKnaUQ1o3Wov2cg&alt=json&pageToken=EAAaBlBUOkNFcw
 2021-09-23 06:25:21,905 | googleapiclient.discovery | DEBUG | Next page request URL: list_next https://youtube.googleapis.com/youtube/v3/playlistItems?part=snippet&playlistId=PLsQ-ipbXoFYm88bmZy4eyhuIZoTtU_I_Z&maxResults=25&key=AIzaSyAdxWpkjawZwkOoLZNdBKnaUQ1o3Wov2cg&alt=json&pageToken=EAAaBlBUOkNHUQ
 2021-09-23 06:25:21,956 | googleapiclient.discovery | DEBUG | Next page request URL: list_next https://youtube.googleapis.com/youtube/v3/playlistItems?part=snippet&playlistId=PLsQ-ipbXoFYm88bmZy4eyhuIZoTtU_I_Z&maxResults=25&key=AIzaSyAdxWpkjawZwkOoLZNdBKnaUQ1o3Wov2cg&alt=json&pageToken=EAAaBlBUOkNIMA
+2021-09-23 07:11:37,186 | exts.errorhand | TRACE | Command: q 19; Already handled locally.
+2021-09-23 07:11:49,693 | exts.errorhand | TRACE | Command: q 18; Already handled locally.
+2021-09-23 07:12:01,141 | exts.errorhand | TRACE | Command: q 100; Already handled locally.
+2021-09-23 07:13:26,984 | exts.errorhand | TRACE | Command: q -1; Already handled locally.
+2021-09-23 07:15:35,310 | exts.errorhand | TRACE | Command: p; Already handled locally.
+2021-09-23 07:19:29,828 | asyncio | ERROR | Task was destroyed but it is pending!
+task: <Task pending name='Task-5104' coro=<VoiceState.audio_player_task() running at /home/runner/TpLearn/exts/music.py:314> wait_for=<Future cancelled>>

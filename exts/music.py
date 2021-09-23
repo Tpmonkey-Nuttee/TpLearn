@@ -297,7 +297,7 @@ class VoiceState:
                 try:
                     source = await YTDLSource.create_source(self.current.ctx, self.current.url, loop=self.bot.loop)
                 except Exception:
-                    await self._ctx.send(f"Unable to load: {self.current.url}")
+                    await self._ctx.send(f":x: **Unable to load:** {self.current.url}")
                     continue
                 self.current = Song(source)
 
@@ -452,7 +452,7 @@ class Music(commands.Cog):
         """Clears the queue and leaves the voice channel."""
 
         if not ctx.voice_state.voice:
-            return await ctx.send('Not connected to any voice channel.')
+            return await ctx.send(':x: **Not connected to any voice channel.**')
 
         await ctx.voice_state.stop()
         del self.voice_states[ctx.guild.id]
@@ -462,13 +462,13 @@ class Music(commands.Cog):
         """Sets the volume of the player."""
 
         if not ctx.voice_state.is_playing:
-            return await ctx.send('Nothing being played at the moment.')
+            return await ctx.send(':x: **Nothing being played at the moment.**')
         
         if volume is None:
-            return await ctx.send(f"Current Volume: {ctx.voice_state.volume * 100}%")
+            return await ctx.send(f"**Current Volume:** {ctx.voice_state.volume * 100}%")
 
         if 0 > volume > 100:
-            return await ctx.send('Volume must be between 0 and 100')
+            return await ctx.send(':x: **Volume must be between 0 and 100**')
 
         ctx.voice_state.volume = volume / 100
         try:
@@ -476,7 +476,7 @@ class Music(commands.Cog):
         except:
             pass
 
-        await ctx.send('Volume of the player set to {}%'.format(volume))
+        await ctx.send('**Volume of the player set to {}%**'.format(volume))
 
     @commands.command(name='now', aliases=['current', 'playing'])
     async def _now(self, ctx: commands.Context):
@@ -485,7 +485,7 @@ class Music(commands.Cog):
         if hasattr(ctx.voice_state.current, "create_embed"):
             await ctx.send(embed=ctx.voice_state.current.create_embed())
         else:
-            await ctx.send("Nothing being play at the moment! ¯\_(ツ)_/¯")
+            await ctx.send(":x: **Nothing being play at the moment!** ¯\_(ツ)_/¯")
 
     @commands.command(name='pause')
     async def _pause(self, ctx: commands.Context):
@@ -520,7 +520,7 @@ class Music(commands.Cog):
         """
 
         if not ctx.voice_state.is_playing:
-            return await ctx.send('Not playing any music right now...')
+            return await ctx.send(':x: **Not playing any music right now...**')
 
         voter = ctx.message.author
         if voter == ctx.voice_state.current.requester or not self.bot.msettings.get(ctx.guild.id, "vote_skip"):
@@ -541,7 +541,7 @@ class Music(commands.Cog):
                 await ctx.send('Skip vote added, currently at **{}/{}**'.format(total_votes, needed_votes))
 
         else:
-            await ctx.send('You have already voted to skip this song.')
+            await ctx.send(':x: **You have already voted to skip this song.** ._.')
 
     @commands.command(name='queue', aliases=['q'])
     async def _queue(self, ctx: commands.Context, *, page: int = 1):
@@ -551,10 +551,13 @@ class Music(commands.Cog):
         """
 
         if len(ctx.voice_state.songs) == 0:
-            return await ctx.send('Empty queue.')
+            return await ctx.send(':x: **Empty queue.**')
 
         items_per_page = 8
         pages = math.ceil(len(ctx.voice_state.songs) / items_per_page)
+
+        if 0 < page > pages:
+            await ctx.send(":x: **Page is out of range!**")
 
         start = (page - 1) * items_per_page
         end = start + items_per_page
@@ -593,7 +596,7 @@ class Music(commands.Cog):
         """Shuffles the queue."""
 
         if len(ctx.voice_state.songs) == 0:
-            return await ctx.send('Empty queue.')
+            return await ctx.send(':x: **Empty queue.**')
 
         ctx.voice_state.songs.shuffle()
         await ctx.message.add_reaction('✅')
@@ -602,11 +605,11 @@ class Music(commands.Cog):
     async def _sshuffle(self, ctx: commands.Context):
         """Shuffles the queue everytimes the song ended."""
         if len(ctx.voice_state.songs) == 0:
-            return await ctx.send('Empty queue.')
+            return await ctx.send(':x: **Empty queue.**')
 
         ctx.voice_state.super_shuffle = not ctx.voice_state.super_shuffle
         await ctx.send(
-            f"✅ Turn {'on' if ctx.voice_state.super_shuffle else 'off'} super shuffle!"
+            f"✅ **Turn {'on' if ctx.voice_state.super_shuffle else 'off'} super shuffle!**"
         )
 
 
@@ -615,7 +618,7 @@ class Music(commands.Cog):
         """Removes a song from the queue at a given index."""
 
         if len(ctx.voice_state.songs) == 0:
-            return await ctx.send('Empty queue.')
+            return await ctx.send(':x: **Empty queue.**')
 
         ctx.voice_state.songs.remove(index - 1)
         await ctx.message.add_reaction('✅')
@@ -628,20 +631,20 @@ class Music(commands.Cog):
         """
 
         if not ctx.voice_state.is_playing:
-            return await ctx.send('Nothing being played at the moment.')
+            return await ctx.send(':x: **Nothing being played at the moment.**')
 
 
         if ctx.voice_state.loop == Loop.NONE:
             ctx.voice_state.loop = Loop.SINGLE
-            await ctx.send(":repeat_one: Now Looping Current Song!")
+            await ctx.send(":repeat_one: **Now Looping Current Song!**")
         elif ctx.voice_state.loop ==  Loop.SINGLE:
             ctx.voice_state.loop = Loop.QUEUE
-            await ctx.send(":repeat: Now Looping Queue!")
+            await ctx.send(":repeat: **Now Looping Queue!**")
         else:
             ctx.voice_state.loop = Loop.NONE
-            await ctx.send("Disable Looping!")
+            await ctx.send("**Disable Looping!**")
     
-    @commands.command(name='loopqueue')
+    @commands.command(name='loopqueue', aliases=['loopq', 'lq'])
     async def _loopq(self, ctx: commands.Context):
         """Loops the entire queue.
 
@@ -649,14 +652,14 @@ class Music(commands.Cog):
         """
 
         if not ctx.voice_state.is_playing:
-            return await ctx.send('Nothing being played at the moment.')
+            return await ctx.send(':x: **Nothing being played at the moment.**')
 
         if ctx.voice_state.loop == Loop.SINGLE or ctx.voice_state.loop == Loop.NONE:
             ctx.voice_state.loop = Loop.QUEUE
-            await ctx.send(":repeat: Now Looping Queue!")
+            await ctx.send(":repeat: **Now Looping Queue!**")
         else:
             ctx.voice_state.loop = Loop.NONE
-            await ctx.send("Disable Looping!")
+            await ctx.send("**Disable Looping!**")
         
 
     @commands.command(name='play', aliases=['p'])
@@ -736,11 +739,11 @@ class Music(commands.Cog):
     @_play.before_invoke
     async def ensure_voice_state(self, ctx: commands.Context):
         if not ctx.author.voice or not ctx.author.voice.channel:
-            raise commands.CommandError('You are not connected to any voice channel.')
+            raise commands.CommandError(':x: **You are not connected to any voice channel.**')
 
         if ctx.voice_client:
             if ctx.voice_client.channel != ctx.author.voice.channel:
-                raise commands.CommandError('Bot is already in a voice channel.')
+                raise commands.CommandError(':x: **Bot is already in a voice channel.**')
 
 
 def setup(bot):
