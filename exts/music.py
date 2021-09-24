@@ -335,30 +335,11 @@ class Music(commands.Cog):
         else:
             await ctx.send(":x: **Value is a must have argument!**")
 
-    @commands.command(name='join', invoke_without_subcommand=True)
+    @commands.command(name='join', aliases=['summon', ], invoke_without_subcommand=True)
     async def _join(self, ctx: commands.Context):
         """Joins a voice channel."""
 
         destination = ctx.author.voice.channel
-        if ctx.voice_state.voice:
-            await ctx.voice_state.voice.move_to(destination)
-            return
-
-
-        ctx.voice_state.voice = await destination.connect()
-
-
-    @commands.command(name='summon')
-    async def _summon(self, ctx: commands.Context, *, channel: discord.VoiceChannel = None):
-        """Summons the bot to a voice channel.
-
-        If no channel was specified, it joins your channel.
-        """
-
-        if not channel and not ctx.author.voice:
-            raise VoiceError('You are neither connected to a voice channel nor specified a channel to join.')
-
-        destination = channel or ctx.author.voice.channel
         if ctx.voice_state.voice:
             await ctx.voice_state.voice.move_to(destination)
             return
