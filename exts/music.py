@@ -370,7 +370,10 @@ class Music(commands.Cog):
         """Clears the queue and leaves the voice channel."""
 
         if not ctx.voice_state.voice:
-            return await ctx.send(':x: **Not connected to any voice channel.**')
+            try:
+                await ctx.voice_client.move_to(None)
+            except:
+                return await ctx.send(':x: **Not connected to any voice channel.**')
 
         await ctx.voice_state.stop()
         del self.voice_states[ctx.guild.id]
