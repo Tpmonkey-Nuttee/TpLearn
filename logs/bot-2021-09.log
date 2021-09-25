@@ -97,3 +97,26 @@
 2021-09-25 03:42:13,528 | exts.update | DEBUG | updated active-works for 728482381215826000
 2021-09-25 03:42:13,528 | utils.planner | DEBUG | returning sorted date for 829749071891005512
 2021-09-25 03:42:13,665 | utils.planner | DEBUG | returning sorted date for 773426467492069386
+2021-09-25 05:44:53,191 | bot | INFO | Resumed Connection
+2021-09-25 05:44:53,585 | bot | DEBUG | changed bot status
+2021-09-25 08:17:12,081 | bot | INFO | Resumed Connection
+2021-09-25 08:17:12,324 | bot | DEBUG | changed bot status
+2021-09-25 09:34:30,612 | bot | INFO | Resumed Connection
+2021-09-25 09:34:30,919 | bot | DEBUG | changed bot status
+2021-09-25 09:52:14,896 | bot | INFO | Resumed Connection
+2021-09-25 09:52:15,078 | bot | DEBUG | changed bot status
+2021-09-25 11:42:03,973 | bot | DEBUG | exts.kus New data detected
+2021-09-25 11:42:04,314 | bot | DEBUG | exts.kus 
+**From** `ObservedList(value=['http://kus.ku.ac.th/downloads.php', 'news_detail.php?id=3038', 'news_detail.php?id=3039', 'news_detail.php?id=3040', 'news_detail.php?id=3036', 'news_detail.php?id=3013', 'news_detail.php?id=3027', 'news_detail.php?id=3020', 'news_detail.php?id=3002', 'news_detail.php?id=2983'])`
+**To** `['news_detail.php?id=3049', 'news_detail.php?id=3048', 'http://kus.ku.ac.th/downloads.php', 'news_detail.php?id=3038', 'news_detail.php?id=3039', 'news_detail.php?id=3040', 'news_detail.php?id=3036', 'news_detail.php?id=3013', 'news_detail.php?id=3027', 'news_detail.php?id=3020']`
+2021-09-25 11:42:04,444 | bot | DEBUG | exts.kus **Found:** [('ขอเชิญอาจารย์ฟังการบรรยายเรื่อง “มโนทัศน์เกี่ยวกับการประเมินผลการเรียนรู้” วันอังคารที่ ๒๘ กันยายน ๒๕๖๔ เวลา ๑๖.๐๐ น. แบบออนไลน์ ผ่านโปรแกรม Zoom ...อ่านต่อ', 'news_detail.php?id=3049', 'http://www.kus.ku.ac.th/images_kus/news/ban1-20210925162847.gif'), ('โครงการการศึกษานานาชาติ โรงเรียนสาธิตแห่งมหาวิทยาลัยเกษตรศาสตร์ ศูนย์วิจัยและพัฒนาการศึกษา เปิดรับสมัครนักเรียน ปีการศึกษา ๒๕๖๕ ...อ่านต่อ', 'news_detail.php?id=3048', 'http://www.kus.ku.ac.th/images_kus/news/ban1-20210925152322.gif')]
+2021-09-25 11:42:04,564 | bot | DEBUG | exts.kus Sending news to alert//728489165565591562
+2021-09-25 11:42:05,061 | bot | DEBUG | exts.kus Sending news to web-kus//855107375631827045
+2021-09-25 11:42:05,526 | bot | DEBUG | exts.kus Sending news to bot//857155128922210334
+2021-09-25 11:42:09,760 | bot | DEBUG | exts.kus Sending news to เว็บโรงเรียน//862148885908553738
+2021-09-25 11:42:10,223 | bot | DEBUG | exts.kus Sended news to all channels. (Total of 4)
+2021-09-25 11:42:10,373 | bot | DEBUG | exts.kus Saved new data.
+2021-09-25 12:28:41,212 | bot | INFO | Resumed Connection
+2021-09-25 12:28:41,421 | bot | DEBUG | changed bot status
+2021-09-25 12:53:25,465 | bot | INFO | Resumed Connection
+2021-09-25 12:53:25,747 | bot | DEBUG | changed bot status
