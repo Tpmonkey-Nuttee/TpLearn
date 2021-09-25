@@ -354,10 +354,17 @@ class Music(commands.Cog):
             try:
                 await ctx.voice_client.move_to(None)
             except:
-                return await ctx.send(':x: **Not connected to any voice channel.**')
+                try:
+                    for x in self.bot.voice_clients:
+                        if(x.guild == ctx.guild):
+                            return await x.disconnect()
+                except:
+                    return await ctx.send(':x: **Not connected to any voice channel.**')
 
         await ctx.voice_state.stop()
         del self.voice_states[ctx.guild.id]
+
+        await ctx.message.add_reaction("👋")
 
     @commands.command(name='volume')
     async def _volume(self, ctx: commands.Context, volume: int = None):
