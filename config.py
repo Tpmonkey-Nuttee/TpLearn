@@ -81,6 +81,7 @@ facts = [
     '"No problem can be solved from the same level of consciousness that created it." -Albert Einstein',
     '"Insanity: doing the same thing over and over again and expecting different results." -Albert Einstein', 
     '"Two things are infinite: the universe and human stupidity; and I\'m not sure about the universe." -Albert Einstein',
-    "Facts: Facts has 50 random texts.", "This project contained over 3,000+ lines of code, wrote single handedly by one person. Very bad!", "The facts command was added on 9th May 2021, How long was it now?"
+    "Facts: Facts has 50 random texts.", "This project contained over 3,000+ lines of code, wrote single handedly by one person. Very bad!", "The facts command was added on 9th May 2021, How long was it now?", "Who ever developed me is a madman."
+    "You know, I can sing a song for you right?", "I have a beautiful voice.", "No."
 ]
 # --------------------------------- #

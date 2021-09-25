@@ -364,6 +364,8 @@ class Music(commands.Cog):
         await ctx.voice_state.stop()
         del self.voice_states[ctx.guild.id]
 
+        await ctx.message.add_reaction("👋")
+
     @commands.command(name='volume')
     async def _volume(self, ctx: commands.Context, volume: int = None):
         """Sets the volume of the player."""
@@ -463,7 +465,8 @@ class Music(commands.Cog):
         items_per_page = 8
         pages = math.ceil(len(ctx.voice_state.songs) / items_per_page)
 
-        if pages+1 == page:
+        if pages + 1 == page:
+            # display queue even if there is only 1 song being play.
             pass
         elif 0 < page > pages:
             return await ctx.send(":x: **Page is out of range!**")
@@ -480,9 +483,8 @@ class Music(commands.Cog):
                     queue += '**{0}.** [{1.song.source.title}]({1.song.source.url})\n'.format(i + 1, song)
                 else:
                     queue += f"**{i+1}.** [Couldn't load this song]({song.url})\n"
-        
-        if queue == "":
-            queue = "Nothing \:("
+
+        queue = queue or "Nothing \:("
 
         embed = (
             discord.Embed(
