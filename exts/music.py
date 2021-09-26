@@ -376,7 +376,7 @@ class Music(commands.Cog):
         if volume is None:
             return await ctx.send(f"**Current Volume:** {ctx.voice_state.volume * 100}%")
 
-        if 0 > volume > 100:
+        if volume < 0 or volume > 100:
             return await ctx.send(':x: **Volume must be between 0 and 100**')
 
         ctx.voice_state.volume = volume / 100
@@ -417,6 +417,7 @@ class Music(commands.Cog):
         """Stops playing song and clears the queue."""
 
         ctx.voice_state.songs.clear()
+        ctx.voice_state.loop = Loop.NONE
 
         if ctx.voice_state.is_playing:
             ctx.voice_state.voice.stop()
