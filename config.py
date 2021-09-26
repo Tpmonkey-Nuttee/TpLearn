@@ -49,7 +49,7 @@ facts = [
     f"You can use `{prefix}setup` to setup the bot!",
     f"To view all the assignments, simple type `{prefix}allworks`"
     "This bot was created by Nuttee, as a KUS senior project.",
-    "Source code of the bot can be found in Github [here](https://github.com/Tpmonkey-Nuttee/TpLearn-BETA)!",
+    "Source code of the bot can be found in Github [here](https://github.com/Tpmonkey-Nuttee/TpLearn-BETA) !",
     "Colour of most embed will be base on assignment date.",
     "Sometimes, Bot needs to rest like you!", "This bot was created entirely in python.",
     f"Have a problem with bot channels not working properly? Use `{prefix}fix` command!",

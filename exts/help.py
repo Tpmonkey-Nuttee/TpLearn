@@ -82,13 +82,15 @@ class CustomHelpCommand(HelpCommand):
 
         return embed
 
-    async def send_command_help(self, command: Command) -> None:
+    async def send_command_help(self, command: Union[Command, str]) -> None:
         # Send help for a single command
+
         embed = await self.command_formatting(command)
         await self.context.send(embed=embed)
 
     async def send_bot_help(self, mapping: dict) -> None:
         """Sends help for all bot commands and cogs."""
+
         bot = self.context.bot
 
         embed = Embed(
@@ -115,7 +117,7 @@ class CustomHelpCommand(HelpCommand):
                 joined_lines = "".join(truncated_lines)
                 cog_or_category_pages.append((f"**{cog_or_category}**{joined_lines}", len(truncated_lines)))
 
-        pages = []
+        pages = [f"To find tutorial, Use **{bot.config.prefix}ttr**"]
         counter = 0
         page = ""
         for page_details, length in cog_or_category_pages:
@@ -134,7 +136,22 @@ class CustomHelpCommand(HelpCommand):
             pages.append(page)
 
         await LinePaginator.paginate(pages, self.context, embed=embed, max_lines=1, max_size=2000)
-    
+
+    async def send_cog_help(self, cog: Cog) -> None:
+        """Send help for a cog."""
+        # sort commands by name, and remove any the user can't run or are hidden.
+        commands_ = await self.filter_commands(cog.get_commands(), sort=True)
+
+        embed = Embed(title = ":grey_question: Command Help",)
+        # embed.set_author(name="Command Help", icon_url=constants.Icons.questionmark)
+        embed.description = f"**{cog.qualified_name}**\n*{cog.description}*"
+
+        command_details = self.get_commands_brief_details(commands_)
+        if command_details:
+            embed.description += f"\n\n**Commands:**\n{command_details}"
+
+        await self.context.send(embed=embed)
+        
 
 class Help(Cog):
     def __init__(self, bot: Bot):
@@ -153,6 +170,59 @@ class Help(Cog):
     @command(hidden=True)
     async def helpme(self, ctx: Context) -> None:
         await ctx.send("How?")
+    
+    @command()
+    async def ttr(self, ctx: Context) -> None:
+        bot = ctx.bot
+        embed = Embed(
+            description = f"To view all the commands, Type `{bot.config.prefix}help`",
+            colour = Colour.teal()
+        )
+        embed.set_author(name = "Tutorial", icon_url = bot.user.avatar_url)
+
+        embed.add_field(
+            name = "What is this bot?", 
+            value = "This bot has 3 systems. Assignment, KUS monitor, Music. Look further down to find how to use each one of three system!",
+            inline = False
+        )
+
+        embed.add_field(
+            name = "1) How to use assignment system?",
+            value = f"To start using, Please type down `{bot.config.prefix}setup` to setup the bot.\n"
+                f"After that, you can use `{bot.config.prefix}add` to open assignment menu and add an assignment!\n"
+                f"You can also use `{bot.config.prefix}remove` or `{bot.config.prefix}edit` to remove/edit it!" ,
+            inline = False
+        )
+
+        embed.add_field(
+            name = "2) How to use KUS monitor system?",
+            value = f"To start using, Please go to TextChannel that you want the bot to send the news,\n"
+                f"then type down `{bot.config.prefix}set-news` to setup the bot, The bot will start sending news after it found actual **new news** Got it? :P\n"
+                f"To remove use `{bot.config.prefix}remove-news` and bot will stop sending it!" ,
+            inline = False
+        )
+
+        embed.add_field(
+            name = "3) How to use music system?",
+            value = f"After the Discord Music bots shutdown, I can now be the replacement for them!\n"
+                f"All the commands can be found in the commands session but They're all the same as the bots that have been shutting down!\n"
+                f"Please Note that, This bot is not stable yet. if you found any bugs, Please use `{bot.config.prefix}leave` and then resummon me again!\n" 
+                "Also, You can Direct Message bot directly to inform about the bug and I will patch it ASAP!",
+            inline = False
+        )
+
+        embed.add_field(
+            name = "EXTRA) How to use assignment menu?",
+            value = f"You can open it using `{bot.config.prefix}add` `{bot.config.prefix}remove` or `{bot.config.prefix}edit`"
+                f"After it's opened, You can **type down like you're talking in a normal conversation**! The bot will delete it and input it into the system!\n"
+                f"To insert date, You have 2 ways to do. First way is to type the full date in this format `Day/Month/Year` (*Example: 1/1/2021 or 22/2/2005*)\n" 
+                f"Second way is to use `++days` (*Example: ++1 meaning tomorrow*)\n"
+                f"To insert image, You can send the file directly or You can also send a hyper link to the image source!",
+            inline = False
+        )
+
+        embed.set_footer(text = "Created by Tpmonkey#2682 as a Senior Project.")
+        await ctx.send(embed=embed)
 
 
 def setup(bot: Bot) -> None:
