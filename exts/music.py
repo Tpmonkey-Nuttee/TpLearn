@@ -550,9 +550,9 @@ class Music(commands.Cog):
         Invoke this command again to unloop the song.
         """
 
-        if not ctx.voice_state.current is None:
+        if ctx.voice_state.current is None:
             await asyncio.sleep(1)
-            if not ctx.voice_state.current is None:
+            if ctx.voice_state.current is None:
                 return await ctx.send(':x: **Nothing being played at the moment.**')
 
         if ctx.voice_state.loop == Loop.NONE:
@@ -572,9 +572,9 @@ class Music(commands.Cog):
         Invoke this command again to unloop the queue.
         """
 
-        if not ctx.voice_state.current is None:
+        if ctx.voice_state.current is None:
             await asyncio.sleep(1)
-            if not ctx.voice_state.current is None:
+            if ctx.voice_state.current is None:
                 return await ctx.send(':x: **Nothing being played at the moment.**')
 
         if ctx.voice_state.loop == Loop.SINGLE or ctx.voice_state.loop == Loop.NONE:

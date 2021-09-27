@@ -299,3 +299,40 @@ task: <Task pending name='Task-9295' coro=<LoadPlaylistSong.load() running at /h
 2021-09-27 03:38:18,907 | exts.music | INFO | Audio Player Launched for 728482381215826000
 2021-09-27 03:38:20,878 | exts.music | DEBUG | 728482381215826000: Searching gurenge
 2021-09-27 03:38:22,286 | exts.music | DEBUG | Enqueued
+2021-09-27 03:50:05,321 | exts.music | DEBUG | VoiceState created for 728482381215826000
+2021-09-27 03:50:05,323 | exts.music | INFO | Audio Player Launched for 728482381215826000
+2021-09-27 03:50:07,268 | exts.music | DEBUG | 728482381215826000: Searching polaris op
+2021-09-27 03:50:08,556 | exts.music | DEBUG | Enqueued
+2021-09-27 03:50:20,888 | exts.music | DEBUG | 728482381215826000: Searching katharsis
+2021-09-27 03:50:22,283 | exts.music | DEBUG | Enqueued
+2021-09-27 03:50:23,543 | exts.music | DEBUG | 728482381215826000: Searching inferno
+2021-09-27 03:50:25,057 | exts.music | DEBUG | Enqueued
+2021-09-27 03:56:11,947 | bot | INFO | Resumed Connection
+2021-09-27 03:56:12,270 | bot | DEBUG | changed bot status
+2021-09-27 03:56:53,125 | utils.planner | DEBUG | returning sorted date for 728482381215826000
+2021-09-27 03:56:53,169 | utils.planner | DEBUG | return embed for 728482381215826000
+2021-09-27 03:56:53,169 | utils.planner | DEBUG | took 0.13350200653076172 second for 728482381215826000
+2021-09-27 03:57:02,470 | exts.music | DEBUG | 728482381215826000: Searching inferno op
+2021-09-27 03:57:03,559 | exts.music | DEBUG | Enqueued
+2021-09-27 03:57:18,002 | exts.music | DEBUG | 728482381215826000: Searching gurenge
+2021-09-27 03:57:19,693 | exts.music | DEBUG | Enqueued
+2021-09-27 03:57:20,360 | exts.music | DEBUG | 728482381215826000: Searching unraval
+2021-09-27 03:57:21,979 | exts.music | DEBUG | Enqueued
+2021-09-27 04:14:05,634 | exts.music | DEBUG | VoiceState created for 728482381215826000
+2021-09-27 04:14:05,635 | exts.music | INFO | Audio Player Launched for 728482381215826000
+2021-09-27 04:14:07,582 | exts.music | DEBUG | 728482381215826000: Searching boku no my hero academia all op
+2021-09-27 04:14:08,702 | asyncio | ERROR | Task exception was never retrieved
+future: <Task finished name='Task-12667' coro=<VoiceState.audio_player_task() done, defined at /home/runner/TpLearn/exts/music.py:172> exception=AttributeError("'NoneType' object has no attribute 'play'")>
+Traceback (most recent call last):
+  File "/home/runner/TpLearn/exts/music.py", line 227, in audio_player_task
+    self.voice.play(self.current.source, after=self.play_next_song)
+AttributeError: 'NoneType' object has no attribute 'play'
+2021-09-27 04:14:08,711 | asyncio | ERROR | Task was destroyed but it is pending!
+task: <Task pending name='Task-12666' coro=<LoadPlaylistSong.load() running at /home/runner/TpLearn/exts/music.py:111> wait_for=<Future cancelled>>
+2021-09-27 04:14:08,735 | asyncio | ERROR | Task was destroyed but it is pending!
+task: <Task pending name='Task-12804' coro=<LoadPlaylistSong.load() running at /home/runner/TpLearn/exts/music.py:111> wait_for=<Future cancelled>>
+2021-09-27 04:14:08,749 | asyncio | ERROR | Task was destroyed but it is pending!
+task: <Task pending name='Task-13357' coro=<LoadPlaylistSong.load() running at /home/runner/TpLearn/exts/music.py:111> wait_for=<Future cancelled>>
+2021-09-27 04:14:09,438 | exts.music | DEBUG | Enqueued
+2021-09-27 04:15:39,697 | exts.admin | DEBUG | Admin Eval from Tpmonkey#2682; code: self.bot.get_cog("Music).voice_states[ctx.guild.id].current
+2021-09-27 04:15:44,957 | exts.admin | DEBUG | Admin Eval from Tpmonkey#2682; code: self.bot.get_cog("Music").voice_states[ctx.guild.id].current
