@@ -209,3 +209,37 @@ task: <Task pending name='Task-442' coro=<LoadPlaylistSong.load() running at /ho
 2021-09-27 02:34:46,564 | googleapiclient.discovery | DEBUG | Next page request URL: list_next https://youtube.googleapis.com/youtube/v3/playlistItems?part=snippet&playlistId=PLsQ-ipbXoFYm88bmZy4eyhuIZoTtU_I_Z&maxResults=25&key=AIzaSyAdxWpkjawZwkOoLZNdBKnaUQ1o3Wov2cg&alt=json&pageToken=EAAaBlBUOkNHUQ
 2021-09-27 02:34:46,605 | googleapiclient.discovery | DEBUG | Next page request URL: list_next https://youtube.googleapis.com/youtube/v3/playlistItems?part=snippet&playlistId=PLsQ-ipbXoFYm88bmZy4eyhuIZoTtU_I_Z&maxResults=25&key=AIzaSyAdxWpkjawZwkOoLZNdBKnaUQ1o3Wov2cg&alt=json&pageToken=EAAaBlBUOkNIMA
 2021-09-27 02:34:47,802 | exts.music | DEBUG | Enqueued
+2021-09-27 02:45:38,215 | exts.admin | DEBUG | Admin Eval from Tpmonkey#2682; code: [i.id for i in self.bot.database.loads("Music")]
+2021-09-27 02:45:38,257 | constant | WARNING | Traceback (most recent call last):
+  File "/home/runner/TpLearn/constant.py", line 50, in loads
+    return db[key]
+  File "/opt/virtualenvs/python3/lib/python3.8/site-packages/replit/database/database.py", line 434, in __getitem__
+    raw_val = self.get_raw(key)
+  File "/opt/virtualenvs/python3/lib/python3.8/site-packages/replit/database/database.py", line 474, in get_raw
+    raise KeyError(key)
+KeyError: 'Music'
+
+2021-09-27 02:46:57,141 | exts.admin | DEBUG | Admin Eval from Tpmonkey#2682; code: [i.id for i in self.bot.database.loads("MUSIC")]
+2021-09-27 02:47:15,970 | exts.admin | DEBUG | Admin Eval from Tpmonkey#2682; code: [i for i in self.bot.database.loads("MUSIC")]
+2021-09-27 02:48:26,079 | exts.admin | DEBUG | Admin Eval from Tpmonkey#2682; code: [self.bot.msettings.set(i, "annouce_next_song", False) for i in ('773426467492069386', '562976873685057546', '707523969640824861', '728482381215826000', '780423376149676032') ]
+2021-09-27 02:50:05,119 | bot | INFO | Cog loaded: Music
+2021-09-27 02:50:10,003 | exts.music | DEBUG | VoiceState created for เรียนๆ
+2021-09-27 02:50:10,179 | exts.music | INFO | Audio Player Launched for เรียนๆ
+2021-09-27 02:50:43,482 | exts.admin | DEBUG | Admin Eval from Tpmonkey#2682; code: await self.bot.database.load("MUSIC")
+2021-09-27 02:51:12,496 | exts.music | DEBUG | 728482381215826000: Searching https://www.youtube.com/playlist?list=PLsQ-ipbXoFYm88bmZy4eyhuIZoTtU_I_Z
+2021-09-27 02:51:12,609 | googleapiclient.discovery_cache | INFO | file_cache is only supported with oauth2client<4.0.0
+2021-09-27 02:51:12,620 | googleapiclient.discovery | DEBUG | URL being requested: GET https://youtube.googleapis.com/youtube/v3/playlistItems?part=snippet&playlistId=PLsQ-ipbXoFYm88bmZy4eyhuIZoTtU_I_Z&maxResults=25&key=AIzaSyAdxWpkjawZwkOoLZNdBKnaUQ1o3Wov2cg&alt=json
+2021-09-27 02:51:12,749 | googleapiclient.discovery | DEBUG | Next page request URL: list_next https://youtube.googleapis.com/youtube/v3/playlistItems?part=snippet&playlistId=PLsQ-ipbXoFYm88bmZy4eyhuIZoTtU_I_Z&maxResults=25&key=AIzaSyAdxWpkjawZwkOoLZNdBKnaUQ1o3Wov2cg&alt=json&pageToken=EAAaBlBUOkNCaw
+2021-09-27 02:51:12,786 | googleapiclient.discovery | DEBUG | Next page request URL: list_next https://youtube.googleapis.com/youtube/v3/playlistItems?part=snippet&playlistId=PLsQ-ipbXoFYm88bmZy4eyhuIZoTtU_I_Z&maxResults=25&key=AIzaSyAdxWpkjawZwkOoLZNdBKnaUQ1o3Wov2cg&alt=json&pageToken=EAAaBlBUOkNESQ
+2021-09-27 02:51:12,832 | googleapiclient.discovery | DEBUG | Next page request URL: list_next https://youtube.googleapis.com/youtube/v3/playlistItems?part=snippet&playlistId=PLsQ-ipbXoFYm88bmZy4eyhuIZoTtU_I_Z&maxResults=25&key=AIzaSyAdxWpkjawZwkOoLZNdBKnaUQ1o3Wov2cg&alt=json&pageToken=EAAaBlBUOkNFcw
+2021-09-27 02:51:12,967 | googleapiclient.discovery | DEBUG | Next page request URL: list_next https://youtube.googleapis.com/youtube/v3/playlistItems?part=snippet&playlistId=PLsQ-ipbXoFYm88bmZy4eyhuIZoTtU_I_Z&maxResults=25&key=AIzaSyAdxWpkjawZwkOoLZNdBKnaUQ1o3Wov2cg&alt=json&pageToken=EAAaBlBUOkNHUQ
+2021-09-27 02:51:13,009 | googleapiclient.discovery | DEBUG | Next page request URL: list_next https://youtube.googleapis.com/youtube/v3/playlistItems?part=snippet&playlistId=PLsQ-ipbXoFYm88bmZy4eyhuIZoTtU_I_Z&maxResults=25&key=AIzaSyAdxWpkjawZwkOoLZNdBKnaUQ1o3Wov2cg&alt=json&pageToken=EAAaBlBUOkNIMA
+2021-09-27 02:51:14,144 | exts.music | DEBUG | Enqueued
+2021-09-27 02:51:17,257 | asyncio | ERROR | Task was destroyed but it is pending!
+task: <Task pending name='Task-8390' coro=<LoadPlaylistSong.load() running at /home/runner/TpLearn/exts/music.py:111> wait_for=<Future cancelled>>
+2021-09-27 02:51:17,280 | asyncio | ERROR | Task was destroyed but it is pending!
+task: <Task pending name='Task-8200' coro=<LoadPlaylistSong.load() running at /home/runner/TpLearn/exts/music.py:111> wait_for=<Future cancelled>>
+2021-09-27 02:51:17,293 | asyncio | ERROR | Task was destroyed but it is pending!
+task: <Task pending name='Task-7945' coro=<LoadPlaylistSong.load() running at /home/runner/TpLearn/exts/music.py:111> wait_for=<Future cancelled>>
+2021-09-27 02:51:17,307 | asyncio | ERROR | Task was destroyed but it is pending!
+task: <Task pending name='Task-8472' coro=<LoadPlaylistSong.load() running at /home/runner/TpLearn/exts/music.py:111> wait_for=<Future cancelled>>

@@ -23,7 +23,7 @@ log = logging.getLogger(__name__)
 
 DEFAULT_SETTINGS = {
     "timeout": 300,
-    "annouce_next_song": True,
+    "annouce_next_song": False,
     "vote_skip": True
 }
 
