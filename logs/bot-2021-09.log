@@ -1,0 +1,211 @@
+2021-09-26 15:16:37,810 | asyncio | DEBUG | Using selector: EpollSelector
+2021-09-26 15:16:37,811 | bot | DEBUG | created bot base.
+2021-09-26 15:16:37,846 | constant | DEBUG | init database succesful
+2021-09-26 15:16:38,045 | utils.planner | DEBUG | triggered update
+2021-09-26 15:16:38,053 | bot | DEBUG | bot subclass Created.
+2021-09-26 15:16:38,058 | bot | INFO | Cog loaded: Snekbox
+2021-09-26 15:16:38,063 | bot | INFO | Cog loaded: VoiceChannel
+2021-09-26 15:16:38,064 | bot | INFO | Cog loaded: SetUp
+2021-09-26 15:16:38,069 | bot | INFO | Cog loaded: Utility
+2021-09-26 15:16:38,072 | bot | INFO | Cog loaded: Assignments
+2021-09-26 15:16:38,075 | bot | INFO | Cog loaded: DayLoop
+2021-09-26 15:16:38,726 | bot | INFO | Cog loaded: Music
+2021-09-26 15:16:38,735 | bot | INFO | Cog loaded: Debug
+2021-09-26 15:16:38,814 | bot | INFO | Cog loaded: KUSNews
+2021-09-26 15:16:38,815 | bot | INFO | Cog loaded: Latency
+2021-09-26 15:16:38,817 | bot | INFO | Cog loaded: Updater
+2021-09-26 15:16:38,818 | bot | INFO | Cog loaded: ErrorHandler
+2021-09-26 15:16:38,820 | bot | INFO | Cog loaded: Help
+2021-09-26 15:16:38,823 | bot | INFO | Cog loaded: AdminCommands
+2021-09-26 15:16:38,824 | bot | INFO | Cog loaded: NewPatch
+2021-09-26 15:16:38,851 | exts.kus | DEBUG | loaded data
+2021-09-26 15:16:41,682 | utils.planner | DEBUG | returning sorted date for 562976873685057546
+2021-09-26 15:16:41,693 | bot | INFO | Connected successfully
+2021-09-26 15:16:41,928 | bot | DEBUG | changed bot status
+2021-09-26 15:16:41,932 | bot | DEBUG | creating assignment embed...
+2021-09-26 15:16:41,933 | bot | DEBUG | successfully created assignment embed
+2021-09-26 15:16:43,042 | bot | DEBUG | creating assignment embed...
+2021-09-26 15:16:43,042 | bot | DEBUG | successfully created assignment embed
+2021-09-26 15:16:44,133 | bot | DEBUG | creating assignment embed...
+2021-09-26 15:16:44,133 | bot | DEBUG | successfully created assignment embed
+2021-09-26 15:16:45,270 | bot | DEBUG | creating assignment embed...
+2021-09-26 15:16:45,271 | bot | DEBUG | successfully created assignment embed
+2021-09-26 15:16:46,422 | bot | DEBUG | creating assignment embed...
+2021-09-26 15:16:46,422 | bot | DEBUG | successfully created assignment embed
+2021-09-26 15:16:47,513 | bot | DEBUG | creating assignment embed...
+2021-09-26 15:16:47,513 | bot | DEBUG | successfully created assignment embed
+2021-09-26 15:16:48,626 | bot | DEBUG | exts.update :white_check_mark: Sucessfully update works at 562976873685057546 :
+99EEEEEE
+2021-09-26 15:16:48,793 | exts.update | DEBUG | updated active-works for 562976873685057546
+2021-09-26 15:16:48,854 | utils.planner | DEBUG | returning sorted date for 728482381215826000
+2021-09-26 15:16:48,947 | bot | DEBUG | creating assignment embed...
+2021-09-26 15:16:48,948 | bot | DEBUG | successfully created assignment embed
+2021-09-26 15:16:50,054 | bot | DEBUG | exts.update :white_check_mark: Sucessfully update works at 728482381215826000 :
+33E
+2021-09-26 15:16:50,286 | exts.update | DEBUG | updated active-works for 728482381215826000
+2021-09-26 15:16:50,286 | utils.planner | DEBUG | returning sorted date for 829749071891005512
+2021-09-26 15:16:50,637 | utils.planner | DEBUG | returning sorted date for 773426467492069386
+2021-09-26 15:29:07,161 | exts.music | DEBUG | VoiceState created for เพื่อนสนิทคิดลึกซึ้ง
+2021-09-26 15:29:07,162 | exts.music | INFO | Audio Player Launched for เพื่อนสนิทคิดลึกซึ้ง
+2021-09-26 15:29:09,126 | exts.music | DEBUG | 780423376149676032: Searching fuck you
+2021-09-26 15:29:13,406 | exts.music | DEBUG | Enqueued
+2021-09-26 16:39:06,947 | bot | INFO | Resumed Connection
+2021-09-26 16:39:07,179 | bot | DEBUG | changed bot status
+2021-09-26 17:00:38,831 | bot | DEBUG | exts.dayloop New day [UTC+7] detected.
+2021-09-26 17:00:38,996 | utils.planner | DEBUG | triggered update
+2021-09-26 17:02:39,049 | utils.planner | DEBUG | returning sorted date for 562976873685057546
+2021-09-26 17:02:39,170 | bot | DEBUG | creating assignment embed...
+2021-09-26 17:02:39,171 | bot | DEBUG | successfully created assignment embed
+2021-09-26 17:02:40,255 | bot | DEBUG | creating assignment embed...
+2021-09-26 17:02:40,255 | bot | DEBUG | successfully created assignment embed
+2021-09-26 17:02:41,348 | bot | DEBUG | creating assignment embed...
+2021-09-26 17:02:41,348 | bot | DEBUG | successfully created assignment embed
+2021-09-26 17:02:42,468 | bot | DEBUG | creating assignment embed...
+2021-09-26 17:02:42,468 | bot | DEBUG | successfully created assignment embed
+2021-09-26 17:02:43,670 | bot | DEBUG | creating assignment embed...
+2021-09-26 17:02:43,670 | bot | DEBUG | successfully created assignment embed
+2021-09-26 17:02:44,818 | bot | DEBUG | creating assignment embed...
+2021-09-26 17:02:44,819 | bot | DEBUG | successfully created assignment embed
+2021-09-26 17:02:45,942 | bot | DEBUG | creating assignment embed...
+2021-09-26 17:02:45,942 | bot | DEBUG | successfully created assignment embed
+2021-09-26 17:02:47,026 | bot | DEBUG | exts.update :white_check_mark: Sucessfully update works at 562976873685057546 :
+99EEEEEEE
+2021-09-26 17:02:47,237 | exts.update | DEBUG | updated active-works for 562976873685057546
+2021-09-26 17:02:47,285 | utils.planner | DEBUG | returning sorted date for 728482381215826000
+2021-09-26 17:02:47,455 | bot | DEBUG | creating assignment embed...
+2021-09-26 17:02:47,455 | bot | DEBUG | successfully created assignment embed
+2021-09-26 17:02:48,538 | bot | DEBUG | creating assignment embed...
+2021-09-26 17:02:48,539 | bot | DEBUG | successfully created assignment embed
+2021-09-26 17:02:49,660 | bot | DEBUG | creating assignment embed...
+2021-09-26 17:02:49,660 | bot | DEBUG | successfully created assignment embed
+2021-09-26 17:02:50,765 | bot | DEBUG | exts.update :white_check_mark: Sucessfully update works at 728482381215826000 :
+33EEE
+2021-09-26 17:02:50,901 | exts.update | DEBUG | updated active-works for 728482381215826000
+2021-09-26 17:02:50,901 | utils.planner | DEBUG | returning sorted date for 829749071891005512
+2021-09-26 17:02:51,154 | utils.planner | DEBUG | returning sorted date for 773426467492069386
+2021-09-26 17:02:51,257 | bot | DEBUG | creating assignment embed...
+2021-09-26 17:02:51,257 | bot | DEBUG | successfully created assignment embed
+2021-09-26 17:02:52,356 | bot | DEBUG | creating assignment embed...
+2021-09-26 17:02:52,357 | bot | DEBUG | successfully created assignment embed
+2021-09-26 17:02:53,484 | bot | DEBUG | exts.update :white_check_mark: Sucessfully update works at 773426467492069386 :
+22EE
+2021-09-26 17:02:53,606 | exts.update | DEBUG | updated active-works for 773426467492069386
+2021-09-26 20:03:03,161 | bot | INFO | Resumed Connection
+2021-09-26 20:03:04,650 | bot | DEBUG | changed bot status
+2021-09-26 23:00:38,831 | bot | DEBUG | exts.dayloop New day [UTC+1] detected.
+2021-09-26 23:00:39,529 | exts.dayloop | DEBUG | updating passed work
+2021-09-26 23:00:39,529 | utils.planner | DEBUG | looping througth all assignment...
+2021-09-26 23:00:39,563 | utils.planner | DEBUG | checking old work to delete
+2021-09-26 23:00:39,565 | utils.planner | DEBUG | found 0
+2021-09-26 23:00:39,565 | utils.planner | DEBUG | triggered update
+2021-09-26 23:02:39,008 | utils.planner | DEBUG | returning sorted date for 562976873685057546
+2021-09-26 23:02:39,126 | bot | DEBUG | creating assignment embed...
+2021-09-26 23:02:39,127 | bot | DEBUG | successfully created assignment embed
+2021-09-26 23:02:40,210 | bot | DEBUG | creating assignment embed...
+2021-09-26 23:02:40,211 | bot | DEBUG | successfully created assignment embed
+2021-09-26 23:02:41,383 | bot | DEBUG | creating assignment embed...
+2021-09-26 23:02:41,383 | bot | DEBUG | successfully created assignment embed
+2021-09-26 23:02:42,531 | bot | DEBUG | creating assignment embed...
+2021-09-26 23:02:42,531 | bot | DEBUG | successfully created assignment embed
+2021-09-26 23:02:43,620 | bot | DEBUG | creating assignment embed...
+2021-09-26 23:02:43,620 | bot | DEBUG | successfully created assignment embed
+2021-09-26 23:02:44,706 | bot | DEBUG | creating assignment embed...
+2021-09-26 23:02:44,707 | bot | DEBUG | successfully created assignment embed
+2021-09-26 23:02:45,797 | bot | DEBUG | exts.update :white_check_mark: Sucessfully update works at 562976873685057546 :
+99EEEEEE
+2021-09-26 23:02:45,958 | exts.update | DEBUG | updated active-works for 562976873685057546
+2021-09-26 23:02:46,003 | utils.planner | DEBUG | returning sorted date for 728482381215826000
+2021-09-26 23:02:46,179 | bot | DEBUG | creating assignment embed...
+2021-09-26 23:02:46,180 | bot | DEBUG | successfully created assignment embed
+2021-09-26 23:02:47,315 | bot | DEBUG | exts.update :white_check_mark: Sucessfully update works at 728482381215826000 :
+33E
+2021-09-26 23:02:47,443 | exts.update | DEBUG | updated active-works for 728482381215826000
+2021-09-26 23:02:47,443 | utils.planner | DEBUG | returning sorted date for 829749071891005512
+2021-09-26 23:02:47,613 | utils.planner | DEBUG | returning sorted date for 773426467492069386
+2021-09-26 23:55:46,465 | bot | INFO | Resumed Connection
+2021-09-26 23:55:47,674 | bot | DEBUG | changed bot status
+2021-09-27 02:29:32,754 | exts.music | DEBUG | VoiceState created for เรียนๆ
+2021-09-27 02:29:32,755 | exts.music | INFO | Audio Player Launched for เรียนๆ
+2021-09-27 02:29:34,698 | exts.music | DEBUG | 728482381215826000: Searching https://www.youtube.com/playlist?list=PLsQ-ipbXoFYm88bmZy4eyhuIZoTtU_I_Z
+2021-09-27 02:29:34,815 | googleapiclient.discovery_cache | INFO | file_cache is only supported with oauth2client<4.0.0
+2021-09-27 02:29:34,828 | googleapiclient.discovery | DEBUG | URL being requested: GET https://youtube.googleapis.com/youtube/v3/playlistItems?part=snippet&playlistId=PLsQ-ipbXoFYm88bmZy4eyhuIZoTtU_I_Z&maxResults=25&key=AIzaSyAdxWpkjawZwkOoLZNdBKnaUQ1o3Wov2cg&alt=json
+2021-09-27 02:29:34,976 | googleapiclient.discovery | DEBUG | Next page request URL: list_next https://youtube.googleapis.com/youtube/v3/playlistItems?part=snippet&playlistId=PLsQ-ipbXoFYm88bmZy4eyhuIZoTtU_I_Z&maxResults=25&key=AIzaSyAdxWpkjawZwkOoLZNdBKnaUQ1o3Wov2cg&alt=json&pageToken=EAAaBlBUOkNCaw
+2021-09-27 02:29:35,020 | googleapiclient.discovery | DEBUG | Next page request URL: list_next https://youtube.googleapis.com/youtube/v3/playlistItems?part=snippet&playlistId=PLsQ-ipbXoFYm88bmZy4eyhuIZoTtU_I_Z&maxResults=25&key=AIzaSyAdxWpkjawZwkOoLZNdBKnaUQ1o3Wov2cg&alt=json&pageToken=EAAaBlBUOkNESQ
+2021-09-27 02:29:35,055 | googleapiclient.discovery | DEBUG | Next page request URL: list_next https://youtube.googleapis.com/youtube/v3/playlistItems?part=snippet&playlistId=PLsQ-ipbXoFYm88bmZy4eyhuIZoTtU_I_Z&maxResults=25&key=AIzaSyAdxWpkjawZwkOoLZNdBKnaUQ1o3Wov2cg&alt=json&pageToken=EAAaBlBUOkNFcw
+2021-09-27 02:29:35,100 | googleapiclient.discovery | DEBUG | Next page request URL: list_next https://youtube.googleapis.com/youtube/v3/playlistItems?part=snippet&playlistId=PLsQ-ipbXoFYm88bmZy4eyhuIZoTtU_I_Z&maxResults=25&key=AIzaSyAdxWpkjawZwkOoLZNdBKnaUQ1o3Wov2cg&alt=json&pageToken=EAAaBlBUOkNHUQ
+2021-09-27 02:29:35,211 | googleapiclient.discovery | DEBUG | Next page request URL: list_next https://youtube.googleapis.com/youtube/v3/playlistItems?part=snippet&playlistId=PLsQ-ipbXoFYm88bmZy4eyhuIZoTtU_I_Z&maxResults=25&key=AIzaSyAdxWpkjawZwkOoLZNdBKnaUQ1o3Wov2cg&alt=json&pageToken=EAAaBlBUOkNIMA
+2021-09-27 02:29:36,397 | exts.music | DEBUG | Enqueued
+2021-09-27 02:29:37,251 | exts.music | DEBUG | 728482381215826000: Searching https://www.youtube.com/playlist?list=PLsQ-ipbXoFYm88bmZy4eyhuIZoTtU_I_Z
+2021-09-27 02:29:37,365 | googleapiclient.discovery_cache | INFO | file_cache is only supported with oauth2client<4.0.0
+2021-09-27 02:29:37,372 | googleapiclient.discovery | DEBUG | URL being requested: GET https://youtube.googleapis.com/youtube/v3/playlistItems?part=snippet&playlistId=PLsQ-ipbXoFYm88bmZy4eyhuIZoTtU_I_Z&maxResults=25&key=AIzaSyAdxWpkjawZwkOoLZNdBKnaUQ1o3Wov2cg&alt=json
+2021-09-27 02:29:37,511 | googleapiclient.discovery | DEBUG | Next page request URL: list_next https://youtube.googleapis.com/youtube/v3/playlistItems?part=snippet&playlistId=PLsQ-ipbXoFYm88bmZy4eyhuIZoTtU_I_Z&maxResults=25&key=AIzaSyAdxWpkjawZwkOoLZNdBKnaUQ1o3Wov2cg&alt=json&pageToken=EAAaBlBUOkNCaw
+2021-09-27 02:29:37,559 | googleapiclient.discovery | DEBUG | Next page request URL: list_next https://youtube.googleapis.com/youtube/v3/playlistItems?part=snippet&playlistId=PLsQ-ipbXoFYm88bmZy4eyhuIZoTtU_I_Z&maxResults=25&key=AIzaSyAdxWpkjawZwkOoLZNdBKnaUQ1o3Wov2cg&alt=json&pageToken=EAAaBlBUOkNESQ
+2021-09-27 02:29:37,599 | googleapiclient.discovery | DEBUG | Next page request URL: list_next https://youtube.googleapis.com/youtube/v3/playlistItems?part=snippet&playlistId=PLsQ-ipbXoFYm88bmZy4eyhuIZoTtU_I_Z&maxResults=25&key=AIzaSyAdxWpkjawZwkOoLZNdBKnaUQ1o3Wov2cg&alt=json&pageToken=EAAaBlBUOkNFcw
+2021-09-27 02:29:37,627 | googleapiclient.discovery | DEBUG | Next page request URL: list_next https://youtube.googleapis.com/youtube/v3/playlistItems?part=snippet&playlistId=PLsQ-ipbXoFYm88bmZy4eyhuIZoTtU_I_Z&maxResults=25&key=AIzaSyAdxWpkjawZwkOoLZNdBKnaUQ1o3Wov2cg&alt=json&pageToken=EAAaBlBUOkNHUQ
+2021-09-27 02:29:37,656 | googleapiclient.discovery | DEBUG | Next page request URL: list_next https://youtube.googleapis.com/youtube/v3/playlistItems?part=snippet&playlistId=PLsQ-ipbXoFYm88bmZy4eyhuIZoTtU_I_Z&maxResults=25&key=AIzaSyAdxWpkjawZwkOoLZNdBKnaUQ1o3Wov2cg&alt=json&pageToken=EAAaBlBUOkNIMA
+2021-09-27 02:29:38,969 | exts.music | DEBUG | Enqueued
+2021-09-27 02:29:39,705 | exts.music | DEBUG | 728482381215826000: Searching https://www.youtube.com/playlist?list=PLsQ-ipbXoFYm88bmZy4eyhuIZoTtU_I_Z
+2021-09-27 02:29:39,775 | googleapiclient.discovery_cache | INFO | file_cache is only supported with oauth2client<4.0.0
+2021-09-27 02:29:39,782 | googleapiclient.discovery | DEBUG | URL being requested: GET https://youtube.googleapis.com/youtube/v3/playlistItems?part=snippet&playlistId=PLsQ-ipbXoFYm88bmZy4eyhuIZoTtU_I_Z&maxResults=25&key=AIzaSyAdxWpkjawZwkOoLZNdBKnaUQ1o3Wov2cg&alt=json
+2021-09-27 02:29:39,866 | googleapiclient.discovery | DEBUG | Next page request URL: list_next https://youtube.googleapis.com/youtube/v3/playlistItems?part=snippet&playlistId=PLsQ-ipbXoFYm88bmZy4eyhuIZoTtU_I_Z&maxResults=25&key=AIzaSyAdxWpkjawZwkOoLZNdBKnaUQ1o3Wov2cg&alt=json&pageToken=EAAaBlBUOkNCaw
+2021-09-27 02:29:39,913 | googleapiclient.discovery | DEBUG | Next page request URL: list_next https://youtube.googleapis.com/youtube/v3/playlistItems?part=snippet&playlistId=PLsQ-ipbXoFYm88bmZy4eyhuIZoTtU_I_Z&maxResults=25&key=AIzaSyAdxWpkjawZwkOoLZNdBKnaUQ1o3Wov2cg&alt=json&pageToken=EAAaBlBUOkNESQ
+2021-09-27 02:29:39,951 | googleapiclient.discovery | DEBUG | Next page request URL: list_next https://youtube.googleapis.com/youtube/v3/playlistItems?part=snippet&playlistId=PLsQ-ipbXoFYm88bmZy4eyhuIZoTtU_I_Z&maxResults=25&key=AIzaSyAdxWpkjawZwkOoLZNdBKnaUQ1o3Wov2cg&alt=json&pageToken=EAAaBlBUOkNFcw
+2021-09-27 02:29:40,028 | googleapiclient.discovery | DEBUG | Next page request URL: list_next https://youtube.googleapis.com/youtube/v3/playlistItems?part=snippet&playlistId=PLsQ-ipbXoFYm88bmZy4eyhuIZoTtU_I_Z&maxResults=25&key=AIzaSyAdxWpkjawZwkOoLZNdBKnaUQ1o3Wov2cg&alt=json&pageToken=EAAaBlBUOkNHUQ
+2021-09-27 02:29:40,067 | googleapiclient.discovery | DEBUG | Next page request URL: list_next https://youtube.googleapis.com/youtube/v3/playlistItems?part=snippet&playlistId=PLsQ-ipbXoFYm88bmZy4eyhuIZoTtU_I_Z&maxResults=25&key=AIzaSyAdxWpkjawZwkOoLZNdBKnaUQ1o3Wov2cg&alt=json&pageToken=EAAaBlBUOkNIMA
+2021-09-27 02:29:41,205 | exts.music | DEBUG | Enqueued
+2021-09-27 02:29:42,144 | exts.music | DEBUG | 728482381215826000: Searching https://www.youtube.com/playlist?list=PLsQ-ipbXoFYm88bmZy4eyhuIZoTtU_I_Z
+2021-09-27 02:29:42,233 | googleapiclient.discovery_cache | INFO | file_cache is only supported with oauth2client<4.0.0
+2021-09-27 02:29:42,243 | googleapiclient.discovery | DEBUG | URL being requested: GET https://youtube.googleapis.com/youtube/v3/playlistItems?part=snippet&playlistId=PLsQ-ipbXoFYm88bmZy4eyhuIZoTtU_I_Z&maxResults=25&key=AIzaSyAdxWpkjawZwkOoLZNdBKnaUQ1o3Wov2cg&alt=json
+2021-09-27 02:29:42,335 | googleapiclient.discovery | DEBUG | Next page request URL: list_next https://youtube.googleapis.com/youtube/v3/playlistItems?part=snippet&playlistId=PLsQ-ipbXoFYm88bmZy4eyhuIZoTtU_I_Z&maxResults=25&key=AIzaSyAdxWpkjawZwkOoLZNdBKnaUQ1o3Wov2cg&alt=json&pageToken=EAAaBlBUOkNCaw
+2021-09-27 02:29:42,375 | googleapiclient.discovery | DEBUG | Next page request URL: list_next https://youtube.googleapis.com/youtube/v3/playlistItems?part=snippet&playlistId=PLsQ-ipbXoFYm88bmZy4eyhuIZoTtU_I_Z&maxResults=25&key=AIzaSyAdxWpkjawZwkOoLZNdBKnaUQ1o3Wov2cg&alt=json&pageToken=EAAaBlBUOkNESQ
+2021-09-27 02:29:42,403 | googleapiclient.discovery | DEBUG | Next page request URL: list_next https://youtube.googleapis.com/youtube/v3/playlistItems?part=snippet&playlistId=PLsQ-ipbXoFYm88bmZy4eyhuIZoTtU_I_Z&maxResults=25&key=AIzaSyAdxWpkjawZwkOoLZNdBKnaUQ1o3Wov2cg&alt=json&pageToken=EAAaBlBUOkNFcw
+2021-09-27 02:29:42,439 | googleapiclient.discovery | DEBUG | Next page request URL: list_next https://youtube.googleapis.com/youtube/v3/playlistItems?part=snippet&playlistId=PLsQ-ipbXoFYm88bmZy4eyhuIZoTtU_I_Z&maxResults=25&key=AIzaSyAdxWpkjawZwkOoLZNdBKnaUQ1o3Wov2cg&alt=json&pageToken=EAAaBlBUOkNHUQ
+2021-09-27 02:29:42,478 | googleapiclient.discovery | DEBUG | Next page request URL: list_next https://youtube.googleapis.com/youtube/v3/playlistItems?part=snippet&playlistId=PLsQ-ipbXoFYm88bmZy4eyhuIZoTtU_I_Z&maxResults=25&key=AIzaSyAdxWpkjawZwkOoLZNdBKnaUQ1o3Wov2cg&alt=json&pageToken=EAAaBlBUOkNIMA
+2021-09-27 02:29:43,638 | exts.music | DEBUG | Enqueued
+2021-09-27 02:29:44,968 | asyncio | ERROR | Task was destroyed but it is pending!
+task: <Task pending name='Task-442' coro=<LoadPlaylistSong.load() running at /home/runner/TpLearn/exts/music.py:111> wait_for=<Future cancelled>>
+2021-09-27 02:32:03,902 | exts.music | DEBUG | VoiceState created for เรียนๆ
+2021-09-27 02:32:03,903 | exts.music | INFO | Audio Player Launched for เรียนๆ
+2021-09-27 02:32:05,882 | exts.music | DEBUG | 728482381215826000: Searching https://www.youtube.com/playlist?list=PLsQ-ipbXoFYm88bmZy4eyhuIZoTtU_I_Z
+2021-09-27 02:32:06,001 | googleapiclient.discovery_cache | INFO | file_cache is only supported with oauth2client<4.0.0
+2021-09-27 02:32:06,007 | googleapiclient.discovery | DEBUG | URL being requested: GET https://youtube.googleapis.com/youtube/v3/playlistItems?part=snippet&playlistId=PLsQ-ipbXoFYm88bmZy4eyhuIZoTtU_I_Z&maxResults=25&key=AIzaSyAdxWpkjawZwkOoLZNdBKnaUQ1o3Wov2cg&alt=json
+2021-09-27 02:32:06,104 | googleapiclient.discovery | DEBUG | Next page request URL: list_next https://youtube.googleapis.com/youtube/v3/playlistItems?part=snippet&playlistId=PLsQ-ipbXoFYm88bmZy4eyhuIZoTtU_I_Z&maxResults=25&key=AIzaSyAdxWpkjawZwkOoLZNdBKnaUQ1o3Wov2cg&alt=json&pageToken=EAAaBlBUOkNCaw
+2021-09-27 02:32:06,153 | googleapiclient.discovery | DEBUG | Next page request URL: list_next https://youtube.googleapis.com/youtube/v3/playlistItems?part=snippet&playlistId=PLsQ-ipbXoFYm88bmZy4eyhuIZoTtU_I_Z&maxResults=25&key=AIzaSyAdxWpkjawZwkOoLZNdBKnaUQ1o3Wov2cg&alt=json&pageToken=EAAaBlBUOkNESQ
+2021-09-27 02:32:06,196 | googleapiclient.discovery | DEBUG | Next page request URL: list_next https://youtube.googleapis.com/youtube/v3/playlistItems?part=snippet&playlistId=PLsQ-ipbXoFYm88bmZy4eyhuIZoTtU_I_Z&maxResults=25&key=AIzaSyAdxWpkjawZwkOoLZNdBKnaUQ1o3Wov2cg&alt=json&pageToken=EAAaBlBUOkNFcw
+2021-09-27 02:32:06,233 | googleapiclient.discovery | DEBUG | Next page request URL: list_next https://youtube.googleapis.com/youtube/v3/playlistItems?part=snippet&playlistId=PLsQ-ipbXoFYm88bmZy4eyhuIZoTtU_I_Z&maxResults=25&key=AIzaSyAdxWpkjawZwkOoLZNdBKnaUQ1o3Wov2cg&alt=json&pageToken=EAAaBlBUOkNHUQ
+2021-09-27 02:32:06,273 | googleapiclient.discovery | DEBUG | Next page request URL: list_next https://youtube.googleapis.com/youtube/v3/playlistItems?part=snippet&playlistId=PLsQ-ipbXoFYm88bmZy4eyhuIZoTtU_I_Z&maxResults=25&key=AIzaSyAdxWpkjawZwkOoLZNdBKnaUQ1o3Wov2cg&alt=json&pageToken=EAAaBlBUOkNIMA
+2021-09-27 02:32:07,420 | exts.music | DEBUG | Enqueued
+2021-09-27 02:32:21,092 | exts.music | DEBUG | 728482381215826000: Searching ,p https://www.youtube.com/playlist?list=PLsQ-ipbXoFYm88bmZy4eyhuIZoTtU_I_Z
+2021-09-27 02:32:21,219 | googleapiclient.discovery_cache | INFO | file_cache is only supported with oauth2client<4.0.0
+2021-09-27 02:32:21,229 | googleapiclient.discovery | DEBUG | URL being requested: GET https://youtube.googleapis.com/youtube/v3/playlistItems?part=snippet&playlistId=PLsQ-ipbXoFYm88bmZy4eyhuIZoTtU_I_Z&maxResults=25&key=AIzaSyAdxWpkjawZwkOoLZNdBKnaUQ1o3Wov2cg&alt=json
+2021-09-27 02:32:21,357 | googleapiclient.discovery | DEBUG | Next page request URL: list_next https://youtube.googleapis.com/youtube/v3/playlistItems?part=snippet&playlistId=PLsQ-ipbXoFYm88bmZy4eyhuIZoTtU_I_Z&maxResults=25&key=AIzaSyAdxWpkjawZwkOoLZNdBKnaUQ1o3Wov2cg&alt=json&pageToken=EAAaBlBUOkNCaw
+2021-09-27 02:32:21,395 | googleapiclient.discovery | DEBUG | Next page request URL: list_next https://youtube.googleapis.com/youtube/v3/playlistItems?part=snippet&playlistId=PLsQ-ipbXoFYm88bmZy4eyhuIZoTtU_I_Z&maxResults=25&key=AIzaSyAdxWpkjawZwkOoLZNdBKnaUQ1o3Wov2cg&alt=json&pageToken=EAAaBlBUOkNESQ
+2021-09-27 02:32:21,522 | googleapiclient.discovery | DEBUG | Next page request URL: list_next https://youtube.googleapis.com/youtube/v3/playlistItems?part=snippet&playlistId=PLsQ-ipbXoFYm88bmZy4eyhuIZoTtU_I_Z&maxResults=25&key=AIzaSyAdxWpkjawZwkOoLZNdBKnaUQ1o3Wov2cg&alt=json&pageToken=EAAaBlBUOkNFcw
+2021-09-27 02:32:21,650 | googleapiclient.discovery | DEBUG | Next page request URL: list_next https://youtube.googleapis.com/youtube/v3/playlistItems?part=snippet&playlistId=PLsQ-ipbXoFYm88bmZy4eyhuIZoTtU_I_Z&maxResults=25&key=AIzaSyAdxWpkjawZwkOoLZNdBKnaUQ1o3Wov2cg&alt=json&pageToken=EAAaBlBUOkNHUQ
+2021-09-27 02:32:21,750 | googleapiclient.discovery | DEBUG | Next page request URL: list_next https://youtube.googleapis.com/youtube/v3/playlistItems?part=snippet&playlistId=PLsQ-ipbXoFYm88bmZy4eyhuIZoTtU_I_Z&maxResults=25&key=AIzaSyAdxWpkjawZwkOoLZNdBKnaUQ1o3Wov2cg&alt=json&pageToken=EAAaBlBUOkNIMA
+2021-09-27 02:32:22,936 | exts.music | DEBUG | Enqueued
+2021-09-27 02:34:07,996 | bot | INFO | Cog loaded: Music
+2021-09-27 02:34:16,046 | exts.music | DEBUG | VoiceState created for เรียนๆ
+2021-09-27 02:34:16,047 | exts.music | INFO | Audio Player Launched for เรียนๆ
+2021-09-27 02:34:18,039 | exts.music | DEBUG | 728482381215826000: Searching https://www.youtube.com/playlist?list=PLsQ-ipbXoFYm88bmZy4eyhuIZoTtU_I_Z
+2021-09-27 02:34:18,142 | googleapiclient.discovery_cache | INFO | file_cache is only supported with oauth2client<4.0.0
+2021-09-27 02:34:18,162 | googleapiclient.discovery | DEBUG | URL being requested: GET https://youtube.googleapis.com/youtube/v3/playlistItems?part=snippet&playlistId=PLsQ-ipbXoFYm88bmZy4eyhuIZoTtU_I_Z&maxResults=25&key=AIzaSyAdxWpkjawZwkOoLZNdBKnaUQ1o3Wov2cg&alt=json
+2021-09-27 02:34:18,344 | googleapiclient.discovery | DEBUG | Next page request URL: list_next https://youtube.googleapis.com/youtube/v3/playlistItems?part=snippet&playlistId=PLsQ-ipbXoFYm88bmZy4eyhuIZoTtU_I_Z&maxResults=25&key=AIzaSyAdxWpkjawZwkOoLZNdBKnaUQ1o3Wov2cg&alt=json&pageToken=EAAaBlBUOkNCaw
+2021-09-27 02:34:18,394 | googleapiclient.discovery | DEBUG | Next page request URL: list_next https://youtube.googleapis.com/youtube/v3/playlistItems?part=snippet&playlistId=PLsQ-ipbXoFYm88bmZy4eyhuIZoTtU_I_Z&maxResults=25&key=AIzaSyAdxWpkjawZwkOoLZNdBKnaUQ1o3Wov2cg&alt=json&pageToken=EAAaBlBUOkNESQ
+2021-09-27 02:34:18,456 | googleapiclient.discovery | DEBUG | Next page request URL: list_next https://youtube.googleapis.com/youtube/v3/playlistItems?part=snippet&playlistId=PLsQ-ipbXoFYm88bmZy4eyhuIZoTtU_I_Z&maxResults=25&key=AIzaSyAdxWpkjawZwkOoLZNdBKnaUQ1o3Wov2cg&alt=json&pageToken=EAAaBlBUOkNFcw
+2021-09-27 02:34:18,515 | googleapiclient.discovery | DEBUG | Next page request URL: list_next https://youtube.googleapis.com/youtube/v3/playlistItems?part=snippet&playlistId=PLsQ-ipbXoFYm88bmZy4eyhuIZoTtU_I_Z&maxResults=25&key=AIzaSyAdxWpkjawZwkOoLZNdBKnaUQ1o3Wov2cg&alt=json&pageToken=EAAaBlBUOkNHUQ
+2021-09-27 02:34:18,622 | googleapiclient.discovery | DEBUG | Next page request URL: list_next https://youtube.googleapis.com/youtube/v3/playlistItems?part=snippet&playlistId=PLsQ-ipbXoFYm88bmZy4eyhuIZoTtU_I_Z&maxResults=25&key=AIzaSyAdxWpkjawZwkOoLZNdBKnaUQ1o3Wov2cg&alt=json&pageToken=EAAaBlBUOkNIMA
+2021-09-27 02:34:19,763 | exts.music | DEBUG | Enqueued
+2021-09-27 02:34:24,511 | exts.errorhand | TRACE | Command: clear; Already handled locally.
+2021-09-27 02:34:39,301 | bot | INFO | Cog loaded: Music
+2021-09-27 02:34:44,156 | exts.music | DEBUG | VoiceState created for เรียนๆ
+2021-09-27 02:34:44,157 | exts.music | INFO | Audio Player Launched for เรียนๆ
+2021-09-27 02:34:46,102 | exts.music | DEBUG | 728482381215826000: Searching https://www.youtube.com/playlist?list=PLsQ-ipbXoFYm88bmZy4eyhuIZoTtU_I_Z
+2021-09-27 02:34:46,216 | googleapiclient.discovery_cache | INFO | file_cache is only supported with oauth2client<4.0.0
+2021-09-27 02:34:46,229 | googleapiclient.discovery | DEBUG | URL being requested: GET https://youtube.googleapis.com/youtube/v3/playlistItems?part=snippet&playlistId=PLsQ-ipbXoFYm88bmZy4eyhuIZoTtU_I_Z&maxResults=25&key=AIzaSyAdxWpkjawZwkOoLZNdBKnaUQ1o3Wov2cg&alt=json
+2021-09-27 02:34:46,426 | googleapiclient.discovery | DEBUG | Next page request URL: list_next https://youtube.googleapis.com/youtube/v3/playlistItems?part=snippet&playlistId=PLsQ-ipbXoFYm88bmZy4eyhuIZoTtU_I_Z&maxResults=25&key=AIzaSyAdxWpkjawZwkOoLZNdBKnaUQ1o3Wov2cg&alt=json&pageToken=EAAaBlBUOkNCaw
+2021-09-27 02:34:46,472 | googleapiclient.discovery | DEBUG | Next page request URL: list_next https://youtube.googleapis.com/youtube/v3/playlistItems?part=snippet&playlistId=PLsQ-ipbXoFYm88bmZy4eyhuIZoTtU_I_Z&maxResults=25&key=AIzaSyAdxWpkjawZwkOoLZNdBKnaUQ1o3Wov2cg&alt=json&pageToken=EAAaBlBUOkNESQ
+2021-09-27 02:34:46,519 | googleapiclient.discovery | DEBUG | Next page request URL: list_next https://youtube.googleapis.com/youtube/v3/playlistItems?part=snippet&playlistId=PLsQ-ipbXoFYm88bmZy4eyhuIZoTtU_I_Z&maxResults=25&key=AIzaSyAdxWpkjawZwkOoLZNdBKnaUQ1o3Wov2cg&alt=json&pageToken=EAAaBlBUOkNFcw
+2021-09-27 02:34:46,564 | googleapiclient.discovery | DEBUG | Next page request URL: list_next https://youtube.googleapis.com/youtube/v3/playlistItems?part=snippet&playlistId=PLsQ-ipbXoFYm88bmZy4eyhuIZoTtU_I_Z&maxResults=25&key=AIzaSyAdxWpkjawZwkOoLZNdBKnaUQ1o3Wov2cg&alt=json&pageToken=EAAaBlBUOkNHUQ
+2021-09-27 02:34:46,605 | googleapiclient.discovery | DEBUG | Next page request URL: list_next https://youtube.googleapis.com/youtube/v3/playlistItems?part=snippet&playlistId=PLsQ-ipbXoFYm88bmZy4eyhuIZoTtU_I_Z&maxResults=25&key=AIzaSyAdxWpkjawZwkOoLZNdBKnaUQ1o3Wov2cg&alt=json&pageToken=EAAaBlBUOkNIMA
+2021-09-27 02:34:47,802 | exts.music | DEBUG | Enqueued

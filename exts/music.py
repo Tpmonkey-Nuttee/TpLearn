@@ -418,6 +418,7 @@ class Music(commands.Cog):
 
         ctx.voice_state.songs.clear()
         ctx.voice_state.loop = Loop.NONE
+        ctx.voice_state.loader.queue.clear()
 
         if ctx.voice_state.is_playing:
             ctx.voice_state.voice.stop()
