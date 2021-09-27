@@ -124,9 +124,10 @@ class LoadPlaylistSong:
     async def put(self, song: PlaylistSong):
         self.queue.put_nowait(song)
 
+
 class VoiceState:
     def __init__(self, bot: commands.Bot, ctx: commands.Context):
-        log.debug(f"VoiceState created for {ctx.guild}")
+        log.debug(f"VoiceState created for {ctx.guild.id}")
         self.bot = bot
         self._ctx = ctx
 
@@ -169,7 +170,7 @@ class VoiceState:
         return self.voice and self.current    
 
     async def audio_player_task(self):
-        log.info(f"Audio Player Launched for {self._ctx.guild}")
+        log.info(f"Audio Player Launched for {self._ctx.guild.id}")
         while True:
             self.next.clear()
 
@@ -549,8 +550,10 @@ class Music(commands.Cog):
         Invoke this command again to unloop the song.
         """
 
-        if not ctx.voice_state.is_playing:
-            return await ctx.send(':x: **Nothing being played at the moment.**')
+        if not ctx.voice_state.current is None:
+            await asyncio.sleep(1)
+            if not ctx.voice_state.current is None:
+                return await ctx.send(':x: **Nothing being played at the moment.**')
 
         if ctx.voice_state.loop == Loop.NONE:
             ctx.voice_state.loop = Loop.SINGLE
@@ -569,8 +572,10 @@ class Music(commands.Cog):
         Invoke this command again to unloop the queue.
         """
 
-        if not ctx.voice_state.is_playing:
-            return await ctx.send(':x: **Nothing being played at the moment.**')
+        if not ctx.voice_state.current is None:
+            await asyncio.sleep(1)
+            if not ctx.voice_state.current is None:
+                return await ctx.send(':x: **Nothing being played at the moment.**')
 
         if ctx.voice_state.loop == Loop.SINGLE or ctx.voice_state.loop == Loop.NONE:
             ctx.voice_state.loop = Loop.QUEUE
@@ -637,6 +642,9 @@ class Music(commands.Cog):
                 await ctx.send("Enqueued {} songs.".format(amount))
                 
             else:
+                """pl = PlaylistSong(ctx, search)
+                await ctx.voice_state.songs.put(pl)
+                await ctx.voice_state.loader.put(pl)"""
                 try:
                     source = await YTDLSource.create_source(ctx, search, loop=self.bot.loop)
                 except YTDLError as e:

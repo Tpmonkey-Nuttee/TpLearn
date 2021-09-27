@@ -243,3 +243,59 @@ task: <Task pending name='Task-8200' coro=<LoadPlaylistSong.load() running at /h
 task: <Task pending name='Task-7945' coro=<LoadPlaylistSong.load() running at /home/runner/TpLearn/exts/music.py:111> wait_for=<Future cancelled>>
 2021-09-27 02:51:17,307 | asyncio | ERROR | Task was destroyed but it is pending!
 task: <Task pending name='Task-8472' coro=<LoadPlaylistSong.load() running at /home/runner/TpLearn/exts/music.py:111> wait_for=<Future cancelled>>
+2021-09-27 03:07:45,670 | exts.muleval | DEBUG | Eval command; Ignore black list: True
+2021-09-27 03:07:45,671 | exts.muleval | INFO | 'py' highlighted code block
+2021-09-27 03:07:45,671 | exts.muleval | TRACE | Eval command: Tpmonkey#2682(518063131096907813) with code:
+class A:
+  pass
+
+a = A()
+b = [a]
+c = [a]
+del a
+print(b, c)
+2021-09-27 03:11:53,772 | bot | INFO | Resumed Connection
+2021-09-27 03:11:54,045 | bot | DEBUG | changed bot status
+2021-09-27 03:25:11,198 | exts.muleval | DEBUG | Eval command; Ignore black list: True
+2021-09-27 03:25:11,199 | exts.muleval | INFO | 'py' highlighted code block
+2021-09-27 03:25:11,199 | exts.muleval | TRACE | Eval command: Tpmonkey#2682(518063131096907813) with code:
+import asyncio
+queue = asyncio.Queue()
+queue.put_nowait("hey")
+queue.put_nowait("I")
+queue.put_nowait("want")
+queue.put_nowait("to")
+queue.put_nowait("die")
+
+for i in queue._queue:
+  print(i)
+2021-09-27 03:28:38,386 | exts.admin | DEBUG | Admin Eval from Tpmonkey#2682; code: self.bot.get_cog("Music").voice_states[ctx.guild.id].songs._queue[0].source
+2021-09-27 03:28:47,380 | exts.admin | DEBUG | Admin Eval from Tpmonkey#2682; code: self.bot.get_cog("Music").voice_states[ctx.guild.id].songs._queue[0].song
+2021-09-27 03:28:53,239 | exts.admin | DEBUG | Admin Eval from Tpmonkey#2682; code: self.bot.get_cog("Music").voice_states[ctx.guild.id].songs._queue[1].song
+2021-09-27 03:28:57,163 | exts.admin | DEBUG | Admin Eval from Tpmonkey#2682; code: self.bot.get_cog("Music").voice_states[ctx.guild.id].songs._queue[2].song
+2021-09-27 03:29:09,083 | exts.admin | DEBUG | Admin Eval from Tpmonkey#2682; code: self.bot.get_cog("Music").voice_states[ctx.guild.id].songs._queue[0].song
+2021-09-27 03:29:15,215 | exts.admin | DEBUG | Admin Eval from Tpmonkey#2682; code: self.bot.get_cog("Music").voice_states[ctx.guild.id].songs._queue[0].url
+2021-09-27 03:29:46,944 | exts.admin | DEBUG | Admin Eval from Tpmonkey#2682; code: self.bot.get_cog("Music").voice_states[ctx.guild.id].songs._queue[4].url
+2021-09-27 03:29:57,382 | exts.admin | DEBUG | Admin Eval from Tpmonkey#2682; code: self.bot.get_cog("Music").voice_states[ctx.guild.id].songs._queue[4].song
+2021-09-27 03:31:18,618 | exts.admin | DEBUG | Admin Eval from Tpmonkey#2682; code: self.bot.get_cog("Music").voice_states[ctx.guild.id].loader.queue._queue[4]
+2021-09-27 03:36:43,907 | bot | INFO | Cog loaded: Music
+2021-09-27 03:36:46,611 | discord.player | ERROR | Calling the after function failed.
+Traceback (most recent call last):
+  File "/opt/virtualenvs/python3/lib/python3.8/site-packages/discord/player.py", line 616, in _call_after
+    self.after(error)
+  File "/home/runner/TpLearn/exts/music.py", line 237, in play_next_song
+    if error:
+exts.music.VoiceError: [Errno 9] Bad file descriptor
+2021-09-27 03:37:00,237 | exts.music | DEBUG | VoiceState created for 728482381215826000
+2021-09-27 03:37:00,238 | exts.music | INFO | Audio Player Launched for 728482381215826000
+2021-09-27 03:37:02,154 | exts.music | DEBUG | 728482381215826000: Searching gurenge
+2021-09-27 03:37:03,669 | exts.music | DEBUG | Enqueued
+2021-09-27 03:38:13,634 | bot | INFO | Cog loaded: Music
+2021-09-27 03:38:14,250 | asyncio | ERROR | Task was destroyed but it is pending!
+task: <Task pending name='Task-9296' coro=<VoiceState.audio_player_task() running at /home/runner/TpLearn/exts/music.py:232> wait_for=<Future cancelled>>
+2021-09-27 03:38:14,251 | asyncio | ERROR | Task was destroyed but it is pending!
+task: <Task pending name='Task-9295' coro=<LoadPlaylistSong.load() running at /home/runner/TpLearn/exts/music.py:111> wait_for=<Future cancelled>>
+2021-09-27 03:38:18,906 | exts.music | DEBUG | VoiceState created for 728482381215826000
+2021-09-27 03:38:18,907 | exts.music | INFO | Audio Player Launched for 728482381215826000
+2021-09-27 03:38:20,878 | exts.music | DEBUG | 728482381215826000: Searching gurenge
+2021-09-27 03:38:22,286 | exts.music | DEBUG | Enqueued
