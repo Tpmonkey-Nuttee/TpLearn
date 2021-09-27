@@ -23,6 +23,7 @@ import os
 log = logging.getLogger(__name__)
 
 class AdminCommands(Cog):
+    """Bot admin commands"""
     def __init__(self, bot: Bot):
         self.bot = bot
         self.eval_jobs = {}

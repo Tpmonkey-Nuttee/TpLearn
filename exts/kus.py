@@ -28,6 +28,7 @@ NEWS_URL = config.news_url
 COOLDOWN = config.kus_news_cooldown
 
 class KUSNews(Cog):
+    """KUS monitor system, Use command below to set it up!"""
     def __init__(self, bot: Bot):
         self.bot = bot
         self.data = None

@@ -415,3 +415,115 @@ else:
 2021-09-27 04:33:39,119 | utils.planner | DEBUG | returning sorted date for 829749071891005512
 2021-09-27 04:33:39,242 | utils.planner | DEBUG | returning sorted date for 773426467492069386
 2021-09-27 04:34:08,185 | exts.admin | DEBUG | Admin Eval from Tpmonkey#2682; code: ctx.guild.id
+2021-09-27 05:29:58,940 | exts.music | DEBUG | VoiceState created for 839147542377398306
+2021-09-27 05:29:58,941 | exts.music | INFO | Audio Player Launched for 839147542377398306
+2021-09-27 05:30:01,545 | exts.music | DEBUG | 839147542377398306: Searching lalisa
+2021-09-27 05:30:03,775 | exts.music | DEBUG | Enqueued
+2021-09-27 05:30:26,299 | exts.music | DEBUG | 839147542377398306: Searching die
+2021-09-27 05:30:27,622 | exts.music | DEBUG | Enqueued
+2021-09-27 05:31:40,478 | exts.music | DEBUG | 839147542377398306: Searching dying wish
+2021-09-27 05:31:41,707 | exts.music | DEBUG | Enqueued
+2021-09-27 05:33:15,308 | exts.music | DEBUG | 839147542377398306: Searching DIYING WISH
+2021-09-27 05:33:16,643 | exts.music | DEBUG | Enqueued
+2021-09-27 05:34:32,265 | exts.music | DEBUG | 839147542377398306: Searching https://open.spotify.com/playlist/5bpAnXzO3mT2gK5QPZJBQb?si=54jVhV9URwqR2SHPWXrcqw&dl_branch=1
+2021-09-27 05:34:32,601 | exts.music | DEBUG | 839147542377398306: Searching https://open.spotify.com/playlist/5bpAnXzO3mT2gK5QPZJBQb?si=54jVhV9URwqR2SHPWXrcqw&dl_branch=1
+2021-09-27 05:34:32,865 | exts.errorhand | TRACE | Command: p https://open.spotify.com/playlist/5bpAnXzO3mT2gK5QPZJBQb?si=54jVhV9URwqR2SHPWXrcqw&dl_branch=1; Already handled locally.
+2021-09-27 05:34:33,123 | exts.errorhand | TRACE | Command: p https://open.spotify.com/playlist/5bpAnXzO3mT2gK5QPZJBQb?si=54jVhV9URwqR2SHPWXrcqw&dl_branch=1; Already handled locally.
+2021-09-27 05:34:44,717 | exts.music | DEBUG | 839147542377398306: Searching https://open.spotify.com/playlist/5bpAnXzO3mT2gK5QPZJBQb?si=54jVhV9URwqR2SHPWXrcqw&dl_branch=1
+2021-09-27 05:34:45,137 | exts.errorhand | TRACE | Command: p https://open.spotify.com/playlist/5bpAnXzO3mT2gK5QPZJBQb?si=54jVhV9URwqR2SHPWXrcqw&dl_branch=1; Already handled locally.
+2021-09-27 06:39:37,943 | exts.music | DEBUG | VoiceState created for 728482381215826000
+2021-09-27 06:39:37,944 | exts.music | INFO | Audio Player Launched for 728482381215826000
+2021-09-27 06:39:39,895 | exts.music | DEBUG | 728482381215826000: Searching katharsis soft ver
+2021-09-27 06:39:41,328 | exts.music | DEBUG | Enqueued
+2021-09-27 06:55:00,993 | bot | INFO | Resumed Connection
+2021-09-27 06:55:01,315 | bot | DEBUG | changed bot status
+2021-09-27 07:43:39,998 | exts.assignment | DEBUG | init dat for 518063131096907813
+2021-09-27 07:43:40,158 | bot | DEBUG | waiting for message...
+2021-09-27 07:43:40,260 | asyncio | ERROR | Task was destroyed but it is pending!
+task: <Task pending name='Task-1634' coro=<LoadPlaylistSong.load() running at /home/runner/TpLearn/exts/music.py:111> wait_for=<Future cancelled>>
+2021-09-27 07:43:40,261 | asyncio | ERROR | Task was destroyed but it is pending!
+task: <Task pending name='Task-4564' coro=<LoadPlaylistSong.load() running at /home/runner/TpLearn/exts/music.py:111> wait_for=<Future cancelled>>
+2021-09-27 07:43:47,662 | exts.assignment | DEBUG | Recieve message: สอบเลขรายหน่วย
+2021-09-27 07:43:47,889 | exts.assignment | DEBUG | update embed successfully for 518063131096907813
+2021-09-27 07:43:47,890 | bot | DEBUG | waiting for message...
+2021-09-27 07:43:50,072 | exts.assignment | DEBUG | Recieve message: Complex number
+2021-09-27 07:43:50,251 | exts.assignment | DEBUG | update embed successfully for 518063131096907813
+2021-09-27 07:43:50,252 | bot | DEBUG | waiting for message...
+2021-09-27 07:43:56,952 | exts.assignment | DEBUG | Recieve message: 8/10/2021
+2021-09-27 07:43:57,198 | exts.assignment | DEBUG | update embed successfully for 518063131096907813
+2021-09-27 07:43:57,199 | bot | DEBUG | waiting for message...
+2021-09-27 07:44:00,433 | exts.assignment | DEBUG | processing ✅ for 518063131096907813
+2021-09-27 07:44:00,434 | utils.planner | DEBUG | generated new key
+2021-09-27 07:44:00,495 | utils.planner | DEBUG | added Assignment from `562976873685057546` with key `b7ac0175`
+2021-09-27 07:44:00,550 | exts.assignment | DEBUG | 518063131096907813 add/edit new assignment and passed in successfully.
+2021-09-27 07:45:27,969 | utils.planner | DEBUG | returning sorted date for 562976873685057546
+2021-09-27 07:45:28,108 | bot | DEBUG | creating assignment embed...
+2021-09-27 07:45:28,109 | bot | DEBUG | successfully created assignment embed
+2021-09-27 07:45:29,189 | bot | DEBUG | creating assignment embed...
+2021-09-27 07:45:29,189 | bot | DEBUG | successfully created assignment embed
+2021-09-27 07:45:29,189 | bot | DEBUG | creating assignment embed...
+2021-09-27 07:45:29,190 | bot | DEBUG | successfully created assignment embed
+2021-09-27 07:45:30,286 | bot | DEBUG | creating assignment embed...
+2021-09-27 07:45:30,287 | bot | DEBUG | successfully created assignment embed
+2021-09-27 07:45:31,459 | bot | DEBUG | creating assignment embed...
+2021-09-27 07:45:31,459 | bot | DEBUG | successfully created assignment embed
+2021-09-27 07:45:32,562 | bot | DEBUG | creating assignment embed...
+2021-09-27 07:45:32,563 | bot | DEBUG | successfully created assignment embed
+2021-09-27 07:45:33,696 | bot | DEBUG | creating assignment embed...
+2021-09-27 07:45:33,696 | bot | DEBUG | successfully created assignment embed
+2021-09-27 07:45:34,802 | bot | DEBUG | creating assignment embed...
+2021-09-27 07:45:34,803 | bot | DEBUG | successfully created assignment embed
+2021-09-27 07:45:35,930 | bot | DEBUG | creating assignment embed...
+2021-09-27 07:45:35,931 | bot | DEBUG | successfully created assignment embed
+2021-09-27 07:45:37,032 | bot | DEBUG | creating assignment embed...
+2021-09-27 07:45:37,032 | bot | DEBUG | successfully created assignment embed
+2021-09-27 07:45:38,296 | bot | DEBUG | exts.update :white_check_mark: Sucessfully update works at 562976873685057546 :
+109EEEEEEEES
+2021-09-27 07:45:38,426 | exts.update | DEBUG | updated active-works for 562976873685057546
+2021-09-27 08:13:31,536 | asyncio | DEBUG | Using selector: EpollSelector
+2021-09-27 08:13:31,537 | bot | DEBUG | created bot base.
+2021-09-27 08:13:31,566 | constant | DEBUG | init database succesful
+2021-09-27 08:13:31,664 | utils.planner | DEBUG | triggered update
+2021-09-27 08:13:31,676 | bot | DEBUG | bot subclass Created.
+2021-09-27 08:13:31,687 | bot | INFO | Cog loaded: Latency
+2021-09-27 08:13:31,696 | bot | INFO | Cog loaded: Assignments
+2021-09-27 08:13:31,701 | bot | INFO | Cog loaded: Utility
+2021-09-27 08:13:31,702 | bot | INFO | Cog loaded: ErrorHandler
+2021-09-27 08:13:31,704 | bot | INFO | Cog loaded: Help
+2021-09-27 08:13:31,711 | bot | INFO | Cog loaded: Snekbox
+2021-09-27 08:13:31,713 | bot | INFO | Cog loaded: Updater
+2021-09-27 08:13:31,719 | bot | INFO | Cog loaded: AdminCommands
+2021-09-27 08:13:31,720 | bot | INFO | Cog loaded: DayLoop
+2021-09-27 08:13:32,277 | bot | INFO | Cog loaded: Music
+2021-09-27 08:13:32,279 | bot | INFO | Cog loaded: NewPatch
+2021-09-27 08:13:32,291 | bot | INFO | Cog loaded: SetUp
+2021-09-27 08:13:32,396 | bot | INFO | Cog loaded: KUSNews
+2021-09-27 08:13:32,399 | bot | INFO | Cog loaded: Debug
+2021-09-27 08:13:32,400 | bot | INFO | Cog loaded: VoiceChannel
+2021-09-27 08:13:32,472 | exts.kus | DEBUG | loaded data
+2021-09-27 08:13:35,364 | utils.planner | DEBUG | returning sorted date for 562976873685057546
+2021-09-27 08:13:35,376 | bot | INFO | Connected successfully
+2021-09-27 08:13:35,762 | bot | DEBUG | changed bot status
+2021-09-27 08:13:35,769 | bot | DEBUG | creating assignment embed...
+2021-09-27 08:13:35,769 | bot | DEBUG | successfully created assignment embed
+2021-09-27 08:13:36,953 | bot | DEBUG | creating assignment embed...
+2021-09-27 08:13:36,953 | bot | DEBUG | successfully created assignment embed
+2021-09-27 08:13:38,059 | bot | DEBUG | creating assignment embed...
+2021-09-27 08:13:38,060 | bot | DEBUG | successfully created assignment embed
+2021-09-27 08:13:39,201 | bot | DEBUG | creating assignment embed...
+2021-09-27 08:13:39,202 | bot | DEBUG | successfully created assignment embed
+2021-09-27 08:13:40,306 | bot | DEBUG | creating assignment embed...
+2021-09-27 08:13:40,307 | bot | DEBUG | successfully created assignment embed
+2021-09-27 08:13:41,491 | bot | DEBUG | creating assignment embed...
+2021-09-27 08:13:41,491 | bot | DEBUG | successfully created assignment embed
+2021-09-27 08:13:42,655 | bot | DEBUG | exts.update :white_check_mark: Sucessfully update works at 562976873685057546 :
+1010EEEEEE
+2021-09-27 08:13:42,868 | exts.update | DEBUG | updated active-works for 562976873685057546
+2021-09-27 08:13:42,931 | utils.planner | DEBUG | returning sorted date for 728482381215826000
+2021-09-27 08:13:43,025 | bot | DEBUG | creating assignment embed...
+2021-09-27 08:13:43,025 | bot | DEBUG | successfully created assignment embed
+2021-09-27 08:13:44,239 | bot | DEBUG | exts.update :white_check_mark: Sucessfully update works at 728482381215826000 :
+33E
+2021-09-27 08:13:44,499 | exts.update | DEBUG | updated active-works for 728482381215826000
+2021-09-27 08:13:44,500 | utils.planner | DEBUG | returning sorted date for 829749071891005512
+2021-09-27 08:13:44,642 | utils.planner | DEBUG | returning sorted date for 773426467492069386

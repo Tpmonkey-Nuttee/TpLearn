@@ -256,6 +256,10 @@ class VoiceState:
 
 
 class Music(commands.Cog):
+    """
+    Music system
+    **Note:** All commands are like Groovy, Rythm bot except remove command is changed to `,removes`
+    """
     def __init__(self, bot: commands.Bot):
         self.bot = bot
 

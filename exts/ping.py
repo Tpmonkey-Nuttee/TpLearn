@@ -17,6 +17,7 @@ DESCRIPTION = (
 )
 
 class Latency(Cog):
+    """Display ping!"""
     def __init__(self, bot: Bot):
         self.bot = bot
         self.socket_since = datetime.utcnow()

@@ -4,7 +4,7 @@ Made by Tpmonkey
 """
 
 from discord.ext.commands import Cog, Context, command, guild_only
-from discord import Embed, Colour, Member
+from discord import Embed, Colour
 
 from bot import Bot
 from utils import time as timef
@@ -14,6 +14,9 @@ import random
 import textwrap
 
 class Utility(Cog):
+    """
+    Utility commands, just for fun of cause!
+    """
     def __init__(self, bot: Bot):
         self.bot = bot
     

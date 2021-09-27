@@ -29,6 +29,7 @@ EMOJIS = ("1️⃣", "2️⃣", "3️⃣", "4️⃣", "✅", "❎")
 log = logging.getLogger(__name__)
 
 class Assignments(Cog):
+    """Assignment System, Need to use `,setup` first before using it."""
     def __init__(self, bot: Bot):
         self.bot = bot
         self.tasks = {}

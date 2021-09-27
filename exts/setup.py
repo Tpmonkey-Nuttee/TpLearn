@@ -11,6 +11,12 @@ from discord import PermissionOverwrite, Forbidden
 from bot import Bot
 
 class SetUp(Cog):
+    """
+    Setup the bot for assignment system!
+
+    If you got a problem, try using `,fix` command.
+    still not fixed? direct message the bot!
+    """
     def __init__(self, bot: Bot):
         self.bot = bot
     
