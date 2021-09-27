@@ -532,3 +532,51 @@ task: <Task pending name='Task-4564' coro=<LoadPlaylistSong.load() running at /h
 2021-09-27 08:16:30,254 | exts.music | INFO | Audio Player Launched for 728482381215826000
 2021-09-27 08:16:32,194 | exts.music | DEBUG | 728482381215826000: Searching gurentge
 2021-09-27 08:16:34,591 | exts.music | DEBUG | Enqueued
+2021-09-27 08:20:48,812 | asyncio | DEBUG | Using selector: EpollSelector
+2021-09-27 08:20:48,813 | bot | DEBUG | created bot base.
+2021-09-27 08:20:48,861 | constant | DEBUG | init database succesful
+2021-09-27 08:20:48,976 | utils.planner | DEBUG | triggered update
+2021-09-27 08:20:48,983 | bot | DEBUG | bot subclass Created.
+2021-09-27 08:20:48,989 | bot | INFO | Cog loaded: DayLoop
+2021-09-27 08:20:48,990 | bot | INFO | Cog loaded: ErrorHandler
+2021-09-27 08:20:49,496 | bot | INFO | Cog loaded: Music
+2021-09-27 08:20:49,497 | bot | INFO | Cog loaded: Debug
+2021-09-27 08:20:49,499 | bot | INFO | Cog loaded: AdminCommands
+2021-09-27 08:20:49,577 | bot | INFO | Cog loaded: KUSNews
+2021-09-27 08:20:49,578 | bot | INFO | Cog loaded: NewPatch
+2021-09-27 08:20:49,579 | bot | INFO | Cog loaded: Updater
+2021-09-27 08:20:49,580 | bot | INFO | Cog loaded: SetUp
+2021-09-27 08:20:49,583 | bot | INFO | Cog loaded: Snekbox
+2021-09-27 08:20:49,585 | bot | INFO | Cog loaded: Assignments
+2021-09-27 08:20:49,585 | bot | INFO | Cog loaded: Latency
+2021-09-27 08:20:49,589 | bot | INFO | Cog loaded: Utility
+2021-09-27 08:20:49,590 | bot | INFO | Cog loaded: VoiceChannel
+2021-09-27 08:20:49,591 | bot | INFO | Cog loaded: Help
+2021-09-27 08:20:49,619 | exts.kus | DEBUG | loaded data
+2021-09-27 08:20:52,266 | utils.planner | DEBUG | returning sorted date for 562976873685057546
+2021-09-27 08:20:52,275 | exts.new_patch | DEBUG | Version change found, annoucing..
+2021-09-27 08:20:52,276 | bot | INFO | Connected successfully
+2021-09-27 08:20:52,511 | bot | DEBUG | changed bot status
+2021-09-27 08:20:52,591 | bot | DEBUG | creating assignment embed...
+2021-09-27 08:20:52,591 | bot | DEBUG | successfully created assignment embed
+2021-09-27 08:20:53,715 | bot | DEBUG | creating assignment embed...
+2021-09-27 08:20:53,715 | bot | DEBUG | successfully created assignment embed
+2021-09-27 08:20:54,800 | bot | DEBUG | creating assignment embed...
+2021-09-27 08:20:54,801 | bot | DEBUG | successfully created assignment embed
+2021-09-27 08:20:55,887 | bot | DEBUG | creating assignment embed...
+2021-09-27 08:20:55,888 | bot | DEBUG | successfully created assignment embed
+2021-09-27 08:20:56,972 | bot | DEBUG | creating assignment embed...
+2021-09-27 08:20:56,973 | bot | DEBUG | successfully created assignment embed
+2021-09-27 08:20:58,171 | bot | DEBUG | creating assignment embed...
+2021-09-27 08:20:58,171 | bot | DEBUG | successfully created assignment embed
+2021-09-27 08:20:59,263 | bot | DEBUG | exts.update :white_check_mark: Sucessfully update works at 562976873685057546 :
+1010EEEEEE
+2021-09-27 08:20:59,370 | exts.update | DEBUG | updated active-works for 562976873685057546
+2021-09-27 08:20:59,444 | utils.planner | DEBUG | returning sorted date for 728482381215826000
+2021-09-27 08:20:59,531 | bot | DEBUG | creating assignment embed...
+2021-09-27 08:20:59,531 | bot | DEBUG | successfully created assignment embed
+2021-09-27 08:21:00,639 | bot | DEBUG | exts.update :white_check_mark: Sucessfully update works at 728482381215826000 :
+33E
+2021-09-27 08:21:00,867 | exts.update | DEBUG | updated active-works for 728482381215826000
+2021-09-27 08:21:00,868 | utils.planner | DEBUG | returning sorted date for 829749071891005512
+2021-09-27 08:21:01,061 | utils.planner | DEBUG | returning sorted date for 773426467492069386

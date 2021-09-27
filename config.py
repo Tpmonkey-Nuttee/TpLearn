@@ -5,10 +5,14 @@ Made by Tpmonkey
 
 ### ---------- General ---------- ###
 
-version = "1.3.9"
+version = "1.3.10"
 note = [
-    "- Added `,ttr` command to view bot toturial.",
-    "- Help command is now hooked to Cog."
+    "**Fixes**",
+    "- Clear, Volume command not working as intended.",
+    "**QoL**",
+    "- Bot will now stop loading if the songs has been cleared.\n\t*Note: This will increase performance a little bit.*",
+    "- Loop & Loop queue command can now be run right after the play command is called without needing to wait.",
+    "- Changed Default Settings, Bot won't spam **Now Playing** embed anymore."
 ]
 
 prefix = "," # Bot Prefix.
