@@ -336,3 +336,82 @@ task: <Task pending name='Task-13357' coro=<LoadPlaylistSong.load() running at /
 2021-09-27 04:14:09,438 | exts.music | DEBUG | Enqueued
 2021-09-27 04:15:39,697 | exts.admin | DEBUG | Admin Eval from Tpmonkey#2682; code: self.bot.get_cog("Music).voice_states[ctx.guild.id].current
 2021-09-27 04:15:44,957 | exts.admin | DEBUG | Admin Eval from Tpmonkey#2682; code: self.bot.get_cog("Music").voice_states[ctx.guild.id].current
+2021-09-27 04:17:23,535 | bot | INFO | Cog loaded: Music
+2021-09-27 04:17:25,803 | exts.music | DEBUG | VoiceState created for 728482381215826000
+2021-09-27 04:17:25,804 | exts.music | INFO | Audio Player Launched for 728482381215826000
+2021-09-27 04:17:27,735 | exts.music | DEBUG | 728482381215826000: Searching gurenge
+2021-09-27 04:17:29,274 | exts.music | DEBUG | Enqueued
+2021-09-27 04:18:10,819 | bot | INFO | Cog loaded: Music
+2021-09-27 04:18:14,938 | exts.music | DEBUG | VoiceState created for 728482381215826000
+2021-09-27 04:18:14,939 | exts.music | INFO | Audio Player Launched for 728482381215826000
+2021-09-27 04:18:16,852 | exts.music | DEBUG | 728482381215826000: Searching gurenge
+2021-09-27 04:18:18,202 | exts.music | DEBUG | Enqueued
+2021-09-27 04:21:47,886 | exts.muleval | DEBUG | Eval command; Ignore black list: True
+2021-09-27 04:21:47,886 | exts.muleval | INFO | 'py' highlighted code block
+2021-09-27 04:21:47,886 | exts.muleval | TRACE | Eval command: Tpmonkey#2682(518063131096907813) with code:
+for i in range(2):
+  break
+else:
+  print("Hey")
+2021-09-27 04:22:27,488 | exts.muleval | DEBUG | Eval command; Ignore black list: True
+2021-09-27 04:22:27,488 | exts.muleval | INFO | 'py' highlighted code block
+2021-09-27 04:22:27,488 | exts.muleval | TRACE | Eval command: Tpmonkey#2682(518063131096907813) with code:
+for i in range(2):
+  pass
+else:
+  print("Hey")
+2021-09-27 04:24:05,856 | bot | INFO | Cog loaded: Music
+2021-09-27 04:24:09,048 | exts.music | DEBUG | VoiceState created for 728482381215826000
+2021-09-27 04:24:09,052 | exts.music | INFO | Audio Player Launched for 728482381215826000
+2021-09-27 04:24:10,985 | exts.music | DEBUG | 728482381215826000: Searching gurenge
+2021-09-27 04:24:12,419 | exts.music | DEBUG | Enqueued
+2021-09-27 04:24:24,967 | exts.music | DEBUG | VoiceState created for 728482381215826000
+2021-09-27 04:24:24,968 | exts.music | INFO | Audio Player Launched for 728482381215826000
+2021-09-27 04:33:26,924 | asyncio | DEBUG | Using selector: EpollSelector
+2021-09-27 04:33:26,925 | bot | DEBUG | created bot base.
+2021-09-27 04:33:26,954 | constant | DEBUG | init database succesful
+2021-09-27 04:33:27,011 | utils.planner | DEBUG | triggered update
+2021-09-27 04:33:27,052 | bot | DEBUG | bot subclass Created.
+2021-09-27 04:33:27,056 | bot | INFO | Cog loaded: Help
+2021-09-27 04:33:27,057 | bot | INFO | Cog loaded: Debug
+2021-09-27 04:33:27,058 | bot | INFO | Cog loaded: NewPatch
+2021-09-27 04:33:27,061 | bot | INFO | Cog loaded: Snekbox
+2021-09-27 04:33:27,583 | bot | INFO | Cog loaded: Music
+2021-09-27 04:33:27,584 | bot | INFO | Cog loaded: SetUp
+2021-09-27 04:33:27,585 | bot | INFO | Cog loaded: ErrorHandler
+2021-09-27 04:33:27,586 | bot | INFO | Cog loaded: VoiceChannel
+2021-09-27 04:33:27,587 | bot | INFO | Cog loaded: Updater
+2021-09-27 04:33:27,592 | bot | INFO | Cog loaded: Utility
+2021-09-27 04:33:27,594 | bot | INFO | Cog loaded: AdminCommands
+2021-09-27 04:33:27,595 | bot | INFO | Cog loaded: Latency
+2021-09-27 04:33:27,679 | bot | INFO | Cog loaded: KUSNews
+2021-09-27 04:33:27,681 | bot | INFO | Cog loaded: Assignments
+2021-09-27 04:33:27,682 | bot | INFO | Cog loaded: DayLoop
+2021-09-27 04:33:27,698 | exts.kus | DEBUG | loaded data
+2021-09-27 04:33:30,534 | utils.planner | DEBUG | returning sorted date for 562976873685057546
+2021-09-27 04:33:30,563 | bot | INFO | Connected successfully
+2021-09-27 04:33:30,798 | bot | DEBUG | changed bot status
+2021-09-27 04:33:30,801 | bot | DEBUG | creating assignment embed...
+2021-09-27 04:33:30,801 | bot | DEBUG | successfully created assignment embed
+2021-09-27 04:33:31,897 | bot | DEBUG | creating assignment embed...
+2021-09-27 04:33:31,897 | bot | DEBUG | successfully created assignment embed
+2021-09-27 04:33:32,990 | bot | DEBUG | creating assignment embed...
+2021-09-27 04:33:32,990 | bot | DEBUG | successfully created assignment embed
+2021-09-27 04:33:34,142 | bot | DEBUG | creating assignment embed...
+2021-09-27 04:33:34,143 | bot | DEBUG | successfully created assignment embed
+2021-09-27 04:33:35,236 | bot | DEBUG | creating assignment embed...
+2021-09-27 04:33:35,237 | bot | DEBUG | successfully created assignment embed
+2021-09-27 04:33:36,389 | bot | DEBUG | creating assignment embed...
+2021-09-27 04:33:36,389 | bot | DEBUG | successfully created assignment embed
+2021-09-27 04:33:37,479 | bot | DEBUG | exts.update :white_check_mark: Sucessfully update works at 562976873685057546 :
+99EEEEEE
+2021-09-27 04:33:37,737 | exts.update | DEBUG | updated active-works for 562976873685057546
+2021-09-27 04:33:37,826 | utils.planner | DEBUG | returning sorted date for 728482381215826000
+2021-09-27 04:33:37,911 | bot | DEBUG | creating assignment embed...
+2021-09-27 04:33:37,912 | bot | DEBUG | successfully created assignment embed
+2021-09-27 04:33:39,003 | bot | DEBUG | exts.update :white_check_mark: Sucessfully update works at 728482381215826000 :
+33E
+2021-09-27 04:33:39,119 | exts.update | DEBUG | updated active-works for 728482381215826000
+2021-09-27 04:33:39,119 | utils.planner | DEBUG | returning sorted date for 829749071891005512
+2021-09-27 04:33:39,242 | utils.planner | DEBUG | returning sorted date for 773426467492069386
+2021-09-27 04:34:08,185 | exts.admin | DEBUG | Admin Eval from Tpmonkey#2682; code: ctx.guild.id
