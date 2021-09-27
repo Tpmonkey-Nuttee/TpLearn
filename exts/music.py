@@ -40,13 +40,22 @@ class VoiceError(Exception):
 
 class PlaylistSong:
     """
-    A place holder for Playlist system. The song won't be load until it's at its queue of playing 
-    or it's loaded by the loader in the background.
-    After it's loaded, It will tranformed to <class 'Song'> or stored it in self.song
+    A Singleton class for storing Playlist Song in case of a ton of songs is queued in a short peroid of time.
     """
-    __slots__ = ("url", "ctx", "song")
+    _loaded = {}
+    # __slots__ = ("url", "ctx", "song")
 
-    def __init__(self, ctx: commands.Context, url: str):
+    def __new__(cls, url: str, ctx: commands.Context):
+        if (a := cls._loaded.get(url)) is not None:
+            a.ctx = ctx
+            return a
+        
+        a = super().__new__(cls)
+        cls._loaded[url] = a
+        a._init(url, ctx)
+        return a        
+
+    def _init(self, url: str, ctx: commands.Context):
         self.url = url
         self.ctx = ctx
         self.song = None        
@@ -113,7 +122,8 @@ class LoadPlaylistSong:
             try:
                source = await YTDLSource.create_source(loading.ctx, loading.url)
             except:
-                pass
+                # In case of rate limit, wait a bit before retrying anothe song
+                await asyncio.sleep(1.0)
             else:
                 loading.song = Song(source)
 
@@ -643,7 +653,7 @@ class Music(commands.Cog):
                 amount = 0
 
                 for s in sources:
-                    pl = PlaylistSong(ctx, s)
+                    pl = PlaylistSong(s, ctx)
                     await ctx.voice_state.songs.put(pl)
                     await ctx.voice_state.loader.put(pl)
                     amount += 1
