@@ -529,7 +529,7 @@ class Music(commands.Cog):
     async def _sshuffle(self, ctx: commands.Context):
         """Shuffles the queue everytimes the song ended."""
         if len(ctx.voice_state.songs) == 0:
-            return await ctx.send(':x: **Empty queue.**')
+            return await ctx.send(':x: **Not enough song to enable this!**')
 
         ctx.voice_state.super_shuffle = not ctx.voice_state.super_shuffle
         await ctx.send(

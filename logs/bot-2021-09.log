@@ -527,3 +527,8 @@ task: <Task pending name='Task-4564' coro=<LoadPlaylistSong.load() running at /h
 2021-09-27 08:13:44,499 | exts.update | DEBUG | updated active-works for 728482381215826000
 2021-09-27 08:13:44,500 | utils.planner | DEBUG | returning sorted date for 829749071891005512
 2021-09-27 08:13:44,642 | utils.planner | DEBUG | returning sorted date for 773426467492069386
+2021-09-27 08:16:25,463 | bot | INFO | Cog loaded: Music
+2021-09-27 08:16:30,252 | exts.music | DEBUG | VoiceState created for 728482381215826000
+2021-09-27 08:16:30,254 | exts.music | INFO | Audio Player Launched for 728482381215826000
+2021-09-27 08:16:32,194 | exts.music | DEBUG | 728482381215826000: Searching gurentge
+2021-09-27 08:16:34,591 | exts.music | DEBUG | Enqueued
