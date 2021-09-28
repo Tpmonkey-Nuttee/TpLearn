@@ -419,7 +419,7 @@ class Music(commands.Cog):
             ctx.voice_state.voice.pause()
             await ctx.message.add_reaction('⏯')
 
-    @commands.command(name='resume')
+    @commands.command(name='resume', invoke_without_subcommand=True)
     async def _resume(self, ctx: commands.Context):
         """Resumes a currently paused song."""
 
@@ -606,7 +606,7 @@ class Music(commands.Cog):
         
 
     @commands.command(name='play', aliases=['p'])
-    async def _play(self, ctx: commands.Context, *, search: str):
+    async def _play(self, ctx: commands.Context, *, search: str = None):
         """Plays a song.
 
         If there are songs in the queue, this will be queued until the
@@ -618,6 +618,9 @@ class Music(commands.Cog):
 
         if not ctx.voice_state.voice:
             await ctx.invoke(self._join)
+        
+        if search is None:
+            return await ctx.invoke(self._resume)
 
         log.debug(f"{ctx.guild.id}: Searching {search}")
         async with ctx.typing():

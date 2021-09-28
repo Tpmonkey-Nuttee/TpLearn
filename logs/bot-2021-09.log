@@ -641,3 +641,104 @@ task: <Task pending name='Task-4916' coro=<LoadPlaylistSong.load() running at /h
 2021-09-27 11:37:27,519 | googleapiclient.discovery | DEBUG | Next page request URL: list_next https://youtube.googleapis.com/youtube/v3/playlistItems?part=snippet&playlistId=PLsQ-ipbXoFYm88bmZy4eyhuIZoTtU_I_Z&maxResults=25&key=AIzaSyAdxWpkjawZwkOoLZNdBKnaUQ1o3Wov2cg&alt=json&pageToken=EAAaBlBUOkNHUQ
 2021-09-27 11:37:27,570 | googleapiclient.discovery | DEBUG | Next page request URL: list_next https://youtube.googleapis.com/youtube/v3/playlistItems?part=snippet&playlistId=PLsQ-ipbXoFYm88bmZy4eyhuIZoTtU_I_Z&maxResults=25&key=AIzaSyAdxWpkjawZwkOoLZNdBKnaUQ1o3Wov2cg&alt=json&pageToken=EAAaBlBUOkNIMA
 2021-09-27 11:37:28,869 | exts.music | DEBUG | Enqueued
+2021-09-27 21:02:48,436 | asyncio | DEBUG | Using selector: EpollSelector
+2021-09-27 21:02:48,437 | bot | DEBUG | created bot base.
+2021-09-27 21:02:48,463 | constant | DEBUG | init database succesful
+2021-09-27 21:02:48,515 | utils.planner | DEBUG | triggered update
+2021-09-27 21:02:48,523 | bot | DEBUG | bot subclass Created.
+2021-09-27 21:02:48,525 | bot | INFO | Cog loaded: SetUp
+2021-09-27 21:02:48,528 | bot | INFO | Cog loaded: Help
+2021-09-27 21:02:48,908 | bot | INFO | Cog loaded: Music
+2021-09-27 21:02:48,910 | bot | INFO | Cog loaded: DayLoop
+2021-09-27 21:02:48,912 | bot | INFO | Cog loaded: Snekbox
+2021-09-27 21:02:48,915 | bot | INFO | Cog loaded: Utility
+2021-09-27 21:02:48,916 | bot | INFO | Cog loaded: NewPatch
+2021-09-27 21:02:48,917 | bot | INFO | Cog loaded: AdminCommands
+2021-09-27 21:02:48,976 | bot | INFO | Cog loaded: KUSNews
+2021-09-27 21:02:48,977 | bot | INFO | Cog loaded: ErrorHandler
+2021-09-27 21:02:48,979 | bot | INFO | Cog loaded: Latency
+2021-09-27 21:02:48,980 | bot | INFO | Cog loaded: Updater
+2021-09-27 21:02:48,981 | bot | INFO | Cog loaded: VoiceChannel
+2021-09-27 21:02:48,983 | bot | INFO | Cog loaded: Assignments
+2021-09-27 21:02:48,984 | bot | INFO | Cog loaded: Debug
+2021-09-27 21:02:49,010 | exts.kus | DEBUG | loaded data
+2021-09-27 21:02:51,580 | utils.planner | DEBUG | returning sorted date for 562976873685057546
+2021-09-27 21:02:51,586 | bot | INFO | Connected successfully
+2021-09-27 21:02:51,732 | bot | DEBUG | changed bot status
+2021-09-27 21:02:51,735 | bot | DEBUG | creating assignment embed...
+2021-09-27 21:02:51,735 | bot | DEBUG | successfully created assignment embed
+2021-09-27 21:02:52,846 | bot | DEBUG | creating assignment embed...
+2021-09-27 21:02:52,847 | bot | DEBUG | successfully created assignment embed
+2021-09-27 21:02:53,935 | bot | DEBUG | creating assignment embed...
+2021-09-27 21:02:53,935 | bot | DEBUG | successfully created assignment embed
+2021-09-27 21:02:55,041 | bot | DEBUG | creating assignment embed...
+2021-09-27 21:02:55,042 | bot | DEBUG | successfully created assignment embed
+2021-09-27 21:02:56,125 | bot | DEBUG | creating assignment embed...
+2021-09-27 21:02:56,125 | bot | DEBUG | successfully created assignment embed
+2021-09-27 21:02:57,257 | bot | DEBUG | creating assignment embed...
+2021-09-27 21:02:57,258 | bot | DEBUG | successfully created assignment embed
+2021-09-27 21:02:58,369 | bot | DEBUG | exts.update :white_check_mark: Sucessfully update works at 562976873685057546 :
+1010EEEEEE
+2021-09-27 21:02:58,578 | exts.update | DEBUG | updated active-works for 562976873685057546
+2021-09-27 21:02:58,669 | utils.planner | DEBUG | returning sorted date for 728482381215826000
+2021-09-27 21:02:58,763 | bot | DEBUG | creating assignment embed...
+2021-09-27 21:02:58,763 | bot | DEBUG | successfully created assignment embed
+2021-09-27 21:02:59,845 | bot | DEBUG | exts.update :white_check_mark: Sucessfully update works at 728482381215826000 :
+33E
+2021-09-27 21:03:00,030 | exts.update | DEBUG | updated active-works for 728482381215826000
+2021-09-27 21:03:00,031 | utils.planner | DEBUG | returning sorted date for 829749071891005512
+2021-09-27 21:03:00,541 | utils.planner | DEBUG | returning sorted date for 773426467492069386
+2021-09-27 21:17:15,750 | bot | INFO | Resumed Connection
+2021-09-27 21:17:15,942 | bot | DEBUG | changed bot status
+2021-09-27 23:00:49,018 | bot | DEBUG | exts.dayloop New day [UTC+1] detected.
+2021-09-27 23:00:49,161 | exts.dayloop | DEBUG | updating passed work
+2021-09-27 23:00:49,161 | utils.planner | DEBUG | looping througth all assignment...
+2021-09-27 23:00:49,228 | exts.dayloop | DEBUG | updating 562976873685057546
+2021-09-27 23:00:49,229 | bot | DEBUG | creating assignment embed...
+2021-09-27 23:00:49,229 | bot | DEBUG | successfully created assignment embed
+2021-09-27 23:00:49,347 | bot | DEBUG | creating assignment embed...
+2021-09-27 23:00:49,347 | bot | DEBUG | successfully created assignment embed
+2021-09-27 23:00:49,466 | exts.dayloop | DEBUG | updated 562976873685057546
+2021-09-27 23:00:49,466 | utils.planner | DEBUG | checking old work to delete
+2021-09-27 23:00:49,468 | utils.planner | DEBUG | found 0
+2021-09-27 23:00:49,468 | utils.planner | DEBUG | triggered update
+2021-09-27 23:02:49,151 | utils.planner | DEBUG | returning sorted date for 562976873685057546
+2021-09-27 23:02:49,305 | bot | DEBUG | creating assignment embed...
+2021-09-27 23:02:49,306 | bot | DEBUG | successfully created assignment embed
+2021-09-27 23:02:50,389 | bot | DEBUG | creating assignment embed...
+2021-09-27 23:02:50,389 | bot | DEBUG | successfully created assignment embed
+2021-09-27 23:02:51,474 | bot | DEBUG | creating assignment embed...
+2021-09-27 23:02:51,475 | bot | DEBUG | successfully created assignment embed
+2021-09-27 23:02:52,558 | bot | DEBUG | creating assignment embed...
+2021-09-27 23:02:52,559 | bot | DEBUG | successfully created assignment embed
+2021-09-27 23:02:53,671 | bot | DEBUG | creating assignment embed...
+2021-09-27 23:02:53,672 | bot | DEBUG | successfully created assignment embed
+2021-09-27 23:02:54,753 | bot | DEBUG | creating assignment embed...
+2021-09-27 23:02:54,754 | bot | DEBUG | successfully created assignment embed
+2021-09-27 23:02:58,038 | bot | DEBUG | exts.update :white_check_mark: Sucessfully update works at 562976873685057546 :
+810EEEEEEDD
+2021-09-27 23:02:58,196 | exts.update | DEBUG | updated active-works for 562976873685057546
+2021-09-27 23:02:58,237 | utils.planner | DEBUG | returning sorted date for 728482381215826000
+2021-09-27 23:02:58,345 | bot | DEBUG | creating assignment embed...
+2021-09-27 23:02:58,346 | bot | DEBUG | successfully created assignment embed
+2021-09-27 23:02:59,476 | bot | DEBUG | exts.update :white_check_mark: Sucessfully update works at 728482381215826000 :
+33E
+2021-09-27 23:02:59,814 | exts.update | DEBUG | updated active-works for 728482381215826000
+2021-09-27 23:02:59,815 | utils.planner | DEBUG | returning sorted date for 829749071891005512
+2021-09-27 23:02:59,986 | utils.planner | DEBUG | returning sorted date for 773426467492069386
+2021-09-28 00:04:45,086 | bot | INFO | Resumed Connection
+2021-09-28 00:04:45,297 | bot | DEBUG | changed bot status
+2021-09-28 02:36:36,001 | bot | INFO | Resumed Connection
+2021-09-28 02:36:36,219 | bot | DEBUG | changed bot status
+2021-09-28 03:15:06,157 | exts.music | DEBUG | VoiceState created for 728482381215826000
+2021-09-28 03:15:06,159 | exts.music | INFO | Audio Player Launched for 728482381215826000
+2021-09-28 03:15:08,081 | exts.music | DEBUG | 728482381215826000: Searching https://www.youtube.com/watch?v=g17Gg34tW_k
+2021-09-28 03:15:13,959 | exts.music | DEBUG | Enqueued
+2021-09-28 03:15:53,848 | exts.music | DEBUG | 728482381215826000: Searching https://www.youtube.com/watch?v=Mn7Bv8rGRzg&t=7492s
+2021-09-28 03:15:55,548 | exts.music | DEBUG | Enqueued
+2021-09-28 03:34:30,673 | exts.admin | DEBUG | Admin Eval from Tpmonkey#2682; code: (41 *60 +33)/1.25
+2021-09-28 03:34:48,088 | exts.admin | DEBUG | Admin Eval from Tpmonkey#2682; code: datetime.deltatime(seconds=(41 *60 +33)/1.25)
+2021-09-28 03:34:54,269 | exts.admin | DEBUG | Admin Eval from Tpmonkey#2682; code: dir(datetime)
+2021-09-28 03:35:02,866 | exts.admin | DEBUG | Admin Eval from Tpmonkey#2682; code: datetime.timedelta(seconds=(41 *60 +33)/1.25)
+2021-09-28 03:56:48,024 | bot | INFO | Resumed Connection
+2021-09-28 03:56:48,291 | bot | DEBUG | changed bot status
