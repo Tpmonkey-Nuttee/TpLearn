@@ -757,3 +757,62 @@ discord.errors.ConnectionClosed: Shard ID None WebSocket closed with 1006
 2021-09-28 04:41:42,948 | exts.music | INFO | Audio Player Launched for 728482381215826000
 2021-09-28 04:41:44,890 | exts.music | DEBUG | 728482381215826000: Searching katharsis
 2021-09-28 04:41:46,554 | exts.music | DEBUG | Enqueued
+2021-09-28 06:04:24,250 | bot | INFO | Resumed Connection
+2021-09-28 06:04:24,439 | bot | DEBUG | changed bot status
+2021-09-28 06:08:20,270 | exts.music | DEBUG | VoiceState created for 728482381215826000
+2021-09-28 06:08:20,273 | exts.music | INFO | Audio Player Launched for 728482381215826000
+2021-09-28 06:08:22,240 | exts.music | DEBUG | 728482381215826000: Searching https://www.youtube.com/watch?v=H9yfuYDoGf4
+2021-09-28 06:08:24,218 | exts.music | DEBUG | Enqueued
+2021-09-28 06:20:21,238 | exts.assignment | DEBUG | init dat for 518063131096907813
+2021-09-28 06:20:21,436 | bot | DEBUG | waiting for message...
+2021-09-28 06:20:23,506 | exts.assignment | DEBUG | Recieve message: physic hw
+2021-09-28 06:20:23,694 | exts.assignment | DEBUG | update embed successfully for 518063131096907813
+2021-09-28 06:20:23,694 | bot | DEBUG | waiting for message...
+2021-09-28 06:20:32,635 | exts.assignment | DEBUG | Recieve message: กระจกเว้า กับ กระจกนูนวาดระยะเดียว
+2021-09-28 06:20:32,848 | exts.assignment | DEBUG | update embed successfully for 518063131096907813
+2021-09-28 06:20:32,849 | bot | DEBUG | waiting for message...
+2021-09-28 06:20:35,259 | exts.assignment | DEBUG | processing ✅ for 518063131096907813
+2021-09-28 06:20:35,260 | utils.planner | DEBUG | generated new key
+2021-09-28 06:20:35,276 | utils.planner | DEBUG | added Assignment from `562976873685057546` with key `c97151fb`
+2021-09-28 06:20:35,296 | exts.assignment | DEBUG | 518063131096907813 add/edit new assignment and passed in successfully.
+2021-09-28 06:20:49,135 | utils.planner | DEBUG | returning sorted date for 562976873685057546
+2021-09-28 06:20:49,253 | bot | DEBUG | creating assignment embed...
+2021-09-28 06:20:49,253 | bot | DEBUG | successfully created assignment embed
+2021-09-28 06:20:50,344 | bot | DEBUG | creating assignment embed...
+2021-09-28 06:20:50,345 | bot | DEBUG | successfully created assignment embed
+2021-09-28 06:20:50,345 | bot | DEBUG | creating assignment embed...
+2021-09-28 06:20:50,346 | bot | DEBUG | successfully created assignment embed
+2021-09-28 06:20:50,347 | bot | DEBUG | creating assignment embed...
+2021-09-28 06:20:50,347 | bot | DEBUG | successfully created assignment embed
+2021-09-28 06:20:51,426 | bot | DEBUG | creating assignment embed...
+2021-09-28 06:20:51,426 | bot | DEBUG | successfully created assignment embed
+2021-09-28 06:20:52,517 | bot | DEBUG | creating assignment embed...
+2021-09-28 06:20:52,517 | bot | DEBUG | successfully created assignment embed
+2021-09-28 06:20:53,642 | bot | DEBUG | creating assignment embed...
+2021-09-28 06:20:53,644 | bot | DEBUG | successfully created assignment embed
+2021-09-28 06:20:54,739 | bot | DEBUG | creating assignment embed...
+2021-09-28 06:20:54,740 | bot | DEBUG | successfully created assignment embed
+2021-09-28 06:20:55,835 | bot | DEBUG | creating assignment embed...
+2021-09-28 06:20:55,835 | bot | DEBUG | successfully created assignment embed
+2021-09-28 06:20:56,996 | bot | DEBUG | exts.update :white_check_mark: Sucessfully update works at 562976873685057546 :
+98EEEEEES
+2021-09-28 06:20:57,121 | exts.update | DEBUG | updated active-works for 562976873685057546
+2021-09-28 07:17:17,336 | discord.voice_client | ERROR | Disconnected from voice... Reconnecting in 1.01s.
+Traceback (most recent call last):
+  File "/opt/virtualenvs/python3/lib/python3.8/site-packages/discord/voice_client.py", line 414, in poll_voice_ws
+    await self.ws.poll_event()
+  File "/opt/virtualenvs/python3/lib/python3.8/site-packages/discord/gateway.py", line 895, in poll_event
+    raise ConnectionClosed(self.ws, shard_id=None, code=self._close_code)
+discord.errors.ConnectionClosed: Shard ID None WebSocket closed with 1006
+2021-09-28 07:25:12,642 | asyncio | ERROR | Task was destroyed but it is pending!
+task: <Task pending name='Task-4561' coro=<LoadPlaylistSong.load() running at /home/runner/TpLearn/exts/music.py:120> wait_for=<Future cancelled>>
+2021-09-28 07:25:12,643 | asyncio | ERROR | Task was destroyed but it is pending!
+task: <Task pending name='Task-9344' coro=<LoadPlaylistSong.load() running at /home/runner/TpLearn/exts/music.py:120> wait_for=<Future cancelled>>
+2021-09-28 07:25:12,643 | asyncio | ERROR | Task was destroyed but it is pending!
+task: <Task pending name='Task-9133' coro=<LoadPlaylistSong.load() running at /home/runner/TpLearn/exts/music.py:120> wait_for=<Future cancelled>>
+2021-09-28 07:51:44,440 | exts.music | DEBUG | VoiceState created for 728482381215826000
+2021-09-28 07:51:44,442 | exts.music | INFO | Audio Player Launched for 728482381215826000
+2021-09-28 07:51:46,378 | exts.music | DEBUG | 728482381215826000: Searching https://www.youtube.com/watch?v=H9yfuYDoGf4
+2021-09-28 07:51:48,269 | exts.music | DEBUG | Enqueued
+2021-09-28 07:56:18,447 | bot | INFO | Resumed Connection
+2021-09-28 07:56:18,710 | bot | DEBUG | changed bot status

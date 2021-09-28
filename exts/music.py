@@ -362,7 +362,7 @@ class Music(commands.Cog):
         ctx.voice_state.voice = await destination.connect()
 
     @commands.command(name='leave', aliases=['disconnect'])
-    async def _leave(self, ctx: commands.Context):
+    async def _leave(self, ctx: commands.Context, invoke_without_subcommand=True):
         """Clears the queue and leaves the voice channel."""
 
         if not ctx.voice_state.voice:
@@ -619,7 +619,8 @@ class Music(commands.Cog):
         """
 
         if not ctx.voice_state.voice:
-            await ctx.invoke(self._join)
+            await ctx.invoke(self._leave)
+            await ctx.invoke(self._join)                
         
         if search is None:
             return await ctx.invoke(self._resume)
