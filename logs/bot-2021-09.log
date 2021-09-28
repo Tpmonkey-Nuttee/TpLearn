@@ -816,3 +816,79 @@ task: <Task pending name='Task-9133' coro=<LoadPlaylistSong.load() running at /h
 2021-09-28 07:51:48,269 | exts.music | DEBUG | Enqueued
 2021-09-28 07:56:18,447 | bot | INFO | Resumed Connection
 2021-09-28 07:56:18,710 | bot | DEBUG | changed bot status
+2021-09-28 10:55:39,279 | bot | INFO | Resumed Connection
+2021-09-28 10:55:39,603 | bot | DEBUG | changed bot status
+2021-09-28 11:12:13,501 | bot | INFO | Resumed Connection
+2021-09-28 11:12:13,678 | bot | DEBUG | changed bot status
+2021-09-28 11:25:59,600 | exts.music | DEBUG | VoiceState created for 780423376149676032
+2021-09-28 11:25:59,601 | exts.music | INFO | Audio Player Launched for 780423376149676032
+2021-09-28 11:26:01,586 | exts.music | DEBUG | 780423376149676032: Searching montero
+2021-09-28 11:26:03,195 | exts.music | DEBUG | Enqueued
+2021-09-28 11:39:08,638 | exts.music | DEBUG | VoiceState created for 780423376149676032
+2021-09-28 11:39:08,639 | exts.music | INFO | Audio Player Launched for 780423376149676032
+2021-09-28 11:39:11,254 | exts.music | DEBUG | 780423376149676032: Searching https://youtu.be/3fHl9bxVT58
+2021-09-28 11:39:13,025 | exts.music | DEBUG | Enqueued
+2021-09-28 11:39:51,867 | exts.music | DEBUG | 780423376149676032: Searching https://youtu.be/pH6ij20X4_U
+2021-09-28 11:39:53,665 | exts.music | DEBUG | Enqueued
+2021-09-28 11:40:12,951 | exts.music | DEBUG | 780423376149676032: Searching https://youtu.be/kTJczUoc26U
+2021-09-28 11:40:14,652 | asyncio | ERROR | Task exception was never retrieved
+future: <Task finished name='Task-11962' coro=<VoiceState.audio_player_task() done, defined at /home/runner/TpLearn/exts/music.py:182> exception=AttributeError("'NoneType' object has no attribute 'play'")>
+Traceback (most recent call last):
+  File "/home/runner/TpLearn/exts/music.py", line 237, in audio_player_task
+    self.voice.play(self.current.source, after=self.play_next_song)
+AttributeError: 'NoneType' object has no attribute 'play'
+2021-09-28 11:40:14,653 | asyncio | ERROR | Task was destroyed but it is pending!
+task: <Task pending name='Task-11961' coro=<LoadPlaylistSong.load() running at /home/runner/TpLearn/exts/music.py:120> wait_for=<Future cancelled>>
+2021-09-28 11:40:14,665 | asyncio | ERROR | Task was destroyed but it is pending!
+task: <Task pending name='Task-16234' coro=<LoadPlaylistSong.load() running at /home/runner/TpLearn/exts/music.py:120> wait_for=<Future cancelled>>
+2021-09-28 11:40:14,679 | asyncio | ERROR | Task was destroyed but it is pending!
+task: <Task pending name='Task-22218' coro=<LoadPlaylistSong.load() running at /home/runner/TpLearn/exts/music.py:120> wait_for=<Future cancelled>>
+2021-09-28 11:40:16,540 | exts.music | DEBUG | Enqueued
+2021-09-28 11:41:26,868 | exts.music | DEBUG | 780423376149676032: Searching https://youtu.be/gNi_6U5Pm_o
+2021-09-28 11:41:28,750 | exts.music | DEBUG | Enqueued
+2021-09-28 11:41:43,298 | exts.music | DEBUG | 780423376149676032: Searching life by the sea
+2021-09-28 11:41:45,087 | exts.music | DEBUG | Enqueued
+2021-09-28 11:42:22,516 | exts.music | DEBUG | 780423376149676032: Searching stay with me
+2021-09-28 11:42:24,408 | exts.music | DEBUG | Enqueued
+2021-09-28 11:42:51,250 | exts.music | DEBUG | 780423376149676032: Searching https://youtu.be/VEe_yIbW64w
+2021-09-28 11:42:53,143 | exts.music | DEBUG | Enqueued
+2021-09-28 11:43:38,197 | exts.music | DEBUG | 780423376149676032: Searching https://youtu.be/xXfBsa2yiuc
+2021-09-28 11:43:40,103 | exts.music | DEBUG | Enqueued
+2021-09-28 11:43:56,241 | exts.music | DEBUG | 780423376149676032: Searching https://youtu.be/EStaxYva9wU
+2021-09-28 11:43:58,079 | exts.music | DEBUG | Enqueued
+2021-09-28 11:57:25,131 | exts.music | DEBUG | VoiceState created for 728482381215826000
+2021-09-28 11:57:25,132 | exts.music | INFO | Audio Player Launched for 728482381215826000
+2021-09-28 12:32:33,355 | bot | INFO | Resumed Connection
+2021-09-28 12:32:33,590 | bot | DEBUG | changed bot status
+2021-09-28 12:39:49,459 | exts.music | DEBUG | VoiceState created for 780423376149676032
+2021-09-28 12:39:49,460 | exts.music | INFO | Audio Player Launched for 780423376149676032
+2021-09-28 12:39:51,384 | exts.music | DEBUG | 780423376149676032: Searching talking to the moon
+2021-09-28 12:39:53,312 | exts.music | DEBUG | Enqueued
+2021-09-28 14:20:57,990 | exts.music | DEBUG | VoiceState created for 773426467492069386
+2021-09-28 14:20:57,991 | exts.music | INFO | Audio Player Launched for 773426467492069386
+2021-09-28 14:21:00,027 | exts.music | DEBUG | 773426467492069386: Searching https://www.youtube.com/watch?v=a2GujJZfXpg&list=PLyAn2Ml1WRpa6O6FXr2nioRlwy7CVqgwC
+2021-09-28 14:21:03,192 | exts.music | DEBUG | Enqueued
+2021-09-28 14:21:17,444 | exts.music | DEBUG | VoiceState created for 773426467492069386
+2021-09-28 14:21:17,445 | exts.music | INFO | Audio Player Launched for 773426467492069386
+2021-09-28 14:21:19,364 | exts.music | DEBUG | 773426467492069386: Searching https://www.youtube.com/playlist?list=PLyAn2Ml1WRpa6O6FXr2nioRlwy7CVqgwC
+2021-09-28 14:21:19,457 | googleapiclient.discovery_cache | INFO | file_cache is only supported with oauth2client<4.0.0
+2021-09-28 14:21:19,463 | googleapiclient.discovery | DEBUG | URL being requested: GET https://youtube.googleapis.com/youtube/v3/playlistItems?part=snippet&playlistId=PLyAn2Ml1WRpa6O6FXr2nioRlwy7CVqgwC&maxResults=25&key=AIzaSyAdxWpkjawZwkOoLZNdBKnaUQ1o3Wov2cg&alt=json
+2021-09-28 14:21:19,627 | googleapiclient.discovery | DEBUG | Next page request URL: list_next https://youtube.googleapis.com/youtube/v3/playlistItems?part=snippet&playlistId=PLyAn2Ml1WRpa6O6FXr2nioRlwy7CVqgwC&maxResults=25&key=AIzaSyAdxWpkjawZwkOoLZNdBKnaUQ1o3Wov2cg&alt=json&pageToken=EAAaBlBUOkNCaw
+2021-09-28 14:21:19,671 | googleapiclient.discovery | DEBUG | Next page request URL: list_next https://youtube.googleapis.com/youtube/v3/playlistItems?part=snippet&playlistId=PLyAn2Ml1WRpa6O6FXr2nioRlwy7CVqgwC&maxResults=25&key=AIzaSyAdxWpkjawZwkOoLZNdBKnaUQ1o3Wov2cg&alt=json&pageToken=EAAaBlBUOkNESQ
+2021-09-28 14:21:19,770 | googleapiclient.discovery | DEBUG | Next page request URL: list_next https://youtube.googleapis.com/youtube/v3/playlistItems?part=snippet&playlistId=PLyAn2Ml1WRpa6O6FXr2nioRlwy7CVqgwC&maxResults=25&key=AIzaSyAdxWpkjawZwkOoLZNdBKnaUQ1o3Wov2cg&alt=json&pageToken=EAAaBlBUOkNFcw
+2021-09-28 14:21:19,850 | googleapiclient.discovery | DEBUG | Next page request URL: list_next https://youtube.googleapis.com/youtube/v3/playlistItems?part=snippet&playlistId=PLyAn2Ml1WRpa6O6FXr2nioRlwy7CVqgwC&maxResults=25&key=AIzaSyAdxWpkjawZwkOoLZNdBKnaUQ1o3Wov2cg&alt=json&pageToken=EAAaBlBUOkNHUQ
+2021-09-28 14:21:19,898 | googleapiclient.discovery | DEBUG | Next page request URL: list_next https://youtube.googleapis.com/youtube/v3/playlistItems?part=snippet&playlistId=PLyAn2Ml1WRpa6O6FXr2nioRlwy7CVqgwC&maxResults=25&key=AIzaSyAdxWpkjawZwkOoLZNdBKnaUQ1o3Wov2cg&alt=json&pageToken=EAAaBlBUOkNIMA
+2021-09-28 14:21:19,942 | googleapiclient.discovery | DEBUG | Next page request URL: list_next https://youtube.googleapis.com/youtube/v3/playlistItems?part=snippet&playlistId=PLyAn2Ml1WRpa6O6FXr2nioRlwy7CVqgwC&maxResults=25&key=AIzaSyAdxWpkjawZwkOoLZNdBKnaUQ1o3Wov2cg&alt=json&pageToken=EAAaB1BUOkNKWUI
+2021-09-28 14:21:20,035 | googleapiclient.discovery | DEBUG | Next page request URL: list_next https://youtube.googleapis.com/youtube/v3/playlistItems?part=snippet&playlistId=PLyAn2Ml1WRpa6O6FXr2nioRlwy7CVqgwC&maxResults=25&key=AIzaSyAdxWpkjawZwkOoLZNdBKnaUQ1o3Wov2cg&alt=json&pageToken=EAAaB1BUOkNLOEI
+2021-09-28 14:21:20,152 | asyncio | ERROR | Task was destroyed but it is pending!
+task: <Task pending name='Task-22626' coro=<LoadPlaylistSong.load() running at /home/runner/TpLearn/exts/music.py:120> wait_for=<Future cancelled>>
+2021-09-28 14:21:20,153 | asyncio | ERROR | Task was destroyed but it is pending!
+task: <Task pending name='Task-24730' coro=<LoadPlaylistSong.load() running at /home/runner/TpLearn/exts/music.py:120> wait_for=<Future cancelled>>
+2021-09-28 14:21:20,155 | googleapiclient.discovery | DEBUG | Next page request URL: list_next https://youtube.googleapis.com/youtube/v3/playlistItems?part=snippet&playlistId=PLyAn2Ml1WRpa6O6FXr2nioRlwy7CVqgwC&maxResults=25&key=AIzaSyAdxWpkjawZwkOoLZNdBKnaUQ1o3Wov2cg&alt=json&pageToken=EAAaB1BUOkNNZ0I
+2021-09-28 14:21:21,837 | exts.music | DEBUG | Enqueued
+2021-09-28 14:21:32,716 | exts.music | DEBUG | VoiceState created for 773426467492069386
+2021-09-28 14:21:32,718 | exts.music | INFO | Audio Player Launched for 773426467492069386
+2021-09-28 14:56:42,689 | bot | INFO | Resumed Connection
+2021-09-28 14:56:42,911 | bot | DEBUG | changed bot status
+2021-09-28 15:18:50,515 | bot | INFO | Resumed Connection
+2021-09-28 15:18:50,757 | bot | DEBUG | changed bot status

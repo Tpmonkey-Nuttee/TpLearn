@@ -42,7 +42,7 @@ class PlaylistSong:
     """
     A Singleton class for storing Playlist Song in case of a ton of songs is queued in a short peroid of time.
     """
-    _loaded = {}
+    """_loaded = {}
     # __slots__ = ("url", "ctx", "song")
 
     def __new__(cls, url: str, ctx: commands.Context):
@@ -53,9 +53,9 @@ class PlaylistSong:
         a = super().__new__(cls)
         cls._loaded[url] = a
         a._init(url, ctx)
-        return a        
+        return a """       
 
-    def _init(self, url: str, ctx: commands.Context):
+    def __init__(self, url: str, ctx: commands.Context):
         self.url = url
         self.ctx = ctx
         self.song = None        
