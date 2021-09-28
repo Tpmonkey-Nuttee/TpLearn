@@ -742,3 +742,18 @@ task: <Task pending name='Task-4916' coro=<LoadPlaylistSong.load() running at /h
 2021-09-28 03:35:02,866 | exts.admin | DEBUG | Admin Eval from Tpmonkey#2682; code: datetime.timedelta(seconds=(41 *60 +33)/1.25)
 2021-09-28 03:56:48,024 | bot | INFO | Resumed Connection
 2021-09-28 03:56:48,291 | bot | DEBUG | changed bot status
+2021-09-28 03:58:58,995 | exts.admin | DEBUG | Admin Eval from Tpmonkey#2682; code: dir(self.bot.get_cog("Music").voice_states[ctx.guild.id].current.source)
+2021-09-28 04:29:28,447 | discord.voice_client | ERROR | Disconnected from voice... Reconnecting in 0.11s.
+Traceback (most recent call last):
+  File "/opt/virtualenvs/python3/lib/python3.8/site-packages/discord/voice_client.py", line 414, in poll_voice_ws
+    await self.ws.poll_event()
+  File "/opt/virtualenvs/python3/lib/python3.8/site-packages/discord/gateway.py", line 895, in poll_event
+    raise ConnectionClosed(self.ws, shard_id=None, code=self._close_code)
+discord.errors.ConnectionClosed: Shard ID None WebSocket closed with 1006
+2021-09-28 04:38:56,433 | exts.music | DEBUG | VoiceState created for 728482381215826000
+2021-09-28 04:38:56,434 | exts.music | INFO | Audio Player Launched for 728482381215826000
+2021-09-28 04:38:56,559 | exts.errorhand | TRACE | Command: resume; Already handled locally.
+2021-09-28 04:41:42,947 | exts.music | DEBUG | VoiceState created for 728482381215826000
+2021-09-28 04:41:42,948 | exts.music | INFO | Audio Player Launched for 728482381215826000
+2021-09-28 04:41:44,890 | exts.music | DEBUG | 728482381215826000: Searching katharsis
+2021-09-28 04:41:46,554 | exts.music | DEBUG | Enqueued

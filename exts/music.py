@@ -422,6 +422,8 @@ class Music(commands.Cog):
     @commands.command(name='resume', invoke_without_subcommand=True)
     async def _resume(self, ctx: commands.Context):
         """Resumes a currently paused song."""
+        if ctx.voice_state.voice is None:
+            return await ctx.send(":x: **Nothing is paused**")
 
         if ctx.voice_state.voice.is_paused(): # not ctx.voice_state.is_playing and
             ctx.voice_state.voice.resume()
