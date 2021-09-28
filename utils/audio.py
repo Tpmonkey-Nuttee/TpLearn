@@ -28,6 +28,7 @@ class YTDLSource(discord.PCMVolumeTransformer):
         'no_warnings': True,
         'default_search': 'auto',
         'source_address': '0.0.0.0',
+        "cookiefile": "com_cookies.txt"
     }
 
     FFMPEG_OPTIONS = {
