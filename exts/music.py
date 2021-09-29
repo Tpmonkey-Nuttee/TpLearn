@@ -619,8 +619,11 @@ class Music(commands.Cog):
         """
 
         if not ctx.voice_state.voice:
-            await ctx.invoke(self._leave)
-            await ctx.invoke(self._join)                
+            try:
+                await ctx.invoke(self._join)             
+            except:
+                await ctx.invoke(self._leave)
+                await ctx.invoke(self._join)  
         
         if search is None:
             return await ctx.invoke(self._resume)

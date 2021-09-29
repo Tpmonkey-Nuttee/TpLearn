@@ -892,3 +892,160 @@ task: <Task pending name='Task-24730' coro=<LoadPlaylistSong.load() running at /
 2021-09-28 14:56:42,911 | bot | DEBUG | changed bot status
 2021-09-28 15:18:50,515 | bot | INFO | Resumed Connection
 2021-09-28 15:18:50,757 | bot | DEBUG | changed bot status
+2021-09-29 02:12:19,970 | asyncio | DEBUG | Using selector: EpollSelector
+2021-09-29 02:12:19,971 | bot | DEBUG | created bot base.
+2021-09-29 02:12:20,002 | constant | DEBUG | init database succesful
+2021-09-29 02:12:20,068 | utils.planner | DEBUG | triggered update
+2021-09-29 02:12:20,074 | bot | DEBUG | bot subclass Created.
+2021-09-29 02:12:20,079 | bot | INFO | Cog loaded: Snekbox
+2021-09-29 02:12:20,088 | bot | INFO | Cog loaded: ErrorHandler
+2021-09-29 02:12:20,702 | bot | INFO | Cog loaded: Music
+2021-09-29 02:12:20,705 | bot | INFO | Cog loaded: Utility
+2021-09-29 02:12:20,706 | bot | INFO | Cog loaded: Latency
+2021-09-29 02:12:20,709 | bot | INFO | Cog loaded: Updater
+2021-09-29 02:12:20,710 | bot | INFO | Cog loaded: SetUp
+2021-09-29 02:12:20,711 | bot | INFO | Cog loaded: DayLoop
+2021-09-29 02:12:20,714 | bot | INFO | Cog loaded: AdminCommands
+2021-09-29 02:12:20,715 | bot | INFO | Cog loaded: Debug
+2021-09-29 02:12:20,804 | bot | INFO | Cog loaded: KUSNews
+2021-09-29 02:12:20,805 | bot | INFO | Cog loaded: VoiceChannel
+2021-09-29 02:12:20,806 | bot | INFO | Cog loaded: NewPatch
+2021-09-29 02:12:20,809 | bot | INFO | Cog loaded: Assignments
+2021-09-29 02:12:20,811 | bot | INFO | Cog loaded: Help
+2021-09-29 02:12:20,862 | exts.kus | DEBUG | loaded data
+2021-09-29 02:12:23,632 | utils.planner | DEBUG | returning sorted date for 562976873685057546
+2021-09-29 02:12:23,640 | bot | INFO | Connected successfully
+2021-09-29 02:12:23,978 | bot | DEBUG | changed bot status
+2021-09-29 02:12:23,985 | bot | DEBUG | creating assignment embed...
+2021-09-29 02:12:23,985 | bot | DEBUG | successfully created assignment embed
+2021-09-29 02:12:25,081 | bot | DEBUG | creating assignment embed...
+2021-09-29 02:12:25,081 | bot | DEBUG | successfully created assignment embed
+2021-09-29 02:12:26,305 | bot | DEBUG | creating assignment embed...
+2021-09-29 02:12:26,306 | bot | DEBUG | successfully created assignment embed
+2021-09-29 02:12:27,546 | bot | DEBUG | exts.update :white_check_mark: Sucessfully update works at 562976873685057546 :
+88EEE
+2021-09-29 02:12:27,651 | exts.update | DEBUG | updated active-works for 562976873685057546
+2021-09-29 02:12:27,691 | utils.planner | DEBUG | returning sorted date for 728482381215826000
+2021-09-29 02:12:27,859 | bot | DEBUG | creating assignment embed...
+2021-09-29 02:12:27,859 | bot | DEBUG | successfully created assignment embed
+2021-09-29 02:12:28,967 | bot | DEBUG | exts.update :white_check_mark: Sucessfully update works at 728482381215826000 :
+33E
+2021-09-29 02:12:29,410 | exts.update | DEBUG | updated active-works for 728482381215826000
+2021-09-29 02:12:29,411 | utils.planner | DEBUG | returning sorted date for 829749071891005512
+2021-09-29 02:12:29,514 | utils.planner | DEBUG | returning sorted date for 773426467492069386
+2021-09-29 03:47:57,242 | exts.music | DEBUG | VoiceState created for 728482381215826000
+2021-09-29 03:47:57,243 | exts.music | INFO | Audio Player Launched for 728482381215826000
+2021-09-29 03:47:59,200 | exts.music | DEBUG | VoiceState created for 728482381215826000
+2021-09-29 03:47:59,201 | exts.music | INFO | Audio Player Launched for 728482381215826000
+2021-09-29 03:47:59,344 | exts.music | DEBUG | 728482381215826000: Searching https://www.youtube.com/watch?v=H9yfuYDoGf4
+2021-09-29 03:48:04,826 | exts.music | DEBUG | Enqueued
+2021-09-29 03:48:24,199 | exts.errorhand | TRACE | Command: pause; Already handled locally.
+2021-09-29 03:48:30,375 | exts.music | DEBUG | VoiceState created for 728482381215826000
+2021-09-29 03:48:30,377 | exts.music | INFO | Audio Player Launched for 728482381215826000
+2021-09-29 03:48:32,389 | exts.music | DEBUG | 728482381215826000: Searching https://www.youtube.com/watch?v=H9yfuYDoGf4
+2021-09-29 03:48:34,417 | exts.music | DEBUG | Enqueued
+2021-09-29 03:48:38,356 | exts.music | DEBUG | VoiceState created for 728482381215826000
+2021-09-29 03:48:38,357 | exts.music | INFO | Audio Player Launched for 728482381215826000
+2021-09-29 03:49:01,157 | bot | INFO | Cog loaded: Music
+2021-09-29 03:49:18,071 | bot | DEBUG | exts.admin Shutting down bot... by <@!518063131096907813>
+2021-09-29 03:49:18,557 | exts.admin | INFO | Shutting down bot by Tpmonkey#2682
+2021-09-29 03:49:44,037 | asyncio | DEBUG | Using selector: EpollSelector
+2021-09-29 03:49:44,037 | bot | DEBUG | created bot base.
+2021-09-29 03:49:44,066 | constant | DEBUG | init database succesful
+2021-09-29 03:49:44,114 | utils.planner | DEBUG | triggered update
+2021-09-29 03:49:44,125 | bot | DEBUG | bot subclass Created.
+2021-09-29 03:49:44,128 | bot | INFO | Cog loaded: VoiceChannel
+2021-09-29 03:49:44,134 | bot | INFO | Cog loaded: Snekbox
+2021-09-29 03:49:44,136 | bot | INFO | Cog loaded: Assignments
+2021-09-29 03:49:44,241 | bot | INFO | Cog loaded: KUSNews
+2021-09-29 03:49:44,243 | bot | INFO | Cog loaded: Updater
+2021-09-29 03:49:44,756 | bot | INFO | Cog loaded: Music
+2021-09-29 03:49:44,759 | bot | INFO | Cog loaded: Utility
+2021-09-29 03:49:44,760 | bot | INFO | Cog loaded: Latency
+2021-09-29 03:49:44,761 | bot | INFO | Cog loaded: SetUp
+2021-09-29 03:49:44,762 | bot | INFO | Cog loaded: DayLoop
+2021-09-29 03:49:44,763 | bot | INFO | Cog loaded: ErrorHandler
+2021-09-29 03:49:44,763 | bot | INFO | Cog loaded: Debug
+2021-09-29 03:49:44,765 | bot | INFO | Cog loaded: Help
+2021-09-29 03:49:44,767 | bot | INFO | Cog loaded: AdminCommands
+2021-09-29 03:49:44,768 | bot | INFO | Cog loaded: NewPatch
+2021-09-29 03:49:44,786 | exts.kus | DEBUG | loaded data
+2021-09-29 03:49:46,468 | bot | DEBUG | exts.kus New data detected
+2021-09-29 03:49:47,451 | utils.planner | DEBUG | returning sorted date for 562976873685057546
+2021-09-29 03:49:47,462 | bot | INFO | Connected successfully
+2021-09-29 03:49:47,665 | bot | DEBUG | changed bot status
+2021-09-29 03:49:47,679 | bot | DEBUG | creating assignment embed...
+2021-09-29 03:49:47,680 | bot | DEBUG | successfully created assignment embed
+2021-09-29 03:49:47,806 | bot | DEBUG | exts.kus 
+**From** `ObservedList(value=['news_detail.php?id=3049', 'news_detail.php?id=3048', 'http://kus.ku.ac.th/downloads.php', 'news_detail.php?id=3038', 'news_detail.php?id=3039', 'news_detail.php?id=3040', 'news_detail.php?id=3036', 'news_detail.php?id=3013', 'news_detail.php?id=3027', 'news_detail.php?id=3020'])`
+**To** `['news_detail.php?id=3048', 'http://kus.ku.ac.th/downloads.php', 'news_detail.php?id=3038', 'news_detail.php?id=3039', 'news_detail.php?id=3049', 'news_detail.php?id=3040', 'news_detail.php?id=3036', 'news_detail.php?id=3013', 'news_detail.php?id=3027', 'news_detail.php?id=3020']`
+2021-09-29 03:49:48,304 | bot | DEBUG | exts.kus **Found:** []
+2021-09-29 03:49:48,569 | bot | DEBUG | exts.kus Ghost-News detected, No messages were sended.
+2021-09-29 03:49:48,731 | bot | DEBUG | exts.kus Saved new data.
+2021-09-29 03:49:48,771 | bot | DEBUG | creating assignment embed...
+2021-09-29 03:49:48,771 | bot | DEBUG | successfully created assignment embed
+2021-09-29 03:49:49,872 | bot | DEBUG | creating assignment embed...
+2021-09-29 03:49:49,873 | bot | DEBUG | successfully created assignment embed
+2021-09-29 03:49:50,972 | bot | DEBUG | exts.update :white_check_mark: Sucessfully update works at 562976873685057546 :
+88EEE
+2021-09-29 03:49:52,866 | exts.music | DEBUG | VoiceState created for 728482381215826000
+2021-09-29 03:49:52,867 | exts.music | INFO | Audio Player Launched for 728482381215826000
+2021-09-29 03:49:52,929 | exts.update | DEBUG | updated active-works for 562976873685057546
+2021-09-29 03:49:52,994 | utils.planner | DEBUG | returning sorted date for 728482381215826000
+2021-09-29 03:49:53,075 | bot | DEBUG | creating assignment embed...
+2021-09-29 03:49:53,075 | bot | DEBUG | successfully created assignment embed
+2021-09-29 03:49:53,862 | exts.music | DEBUG | VoiceState created for 728482381215826000
+2021-09-29 03:49:53,862 | exts.music | INFO | Audio Player Launched for 728482381215826000
+2021-09-29 03:49:54,162 | bot | DEBUG | exts.update :white_check_mark: Sucessfully update works at 728482381215826000 :
+33E
+2021-09-29 03:49:54,281 | exts.update | DEBUG | updated active-works for 728482381215826000
+2021-09-29 03:49:54,282 | utils.planner | DEBUG | returning sorted date for 829749071891005512
+2021-09-29 03:49:54,407 | utils.planner | DEBUG | returning sorted date for 773426467492069386
+2021-09-29 03:49:54,907 | exts.music | DEBUG | 728482381215826000: Searching https://www.youtube.com/watch?v=H9yfuYDoGf4
+2021-09-29 03:49:56,935 | exts.music | DEBUG | Enqueued
+2021-09-29 03:52:00,405 | bot | INFO | Cog loaded: Music
+2021-09-29 03:52:05,723 | asyncio | DEBUG | Using selector: EpollSelector
+2021-09-29 03:52:05,724 | bot | DEBUG | created bot base.
+2021-09-29 03:52:05,750 | constant | DEBUG | init database succesful
+2021-09-29 03:52:05,811 | utils.planner | DEBUG | triggered update
+2021-09-29 03:52:05,819 | bot | DEBUG | bot subclass Created.
+2021-09-29 03:52:05,824 | bot | INFO | Cog loaded: Help
+2021-09-29 03:52:05,939 | bot | INFO | Cog loaded: KUSNews
+2021-09-29 03:52:05,940 | bot | INFO | Cog loaded: SetUp
+2021-09-29 03:52:05,941 | bot | INFO | Cog loaded: Updater
+2021-09-29 03:52:05,944 | bot | INFO | Cog loaded: Utility
+2021-09-29 03:52:05,945 | bot | INFO | Cog loaded: VoiceChannel
+2021-09-29 03:52:05,946 | bot | INFO | Cog loaded: Latency
+2021-09-29 03:52:05,948 | bot | INFO | Cog loaded: AdminCommands
+2021-09-29 03:52:05,949 | bot | INFO | Cog loaded: ErrorHandler
+2021-09-29 03:52:06,490 | bot | INFO | Cog loaded: Music
+2021-09-29 03:52:06,491 | bot | INFO | Cog loaded: NewPatch
+2021-09-29 03:52:06,493 | bot | INFO | Cog loaded: Assignments
+2021-09-29 03:52:06,496 | bot | INFO | Cog loaded: Snekbox
+2021-09-29 03:52:06,497 | bot | INFO | Cog loaded: Debug
+2021-09-29 03:52:06,498 | bot | INFO | Cog loaded: DayLoop
+2021-09-29 03:52:06,541 | exts.kus | DEBUG | loaded data
+2021-09-29 03:52:09,242 | utils.planner | DEBUG | returning sorted date for 562976873685057546
+2021-09-29 03:52:09,256 | bot | INFO | Connected successfully
+2021-09-29 03:52:09,472 | bot | DEBUG | changed bot status
+2021-09-29 03:52:09,475 | bot | DEBUG | creating assignment embed...
+2021-09-29 03:52:09,475 | bot | DEBUG | successfully created assignment embed
+2021-09-29 03:52:10,564 | bot | DEBUG | creating assignment embed...
+2021-09-29 03:52:10,565 | bot | DEBUG | successfully created assignment embed
+2021-09-29 03:52:11,658 | bot | DEBUG | creating assignment embed...
+2021-09-29 03:52:11,659 | bot | DEBUG | successfully created assignment embed
+2021-09-29 03:52:12,759 | bot | DEBUG | exts.update :white_check_mark: Sucessfully update works at 562976873685057546 :
+88EEE
+2021-09-29 03:52:12,897 | exts.update | DEBUG | updated active-works for 562976873685057546
+2021-09-29 03:52:12,981 | utils.planner | DEBUG | returning sorted date for 728482381215826000
+2021-09-29 03:52:13,091 | bot | DEBUG | creating assignment embed...
+2021-09-29 03:52:13,091 | bot | DEBUG | successfully created assignment embed
+2021-09-29 03:52:14,202 | bot | DEBUG | exts.update :white_check_mark: Sucessfully update works at 728482381215826000 :
+33E
+2021-09-29 03:52:14,301 | exts.update | DEBUG | updated active-works for 728482381215826000
+2021-09-29 03:52:14,301 | utils.planner | DEBUG | returning sorted date for 829749071891005512
+2021-09-29 03:52:14,433 | utils.planner | DEBUG | returning sorted date for 773426467492069386
+2021-09-29 03:52:24,896 | exts.music | DEBUG | VoiceState created for 728482381215826000
+2021-09-29 03:52:24,897 | exts.music | INFO | Audio Player Launched for 728482381215826000
+2021-09-29 03:52:26,791 | exts.music | DEBUG | 728482381215826000: Searching https://www.youtube.com/watch?v=H9yfuYDoGf4
+2021-09-29 03:52:29,494 | exts.music | DEBUG | Enqueued
