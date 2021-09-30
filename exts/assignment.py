@@ -146,7 +146,7 @@ class Assignments(Cog):
     @guild_only()
     @checks.assignment_limit()
     @checks.is_setup()
-    @cooldown(2, 45, BucketType.guild)
+    @cooldown(3, 45, BucketType.guild)
     async def add(self, ctx: Context) -> None:
         """Add an Assignment Command."""
         if ctx.author.id in self.tasks: del self.tasks[ctx.author.id]
@@ -162,7 +162,7 @@ class Assignments(Cog):
     @command()
     @guild_only()
     @checks.is_setup()
-    @cooldown(2, 45, BucketType.guild)
+    @cooldown(3, 45, BucketType.guild)
     async def edit(self, ctx: Context, key: str = None) -> None:
         """Edit an Assignment Command."""
         if ctx.author.id in self.tasks: del self.tasks[ctx.author.id]

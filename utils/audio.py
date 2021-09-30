@@ -121,3 +121,38 @@ class YTDLSource(discord.PCMVolumeTransformer):
             duration.append('{} seconds'.format(seconds))
 
         return ', '.join(duration)
+
+# Spotify library.
+import spotipy
+from spotipy.oauth2 import SpotifyClientCredentials
+# URL conversions.
+import json
+
+import os
+
+
+cid = os.getenv("CID")
+secret = os.getenv("SECRET")
+
+
+def getTracks(playlistURL):
+    # Creating and authenticating our Spotify app.
+    client_credentials_manager = SpotifyClientCredentials(cid, secret)
+    spotify = spotipy.Spotify(client_credentials_manager=client_credentials_manager)
+
+    # Getting a playlist.
+    results = spotify.user_playlist_tracks(user="",playlist_id=playlistURL)
+    # json.dump(results, open("test.json", "w"), indent=4)
+    trackList = []
+    
+    # For each track in the playlist.
+    for i in results["items"]:
+        #print(i)
+    
+        artist = i["track"]["album"]["artists"][0]["name"]
+        name = i["track"]["name"]
+        print(name, artist)
+
+        trackList.append(name + " " + artist)    
+    
+    return trackList

@@ -13,6 +13,7 @@ import itertools
 import math
 import random
 import logging
+import traceback
 
 import discord
 from async_timeout import timeout
@@ -23,7 +24,7 @@ import googleapiclient.discovery
 from urllib.parse import parse_qs, urlparse
 
 # YouTube DL
-from utils.audio import YTDLSource, YTDLError
+from utils.audio import YTDLSource, YTDLError, getTracks
 
 YOUTUBE_API_KEY = os.getenv("YOUTUBE_API_KEY")
 
@@ -224,6 +225,7 @@ class VoiceState:
                     try:
                         source = await YTDLSource.create_source(self.current.ctx, self.current.url, loop=self.bot.loop)
                     except Exception:
+                        log.warning(traceback.format_exc())
                         await self._ctx.send(f":x: **Unable to load:** {self.current.url}")
                         continue
                     self.current = Song(source)
@@ -442,6 +444,7 @@ class Music(commands.Cog):
             await ctx.message.add_reaction('⏹')
 
     @commands.command(name='skip')
+
     async def _skip(self, ctx: commands.Context):
         """Vote to skip a song. The requester can automatically skip.
         3 skip votes are needed for the song to be skipped.
@@ -495,13 +498,17 @@ class Music(commands.Cog):
 
         queue = ''
         for i, song in enumerate(ctx.voice_state.songs[start:end], start=start):
-            if isinstance(song, Song):
+            if isinstance(song, Song):      # requested one by one
                 queue += '**{0}.** [{1.source.title}]({1.source.url})\n'.format(i + 1, song)
             else:
-                if song.song is not None:
-                    queue += '**{0}.** [{1.song.source.title}]({1.song.source.url})\n'.format(i + 1, song)
-                else:
-                    queue += f"**{i+1}.** [Couldn't load this song]({song.url})\n"
+                # song = PlaylistSong
+                # Attrs: url, ctx, song
+                if song.song is not None:    # is loaded
+                    queue += '**{0}.** [{1.song.song.source.title}]({1.song.song.source.url})\n'.format(i + 1, song)
+                elif "http" in song.url:     # not loaded, but have the url
+                    queue += f"**{i+1}.** [Couldn't load this song]({song.url})\n"  
+                else:                        # not loaded, have song name
+                    queue += '**{0}.** {1.url}\n'.format(i + 1, song)
 
         queue = queue or "Nothing \:("
 
@@ -630,6 +637,7 @@ class Music(commands.Cog):
 
         log.debug(f"{ctx.guild.id}: Searching {search}")
         async with ctx.typing():
+            await asyncio.sleep(1)
             if "youtube.com/playlist?" in search or "&start_radio" in search: 
                 query = parse_qs(urlparse(search).query, keep_blank_values=True)
                 playlist_id = query["list"][0]
@@ -667,8 +675,28 @@ class Music(commands.Cog):
                     await ctx.voice_state.loader.put(pl)
                     amount += 1
                 
-                await asyncio.sleep(1)
                 await ctx.send("Enqueued {} songs.".format(amount))
+            
+            elif "open.spotify.com/playlist/" in search:
+                try:
+                    tracks = getTracks(search)
+                except:
+                    log.warning(traceback.format_exc())
+                    return await ctx.send(":x: **Failed to load Spotify Plalist!**")
+                
+                amount = 0
+                for s in tracks:                    
+                    pl = PlaylistSong(s, ctx)
+
+                    await ctx.voice_state.songs.put(pl)
+                    await ctx.voice_state.loader.put(pl)
+
+                    amount += 1
+                
+                await ctx.send("Enqueued {} songs.".format(amount))
+            
+            elif "open.spotify.com/" in search:
+                return await ctx.send("Sorry, Only Spotify playlist is support at the moment!")
                 
             else:
                 """pl = PlaylistSong(ctx, search)
