@@ -81,6 +81,7 @@ class Bot(commands.AutoShardedBot):
         
         self.config = config
 
+        self.unloaded_cogs = []
         self.last_check = {}
 
         self.log_channel = None
@@ -112,8 +113,11 @@ class Bot(commands.AutoShardedBot):
         extensions = set(EXTENSIONS)
 
         for extension in extensions:
-            try: self.load_extension(extension)
-            except Exception as e: log.warning(f"Couldn't load {extension} with an error: {e}")                
+            try: 
+                self.load_extension(extension)
+            except Exception as e: 
+                log.warning(f"Couldn't load {extension} with an error: {e}")   
+                self.unloaded_cogs.append(extension)             
 
     def add_cog(self, cog: commands.Cog) -> None:
         """ Add Cog event, Need for logging. """
@@ -146,6 +150,12 @@ class Bot(commands.AutoShardedBot):
         log.info("Connected successfully")
         # await self.log(__name__, "connected")
         await self.change_status()
+        
+        text = ""
+        for i in self.unloaded_cogs:
+           text += f"Unable to load **{i}**\n"
+        if text:
+            await self.log(__name__, text, True)
     
     async def on_resumed(self) -> None:
         """ on Edit event, Use to log and change bot status. """
