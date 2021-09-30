@@ -159,3 +159,24 @@ def getTracks(playlistURL):
         results = spotify.user_playlist_tracks(user="",playlist_id=playlistURL, offset=offset)
 
     return trackList
+
+def getAlbum(albumURL):
+    # Getting a album.
+    results = spotify.album_tracks(albumURL, offset=0)
+
+    trackList = []
+    offset = 0
+
+    # For each track in the album.
+    while len(results["items"]) != 0:
+        for i in results["items"]:
+            artist = i["artists"][0]["name"]
+            name = i["name"]
+
+            trackList.append(f"{name} {artist}")
+
+        offset += 50
+
+        results = spotify.album_tracks(albumURL, offset=offset)
+
+    return trackList

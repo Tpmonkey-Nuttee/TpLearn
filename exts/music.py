@@ -24,7 +24,7 @@ import googleapiclient.discovery
 from urllib.parse import parse_qs, urlparse
 
 # YouTube DL
-from utils.audio import YTDLSource, YTDLError, getTracks
+from utils.audio import YTDLSource, YTDLError, getTracks, getAlbum
 
 YOUTUBE_API_KEY = os.getenv("YOUTUBE_API_KEY")
 
@@ -649,6 +649,8 @@ class Music(commands.Cog):
         log.debug(f"{ctx.guild.id}: Searching {search}")
         async with ctx.typing():
             await asyncio.sleep(1)
+
+            # Youtube Playlist
             if "youtube.com/playlist?" in search or "&start_radio" in search: 
                 query = parse_qs(urlparse(search).query, keep_blank_values=True)
                 playlist_id = query["list"][0]
@@ -688,6 +690,7 @@ class Music(commands.Cog):
                 
                 await ctx.send("Enqueued {} songs.".format(amount))
             
+            # Spotify Playlist
             elif "open.spotify.com/playlist/" in search:
                 try:
                     tracks = getTracks(search)
@@ -706,9 +709,30 @@ class Music(commands.Cog):
                 
                 await ctx.send("Enqueued {} songs.".format(amount))
             
+            # Spotify Album
+            elif "open.spotify.com/album/" in search:
+                try:
+                    tracks = getAlbum(search)
+                except:
+                    log.warning(traceback.format_exc())
+                    return await ctx.send(":x: **Failed to load Spotify Album!**")
+                
+                amount = 0
+                for s in tracks:                    
+                    pl = PlaylistSong(s, ctx)
+
+                    await ctx.voice_state.songs.put(pl)
+                    # await ctx.voice_state.loader.put(pl)
+
+                    amount += 1
+                
+                await ctx.send("Enqueued {} songs.".format(amount))
+            
+            # Anything else related to Spotify
             elif "open.spotify.com/" in search:
                 return await ctx.send("Sorry, Only Spotify playlist is support at the moment!")
-                
+
+            # Normal searching. 
             else:
                 """pl = PlaylistSong(ctx, search)
                 await ctx.voice_state.songs.put(pl)
