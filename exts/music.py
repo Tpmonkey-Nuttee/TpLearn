@@ -444,7 +444,6 @@ class Music(commands.Cog):
             await ctx.message.add_reaction('⏹')
 
     @commands.command(name='skip')
-
     async def _skip(self, ctx: commands.Context):
         """Vote to skip a song. The requester can automatically skip.
         3 skip votes are needed for the song to be skipped.
@@ -473,6 +472,18 @@ class Music(commands.Cog):
 
         else:
             await ctx.send(':x: **You have already voted to skip this song.** ._.')
+    
+    @commands.command(name="skipto")
+    async def _skipto(self, ctx: commands.Context, index: int):
+        """Skip to the index song."""
+        if len(ctx.voice_state.songs) < 2:
+            return await ctx.send(":x: **You need more song in queue to use this command!**")
+        
+        ctx.voice_state.songs._queue.rotate(-(index-1))
+        ctx.voice_state.skip()
+        
+        await ctx.message.add_reaction('✅')
+        
 
     @commands.command(name='queue', aliases=['q'])
     async def _queue(self, ctx: commands.Context, *, page: int = 1):
