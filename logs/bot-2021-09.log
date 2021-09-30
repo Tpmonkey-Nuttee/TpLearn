@@ -64,3 +64,104 @@ utils.audio.YTDLError: Couldn't fetch `Treat You Better Shawn Mendes`
 
 2021-09-30 04:27:57,427 | exts.music | DEBUG | 728482381215826000: Searching treat you better
 2021-09-30 04:27:59,915 | exts.music | DEBUG | Enqueued
+2021-09-30 04:36:51,747 | exts.music | WARNING | Traceback (most recent call last):
+  File "/home/runner/TpLearn/exts/music.py", line 226, in audio_player_task
+    source = await YTDLSource.create_source(self.current.ctx, self.current.url, loop=self.bot.loop)
+  File "/home/runner/TpLearn/utils/audio.py", line 105, in create_source
+    return cls(ctx, discord.FFmpegPCMAudio(info['url'], **cls.FFMPEG_OPTIONS), data=info)
+  File "/opt/virtualenvs/python3/lib/python3.8/site-packages/discord/player.py", line 225, in __init__
+    super().__init__(source, executable=executable, args=args, **subprocess_kwargs)
+  File "/opt/virtualenvs/python3/lib/python3.8/site-packages/discord/player.py", line 138, in __init__
+    self._process = self._spawn_process(args, **kwargs)
+  File "/opt/virtualenvs/python3/lib/python3.8/site-packages/discord/player.py", line 144, in _spawn_process
+    process = subprocess.Popen(args, creationflags=CREATE_NO_WINDOW, **subprocess_kwargs)
+  File "/usr/lib/python3.8/subprocess.py", line 858, in __init__
+    self._execute_child(args, executable, preexec_fn, close_fds,
+  File "/usr/lib/python3.8/subprocess.py", line 1639, in _execute_child
+    self.pid = _posixsubprocess.fork_exec(
+BlockingIOError: [Errno 11] Resource temporarily unavailable
+
+2021-09-30 04:48:13,429 | asyncio | DEBUG | Using selector: EpollSelector
+2021-09-30 04:48:13,430 | bot | DEBUG | created bot base.
+2021-09-30 04:48:13,458 | constant | DEBUG | init database succesful
+2021-09-30 04:48:13,501 | utils.planner | DEBUG | triggered update
+2021-09-30 04:48:13,512 | bot | DEBUG | bot subclass Created.
+2021-09-30 04:48:13,520 | bot | INFO | Cog loaded: Snekbox
+2021-09-30 04:48:13,528 | bot | INFO | Cog loaded: ErrorHandler
+2021-09-30 04:48:13,530 | bot | INFO | Cog loaded: AdminCommands
+2021-09-30 04:48:13,531 | bot | INFO | Cog loaded: Help
+2021-09-30 04:48:13,739 | bot | INFO | Cog loaded: KUSNews
+2021-09-30 04:48:13,740 | bot | INFO | Cog loaded: NewPatch
+2021-09-30 04:48:13,742 | bot | INFO | Cog loaded: Assignments
+2021-09-30 04:48:13,743 | bot | INFO | Cog loaded: VoiceChannel
+2021-09-30 04:48:13,744 | bot | INFO | Cog loaded: Debug
+2021-09-30 04:48:13,745 | bot | INFO | Cog loaded: DayLoop
+2021-09-30 04:48:13,746 | bot | INFO | Cog loaded: Latency
+2021-09-30 04:48:13,747 | bot | INFO | Cog loaded: Updater
+2021-09-30 04:48:13,750 | bot | INFO | Cog loaded: Utility
+2021-09-30 04:48:13,751 | bot | INFO | Cog loaded: SetUp
+2021-09-30 04:48:14,340 | bot | INFO | Cog loaded: Music
+2021-09-30 04:48:14,379 | exts.kus | DEBUG | loaded data
+2021-09-30 04:48:17,172 | utils.planner | DEBUG | returning sorted date for 562976873685057546
+2021-09-30 04:48:17,196 | bot | INFO | Connected successfully
+2021-09-30 04:48:17,669 | bot | DEBUG | changed bot status
+2021-09-30 04:48:17,677 | bot | DEBUG | creating assignment embed...
+2021-09-30 04:48:17,678 | bot | DEBUG | successfully created assignment embed
+2021-09-30 04:48:18,786 | bot | DEBUG | creating assignment embed...
+2021-09-30 04:48:18,787 | bot | DEBUG | successfully created assignment embed
+2021-09-30 04:48:19,884 | bot | DEBUG | creating assignment embed...
+2021-09-30 04:48:19,885 | bot | DEBUG | successfully created assignment embed
+2021-09-30 04:48:21,020 | bot | DEBUG | exts.update :white_check_mark: Sucessfully update works at 562976873685057546 :
+99EEE
+2021-09-30 04:48:21,140 | exts.update | DEBUG | updated active-works for 562976873685057546
+2021-09-30 04:48:21,189 | utils.planner | DEBUG | returning sorted date for 728482381215826000
+2021-09-30 04:48:21,431 | bot | DEBUG | creating assignment embed...
+2021-09-30 04:48:21,434 | bot | DEBUG | successfully created assignment embed
+2021-09-30 04:48:22,554 | bot | DEBUG | exts.update :white_check_mark: Sucessfully update works at 728482381215826000 :
+22E
+2021-09-30 04:48:22,670 | exts.update | DEBUG | updated active-works for 728482381215826000
+2021-09-30 04:48:22,670 | utils.planner | DEBUG | returning sorted date for 829749071891005512
+2021-09-30 04:48:22,785 | utils.planner | DEBUG | returning sorted date for 773426467492069386
+2021-09-30 04:48:32,363 | exts.music | DEBUG | VoiceState created for 728482381215826000
+2021-09-30 04:48:32,366 | exts.music | INFO | Audio Player Launched for 728482381215826000
+2021-09-30 04:48:34,993 | exts.music | DEBUG | 728482381215826000: Searching https://open.spotify.com/playlist/5l5CpPwe7FtMvjIoS7TRX9?si=13d9d28f1a4c4739
+2021-09-30 04:48:36,624 | exts.music | DEBUG | Enqueued
+2021-09-30 04:48:37,777 | exts.music | WARNING | Traceback (most recent call last):
+  File "/home/runner/TpLearn/exts/music.py", line 226, in audio_player_task
+    source = await YTDLSource.create_source(self.current.ctx, self.current.url, loop=self.bot.loop)
+  File "/home/runner/TpLearn/utils/audio.py", line 93, in create_source
+    raise YTDLError('Couldn\'t fetch `{}`'.format(webpage_url))
+utils.audio.YTDLError: Couldn't fetch `Treat You Better Shawn Mendes`
+
+2021-09-30 04:55:47,970 | exts.music | WARNING | Traceback (most recent call last):
+  File "/home/runner/TpLearn/exts/music.py", line 226, in audio_player_task
+    source = await YTDLSource.create_source(self.current.ctx, self.current.url, loop=self.bot.loop)
+  File "/home/runner/TpLearn/utils/audio.py", line 105, in create_source
+    return cls(ctx, discord.FFmpegPCMAudio(info['url'], **cls.FFMPEG_OPTIONS), data=info)
+  File "/opt/virtualenvs/python3/lib/python3.8/site-packages/discord/player.py", line 225, in __init__
+    super().__init__(source, executable=executable, args=args, **subprocess_kwargs)
+  File "/opt/virtualenvs/python3/lib/python3.8/site-packages/discord/player.py", line 138, in __init__
+    self._process = self._spawn_process(args, **kwargs)
+  File "/opt/virtualenvs/python3/lib/python3.8/site-packages/discord/player.py", line 144, in _spawn_process
+    process = subprocess.Popen(args, creationflags=CREATE_NO_WINDOW, **subprocess_kwargs)
+  File "/usr/lib/python3.8/subprocess.py", line 858, in __init__
+    self._execute_child(args, executable, preexec_fn, close_fds,
+  File "/usr/lib/python3.8/subprocess.py", line 1639, in _execute_child
+    self.pid = _posixsubprocess.fork_exec(
+BlockingIOError: [Errno 11] Resource temporarily unavailable
+
+2021-09-30 04:58:10,756 | exts.admin | DEBUG | Admin Eval from Tpmonkey#2682; code: self.bot.get_cog("Music").voice_states[ctx.guild.id].current
+2021-09-30 04:58:25,580 | exts.admin | DEBUG | Admin Eval from Tpmonkey#2682; code: self.bot.get_cog("Music").voice_states[ctx.guild.id].current.sourec
+2021-09-30 04:58:28,279 | exts.admin | DEBUG | Admin Eval from Tpmonkey#2682; code: self.bot.get_cog("Music").voice_states[ctx.guild.id].current.source
+2021-09-30 05:00:27,129 | bot | INFO | Cog loaded: Music
+2021-09-30 05:00:39,508 | exts.music | DEBUG | VoiceState created for 728482381215826000
+2021-09-30 05:00:39,510 | exts.music | INFO | Audio Player Launched for 728482381215826000
+2021-09-30 05:00:41,445 | exts.music | DEBUG | 728482381215826000: Searching https://open.spotify.com/playlist/5l5CpPwe7FtMvjIoS7TRX9?si=13d9d28f1a4c4739
+2021-09-30 05:00:43,047 | exts.music | DEBUG | Enqueued
+2021-09-30 05:00:43,672 | asyncio | ERROR | Task was destroyed but it is pending!
+task: <Task pending name='Task-75' coro=<LoadPlaylistSong.load() running at /home/runner/TpLearn/exts/music.py:121> wait_for=<Future cancelled>>
+2021-09-30 05:01:59,319 | bot | INFO | Cog loaded: Music
+2021-09-30 05:02:02,708 | exts.music | DEBUG | VoiceState created for 728482381215826000
+2021-09-30 05:02:02,710 | exts.music | INFO | Audio Player Launched for 728482381215826000
+2021-09-30 05:02:04,611 | exts.music | DEBUG | 728482381215826000: Searching https://open.spotify.com/playlist/5l5CpPwe7FtMvjIoS7TRX9?si=13d9d28f1a4c4739
+2021-09-30 05:02:06,186 | exts.music | DEBUG | Enqueued

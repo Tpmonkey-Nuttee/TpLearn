@@ -689,7 +689,7 @@ class Music(commands.Cog):
                     pl = PlaylistSong(s, ctx)
 
                     await ctx.voice_state.songs.put(pl)
-                    await ctx.voice_state.loader.put(pl)
+                    # await ctx.voice_state.loader.put(pl)
 
                     amount += 1
                 
