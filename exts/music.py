@@ -43,7 +43,7 @@ class PlaylistSong:
     """
     A Singleton class for storing Playlist Song in case of a ton of songs is queued in a short peroid of time.
     """
-    """_loaded = {}
+    _loaded = {}
     # __slots__ = ("url", "ctx", "song")
 
     def __new__(cls, url: str, ctx: commands.Context):
@@ -54,9 +54,9 @@ class PlaylistSong:
         a = super().__new__(cls)
         cls._loaded[url] = a
         a._init(url, ctx)
-        return a """       
+        return a   
 
-    def __init__(self, url: str, ctx: commands.Context):
+    def _init(self, url: str, ctx: commands.Context):
         self.url = url
         self.ctx = ctx
         self.song = None        
@@ -504,7 +504,7 @@ class Music(commands.Cog):
                 # song = PlaylistSong
                 # Attrs: url, ctx, song
                 if song.song is not None:    # is loaded
-                    queue += '**{0}.** [{1.song.song.source.title}]({1.song.song.source.url})\n'.format(i + 1, song)
+                    queue += '**{0}.** [{1.song.source.title}]({1.song.source.url})\n'.format(i + 1, song)
                 elif "http" in song.url:     # not loaded, but have the url
                     queue += f"**{i+1}.** [Couldn't load this song]({song.url})\n"  
                 else:                        # not loaded, have song name
