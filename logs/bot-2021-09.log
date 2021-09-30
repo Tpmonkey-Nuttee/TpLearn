@@ -1,0 +1,66 @@
+2021-09-30 04:27:12,308 | asyncio | DEBUG | Using selector: EpollSelector
+2021-09-30 04:27:12,309 | bot | DEBUG | created bot base.
+2021-09-30 04:27:12,366 | constant | DEBUG | init database succesful
+2021-09-30 04:27:12,439 | utils.planner | DEBUG | triggered update
+2021-09-30 04:27:12,459 | bot | DEBUG | bot subclass Created.
+2021-09-30 04:27:12,463 | bot | INFO | Cog loaded: Latency
+2021-09-30 04:27:12,470 | bot | INFO | Cog loaded: Help
+2021-09-30 04:27:12,476 | bot | INFO | Cog loaded: Utility
+2021-09-30 04:27:13,325 | bot | INFO | Cog loaded: Music
+2021-09-30 04:27:13,326 | bot | INFO | Cog loaded: NewPatch
+2021-09-30 04:27:13,329 | bot | INFO | Cog loaded: SetUp
+2021-09-30 04:27:13,334 | bot | INFO | Cog loaded: AdminCommands
+2021-09-30 04:27:13,336 | bot | INFO | Cog loaded: Updater
+2021-09-30 04:27:13,339 | bot | INFO | Cog loaded: Assignments
+2021-09-30 04:27:13,351 | bot | INFO | Cog loaded: Snekbox
+2021-09-30 04:27:13,354 | bot | INFO | Cog loaded: DayLoop
+2021-09-30 04:27:13,355 | bot | INFO | Cog loaded: ErrorHandler
+2021-09-30 04:27:13,496 | bot | INFO | Cog loaded: KUSNews
+2021-09-30 04:27:13,497 | bot | INFO | Cog loaded: Debug
+2021-09-30 04:27:13,499 | bot | INFO | Cog loaded: VoiceChannel
+2021-09-30 04:27:13,782 | exts.kus | DEBUG | loaded data
+2021-09-30 04:27:15,606 | bot | DEBUG | exts.kus New data detected
+2021-09-30 04:27:17,030 | utils.planner | DEBUG | returning sorted date for 562976873685057546
+2021-09-30 04:27:17,090 | bot | INFO | Connected successfully
+2021-09-30 04:27:18,190 | bot | DEBUG | changed bot status
+2021-09-30 04:27:18,198 | bot | DEBUG | creating assignment embed...
+2021-09-30 04:27:18,198 | bot | DEBUG | successfully created assignment embed
+2021-09-30 04:27:18,350 | bot | DEBUG | exts.kus 
+**From** `ObservedList(value=['news_detail.php?id=3048', 'http://kus.ku.ac.th/downloads.php', 'news_detail.php?id=3038', 'news_detail.php?id=3039', 'news_detail.php?id=3049', 'news_detail.php?id=3040', 'news_detail.php?id=3036', 'news_detail.php?id=3013', 'news_detail.php?id=3027', 'news_detail.php?id=3020'])`
+**To** `['https://www.youtube.com/watch?v=AR88z8e6hTU', 'news_detail.php?id=3048', 'http://kus.ku.ac.th/downloads.php', 'news_detail.php?id=3038', 'news_detail.php?id=3039', 'news_detail.php?id=3049', 'news_detail.php?id=3040', 'news_detail.php?id=3036', 'news_detail.php?id=3013', 'news_detail.php?id=3027']`
+2021-09-30 04:27:18,520 | bot | DEBUG | exts.kus **Found:** [('ชาวสาธิตเกษตรร่วมแสดงกตเวทิตาจิตแด่คณาจารย์และเจ้าหน้าที่ผู้เกษียณอายุราชการ ปีการศึกษา ๒๕๖๔ ...อ่านต่อ', 'https://www.youtube.com/watch?v=AR88z8e6hTU', 'http://www.kus.ku.ac.th/images_kus/news/ban1-20210929202040.gif')]
+2021-09-30 04:27:18,643 | bot | DEBUG | exts.kus Sending news to alert//728489165565591562
+2021-09-30 04:27:19,113 | bot | DEBUG | exts.kus Sending news to web-kus//855107375631827045
+2021-09-30 04:27:19,331 | bot | DEBUG | creating assignment embed...
+2021-09-30 04:27:19,331 | bot | DEBUG | successfully created assignment embed
+2021-09-30 04:27:19,616 | bot | DEBUG | exts.kus Sending news to bot//857155128922210334
+2021-09-30 04:27:20,423 | bot | DEBUG | creating assignment embed...
+2021-09-30 04:27:20,424 | bot | DEBUG | successfully created assignment embed
+2021-09-30 04:27:21,501 | bot | DEBUG | exts.update :white_check_mark: Sucessfully update works at 562976873685057546 :
+99EEE
+2021-09-30 04:27:23,742 | exts.update | DEBUG | updated active-works for 562976873685057546
+2021-09-30 04:27:23,909 | utils.planner | DEBUG | returning sorted date for 728482381215826000
+2021-09-30 04:27:23,911 | bot | DEBUG | exts.kus Sending news to เว็บโรงเรียน//862148885908553738
+2021-09-30 04:27:24,061 | bot | DEBUG | creating assignment embed...
+2021-09-30 04:27:24,061 | bot | DEBUG | successfully created assignment embed
+2021-09-30 04:27:24,320 | bot | DEBUG | exts.kus Sended news to all channels. (Total of 4)
+2021-09-30 04:27:24,517 | bot | DEBUG | exts.kus Saved new data.
+2021-09-30 04:27:25,205 | bot | DEBUG | exts.update :white_check_mark: Sucessfully update works at 728482381215826000 :
+22E
+2021-09-30 04:27:28,670 | exts.update | DEBUG | updated active-works for 728482381215826000
+2021-09-30 04:27:28,671 | utils.planner | DEBUG | returning sorted date for 829749071891005512
+2021-09-30 04:27:28,838 | utils.planner | DEBUG | returning sorted date for 773426467492069386
+2021-09-30 04:27:36,468 | exts.music | DEBUG | VoiceState created for 728482381215826000
+2021-09-30 04:27:36,477 | exts.music | INFO | Audio Player Launched for 728482381215826000
+2021-09-30 04:27:38,419 | exts.music | DEBUG | 728482381215826000: Searching https://open.spotify.com/playlist/5l5CpPwe7FtMvjIoS7TRX9?si=13d9d28f1a4c4739
+2021-09-30 04:27:39,503 | spotipy.oauth2 | DEBUG | sending POST request to https://accounts.spotify.com/api/token with Headers: {'Authorization': 'Basic MjA0MjQ3ODljNDBhNDM2Mzk1NTQ2Nzg1ZDc5ZGRmNTk6NzE0ZTE0NjE2MzZmNGRjMWI4ODE1MDI4MjljM2Q4YTQ='} and Body: {'grant_type': 'client_credentials'}
+2021-09-30 04:27:40,087 | exts.music | DEBUG | Enqueued
+2021-09-30 04:27:40,958 | exts.music | WARNING | Traceback (most recent call last):
+  File "/home/runner/TpLearn/exts/music.py", line 226, in audio_player_task
+    source = await YTDLSource.create_source(self.current.ctx, self.current.url, loop=self.bot.loop)
+  File "/home/runner/TpLearn/utils/audio.py", line 93, in create_source
+    raise YTDLError('Couldn\'t fetch `{}`'.format(webpage_url))
+utils.audio.YTDLError: Couldn't fetch `Treat You Better Shawn Mendes`
+
+2021-09-30 04:27:57,427 | exts.music | DEBUG | 728482381215826000: Searching treat you better
+2021-09-30 04:27:59,915 | exts.music | DEBUG | Enqueued

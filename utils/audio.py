@@ -125,34 +125,37 @@ class YTDLSource(discord.PCMVolumeTransformer):
 # Spotify library.
 import spotipy
 from spotipy.oauth2 import SpotifyClientCredentials
-# URL conversions.
-import json
 
 import os
-
 
 cid = os.getenv("CID")
 secret = os.getenv("SECRET")
 
+# Creating and authenticating our Spotify app.
+client_credentials_manager = SpotifyClientCredentials(cid, secret)
+spotify = spotipy.Spotify(client_credentials_manager=client_credentials_manager)
 
-def getTracks(playlistURL):
-    # Creating and authenticating our Spotify app.
-    client_credentials_manager = SpotifyClientCredentials(cid, secret)
-    spotify = spotipy.Spotify(client_credentials_manager=client_credentials_manager)
 
+def getTracks(playlistURL):   
     # Getting a playlist.
-    results = spotify.user_playlist_tracks(user="",playlist_id=playlistURL)
-    # json.dump(results, open("test.json", "w"), indent=4)
-    trackList = []
-    
-    # For each track in the playlist.
-    for i in results["items"]:
-        #print(i)
-    
-        artist = i["track"]["album"]["artists"][0]["name"]
-        name = i["track"]["name"]
-        print(name, artist)
+    results = spotify.user_playlist_tracks(user="",playlist_id=playlistURL, offset=0)
 
-        trackList.append(name + " " + artist)    
+    trackList = []
+    offset = 0
     
+    # Loop untils all the tacks are extracted from playlist.
+    # The reason behind is, Spotify API has limit at 100 tracks at a time, 
+    # So to work around, We use offset insated
+    while len(results["items"]) != 0:
+        for i in results["items"]:
+            artist = i["track"]["artists"][0]["name"]
+            name = i["track"]["name"]
+
+            trackList.append(f"{name} {artist}")
+
+        offset += 100
+
+        # Get it again, with an offset
+        results = spotify.user_playlist_tracks(user="",playlist_id=playlistURL, offset=offset)
+
     return trackList
