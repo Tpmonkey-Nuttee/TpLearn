@@ -4,7 +4,6 @@ Add, Remove, Keep track of all assignments.
 Made by Tpmonkey
 """
 
-from functools import lru_cache
 from typing import Optional
 import datetime
 import secrets
@@ -131,7 +130,6 @@ class Planner:
         log.debug(f'returning sorted date for {guild_id}')
         return unknown_date + final
     
-    @lru_cache
     def get_embed(self, guild_id: int) -> discord.Embed:
         """
         Embed contained a List of all works in that targeted guild.
@@ -288,8 +286,9 @@ class Planner:
             for key, data in self.__data[guild_id].items():
                 day_passed = self.bot.in_days(  data.get( "date-tracker", data.get("date") )  )
 
-                if day_passed is None: continue # Unable to identify date.
-                if day_passed >= 0: continue
+                if day_passed is None or day_passed >= 0: 
+                    # Unable to identify date or Alrady passed
+                    continue 
 
                 if abs(day_passed) >= self.bot.config.maximum_days: # If It's already passed and more than maximum days.
                     count += 1
@@ -345,11 +344,9 @@ class Planner:
         """
         Check if the given date passed or not.
         """
-        today_ = datetime.datetime.strptime(today_th(), "%Y-%m-%d")    
-        thatday = self.try_strp_date(date)
 
         try:
-            return thatday < today_
+            return self.try_strp_date(date) < datetime.datetime.strptime(today_th(), "%Y-%m-%d")    
         except TypeError:
             return False
 

@@ -5,14 +5,21 @@ Made by Tpmonkey
 
 ### ---------- General ---------- ###
 
-version = "1.3.10"
+version = "1.4"
 note = [
-    "**Fixes**",
-    "- Clear, Volume command not working as intended.",
-    "**QoL**",
-    "- Bot will now stop loading if the songs has been cleared.\n\t*Note: This will increase performance a little bit.*",
-    "- Loop & Loop queue command can now be run right after the play command is called without needing to wait.",
-    "- Changed Default Settings, Bot won't spam **Now Playing** embed anymore."
+    "**Spotify support!**",
+    "- now support Spotify Playlist and Album!",
+    "**Note:**",
+    "You could use normal play command to find an individual song, so Support for normal track will not be implemented.",
+    "But, Artist support maybe coming soon!",
+    "",
+    "**New Command!**",
+    "- skipto command, Can now jump directly to song that you like!",
+    "",
+    "**Changes**",
+    "- Some optimization.",
+    "- Bot can now play *age-restricted* song, I don't know why but okay...",
+    "- Play command can now be use as a resume command."
 ]
 
 prefix = "," # Bot Prefix.
@@ -60,7 +67,7 @@ facts = [
     "Old Assignments will be remove automatically when It passed certain days to reduce data usage!",
     "Did you know that, You can hold the assignment embed to copy the key in mobile? What a nice touch!",
     f"Right now, The Bot version is `{version}`", "This project was created as a fun joke, But somehow ended up like this!",
-    "You can monitor KUS website using `{prefix}set-news` command!", "A lot of commands have aliases, so they can be type quicker!",
+    f"You can monitor KUS website using `{prefix}set-news` command!", "A lot of commands have aliases, so they can be type quicker!",
     "When you clicked on reaction in edit/add menu, The Bot will not remove it but It knows that you clicked!",
     "You don't need to click reactions in edit/add menu to cycle the title, It is automatically!",
     "There are a secret commands, Try to find them all! (But don't forget about assignments ;) )",

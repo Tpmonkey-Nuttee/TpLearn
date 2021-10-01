@@ -167,3 +167,166 @@ TypeError: unsupported operand type(s) for -: 'NoneType' and 'datetime.datetime'
 2021-10-01 04:12:22,681 | exts.music | INFO | Audio Player Launched for 728482381215826000
 2021-10-01 04:12:25,379 | exts.music | DEBUG | 728482381215826000: Searching https://open.spotify.com/playlist/5l5CpPwe7FtMvjIoS7TRX9?si=13f77f166dbe4365
 2021-10-01 04:12:27,195 | exts.music | DEBUG | Enqueued
+2021-10-01 04:14:29,560 | utils.planner | DEBUG | returning sorted date for 728482381215826000
+2021-10-01 04:14:29,672 | utils.planner | DEBUG | return embed for 728482381215826000
+2021-10-01 04:14:29,673 | utils.planner | DEBUG | took 0.4561128616333008 second for 728482381215826000
+2021-10-01 04:14:38,853 | utils.planner | DEBUG | returning sorted date for 562976873685057546
+2021-10-01 04:14:39,076 | utils.planner | DEBUG | return embed for 562976873685057546
+2021-10-01 04:14:39,077 | utils.planner | DEBUG | took 1.0375585556030273 second for 562976873685057546
+2021-10-01 04:15:18,409 | utils.planner | TRACE | removed f474f046 from 562976873685057546
+2021-10-01 04:15:58,421 | asyncio | DEBUG | Using selector: EpollSelector
+2021-10-01 04:15:58,427 | bot | DEBUG | created bot base.
+2021-10-01 04:15:58,480 | constant | DEBUG | init database succesful
+2021-10-01 04:15:58,527 | utils.planner | DEBUG | triggered update
+2021-10-01 04:15:58,546 | bot | DEBUG | bot subclass Created.
+2021-10-01 04:15:58,550 | bot | INFO | Cog loaded: Help
+2021-10-01 04:15:58,564 | bot | INFO | Cog loaded: Utility
+2021-10-01 04:15:58,568 | bot | INFO | Cog loaded: SetUp
+2021-10-01 04:15:58,579 | bot | INFO | Cog loaded: Snekbox
+2021-10-01 04:15:58,581 | bot | INFO | Cog loaded: NewPatch
+2021-10-01 04:15:58,584 | bot | INFO | Cog loaded: Debug
+2021-10-01 04:15:58,589 | bot | INFO | Cog loaded: Assignments
+2021-10-01 04:15:58,595 | bot | INFO | Cog loaded: Updater
+2021-10-01 04:15:58,600 | bot | INFO | Cog loaded: Latency
+2021-10-01 04:15:59,693 | bot | INFO | Cog loaded: Music
+2021-10-01 04:15:59,694 | bot | INFO | Cog loaded: VoiceChannel
+2021-10-01 04:15:59,695 | bot | INFO | Cog loaded: DayLoop
+2021-10-01 04:15:59,833 | bot | INFO | Cog loaded: KUSNews
+2021-10-01 04:15:59,835 | bot | INFO | Cog loaded: ErrorHandler
+2021-10-01 04:15:59,837 | bot | INFO | Cog loaded: AdminCommands
+2021-10-01 04:15:59,871 | exts.kus | DEBUG | loaded data
+2021-10-01 08:24:32,186 | asyncio | DEBUG | Using selector: EpollSelector
+2021-10-01 08:24:32,188 | bot | DEBUG | created bot base.
+2021-10-01 08:24:32,224 | constant | DEBUG | init database succesful
+2021-10-01 08:24:32,279 | utils.planner | DEBUG | triggered update
+2021-10-01 08:24:32,286 | bot | DEBUG | bot subclass Created.
+2021-10-01 08:24:32,292 | bot | INFO | Cog loaded: Snekbox
+2021-10-01 08:24:32,296 | bot | INFO | Cog loaded: ErrorHandler
+2021-10-01 08:24:32,297 | bot | INFO | Cog loaded: Latency
+2021-10-01 08:24:32,299 | bot | INFO | Cog loaded: SetUp
+2021-10-01 08:24:32,301 | bot | INFO | Cog loaded: Updater
+2021-10-01 08:24:32,305 | bot | INFO | Cog loaded: Help
+2021-10-01 08:24:32,399 | bot | INFO | Cog loaded: KUSNews
+2021-10-01 08:24:32,402 | bot | INFO | Cog loaded: Assignments
+2021-10-01 08:24:32,403 | bot | INFO | Cog loaded: Debug
+2021-10-01 08:24:32,407 | bot | INFO | Cog loaded: Utility
+2021-10-01 08:24:32,409 | bot | INFO | Cog loaded: DayLoop
+2021-10-01 08:24:32,410 | bot | INFO | Cog loaded: NewPatch
+2021-10-01 08:24:32,413 | bot | INFO | Cog loaded: AdminCommands
+2021-10-01 08:24:33,001 | bot | INFO | Cog loaded: Music
+2021-10-01 08:24:33,003 | bot | INFO | Cog loaded: VoiceChannel
+2021-10-01 08:24:33,027 | exts.kus | DEBUG | loaded data
+2021-10-01 08:24:36,108 | utils.planner | DEBUG | returning sorted date for 562976873685057546
+2021-10-01 08:24:36,117 | bot | INFO | Connected successfully
+2021-10-01 08:24:36,905 | bot | DEBUG | changed bot status
+2021-10-01 08:24:36,908 | bot | DEBUG | creating assignment embed...
+2021-10-01 08:24:36,909 | bot | DEBUG | successfully created assignment embed
+2021-10-01 08:24:38,009 | bot | DEBUG | creating assignment embed...
+2021-10-01 08:24:38,010 | bot | DEBUG | successfully created assignment embed
+2021-10-01 08:24:39,189 | bot | DEBUG | exts.update :white_check_mark: Sucessfully update works at 562976873685057546 :
+1010EE
+2021-10-01 08:24:39,365 | exts.update | DEBUG | updated active-works for 562976873685057546
+2021-10-01 08:24:39,400 | utils.planner | DEBUG | returning sorted date for 728482381215826000
+2021-10-01 08:24:39,550 | bot | DEBUG | creating assignment embed...
+2021-10-01 08:24:39,550 | bot | DEBUG | successfully created assignment embed
+2021-10-01 08:24:40,647 | bot | DEBUG | exts.update :white_check_mark: Sucessfully update works at 728482381215826000 :
+22E
+2021-10-01 08:24:40,770 | exts.update | DEBUG | updated active-works for 728482381215826000
+2021-10-01 08:24:40,770 | utils.planner | DEBUG | returning sorted date for 829749071891005512
+2021-10-01 08:24:40,881 | utils.planner | DEBUG | returning sorted date for 773426467492069386
+2021-10-01 09:27:26,393 | exts.music | DEBUG | VoiceState created for 728482381215826000
+2021-10-01 09:27:26,396 | exts.music | INFO | Audio Player Launched for 728482381215826000
+2021-10-01 09:27:45,222 | asyncio | DEBUG | Using selector: EpollSelector
+2021-10-01 09:27:45,223 | bot | DEBUG | created bot base.
+2021-10-01 09:27:45,254 | constant | DEBUG | init database succesful
+2021-10-01 09:27:45,391 | utils.planner | DEBUG | triggered update
+2021-10-01 09:27:45,400 | bot | DEBUG | bot subclass Created.
+2021-10-01 09:27:45,404 | bot | INFO | Cog loaded: AdminCommands
+2021-10-01 09:27:45,405 | bot | INFO | Cog loaded: ErrorHandler
+2021-10-01 09:27:45,407 | bot | INFO | Cog loaded: Updater
+2021-10-01 09:27:45,410 | bot | INFO | Cog loaded: Assignments
+2021-10-01 09:27:45,411 | bot | INFO | Cog loaded: VoiceChannel
+2021-10-01 09:27:45,413 | bot | INFO | Cog loaded: Help
+2021-10-01 09:27:45,416 | bot | INFO | Cog loaded: Snekbox
+2021-10-01 09:27:45,978 | bot | INFO | Cog loaded: Music
+2021-10-01 09:27:45,979 | bot | INFO | Cog loaded: Latency
+2021-10-01 09:27:45,981 | bot | INFO | Cog loaded: SetUp
+2021-10-01 09:27:45,986 | bot | INFO | Cog loaded: Utility
+2021-10-01 09:27:46,094 | bot | INFO | Cog loaded: KUSNews
+2021-10-01 09:27:46,096 | bot | INFO | Cog loaded: NewPatch
+2021-10-01 09:27:46,097 | bot | INFO | Cog loaded: DayLoop
+2021-10-01 09:27:46,098 | bot | INFO | Cog loaded: Debug
+2021-10-01 09:27:46,171 | exts.kus | DEBUG | loaded data
+2021-10-01 09:27:49,682 | utils.planner | DEBUG | returning sorted date for 562976873685057546
+2021-10-01 09:27:49,692 | exts.new_patch | DEBUG | Version change found, annoucing..
+2021-10-01 09:27:49,693 | bot | INFO | Connected successfully
+2021-10-01 09:27:50,703 | bot | DEBUG | changed bot status
+2021-10-01 09:27:50,711 | bot | DEBUG | creating assignment embed...
+2021-10-01 09:27:50,712 | bot | DEBUG | successfully created assignment embed
+2021-10-01 09:27:51,901 | bot | DEBUG | creating assignment embed...
+2021-10-01 09:27:51,902 | bot | DEBUG | successfully created assignment embed
+2021-10-01 09:27:53,024 | bot | DEBUG | exts.update :white_check_mark: Sucessfully update works at 562976873685057546 :
+1010EE
+2021-10-01 09:27:53,206 | exts.update | DEBUG | updated active-works for 562976873685057546
+2021-10-01 09:27:53,239 | utils.planner | DEBUG | returning sorted date for 728482381215826000
+2021-10-01 09:27:53,423 | bot | DEBUG | creating assignment embed...
+2021-10-01 09:27:53,424 | bot | DEBUG | successfully created assignment embed
+2021-10-01 09:27:54,546 | bot | DEBUG | exts.update :white_check_mark: Sucessfully update works at 728482381215826000 :
+22E
+2021-10-01 09:27:54,713 | exts.update | DEBUG | updated active-works for 728482381215826000
+2021-10-01 09:27:54,714 | utils.planner | DEBUG | returning sorted date for 829749071891005512
+2021-10-01 09:27:54,892 | utils.planner | DEBUG | returning sorted date for 773426467492069386
+2021-10-01 09:34:12,735 | bot | INFO | Resumed Connection
+2021-10-01 09:34:13,049 | bot | DEBUG | changed bot status
+2021-10-01 09:39:48,791 | exts.muleval | DEBUG | Eval command; Ignore black list: True
+2021-10-01 09:39:48,792 | exts.muleval | INFO | 'py' highlighted code block
+2021-10-01 09:39:48,792 | exts.muleval | TRACE | Eval command: Tpmonkey#2682(518063131096907813) with code:
+a = None
+if a is None or a >= 0:
+  print("Yes")
+2021-10-01 09:40:06,691 | exts.admin | DEBUG | Admin Eval from Tpmonkey#2682; code: None >= 0
+2021-10-01 09:41:22,703 | asyncio | DEBUG | Using selector: EpollSelector
+2021-10-01 09:41:22,704 | bot | DEBUG | created bot base.
+2021-10-01 09:41:22,724 | constant | DEBUG | init database succesful
+2021-10-01 09:41:22,772 | utils.planner | DEBUG | triggered update
+2021-10-01 09:41:22,778 | bot | DEBUG | bot subclass Created.
+2021-10-01 09:41:23,103 | bot | INFO | Cog loaded: Music
+2021-10-01 09:41:23,108 | bot | INFO | Cog loaded: DayLoop
+2021-10-01 09:41:23,110 | bot | INFO | Cog loaded: Assignments
+2021-10-01 09:41:23,113 | bot | INFO | Cog loaded: Utility
+2021-10-01 09:41:23,171 | bot | INFO | Cog loaded: KUSNews
+2021-10-01 09:41:23,172 | bot | INFO | Cog loaded: NewPatch
+2021-10-01 09:41:23,174 | bot | INFO | Cog loaded: AdminCommands
+2021-10-01 09:41:23,175 | bot | INFO | Cog loaded: Debug
+2021-10-01 09:41:23,176 | bot | INFO | Cog loaded: ErrorHandler
+2021-10-01 09:41:23,176 | bot | INFO | Cog loaded: VoiceChannel
+2021-10-01 09:41:23,177 | bot | INFO | Cog loaded: Latency
+2021-10-01 09:41:23,179 | bot | INFO | Cog loaded: Updater
+2021-10-01 09:41:23,180 | bot | INFO | Cog loaded: SetUp
+2021-10-01 09:41:23,183 | bot | INFO | Cog loaded: Snekbox
+2021-10-01 09:41:23,185 | bot | INFO | Cog loaded: Help
+2021-10-01 09:41:23,213 | exts.kus | DEBUG | loaded data
+2021-10-01 09:41:25,890 | utils.planner | DEBUG | returning sorted date for 562976873685057546
+2021-10-01 09:41:25,897 | bot | INFO | Connected successfully
+2021-10-01 09:41:26,197 | bot | DEBUG | changed bot status
+2021-10-01 09:41:26,199 | bot | DEBUG | creating assignment embed...
+2021-10-01 09:41:26,199 | bot | DEBUG | successfully created assignment embed
+2021-10-01 09:41:27,305 | bot | DEBUG | creating assignment embed...
+2021-10-01 09:41:27,305 | bot | DEBUG | successfully created assignment embed
+2021-10-01 09:41:28,421 | bot | DEBUG | exts.update :white_check_mark: Sucessfully update works at 562976873685057546 :
+1010EE
+2021-10-01 09:41:28,586 | exts.update | DEBUG | updated active-works for 562976873685057546
+2021-10-01 09:41:28,615 | utils.planner | DEBUG | returning sorted date for 728482381215826000
+2021-10-01 09:41:28,942 | bot | DEBUG | creating assignment embed...
+2021-10-01 09:41:28,942 | bot | DEBUG | successfully created assignment embed
+2021-10-01 09:41:30,056 | bot | DEBUG | exts.update :white_check_mark: Sucessfully update works at 728482381215826000 :
+22E
+2021-10-01 09:41:30,203 | exts.update | DEBUG | updated active-works for 728482381215826000
+2021-10-01 09:41:30,203 | utils.planner | DEBUG | returning sorted date for 829749071891005512
+2021-10-01 09:41:30,358 | utils.planner | DEBUG | returning sorted date for 773426467492069386
+2021-10-01 09:43:11,497 | utils.planner | DEBUG | returning sorted date for 728482381215826000
+2021-10-01 09:43:11,561 | utils.planner | DEBUG | return embed for 728482381215826000
+2021-10-01 09:43:11,561 | utils.planner | DEBUG | took 0.1088714599609375 second for 728482381215826000
+2021-10-01 09:43:27,083 | utils.planner | DEBUG | returning sorted date for 562976873685057546
+2021-10-01 09:43:27,202 | utils.planner | DEBUG | return embed for 562976873685057546
+2021-10-01 09:43:27,202 | utils.planner | DEBUG | took 0.47472453117370605 second for 562976873685057546
