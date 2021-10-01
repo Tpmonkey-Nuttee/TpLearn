@@ -288,7 +288,8 @@ class Bot(commands.AutoShardedBot):
     def in_days(self, date1: str, date2: str = today_th()) -> int:
         """ Return amount of days between today and targeted date. """
         strpped = self.planner.try_strp_date(date1)
-        return None if strpped is None else (strpped - datetime.datetime.strptime(today_th(), "%Y-%m-%d")).days
+        
+        return None if strpped is None else (strpped - datetime.datetime.strptime(date2, "%Y-%m-%d")).days
     
     def get_colour(self, date: str = "", gap: int = None) -> discord.Colour:
         """

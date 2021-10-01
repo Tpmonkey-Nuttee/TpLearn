@@ -50,15 +50,15 @@ class Planner:
         """
         Get all the assignments that exist and still valid from targeted Guild ID.
         """
-
-        if str(guild_id) not in self.__data:
+        guild_id = str(guild_id)
+        if guild_id not in self.__data:
             return []
                 
         d = []
-        for i in self.__data[str(guild_id)]:
-            if self.__data[str(guild_id)][i]['already-passed']: continue
+        for i in self.__data[guild_id]:
+            if self.__data[guild_id][i]['already-passed']: continue
 
-            value = self.__data[str(guild_id)][i]
+            value = self.__data[guild_id][i]
             value['key'] = i
             d.append(value)
 
@@ -68,12 +68,13 @@ class Planner:
         """
         Get amount the assignments that is invalid from targeted Guild ID.
         """
-        if str(guild_id) not in self.__data:
+        guild_id = str(guild_id)
+        if guild_id not in self.__data:
             return 0
         
         d = 0
-        for i in self.__data[str(guild_id)]:
-            if self.__data[str(guild_id)][i]['already-passed']: d += 1            
+        for i in self.__data[guild_id]:
+            if self.__data[guild_id][i]['already-passed']: d += 1            
 
         return d
 
@@ -81,10 +82,11 @@ class Planner:
         """
         Get an Assignment base on key from targeted Guild ID.
         """
-        if str(guild_id) not in self.__data:
+        guild_id = str(guild_id)
+        if guild_id not in self.__data:
             return {}
         
-        d = self.__data[str(guild_id)][key]
+        d = self.__data[guild_id][key]
         d['key'] = key
 
         return d
@@ -186,8 +188,7 @@ class Planner:
             # Track the closest day and use for Embed Colour
             in_days = self.bot.in_days(date)
             if in_days is None: continue            
-            elif closest_day is None: closest_day = in_days
-            elif in_days < closest_day: closest_day = in_days
+            elif closest_day is None or in_days < closest_day: closest_day = in_days
         
         print("last loop", time.time() - t)
         
@@ -201,9 +202,8 @@ class Planner:
         """
         Check if a Assignment key valid on targeted Guild ID or not.
         """
-        if str(guild_id) not in self.__data:
-            return False
-        return key in self.__data[str(guild_id)]
+        guild_id = str(guild_id)
+        return False if guild_id not in self.__data else key in self.__data[guild_id]
 
     async def add(self, guild_id: int, **kwargs) -> str:
         """
@@ -212,11 +212,11 @@ class Planner:
         """
 
         self._create_if_nexist(guild_id)
-        title = kwargs.get("title") or "Untitled"
-        description = kwargs.get("description") or "No Description Provided"
-        date = kwargs.get("date") or "Unknown"
+        title = kwargs.get("title", "Untitled")
+        description = kwargs.get("description", "No Description Provided")
+        date = kwargs.get("date", "Unknown")
         image_url = kwargs.get("image_url")
-        key = kwargs.get('key') or self.generate_key()
+        key = kwargs.get('key', self.generate_key())
 
         date_tracker = today_th(True).strftime("%d-%m-%Y") if self.try_strp_date(date) is None else date
 
