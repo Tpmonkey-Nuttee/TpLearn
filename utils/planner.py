@@ -214,7 +214,7 @@ class Planner:
         description = kwargs.get("description", "No Description Provided")
         date = kwargs.get("date", "Unknown")
         image_url = kwargs.get("image_url")
-        key = kwargs.get('key', self.generate_key())
+        key = kwargs.get('key') or self.generate_key()
 
         date_tracker = today_th(True).strftime("%d-%m-%Y") if self.try_strp_date(date) is None else date
 

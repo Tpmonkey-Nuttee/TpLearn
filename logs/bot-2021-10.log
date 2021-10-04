@@ -330,3 +330,285 @@ if a is None or a >= 0:
 2021-10-01 09:43:27,083 | utils.planner | DEBUG | returning sorted date for 562976873685057546
 2021-10-01 09:43:27,202 | utils.planner | DEBUG | return embed for 562976873685057546
 2021-10-01 09:43:27,202 | utils.planner | DEBUG | took 0.47472453117370605 second for 562976873685057546
+2021-10-03 02:39:29,617 | asyncio | DEBUG | Using selector: EpollSelector
+2021-10-03 02:39:29,619 | bot | DEBUG | created bot base.
+2021-10-03 02:39:29,649 | constant | DEBUG | init database succesful
+2021-10-03 02:39:29,702 | utils.planner | DEBUG | triggered update
+2021-10-03 02:39:29,710 | bot | DEBUG | bot subclass Created.
+2021-10-03 02:39:29,715 | bot | INFO | Cog loaded: Snekbox
+2021-10-03 02:39:29,717 | bot | INFO | Cog loaded: Updater
+2021-10-03 02:39:29,718 | bot | INFO | Cog loaded: ErrorHandler
+2021-10-03 02:39:29,720 | bot | INFO | Cog loaded: Latency
+2021-10-03 02:39:30,292 | bot | INFO | Cog loaded: Music
+2021-10-03 02:39:30,295 | bot | INFO | Cog loaded: SetUp
+2021-10-03 02:39:30,298 | bot | INFO | Cog loaded: Help
+2021-10-03 02:39:30,397 | bot | INFO | Cog loaded: KUSNews
+2021-10-03 02:39:30,398 | bot | INFO | Cog loaded: VoiceChannel
+2021-10-03 02:39:30,401 | bot | INFO | Cog loaded: Assignments
+2021-10-03 02:39:30,405 | bot | INFO | Cog loaded: Utility
+2021-10-03 02:39:30,406 | bot | INFO | Cog loaded: NewPatch
+2021-10-03 02:39:30,407 | bot | INFO | Cog loaded: DayLoop
+2021-10-03 02:39:30,410 | bot | INFO | Cog loaded: AdminCommands
+2021-10-03 02:39:30,411 | bot | INFO | Cog loaded: Debug
+2021-10-03 02:39:30,497 | exts.kus | DEBUG | loaded data
+2021-10-03 02:39:33,412 | utils.planner | DEBUG | returning sorted date for 562976873685057546
+2021-10-03 02:39:33,420 | bot | INFO | Connected successfully
+2021-10-03 02:39:33,617 | bot | DEBUG | changed bot status
+2021-10-03 02:39:33,619 | bot | DEBUG | creating assignment embed...
+2021-10-03 02:39:33,619 | bot | DEBUG | successfully created assignment embed
+2021-10-03 02:39:34,706 | bot | DEBUG | creating assignment embed...
+2021-10-03 02:39:34,706 | bot | DEBUG | successfully created assignment embed
+2021-10-03 02:39:35,810 | bot | DEBUG | exts.update :white_check_mark: Sucessfully update works at 562976873685057546 :
+1010EE
+2021-10-03 02:39:35,943 | exts.update | DEBUG | updated active-works for 562976873685057546
+2021-10-03 02:39:35,961 | utils.planner | DEBUG | returning sorted date for 728482381215826000
+2021-10-03 02:39:36,056 | utils.planner | DEBUG | returning sorted date for 829749071891005512
+2021-10-03 02:39:36,198 | utils.planner | DEBUG | returning sorted date for 773426467492069386
+2021-10-03 03:52:56,778 | bot | INFO | Resumed Connection
+2021-10-03 03:52:56,960 | bot | DEBUG | changed bot status
+2021-10-03 05:12:13,111 | bot | INFO | Resumed Connection
+2021-10-03 05:12:13,316 | bot | DEBUG | changed bot status
+2021-10-03 05:48:25,048 | exts.music | DEBUG | VoiceState created for 773426467492069386
+2021-10-03 05:48:25,050 | exts.music | INFO | Audio Player Launched for 773426467492069386
+2021-10-03 05:48:26,968 | exts.music | DEBUG | 773426467492069386: Searching https://www.youtube.com/watch?v=6rg4cYlAKOc
+2021-10-03 05:48:31,082 | exts.music | DEBUG | Enqueued
+2021-10-03 05:54:13,216 | bot | INFO | Resumed Connection
+2021-10-03 05:54:13,440 | bot | DEBUG | changed bot status
+2021-10-03 08:21:51,675 | bot | INFO | Resumed Connection
+2021-10-03 08:21:51,878 | bot | DEBUG | changed bot status
+2021-10-03 10:57:26,286 | exts.music | DEBUG | VoiceState created for 773426467492069386
+2021-10-03 10:57:26,287 | exts.music | INFO | Audio Player Launched for 773426467492069386
+2021-10-03 10:57:28,907 | exts.music | DEBUG | 773426467492069386: Searching coconut song
+2021-10-03 10:57:35,518 | exts.music | DEBUG | Enqueued
+2021-10-03 11:01:11,369 | asyncio | ERROR | Task was destroyed but it is pending!
+task: <Task pending name='Task-2692' coro=<LoadPlaylistSong.load() running at /home/runner/TpLearn/exts/music.py:121> wait_for=<Future cancelled>>
+2021-10-03 11:40:01,992 | bot | INFO | Resumed Connection
+2021-10-03 11:40:02,217 | bot | DEBUG | changed bot status
+2021-10-04 02:06:07,566 | asyncio | DEBUG | Using selector: EpollSelector
+2021-10-04 02:06:07,567 | bot | DEBUG | created bot base.
+2021-10-04 02:06:07,595 | constant | DEBUG | init database succesful
+2021-10-04 02:06:07,630 | utils.planner | DEBUG | triggered update
+2021-10-04 02:06:07,637 | bot | DEBUG | bot subclass Created.
+2021-10-04 02:06:07,642 | bot | INFO | Cog loaded: Snekbox
+2021-10-04 02:06:07,644 | bot | INFO | Cog loaded: Help
+2021-10-04 02:06:07,645 | bot | INFO | Cog loaded: VoiceChannel
+2021-10-04 02:06:08,113 | bot | INFO | Cog loaded: Music
+2021-10-04 02:06:08,114 | bot | INFO | Cog loaded: ErrorHandler
+2021-10-04 02:06:08,116 | bot | INFO | Cog loaded: DayLoop
+2021-10-04 02:06:08,119 | bot | INFO | Cog loaded: Latency
+2021-10-04 02:06:08,121 | bot | INFO | Cog loaded: AdminCommands
+2021-10-04 02:06:08,124 | bot | INFO | Cog loaded: Utility
+2021-10-04 02:06:08,126 | bot | INFO | Cog loaded: SetUp
+2021-10-04 02:06:08,127 | bot | INFO | Cog loaded: Updater
+2021-10-04 02:06:08,199 | bot | INFO | Cog loaded: KUSNews
+2021-10-04 02:06:08,201 | bot | INFO | Cog loaded: Debug
+2021-10-04 02:06:08,203 | bot | INFO | Cog loaded: Assignments
+2021-10-04 02:06:08,204 | bot | INFO | Cog loaded: NewPatch
+2021-10-04 02:06:08,270 | exts.kus | DEBUG | loaded data
+2021-10-04 02:06:10,933 | utils.planner | DEBUG | returning sorted date for 562976873685057546
+2021-10-04 02:06:10,940 | bot | INFO | Connected successfully
+2021-10-04 02:06:11,134 | bot | DEBUG | changed bot status
+2021-10-04 02:06:11,137 | bot | DEBUG | creating assignment embed...
+2021-10-04 02:06:11,137 | bot | DEBUG | successfully created assignment embed
+2021-10-04 02:06:12,223 | bot | DEBUG | creating assignment embed...
+2021-10-04 02:06:12,224 | bot | DEBUG | successfully created assignment embed
+2021-10-04 02:06:13,304 | bot | DEBUG | exts.update :white_check_mark: Sucessfully update works at 562976873685057546 :
+1010EE
+2021-10-04 02:06:13,481 | exts.update | DEBUG | updated active-works for 562976873685057546
+2021-10-04 02:06:13,494 | utils.planner | DEBUG | returning sorted date for 728482381215826000
+2021-10-04 02:06:13,703 | utils.planner | DEBUG | returning sorted date for 829749071891005512
+2021-10-04 02:06:13,793 | utils.planner | DEBUG | returning sorted date for 773426467492069386
+2021-10-04 02:20:15,817 | exts.music | DEBUG | VoiceState created for 562976873685057546
+2021-10-04 02:20:15,818 | exts.music | INFO | Audio Player Launched for 562976873685057546
+2021-10-04 02:20:17,811 | exts.music | DEBUG | 562976873685057546: Searching dream lantern
+2021-10-04 02:20:21,512 | exts.music | DEBUG | Enqueued
+2021-10-04 02:20:31,924 | exts.music | DEBUG | 562976873685057546: Searching photograph
+2021-10-04 02:20:34,304 | exts.music | DEBUG | Enqueued
+2021-10-04 02:21:36,051 | exts.music | DEBUG | 562976873685057546: Searching ความทรงจำ
+2021-10-04 02:21:38,595 | exts.music | DEBUG | Enqueued
+2021-10-04 02:21:51,918 | exts.music | DEBUG | 562976873685057546: Searching คืนเหงา
+2021-10-04 02:21:54,369 | exts.music | DEBUG | Enqueued
+2021-10-04 02:22:12,600 | exts.music | DEBUG | 562976873685057546: Searching ดวงจันทร์กลางวัน
+2021-10-04 02:22:15,062 | exts.music | DEBUG | Enqueued
+2021-10-04 02:22:24,600 | exts.music | DEBUG | 562976873685057546: Searching ถ้าเขาจะรัก
+2021-10-04 02:22:27,054 | exts.music | DEBUG | Enqueued
+2021-10-04 02:22:31,717 | exts.music | DEBUG | 562976873685057546: Searching ทิ้งแต่เก็บ
+2021-10-04 02:22:34,205 | exts.music | DEBUG | Enqueued
+2021-10-04 02:22:38,343 | exts.music | DEBUG | 562976873685057546: Searching ทุ้มอยู่ในใจ เก้า
+2021-10-04 02:22:40,840 | exts.music | DEBUG | Enqueued
+2021-10-04 02:22:53,577 | exts.music | DEBUG | 562976873685057546: Searching let her go
+2021-10-04 02:22:57,186 | exts.music | DEBUG | Enqueued
+2021-10-04 02:22:59,953 | exts.music | DEBUG | 562976873685057546: Searching too good at goodbye
+2021-10-04 02:23:02,670 | exts.music | DEBUG | Enqueued
+2021-10-04 02:23:14,160 | exts.music | DEBUG | 562976873685057546: Searching safe & sound
+2021-10-04 02:23:16,650 | exts.music | DEBUG | Enqueued
+2021-10-04 02:23:53,941 | exts.music | DEBUG | 562976873685057546: Searching good guys LANY
+2021-10-04 02:23:57,361 | exts.music | DEBUG | Enqueued
+2021-10-04 02:24:02,480 | exts.music | DEBUG | 562976873685057546: Searching fake protogonist
+2021-10-04 02:24:04,813 | exts.music | DEBUG | Enqueued
+2021-10-04 02:37:50,721 | exts.assignment | DEBUG | init dat for 518063131096907813
+2021-10-04 02:37:50,911 | bot | DEBUG | waiting for message...
+2021-10-04 02:37:57,566 | exts.assignment | DEBUG | Recieve message: สอบชีวะ
+2021-10-04 02:37:57,746 | exts.assignment | DEBUG | update embed successfully for 518063131096907813
+2021-10-04 02:37:57,747 | bot | DEBUG | waiting for message...
+2021-10-04 02:38:29,668 | exts.assignment | DEBUG | Recieve message: 1. ถามเกี่ยวกับระบบหมุนเวียนเลือดแบบเปิด และ แบบปิด มี 2 ข้อย่อย
+- เป็นสถานการณ์สั้นๆให้อ่าน แล้ววิเคราะห์ว่าเป็นระบบเปิดหรือปิด
+
+2. ถามเกี่ยวกับการไหลเวียนของเลือด ประกอบด้วย 3 ข้อย่อย
+- ลักษณะคำถาม มีแผนผันการไหลเวียนให้ แล้ววิเคราะห์เกี่ยวกับประเภทหลอดเลือด และ ความดันเลือด
+
+3.  เรื่องเกี่ยวกับเลือด องค์ประกอบ etc, 2 ข้อย่อย
+-  มีสถานการณ์เป้นบทความให้อ่าน แล้ววิเคราะห์หลักการให้ และ รับเลือด (antigen, antibody)
+
+4. เรื่องเกี่ยวกับอลีโทฟาสโทริสฟาสโตซิซ??? ก้คือหมู่เลือด Rh- (เกี่ยวกับแม่มีลูก)  มี 2 ข้อย่อย
+- มีบทความให้อ่าน แล้ววิเคราะห์เกี่ยวกับปรากฏการชื่อยาวๆนั้น 5555
+
+5. ระบบภูมิคุ้มกัน มี 3 ข้อย่อย
+- มีบทความให้อ่าน แล้ววิเคราะห์เกี่ยวกับเซลล์ที่ทำงาน + ประเภทของการสร้างภูมิคุ้มกัน
+
+6. การหายใจภายนอก มี 2 ข้อย่อย
+- มีสถานการณ์การทดลองให้พิจารณา แล้ววิเคราะห์เกี่ยวกับการหายใจของคน ขณะพักและออกกำลังกาย
+
+7. การหายใจระดับเซลล์ มี 3 ข้อย่อย
+- เปนคำถามเพอใหคำนวนหาผลตภณฑ และพลงงานทไดจากการสลายกลโคสแบบใชออกซเจน 2 ขอ
+- อก 1 ขอ มาจากการหมกแอลกอฮอล + กรดแลคตก 
+
+**เปดหนงสอได**
+2021-10-04 02:38:29,915 | exts.assignment | DEBUG | update embed successfully for 518063131096907813
+2021-10-04 02:38:29,915 | bot | DEBUG | waiting for message...
+2021-10-04 02:38:41,661 | exts.assignment | DEBUG | Recieve message: 13/10/2021
+2021-10-04 02:38:41,912 | exts.assignment | DEBUG | update embed successfully for 518063131096907813
+2021-10-04 02:38:41,912 | bot | DEBUG | waiting for message...
+2021-10-04 02:38:43,680 | exts.assignment | DEBUG | processing ✅ for 518063131096907813
+2021-10-04 02:38:43,680 | utils.planner | DEBUG | generated new key
+2021-10-04 02:38:43,725 | utils.planner | DEBUG | added Assignment from `562976873685057546` with key `None`
+2021-10-04 02:38:43,739 | exts.assignment | DEBUG | 518063131096907813 add/edit new assignment and passed in successfully.
+2021-10-04 02:39:20,976 | exts.assignment | DEBUG | Recieve message: uh
+2021-10-04 02:39:24,366 | utils.planner | DEBUG | returning sorted date for 562976873685057546
+2021-10-04 02:39:24,530 | utils.planner | DEBUG | return embed for 562976873685057546
+2021-10-04 02:39:24,530 | utils.planner | DEBUG | took 0.4994337558746338 second for 562976873685057546
+2021-10-04 02:40:08,398 | utils.planner | DEBUG | returning sorted date for 562976873685057546
+2021-10-04 02:40:08,520 | bot | DEBUG | creating assignment embed...
+2021-10-04 02:40:08,521 | bot | DEBUG | successfully created assignment embed
+2021-10-04 02:40:08,521 | bot | DEBUG | creating assignment embed...
+2021-10-04 02:40:08,521 | bot | DEBUG | successfully created assignment embed
+2021-10-04 02:40:09,621 | bot | DEBUG | creating assignment embed...
+2021-10-04 02:40:09,622 | bot | DEBUG | successfully created assignment embed
+2021-10-04 02:40:10,706 | bot | DEBUG | creating assignment embed...
+2021-10-04 02:40:10,706 | bot | DEBUG | successfully created assignment embed
+2021-10-04 02:40:11,796 | bot | DEBUG | creating assignment embed...
+2021-10-04 02:40:11,797 | bot | DEBUG | successfully created assignment embed
+2021-10-04 02:40:12,933 | bot | DEBUG | creating assignment embed...
+2021-10-04 02:40:12,933 | bot | DEBUG | successfully created assignment embed
+2021-10-04 02:40:14,049 | bot | DEBUG | creating assignment embed...
+2021-10-04 02:40:14,049 | bot | DEBUG | successfully created assignment embed
+2021-10-04 02:40:15,125 | bot | DEBUG | creating assignment embed...
+2021-10-04 02:40:15,125 | bot | DEBUG | successfully created assignment embed
+2021-10-04 02:40:16,225 | bot | DEBUG | creating assignment embed...
+2021-10-04 02:40:16,226 | bot | DEBUG | successfully created assignment embed
+2021-10-04 02:40:17,715 | bot | DEBUG | creating assignment embed...
+2021-10-04 02:40:17,715 | bot | DEBUG | successfully created assignment embed
+2021-10-04 02:40:18,841 | bot | DEBUG | creating assignment embed...
+2021-10-04 02:40:18,841 | bot | DEBUG | successfully created assignment embed
+2021-10-04 02:40:20,198 | bot | DEBUG | exts.update :white_check_mark: Sucessfully update works at 562976873685057546 :
+1110EEEEEEEEES
+2021-10-04 02:40:20,341 | exts.update | DEBUG | updated active-works for 562976873685057546
+2021-10-04 02:40:45,979 | utils.planner | DEBUG | returning sorted date for 562976873685057546
+2021-10-04 02:40:46,138 | utils.planner | DEBUG | return embed for 562976873685057546
+2021-10-04 02:40:46,139 | utils.planner | DEBUG | took 0.4502217769622803 second for 562976873685057546
+2021-10-04 02:41:03,215 | exts.admin | DEBUG | Admin Eval from Tpmonkey#2682; code: self.bot.planner.get_all(ctx.guild.id)
+2021-10-04 02:42:12,160 | exts.admin | DEBUG | Admin Eval from Tpmonkey#2682; code: self.bot.planner.get(ctx.guild.id, "None")
+2021-10-04 02:42:16,495 | exts.admin | DEBUG | Admin Eval from Tpmonkey#2682; code: self.bot.planner.get(ctx.guild.id, None)
+2021-10-04 02:42:53,411 | asyncio | DEBUG | Using selector: EpollSelector
+2021-10-04 02:42:53,411 | bot | DEBUG | created bot base.
+2021-10-04 02:42:53,440 | constant | DEBUG | init database succesful
+2021-10-04 02:42:53,483 | utils.planner | DEBUG | triggered update
+2021-10-04 02:42:53,495 | bot | DEBUG | bot subclass Created.
+2021-10-04 02:42:53,499 | bot | INFO | Cog loaded: Assignments
+2021-10-04 02:42:53,501 | bot | INFO | Cog loaded: Help
+2021-10-04 02:42:53,502 | bot | INFO | Cog loaded: Latency
+2021-10-04 02:42:53,503 | bot | INFO | Cog loaded: NewPatch
+2021-10-04 02:42:53,504 | bot | INFO | Cog loaded: SetUp
+2021-10-04 02:42:53,506 | bot | INFO | Cog loaded: Updater
+2021-10-04 02:42:53,509 | bot | INFO | Cog loaded: Utility
+2021-10-04 02:42:53,511 | bot | INFO | Cog loaded: Debug
+2021-10-04 02:42:53,514 | bot | INFO | Cog loaded: Snekbox
+2021-10-04 02:42:53,515 | bot | INFO | Cog loaded: DayLoop
+2021-10-04 02:42:53,516 | bot | INFO | Cog loaded: VoiceChannel
+2021-10-04 02:42:53,625 | bot | INFO | Cog loaded: KUSNews
+2021-10-04 02:42:53,628 | bot | INFO | Cog loaded: AdminCommands
+2021-10-04 02:42:53,628 | bot | INFO | Cog loaded: ErrorHandler
+2021-10-04 02:42:54,097 | bot | INFO | Cog loaded: Music
+2021-10-04 02:42:54,131 | exts.kus | DEBUG | loaded data
+2021-10-04 02:42:56,777 | utils.planner | DEBUG | returning sorted date for 562976873685057546
+2021-10-04 02:42:56,820 | bot | INFO | Connected successfully
+2021-10-04 02:42:57,296 | bot | DEBUG | changed bot status
+2021-10-04 02:42:57,300 | bot | DEBUG | creating assignment embed...
+2021-10-04 02:42:57,300 | bot | DEBUG | successfully created assignment embed
+2021-10-04 02:42:58,384 | bot | DEBUG | creating assignment embed...
+2021-10-04 02:42:58,384 | bot | DEBUG | successfully created assignment embed
+2021-10-04 02:42:59,462 | bot | DEBUG | creating assignment embed...
+2021-10-04 02:42:59,463 | bot | DEBUG | successfully created assignment embed
+2021-10-04 02:43:00,574 | bot | DEBUG | exts.update :white_check_mark: Sucessfully update works at 562976873685057546 :
+1111EEE
+2021-10-04 02:43:00,841 | exts.update | DEBUG | updated active-works for 562976873685057546
+2021-10-04 02:43:00,859 | utils.planner | DEBUG | returning sorted date for 728482381215826000
+2021-10-04 02:43:00,953 | utils.planner | DEBUG | returning sorted date for 829749071891005512
+2021-10-04 02:43:01,096 | utils.planner | DEBUG | returning sorted date for 773426467492069386
+2021-10-04 02:43:32,611 | exts.admin | DEBUG | Admin Eval from Tpmonkey#2682; code: await self.bot.planner.remove(ctx.guild.id, None)
+2021-10-04 02:43:42,091 | utils.planner | DEBUG | returning sorted date for 562976873685057546
+2021-10-04 02:43:42,297 | utils.planner | DEBUG | return embed for 562976873685057546
+2021-10-04 02:43:42,298 | utils.planner | DEBUG | took 0.6748449802398682 second for 562976873685057546
+2021-10-04 02:44:00,934 | exts.admin | DEBUG | Admin Eval from Tpmonkey#2682; code: await self.bot.planner.remove(ctx.guild.id, "null")
+2021-10-04 02:44:00,955 | utils.planner | TRACE | removed null from 562976873685057546
+2021-10-04 02:44:09,325 | exts.assignment | DEBUG | init dat for 518063131096907813
+2021-10-04 02:44:09,511 | bot | DEBUG | waiting for message...
+2021-10-04 02:44:12,826 | exts.assignment | DEBUG | Recieve message: สอบชีวะ
+2021-10-04 02:44:13,042 | exts.assignment | DEBUG | update embed successfully for 518063131096907813
+2021-10-04 02:44:13,042 | bot | DEBUG | waiting for message...
+2021-10-04 02:44:15,785 | exts.assignment | DEBUG | Recieve message: -goto 3
+2021-10-04 02:44:16,009 | exts.assignment | DEBUG | update embed successfully for 518063131096907813
+2021-10-04 02:44:16,009 | bot | DEBUG | waiting for message...
+2021-10-04 02:44:18,769 | exts.assignment | DEBUG | Recieve message: 13/10/2021
+2021-10-04 02:44:18,966 | exts.assignment | DEBUG | update embed successfully for 518063131096907813
+2021-10-04 02:44:18,966 | bot | DEBUG | waiting for message...
+2021-10-04 02:44:23,983 | exts.assignment | DEBUG | Recieve message: 
+2021-10-04 02:44:24,458 | exts.assignment | DEBUG | empty message, likely to be picture
+2021-10-04 02:44:24,459 | exts.assignment | DEBUG | 518063131096907813 added image using file
+2021-10-04 02:44:24,884 | bot | DEBUG | got Image, return and deleted.
+2021-10-04 02:44:25,006 | exts.assignment | DEBUG | update embed successfully for 518063131096907813
+2021-10-04 02:44:25,006 | bot | DEBUG | waiting for message...
+2021-10-04 02:44:27,918 | exts.assignment | DEBUG | processing ✅ for 518063131096907813
+2021-10-04 02:44:27,919 | utils.planner | DEBUG | generated new key
+2021-10-04 02:44:27,935 | utils.planner | DEBUG | added Assignment from `562976873685057546` with key `9bb2903e`
+2021-10-04 02:44:27,948 | exts.assignment | DEBUG | 518063131096907813 add/edit new assignment and passed in successfully.
+2021-10-04 02:44:38,365 | exts.music | DEBUG | VoiceState created for 562976873685057546
+2021-10-04 02:44:38,366 | exts.assignment | DEBUG | Recieve message: ,join
+2021-10-04 02:44:38,366 | exts.music | INFO | Audio Player Launched for 562976873685057546
+2021-10-04 02:44:54,321 | utils.planner | DEBUG | returning sorted date for 562976873685057546
+2021-10-04 02:44:54,447 | bot | DEBUG | creating assignment embed...
+2021-10-04 02:44:54,448 | bot | DEBUG | successfully created assignment embed
+2021-10-04 02:44:55,584 | bot | DEBUG | creating assignment embed...
+2021-10-04 02:44:55,584 | bot | DEBUG | successfully created assignment embed
+2021-10-04 02:44:56,699 | bot | DEBUG | creating assignment embed...
+2021-10-04 02:44:56,700 | bot | DEBUG | successfully created assignment embed
+2021-10-04 02:44:57,793 | bot | DEBUG | exts.update :white_check_mark: Sucessfully update works at 562976873685057546 :
+1111EEE
+2021-10-04 02:44:57,967 | exts.update | DEBUG | updated active-works for 562976873685057546
+2021-10-04 02:45:11,463 | exts.music | DEBUG | 562976873685057546: Searching https://www.youtube.com/watch?v=nhCIgvc8S2k
+2021-10-04 02:45:14,241 | exts.music | DEBUG | Enqueued
+2021-10-04 02:46:33,354 | exts.music | DEBUG | 562976873685057546: Searching https://www.youtube.com/playlist?list=PL6YstapjI8KrpMgRL9Dplz4rU_QNh1d9k
+2021-10-04 02:46:34,469 | googleapiclient.discovery_cache | INFO | file_cache is only supported with oauth2client<4.0.0
+2021-10-04 02:46:34,476 | googleapiclient.discovery | DEBUG | URL being requested: GET https://youtube.googleapis.com/youtube/v3/playlistItems?part=snippet&playlistId=PL6YstapjI8KrpMgRL9Dplz4rU_QNh1d9k&maxResults=25&key=AIzaSyAdxWpkjawZwkOoLZNdBKnaUQ1o3Wov2cg&alt=json
+2021-10-04 02:46:34,666 | googleapiclient.discovery | DEBUG | Next page request URL: list_next https://youtube.googleapis.com/youtube/v3/playlistItems?part=snippet&playlistId=PL6YstapjI8KrpMgRL9Dplz4rU_QNh1d9k&maxResults=25&key=AIzaSyAdxWpkjawZwkOoLZNdBKnaUQ1o3Wov2cg&alt=json&pageToken=EAAaBlBUOkNCaw
+2021-10-04 02:46:34,730 | googleapiclient.discovery | DEBUG | Next page request URL: list_next https://youtube.googleapis.com/youtube/v3/playlistItems?part=snippet&playlistId=PL6YstapjI8KrpMgRL9Dplz4rU_QNh1d9k&maxResults=25&key=AIzaSyAdxWpkjawZwkOoLZNdBKnaUQ1o3Wov2cg&alt=json&pageToken=EAAaBlBUOkNESQ
+2021-10-04 02:46:34,785 | googleapiclient.discovery | DEBUG | Next page request URL: list_next https://youtube.googleapis.com/youtube/v3/playlistItems?part=snippet&playlistId=PL6YstapjI8KrpMgRL9Dplz4rU_QNh1d9k&maxResults=25&key=AIzaSyAdxWpkjawZwkOoLZNdBKnaUQ1o3Wov2cg&alt=json&pageToken=EAAaBlBUOkNFcw
+2021-10-04 02:46:34,898 | googleapiclient.discovery | DEBUG | Next page request URL: list_next https://youtube.googleapis.com/youtube/v3/playlistItems?part=snippet&playlistId=PL6YstapjI8KrpMgRL9Dplz4rU_QNh1d9k&maxResults=25&key=AIzaSyAdxWpkjawZwkOoLZNdBKnaUQ1o3Wov2cg&alt=json&pageToken=EAAaBlBUOkNHUQ
+2021-10-04 02:46:34,960 | googleapiclient.discovery | DEBUG | Next page request URL: list_next https://youtube.googleapis.com/youtube/v3/playlistItems?part=snippet&playlistId=PL6YstapjI8KrpMgRL9Dplz4rU_QNh1d9k&maxResults=25&key=AIzaSyAdxWpkjawZwkOoLZNdBKnaUQ1o3Wov2cg&alt=json&pageToken=EAAaBlBUOkNIMA
+2021-10-04 02:46:35,012 | googleapiclient.discovery | DEBUG | Next page request URL: list_next https://youtube.googleapis.com/youtube/v3/playlistItems?part=snippet&playlistId=PL6YstapjI8KrpMgRL9Dplz4rU_QNh1d9k&maxResults=25&key=AIzaSyAdxWpkjawZwkOoLZNdBKnaUQ1o3Wov2cg&alt=json&pageToken=EAAaB1BUOkNKWUI
+2021-10-04 02:46:35,238 | exts.music | DEBUG | Enqueued
+2021-10-04 02:47:37,492 | exts.music | DEBUG | 562976873685057546: Searching https://open.spotify.com/playlist/6YMYMaAFBIQmFjw2yQL7Cu?si=aa20dd984f934d5a
+2021-10-04 02:47:38,564 | spotipy.oauth2 | DEBUG | sending POST request to https://accounts.spotify.com/api/token with Headers: {'Authorization': 'Basic MjA0MjQ3ODljNDBhNDM2Mzk1NTQ2Nzg1ZDc5ZGRmNTk6NzE0ZTE0NjE2MzZmNGRjMWI4ODE1MDI4MjljM2Q4YTQ='} and Body: {'grant_type': 'client_credentials'}
+2021-10-04 02:47:38,919 | exts.music | DEBUG | Enqueued
+2021-10-04 02:48:07,819 | exts.music | DEBUG | 562976873685057546: Searching https://open.spotify.com/playlist/7u7AZf0i6W9vK7o7PuotFy?si=b226c9fe9a0e426f
+2021-10-04 02:48:09,423 | exts.music | DEBUG | Enqueued

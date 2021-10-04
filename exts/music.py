@@ -303,17 +303,6 @@ class Music(commands.Cog):
     async def cog_command_error(self, ctx: commands.Context, error: commands.CommandError):
         error.handled = True # So error_handle won't be call and send message twice
         await ctx.send(':x: **An error occurred:** {}'.format(str(error)))
-    
-    @commands.Cog.listener()
-    async def on_voice_state_update(self, member: discord.Member, before: discord.VoiceState, after: discord.VoiceState) -> None:
-        # Prevend force disconnect the bot from breaking the bot.
-        if member.id != self.bot.user.id:
-            return
-
-        if before.channel is not None and after.channel is None:
-            if member.guild.id in self.voice_states:
-                await self.voice_states[member.guild.id].stop()
-                del self.voice_states[member.guild.id]
 
     @commands.command(name="musicdebug", hidden=True)
     @commands.is_owner()
