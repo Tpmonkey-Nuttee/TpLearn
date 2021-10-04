@@ -46,19 +46,20 @@ class PlaylistSong:
     _loaded = {}
     # __slots__ = ("url", "ctx", "song")
 
-    def __new__(cls, url: str, ctx: commands.Context):
+    def __new__(cls, url: str, ctx: commands.Context, title: str = None):
         if (a := cls._loaded.get(url)) is not None:
             a.ctx = ctx
             return a
         
         a = super().__new__(cls)
         cls._loaded[url] = a
-        a._init(url, ctx)
+        a._init(url, ctx, title)
         return a   
 
-    def _init(self, url: str, ctx: commands.Context):
+    def _init(self, url: str, ctx: commands.Context, title: str = None):
         self.url = url
         self.ctx = ctx
+        self.title = title
         self.song = None        
 
 class Song:
@@ -505,6 +506,9 @@ class Music(commands.Cog):
                 # Attrs: url, ctx, song
                 if song.song is not None:    # is loaded
                     queue += '**{0}.** [{1.song.source.title}]({1.song.source.url})\n'.format(i + 1, song)
+                elif song.title is not None:
+                    title = song.title if len(song.title) < 24 else song.title[:24] + "..."
+                    queue += '**{0}.** [{1}]({2.url})\n'.format(i + 1, title, song) 
                 elif "http" in song.url:     # not loaded, but have the url
                     queue += f"**{i+1}.** [Couldn't load this song]({song.url})\n"  
                 else:                        # not loaded, have song name
@@ -667,10 +671,11 @@ class Music(commands.Cog):
                         break
                 
                 sources = [f'https://www.youtube.com/watch?v={t["snippet"]["resourceId"]["videoId"]}&list={playlist_id}&t=0s' for t in playlist_items]
+                titles = [t["snippet"]["title"] for t in playlist_items]
                 amount = 0
 
-                for s in sources:
-                    pl = PlaylistSong(s, ctx)
+                for s, t in zip(sources, titles):
+                    pl = PlaylistSong(s, ctx, t)
                     await ctx.voice_state.songs.put(pl)
                     await ctx.voice_state.loader.put(pl)
                     amount += 1
