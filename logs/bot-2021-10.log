@@ -612,3 +612,44 @@ task: <Task pending name='Task-2692' coro=<LoadPlaylistSong.load() running at /h
 2021-10-04 02:47:38,919 | exts.music | DEBUG | Enqueued
 2021-10-04 02:48:07,819 | exts.music | DEBUG | 562976873685057546: Searching https://open.spotify.com/playlist/7u7AZf0i6W9vK7o7PuotFy?si=b226c9fe9a0e426f
 2021-10-04 02:48:09,423 | exts.music | DEBUG | Enqueued
+2021-10-04 02:50:04,931 | exts.muleval | DEBUG | Eval command; Ignore black list: True
+2021-10-04 02:50:04,931 | exts.muleval | INFO | 'py' highlighted code block
+2021-10-04 02:50:04,932 | exts.muleval | TRACE | Eval command: Tpmonkey#2682(518063131096907813) with code:
+def smth():
+  return 0
+
+a = {"No":"U"}
+print(a.get("Key", smth()))
+2021-10-04 02:58:00,424 | exts.music | DEBUG | 562976873685057546: Searching https://open.spotify.com/playlist/5l5CpPwe7FtMvjIoS7TRX9?si=579de176868348c3
+2021-10-04 02:58:02,065 | exts.music | DEBUG | Enqueued
+2021-10-04 02:58:29,064 | exts.admin | DEBUG | Admin Eval from Tpmonkey#2682; code: datetime.timedelta(minutes = 3 * 448)
+2021-10-04 03:02:36,886 | exts.admin | DEBUG | Admin Eval from Tpmonkey#2682; code: 2 + 4
+2021-10-04 04:19:45,626 | bot | INFO | Resumed Connection
+2021-10-04 04:19:46,097 | bot | DEBUG | changed bot status
+2021-10-04 05:04:15,669 | utils.planner | DEBUG | returning sorted date for 562976873685057546
+2021-10-04 05:04:15,881 | utils.planner | DEBUG | return embed for 562976873685057546
+2021-10-04 05:04:15,881 | utils.planner | DEBUG | took 0.7898111343383789 second for 562976873685057546
+2021-10-04 05:04:26,575 | exts.assignment | DEBUG | init dat for 518063131096907813
+2021-10-04 05:04:26,698 | bot | DEBUG | waiting for message...
+2021-10-04 05:04:34,212 | exts.assignment | DEBUG | Recieve message: 
+2021-10-04 05:04:34,303 | exts.assignment | DEBUG | empty message, likely to be picture
+2021-10-04 05:04:34,303 | exts.assignment | DEBUG | 518063131096907813 added image using file
+2021-10-04 05:04:34,912 | bot | DEBUG | got Image, return and deleted.
+2021-10-04 05:04:34,997 | exts.assignment | DEBUG | update embed successfully for 518063131096907813
+2021-10-04 05:04:34,997 | bot | DEBUG | waiting for message...
+2021-10-04 05:04:36,970 | exts.assignment | DEBUG | processing ✅ for 518063131096907813
+2021-10-04 05:04:36,994 | utils.planner | DEBUG | added Assignment from `562976873685057546` with key `d3447794`
+2021-10-04 05:04:37,013 | exts.assignment | DEBUG | 518063131096907813 add/edit new assignment and passed in successfully.
+2021-10-04 05:04:41,957 | exts.assignment | DEBUG | Recieve message: wait
+2021-10-04 05:04:54,456 | utils.planner | DEBUG | returning sorted date for 562976873685057546
+2021-10-04 05:04:54,585 | bot | DEBUG | creating assignment embed...
+2021-10-04 05:04:54,587 | bot | DEBUG | successfully created assignment embed
+2021-10-04 05:04:55,713 | bot | DEBUG | creating assignment embed...
+2021-10-04 05:04:55,714 | bot | DEBUG | successfully created assignment embed
+2021-10-04 05:04:56,809 | bot | DEBUG | creating assignment embed...
+2021-10-04 05:04:56,810 | bot | DEBUG | successfully created assignment embed
+2021-10-04 05:04:58,328 | bot | DEBUG | creating assignment embed...
+2021-10-04 05:04:58,328 | bot | DEBUG | successfully created assignment embed
+2021-10-04 05:04:59,483 | bot | DEBUG | exts.update :white_check_mark: Sucessfully update works at 562976873685057546 :
+1111EEEE
+2021-10-04 05:04:59,613 | exts.update | DEBUG | updated active-works for 562976873685057546

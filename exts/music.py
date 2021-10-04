@@ -628,7 +628,7 @@ class Music(commands.Cog):
         if not ctx.voice_state.voice:
             try:
                 await ctx.invoke(self._join)             
-            except:
+            except Exception:
                 await ctx.invoke(self._leave)
                 await ctx.invoke(self._join)  
         
@@ -637,8 +637,6 @@ class Music(commands.Cog):
 
         log.debug(f"{ctx.guild.id}: Searching {search}")
         async with ctx.typing():
-            await asyncio.sleep(1)
-
             # Youtube Playlist
             if "youtube.com/playlist?" in search or "&start_radio" in search: 
                 query = parse_qs(urlparse(search).query, keep_blank_values=True)
@@ -683,9 +681,9 @@ class Music(commands.Cog):
             elif "open.spotify.com/playlist/" in search:
                 try:
                     tracks = getTracks(search)
-                except:
+                except Exception:
                     log.warning(traceback.format_exc())
-                    return await ctx.send(":x: **Failed to load Spotify Plalist!**")
+                    await ctx.send(":x: **Failed to load Spotify Plalist!**")
                 
                 amount = 0
                 for s in tracks:                    
@@ -702,9 +700,9 @@ class Music(commands.Cog):
             elif "open.spotify.com/album/" in search:
                 try:
                     tracks = getAlbum(search)
-                except:
+                except Exception:
                     log.warning(traceback.format_exc())
-                    return await ctx.send(":x: **Failed to load Spotify Album!**")
+                    await ctx.send(":x: **Failed to load Spotify Album!**")
                 
                 amount = 0
                 for s in tracks:                    
@@ -719,13 +717,10 @@ class Music(commands.Cog):
             
             # Anything else related to Spotify
             elif "open.spotify.com/" in search:
-                return await ctx.send("Sorry, Only Spotify playlist is support at the moment!")
+                await ctx.send("Sorry, Only Spotify playlist is support at the moment!")
 
             # Normal searching. 
             else:
-                """pl = PlaylistSong(ctx, search)
-                await ctx.voice_state.songs.put(pl)
-                await ctx.voice_state.loader.put(pl)"""
                 try:
                     source = await YTDLSource.create_source(ctx, search, loop=self.bot.loop)
                 except YTDLError as e:
