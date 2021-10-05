@@ -646,102 +646,103 @@ class Music(commands.Cog):
             return await ctx.invoke(self._resume)
 
         log.debug(f"{ctx.guild.id}: Searching {search}")
-        async with ctx.typing():
-            # Youtube Playlist
-            if "youtube.com/playlist?" in search or "&start_radio" in search: 
-                query = parse_qs(urlparse(search).query, keep_blank_values=True)
-                playlist_id = query["list"][0]
+        await ctx.trigger_typing() 
 
-                youtube = googleapiclient.discovery.build("youtube", "v3", developerKey = YOUTUBE_API_KEY)
+        # Youtube Playlist
+        if "youtube.com/playlist?" in search or "&start_radio" in search: 
+            query = parse_qs(urlparse(search).query, keep_blank_values=True)
+            playlist_id = query["list"][0]
 
-                request = youtube.playlistItems().list(
-                    part = "snippet",
-                    playlistId = playlist_id,
-                    maxResults = 25
-                )
+            youtube = googleapiclient.discovery.build("youtube", "v3", developerKey = YOUTUBE_API_KEY)
+
+            request = youtube.playlistItems().list(
+                part = "snippet",
+                playlistId = playlist_id,
+                maxResults = 25
+            )
+            response = request.execute()
+            
+            maximum = 8
+            if "&start_radio" in search:
+                maximum = 1
+
+            playlist_items = []
+            current = 0
+            while request is not None:
                 response = request.execute()
-                
-                maximum = 8
-                if "&start_radio" in search:
-                    maximum = 1
+                playlist_items += response["items"]
+                request = youtube.playlistItems().list_next(request, response)
 
-                playlist_items = []
-                current = 0
-                while request is not None:
-                    response = request.execute()
-                    playlist_items += response["items"]
-                    request = youtube.playlistItems().list_next(request, response)
-
-                    current += 1
-                    if current >= maximum:
-                        break
-                
-                sources = [f'https://www.youtube.com/watch?v={t["snippet"]["resourceId"]["videoId"]}&list={playlist_id}&t=0s' for t in playlist_items]
-                titles = [t["snippet"]["title"] for t in playlist_items]
-                amount = 0
-
-                for s, t in zip(sources, titles):
-                    pl = PlaylistSong(s, ctx, t)
-                    await ctx.voice_state.songs.put(pl)
-                    # await ctx.voice_state.loader.put(pl)
-                    amount += 1
-                
-                await ctx.send("Enqueued {} songs.".format(amount))
+                current += 1
+                if current >= maximum:
+                    break
             
-            # Spotify Playlist
-            elif "open.spotify.com/playlist/" in search:
-                try:
-                    tracks = getTracks(search)
-                except Exception:
-                    log.warning(traceback.format_exc())
-                    await ctx.send(":x: **Failed to load Spotify Plalist!**")
-                
-                amount = 0
-                for s in tracks:                    
-                    pl = PlaylistSong(s, ctx)
+            sources = [f'https://www.youtube.com/watch?v={t["snippet"]["resourceId"]["videoId"]}&list={playlist_id}&t=0s' for t in playlist_items]
+            titles = [t["snippet"]["title"] for t in playlist_items]
+            amount = 0
 
-                    await ctx.voice_state.songs.put(pl)
-                    # await ctx.voice_state.loader.put(pl)
-
-                    amount += 1
-                
-                await ctx.send("Enqueued {} songs.".format(amount))
+            for s, t in zip(sources, titles):
+                pl = PlaylistSong(s, ctx, t)
+                await ctx.voice_state.songs.put(pl)
+                # await ctx.voice_state.loader.put(pl)
+                amount += 1
             
-            # Spotify Album
-            elif "open.spotify.com/album/" in search:
-                try:
-                    tracks = getAlbum(search)
-                except Exception:
-                    log.warning(traceback.format_exc())
-                    await ctx.send(":x: **Failed to load Spotify Album!**")
-                
-                amount = 0
-                for s in tracks:                    
-                    pl = PlaylistSong(s, ctx)
-
-                    await ctx.voice_state.songs.put(pl)
-                    # await ctx.voice_state.loader.put(pl)
-
-                    amount += 1
-                
-                await ctx.send("Enqueued {} songs.".format(amount))
+            await ctx.send("Enqueued {} songs.".format(amount))
+        
+        # Spotify Playlist
+        elif "open.spotify.com/playlist/" in search:
+            try:
+                tracks = getTracks(search)
+            except Exception:
+                log.warning(traceback.format_exc())
+                await ctx.send(":x: **Failed to load Spotify Plalist!**")
             
-            # Anything else related to Spotify
-            elif "open.spotify.com/" in search:
-                await ctx.send("Sorry, Only Spotify playlist is support at the moment!")
+            amount = 0
+            for s in tracks:                    
+                pl = PlaylistSong(s, ctx)
 
-            # Normal searching. 
+                await ctx.voice_state.songs.put(pl)
+                # await ctx.voice_state.loader.put(pl)
+
+                amount += 1
+            
+            await ctx.send("Enqueued {} songs.".format(amount))
+        
+        # Spotify Album
+        elif "open.spotify.com/album/" in search:
+            try:
+                tracks = getAlbum(search)
+            except Exception:
+                log.warning(traceback.format_exc())
+                await ctx.send(":x: **Failed to load Spotify Album!**")
+            
+            amount = 0
+            for s in tracks:                    
+                pl = PlaylistSong(s, ctx)
+
+                await ctx.voice_state.songs.put(pl)
+                # await ctx.voice_state.loader.put(pl)
+
+                amount += 1
+            
+            await ctx.send("Enqueued {} songs.".format(amount))
+        
+        # Anything else related to Spotify
+        elif "open.spotify.com/" in search:
+            await ctx.send("Sorry, Only Spotify playlist is support at the moment!")
+
+        # Normal searching. 
+        else:
+            try:
+                source = await YTDLSource.create_source(ctx, search, loop=self.bot.loop)
+            except YTDLError as e:
+                await ctx.send('An error occurred while processing this request: {}'.format(str(e)))
             else:
-                try:
-                    source = await YTDLSource.create_source(ctx, search, loop=self.bot.loop)
-                except YTDLError as e:
-                    await ctx.send('An error occurred while processing this request: {}'.format(str(e)))
-                else:
-                    song = Song(source)
+                song = Song(source)
 
-                    await ctx.voice_state.songs.put(song)
-                    await ctx.send('Enqueued {}'.format(str(source)))
-            log.debug(f"Enqueued")
+                await ctx.voice_state.songs.put(song)
+                await ctx.send('Enqueued {}'.format(str(source)))
+        log.debug(f"Enqueued")
 
     @_join.before_invoke
     @_play.before_invoke

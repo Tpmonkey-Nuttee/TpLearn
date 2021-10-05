@@ -1,0 +1,38 @@
+2021-10-05 06:57:50,304 | asyncio | DEBUG | Using selector: EpollSelector
+2021-10-05 06:57:50,305 | bot | DEBUG | created bot base.
+2021-10-05 06:57:50,324 | constant | DEBUG | init database succesful
+2021-10-05 06:57:50,381 | utils.planner | DEBUG | triggered update
+2021-10-05 06:57:50,386 | bot | DEBUG | bot subclass Created.
+2021-10-05 06:57:50,388 | bot | INFO | Cog loaded: ErrorHandler
+2021-10-05 06:57:50,389 | bot | INFO | Cog loaded: VoiceChannel
+2021-10-05 06:57:50,390 | bot | INFO | Cog loaded: NewPatch
+2021-10-05 06:57:50,391 | bot | INFO | Cog loaded: Latency
+2021-10-05 06:57:50,392 | bot | INFO | Cog loaded: SetUp
+2021-10-05 06:57:50,454 | bot | INFO | Cog loaded: KUSNews
+2021-10-05 06:57:50,456 | bot | INFO | Cog loaded: Snekbox
+2021-10-05 06:57:50,458 | bot | INFO | Cog loaded: Help
+2021-10-05 06:57:50,460 | bot | INFO | Cog loaded: Updater
+2021-10-05 06:57:50,461 | bot | INFO | Cog loaded: Debug
+2021-10-05 06:57:50,462 | bot | INFO | Cog loaded: DayLoop
+2021-10-05 06:57:50,464 | bot | INFO | Cog loaded: Utility
+2021-10-05 06:57:50,466 | bot | INFO | Cog loaded: AdminCommands
+2021-10-05 06:57:50,812 | bot | INFO | Cog loaded: Music
+2021-10-05 06:57:50,815 | bot | INFO | Cog loaded: Assignments
+2021-10-05 06:57:50,828 | exts.kus | DEBUG | loaded data
+2021-10-05 06:57:53,440 | utils.planner | DEBUG | returning sorted date for 562976873685057546
+2021-10-05 06:57:53,446 | bot | INFO | Connected successfully
+2021-10-05 06:57:53,580 | bot | DEBUG | changed bot status
+2021-10-05 06:57:53,582 | bot | DEBUG | creating assignment embed...
+2021-10-05 06:57:53,583 | bot | DEBUG | successfully created assignment embed
+2021-10-05 06:57:54,666 | bot | DEBUG | creating assignment embed...
+2021-10-05 06:57:54,666 | bot | DEBUG | successfully created assignment embed
+2021-10-05 06:57:55,749 | bot | DEBUG | creating assignment embed...
+2021-10-05 06:57:55,750 | bot | DEBUG | successfully created assignment embed
+2021-10-05 06:57:56,865 | bot | DEBUG | exts.update :white_check_mark: Sucessfully update works at 562976873685057546 :
+1111EEE
+2021-10-05 06:57:57,034 | exts.update | DEBUG | updated active-works for 562976873685057546
+2021-10-05 06:57:57,034 | utils.planner | DEBUG | returning sorted date for 728482381215826000
+2021-10-05 06:57:57,104 | utils.planner | DEBUG | returning sorted date for 829749071891005512
+2021-10-05 06:57:57,183 | utils.planner | DEBUG | returning sorted date for 773426467492069386
+2021-10-05 07:32:38,583 | bot | DEBUG | exts.setup Command `,setup` has been ran on 676256965650808873, maybe something went wrong... 
+Fix has returned `True`

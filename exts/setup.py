@@ -77,7 +77,7 @@ class SetUp(Cog):
         await self.bot.log(__name__, 
             f"Command `,setup` has been ran on {ctx.guild.id}, maybe something went wrong... " \
             f"\nFix has returned `{fix}`")
-        await ctx.send(":white_check_mark: **Fix Completed.**\nStill have a problem? Message `Tpmonkey#2682`")
+        await ctx.send(":white_check_mark: **Fix Completed.**\nStill have a problem? Dm me!")
 
 
 def setup(bot: Bot) -> None:
