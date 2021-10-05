@@ -304,6 +304,10 @@ class Music(commands.Cog):
     async def cog_command_error(self, ctx: commands.Context, error: commands.CommandError):
         error.handled = True # So error_handle won't be call and send message twice
         await ctx.send(':x: **An error occurred:** {}'.format(str(error)))
+    
+    @staticmethod
+    def shorten_title(title: str) -> str:
+        return title if len(title) < 24 else title[:24] + "..."
 
     @commands.command(name="musicdebug", hidden=True)
     @commands.is_owner()
@@ -500,14 +504,16 @@ class Music(commands.Cog):
         queue = ''
         for i, song in enumerate(ctx.voice_state.songs[start:end], start=start):
             if isinstance(song, Song):      # requested one by one
-                queue += '**{0}.** [{1.source.title}]({1.source.url})\n'.format(i + 1, song)
+                title = self.shorten_title(song.source.title)
+                queue += '**{0}.** [{1}]({2.source.url})\n'.format(i + 1, title, song)
             else:
                 # song = PlaylistSong
                 # Attrs: url, ctx, song
                 if song.song is not None:    # is loaded
-                    queue += '**{0}.** [{1.song.source.title}]({1.song.source.url})\n'.format(i + 1, song)
+                    title = self.shorten_title(song.song.source.title)
+                    queue += '**{0}.** [{1}]({2.song.source.url})\n'.format(i + 1, title, song)
                 elif song.title is not None:
-                    title = song.title if len(song.title) < 24 else song.title[:24] + "..."
+                    title = self.shorten_title(song.title)
                     queue += '**{0}.** [{1}]({2.url})\n'.format(i + 1, title, song) 
                 elif "http" in song.url:     # not loaded, but have the url
                     queue += f"**{i+1}.** [Couldn't load this song]({song.url})\n"  
@@ -677,7 +683,7 @@ class Music(commands.Cog):
                 for s, t in zip(sources, titles):
                     pl = PlaylistSong(s, ctx, t)
                     await ctx.voice_state.songs.put(pl)
-                    await ctx.voice_state.loader.put(pl)
+                    # await ctx.voice_state.loader.put(pl)
                     amount += 1
                 
                 await ctx.send("Enqueued {} songs.".format(amount))
