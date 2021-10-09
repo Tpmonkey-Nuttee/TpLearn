@@ -36,8 +36,7 @@ class Loop(enum.Enum):
     QUEUE = 2
 
 class VoiceError(Exception):
-    pass           
-
+    pass
 
 class PlaylistSong:
     """
@@ -147,7 +146,7 @@ class VoiceState:
         self.voice = None
         self.next = asyncio.Event()
         self.songs = SongQueue()
-        self.loader = LoadPlaylistSong(bot)
+        # self.loader = LoadPlaylistSong(bot)
 
         self.super_shuffle = False
         self._loop = Loop.NONE
@@ -159,7 +158,7 @@ class VoiceState:
 
     def __del__(self):
         self.audio_player.cancel()
-        self.loader.loader.cancel()
+        # self.loader.loader.cancel()
 
     @property
     def loop(self):
@@ -261,7 +260,7 @@ class VoiceState:
 
     async def stop(self):
         self.songs.clear()
-        self.loader.queue.clear()
+        # self.loader.queue.clear()
 
         if self.voice:
             await self.voice.disconnect()
@@ -431,10 +430,11 @@ class Music(commands.Cog):
 
         ctx.voice_state.songs.clear()
         ctx.voice_state.loop = Loop.NONE
-        ctx.voice_state.loader.queue.clear()
+        # ctx.voice_state.loader.queue.clear()
 
         if ctx.voice_state.is_playing:
             ctx.voice_state.voice.stop()
+            ctx.voice_state.current = None
             await ctx.message.add_reaction('⏹')
 
     @commands.command(name='skip')
@@ -537,8 +537,11 @@ class Music(commands.Cog):
             .set_footer(text='Viewing page {}/{}'.format(page, pages))
         )
 
-        current = ctx.voice_state.current
-        embed.add_field(name = "Current:", value = f"[{current.source.title}]({current.source.url})", inline=False)
+        if ctx.voice_state.current is not None:
+            current = ctx.voice_state.current
+            embed.add_field(name = "Current:", value = f"[{current.source.title}]({current.source.url})", inline=False)
+        else:
+            embed.add_field(name = "Current:", value = "Nothing \:(", inline=False)
 
         embed.add_field(name="Up Next:", value = queue)
 
