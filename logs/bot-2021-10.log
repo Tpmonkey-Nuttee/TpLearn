@@ -1,0 +1,113 @@
+2021-10-10 00:12:32,201 | asyncio | DEBUG | Using selector: EpollSelector
+2021-10-10 00:12:32,202 | bot | DEBUG | created bot base.
+2021-10-10 00:12:32,220 | constant | DEBUG | init database succesful
+2021-10-10 00:12:32,568 | utils.planner | DEBUG | triggered update
+2021-10-10 00:12:32,574 | bot | DEBUG | bot subclass Created.
+2021-10-10 00:12:32,577 | bot | INFO | Cog loaded: Latency
+2021-10-10 00:12:32,578 | bot | INFO | Cog loaded: Debug
+2021-10-10 00:12:32,643 | bot | INFO | Cog loaded: KUSNews
+2021-10-10 00:12:32,644 | bot | INFO | Cog loaded: SetUp
+2021-10-10 00:12:32,646 | bot | INFO | Cog loaded: Updater
+2021-10-10 00:12:32,647 | bot | INFO | Cog loaded: VoiceChannel
+2021-10-10 00:12:32,648 | bot | INFO | Cog loaded: NewPatch
+2021-10-10 00:12:32,650 | bot | INFO | Cog loaded: AdminCommands
+2021-10-10 00:12:32,651 | bot | INFO | Cog loaded: Assignments
+2021-10-10 00:12:32,988 | bot | INFO | Cog loaded: Music
+2021-10-10 00:12:32,989 | bot | INFO | Cog loaded: ErrorHandler
+2021-10-10 00:12:32,991 | bot | INFO | Cog loaded: Utility
+2021-10-10 00:12:32,992 | bot | INFO | Cog loaded: DayLoop
+2021-10-10 00:12:32,995 | bot | INFO | Cog loaded: Snekbox
+2021-10-10 00:12:32,997 | bot | INFO | Cog loaded: Help
+2021-10-10 00:12:33,077 | exts.kus | DEBUG | loaded data
+2021-10-10 00:12:34,085 | bot | DEBUG | exts.kus Unable to fetch kus data, disabled system.
+2021-10-10 00:12:35,925 | utils.planner | DEBUG | returning sorted date for 562976873685057546
+2021-10-10 00:12:35,932 | bot | INFO | Connected successfully
+2021-10-10 00:12:36,284 | bot | DEBUG | changed bot status
+2021-10-10 00:12:36,286 | bot | DEBUG | creating assignment embed...
+2021-10-10 00:12:36,287 | bot | DEBUG | successfully created assignment embed
+2021-10-10 00:12:36,412 | exts.kus | DEBUG | trying to update news but is not enable, passing...
+2021-10-10 00:12:37,439 | bot | DEBUG | exts.update :white_check_mark: Sucessfully update works at 562976873685057546 :
+33E
+2021-10-10 00:12:37,748 | exts.update | DEBUG | updated active-works for 562976873685057546
+2021-10-10 00:12:37,749 | utils.planner | DEBUG | returning sorted date for 728482381215826000
+2021-10-10 00:12:37,861 | utils.planner | DEBUG | returning sorted date for 676256965650808873
+2021-10-10 00:12:37,951 | utils.planner | DEBUG | returning sorted date for 829749071891005512
+2021-10-10 00:12:38,066 | utils.planner | DEBUG | returning sorted date for 773426467492069386
+2021-10-10 01:57:00,157 | bot | INFO | Resumed Connection
+2021-10-10 01:57:00,399 | bot | DEBUG | changed bot status
+2021-10-10 02:29:55,166 | bot | INFO | Resumed Connection
+2021-10-10 02:29:55,231 | bot | DEBUG | changed bot status
+2021-10-10 03:18:50,663 | exts.music | DEBUG | VoiceState created for 773426467492069386
+2021-10-10 03:18:50,663 | exts.music | INFO | Audio Player Launched for 773426467492069386
+2021-10-10 03:18:53,172 | exts.music | DEBUG | 773426467492069386: Searching smooth criminal
+2021-10-10 03:18:56,909 | exts.music | DEBUG | Enqueued
+2021-10-10 03:38:58,817 | exts.music | DEBUG | VoiceState created for 773426467492069386
+2021-10-10 03:38:58,819 | exts.music | INFO | Audio Player Launched for 773426467492069386
+2021-10-10 03:39:00,691 | exts.music | DEBUG | 773426467492069386: Searching https://www.youtube.com/watch?v=ZmeudwRMrsU
+2021-10-10 03:39:02,094 | exts.music | DEBUG | Enqueued
+2021-10-10 03:40:58,227 | exts.music | DEBUG | 773426467492069386: Searching https://www.youtube.com/watch?v=TgbqBx4NthI
+2021-10-10 03:40:59,870 | exts.music | DEBUG | Enqueued
+2021-10-10 03:43:18,052 | exts.music | DEBUG | 773426467492069386: Searching https://www.youtube.com/watch?v=TgbqBx4NthI
+2021-10-10 03:43:19,792 | exts.music | DEBUG | Enqueued
+2021-10-10 03:45:40,325 | bot | INFO | Resumed Connection
+2021-10-10 03:45:40,638 | bot | DEBUG | changed bot status
+2021-10-10 03:57:57,476 | exts.music | DEBUG | 773426467492069386: Searching fma rain
+2021-10-10 03:57:59,172 | exts.music | DEBUG | Enqueued
+2021-10-10 04:12:34,460 | bot | DEBUG | exts.kus successfully fecthed kus data, enabled system.
+2021-10-10 04:12:43,730 | exts.music | DEBUG | 773426467492069386: Searching fma hologram
+2021-10-10 04:12:45,449 | exts.music | DEBUG | Enqueued
+2021-10-10 05:00:04,093 | exts.music | DEBUG | VoiceState created for 728482381215826000
+2021-10-10 05:00:04,095 | exts.music | INFO | Audio Player Launched for 728482381215826000
+2021-10-10 06:20:10,580 | bot | INFO | Resumed Connection
+2021-10-10 06:20:10,678 | bot | DEBUG | changed bot status
+2021-10-10 07:40:18,255 | exts.music | DEBUG | 773426467492069386: Searching https://www.youtube.com/watch?v=Mn7Bv8rGRzg
+2021-10-10 07:40:19,842 | exts.music | DEBUG | Enqueued
+2021-10-10 07:47:40,345 | exts.music | DEBUG | 773426467492069386: Searching https://www.youtube.com/watch?v=n7VZxg9pxkg&ab_channel=%E9%A0%88%E7%94%B0%E6%99%AF%E5%87%AA%E3%83%90%E3%83%AB%E3%83%BC%E3%83%B3
+2021-10-10 07:47:41,983 | exts.music | DEBUG | Enqueued
+2021-10-10 07:47:55,685 | exts.music | DEBUG | 773426467492069386: Searching https://www.youtube.com/watch?v=Mn7Bv8rGRzg
+2021-10-10 07:47:57,326 | exts.music | DEBUG | Enqueued
+2021-10-10 07:56:04,637 | exts.music | DEBUG | VoiceState created for 829749071891005512
+2021-10-10 07:56:04,638 | exts.music | INFO | Audio Player Launched for 829749071891005512
+2021-10-10 07:56:07,270 | exts.music | DEBUG | 829749071891005512: Searching on the ground
+2021-10-10 07:56:08,830 | exts.music | DEBUG | Enqueued
+2021-10-10 07:56:10,262 | exts.music | DEBUG | 829749071891005512: Searching gone
+2021-10-10 07:56:11,839 | exts.music | DEBUG | Enqueued
+2021-10-10 07:56:48,616 | exts.music | DEBUG | 829749071891005512: Searching stay
+2021-10-10 07:56:51,088 | exts.music | DEBUG | Enqueued
+2021-10-10 07:57:39,610 | exts.music | DEBUG | 829749071891005512: Searching bad habits
+2021-10-10 07:57:41,252 | exts.music | DEBUG | Enqueued
+2021-10-10 08:03:54,030 | exts.music | DEBUG | 829749071891005512: Searching https://open.spotify.com/playlist/5l5CpPwe7FtMvjIoS7TRX9?si=a7b341e7c45f4488
+2021-10-10 08:03:54,132 | spotipy.oauth2 | DEBUG | sending POST request to https://accounts.spotify.com/api/token with Headers: {'Authorization': 'Basic MjA0MjQ3ODljNDBhNDM2Mzk1NTQ2Nzg1ZDc5ZGRmNTk6NzE0ZTE0NjE2MzZmNGRjMWI4ODE1MDI4MjljM2Q4YTQ='} and Body: {'grant_type': 'client_credentials'}
+2021-10-10 08:03:54,748 | exts.music | DEBUG | Enqueued
+2021-10-10 09:46:49,777 | bot | INFO | Resumed Connection
+2021-10-10 09:46:49,846 | bot | DEBUG | changed bot status
+2021-10-10 10:35:38,664 | bot | INFO | Resumed Connection
+2021-10-10 10:35:38,730 | bot | DEBUG | changed bot status
+2021-10-10 10:56:14,149 | bot | INFO | Resumed Connection
+2021-10-10 10:56:14,206 | bot | DEBUG | changed bot status
+2021-10-10 11:19:57,244 | bot | INFO | Resumed Connection
+2021-10-10 11:19:57,318 | bot | DEBUG | changed bot status
+2021-10-10 11:45:13,733 | exts.music | DEBUG | 773426467492069386: Searching https://youtu.be/c_c5FPFdSow
+2021-10-10 11:45:15,252 | exts.music | DEBUG | Enqueued
+2021-10-10 11:47:12,246 | exts.music | DEBUG | 773426467492069386: Searching https://youtu.be/c_c5FPFdSow
+2021-10-10 11:47:13,811 | exts.music | DEBUG | Enqueued
+2021-10-10 11:52:08,758 | bot | INFO | Resumed Connection
+2021-10-10 11:52:08,821 | bot | DEBUG | changed bot status
+2021-10-10 12:07:20,419 | exts.music | DEBUG | VoiceState created for 773426467492069386
+2021-10-10 12:07:20,421 | exts.music | INFO | Audio Player Launched for 773426467492069386
+2021-10-10 12:07:22,289 | exts.music | DEBUG | 773426467492069386: Searching https://youtu.be/c_c5FPFdSow
+2021-10-10 12:07:23,772 | exts.music | DEBUG | Enqueued
+2021-10-10 12:50:28,483 | exts.music | DEBUG | 728482381215826000: Searching https://youtu.be/c_c5FPFdSow
+2021-10-10 12:50:30,025 | exts.music | DEBUG | Enqueued
+2021-10-10 12:50:41,341 | exts.music | DEBUG | 728482381215826000: Searching https://youtu.be/c_c5FPFdSow
+2021-10-10 12:50:42,692 | exts.music | DEBUG | Enqueued
+2021-10-10 12:52:20,559 | exts.admin | DEBUG | Admin Eval from Tpmonkey#2682; code: self.bot.get_guild(728482381215826000)
+2021-10-10 12:52:24,685 | exts.admin | DEBUG | Admin Eval from Tpmonkey#2682; code: self.bot.get_guild(773426467492069386)
+2021-10-10 12:52:30,627 | bot | INFO | Cog loaded: Music
+2021-10-10 12:52:36,812 | bot | INFO | Cog loaded: Music
+2021-10-10 12:52:45,899 | exts.music | DEBUG | VoiceState created for 728482381215826000
+2021-10-10 12:52:45,900 | exts.music | INFO | Audio Player Launched for 728482381215826000
+2021-10-10 12:52:47,808 | exts.music | DEBUG | 728482381215826000: Searching gurenge
+2021-10-10 12:52:49,440 | exts.music | DEBUG | Enqueued
+2021-10-10 12:52:57,538 | exts.music | DEBUG | 728482381215826000: Searching gurenge
+2021-10-10 12:52:59,368 | exts.music | DEBUG | Enqueued

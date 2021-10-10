@@ -434,7 +434,7 @@ class Music(commands.Cog):
 
         if ctx.voice_state.is_playing:
             ctx.voice_state.voice.stop()
-            ctx.voice_state.current = None
+            # ctx.voice_state.current = None
             await ctx.message.add_reaction('⏹')
 
     @commands.command(name='skip')
