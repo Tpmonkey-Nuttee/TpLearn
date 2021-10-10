@@ -24,7 +24,7 @@ import googleapiclient.discovery
 from urllib.parse import parse_qs, urlparse
 
 # YouTube DL
-from utils.audio import YTDLSource, YTDLError, getTracks, getAlbum
+from utils.audio import YTDLSource, YTDLError, DownloadError, getTracks, getAlbum
 
 YOUTUBE_API_KEY = os.getenv("YOUTUBE_API_KEY")
 
@@ -739,12 +739,21 @@ class Music(commands.Cog):
             try:
                 source = await YTDLSource.create_source(ctx, search, loop=self.bot.loop)
             except YTDLError as e:
-                await ctx.send('An error occurred while processing this request: {}'.format(str(e)))
-            else:
-                song = Song(source)
+                return await ctx.send('An error occurred while processing this request: {}'.format(str(e)))
+            except DownloadError:
+                await ctx.send(f":x: **Could not download that video, Retrying...**")
+                await ctx.trigger_typing() 
 
-                await ctx.voice_state.songs.put(song)
-                await ctx.send('Enqueued {}'.format(str(source)))
+                try:
+                    source = await YTDLSource.create_source(ctx, search + " lyric", loop=self.bot.loop)
+                except (DownloadError, YTDLError):
+                    return await ctx.send(":x: **Download fail, Please try using an url.**")
+                
+
+            song = Song(source)
+
+            await ctx.voice_state.songs.put(song)
+            await ctx.send('Enqueued {}'.format(str(source)))
         log.debug(f"Enqueued")
 
     @_join.before_invoke

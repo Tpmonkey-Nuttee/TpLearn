@@ -111,3 +111,75 @@
 2021-10-10 12:52:49,440 | exts.music | DEBUG | Enqueued
 2021-10-10 12:52:57,538 | exts.music | DEBUG | 728482381215826000: Searching gurenge
 2021-10-10 12:52:59,368 | exts.music | DEBUG | Enqueued
+2021-10-10 12:54:41,493 | exts.music | DEBUG | 728482381215826000: Searching imagination
+2021-10-10 12:54:41,809 | exts.errorhand | TRACE | Command: p imagination; Already handled locally.
+2021-10-10 12:54:48,544 | exts.music | DEBUG | 728482381215826000: Searching imagination lyrics
+2021-10-10 12:54:49,946 | exts.music | DEBUG | Enqueued
+2021-10-10 12:55:43,061 | bot | INFO | Cog loaded: Music
+2021-10-10 12:55:46,441 | exts.music | DEBUG | VoiceState created for 728482381215826000
+2021-10-10 12:55:46,442 | exts.music | INFO | Audio Player Launched for 728482381215826000
+2021-10-10 12:55:48,505 | exts.music | DEBUG | 728482381215826000: Searching imagination
+2021-10-10 12:55:48,750 | exts.errorhand | TRACE | Command: p imagination; Already handled locally.
+2021-10-10 12:58:07,364 | bot | INFO | Cog loaded: Music
+2021-10-10 12:58:09,883 | exts.music | DEBUG | VoiceState created for 728482381215826000
+2021-10-10 12:58:09,884 | exts.music | INFO | Audio Player Launched for 728482381215826000
+2021-10-10 12:58:11,829 | exts.music | DEBUG | 728482381215826000: Searching imagination
+2021-10-10 12:58:12,184 | exts.music | DEBUG | Enqueued
+2021-10-10 12:58:39,787 | exts.admin | DEBUG | Admin Eval from Tpmonkey#2682; code: import youtubedl
+2021-10-10 12:59:04,590 | exts.admin | DEBUG | Admin Eval from Tpmonkey#2682; code: import youtube_dl
+2021-10-10 12:59:11,451 | exts.admin | DEBUG | Admin Eval from Tpmonkey#2682; code: dir(self.mod)
+2021-10-10 13:01:07,895 | bot | INFO | Cog loaded: Music
+2021-10-10 13:01:12,111 | exts.music | DEBUG | VoiceState created for 728482381215826000
+2021-10-10 13:01:12,112 | exts.music | INFO | Audio Player Launched for 728482381215826000
+2021-10-10 13:01:14,083 | exts.music | DEBUG | 728482381215826000: Searching imagination
+2021-10-10 13:01:14,350 | exts.errorhand | TRACE | Command: p imagination; Already handled locally.
+2021-10-10 13:01:46,769 | asyncio | DEBUG | Using selector: EpollSelector
+2021-10-10 13:01:46,769 | bot | DEBUG | created bot base.
+2021-10-10 13:01:46,791 | constant | DEBUG | init database succesful
+2021-10-10 13:01:46,824 | utils.planner | DEBUG | triggered update
+2021-10-10 13:01:46,831 | bot | DEBUG | bot subclass Created.
+2021-10-10 13:01:46,833 | bot | INFO | Cog loaded: DayLoop
+2021-10-10 13:01:46,834 | bot | INFO | Cog loaded: ErrorHandler
+2021-10-10 13:01:46,837 | bot | INFO | Cog loaded: Snekbox
+2021-10-10 13:01:46,838 | bot | INFO | Cog loaded: Updater
+2021-10-10 13:01:46,840 | bot | INFO | Cog loaded: Help
+2021-10-10 13:01:46,841 | bot | INFO | Cog loaded: Debug
+2021-10-10 13:01:46,843 | bot | INFO | Cog loaded: Assignments
+2021-10-10 13:01:47,237 | bot | INFO | Cog loaded: Music
+2021-10-10 13:01:47,238 | bot | INFO | Cog loaded: NewPatch
+2021-10-10 13:01:47,300 | bot | INFO | Cog loaded: KUSNews
+2021-10-10 13:01:47,301 | bot | INFO | Cog loaded: Latency
+2021-10-10 13:01:47,303 | bot | INFO | Cog loaded: AdminCommands
+2021-10-10 13:01:47,304 | bot | INFO | Cog loaded: SetUp
+2021-10-10 13:01:47,306 | bot | INFO | Cog loaded: Utility
+2021-10-10 13:01:47,307 | bot | INFO | Cog loaded: VoiceChannel
+2021-10-10 13:01:47,361 | exts.kus | DEBUG | loaded data
+2021-10-10 13:01:48,076 | bot | DEBUG | exts.kus Unable to fetch kus data, disabled system.
+2021-10-10 13:01:49,903 | utils.planner | DEBUG | returning sorted date for 562976873685057546
+2021-10-10 13:01:49,977 | bot | INFO | Connected successfully
+2021-10-10 13:01:50,076 | bot | DEBUG | changed bot status
+2021-10-10 13:01:50,080 | bot | DEBUG | creating assignment embed...
+2021-10-10 13:01:50,080 | bot | DEBUG | successfully created assignment embed
+2021-10-10 13:01:50,323 | exts.kus | DEBUG | trying to update news but is not enable, passing...
+2021-10-10 13:01:51,174 | bot | DEBUG | exts.update :white_check_mark: Sucessfully update works at 562976873685057546 :
+33E
+2021-10-10 13:01:51,449 | exts.update | DEBUG | updated active-works for 562976873685057546
+2021-10-10 13:01:51,449 | utils.planner | DEBUG | returning sorted date for 728482381215826000
+2021-10-10 13:01:51,569 | utils.planner | DEBUG | returning sorted date for 676256965650808873
+2021-10-10 13:01:51,656 | utils.planner | DEBUG | returning sorted date for 829749071891005512
+2021-10-10 13:01:51,746 | utils.planner | DEBUG | returning sorted date for 773426467492069386
+2021-10-10 13:02:09,724 | bot | INFO | Cog loaded: Music
+2021-10-10 13:02:26,844 | exts.music | DEBUG | VoiceState created for 728482381215826000
+2021-10-10 13:02:26,845 | exts.music | INFO | Audio Player Launched for 728482381215826000
+2021-10-10 13:02:29,498 | exts.music | DEBUG | 728482381215826000: Searching imagination
+2021-10-10 13:02:31,607 | exts.music | DEBUG | Enqueued
+2021-10-10 13:03:47,030 | bot | INFO | Cog loaded: Music
+2021-10-10 13:03:53,148 | exts.music | DEBUG | VoiceState created for 728482381215826000
+2021-10-10 13:03:53,149 | exts.music | INFO | Audio Player Launched for 728482381215826000
+2021-10-10 13:03:55,050 | exts.music | DEBUG | 728482381215826000: Searching imagination
+2021-10-10 13:03:56,453 | exts.music | DEBUG | Enqueued
+2021-10-10 13:04:35,301 | bot | INFO | Cog loaded: Music
+2021-10-10 13:04:38,516 | exts.music | DEBUG | VoiceState created for 728482381215826000
+2021-10-10 13:04:38,517 | exts.music | INFO | Audio Player Launched for 728482381215826000
+2021-10-10 13:04:40,443 | exts.music | DEBUG | 728482381215826000: Searching imagination
+2021-10-10 13:04:42,373 | exts.music | DEBUG | Enqueued
