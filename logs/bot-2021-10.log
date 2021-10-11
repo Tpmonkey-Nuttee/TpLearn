@@ -183,3 +183,110 @@
 2021-10-10 13:04:38,517 | exts.music | INFO | Audio Player Launched for 728482381215826000
 2021-10-10 13:04:40,443 | exts.music | DEBUG | 728482381215826000: Searching imagination
 2021-10-10 13:04:42,373 | exts.music | DEBUG | Enqueued
+2021-10-11 00:37:09,759 | asyncio | DEBUG | Using selector: EpollSelector
+2021-10-11 00:37:09,759 | bot | DEBUG | created bot base.
+2021-10-11 00:37:09,772 | constant | DEBUG | init database succesful
+2021-10-11 00:37:09,835 | utils.planner | DEBUG | triggered update
+2021-10-11 00:37:09,840 | bot | DEBUG | bot subclass Created.
+2021-10-11 00:37:09,842 | bot | INFO | Cog loaded: SetUp
+2021-10-11 00:37:09,844 | bot | INFO | Cog loaded: Utility
+2021-10-11 00:37:09,845 | bot | INFO | Cog loaded: Debug
+2021-10-11 00:37:09,846 | bot | INFO | Cog loaded: ErrorHandler
+2021-10-11 00:37:09,847 | bot | INFO | Cog loaded: Latency
+2021-10-11 00:37:10,228 | bot | INFO | Cog loaded: Music
+2021-10-11 00:37:10,230 | bot | INFO | Cog loaded: Assignments
+2021-10-11 00:37:10,231 | bot | INFO | Cog loaded: NewPatch
+2021-10-11 00:37:10,287 | bot | INFO | Cog loaded: KUSNews
+2021-10-11 00:37:10,290 | bot | INFO | Cog loaded: Help
+2021-10-11 00:37:10,292 | bot | INFO | Cog loaded: Snekbox
+2021-10-11 00:37:10,293 | bot | INFO | Cog loaded: DayLoop
+2021-10-11 00:37:10,294 | bot | INFO | Cog loaded: VoiceChannel
+2021-10-11 00:37:10,295 | bot | INFO | Cog loaded: Updater
+2021-10-11 00:37:10,296 | bot | INFO | Cog loaded: AdminCommands
+2021-10-11 00:37:10,309 | exts.kus | DEBUG | loaded data
+2021-10-11 00:37:11,291 | bot | DEBUG | exts.kus Unable to fetch kus data, disabled system.
+2021-10-11 00:37:12,898 | utils.planner | DEBUG | returning sorted date for 562976873685057546
+2021-10-11 00:37:12,905 | bot | INFO | Connected successfully
+2021-10-11 00:37:12,949 | bot | DEBUG | changed bot status
+2021-10-11 00:37:12,981 | bot | DEBUG | creating assignment embed...
+2021-10-11 00:37:12,982 | bot | DEBUG | successfully created assignment embed
+2021-10-11 00:37:13,096 | exts.kus | DEBUG | trying to update news but is not enable, passing...
+2021-10-11 00:37:14,096 | bot | DEBUG | creating assignment embed...
+2021-10-11 00:37:14,096 | bot | DEBUG | successfully created assignment embed
+2021-10-11 00:37:15,223 | bot | DEBUG | exts.update :white_check_mark: Sucessfully update works at 562976873685057546 :
+33EE
+2021-10-11 00:37:15,357 | exts.update | DEBUG | updated active-works for 562976873685057546
+2021-10-11 00:37:15,358 | utils.planner | DEBUG | returning sorted date for 728482381215826000
+2021-10-11 00:37:15,468 | utils.planner | DEBUG | returning sorted date for 676256965650808873
+2021-10-11 00:37:15,542 | utils.planner | DEBUG | returning sorted date for 829749071891005512
+2021-10-11 00:37:15,649 | utils.planner | DEBUG | returning sorted date for 773426467492069386
+2021-10-11 00:37:15,751 | bot | DEBUG | creating assignment embed...
+2021-10-11 00:37:15,752 | bot | DEBUG | successfully created assignment embed
+2021-10-11 00:37:16,854 | bot | DEBUG | exts.update :white_check_mark: Sucessfully update works at 773426467492069386 :
+11E
+2021-10-11 00:37:17,072 | exts.update | DEBUG | updated active-works for 773426467492069386
+2021-10-11 01:12:59,394 | bot | INFO | Resumed Connection
+2021-10-11 01:12:59,474 | bot | DEBUG | changed bot status
+2021-10-11 01:49:12,622 | bot | INFO | Resumed Connection
+2021-10-11 01:49:13,014 | bot | DEBUG | changed bot status
+2021-10-11 02:57:04,837 | exts.music | DEBUG | VoiceState created for 773426467492069386
+2021-10-11 02:57:04,838 | exts.music | INFO | Audio Player Launched for 773426467492069386
+2021-10-11 02:57:07,512 | exts.music | DEBUG | 773426467492069386: Searching https://youtu.be/c_c5FPFdSow
+2021-10-11 02:57:09,627 | exts.music | DEBUG | Enqueued
+2021-10-11 04:37:11,241 | exts.kus | DEBUG | trying to update news but is not enable, passing...
+2021-10-11 05:24:44,743 | bot | INFO | Resumed Connection
+2021-10-11 05:24:44,830 | bot | DEBUG | changed bot status
+2021-10-11 05:46:53,167 | bot | INFO | Resumed Connection
+2021-10-11 05:46:53,295 | bot | DEBUG | changed bot status
+2021-10-11 08:37:11,693 | bot | DEBUG | exts.kus successfully fecthed kus data, enabled system.
+2021-10-11 08:38:04,813 | exts.music | DEBUG | VoiceState created for 773426467492069386
+2021-10-11 08:38:04,814 | exts.music | INFO | Audio Player Launched for 773426467492069386
+2021-10-11 08:38:07,411 | exts.music | DEBUG | 773426467492069386: Searching อกหัก
+2021-10-11 08:38:10,080 | exts.music | DEBUG | Enqueued
+2021-10-11 08:43:27,529 | bot | INFO | Resumed Connection
+2021-10-11 08:43:27,928 | bot | DEBUG | changed bot status
+2021-10-11 08:45:41,441 | exts.music | DEBUG | 773426467492069386: Searching im loser girl
+2021-10-11 08:45:42,996 | exts.music | DEBUG | Enqueued
+2021-10-11 08:46:05,436 | exts.music | DEBUG | 773426467492069386: Searching https://www.youtube.com/watch?v=6rg4cYlAKOc&ab_channel=%E3%83%84%E3%83%A6
+2021-10-11 08:46:06,820 | exts.music | DEBUG | Enqueued
+2021-10-11 08:46:57,363 | exts.music | DEBUG | 773426467492069386: Searching detective conan theme
+2021-10-11 08:46:58,851 | exts.music | DEBUG | Enqueued
+2021-10-11 10:55:59,037 | exts.music | DEBUG | VoiceState created for 829749071891005512
+2021-10-11 10:55:59,038 | exts.music | INFO | Audio Player Launched for 829749071891005512
+2021-10-11 10:56:00,966 | exts.music | DEBUG | 829749071891005512: Searching https://open.spotify.com/playlist/2T8AQhweLCMNFleLsP7KiP?si=bCNaUrBDRSCzIEI_tvYkYg&dl_branch=1
+2021-10-11 10:56:01,061 | spotipy.oauth2 | DEBUG | sending POST request to https://accounts.spotify.com/api/token with Headers: {'Authorization': 'Basic MjA0MjQ3ODljNDBhNDM2Mzk1NTQ2Nzg1ZDc5ZGRmNTk6NzE0ZTE0NjE2MzZmNGRjMWI4ODE1MDI4MjljM2Q4YTQ='} and Body: {'grant_type': 'client_credentials'}
+2021-10-11 10:56:01,400 | exts.music | DEBUG | Enqueued
+2021-10-11 11:43:37,074 | bot | INFO | Resumed Connection
+2021-10-11 11:43:37,209 | bot | DEBUG | changed bot status
+2021-10-11 12:37:11,262 | bot | DEBUG | exts.kus Unable to fetch kus data, disabled system.
+2021-10-11 12:37:11,432 | exts.kus | DEBUG | trying to update news but is not enable, passing...
+2021-10-11 13:53:18,444 | exts.music | DEBUG | 773426467492069386: Searching https://www.youtube.com/watch?v=5Per60XwWoU
+2021-10-11 13:53:19,984 | exts.music | DEBUG | Enqueued
+2021-10-11 13:57:58,846 | exts.music | DEBUG | 773426467492069386: Searching https://www.youtube.com/watch?v=lld6PO35QFU
+2021-10-11 13:58:00,474 | exts.music | DEBUG | Enqueued
+2021-10-11 13:58:52,368 | exts.music | DEBUG | 773426467492069386: Searching https://open.spotify.com/track/2zjcMpfEkRy17HH7lDEFCH?si=en9fbnJKQZyxmLXGjraAaQ&utm_source=copy-link&dl_branch=1
+2021-10-11 13:58:52,654 | exts.music | DEBUG | Enqueued
+2021-10-11 13:59:51,940 | exts.music | DEBUG | 773426467492069386: Searching https://youtu.be/pCC6qbAnX00
+2021-10-11 13:59:53,549 | exts.music | DEBUG | Enqueued
+2021-10-11 14:02:24,156 | exts.music | DEBUG | VoiceState created for 728482381215826000
+2021-10-11 14:02:24,158 | exts.music | INFO | Audio Player Launched for 728482381215826000
+2021-10-11 14:03:33,377 | bot | INFO | Resumed Connection
+2021-10-11 14:03:33,709 | bot | DEBUG | changed bot status
+2021-10-11 14:38:18,765 | exts.music | DEBUG | VoiceState created for 780423376149676032
+2021-10-11 14:38:18,767 | exts.music | INFO | Audio Player Launched for 780423376149676032
+2021-10-11 14:38:20,693 | exts.music | DEBUG | 780423376149676032: Searching https://youtu.be/1DcgczDzQPk
+2021-10-11 14:38:22,488 | exts.music | DEBUG | Enqueued
+2021-10-11 14:47:00,676 | exts.music | DEBUG | 780423376149676032: Searching https://youtube.com/playlist?list=RDnsXwi67WgOo&playnext=1
+2021-10-11 14:47:00,795 | googleapiclient.discovery_cache | INFO | file_cache is only supported with oauth2client<4.0.0
+2021-10-11 14:47:00,811 | googleapiclient.discovery | DEBUG | URL being requested: GET https://youtube.googleapis.com/youtube/v3/playlistItems?part=snippet&playlistId=RDnsXwi67WgOo&maxResults=25&key=AIzaSyAdxWpkjawZwkOoLZNdBKnaUQ1o3Wov2cg&alt=json
+2021-10-11 14:47:01,877 | googleapiclient.discovery | DEBUG | Next page request URL: list_next https://youtube.googleapis.com/youtube/v3/playlistItems?part=snippet&playlistId=RDnsXwi67WgOo&maxResults=25&key=AIzaSyAdxWpkjawZwkOoLZNdBKnaUQ1o3Wov2cg&alt=json&pageToken=EAAaFVBUOkVndG1hWHBUVkhRelMxRmxOQQ
+2021-10-11 14:47:02,108 | googleapiclient.discovery | DEBUG | Next page request URL: list_next https://youtube.googleapis.com/youtube/v3/playlistItems?part=snippet&playlistId=RDnsXwi67WgOo&maxResults=25&key=AIzaSyAdxWpkjawZwkOoLZNdBKnaUQ1o3Wov2cg&alt=json&pageToken=EAAaFVBUOkVndFFWV1I1ZFV0aFIxRmtOQQ
+2021-10-11 14:47:02,392 | googleapiclient.discovery | DEBUG | Next page request URL: list_next https://youtube.googleapis.com/youtube/v3/playlistItems?part=snippet&playlistId=RDnsXwi67WgOo&maxResults=25&key=AIzaSyAdxWpkjawZwkOoLZNdBKnaUQ1o3Wov2cg&alt=json&pageToken=EAAaFVBUOkVndDZUbTFWUmpsWGVWaGhUUQ
+2021-10-11 14:47:02,631 | googleapiclient.discovery | DEBUG | Next page request URL: list_next https://youtube.googleapis.com/youtube/v3/playlistItems?part=snippet&playlistId=RDnsXwi67WgOo&maxResults=25&key=AIzaSyAdxWpkjawZwkOoLZNdBKnaUQ1o3Wov2cg&alt=json&pageToken=EAAaFVBUOkVndHdZblkxYUhKcVZVVnZidw
+2021-10-11 14:47:02,917 | googleapiclient.discovery | DEBUG | Next page request URL: list_next https://youtube.googleapis.com/youtube/v3/playlistItems?part=snippet&playlistId=RDnsXwi67WgOo&maxResults=25&key=AIzaSyAdxWpkjawZwkOoLZNdBKnaUQ1o3Wov2cg&alt=json&pageToken=EAAaFVBUOkVndG1hWHBUVkhRelMxRmxOQQ
+2021-10-11 14:47:03,200 | googleapiclient.discovery | DEBUG | Next page request URL: list_next https://youtube.googleapis.com/youtube/v3/playlistItems?part=snippet&playlistId=RDnsXwi67WgOo&maxResults=25&key=AIzaSyAdxWpkjawZwkOoLZNdBKnaUQ1o3Wov2cg&alt=json&pageToken=EAAaFVBUOkVndFFWV1I1ZFV0aFIxRmtOQQ
+2021-10-11 14:47:03,505 | googleapiclient.discovery | DEBUG | Next page request URL: list_next https://youtube.googleapis.com/youtube/v3/playlistItems?part=snippet&playlistId=RDnsXwi67WgOo&maxResults=25&key=AIzaSyAdxWpkjawZwkOoLZNdBKnaUQ1o3Wov2cg&alt=json&pageToken=EAAaFVBUOkVndDZUbTFWUmpsWGVWaGhUUQ
+2021-10-11 14:47:03,832 | googleapiclient.discovery | DEBUG | Next page request URL: list_next https://youtube.googleapis.com/youtube/v3/playlistItems?part=snippet&playlistId=RDnsXwi67WgOo&maxResults=25&key=AIzaSyAdxWpkjawZwkOoLZNdBKnaUQ1o3Wov2cg&alt=json&pageToken=EAAaFVBUOkVndHdZblkxYUhKcVZVVnZidw
+2021-10-11 14:47:04,024 | exts.music | DEBUG | Enqueued
+2021-10-11 14:50:27,392 | exts.music | DEBUG | 780423376149676032: Searching https://youtu.be/gNi_6U5Pm_o
+2021-10-11 14:50:29,080 | exts.music | DEBUG | Enqueued

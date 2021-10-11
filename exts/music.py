@@ -14,10 +14,11 @@ import math
 import random
 import logging
 import traceback
+import time
 
 import discord
 from async_timeout import timeout
-from discord.ext import commands
+from discord.ext import commands, tasks
 
 # YouTube Playlist
 import googleapiclient.discovery
@@ -109,33 +110,6 @@ class SongQueue(asyncio.Queue):
     def remove(self, index: int):
         del self._queue[index]
 
-class LoadPlaylistSong:
-    def __init__(self, bot: commands.Bot):
-        self.queue = SongQueue()
-        self.bot = bot
-
-        self.loader = bot.loop.create_task(self.load())
-    
-    async def load(self):
-        while True:
-            loading = await self.queue.get()
-
-            try:
-               source = await YTDLSource.create_source(loading.ctx, loading.url)
-            except:
-                # In case of rate limit, wait a bit before retrying anothe song
-                await asyncio.sleep(1.0)
-            else:
-                loading.song = Song(source)
-
-            await asyncio.sleep(
-                1.2 * len(self.bot.get_cog("Music").voice_states)
-            )
-    
-    async def put(self, song: PlaylistSong):
-        self.queue.put_nowait(song)
-
-
 class VoiceState:
     def __init__(self, bot: commands.Bot, ctx: commands.Context):
         log.debug(f"VoiceState created for {ctx.guild.id}")
@@ -146,7 +120,6 @@ class VoiceState:
         self.voice = None
         self.next = asyncio.Event()
         self.songs = SongQueue()
-        # self.loader = LoadPlaylistSong(bot)
 
         self.super_shuffle = False
         self._loop = Loop.NONE
@@ -158,7 +131,6 @@ class VoiceState:
 
     def __del__(self):
         self.audio_player.cancel()
-        # self.loader.loader.cancel()
 
     @property
     def loop(self):
@@ -277,6 +249,13 @@ class Music(commands.Cog):
 
         # For keeping track of all voice states
         self.voice_states = {}
+
+        # disconnecting when bot is alone, what a sad life.
+        self.wait_for_disconnect = {}
+        self.loop_for_deletion.start()
+
+    def cog_unload(self) -> None:
+        self.loop_for_deletion.stop() 
         
     def get_voice_state(self, ctx: commands.Context):
         # Get voice state and embeded it to context.
@@ -303,6 +282,44 @@ class Music(commands.Cog):
     async def cog_command_error(self, ctx: commands.Context, error: commands.CommandError):
         error.handled = True # So error_handle won't be call and send message twice
         await ctx.send(':x: **An error occurred:** {}'.format(str(error)))
+    
+    @tasks.loop(minutes=3)
+    async def loop_for_deletion(self) -> None:
+        for gid, timeout in self.wait_for_disconnect.items():
+            if time.time() >= timeout:
+                # Remove from current dict
+                del self.wait_for_disconnect[gid]
+
+                # Leave channel & Clean up
+                await self.bot.voice_states[gid].stop()
+                del self.voice_states[gid]
+
+    
+    async def on_voice_state_update(self, member: discord.Member, before: discord.VoiceState, after: discord.VoiceState) -> None:
+        if member.guild.id not in self.voice_states:
+            return
+        
+        # Check if user switched to bot vc or joined the bot vc
+        if (before.channel is None and after.channel is not None) or (before.channel != after.channel and after.channel is not None):
+            all_members = [i.id for i in after.channel.members]
+
+            # Wrong channel, go back
+            if not self.bot.user.id in all_members: return
+
+            # Remove bot timeout, so it won't disconnect.
+            try:
+                del self.wait_for_disconnect[member.guild.id]
+            except KeyError:
+                pass
+        
+        # Check if user switched out from bot vc or left vc completelely.
+        elif (before.channel is not None and after.channel is None) or  (before.channel != after.channel and before.channel is not None and after.channel is not None):
+            all_members = [i.id for i in before.channel.members]
+
+            # Wrong channel, go back
+            if not self.bot.user.id in all_members: return
+
+            self.wait_for_disconnect[member.guild.id] = time.time() + self.bot.msettings.get(member.guild.id, "timeout")
     
     @staticmethod
     def shorten_title(title: str) -> str:
