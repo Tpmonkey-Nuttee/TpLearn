@@ -287,14 +287,15 @@ class Music(commands.Cog):
     async def loop_for_deletion(self) -> None:
         for gid, timeout in self.wait_for_disconnect.items():
             if time.time() >= timeout:
+                log.info(f"{gid}: Timeout, Nobody left in vc... Disconnected")
                 # Remove from current dict
                 del self.wait_for_disconnect[gid]
 
                 # Leave channel & Clean up
-                await self.bot.voice_states[gid].stop()
+                await self.voice_states[gid].stop()
                 del self.voice_states[gid]
 
-    
+    @commands.Cog.listener()
     async def on_voice_state_update(self, member: discord.Member, before: discord.VoiceState, after: discord.VoiceState) -> None:
         if member.guild.id not in self.voice_states:
             return
@@ -307,6 +308,7 @@ class Music(commands.Cog):
             if not self.bot.user.id in all_members: return
 
             # Remove bot timeout, so it won't disconnect.
+            log.info(f"{member.guild.id}: User joined back, Stopping deletion")
             try:
                 del self.wait_for_disconnect[member.guild.id]
             except KeyError:
@@ -319,6 +321,7 @@ class Music(commands.Cog):
             # Wrong channel, go back
             if not self.bot.user.id in all_members: return
 
+            log.info(f"{member.guild.id}: All user left, Waiting for deletion")
             self.wait_for_disconnect[member.guild.id] = time.time() + self.bot.msettings.get(member.guild.id, "timeout")
     
     @staticmethod
@@ -675,28 +678,31 @@ class Music(commands.Cog):
 
             youtube = googleapiclient.discovery.build("youtube", "v3", developerKey = YOUTUBE_API_KEY)
 
-            request = youtube.playlistItems().list(
-                part = "snippet",
-                playlistId = playlist_id,
-                maxResults = 25
-            )
-            response = request.execute()
-            
-            maximum = 8
-            if "&start_radio" in search:
-                maximum = 1
-
-            playlist_items = []
-            current = 0
-            while request is not None:
+            try:
+                request = youtube.playlistItems().list(
+                    part = "snippet",
+                    playlistId = playlist_id,
+                    maxResults = 25
+                )
                 response = request.execute()
-                playlist_items += response["items"]
-                request = youtube.playlistItems().list_next(request, response)
+                
+                maximum = 8
+                if "&start_radio" in search:
+                    maximum = 1
 
-                current += 1
-                if current >= maximum:
-                    break
-            
+                playlist_items = []
+                current = 0
+                while request is not None:
+                    response = request.execute()
+                    playlist_items += response["items"]
+                    request = youtube.playlistItems().list_next(request, response)
+
+                    current += 1
+                    if current >= maximum:
+                        break
+            except Exception:
+                return await ctx.send(":x: **PlayList not found or Therer is a problem with the bot!**")    
+        
             sources = [f'https://www.youtube.com/watch?v={t["snippet"]["resourceId"]["videoId"]}&list={playlist_id}&t=0s' for t in playlist_items]
             titles = [t["snippet"]["title"] for t in playlist_items]
             amount = 0

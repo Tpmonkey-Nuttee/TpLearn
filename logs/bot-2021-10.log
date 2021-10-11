@@ -290,3 +290,59 @@
 2021-10-11 14:47:04,024 | exts.music | DEBUG | Enqueued
 2021-10-11 14:50:27,392 | exts.music | DEBUG | 780423376149676032: Searching https://youtu.be/gNi_6U5Pm_o
 2021-10-11 14:50:29,080 | exts.music | DEBUG | Enqueued
+2021-10-11 14:51:59,440 | exts.music | DEBUG | 780423376149676032: Searching https://youtube.com/playlist?list=RDpH6ij20X4_U&playnext=1
+2021-10-11 14:51:59,544 | googleapiclient.discovery_cache | INFO | file_cache is only supported with oauth2client<4.0.0
+2021-10-11 14:51:59,551 | googleapiclient.discovery | DEBUG | URL being requested: GET https://youtube.googleapis.com/youtube/v3/playlistItems?part=snippet&playlistId=RDpH6ij20X4_U&maxResults=25&key=AIzaSyAdxWpkjawZwkOoLZNdBKnaUQ1o3Wov2cg&alt=json
+2021-10-11 14:52:00,092 | googleapiclient.discovery | DEBUG | Next page request URL: list_next https://youtube.googleapis.com/youtube/v3/playlistItems?part=snippet&playlistId=RDpH6ij20X4_U&maxResults=25&key=AIzaSyAdxWpkjawZwkOoLZNdBKnaUQ1o3Wov2cg&alt=json&pageToken=EAAaFVBUOkVndGFNMnh1VUhsU2RuSlNSUQ
+2021-10-11 14:52:00,355 | googleapiclient.discovery | DEBUG | Next page request URL: list_next https://youtube.googleapis.com/youtube/v3/playlistItems?part=snippet&playlistId=RDpH6ij20X4_U&maxResults=25&key=AIzaSyAdxWpkjawZwkOoLZNdBKnaUQ1o3Wov2cg&alt=json&pageToken=EAAaFVBUOkVndHlRV2wwYzJ4R1RYTm9idw
+2021-10-11 14:52:00,641 | googleapiclient.discovery | DEBUG | Next page request URL: list_next https://youtube.googleapis.com/youtube/v3/playlistItems?part=snippet&playlistId=RDpH6ij20X4_U&maxResults=25&key=AIzaSyAdxWpkjawZwkOoLZNdBKnaUQ1o3Wov2cg&alt=json&pageToken=EAAaFVBUOkVndGFNMnh1VUhsU2RuSlNSUQ
+2021-10-11 14:52:00,888 | googleapiclient.discovery | DEBUG | Next page request URL: list_next https://youtube.googleapis.com/youtube/v3/playlistItems?part=snippet&playlistId=RDpH6ij20X4_U&maxResults=25&key=AIzaSyAdxWpkjawZwkOoLZNdBKnaUQ1o3Wov2cg&alt=json&pageToken=EAAaFVBUOkVndHlRV2wwYzJ4R1RYTm9idw
+2021-10-11 14:52:01,114 | googleapiclient.discovery | DEBUG | Next page request URL: list_next https://youtube.googleapis.com/youtube/v3/playlistItems?part=snippet&playlistId=RDpH6ij20X4_U&maxResults=25&key=AIzaSyAdxWpkjawZwkOoLZNdBKnaUQ1o3Wov2cg&alt=json&pageToken=EAAaFVBUOkVndGFNMnh1VUhsU2RuSlNSUQ
+2021-10-11 14:52:01,375 | googleapiclient.discovery | DEBUG | Next page request URL: list_next https://youtube.googleapis.com/youtube/v3/playlistItems?part=snippet&playlistId=RDpH6ij20X4_U&maxResults=25&key=AIzaSyAdxWpkjawZwkOoLZNdBKnaUQ1o3Wov2cg&alt=json&pageToken=EAAaFVBUOkVndHlRV2wwYzJ4R1RYTm9idw
+2021-10-11 14:52:01,580 | googleapiclient.discovery | DEBUG | Next page request URL: list_next https://youtube.googleapis.com/youtube/v3/playlistItems?part=snippet&playlistId=RDpH6ij20X4_U&maxResults=25&key=AIzaSyAdxWpkjawZwkOoLZNdBKnaUQ1o3Wov2cg&alt=json&pageToken=EAAaFVBUOkVndGFNMnh1VUhsU2RuSlNSUQ
+2021-10-11 14:52:01,833 | googleapiclient.discovery | DEBUG | Next page request URL: list_next https://youtube.googleapis.com/youtube/v3/playlistItems?part=snippet&playlistId=RDpH6ij20X4_U&maxResults=25&key=AIzaSyAdxWpkjawZwkOoLZNdBKnaUQ1o3Wov2cg&alt=json&pageToken=EAAaFVBUOkVndHlRV2wwYzJ4R1RYTm9idw
+2021-10-11 14:52:01,991 | exts.music | DEBUG | Enqueued
+2021-10-11 14:53:07,675 | bot | INFO | Cog loaded: Music
+2021-10-11 14:53:07,694 | discord.player | ERROR | Calling the after function failed.
+Traceback (most recent call last):
+  File "/opt/virtualenvs/python3/lib/python3.8/site-packages/discord/player.py", line 616, in _call_after
+    self.after(error)
+  File "/home/runner/TpLearn/exts/music.py", line 250, in play_next_song
+    # For keeping track of all voice states
+exts.music.VoiceError: [Errno 9] Bad file descriptor
+2021-10-11 14:53:16,717 | exts.music | DEBUG | VoiceState created for 728482381215826000
+2021-10-11 14:53:16,718 | exts.music | INFO | Audio Player Launched for 728482381215826000
+2021-10-11 14:53:18,692 | exts.music | DEBUG | 728482381215826000: Searching gurenge
+2021-10-11 14:53:20,080 | exts.music | DEBUG | Enqueued
+2021-10-11 14:55:26,031 | bot | INFO | Cog loaded: Music
+2021-10-11 14:55:32,455 | exts.music | DEBUG | VoiceState created for 728482381215826000
+2021-10-11 14:55:32,456 | exts.music | INFO | Audio Player Launched for 728482381215826000
+2021-10-11 14:55:34,409 | exts.music | DEBUG | 728482381215826000: Searching gurenge
+2021-10-11 14:55:35,962 | exts.music | DEBUG | Enqueued
+2021-10-11 14:56:06,148 | bot | INFO | Cog loaded: Music
+2021-10-11 14:56:09,861 | exts.music | DEBUG | VoiceState created for 728482381215826000
+2021-10-11 14:56:09,862 | exts.music | INFO | Audio Player Launched for 728482381215826000
+2021-10-11 14:56:09,909 | exts.music | INFO | 728482381215826000: User joined back, Stopping deletion
+2021-10-11 14:56:11,780 | exts.music | DEBUG | 728482381215826000: Searching gurenge
+2021-10-11 14:56:13,818 | exts.music | DEBUG | Enqueued
+2021-10-11 14:56:31,065 | exts.music | INFO | 728482381215826000: All user left, Waiting for deletion
+2021-10-11 14:57:31,357 | exts.music | DEBUG | VoiceState created for 780423376149676032
+2021-10-11 14:57:31,358 | exts.music | INFO | Audio Player Launched for 780423376149676032
+2021-10-11 14:57:31,402 | exts.music | INFO | 780423376149676032: User joined back, Stopping deletion
+2021-10-11 14:57:33,283 | exts.music | DEBUG | 780423376149676032: Searching https://youtube.com/playlist?list=RDgNi_6U5Pm_o&playnext=1
+2021-10-11 14:57:33,378 | googleapiclient.discovery_cache | INFO | file_cache is only supported with oauth2client<4.0.0
+2021-10-11 14:57:33,388 | googleapiclient.discovery | DEBUG | URL being requested: GET https://youtube.googleapis.com/youtube/v3/playlistItems?part=snippet&playlistId=RDgNi_6U5Pm_o&maxResults=25&key=AIzaSyAdxWpkjawZwkOoLZNdBKnaUQ1o3Wov2cg&alt=json
+2021-10-11 14:57:33,556 | exts.errorhand | TRACE | Command: p https://youtube.com/playlist?list=RDgNi_6U5Pm_o&playnext=1; Already handled locally.
+2021-10-11 14:59:45,358 | exts.music | DEBUG | 780423376149676032: Searching https://youtube.com/playlist?list=RDpH6ij20X4_U&playnext=1
+2021-10-11 14:59:45,498 | googleapiclient.discovery_cache | INFO | file_cache is only supported with oauth2client<4.0.0
+2021-10-11 14:59:45,504 | googleapiclient.discovery | DEBUG | URL being requested: GET https://youtube.googleapis.com/youtube/v3/playlistItems?part=snippet&playlistId=RDpH6ij20X4_U&maxResults=25&key=AIzaSyAdxWpkjawZwkOoLZNdBKnaUQ1o3Wov2cg&alt=json
+2021-10-11 14:59:46,009 | googleapiclient.discovery | DEBUG | Next page request URL: list_next https://youtube.googleapis.com/youtube/v3/playlistItems?part=snippet&playlistId=RDpH6ij20X4_U&maxResults=25&key=AIzaSyAdxWpkjawZwkOoLZNdBKnaUQ1o3Wov2cg&alt=json&pageToken=EAAaFVBUOkVndGFNMnh1VUhsU2RuSlNSUQ
+2021-10-11 14:59:46,245 | googleapiclient.discovery | DEBUG | Next page request URL: list_next https://youtube.googleapis.com/youtube/v3/playlistItems?part=snippet&playlistId=RDpH6ij20X4_U&maxResults=25&key=AIzaSyAdxWpkjawZwkOoLZNdBKnaUQ1o3Wov2cg&alt=json&pageToken=EAAaFVBUOkVndHlRV2wwYzJ4R1RYTm9idw
+2021-10-11 14:59:46,455 | googleapiclient.discovery | DEBUG | Next page request URL: list_next https://youtube.googleapis.com/youtube/v3/playlistItems?part=snippet&playlistId=RDpH6ij20X4_U&maxResults=25&key=AIzaSyAdxWpkjawZwkOoLZNdBKnaUQ1o3Wov2cg&alt=json&pageToken=EAAaFVBUOkVndGFNMnh1VUhsU2RuSlNSUQ
+2021-10-11 14:59:46,780 | googleapiclient.discovery | DEBUG | Next page request URL: list_next https://youtube.googleapis.com/youtube/v3/playlistItems?part=snippet&playlistId=RDpH6ij20X4_U&maxResults=25&key=AIzaSyAdxWpkjawZwkOoLZNdBKnaUQ1o3Wov2cg&alt=json&pageToken=EAAaFVBUOkVndHlRV2wwYzJ4R1RYTm9idw
+2021-10-11 14:59:47,014 | googleapiclient.discovery | DEBUG | Next page request URL: list_next https://youtube.googleapis.com/youtube/v3/playlistItems?part=snippet&playlistId=RDpH6ij20X4_U&maxResults=25&key=AIzaSyAdxWpkjawZwkOoLZNdBKnaUQ1o3Wov2cg&alt=json&pageToken=EAAaFVBUOkVndGFNMnh1VUhsU2RuSlNSUQ
+2021-10-11 14:59:47,289 | googleapiclient.discovery | DEBUG | Next page request URL: list_next https://youtube.googleapis.com/youtube/v3/playlistItems?part=snippet&playlistId=RDpH6ij20X4_U&maxResults=25&key=AIzaSyAdxWpkjawZwkOoLZNdBKnaUQ1o3Wov2cg&alt=json&pageToken=EAAaFVBUOkVndHlRV2wwYzJ4R1RYTm9idw
+2021-10-11 14:59:47,490 | googleapiclient.discovery | DEBUG | Next page request URL: list_next https://youtube.googleapis.com/youtube/v3/playlistItems?part=snippet&playlistId=RDpH6ij20X4_U&maxResults=25&key=AIzaSyAdxWpkjawZwkOoLZNdBKnaUQ1o3Wov2cg&alt=json&pageToken=EAAaFVBUOkVndGFNMnh1VUhsU2RuSlNSUQ
+2021-10-11 14:59:47,703 | googleapiclient.discovery | DEBUG | Next page request URL: list_next https://youtube.googleapis.com/youtube/v3/playlistItems?part=snippet&playlistId=RDpH6ij20X4_U&maxResults=25&key=AIzaSyAdxWpkjawZwkOoLZNdBKnaUQ1o3Wov2cg&alt=json&pageToken=EAAaFVBUOkVndHlRV2wwYzJ4R1RYTm9idw
+2021-10-11 14:59:47,892 | exts.music | DEBUG | Enqueued
+2021-10-11 15:02:06,154 | exts.music | INFO | 728482381215826000: Timeout, Nobody left in vc... Disconnected
