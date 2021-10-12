@@ -302,7 +302,7 @@ class Music(commands.Cog):
 
     @commands.Cog.listener()
     async def on_voice_state_update(self, member: discord.Member, before: discord.VoiceState, after: discord.VoiceState) -> None:
-        if member.guild.id not in self.voice_states:
+        if member.guild.id not in self.voice_states or member.guild.id == self.bot.user.id:
             return
         
         # Check if user switched to bot vc or joined the bot vc
@@ -326,8 +326,10 @@ class Music(commands.Cog):
             # Wrong channel, go back
             if not self.bot.user.id in all_members: return
 
-            log.info(f"{member.guild.id}: All user left, Waiting for deletion")
-            self.wait_for_disconnect[member.guild.id] = time.time() + self.bot.msettings.get(member.guild.id, "timeout")
+            # Bot is alone ;-;
+            if len(all_members) <= 1:
+                log.info(f"{member.guild.id}: All user left, Waiting for deletion")
+                self.wait_for_disconnect[member.guild.id] = time.time() + self.bot.msettings.get(member.guild.id, "timeout")
     
     @staticmethod
     def shorten_title(title: str) -> str:

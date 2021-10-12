@@ -679,3 +679,4 @@ youtube_dl.utils.DownloadError: [0;31mERROR:[0m No video formats found
 2021-10-12 03:05:30,288 | exts.music | INFO | 728482381215826000: Timeout, Nobody left in vc... Disconnected
 2021-10-12 03:07:24,878 | exts.music | DEBUG | VoiceState created for 728482381215826000
 2021-10-12 03:07:24,914 | exts.music | INFO | Audio Player Launched for 728482381215826000
+2021-10-12 03:49:00,719 | bot | INFO | Cog loaded: Music
