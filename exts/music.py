@@ -294,15 +294,19 @@ class Music(commands.Cog):
                 delete.append(gid)
 
                 # Leave channel & Clean up
-                await self.voice_states[gid].stop()
-                del self.voice_states[gid]
+                try:
+                    await self.voice_states[gid].stop()
+                    del self.voice_states[gid]
+                except IndexError:
+                    log.debug(f"{gid}: Attempted to disconnect but already disconnected.")
+                    pass
         
         for i in delete: 
             del self.wait_for_disconnect[i]
 
     @commands.Cog.listener()
     async def on_voice_state_update(self, member: discord.Member, before: discord.VoiceState, after: discord.VoiceState) -> None:
-        if member.guild.id not in self.voice_states or member.guild.id == self.bot.user.id:
+        if member.guild.id not in self.voice_states or member.id == self.bot.user.id:
             return
         
         # Check if user switched to bot vc or joined the bot vc
@@ -414,7 +418,7 @@ class Music(commands.Cog):
             return await ctx.send(f"**Current Volume:** {ctx.voice_state.volume * 100}%")
 
         if volume < 0 or volume > 100:
-            return await ctx.send(':x: **Volume must be between 0 and 100**')
+            return await ctx.send(':x: **Volume must be between `0` and `100`**')
 
         ctx.voice_state.volume = volume / 100
         try:
@@ -422,7 +426,7 @@ class Music(commands.Cog):
         except:
             pass
 
-        await ctx.send('**Volume of the player set to {}%**'.format(volume))
+        await ctx.send('**Volume of the player set to** {}%'.format(volume))
 
     @commands.command(name='now', aliases=['current', 'playing'])
     async def _now(self, ctx: commands.Context):

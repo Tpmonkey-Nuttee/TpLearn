@@ -680,3 +680,226 @@ youtube_dl.utils.DownloadError: [0;31mERROR:[0m No video formats found
 2021-10-12 03:07:24,878 | exts.music | DEBUG | VoiceState created for 728482381215826000
 2021-10-12 03:07:24,914 | exts.music | INFO | Audio Player Launched for 728482381215826000
 2021-10-12 03:49:00,719 | bot | INFO | Cog loaded: Music
+2021-10-12 03:56:52,425 | bot | INFO | Cog loaded: Music
+2021-10-12 03:57:48,265 | exts.music | DEBUG | VoiceState created for 728482381215826000
+2021-10-12 03:57:48,266 | exts.music | INFO | Audio Player Launched for 728482381215826000
+2021-10-12 03:57:48,315 | exts.music | INFO | 728482381215826000: User joined back, Stopping deletion
+2021-10-12 03:58:29,633 | exts.music | INFO | 728482381215826000: All user left, Waiting for deletion
+2021-10-12 04:03:10,183 | bot | INFO | Resumed Connection
+2021-10-12 04:03:10,406 | bot | DEBUG | changed bot status
+2021-10-12 04:29:52,437 | exts.music | INFO | 728482381215826000: Timeout, Nobody left in vc... Disconnected
+2021-10-12 04:44:37,058 | exts.music | DEBUG | VoiceState created for 728482381215826000
+2021-10-12 04:44:37,059 | exts.music | INFO | Audio Player Launched for 728482381215826000
+2021-10-12 04:44:37,099 | exts.music | INFO | 728482381215826000: User joined back, Stopping deletion
+2021-10-12 04:44:39,107 | exts.music | DEBUG | 728482381215826000: Searching ภาวนะ
+2021-10-12 04:44:40,541 | exts.music | DEBUG | Enqueued
+2021-10-12 05:06:29,352 | asyncio | ERROR | Task exception was never retrieved
+future: <Task finished name='Task-2' coro=<Loop._loop() done, defined at /opt/virtualenvs/python3/lib/python3.8/site-packages/discord/ext/tasks/__init__.py:88> exception=RuntimeError('dictionary changed size during iteration')>
+Traceback (most recent call last):
+  File "/opt/virtualenvs/python3/lib/python3.8/site-packages/discord/ext/tasks/__init__.py", line 125, in _loop
+    raise exc
+  File "/opt/virtualenvs/python3/lib/python3.8/site-packages/discord/ext/tasks/__init__.py", line 101, in _loop
+    await self.coro(*args, **kwargs)
+  File "/home/runner/TpLearn/exts/music.py", line 289, in loop_for_deletion
+    delete = []
+RuntimeError: dictionary changed size during iteration
+2021-10-12 05:09:46,550 | exts.music | INFO | 728482381215826000: All user left, Waiting for deletion
+2021-10-12 06:08:31,198 | bot | DEBUG | exts.kus Unable to fetch kus data, disabled system.
+2021-10-12 06:08:31,388 | exts.kus | DEBUG | trying to update news but is not enable, passing...
+2021-10-12 06:46:12,970 | exts.music | DEBUG | VoiceState created for 773426467492069386
+2021-10-12 06:46:12,971 | exts.music | INFO | Audio Player Launched for 773426467492069386
+2021-10-12 06:46:13,034 | exts.music | INFO | 773426467492069386: User joined back, Stopping deletion
+2021-10-12 06:46:14,904 | exts.music | DEBUG | 773426467492069386: Searching https://www.youtube.com/playlist?list=PLsQ-ipbXoFYm88bmZy4eyhuIZoTtU_I_Z
+2021-10-12 06:46:15,023 | googleapiclient.discovery_cache | INFO | file_cache is only supported with oauth2client<4.0.0
+2021-10-12 06:46:15,031 | googleapiclient.discovery | DEBUG | URL being requested: GET https://youtube.googleapis.com/youtube/v3/playlistItems?part=snippet&playlistId=PLsQ-ipbXoFYm88bmZy4eyhuIZoTtU_I_Z&maxResults=25&key=AIzaSyAdxWpkjawZwkOoLZNdBKnaUQ1o3Wov2cg&alt=json
+2021-10-12 06:46:15,201 | googleapiclient.discovery | DEBUG | Next page request URL: list_next https://youtube.googleapis.com/youtube/v3/playlistItems?part=snippet&playlistId=PLsQ-ipbXoFYm88bmZy4eyhuIZoTtU_I_Z&maxResults=25&key=AIzaSyAdxWpkjawZwkOoLZNdBKnaUQ1o3Wov2cg&alt=json&pageToken=EAAaBlBUOkNCaw
+2021-10-12 06:46:15,241 | googleapiclient.discovery | DEBUG | Next page request URL: list_next https://youtube.googleapis.com/youtube/v3/playlistItems?part=snippet&playlistId=PLsQ-ipbXoFYm88bmZy4eyhuIZoTtU_I_Z&maxResults=25&key=AIzaSyAdxWpkjawZwkOoLZNdBKnaUQ1o3Wov2cg&alt=json&pageToken=EAAaBlBUOkNESQ
+2021-10-12 06:46:15,290 | googleapiclient.discovery | DEBUG | Next page request URL: list_next https://youtube.googleapis.com/youtube/v3/playlistItems?part=snippet&playlistId=PLsQ-ipbXoFYm88bmZy4eyhuIZoTtU_I_Z&maxResults=25&key=AIzaSyAdxWpkjawZwkOoLZNdBKnaUQ1o3Wov2cg&alt=json&pageToken=EAAaBlBUOkNFcw
+2021-10-12 06:46:15,334 | googleapiclient.discovery | DEBUG | Next page request URL: list_next https://youtube.googleapis.com/youtube/v3/playlistItems?part=snippet&playlistId=PLsQ-ipbXoFYm88bmZy4eyhuIZoTtU_I_Z&maxResults=25&key=AIzaSyAdxWpkjawZwkOoLZNdBKnaUQ1o3Wov2cg&alt=json&pageToken=EAAaBlBUOkNHUQ
+2021-10-12 06:46:15,383 | googleapiclient.discovery | DEBUG | Next page request URL: list_next https://youtube.googleapis.com/youtube/v3/playlistItems?part=snippet&playlistId=PLsQ-ipbXoFYm88bmZy4eyhuIZoTtU_I_Z&maxResults=25&key=AIzaSyAdxWpkjawZwkOoLZNdBKnaUQ1o3Wov2cg&alt=json&pageToken=EAAaBlBUOkNIMA
+2021-10-12 06:46:15,434 | googleapiclient.discovery | DEBUG | Next page request URL: list_next https://youtube.googleapis.com/youtube/v3/playlistItems?part=snippet&playlistId=PLsQ-ipbXoFYm88bmZy4eyhuIZoTtU_I_Z&maxResults=25&key=AIzaSyAdxWpkjawZwkOoLZNdBKnaUQ1o3Wov2cg&alt=json&pageToken=EAAaB1BUOkNKWUI
+2021-10-12 06:46:15,678 | exts.music | DEBUG | Enqueued
+2021-10-12 06:49:38,772 | exts.music | INFO | 773426467492069386: User joined back, Stopping deletion
+2021-10-12 06:58:46,199 | exts.music | INFO | 773426467492069386: User joined back, Stopping deletion
+2021-10-12 07:01:31,966 | exts.music | INFO | 773426467492069386: User joined back, Stopping deletion
+2021-10-12 07:08:13,947 | exts.music | INFO | 773426467492069386: User joined back, Stopping deletion
+2021-10-12 07:09:34,819 | exts.music | INFO | 773426467492069386: User joined back, Stopping deletion
+2021-10-12 07:18:37,918 | exts.music | INFO | 773426467492069386: User joined back, Stopping deletion
+2021-10-12 08:01:50,226 | bot | INFO | Resumed Connection
+2021-10-12 08:01:50,295 | bot | DEBUG | changed bot status
+2021-10-12 08:08:05,851 | asyncio | ERROR | Task exception was never retrieved
+future: <Task finished name='Task-6367' coro=<VoiceState.audio_player_task() done, defined at /home/runner/TpLearn/exts/music.py:155> exception=AttributeError("'NoneType' object has no attribute 'play'")>
+Traceback (most recent call last):
+  File "/home/runner/TpLearn/exts/music.py", line 212, in audio_player_task
+    self.voice.play(self.current.source, after=self.play_next_song)
+AttributeError: 'NoneType' object has no attribute 'play'
+2021-10-12 08:15:37,547 | exts.music | INFO | 773426467492069386: User joined back, Stopping deletion
+2021-10-12 08:18:43,001 | bot | INFO | Resumed Connection
+2021-10-12 08:18:43,091 | bot | DEBUG | changed bot status
+2021-10-12 08:26:49,223 | exts.music | INFO | 773426467492069386: User joined back, Stopping deletion
+2021-10-12 08:34:24,865 | exts.music | INFO | 773426467492069386: User joined back, Stopping deletion
+2021-10-12 08:40:42,438 | exts.music | INFO | 773426467492069386: User joined back, Stopping deletion
+2021-10-12 08:44:30,138 | exts.music | INFO | 773426467492069386: User joined back, Stopping deletion
+2021-10-12 09:30:54,762 | exts.music | INFO | 773426467492069386: User joined back, Stopping deletion
+2021-10-12 09:44:21,394 | bot | INFO | Resumed Connection
+2021-10-12 09:44:21,496 | bot | DEBUG | changed bot status
+2021-10-12 10:08:31,254 | exts.kus | DEBUG | trying to update news but is not enable, passing...
+2021-10-12 10:19:38,170 | exts.music | WARNING | Traceback (most recent call last):
+  File "/opt/virtualenvs/python3/lib/python3.8/site-packages/youtube_dl/YoutubeDL.py", line 815, in wrapper
+    return func(self, *args, **kwargs)
+  File "/opt/virtualenvs/python3/lib/python3.8/site-packages/youtube_dl/YoutubeDL.py", line 836, in __extract_info
+    ie_result = ie.extract(url)
+  File "/opt/virtualenvs/python3/lib/python3.8/site-packages/youtube_dl/extractor/common.py", line 534, in extract
+    ie_result = self._real_extract(url)
+  File "/opt/virtualenvs/python3/lib/python3.8/site-packages/youtube_dl/extractor/youtube.py", line 1713, in _real_extract
+    raise ExtractorError(reason, expected=True)
+youtube_dl.utils.ExtractorError: Video unavailable
+This video is not available
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/home/runner/TpLearn/exts/music.py", line 199, in audio_player_task
+    source = await YTDLSource.create_source(self.current.ctx, self.current.url, loop=self.bot.loop)
+  File "/home/runner/TpLearn/utils/audio.py", line 91, in create_source
+    processed_info = await loop.run_in_executor(None, partial)
+  File "/usr/lib/python3.8/concurrent/futures/thread.py", line 57, in run
+    result = self.fn(*self.args, **self.kwargs)
+  File "/opt/virtualenvs/python3/lib/python3.8/site-packages/youtube_dl/YoutubeDL.py", line 808, in extract_info
+    return self.__extract_info(url, ie, download, extra_info, process)
+  File "/opt/virtualenvs/python3/lib/python3.8/site-packages/youtube_dl/YoutubeDL.py", line 815, in wrapper
+    return func(self, *args, **kwargs)
+  File "/opt/virtualenvs/python3/lib/python3.8/site-packages/youtube_dl/YoutubeDL.py", line 847, in __extract_info
+    return self.process_ie_result(ie_result, download, extra_info)
+  File "/opt/virtualenvs/python3/lib/python3.8/site-packages/youtube_dl/YoutubeDL.py", line 885, in process_ie_result
+    return self.extract_info(ie_result['url'],
+  File "/opt/virtualenvs/python3/lib/python3.8/site-packages/youtube_dl/YoutubeDL.py", line 808, in extract_info
+    return self.__extract_info(url, ie, download, extra_info, process)
+  File "/opt/virtualenvs/python3/lib/python3.8/site-packages/youtube_dl/YoutubeDL.py", line 824, in wrapper
+    self.report_error(compat_str(e), e.format_traceback())
+  File "/opt/virtualenvs/python3/lib/python3.8/site-packages/youtube_dl/YoutubeDL.py", line 628, in report_error
+    self.trouble(error_message, tb)
+  File "/opt/virtualenvs/python3/lib/python3.8/site-packages/youtube_dl/YoutubeDL.py", line 598, in trouble
+    raise DownloadError(message, exc_info)
+youtube_dl.utils.DownloadError: [0;31mERROR:[0m Video unavailable
+This video is not available
+
+2021-10-12 10:33:50,779 | bot | INFO | Resumed Connection
+2021-10-12 10:33:51,058 | bot | DEBUG | changed bot status
+2021-10-12 10:49:36,494 | exts.music | INFO | 773426467492069386: User joined back, Stopping deletion
+2021-10-12 11:05:35,693 | bot | INFO | Resumed Connection
+2021-10-12 11:05:35,768 | bot | DEBUG | changed bot status
+2021-10-12 12:11:08,772 | exts.music | DEBUG | 773426467492069386: Searching https://www.youtube.com/watch?v=AmWsVoF_vDo
+2021-10-12 12:11:09,991 | exts.music | DEBUG | Enqueued
+2021-10-12 12:24:26,530 | exts.music | DEBUG | VoiceState created for 834711685834342472
+2021-10-12 12:24:26,532 | exts.music | INFO | Audio Player Launched for 834711685834342472
+2021-10-12 12:24:26,576 | exts.music | INFO | 834711685834342472: User joined back, Stopping deletion
+2021-10-12 12:24:35,738 | exts.music | DEBUG | 834711685834342472: Searching hello world
+2021-10-12 12:24:37,199 | exts.music | DEBUG | Enqueued
+2021-10-12 12:24:59,938 | exts.music | DEBUG | 834711685834342472: Searching brave heart digimon adventure
+2021-10-12 12:25:01,657 | exts.music | DEBUG | Enqueued
+2021-10-12 12:31:33,573 | exts.music | DEBUG | 834711685834342472: Searching study music
+2021-10-12 12:31:36,101 | exts.music | DEBUG | Enqueued
+2021-10-12 12:41:45,421 | exts.music | INFO | 834711685834342472: All user left, Waiting for deletion
+2021-10-12 13:04:00,663 | exts.music | DEBUG | VoiceState created for 829749071891005512
+2021-10-12 13:04:00,665 | exts.music | INFO | Audio Player Launched for 829749071891005512
+2021-10-12 13:04:00,724 | exts.music | INFO | 829749071891005512: User joined back, Stopping deletion
+2021-10-12 13:04:02,650 | exts.music | DEBUG | 829749071891005512: Searching https://youtube.com/playlist?list=RDpH6ij20X4_U&playnext=1
+2021-10-12 13:04:02,803 | googleapiclient.discovery_cache | INFO | file_cache is only supported with oauth2client<4.0.0
+2021-10-12 13:04:02,815 | googleapiclient.discovery | DEBUG | URL being requested: GET https://youtube.googleapis.com/youtube/v3/playlistItems?part=snippet&playlistId=RDpH6ij20X4_U&maxResults=25&key=AIzaSyAdxWpkjawZwkOoLZNdBKnaUQ1o3Wov2cg&alt=json
+2021-10-12 13:04:03,318 | googleapiclient.discovery | DEBUG | Next page request URL: list_next https://youtube.googleapis.com/youtube/v3/playlistItems?part=snippet&playlistId=RDpH6ij20X4_U&maxResults=25&key=AIzaSyAdxWpkjawZwkOoLZNdBKnaUQ1o3Wov2cg&alt=json&pageToken=EAAaFVBUOkVndGFNMnh1VUhsU2RuSlNSUQ
+2021-10-12 13:04:03,548 | googleapiclient.discovery | DEBUG | Next page request URL: list_next https://youtube.googleapis.com/youtube/v3/playlistItems?part=snippet&playlistId=RDpH6ij20X4_U&maxResults=25&key=AIzaSyAdxWpkjawZwkOoLZNdBKnaUQ1o3Wov2cg&alt=json&pageToken=EAAaFVBUOkVndHlRV2wwYzJ4R1RYTm9idw
+2021-10-12 13:04:03,882 | googleapiclient.discovery | DEBUG | Next page request URL: list_next https://youtube.googleapis.com/youtube/v3/playlistItems?part=snippet&playlistId=RDpH6ij20X4_U&maxResults=25&key=AIzaSyAdxWpkjawZwkOoLZNdBKnaUQ1o3Wov2cg&alt=json&pageToken=EAAaFVBUOkVndGFNMnh1VUhsU2RuSlNSUQ
+2021-10-12 13:04:04,175 | googleapiclient.discovery | DEBUG | Next page request URL: list_next https://youtube.googleapis.com/youtube/v3/playlistItems?part=snippet&playlistId=RDpH6ij20X4_U&maxResults=25&key=AIzaSyAdxWpkjawZwkOoLZNdBKnaUQ1o3Wov2cg&alt=json&pageToken=EAAaFVBUOkVndHlRV2wwYzJ4R1RYTm9idw
+2021-10-12 13:04:04,425 | googleapiclient.discovery | DEBUG | Next page request URL: list_next https://youtube.googleapis.com/youtube/v3/playlistItems?part=snippet&playlistId=RDpH6ij20X4_U&maxResults=25&key=AIzaSyAdxWpkjawZwkOoLZNdBKnaUQ1o3Wov2cg&alt=json&pageToken=EAAaFVBUOkVndGFNMnh1VUhsU2RuSlNSUQ
+2021-10-12 13:04:04,651 | googleapiclient.discovery | DEBUG | Next page request URL: list_next https://youtube.googleapis.com/youtube/v3/playlistItems?part=snippet&playlistId=RDpH6ij20X4_U&maxResults=25&key=AIzaSyAdxWpkjawZwkOoLZNdBKnaUQ1o3Wov2cg&alt=json&pageToken=EAAaFVBUOkVndHlRV2wwYzJ4R1RYTm9idw
+2021-10-12 13:04:04,900 | googleapiclient.discovery | DEBUG | Next page request URL: list_next https://youtube.googleapis.com/youtube/v3/playlistItems?part=snippet&playlistId=RDpH6ij20X4_U&maxResults=25&key=AIzaSyAdxWpkjawZwkOoLZNdBKnaUQ1o3Wov2cg&alt=json&pageToken=EAAaFVBUOkVndGFNMnh1VUhsU2RuSlNSUQ
+2021-10-12 13:04:05,194 | googleapiclient.discovery | DEBUG | Next page request URL: list_next https://youtube.googleapis.com/youtube/v3/playlistItems?part=snippet&playlistId=RDpH6ij20X4_U&maxResults=25&key=AIzaSyAdxWpkjawZwkOoLZNdBKnaUQ1o3Wov2cg&alt=json&pageToken=EAAaFVBUOkVndHlRV2wwYzJ4R1RYTm9idw
+2021-10-12 13:04:05,333 | exts.music | DEBUG | Enqueued
+2021-10-12 13:04:29,494 | exts.music | INFO | 829749071891005512: User joined back, Stopping deletion
+2021-10-12 13:12:43,409 | bot | INFO | Resumed Connection
+2021-10-12 13:12:43,728 | bot | DEBUG | changed bot status
+2021-10-12 13:51:07,931 | exts.music | INFO | 829749071891005512: All user left, Waiting for deletion
+2021-10-12 14:08:31,237 | exts.kus | DEBUG | trying to update news but is not enable, passing...
+2021-10-12 14:11:01,312 | exts.admin | DEBUG | Admin Eval from Tpmonkey#2682; code: self.bot.get_cog("Music").loop_for_deletion.is_running()
+2021-10-12 14:11:22,324 | exts.admin | DEBUG | Admin Eval from Tpmonkey#2682; code: self.bot.get_cog("Music").loop_for_deletion.start()
+2021-10-12 14:11:22,324 | asyncio | ERROR | Task exception was never retrieved
+future: <Task finished name='Task-5766' coro=<Loop._loop() done, defined at /opt/virtualenvs/python3/lib/python3.8/site-packages/discord/ext/tasks/__init__.py:88> exception=KeyError(728482381215826000)>
+Traceback (most recent call last):
+  File "/opt/virtualenvs/python3/lib/python3.8/site-packages/discord/ext/tasks/__init__.py", line 125, in _loop
+    raise exc
+  File "/opt/virtualenvs/python3/lib/python3.8/site-packages/discord/ext/tasks/__init__.py", line 101, in _loop
+    await self.coro(*args, **kwargs)
+  File "/home/runner/TpLearn/exts/music.py", line 297, in loop_for_deletion
+    await self.voice_states[gid].stop()
+KeyError: 728482381215826000
+2021-10-12 14:11:22,326 | exts.music | INFO | 728482381215826000: Timeout, Nobody left in vc... Disconnected
+2021-10-12 14:12:04,455 | exts.admin | DEBUG | Admin Eval from Tpmonkey#2682; code: self.bot.get_cog("Music").loop_for_deletion.is_running()
+2021-10-12 14:12:09,290 | exts.admin | DEBUG | Admin Eval from Tpmonkey#2682; code: self.bot.get_cog("Music").loop_for_deletion.start()
+2021-10-12 14:12:09,291 | asyncio | ERROR | Task exception was never retrieved
+future: <Task finished name='Task-29935' coro=<Loop._loop() done, defined at /opt/virtualenvs/python3/lib/python3.8/site-packages/discord/ext/tasks/__init__.py:88> exception=KeyError(728482381215826000)>
+Traceback (most recent call last):
+  File "/opt/virtualenvs/python3/lib/python3.8/site-packages/discord/ext/tasks/__init__.py", line 125, in _loop
+    raise exc
+  File "/opt/virtualenvs/python3/lib/python3.8/site-packages/discord/ext/tasks/__init__.py", line 101, in _loop
+    await self.coro(*args, **kwargs)
+  File "/home/runner/TpLearn/exts/music.py", line 297, in loop_for_deletion
+    await self.voice_states[gid].stop()
+KeyError: 728482381215826000
+2021-10-12 14:12:09,292 | exts.music | INFO | 728482381215826000: Timeout, Nobody left in vc... Disconnected
+2021-10-12 14:12:50,426 | exts.admin | DEBUG | Admin Eval from Tpmonkey#2682; code: del self.bot.get_cog("Music").wait_for_disconnect[72848238121582600]
+2021-10-12 14:13:05,111 | exts.admin | DEBUG | Admin Eval from Tpmonkey#2682; code: self.bot.get_cog("Music").wait_for_disconnect.remove(72848238121582600)
+2021-10-12 14:13:42,823 | exts.admin | DEBUG | Admin Eval from Tpmonkey#2682; code: self.bot.get_cog("Music").wait_for_disconnect.pop(72848238121582600)
+2021-10-12 14:13:51,382 | exts.admin | DEBUG | Admin Eval from Tpmonkey#2682; code: self.bot.get_cog("Music").wait_for_disconnect
+2021-10-12 14:14:20,404 | exts.admin | DEBUG | Admin Eval from Tpmonkey#2682; code: self.bot.get_cog("Music").wait_for_disconnect.pop(728482381215826000)
+2021-10-12 14:14:45,511 | exts.admin | DEBUG | Admin Eval from Tpmonkey#2682; code: self.bot.get_guild(834711685834342472)
+2021-10-12 14:15:07,674 | exts.admin | DEBUG | Admin Eval from Tpmonkey#2682; code: self.bot.get_cog("Music").loop_for_deletion.start()
+2021-10-12 14:15:07,674 | asyncio | ERROR | Task exception was never retrieved
+future: <Task finished name='Task-29996' coro=<Loop._loop() done, defined at /opt/virtualenvs/python3/lib/python3.8/site-packages/discord/ext/tasks/__init__.py:88> exception=KeyError(728482381215826000)>
+Traceback (most recent call last):
+  File "/opt/virtualenvs/python3/lib/python3.8/site-packages/discord/ext/tasks/__init__.py", line 125, in _loop
+    raise exc
+  File "/opt/virtualenvs/python3/lib/python3.8/site-packages/discord/ext/tasks/__init__.py", line 101, in _loop
+    await self.coro(*args, **kwargs)
+  File "/home/runner/TpLearn/exts/music.py", line 297, in loop_for_deletion
+    await self.voice_states[gid].stop()
+KeyError: 728482381215826000
+2021-10-12 14:15:07,676 | exts.music | INFO | 834711685834342472: Timeout, Nobody left in vc... Disconnected
+2021-10-12 14:15:07,678 | exts.music | INFO | 829749071891005512: Timeout, Nobody left in vc... Disconnected
+2021-10-12 14:20:56,185 | exts.admin | DEBUG | Admin Eval from Tpmonkey#2682; code: self.bot.guilds
+2021-10-12 15:09:36,955 | bot | INFO | Resumed Connection
+2021-10-12 15:09:37,138 | bot | DEBUG | changed bot status
+2021-10-12 15:22:40,166 | exts.music | DEBUG | VoiceState created for 829749071891005512
+2021-10-12 15:22:40,167 | exts.music | INFO | Audio Player Launched for 829749071891005512
+2021-10-12 15:22:40,210 | exts.music | INFO | 829749071891005512: User joined back, Stopping deletion
+2021-10-12 15:22:42,110 | exts.music | DEBUG | 829749071891005512: Searching summer time
+2021-10-12 15:22:44,703 | exts.music | DEBUG | Enqueued
+2021-10-12 15:22:53,059 | exts.music | DEBUG | 829749071891005512: Searching summer time shinamon
+2021-10-12 15:22:54,462 | exts.music | DEBUG | Enqueued
+2021-10-12 15:28:42,995 | exts.music | DEBUG | 829749071891005512: Searching https://open.spotify.com/playlist/37i9dQZEVXbMnz8KIWsvf9?si=227289f07c8f4515
+2021-10-12 15:28:43,092 | spotipy.oauth2 | DEBUG | sending POST request to https://accounts.spotify.com/api/token with Headers: {'Authorization': 'Basic MjA0MjQ3ODljNDBhNDM2Mzk1NTQ2Nzg1ZDc5ZGRmNTk6NzE0ZTE0NjE2MzZmNGRjMWI4ODE1MDI4MjljM2Q4YTQ='} and Body: {'grant_type': 'client_credentials'}
+2021-10-12 15:28:43,411 | exts.music | DEBUG | Enqueued
+2021-10-12 16:18:06,889 | exts.music | INFO | 829749071891005512: All user left, Waiting for deletion
+2021-10-12 16:22:17,556 | exts.music | DEBUG | VoiceState created for 562976873685057546
+2021-10-12 16:22:17,557 | exts.music | INFO | Audio Player Launched for 562976873685057546
+2021-10-12 16:22:17,602 | exts.music | INFO | 562976873685057546: User joined back, Stopping deletion
+2021-10-12 16:22:19,504 | exts.music | DEBUG | 562976873685057546: Searching https://www.youtube.com/playlist?list=PLsQ-ipbXoFYm88bmZy4eyhuIZoTtU_I_Z
+2021-10-12 16:22:19,619 | googleapiclient.discovery_cache | INFO | file_cache is only supported with oauth2client<4.0.0
+2021-10-12 16:22:19,631 | googleapiclient.discovery | DEBUG | URL being requested: GET https://youtube.googleapis.com/youtube/v3/playlistItems?part=snippet&playlistId=PLsQ-ipbXoFYm88bmZy4eyhuIZoTtU_I_Z&maxResults=25&key=AIzaSyAdxWpkjawZwkOoLZNdBKnaUQ1o3Wov2cg&alt=json
+2021-10-12 16:22:19,778 | googleapiclient.discovery | DEBUG | Next page request URL: list_next https://youtube.googleapis.com/youtube/v3/playlistItems?part=snippet&playlistId=PLsQ-ipbXoFYm88bmZy4eyhuIZoTtU_I_Z&maxResults=25&key=AIzaSyAdxWpkjawZwkOoLZNdBKnaUQ1o3Wov2cg&alt=json&pageToken=EAAaBlBUOkNCaw
+2021-10-12 16:22:19,835 | googleapiclient.discovery | DEBUG | Next page request URL: list_next https://youtube.googleapis.com/youtube/v3/playlistItems?part=snippet&playlistId=PLsQ-ipbXoFYm88bmZy4eyhuIZoTtU_I_Z&maxResults=25&key=AIzaSyAdxWpkjawZwkOoLZNdBKnaUQ1o3Wov2cg&alt=json&pageToken=EAAaBlBUOkNESQ
+2021-10-12 16:22:19,958 | googleapiclient.discovery | DEBUG | Next page request URL: list_next https://youtube.googleapis.com/youtube/v3/playlistItems?part=snippet&playlistId=PLsQ-ipbXoFYm88bmZy4eyhuIZoTtU_I_Z&maxResults=25&key=AIzaSyAdxWpkjawZwkOoLZNdBKnaUQ1o3Wov2cg&alt=json&pageToken=EAAaBlBUOkNFcw
+2021-10-12 16:22:20,011 | googleapiclient.discovery | DEBUG | Next page request URL: list_next https://youtube.googleapis.com/youtube/v3/playlistItems?part=snippet&playlistId=PLsQ-ipbXoFYm88bmZy4eyhuIZoTtU_I_Z&maxResults=25&key=AIzaSyAdxWpkjawZwkOoLZNdBKnaUQ1o3Wov2cg&alt=json&pageToken=EAAaBlBUOkNHUQ
+2021-10-12 16:22:20,072 | googleapiclient.discovery | DEBUG | Next page request URL: list_next https://youtube.googleapis.com/youtube/v3/playlistItems?part=snippet&playlistId=PLsQ-ipbXoFYm88bmZy4eyhuIZoTtU_I_Z&maxResults=25&key=AIzaSyAdxWpkjawZwkOoLZNdBKnaUQ1o3Wov2cg&alt=json&pageToken=EAAaBlBUOkNIMA
+2021-10-12 16:22:20,115 | googleapiclient.discovery | DEBUG | Next page request URL: list_next https://youtube.googleapis.com/youtube/v3/playlistItems?part=snippet&playlistId=PLsQ-ipbXoFYm88bmZy4eyhuIZoTtU_I_Z&maxResults=25&key=AIzaSyAdxWpkjawZwkOoLZNdBKnaUQ1o3Wov2cg&alt=json&pageToken=EAAaB1BUOkNKWUI
+2021-10-12 16:22:20,260 | exts.music | DEBUG | Enqueued
+2021-10-12 16:22:23,062 | exts.music | DEBUG | 562976873685057546: Searching https://open.spotify.com/playlist/37i9dQZEVXbMnz8KIWsvf9?si=e8e1329c5be946d4
+2021-10-12 16:22:23,462 | exts.music | DEBUG | Enqueued
+2021-10-12 16:22:28,906 | exts.music | DEBUG | 562976873685057546: Searching https://open.spotify.com/playlist/7u7AZf0i6W9vK7o7PuotFy?si=2a0ef574305d4a47
+2021-10-12 16:22:29,563 | exts.music | DEBUG | Enqueued
+2021-10-12 16:22:34,494 | exts.music | DEBUG | 562976873685057546: Searching https://open.spotify.com/playlist/5l5CpPwe7FtMvjIoS7TRX9?si=871ec0f30fdf4602
+2021-10-12 16:22:35,128 | exts.music | DEBUG | Enqueued
+2021-10-12 16:22:45,353 | exts.errorhand | TRACE | Command: q; Already handled locally.
+2021-10-12 16:23:30,543 | bot | INFO | Resumed Connection
+2021-10-12 16:23:30,656 | bot | DEBUG | changed bot status
+2021-10-12 16:24:07,677 | exts.music | INFO | 829749071891005512: Timeout, Nobody left in vc... Disconnected

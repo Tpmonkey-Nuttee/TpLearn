@@ -177,7 +177,7 @@ class Planner:
 
             # Create Field Value
             value = ""
-            for key in formatted[date]: value += f"`{key}` • { self.get(guild_id, key)['title'] }\n"
+            for key in formatted[date]: value += f"↳`{key}` • { self.get(guild_id, key)['title'] }\n"
             if len(value) >= 1024: value = value[:1020] + "..." # Embed Field Value cannot be longer than 1024 letters
 
             # Add Field
