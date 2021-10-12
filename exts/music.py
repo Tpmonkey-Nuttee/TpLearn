@@ -178,8 +178,9 @@ class VoiceState:
                 if not isinstance(self.current, PlaylistSong):
                     try:
                         source = await YTDLSource.create_source(self._ctx, self.current.source.url, loop=self.bot.loop)
-                    except YTDLError as e:
-                        await self._ctx.send('An error occurred while processing this request: {}'.format(str(e)))
+                    except Exception as e:
+                        await self._ctx.send(':x: **An error occurred while processing this request:** {}'.format(str(e)))
+                        continue
                     song = Song(source)
 
                 if self._loop == Loop.SINGLE:
@@ -285,15 +286,19 @@ class Music(commands.Cog):
     
     @tasks.loop(minutes=3)
     async def loop_for_deletion(self) -> None:
+        delete = []
         for gid, timeout in self.wait_for_disconnect.items():
             if time.time() >= timeout:
                 log.info(f"{gid}: Timeout, Nobody left in vc... Disconnected")
-                # Remove from current dict
-                del self.wait_for_disconnect[gid]
+                # Remove from current dict, But need to avoid RuntimeError
+                delete.append(gid)
 
                 # Leave channel & Clean up
                 await self.voice_states[gid].stop()
                 del self.voice_states[gid]
+        
+        for i in delete: 
+            del self.wait_for_disconnect[i]
 
     @commands.Cog.listener()
     async def on_voice_state_update(self, member: discord.Member, before: discord.VoiceState, after: discord.VoiceState) -> None:
@@ -456,6 +461,16 @@ class Music(commands.Cog):
             ctx.voice_state.voice.stop()
             # ctx.voice_state.current = None
             await ctx.message.add_reaction('⏹')
+    
+    @commands.command(name='clearqueue', aliases=['clearq'])
+    async def _clearq(self, ctx: commands.Context):
+        """Clear queue but keep the current song."""
+
+        if len(ctx.voice_state.songs) < 1:
+            return await ctx.send(":x: **Queue is empty!**")
+
+        ctx.voice_state.songs.clear()
+        await ctx.message.add_reaction('✅')
 
     @commands.command(name='skip')
     async def _skip(self, ctx: commands.Context):
