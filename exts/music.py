@@ -238,7 +238,14 @@ class VoiceState:
         if self.voice:
             await self.voice.disconnect()
             self.voice = None
-
+        
+        # Delete the reference
+        cog = self.bot.get_cog("Music")
+        if cog is not None:
+            try:
+                del cog.voice_states[self._ctx.guild.id]
+            except IndexError:
+                pass
 
 class Music(commands.Cog):
     """

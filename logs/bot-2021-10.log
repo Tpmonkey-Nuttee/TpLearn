@@ -1016,3 +1016,11 @@ class A:
 a = A()
 a.delete()
 print(a)
+2021-10-13 05:33:39,230 | bot | INFO | Cog loaded: Music
+2021-10-13 05:33:47,819 | exts.music | DEBUG | VoiceState created for 728482381215826000
+2021-10-13 05:33:47,876 | exts.music | INFO | Audio Player Launched for 728482381215826000
+2021-10-13 05:33:55,757 | exts.music | DEBUG | VoiceState created for 728482381215826000
+2021-10-13 05:33:55,758 | exts.music | INFO | Audio Player Launched for 728482381215826000
+2021-10-13 05:33:57,716 | exts.music | DEBUG | 728482381215826000: Searching 10 seconds video
+2021-10-13 05:33:58,892 | exts.music | DEBUG | Enqueued
+2021-10-13 05:34:19,157 | exts.admin | DEBUG | Admin Eval from Tpmonkey#2682; code: self.bot.get_cog("Music").voice_states
