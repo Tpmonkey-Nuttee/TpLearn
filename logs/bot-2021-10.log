@@ -903,3 +903,116 @@ KeyError: 728482381215826000
 2021-10-12 16:23:30,543 | bot | INFO | Resumed Connection
 2021-10-12 16:23:30,656 | bot | DEBUG | changed bot status
 2021-10-12 16:24:07,677 | exts.music | INFO | 829749071891005512: Timeout, Nobody left in vc... Disconnected
+2021-10-12 16:26:14,061 | exts.admin | DEBUG | Admin Eval from Tpmonkey#2682; code: self.bot.get_cog("Music").loop_for_deletion.start()
+2021-10-12 16:26:14,061 | asyncio | ERROR | Task exception was never retrieved
+future: <Task finished name='Task-30245' coro=<Loop._loop() done, defined at /opt/virtualenvs/python3/lib/python3.8/site-packages/discord/ext/tasks/__init__.py:88> exception=KeyError(829749071891005512)>
+Traceback (most recent call last):
+  File "/opt/virtualenvs/python3/lib/python3.8/site-packages/discord/ext/tasks/__init__.py", line 125, in _loop
+    raise exc
+  File "/opt/virtualenvs/python3/lib/python3.8/site-packages/discord/ext/tasks/__init__.py", line 101, in _loop
+    await self.coro(*args, **kwargs)
+  File "/home/runner/TpLearn/exts/music.py", line 297, in loop_for_deletion
+    try:
+KeyError: 829749071891005512
+2021-10-12 16:26:14,063 | exts.music | INFO | 829749071891005512: Timeout, Nobody left in vc... Disconnected
+2021-10-12 16:27:03,427 | exts.admin | DEBUG | Admin Eval from Tpmonkey#2682; code: self.bot.run_time
+2021-10-12 16:27:08,441 | exts.admin | DEBUG | Admin Eval from Tpmonkey#2682; code: dir(self.bot)
+2021-10-12 16:27:26,448 | exts.admin | DEBUG | Admin Eval from Tpmonkey#2682; code: datetime.datetime.utcnow() - self.bot.start_time
+2021-10-12 16:29:20,863 | exts.admin | DEBUG | Admin Eval from Tpmonkey#2682; code: self.bot.shards
+2021-10-12 16:45:28,491 | exts.admin | DEBUG | Admin Eval from Tpmonkey#2682; code: datetime.timedelta(minutes=3*639)
+2021-10-12 17:00:30,288 | bot | DEBUG | exts.dayloop New day [UTC+7] detected.
+2021-10-12 17:00:30,470 | utils.planner | DEBUG | triggered update
+2021-10-12 17:02:30,383 | utils.planner | DEBUG | returning sorted date for 562976873685057546
+2021-10-12 17:02:30,719 | bot | DEBUG | creating assignment embed...
+2021-10-12 17:02:30,720 | bot | DEBUG | successfully created assignment embed
+2021-10-12 17:02:31,835 | bot | DEBUG | exts.update :white_check_mark: Sucessfully update works at 562976873685057546 :
+33E
+2021-10-12 17:02:32,096 | exts.update | DEBUG | updated active-works for 562976873685057546
+2021-10-12 17:02:32,096 | utils.planner | DEBUG | returning sorted date for 728482381215826000
+2021-10-12 17:02:32,181 | utils.planner | DEBUG | returning sorted date for 676256965650808873
+2021-10-12 17:02:32,309 | utils.planner | DEBUG | returning sorted date for 829749071891005512
+2021-10-12 17:02:32,408 | utils.planner | DEBUG | returning sorted date for 773426467492069386
+2021-10-13 02:20:41,916 | asyncio | DEBUG | Using selector: EpollSelector
+2021-10-13 02:20:41,917 | bot | DEBUG | created bot base.
+2021-10-13 02:20:41,934 | constant | DEBUG | init database succesful
+2021-10-13 02:20:41,962 | utils.planner | DEBUG | triggered update
+2021-10-13 02:20:42,123 | bot | DEBUG | bot subclass Created.
+2021-10-13 02:20:42,127 | bot | INFO | Cog loaded: Utility
+2021-10-13 02:20:42,468 | bot | INFO | Cog loaded: Music
+2021-10-13 02:20:42,470 | bot | INFO | Cog loaded: Snekbox
+2021-10-13 02:20:42,474 | bot | INFO | Cog loaded: Help
+2021-10-13 02:20:42,475 | bot | INFO | Cog loaded: AdminCommands
+2021-10-13 02:20:42,476 | bot | INFO | Cog loaded: Latency
+2021-10-13 02:20:42,478 | bot | INFO | Cog loaded: ErrorHandler
+2021-10-13 02:20:42,479 | bot | INFO | Cog loaded: SetUp
+2021-10-13 02:20:42,481 | bot | INFO | Cog loaded: Assignments
+2021-10-13 02:20:42,482 | bot | INFO | Cog loaded: DayLoop
+2021-10-13 02:20:42,483 | bot | INFO | Cog loaded: Debug
+2021-10-13 02:20:42,484 | bot | INFO | Cog loaded: NewPatch
+2021-10-13 02:20:42,485 | bot | INFO | Cog loaded: Updater
+2021-10-13 02:20:42,548 | bot | INFO | Cog loaded: KUSNews
+2021-10-13 02:20:42,550 | bot | INFO | Cog loaded: VoiceChannel
+2021-10-13 02:20:42,577 | exts.kus | DEBUG | loaded data
+2021-10-13 02:20:43,744 | bot | DEBUG | exts.kus Unable to fetch kus data, disabled system.
+2021-10-13 02:20:45,206 | utils.planner | DEBUG | returning sorted date for 562976873685057546
+2021-10-13 02:20:45,216 | bot | INFO | Connected successfully
+2021-10-13 02:20:45,411 | bot | DEBUG | changed bot status
+2021-10-13 02:20:45,414 | bot | DEBUG | creating assignment embed...
+2021-10-13 02:20:45,414 | bot | DEBUG | successfully created assignment embed
+2021-10-13 02:20:45,673 | exts.kus | DEBUG | trying to update news but is not enable, passing...
+2021-10-13 02:20:46,516 | bot | DEBUG | exts.update :white_check_mark: Sucessfully update works at 562976873685057546 :
+33E
+2021-10-13 02:20:46,635 | exts.update | DEBUG | updated active-works for 562976873685057546
+2021-10-13 02:20:46,636 | utils.planner | DEBUG | returning sorted date for 728482381215826000
+2021-10-13 02:20:46,717 | utils.planner | DEBUG | returning sorted date for 676256965650808873
+2021-10-13 02:20:46,793 | utils.planner | DEBUG | returning sorted date for 829749071891005512
+2021-10-13 02:20:46,872 | utils.planner | DEBUG | returning sorted date for 773426467492069386
+2021-10-13 03:49:37,967 | bot | INFO | Resumed Connection
+2021-10-13 03:49:38,041 | bot | DEBUG | changed bot status
+2021-10-13 04:09:12,270 | exts.music | DEBUG | VoiceState created for 773426467492069386
+2021-10-13 04:09:12,271 | exts.music | INFO | Audio Player Launched for 773426467492069386
+2021-10-13 04:09:14,206 | exts.music | DEBUG | 773426467492069386: Searching รักไม่ยอมเปลี่ยนแปลง
+2021-10-13 04:09:17,716 | exts.music | DEBUG | Enqueued
+2021-10-13 04:14:12,614 | exts.music | DEBUG | 773426467492069386: Searching https://www.youtube.com/watch?v=YnFgDCaoaNo
+2021-10-13 04:14:14,069 | exts.music | DEBUG | Enqueued
+2021-10-13 04:18:01,055 | exts.music | DEBUG | 773426467492069386: Searching https://www.youtube.com/watch?v=RVpSvxazyuM
+2021-10-13 04:18:02,641 | exts.music | DEBUG | Enqueued
+2021-10-13 04:18:50,767 | exts.music | DEBUG | 773426467492069386: Searching https://www.youtube.com/watch?v=Vtm_76deGRA
+2021-10-13 04:18:52,359 | exts.music | DEBUG | Enqueued
+2021-10-13 04:19:53,925 | exts.music | DEBUG | 773426467492069386: Searching https://www.youtube.com/watch?v=nk52q-uXRMM
+2021-10-13 04:19:55,621 | exts.music | DEBUG | Enqueued
+2021-10-13 04:28:42,888 | exts.music | INFO | 773426467492069386: User joined back, Stopping deletion
+2021-10-13 05:18:08,103 | exts.music | DEBUG | VoiceState created for 728482381215826000
+2021-10-13 05:18:08,104 | exts.music | INFO | Audio Player Launched for 728482381215826000
+2021-10-13 05:18:10,105 | exts.music | DEBUG | 728482381215826000: Searching adamas
+2021-10-13 05:18:11,540 | exts.music | DEBUG | Enqueued
+2021-10-13 05:20:32,132 | exts.admin | DEBUG | Admin Eval from Tpmonkey#2682; code: self.bot.get_guild(773426467492069386)
+2021-10-13 05:22:07,887 | bot | INFO | Cog loaded: Music
+2021-10-13 05:22:09,278 | exts.music | DEBUG | VoiceState created for 728482381215826000
+2021-10-13 05:22:09,279 | exts.music | INFO | Audio Player Launched for 728482381215826000
+2021-10-13 05:22:11,228 | exts.music | DEBUG | 728482381215826000: Searching gurenge
+2021-10-13 05:22:12,796 | exts.music | DEBUG | Enqueued
+2021-10-13 05:22:53,979 | bot | INFO | Cog loaded: Music
+2021-10-13 05:22:56,283 | exts.music | DEBUG | VoiceState created for 728482381215826000
+2021-10-13 05:22:56,284 | exts.music | INFO | Audio Player Launched for 728482381215826000
+2021-10-13 05:22:58,208 | exts.music | DEBUG | 728482381215826000: Searching gurenge
+2021-10-13 05:23:00,498 | exts.music | DEBUG | Enqueued
+2021-10-13 05:23:45,136 | exts.muleval | DEBUG | Eval command; Ignore black list: True
+2021-10-13 05:23:45,137 | exts.muleval | INFO | 'py' highlighted code block
+2021-10-13 05:23:45,137 | exts.muleval | TRACE | Eval command: Tpmonkey#2682(518063131096907813) with code:
+class A:
+  def __init__(self):
+    del self
+
+a = A()
+print(a)
+2021-10-13 05:24:13,305 | exts.muleval | DEBUG | Eval command; Ignore black list: True
+2021-10-13 05:24:13,305 | exts.muleval | INFO | 'py' highlighted code block
+2021-10-13 05:24:13,306 | exts.muleval | TRACE | Eval command: Tpmonkey#2682(518063131096907813) with code:
+class A:
+  def delete(self):
+    del self
+
+a = A()
+a.delete()
+print(a)

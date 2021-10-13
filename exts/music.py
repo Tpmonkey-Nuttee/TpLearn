@@ -520,7 +520,7 @@ class Music(commands.Cog):
         await ctx.message.add_reaction('✅')
         
 
-    @commands.command(name='queue', aliases=['q'])
+    @commands.command(name='queue', aliases=['q', 'list'])
     async def _queue(self, ctx: commands.Context, *, page: int = 1):
         """Shows the player's queue.
 
@@ -531,7 +531,7 @@ class Music(commands.Cog):
             return await ctx.send(':x: **Empty queue.**')
 
         items_per_page = 8
-        pages = math.ceil(len(ctx.voice_state.songs) / items_per_page)
+        pages = max(1, math.ceil(len(ctx.voice_state.songs) / items_per_page))
 
         if pages + 1 == page:
             # display queue even if there is only 1 song being play.
