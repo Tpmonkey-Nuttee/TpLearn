@@ -1024,3 +1024,523 @@ print(a)
 2021-10-13 05:33:57,716 | exts.music | DEBUG | 728482381215826000: Searching 10 seconds video
 2021-10-13 05:33:58,892 | exts.music | DEBUG | Enqueued
 2021-10-13 05:34:19,157 | exts.admin | DEBUG | Admin Eval from Tpmonkey#2682; code: self.bot.get_cog("Music").voice_states
+2021-10-13 05:36:59,249 | exts.music | DEBUG | VoiceState created for 728482381215826000
+2021-10-13 05:36:59,287 | exts.music | INFO | Audio Player Launched for 728482381215826000
+2021-10-13 06:14:30,095 | exts.music | DEBUG | VoiceState created for 773426467492069386
+2021-10-13 06:14:30,097 | exts.music | INFO | Audio Player Launched for 773426467492069386
+2021-10-13 06:14:32,765 | exts.music | DEBUG | 773426467492069386: Searching https://www.youtube.com/watch?v=5abamRO41fE
+2021-10-13 06:14:34,305 | exts.music | DEBUG | Enqueued
+2021-10-13 06:20:44,002 | bot | DEBUG | exts.kus successfully fecthed kus data, enabled system.
+2021-10-13 07:03:24,395 | bot | INFO | Resumed Connection
+2021-10-13 07:03:24,595 | bot | DEBUG | changed bot status
+2021-10-13 08:59:46,931 | bot | INFO | Resumed Connection
+2021-10-13 08:59:47,098 | bot | DEBUG | changed bot status
+2021-10-13 10:15:38,682 | bot | INFO | Resumed Connection
+2021-10-13 10:15:38,783 | bot | DEBUG | changed bot status
+2021-10-13 10:20:43,595 | bot | DEBUG | exts.kus Unable to fetch kus data, disabled system.
+2021-10-13 10:20:43,746 | exts.kus | DEBUG | trying to update news but is not enable, passing...
+2021-10-13 11:49:03,842 | bot | INFO | Resumed Connection
+2021-10-13 11:49:03,895 | bot | DEBUG | changed bot status
+2021-10-13 11:56:58,577 | bot | INFO | Resumed Connection
+2021-10-13 11:56:58,647 | bot | DEBUG | changed bot status
+2021-10-13 12:50:10,238 | exts.music | DEBUG | VoiceState created for 780423376149676032
+2021-10-13 12:50:10,239 | exts.music | INFO | Audio Player Launched for 780423376149676032
+2021-10-13 12:50:12,160 | exts.music | DEBUG | 780423376149676032: Searching https://open.spotify.com/playlist/3nfjXkUycw16tCEm1patHO?si=sYRHmCNkSiuBRELtJnfD3A&dl_branch=1
+2021-10-13 12:50:12,262 | spotipy.oauth2 | DEBUG | sending POST request to https://accounts.spotify.com/api/token with Headers: {'Authorization': 'Basic MjA0MjQ3ODljNDBhNDM2Mzk1NTQ2Nzg1ZDc5ZGRmNTk6NzE0ZTE0NjE2MzZmNGRjMWI4ODE1MDI4MjljM2Q4YTQ='} and Body: {'grant_type': 'client_credentials'}
+2021-10-13 12:50:12,735 | exts.music | DEBUG | Enqueued
+2021-10-13 12:59:22,777 | exts.music | DEBUG | 780423376149676032: Searching https://open.spotify.com/playlist/646asmArKdM5ywfvImQTAi?si=4QCK8PyTTpClp81PCqsCOg&dl_branch=1
+2021-10-13 12:59:23,125 | exts.music | DEBUG | Enqueued
+2021-10-13 13:14:37,396 | exts.music | WARNING | Traceback (most recent call last):
+  File "/opt/virtualenvs/python3/lib/python3.8/site-packages/youtube_dl/YoutubeDL.py", line 815, in wrapper
+    return func(self, *args, **kwargs)
+  File "/opt/virtualenvs/python3/lib/python3.8/site-packages/youtube_dl/YoutubeDL.py", line 836, in __extract_info
+    ie_result = ie.extract(url)
+  File "/opt/virtualenvs/python3/lib/python3.8/site-packages/youtube_dl/extractor/common.py", line 534, in extract
+    ie_result = self._real_extract(url)
+  File "/opt/virtualenvs/python3/lib/python3.8/site-packages/youtube_dl/extractor/youtube.py", line 1715, in _real_extract
+    self._sort_formats(formats)
+  File "/opt/virtualenvs/python3/lib/python3.8/site-packages/youtube_dl/extractor/common.py", line 1374, in _sort_formats
+    raise ExtractorError('No video formats found')
+youtube_dl.utils.ExtractorError: No video formats found
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/home/runner/TpLearn/exts/music.py", line 199, in audio_player_task
+    source = await YTDLSource.create_source(self.current.ctx, self.current.url, loop=self.bot.loop)
+  File "/home/runner/TpLearn/utils/audio.py", line 91, in create_source
+    processed_info = await loop.run_in_executor(None, partial)
+  File "/usr/lib/python3.8/concurrent/futures/thread.py", line 57, in run
+    result = self.fn(*self.args, **self.kwargs)
+  File "/opt/virtualenvs/python3/lib/python3.8/site-packages/youtube_dl/YoutubeDL.py", line 808, in extract_info
+    return self.__extract_info(url, ie, download, extra_info, process)
+  File "/opt/virtualenvs/python3/lib/python3.8/site-packages/youtube_dl/YoutubeDL.py", line 815, in wrapper
+    return func(self, *args, **kwargs)
+  File "/opt/virtualenvs/python3/lib/python3.8/site-packages/youtube_dl/YoutubeDL.py", line 847, in __extract_info
+    return self.process_ie_result(ie_result, download, extra_info)
+  File "/opt/virtualenvs/python3/lib/python3.8/site-packages/youtube_dl/YoutubeDL.py", line 885, in process_ie_result
+    return self.extract_info(ie_result['url'],
+  File "/opt/virtualenvs/python3/lib/python3.8/site-packages/youtube_dl/YoutubeDL.py", line 808, in extract_info
+    return self.__extract_info(url, ie, download, extra_info, process)
+  File "/opt/virtualenvs/python3/lib/python3.8/site-packages/youtube_dl/YoutubeDL.py", line 815, in wrapper
+    return func(self, *args, **kwargs)
+  File "/opt/virtualenvs/python3/lib/python3.8/site-packages/youtube_dl/YoutubeDL.py", line 847, in __extract_info
+    return self.process_ie_result(ie_result, download, extra_info)
+  File "/opt/virtualenvs/python3/lib/python3.8/site-packages/youtube_dl/YoutubeDL.py", line 933, in process_ie_result
+    return self.__process_playlist(ie_result, download)
+  File "/opt/virtualenvs/python3/lib/python3.8/site-packages/youtube_dl/YoutubeDL.py", line 1067, in __process_playlist
+    entry_result = self.__process_iterable_entry(entry, download, extra)
+  File "/opt/virtualenvs/python3/lib/python3.8/site-packages/youtube_dl/YoutubeDL.py", line 815, in wrapper
+    return func(self, *args, **kwargs)
+  File "/opt/virtualenvs/python3/lib/python3.8/site-packages/youtube_dl/YoutubeDL.py", line 1076, in __process_iterable_entry
+    return self.process_ie_result(
+  File "/opt/virtualenvs/python3/lib/python3.8/site-packages/youtube_dl/YoutubeDL.py", line 885, in process_ie_result
+    return self.extract_info(ie_result['url'],
+  File "/opt/virtualenvs/python3/lib/python3.8/site-packages/youtube_dl/YoutubeDL.py", line 808, in extract_info
+    return self.__extract_info(url, ie, download, extra_info, process)
+  File "/opt/virtualenvs/python3/lib/python3.8/site-packages/youtube_dl/YoutubeDL.py", line 824, in wrapper
+    self.report_error(compat_str(e), e.format_traceback())
+  File "/opt/virtualenvs/python3/lib/python3.8/site-packages/youtube_dl/YoutubeDL.py", line 628, in report_error
+    self.trouble(error_message, tb)
+  File "/opt/virtualenvs/python3/lib/python3.8/site-packages/youtube_dl/YoutubeDL.py", line 598, in trouble
+    raise DownloadError(message, exc_info)
+youtube_dl.utils.DownloadError: [0;31mERROR:[0m No video formats found
+
+2021-10-13 13:14:38,620 | exts.music | WARNING | Traceback (most recent call last):
+  File "/opt/virtualenvs/python3/lib/python3.8/site-packages/youtube_dl/YoutubeDL.py", line 815, in wrapper
+    return func(self, *args, **kwargs)
+  File "/opt/virtualenvs/python3/lib/python3.8/site-packages/youtube_dl/YoutubeDL.py", line 836, in __extract_info
+    ie_result = ie.extract(url)
+  File "/opt/virtualenvs/python3/lib/python3.8/site-packages/youtube_dl/extractor/common.py", line 534, in extract
+    ie_result = self._real_extract(url)
+  File "/opt/virtualenvs/python3/lib/python3.8/site-packages/youtube_dl/extractor/youtube.py", line 1715, in _real_extract
+    self._sort_formats(formats)
+  File "/opt/virtualenvs/python3/lib/python3.8/site-packages/youtube_dl/extractor/common.py", line 1374, in _sort_formats
+    raise ExtractorError('No video formats found')
+youtube_dl.utils.ExtractorError: No video formats found
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/home/runner/TpLearn/exts/music.py", line 199, in audio_player_task
+    source = await YTDLSource.create_source(self.current.ctx, self.current.url, loop=self.bot.loop)
+  File "/home/runner/TpLearn/utils/audio.py", line 91, in create_source
+    processed_info = await loop.run_in_executor(None, partial)
+  File "/usr/lib/python3.8/concurrent/futures/thread.py", line 57, in run
+    result = self.fn(*self.args, **self.kwargs)
+  File "/opt/virtualenvs/python3/lib/python3.8/site-packages/youtube_dl/YoutubeDL.py", line 808, in extract_info
+    return self.__extract_info(url, ie, download, extra_info, process)
+  File "/opt/virtualenvs/python3/lib/python3.8/site-packages/youtube_dl/YoutubeDL.py", line 815, in wrapper
+    return func(self, *args, **kwargs)
+  File "/opt/virtualenvs/python3/lib/python3.8/site-packages/youtube_dl/YoutubeDL.py", line 847, in __extract_info
+    return self.process_ie_result(ie_result, download, extra_info)
+  File "/opt/virtualenvs/python3/lib/python3.8/site-packages/youtube_dl/YoutubeDL.py", line 885, in process_ie_result
+    return self.extract_info(ie_result['url'],
+  File "/opt/virtualenvs/python3/lib/python3.8/site-packages/youtube_dl/YoutubeDL.py", line 808, in extract_info
+    return self.__extract_info(url, ie, download, extra_info, process)
+  File "/opt/virtualenvs/python3/lib/python3.8/site-packages/youtube_dl/YoutubeDL.py", line 815, in wrapper
+    return func(self, *args, **kwargs)
+  File "/opt/virtualenvs/python3/lib/python3.8/site-packages/youtube_dl/YoutubeDL.py", line 847, in __extract_info
+    return self.process_ie_result(ie_result, download, extra_info)
+  File "/opt/virtualenvs/python3/lib/python3.8/site-packages/youtube_dl/YoutubeDL.py", line 933, in process_ie_result
+    return self.__process_playlist(ie_result, download)
+  File "/opt/virtualenvs/python3/lib/python3.8/site-packages/youtube_dl/YoutubeDL.py", line 1067, in __process_playlist
+    entry_result = self.__process_iterable_entry(entry, download, extra)
+  File "/opt/virtualenvs/python3/lib/python3.8/site-packages/youtube_dl/YoutubeDL.py", line 815, in wrapper
+    return func(self, *args, **kwargs)
+  File "/opt/virtualenvs/python3/lib/python3.8/site-packages/youtube_dl/YoutubeDL.py", line 1076, in __process_iterable_entry
+    return self.process_ie_result(
+  File "/opt/virtualenvs/python3/lib/python3.8/site-packages/youtube_dl/YoutubeDL.py", line 885, in process_ie_result
+    return self.extract_info(ie_result['url'],
+  File "/opt/virtualenvs/python3/lib/python3.8/site-packages/youtube_dl/YoutubeDL.py", line 808, in extract_info
+    return self.__extract_info(url, ie, download, extra_info, process)
+  File "/opt/virtualenvs/python3/lib/python3.8/site-packages/youtube_dl/YoutubeDL.py", line 824, in wrapper
+    self.report_error(compat_str(e), e.format_traceback())
+  File "/opt/virtualenvs/python3/lib/python3.8/site-packages/youtube_dl/YoutubeDL.py", line 628, in report_error
+    self.trouble(error_message, tb)
+  File "/opt/virtualenvs/python3/lib/python3.8/site-packages/youtube_dl/YoutubeDL.py", line 598, in trouble
+    raise DownloadError(message, exc_info)
+youtube_dl.utils.DownloadError: [0;31mERROR:[0m No video formats found
+
+2021-10-13 13:14:40,059 | exts.music | WARNING | Traceback (most recent call last):
+  File "/opt/virtualenvs/python3/lib/python3.8/site-packages/youtube_dl/YoutubeDL.py", line 815, in wrapper
+    return func(self, *args, **kwargs)
+  File "/opt/virtualenvs/python3/lib/python3.8/site-packages/youtube_dl/YoutubeDL.py", line 836, in __extract_info
+    ie_result = ie.extract(url)
+  File "/opt/virtualenvs/python3/lib/python3.8/site-packages/youtube_dl/extractor/common.py", line 534, in extract
+    ie_result = self._real_extract(url)
+  File "/opt/virtualenvs/python3/lib/python3.8/site-packages/youtube_dl/extractor/youtube.py", line 1715, in _real_extract
+    self._sort_formats(formats)
+  File "/opt/virtualenvs/python3/lib/python3.8/site-packages/youtube_dl/extractor/common.py", line 1374, in _sort_formats
+    raise ExtractorError('No video formats found')
+youtube_dl.utils.ExtractorError: No video formats found
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/home/runner/TpLearn/exts/music.py", line 199, in audio_player_task
+    source = await YTDLSource.create_source(self.current.ctx, self.current.url, loop=self.bot.loop)
+  File "/home/runner/TpLearn/utils/audio.py", line 91, in create_source
+    processed_info = await loop.run_in_executor(None, partial)
+  File "/usr/lib/python3.8/concurrent/futures/thread.py", line 57, in run
+    result = self.fn(*self.args, **self.kwargs)
+  File "/opt/virtualenvs/python3/lib/python3.8/site-packages/youtube_dl/YoutubeDL.py", line 808, in extract_info
+    return self.__extract_info(url, ie, download, extra_info, process)
+  File "/opt/virtualenvs/python3/lib/python3.8/site-packages/youtube_dl/YoutubeDL.py", line 815, in wrapper
+    return func(self, *args, **kwargs)
+  File "/opt/virtualenvs/python3/lib/python3.8/site-packages/youtube_dl/YoutubeDL.py", line 847, in __extract_info
+    return self.process_ie_result(ie_result, download, extra_info)
+  File "/opt/virtualenvs/python3/lib/python3.8/site-packages/youtube_dl/YoutubeDL.py", line 885, in process_ie_result
+    return self.extract_info(ie_result['url'],
+  File "/opt/virtualenvs/python3/lib/python3.8/site-packages/youtube_dl/YoutubeDL.py", line 808, in extract_info
+    return self.__extract_info(url, ie, download, extra_info, process)
+  File "/opt/virtualenvs/python3/lib/python3.8/site-packages/youtube_dl/YoutubeDL.py", line 815, in wrapper
+    return func(self, *args, **kwargs)
+  File "/opt/virtualenvs/python3/lib/python3.8/site-packages/youtube_dl/YoutubeDL.py", line 847, in __extract_info
+    return self.process_ie_result(ie_result, download, extra_info)
+  File "/opt/virtualenvs/python3/lib/python3.8/site-packages/youtube_dl/YoutubeDL.py", line 933, in process_ie_result
+    return self.__process_playlist(ie_result, download)
+  File "/opt/virtualenvs/python3/lib/python3.8/site-packages/youtube_dl/YoutubeDL.py", line 1067, in __process_playlist
+    entry_result = self.__process_iterable_entry(entry, download, extra)
+  File "/opt/virtualenvs/python3/lib/python3.8/site-packages/youtube_dl/YoutubeDL.py", line 815, in wrapper
+    return func(self, *args, **kwargs)
+  File "/opt/virtualenvs/python3/lib/python3.8/site-packages/youtube_dl/YoutubeDL.py", line 1076, in __process_iterable_entry
+    return self.process_ie_result(
+  File "/opt/virtualenvs/python3/lib/python3.8/site-packages/youtube_dl/YoutubeDL.py", line 885, in process_ie_result
+    return self.extract_info(ie_result['url'],
+  File "/opt/virtualenvs/python3/lib/python3.8/site-packages/youtube_dl/YoutubeDL.py", line 808, in extract_info
+    return self.__extract_info(url, ie, download, extra_info, process)
+  File "/opt/virtualenvs/python3/lib/python3.8/site-packages/youtube_dl/YoutubeDL.py", line 824, in wrapper
+    self.report_error(compat_str(e), e.format_traceback())
+  File "/opt/virtualenvs/python3/lib/python3.8/site-packages/youtube_dl/YoutubeDL.py", line 628, in report_error
+    self.trouble(error_message, tb)
+  File "/opt/virtualenvs/python3/lib/python3.8/site-packages/youtube_dl/YoutubeDL.py", line 598, in trouble
+    raise DownloadError(message, exc_info)
+youtube_dl.utils.DownloadError: [0;31mERROR:[0m No video formats found
+
+2021-10-13 13:14:41,394 | exts.music | WARNING | Traceback (most recent call last):
+  File "/opt/virtualenvs/python3/lib/python3.8/site-packages/youtube_dl/YoutubeDL.py", line 815, in wrapper
+    return func(self, *args, **kwargs)
+  File "/opt/virtualenvs/python3/lib/python3.8/site-packages/youtube_dl/YoutubeDL.py", line 836, in __extract_info
+    ie_result = ie.extract(url)
+  File "/opt/virtualenvs/python3/lib/python3.8/site-packages/youtube_dl/extractor/common.py", line 534, in extract
+    ie_result = self._real_extract(url)
+  File "/opt/virtualenvs/python3/lib/python3.8/site-packages/youtube_dl/extractor/youtube.py", line 1715, in _real_extract
+    self._sort_formats(formats)
+  File "/opt/virtualenvs/python3/lib/python3.8/site-packages/youtube_dl/extractor/common.py", line 1374, in _sort_formats
+    raise ExtractorError('No video formats found')
+youtube_dl.utils.ExtractorError: No video formats found
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/home/runner/TpLearn/exts/music.py", line 199, in audio_player_task
+    source = await YTDLSource.create_source(self.current.ctx, self.current.url, loop=self.bot.loop)
+  File "/home/runner/TpLearn/utils/audio.py", line 91, in create_source
+    processed_info = await loop.run_in_executor(None, partial)
+  File "/usr/lib/python3.8/concurrent/futures/thread.py", line 57, in run
+    result = self.fn(*self.args, **self.kwargs)
+  File "/opt/virtualenvs/python3/lib/python3.8/site-packages/youtube_dl/YoutubeDL.py", line 808, in extract_info
+    return self.__extract_info(url, ie, download, extra_info, process)
+  File "/opt/virtualenvs/python3/lib/python3.8/site-packages/youtube_dl/YoutubeDL.py", line 815, in wrapper
+    return func(self, *args, **kwargs)
+  File "/opt/virtualenvs/python3/lib/python3.8/site-packages/youtube_dl/YoutubeDL.py", line 847, in __extract_info
+    return self.process_ie_result(ie_result, download, extra_info)
+  File "/opt/virtualenvs/python3/lib/python3.8/site-packages/youtube_dl/YoutubeDL.py", line 885, in process_ie_result
+    return self.extract_info(ie_result['url'],
+  File "/opt/virtualenvs/python3/lib/python3.8/site-packages/youtube_dl/YoutubeDL.py", line 808, in extract_info
+    return self.__extract_info(url, ie, download, extra_info, process)
+  File "/opt/virtualenvs/python3/lib/python3.8/site-packages/youtube_dl/YoutubeDL.py", line 815, in wrapper
+    return func(self, *args, **kwargs)
+  File "/opt/virtualenvs/python3/lib/python3.8/site-packages/youtube_dl/YoutubeDL.py", line 847, in __extract_info
+    return self.process_ie_result(ie_result, download, extra_info)
+  File "/opt/virtualenvs/python3/lib/python3.8/site-packages/youtube_dl/YoutubeDL.py", line 933, in process_ie_result
+    return self.__process_playlist(ie_result, download)
+  File "/opt/virtualenvs/python3/lib/python3.8/site-packages/youtube_dl/YoutubeDL.py", line 1067, in __process_playlist
+    entry_result = self.__process_iterable_entry(entry, download, extra)
+  File "/opt/virtualenvs/python3/lib/python3.8/site-packages/youtube_dl/YoutubeDL.py", line 815, in wrapper
+    return func(self, *args, **kwargs)
+  File "/opt/virtualenvs/python3/lib/python3.8/site-packages/youtube_dl/YoutubeDL.py", line 1076, in __process_iterable_entry
+    return self.process_ie_result(
+  File "/opt/virtualenvs/python3/lib/python3.8/site-packages/youtube_dl/YoutubeDL.py", line 885, in process_ie_result
+    return self.extract_info(ie_result['url'],
+  File "/opt/virtualenvs/python3/lib/python3.8/site-packages/youtube_dl/YoutubeDL.py", line 808, in extract_info
+    return self.__extract_info(url, ie, download, extra_info, process)
+  File "/opt/virtualenvs/python3/lib/python3.8/site-packages/youtube_dl/YoutubeDL.py", line 824, in wrapper
+    self.report_error(compat_str(e), e.format_traceback())
+  File "/opt/virtualenvs/python3/lib/python3.8/site-packages/youtube_dl/YoutubeDL.py", line 628, in report_error
+    self.trouble(error_message, tb)
+  File "/opt/virtualenvs/python3/lib/python3.8/site-packages/youtube_dl/YoutubeDL.py", line 598, in trouble
+    raise DownloadError(message, exc_info)
+youtube_dl.utils.DownloadError: [0;31mERROR:[0m No video formats found
+
+2021-10-13 13:17:49,416 | exts.music | WARNING | Traceback (most recent call last):
+  File "/opt/virtualenvs/python3/lib/python3.8/site-packages/youtube_dl/YoutubeDL.py", line 815, in wrapper
+    return func(self, *args, **kwargs)
+  File "/opt/virtualenvs/python3/lib/python3.8/site-packages/youtube_dl/YoutubeDL.py", line 836, in __extract_info
+    ie_result = ie.extract(url)
+  File "/opt/virtualenvs/python3/lib/python3.8/site-packages/youtube_dl/extractor/common.py", line 534, in extract
+    ie_result = self._real_extract(url)
+  File "/opt/virtualenvs/python3/lib/python3.8/site-packages/youtube_dl/extractor/youtube.py", line 1715, in _real_extract
+    self._sort_formats(formats)
+  File "/opt/virtualenvs/python3/lib/python3.8/site-packages/youtube_dl/extractor/common.py", line 1374, in _sort_formats
+    raise ExtractorError('No video formats found')
+youtube_dl.utils.ExtractorError: No video formats found
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/home/runner/TpLearn/exts/music.py", line 199, in audio_player_task
+    source = await YTDLSource.create_source(self.current.ctx, self.current.url, loop=self.bot.loop)
+  File "/home/runner/TpLearn/utils/audio.py", line 91, in create_source
+    processed_info = await loop.run_in_executor(None, partial)
+  File "/usr/lib/python3.8/concurrent/futures/thread.py", line 57, in run
+    result = self.fn(*self.args, **self.kwargs)
+  File "/opt/virtualenvs/python3/lib/python3.8/site-packages/youtube_dl/YoutubeDL.py", line 808, in extract_info
+    return self.__extract_info(url, ie, download, extra_info, process)
+  File "/opt/virtualenvs/python3/lib/python3.8/site-packages/youtube_dl/YoutubeDL.py", line 815, in wrapper
+    return func(self, *args, **kwargs)
+  File "/opt/virtualenvs/python3/lib/python3.8/site-packages/youtube_dl/YoutubeDL.py", line 847, in __extract_info
+    return self.process_ie_result(ie_result, download, extra_info)
+  File "/opt/virtualenvs/python3/lib/python3.8/site-packages/youtube_dl/YoutubeDL.py", line 885, in process_ie_result
+    return self.extract_info(ie_result['url'],
+  File "/opt/virtualenvs/python3/lib/python3.8/site-packages/youtube_dl/YoutubeDL.py", line 808, in extract_info
+    return self.__extract_info(url, ie, download, extra_info, process)
+  File "/opt/virtualenvs/python3/lib/python3.8/site-packages/youtube_dl/YoutubeDL.py", line 815, in wrapper
+    return func(self, *args, **kwargs)
+  File "/opt/virtualenvs/python3/lib/python3.8/site-packages/youtube_dl/YoutubeDL.py", line 847, in __extract_info
+    return self.process_ie_result(ie_result, download, extra_info)
+  File "/opt/virtualenvs/python3/lib/python3.8/site-packages/youtube_dl/YoutubeDL.py", line 933, in process_ie_result
+    return self.__process_playlist(ie_result, download)
+  File "/opt/virtualenvs/python3/lib/python3.8/site-packages/youtube_dl/YoutubeDL.py", line 1067, in __process_playlist
+    entry_result = self.__process_iterable_entry(entry, download, extra)
+  File "/opt/virtualenvs/python3/lib/python3.8/site-packages/youtube_dl/YoutubeDL.py", line 815, in wrapper
+    return func(self, *args, **kwargs)
+  File "/opt/virtualenvs/python3/lib/python3.8/site-packages/youtube_dl/YoutubeDL.py", line 1076, in __process_iterable_entry
+    return self.process_ie_result(
+  File "/opt/virtualenvs/python3/lib/python3.8/site-packages/youtube_dl/YoutubeDL.py", line 885, in process_ie_result
+    return self.extract_info(ie_result['url'],
+  File "/opt/virtualenvs/python3/lib/python3.8/site-packages/youtube_dl/YoutubeDL.py", line 808, in extract_info
+    return self.__extract_info(url, ie, download, extra_info, process)
+  File "/opt/virtualenvs/python3/lib/python3.8/site-packages/youtube_dl/YoutubeDL.py", line 824, in wrapper
+    self.report_error(compat_str(e), e.format_traceback())
+  File "/opt/virtualenvs/python3/lib/python3.8/site-packages/youtube_dl/YoutubeDL.py", line 628, in report_error
+    self.trouble(error_message, tb)
+  File "/opt/virtualenvs/python3/lib/python3.8/site-packages/youtube_dl/YoutubeDL.py", line 598, in trouble
+    raise DownloadError(message, exc_info)
+youtube_dl.utils.DownloadError: [0;31mERROR:[0m No video formats found
+
+2021-10-13 13:22:00,689 | exts.music | WARNING | Traceback (most recent call last):
+  File "/opt/virtualenvs/python3/lib/python3.8/site-packages/youtube_dl/YoutubeDL.py", line 815, in wrapper
+    return func(self, *args, **kwargs)
+  File "/opt/virtualenvs/python3/lib/python3.8/site-packages/youtube_dl/YoutubeDL.py", line 836, in __extract_info
+    ie_result = ie.extract(url)
+  File "/opt/virtualenvs/python3/lib/python3.8/site-packages/youtube_dl/extractor/common.py", line 534, in extract
+    ie_result = self._real_extract(url)
+  File "/opt/virtualenvs/python3/lib/python3.8/site-packages/youtube_dl/extractor/youtube.py", line 1715, in _real_extract
+    self._sort_formats(formats)
+  File "/opt/virtualenvs/python3/lib/python3.8/site-packages/youtube_dl/extractor/common.py", line 1374, in _sort_formats
+    raise ExtractorError('No video formats found')
+youtube_dl.utils.ExtractorError: No video formats found
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/home/runner/TpLearn/exts/music.py", line 199, in audio_player_task
+    source = await YTDLSource.create_source(self.current.ctx, self.current.url, loop=self.bot.loop)
+  File "/home/runner/TpLearn/utils/audio.py", line 91, in create_source
+    processed_info = await loop.run_in_executor(None, partial)
+  File "/usr/lib/python3.8/concurrent/futures/thread.py", line 57, in run
+    result = self.fn(*self.args, **self.kwargs)
+  File "/opt/virtualenvs/python3/lib/python3.8/site-packages/youtube_dl/YoutubeDL.py", line 808, in extract_info
+    return self.__extract_info(url, ie, download, extra_info, process)
+  File "/opt/virtualenvs/python3/lib/python3.8/site-packages/youtube_dl/YoutubeDL.py", line 815, in wrapper
+    return func(self, *args, **kwargs)
+  File "/opt/virtualenvs/python3/lib/python3.8/site-packages/youtube_dl/YoutubeDL.py", line 847, in __extract_info
+    return self.process_ie_result(ie_result, download, extra_info)
+  File "/opt/virtualenvs/python3/lib/python3.8/site-packages/youtube_dl/YoutubeDL.py", line 885, in process_ie_result
+    return self.extract_info(ie_result['url'],
+  File "/opt/virtualenvs/python3/lib/python3.8/site-packages/youtube_dl/YoutubeDL.py", line 808, in extract_info
+    return self.__extract_info(url, ie, download, extra_info, process)
+  File "/opt/virtualenvs/python3/lib/python3.8/site-packages/youtube_dl/YoutubeDL.py", line 815, in wrapper
+    return func(self, *args, **kwargs)
+  File "/opt/virtualenvs/python3/lib/python3.8/site-packages/youtube_dl/YoutubeDL.py", line 847, in __extract_info
+    return self.process_ie_result(ie_result, download, extra_info)
+  File "/opt/virtualenvs/python3/lib/python3.8/site-packages/youtube_dl/YoutubeDL.py", line 933, in process_ie_result
+    return self.__process_playlist(ie_result, download)
+  File "/opt/virtualenvs/python3/lib/python3.8/site-packages/youtube_dl/YoutubeDL.py", line 1067, in __process_playlist
+    entry_result = self.__process_iterable_entry(entry, download, extra)
+  File "/opt/virtualenvs/python3/lib/python3.8/site-packages/youtube_dl/YoutubeDL.py", line 815, in wrapper
+    return func(self, *args, **kwargs)
+  File "/opt/virtualenvs/python3/lib/python3.8/site-packages/youtube_dl/YoutubeDL.py", line 1076, in __process_iterable_entry
+    return self.process_ie_result(
+  File "/opt/virtualenvs/python3/lib/python3.8/site-packages/youtube_dl/YoutubeDL.py", line 885, in process_ie_result
+    return self.extract_info(ie_result['url'],
+  File "/opt/virtualenvs/python3/lib/python3.8/site-packages/youtube_dl/YoutubeDL.py", line 808, in extract_info
+    return self.__extract_info(url, ie, download, extra_info, process)
+  File "/opt/virtualenvs/python3/lib/python3.8/site-packages/youtube_dl/YoutubeDL.py", line 824, in wrapper
+    self.report_error(compat_str(e), e.format_traceback())
+  File "/opt/virtualenvs/python3/lib/python3.8/site-packages/youtube_dl/YoutubeDL.py", line 628, in report_error
+    self.trouble(error_message, tb)
+  File "/opt/virtualenvs/python3/lib/python3.8/site-packages/youtube_dl/YoutubeDL.py", line 598, in trouble
+    raise DownloadError(message, exc_info)
+youtube_dl.utils.DownloadError: [0;31mERROR:[0m No video formats found
+
+2021-10-13 13:31:04,421 | exts.music | WARNING | Traceback (most recent call last):
+  File "/opt/virtualenvs/python3/lib/python3.8/site-packages/youtube_dl/YoutubeDL.py", line 815, in wrapper
+    return func(self, *args, **kwargs)
+  File "/opt/virtualenvs/python3/lib/python3.8/site-packages/youtube_dl/YoutubeDL.py", line 836, in __extract_info
+    ie_result = ie.extract(url)
+  File "/opt/virtualenvs/python3/lib/python3.8/site-packages/youtube_dl/extractor/common.py", line 534, in extract
+    ie_result = self._real_extract(url)
+  File "/opt/virtualenvs/python3/lib/python3.8/site-packages/youtube_dl/extractor/youtube.py", line 1715, in _real_extract
+    self._sort_formats(formats)
+  File "/opt/virtualenvs/python3/lib/python3.8/site-packages/youtube_dl/extractor/common.py", line 1374, in _sort_formats
+    raise ExtractorError('No video formats found')
+youtube_dl.utils.ExtractorError: No video formats found
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/home/runner/TpLearn/exts/music.py", line 199, in audio_player_task
+    source = await YTDLSource.create_source(self.current.ctx, self.current.url, loop=self.bot.loop)
+  File "/home/runner/TpLearn/utils/audio.py", line 91, in create_source
+    processed_info = await loop.run_in_executor(None, partial)
+  File "/usr/lib/python3.8/concurrent/futures/thread.py", line 57, in run
+    result = self.fn(*self.args, **self.kwargs)
+  File "/opt/virtualenvs/python3/lib/python3.8/site-packages/youtube_dl/YoutubeDL.py", line 808, in extract_info
+    return self.__extract_info(url, ie, download, extra_info, process)
+  File "/opt/virtualenvs/python3/lib/python3.8/site-packages/youtube_dl/YoutubeDL.py", line 815, in wrapper
+    return func(self, *args, **kwargs)
+  File "/opt/virtualenvs/python3/lib/python3.8/site-packages/youtube_dl/YoutubeDL.py", line 847, in __extract_info
+    return self.process_ie_result(ie_result, download, extra_info)
+  File "/opt/virtualenvs/python3/lib/python3.8/site-packages/youtube_dl/YoutubeDL.py", line 885, in process_ie_result
+    return self.extract_info(ie_result['url'],
+  File "/opt/virtualenvs/python3/lib/python3.8/site-packages/youtube_dl/YoutubeDL.py", line 808, in extract_info
+    return self.__extract_info(url, ie, download, extra_info, process)
+  File "/opt/virtualenvs/python3/lib/python3.8/site-packages/youtube_dl/YoutubeDL.py", line 815, in wrapper
+    return func(self, *args, **kwargs)
+  File "/opt/virtualenvs/python3/lib/python3.8/site-packages/youtube_dl/YoutubeDL.py", line 847, in __extract_info
+    return self.process_ie_result(ie_result, download, extra_info)
+  File "/opt/virtualenvs/python3/lib/python3.8/site-packages/youtube_dl/YoutubeDL.py", line 933, in process_ie_result
+    return self.__process_playlist(ie_result, download)
+  File "/opt/virtualenvs/python3/lib/python3.8/site-packages/youtube_dl/YoutubeDL.py", line 1067, in __process_playlist
+    entry_result = self.__process_iterable_entry(entry, download, extra)
+  File "/opt/virtualenvs/python3/lib/python3.8/site-packages/youtube_dl/YoutubeDL.py", line 815, in wrapper
+    return func(self, *args, **kwargs)
+  File "/opt/virtualenvs/python3/lib/python3.8/site-packages/youtube_dl/YoutubeDL.py", line 1076, in __process_iterable_entry
+    return self.process_ie_result(
+  File "/opt/virtualenvs/python3/lib/python3.8/site-packages/youtube_dl/YoutubeDL.py", line 885, in process_ie_result
+    return self.extract_info(ie_result['url'],
+  File "/opt/virtualenvs/python3/lib/python3.8/site-packages/youtube_dl/YoutubeDL.py", line 808, in extract_info
+    return self.__extract_info(url, ie, download, extra_info, process)
+  File "/opt/virtualenvs/python3/lib/python3.8/site-packages/youtube_dl/YoutubeDL.py", line 824, in wrapper
+    self.report_error(compat_str(e), e.format_traceback())
+  File "/opt/virtualenvs/python3/lib/python3.8/site-packages/youtube_dl/YoutubeDL.py", line 628, in report_error
+    self.trouble(error_message, tb)
+  File "/opt/virtualenvs/python3/lib/python3.8/site-packages/youtube_dl/YoutubeDL.py", line 598, in trouble
+    raise DownloadError(message, exc_info)
+youtube_dl.utils.DownloadError: [0;31mERROR:[0m No video formats found
+
+2021-10-13 13:31:05,921 | exts.music | WARNING | Traceback (most recent call last):
+  File "/opt/virtualenvs/python3/lib/python3.8/site-packages/youtube_dl/YoutubeDL.py", line 815, in wrapper
+    return func(self, *args, **kwargs)
+  File "/opt/virtualenvs/python3/lib/python3.8/site-packages/youtube_dl/YoutubeDL.py", line 836, in __extract_info
+    ie_result = ie.extract(url)
+  File "/opt/virtualenvs/python3/lib/python3.8/site-packages/youtube_dl/extractor/common.py", line 534, in extract
+    ie_result = self._real_extract(url)
+  File "/opt/virtualenvs/python3/lib/python3.8/site-packages/youtube_dl/extractor/youtube.py", line 1715, in _real_extract
+    self._sort_formats(formats)
+  File "/opt/virtualenvs/python3/lib/python3.8/site-packages/youtube_dl/extractor/common.py", line 1374, in _sort_formats
+    raise ExtractorError('No video formats found')
+youtube_dl.utils.ExtractorError: No video formats found
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/home/runner/TpLearn/exts/music.py", line 199, in audio_player_task
+    source = await YTDLSource.create_source(self.current.ctx, self.current.url, loop=self.bot.loop)
+  File "/home/runner/TpLearn/utils/audio.py", line 91, in create_source
+    processed_info = await loop.run_in_executor(None, partial)
+  File "/usr/lib/python3.8/concurrent/futures/thread.py", line 57, in run
+    result = self.fn(*self.args, **self.kwargs)
+  File "/opt/virtualenvs/python3/lib/python3.8/site-packages/youtube_dl/YoutubeDL.py", line 808, in extract_info
+    return self.__extract_info(url, ie, download, extra_info, process)
+  File "/opt/virtualenvs/python3/lib/python3.8/site-packages/youtube_dl/YoutubeDL.py", line 815, in wrapper
+    return func(self, *args, **kwargs)
+  File "/opt/virtualenvs/python3/lib/python3.8/site-packages/youtube_dl/YoutubeDL.py", line 847, in __extract_info
+    return self.process_ie_result(ie_result, download, extra_info)
+  File "/opt/virtualenvs/python3/lib/python3.8/site-packages/youtube_dl/YoutubeDL.py", line 885, in process_ie_result
+    return self.extract_info(ie_result['url'],
+  File "/opt/virtualenvs/python3/lib/python3.8/site-packages/youtube_dl/YoutubeDL.py", line 808, in extract_info
+    return self.__extract_info(url, ie, download, extra_info, process)
+  File "/opt/virtualenvs/python3/lib/python3.8/site-packages/youtube_dl/YoutubeDL.py", line 815, in wrapper
+    return func(self, *args, **kwargs)
+  File "/opt/virtualenvs/python3/lib/python3.8/site-packages/youtube_dl/YoutubeDL.py", line 847, in __extract_info
+    return self.process_ie_result(ie_result, download, extra_info)
+  File "/opt/virtualenvs/python3/lib/python3.8/site-packages/youtube_dl/YoutubeDL.py", line 933, in process_ie_result
+    return self.__process_playlist(ie_result, download)
+  File "/opt/virtualenvs/python3/lib/python3.8/site-packages/youtube_dl/YoutubeDL.py", line 1067, in __process_playlist
+    entry_result = self.__process_iterable_entry(entry, download, extra)
+  File "/opt/virtualenvs/python3/lib/python3.8/site-packages/youtube_dl/YoutubeDL.py", line 815, in wrapper
+    return func(self, *args, **kwargs)
+  File "/opt/virtualenvs/python3/lib/python3.8/site-packages/youtube_dl/YoutubeDL.py", line 1076, in __process_iterable_entry
+    return self.process_ie_result(
+  File "/opt/virtualenvs/python3/lib/python3.8/site-packages/youtube_dl/YoutubeDL.py", line 885, in process_ie_result
+    return self.extract_info(ie_result['url'],
+  File "/opt/virtualenvs/python3/lib/python3.8/site-packages/youtube_dl/YoutubeDL.py", line 808, in extract_info
+    return self.__extract_info(url, ie, download, extra_info, process)
+  File "/opt/virtualenvs/python3/lib/python3.8/site-packages/youtube_dl/YoutubeDL.py", line 824, in wrapper
+    self.report_error(compat_str(e), e.format_traceback())
+  File "/opt/virtualenvs/python3/lib/python3.8/site-packages/youtube_dl/YoutubeDL.py", line 628, in report_error
+    self.trouble(error_message, tb)
+  File "/opt/virtualenvs/python3/lib/python3.8/site-packages/youtube_dl/YoutubeDL.py", line 598, in trouble
+    raise DownloadError(message, exc_info)
+youtube_dl.utils.DownloadError: [0;31mERROR:[0m No video formats found
+
+2021-10-13 13:50:10,846 | exts.music | INFO | 780423376149676032: User joined back, Stopping deletion
+2021-10-13 14:07:33,648 | exts.music | DEBUG | VoiceState created for 780423376149676032
+2021-10-13 14:07:33,649 | exts.music | INFO | Audio Player Launched for 780423376149676032
+2021-10-13 14:07:35,579 | exts.music | DEBUG | 780423376149676032: Searching driver license olivia rodrigo
+2021-10-13 14:07:39,380 | exts.music | DEBUG | Enqueued
+2021-10-13 14:20:43,514 | exts.kus | DEBUG | trying to update news but is not enable, passing...
+2021-10-13 14:37:53,496 | exts.music | DEBUG | VoiceState created for 780423376149676032
+2021-10-13 14:37:53,497 | exts.music | INFO | Audio Player Launched for 780423376149676032
+2021-10-13 14:37:55,460 | exts.music | DEBUG | 780423376149676032: Searching ยังโสด
+2021-10-13 14:37:56,920 | exts.music | DEBUG | Enqueued
+2021-10-13 14:39:03,260 | exts.music | DEBUG | VoiceState created for 773426467492069386
+2021-10-13 14:39:03,261 | exts.music | INFO | Audio Player Launched for 773426467492069386
+2021-10-13 14:39:05,213 | exts.music | DEBUG | 773426467492069386: Searching https://www.youtube.com/watch?v=gSfhy_Yvs9k&ab_channel=Lora
+2021-10-13 14:39:07,041 | exts.music | DEBUG | Enqueued
+2021-10-13 14:41:18,366 | exts.music | DEBUG | 780423376149676032: Searching แค่โสด
+2021-10-13 14:41:19,649 | exts.music | DEBUG | Enqueued
+2021-10-13 14:42:59,615 | exts.errorhand | TRACE | Command: leave; Already handled locally.
+2021-10-13 14:45:35,890 | exts.music | DEBUG | VoiceState created for 773426467492069386
+2021-10-13 14:45:35,891 | exts.music | INFO | Audio Player Launched for 773426467492069386
+2021-10-13 14:45:56,768 | exts.admin | DEBUG | Admin Eval from Tpmonkey#2682; code: self.bot.get_guild(780423376149676032)
+2021-10-13 14:50:35,894 | asyncio | ERROR | Task exception was never retrieved
+future: <Task finished name='Task-15683' coro=<VoiceState.stop() done, defined at /home/runner/TpLearn/exts/music.py:234> exception=KeyError(773426467492069386)>
+Traceback (most recent call last):
+  File "/home/runner/TpLearn/exts/music.py", line 245, in stop
+    try:
+KeyError: 773426467492069386
+2021-10-13 14:56:30,774 | exts.music | DEBUG | VoiceState created for 728482381215826000
+2021-10-13 14:56:30,774 | exts.music | INFO | Audio Player Launched for 728482381215826000
+2021-10-13 14:56:32,728 | exts.music | DEBUG | 728482381215826000: Searching gurenge
+2021-10-13 14:56:34,225 | exts.music | DEBUG | Enqueued
+2021-10-13 14:57:02,566 | exts.errorhand | TRACE | Command: leave; Already handled locally.
+2021-10-13 14:57:35,088 | exts.music | DEBUG | VoiceState created for 728482381215826000
+2021-10-13 14:57:35,089 | exts.music | INFO | Audio Player Launched for 728482381215826000
+2021-10-13 14:57:37,005 | exts.music | DEBUG | 728482381215826000: Searching gurenge
+2021-10-13 14:57:38,806 | exts.music | DEBUG | Enqueued
+2021-10-13 14:57:52,502 | bot | INFO | Cog loaded: Music
+2021-10-13 14:57:52,515 | asyncio | ERROR | Task exception was never retrieved
+future: <Task finished name='Task-16042' coro=<VoiceState.stop() done, defined at /home/runner/TpLearn/exts/music.py:234> exception=KeyError(728482381215826000)>
+Traceback (most recent call last):
+  File "/home/runner/TpLearn/exts/music.py", line 245, in stop
+    try:
+KeyError: 728482381215826000
+2021-10-13 14:57:55,120 | exts.music | DEBUG | VoiceState created for 728482381215826000
+2021-10-13 14:57:55,121 | exts.music | INFO | Audio Player Launched for 728482381215826000
+2021-10-13 14:57:57,075 | exts.music | DEBUG | 728482381215826000: Searching gurenge
+2021-10-13 14:57:58,571 | exts.music | DEBUG | Enqueued

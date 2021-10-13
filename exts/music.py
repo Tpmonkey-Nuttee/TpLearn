@@ -401,7 +401,7 @@ class Music(commands.Cog):
         if not ctx.voice_state.voice:
             try:
                 await ctx.voice_client.move_to(None)
-            except:
+            except Exception:
                 try:
                     for x in self.bot.voice_clients:
                         if(x.guild == ctx.guild):
@@ -410,7 +410,6 @@ class Music(commands.Cog):
                     return await ctx.send(':x: **Not connected to any voice channel.**')
 
         await ctx.voice_state.stop()
-        del self.voice_states[ctx.guild.id]
 
         await ctx.message.add_reaction("👋")
 
