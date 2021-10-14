@@ -92,6 +92,8 @@ class DayLoop(Cog):
             
             for key in data[guild_id]:
                 # Note: This will not directly delete old embed, but will let active-works delete it instead.
+                payload = data[guild_id][key]
+                payload["already-passed"] = True
                 embed = self.bot.get_embed(**data[guild_id][key])
 
                 if channel is None: 

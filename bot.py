@@ -291,7 +291,7 @@ class Bot(commands.AutoShardedBot):
         
         return None if strpped is None else (strpped - datetime.datetime.strptime(date2, "%Y-%m-%d")).days
     
-    def get_colour(self, date: str = "", gap: int = None) -> discord.Colour:
+    def get_colour(self, date: str = "", gap: int = None, passed: bool = False) -> discord.Colour:
         """
         Get Embed Colour base on Deathline of assignment.
 
@@ -305,6 +305,7 @@ class Bot(commands.AutoShardedBot):
         * dark_red - needs to send today.
         * default (black) - already passed.        
         """
+        if passed: return discord.Colour.default()
         if gap is None: gap = self.in_days(date)
 
         if gap is None: return discord.Colour.purple()
@@ -316,8 +317,10 @@ class Bot(commands.AutoShardedBot):
         elif gap == 0: return discord.Colour.dark_red()
         return discord.Colour.default()
     
-    def get_title(self, title: str, date: str) -> str:
+    def get_title(self, title: str, date: str, passed: bool = False) -> str:
         """ Get Embed Title. """
+        if passed: return title + " [ PASSED ]"
+
         in_day = self.in_days(date)
         if in_day is None: in_day = ""
         elif in_day == 0: in_day = " [❗❗ TODAY ❗❗]"
@@ -340,12 +343,12 @@ class Bot(commands.AutoShardedBot):
         * image-url: str - Image URL. Set it to 'Not Attached' to disable.
         """
         log.debug("creating assignment embed...")
-        title = self.get_title(kwargs.get('title'), kwargs.get('date'))
+        title = self.get_title(kwargs.get('title'), kwargs.get('date'), passed=kwargs.get("already_passed"))
         
         embed = discord.Embed( timestamp = datetime.datetime.now() )
         embed.set_author(name = title)
         embed.description = kwargs.get('key')
-        embed.colour = self.get_colour(kwargs.get('date'))    
+        embed.colour = self.get_colour(kwargs.get('date'), passed=kwargs.get("already_passed"))    
         
         embed.add_field(name = ":calendar_spiral: Date: ", value= kwargs.get('readable-date'), inline = False)
 
