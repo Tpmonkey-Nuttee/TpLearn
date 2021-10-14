@@ -1771,3 +1771,5 @@ foo(pass=True, **a)
 2021-10-14 05:25:33,963 | bot | DEBUG | changed bot status
 2021-10-14 05:26:30,046 | exts.music | INFO | 773426467492069386: User joined back, Stopping deletion
 2021-10-14 05:28:58,073 | exts.kus | DEBUG | trying to update news but is not enable, passing...
+2021-10-14 05:47:32,831 | exts.music | INFO | 773426467492069386: User joined back, Stopping deletion
+2021-10-14 05:47:58,601 | exts.music | INFO | 773426467492069386: User joined back, Stopping deletion

@@ -31,20 +31,23 @@ YOUTUBE_API_KEY = os.getenv("YOUTUBE_API_KEY")
 
 log = logging.getLogger(__name__)
 
+
+
 class Loop(enum.Enum):
     NONE = 0
     SINGLE = 1
     QUEUE = 2
 
+
 class VoiceError(Exception):
     pass
+
 
 class PlaylistSong:
     """
     A Singleton class for storing Playlist Song in case of a ton of songs is queued in a short peroid of time.
     """
     _loaded = {}
-    # __slots__ = ("url", "ctx", "song")
 
     def __new__(cls, url: str, ctx: commands.Context, title: str = None):
         if (a := cls._loaded.get(url)) is not None:
@@ -60,19 +63,19 @@ class PlaylistSong:
         self.url = url
         self.ctx = ctx
         self.title = title
-        self.song = None        
+        self.song = None
+         
 
 class Song:
     """Song class for storing the Source and Requester"""
     __slots__ = ('source', 'requester')
 
     def __init__(self, source: YTDLSource = None, url: str = None):
-
         self.source = source
         self.requester = source.requester
 
-
     def create_embed(self):
+        # Create embed containing detail of the song.
         embed = discord.Embed(
             title = "Now Playing",
             description = f"[**{self.source.title}**]({self.source.url})",
@@ -126,8 +129,7 @@ class VoiceState:
         self._volume = 0.5
         self.skip_votes = set()
 
-        self.audio_player = bot.loop.create_task(self.audio_player_task())
-        
+        self.audio_player = bot.loop.create_task(self.audio_player_task())        
 
     def __del__(self):
         self.audio_player.cancel()
@@ -176,6 +178,7 @@ class VoiceState:
 
                 song = None
                 if not isinstance(self.current, PlaylistSong):
+                    # if on loop, create new soure and store it temporary.
                     try:
                         source = await YTDLSource.create_source(self._ctx, self.current.source.url, loop=self.bot.loop)
                     except Exception as e:
@@ -191,9 +194,11 @@ class VoiceState:
                     # Loop queue simply work by putting the ended song at the end of the queue.
                     if song is not None:
                         await self.songs.put(song)
+                    # Get next song
                     self.current = await self.songs.get()
             
             if isinstance(self.current, PlaylistSong):
+                # If It's playlist song and is not loaded yet, load it.
                 if self.current.song is None:
                     try:
                         source = await YTDLSource.create_source(self.current.ctx, self.current.url, loop=self.bot.loop)
@@ -202,11 +207,15 @@ class VoiceState:
                         await self._ctx.send(f":x: **Unable to load:** {self.current.url}")
                         continue
                     self.current = Song(source)
+                
+                # Already loaded? play it.
                 else:
                     self.current = self.current.song
 
+            # super shuffle.
             if self.super_shuffle:
                 self.songs.shuffle()
+
             # Set the volume, that nobody cares and play it
             self.current.source.volume = self._volume
             self.voice.play(self.current.source, after=self.play_next_song)
@@ -357,6 +366,7 @@ class Music(commands.Cog):
     async def _settings(self, ctx: commands.Context, name: str = None, value: int = None):
         """Music Settings."""
 
+        # No input, display all settings
         if name is None:
             embed = discord.Embed(
                 title = "Music Settings",
@@ -373,6 +383,8 @@ class Music(commands.Cog):
                 )
 
             await ctx.send(embed=embed)
+        
+        # Set new settings
         elif name is not None and value is not None:
             try:
                 name = name.replace(" ", "_").lower()
@@ -380,6 +392,8 @@ class Music(commands.Cog):
             except ValueError:
                 return await ctx.send(":x: **Invalid Setting name or Value**")
             await ctx.send("Successfully save new settings!")
+
+        # Idk, are you drunk or what?
         else:
             await ctx.send(":x: **Value is a must have argument!**")
 
@@ -388,9 +402,8 @@ class Music(commands.Cog):
         """Joins a voice channel."""
 
         destination = ctx.author.voice.channel
-        if ctx.voice_state.voice:
-            await ctx.voice_state.voice.move_to(destination)
-            return
+        if ctx.voice_state.voice: # already connected to another channel.
+            return await ctx.voice_state.voice.move_to(destination)            
 
         ctx.voice_state.voice = await destination.connect()
 
@@ -399,18 +412,20 @@ class Music(commands.Cog):
         """Clears the queue and leaves the voice channel."""
 
         if not ctx.voice_state.voice:
+            # It's none, but maybe the bot just restarted.
+            # so try to leave first.
             try:
                 await ctx.voice_client.move_to(None)
             except Exception:
+                # can't leave? try loop thru all the voice clients that is connected and then disconnect.
                 try:
                     for x in self.bot.voice_clients:
                         if(x.guild == ctx.guild):
                             return await x.disconnect()
-                except:
+                except Exception: # Idk anymore
                     return await ctx.send(':x: **Not connected to any voice channel.**')
 
         await ctx.voice_state.stop()
-
         await ctx.message.add_reaction("👋")
 
     @commands.command(name='volume')
@@ -427,9 +442,9 @@ class Music(commands.Cog):
             return await ctx.send(':x: **Volume must be between `0` and `100`**')
 
         ctx.voice_state.volume = volume / 100
-        try:
+        try: # try to change the current song, but maybe it's PlaylistSong so it doesn' loaded yet.
             ctx.voice_state.current.source.volume = volume / 100
-        except:
+        except AttributeError:
             pass
 
         await ctx.send('**Volume of the player set to** {}%'.format(volume))
@@ -438,7 +453,7 @@ class Music(commands.Cog):
     async def _now(self, ctx: commands.Context):
         """Displays the currently playing song."""
 
-        if hasattr(ctx.voice_state.current, "create_embed"):
+        if hasattr(ctx.voice_state.current, "create_embed"): # it's being played.
             await ctx.send(embed=ctx.voice_state.current.create_embed())
         else:
             await ctx.send(":x: **Nothing being play at the moment!** ¯\_(ツ)_/¯")
@@ -447,7 +462,7 @@ class Music(commands.Cog):
     async def _pause(self, ctx: commands.Context):
         """Pauses the currently playing song."""
 
-        if ctx.voice_state.voice.is_playing(): # not ctx.voice_state.is_playing and
+        if ctx.voice_state.voice.is_playing(): # if it's playing, pause else just ignore.
             ctx.voice_state.voice.pause()
             await ctx.message.add_reaction('⏯')
 
@@ -457,7 +472,7 @@ class Music(commands.Cog):
         if ctx.voice_state.voice is None:
             return await ctx.send(":x: **Nothing is paused**")
 
-        if ctx.voice_state.voice.is_paused(): # not ctx.voice_state.is_playing and
+        if ctx.voice_state.voice.is_paused(): # if it's paused, resume else just ignore.
             ctx.voice_state.voice.resume()
             await ctx.message.add_reaction('⏯')
 
@@ -465,13 +480,12 @@ class Music(commands.Cog):
     async def _stop(self, ctx: commands.Context):
         """Stops playing song and clears the queue."""
 
+        # clear queue and set loop to none.
         ctx.voice_state.songs.clear()
         ctx.voice_state.loop = Loop.NONE
-        # ctx.voice_state.loader.queue.clear()
 
         if ctx.voice_state.is_playing:
             ctx.voice_state.voice.stop()
-            # ctx.voice_state.current = None
             await ctx.message.add_reaction('⏹')
     
     @commands.command(name='clearqueue', aliases=['clearq'])
@@ -481,6 +495,7 @@ class Music(commands.Cog):
         if len(ctx.voice_state.songs) < 1:
             return await ctx.send(":x: **Queue is empty!**")
 
+        # clear queue.
         ctx.voice_state.songs.clear()
         await ctx.message.add_reaction('✅')
 
@@ -494,21 +509,24 @@ class Music(commands.Cog):
             return await ctx.send(':x: **Not playing any music right now...**')
 
         voter = ctx.message.author
+
+        # check if the person who voted is the requester or the setting "vote skip" is turned off.
         if voter == ctx.voice_state.current.requester or not self.bot.msettings.get(ctx.guild.id, "vote_skip"):
             await ctx.message.add_reaction('⏭')
             ctx.voice_state.skip()
 
-        elif voter.id not in ctx.voice_state.skip_votes:
+        # normal vote skip.
+        elif voter.id not in ctx.voi.ce_state.skip_votes:
             ctx.voice_state.skip_votes.add(voter.id)
             total_votes = len(ctx.voice_state.skip_votes)
 
+            # need 50% of vc to agree not including bot.
             needed_votes = int(len([i for i in ctx.author.voice.channel.members if not i.bot]) * 0.5 // 1)
-            print(needed_votes)
 
-            if total_votes >= needed_votes:
+            if total_votes >= needed_votes: # reached 50%, skip it
                 await ctx.message.add_reaction('⏭')
                 ctx.voice_state.skip()
-            else:
+            else: # waiting for more people to skip
                 await ctx.send('Skip vote added, currently at **{}/{}**'.format(total_votes, needed_votes))
 
         else:
@@ -520,11 +538,15 @@ class Music(commands.Cog):
         if len(ctx.voice_state.songs) < 2:
             return await ctx.send(":x: **You need more song in queue to use this command!**")
         
+        # to work around the "asyncio.Queue" we need to dig deep into the actual code itself.
+        # from https://github.com/python/cpython/blob/main/Lib/asyncio/queues.py#L48
+        # I found out that the queue is based on `collections.deque()` so I access the attribute directly and use its method.
+        # from https://docs.python.org/3/library/collections.html#collections.deque
         ctx.voice_state.songs._queue.rotate(-(index-1))
+        # skip the current one
         ctx.voice_state.skip()
         
-        await ctx.message.add_reaction('✅')
-        
+        await ctx.message.add_reaction('✅')        
 
     @commands.command(name='queue', aliases=['q', 'list'])
     async def _queue(self, ctx: commands.Context, *, page: int = 1):
@@ -537,7 +559,7 @@ class Music(commands.Cog):
             return await ctx.send(':x: **Empty queue.**')
 
         items_per_page = 8
-        pages = max(1, math.ceil(len(ctx.voice_state.songs) / items_per_page))
+        pages = max(1, math.ceil(len(ctx.voice_state.songs) / items_per_page)) # use max to prevent 1/0 page
 
         if pages + 1 == page:
             # display queue even if there is only 1 song being play.
@@ -584,7 +606,7 @@ class Music(commands.Cog):
             .set_footer(text='Viewing page {}/{}'.format(page, pages))
         )
 
-        if ctx.voice_state.current is not None:
+        if ctx.voice_state.current is not None: # check if it's currently playing something.
             current = ctx.voice_state.current
             embed.add_field(name = "Current:", value = f"[{current.source.title}]({current.source.url})", inline=False)
         else:
@@ -601,7 +623,7 @@ class Music(commands.Cog):
         if len(ctx.voice_state.songs) == 0:
             return await ctx.send(':x: **Empty queue.**')
 
-        ctx.voice_state.songs.shuffle()
+        ctx.voice_state.songs.shuffle() # random.shuffle() moment :)
         await ctx.message.add_reaction('✅')
     
     @commands.command(name="sshuffle")
@@ -610,11 +632,11 @@ class Music(commands.Cog):
         if len(ctx.voice_state.songs) == 0:
             return await ctx.send(':x: **Not enough song to enable this!**')
 
+        # switch it, nothing more, nothing less.
         ctx.voice_state.super_shuffle = not ctx.voice_state.super_shuffle
         await ctx.send(
             f"✅ **Turn {'on' if ctx.voice_state.super_shuffle else 'off'} super shuffle!**"
         )
-
 
     @commands.command(name='removes')
     async def _remove(self, ctx: commands.Context, index: int):
@@ -622,7 +644,8 @@ class Music(commands.Cog):
 
         if len(ctx.voice_state.songs) == 0:
             return await ctx.send(':x: **Empty queue.**')
-
+        
+        # don't forget index starts with 0 not 1
         ctx.voice_state.songs.remove(index - 1)
         await ctx.message.add_reaction('✅')
 
@@ -633,12 +656,14 @@ class Music(commands.Cog):
         Invoke this command again to unloop the song.
         """
         
+        # using loop because when user used play command, bot needs time to load.
+        # so I will check every 0.5 for 5 times that it's loaded and ready to turn on loop.
         for i in range(5):
             if ctx.voice_state.current is None:
                 await asyncio.sleep(0.5)
                 continue         
             break
-        else:
+        else: # 2.5 sec passed, still nothing.
             return await ctx.send(':x: **Nothing being played at the moment.**')
 
         if ctx.voice_state.loop == Loop.NONE:
@@ -658,6 +683,8 @@ class Music(commands.Cog):
         Invoke this command again to unloop the queue.
         """
 
+        # again using loop because when user used play command, bot needs time to load.
+        # so I will check every 0.5 for 5 times that it's loaded and ready to turn on loop.
         for i in range(5):
             if ctx.voice_state.current is None:
                 await asyncio.sleep(0.5)
@@ -686,13 +713,16 @@ class Music(commands.Cog):
         """
 
         if not ctx.voice_state.voice:
+            # not connected? try to join first
             try:
                 await ctx.invoke(self._join)             
             except Exception:
+                # huh... maybe bot restarted and still connecting to somewhere...
+                # so try to leave first and rejoin.
                 await ctx.invoke(self._leave)
                 await ctx.invoke(self._join)  
         
-        if search is None:
+        if search is None: # resume
             return await ctx.invoke(self._resume)
 
         log.debug(f"{ctx.guild.id}: Searching {search}")
@@ -700,16 +730,17 @@ class Music(commands.Cog):
 
         # Youtube Playlist
         if "youtube.com/playlist?" in search or "&start_radio" in search: 
+            # actually get playlist id
             query = parse_qs(urlparse(search).query, keep_blank_values=True)
             playlist_id = query["list"][0]
 
             youtube = googleapiclient.discovery.build("youtube", "v3", developerKey = YOUTUBE_API_KEY)
 
-            try:
+            try: # some source of insanity...
                 request = youtube.playlistItems().list(
                     part = "snippet",
                     playlistId = playlist_id,
-                    maxResults = 25
+                    maxResults = 25 # 25 vid per request.
                 )
                 response = request.execute()
                 
@@ -719,32 +750,32 @@ class Music(commands.Cog):
 
                 playlist_items = []
                 current = 0
-                while request is not None:
+                while request is not None: # there're more vid to fetch? get it all!!!!
                     response = request.execute()
                     playlist_items += response["items"]
                     request = youtube.playlistItems().list_next(request, response)
 
                     current += 1
-                    if current >= maximum:
+                    if current >= maximum: # it's too much now... stop at 200 vid.
                         break
             except Exception:
-                return await ctx.send(":x: **PlayList not found or Therer is a problem with the bot!**")    
-        
-            sources = [f'https://www.youtube.com/watch?v={t["snippet"]["resourceId"]["videoId"]}&list={playlist_id}&t=0s' for t in playlist_items]
+                return await ctx.send(":x: **PlayList not found or There is a problem with the bot!**")    
+
+            # get title and the urls.
+            sources = [f'https://www.youtube.com/watch?v={t["snippet"]["resourceId"]["videoId"]}&list={playlist_id}' for t in playlist_items]
             titles = [t["snippet"]["title"] for t in playlist_items]
             amount = 0
 
             for s, t in zip(sources, titles):
                 pl = PlaylistSong(s, ctx, t)
                 await ctx.voice_state.songs.put(pl)
-                # await ctx.voice_state.loader.put(pl)
                 amount += 1
             
             await ctx.send("Enqueued {} songs.".format(amount))
         
         # Spotify Playlist
         elif "open.spotify.com/playlist/" in search:
-            try:
+            try: # somewhere in utils.audio
                 tracks = getTracks(search)
             except Exception:
                 log.warning(traceback.format_exc())
@@ -753,9 +784,7 @@ class Music(commands.Cog):
             amount = 0
             for s in tracks:                    
                 pl = PlaylistSong(s, ctx)
-
                 await ctx.voice_state.songs.put(pl)
-                # await ctx.voice_state.loader.put(pl)
 
                 amount += 1
             
@@ -763,7 +792,7 @@ class Music(commands.Cog):
         
         # Spotify Album
         elif "open.spotify.com/album/" in search:
-            try:
+            try: # somewhere in utils.audio
                 tracks = getAlbum(search)
             except Exception:
                 log.warning(traceback.format_exc())
@@ -772,9 +801,7 @@ class Music(commands.Cog):
             amount = 0
             for s in tracks:                    
                 pl = PlaylistSong(s, ctx)
-
                 await ctx.voice_state.songs.put(pl)
-                # await ctx.voice_state.loader.put(pl)
 
                 amount += 1
             
@@ -782,7 +809,7 @@ class Music(commands.Cog):
         
         # Anything else related to Spotify
         elif "open.spotify.com/" in search:
-            await ctx.send("Sorry, Only Spotify playlist is support at the moment!")
+            await ctx.send("Sorry, Only Spotify playlist & Album is support at the moment!")
 
         # Normal searching. 
         else:
@@ -791,15 +818,16 @@ class Music(commands.Cog):
             except YTDLError as e:
                 return await ctx.send('An error occurred while processing this request: {}'.format(str(e)))
             except DownloadError:
+                # maybe it's geo restricted, so retry again but this time put "lyric" behind.
                 await ctx.send(f":x: **Could not download that video, Retrying...**")
                 await ctx.trigger_typing() 
 
                 try:
                     source = await YTDLSource.create_source(ctx, search + " lyric", loop=self.bot.loop)
                 except (DownloadError, YTDLError):
+                    # Idk anymore...
                     return await ctx.send(":x: **Download fail, Please try using an url.**")
-                
-
+            
             song = Song(source)
 
             await ctx.voice_state.songs.put(song)
