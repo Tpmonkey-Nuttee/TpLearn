@@ -54,7 +54,7 @@ def setup() -> None:
     logging.getLogger("discord").setLevel(logging.WARNING)
     logging.getLogger("urllib3").setLevel(logging.WARNING)
     logging.getLogger("spotipy.client").setLevel(logging.WARNING)
-    
+    logging.getLogger("spotipy.oauth2").setLevel(logging.WARNING)    
     
 
 def _monkeypatch_trace(self: logging.Logger, msg: str, *args, **kwargs) -> None:

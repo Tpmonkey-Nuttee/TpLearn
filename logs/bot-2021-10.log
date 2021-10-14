@@ -1754,3 +1754,20 @@ foo(pass=True, **a)
 2021-10-14 01:29:00,081 | exts.kus | DEBUG | trying to update news but is not enable, passing...
 2021-10-14 01:29:00,621 | utils.planner | DEBUG | returning sorted date for 829749071891005512
 2021-10-14 01:29:00,724 | utils.planner | DEBUG | returning sorted date for 773426467492069386
+2021-10-14 02:11:45,511 | exts.music | DEBUG | VoiceState created for 773426467492069386
+2021-10-14 02:11:45,512 | exts.music | INFO | Audio Player Launched for 773426467492069386
+2021-10-14 02:11:47,463 | exts.music | DEBUG | 773426467492069386: Searching https://www.youtube.com/watch?v=7yh9i0PAjck&ab_channel=cosmicrat
+2021-10-14 02:11:50,759 | exts.music | DEBUG | Enqueued
+2021-10-14 02:53:44,215 | bot | INFO | Resumed Connection
+2021-10-14 02:53:44,319 | bot | DEBUG | changed bot status
+2021-10-14 05:22:05,556 | exts.music | DEBUG | VoiceState created for 773426467492069386
+2021-10-14 05:22:05,557 | exts.music | INFO | Audio Player Launched for 773426467492069386
+2021-10-14 05:22:07,489 | exts.music | DEBUG | 773426467492069386: Searching restart room 39
+2021-10-14 05:22:08,965 | exts.music | DEBUG | Enqueued
+2021-10-14 05:22:15,816 | exts.music | DEBUG | 773426467492069386: Searching https://open.spotify.com/playlist/7u7AZf0i6W9vK7o7PuotFy?si=9dab24f3ffad4c96
+2021-10-14 05:22:15,894 | spotipy.oauth2 | DEBUG | sending POST request to https://accounts.spotify.com/api/token with Headers: {'Authorization': 'Basic MjA0MjQ3ODljNDBhNDM2Mzk1NTQ2Nzg1ZDc5ZGRmNTk6NzE0ZTE0NjE2MzZmNGRjMWI4ODE1MDI4MjljM2Q4YTQ='} and Body: {'grant_type': 'client_credentials'}
+2021-10-14 05:22:16,529 | exts.music | DEBUG | Enqueued
+2021-10-14 05:25:33,906 | bot | INFO | Resumed Connection
+2021-10-14 05:25:33,963 | bot | DEBUG | changed bot status
+2021-10-14 05:26:30,046 | exts.music | INFO | 773426467492069386: User joined back, Stopping deletion
+2021-10-14 05:28:58,073 | exts.kus | DEBUG | trying to update news but is not enable, passing...
