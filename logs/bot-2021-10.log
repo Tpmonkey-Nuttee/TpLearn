@@ -3074,3 +3074,55 @@ AttributeError: can't set attribute
 2021-10-15 16:08:57,759 | exts.music | INFO | Audio Player Launched for 773426467492069386
 2021-10-15 16:09:09,023 | exts.music | DEBUG | 773426467492069386: Searching the day op
 2021-10-15 16:09:10,351 | exts.music | DEBUG | Enqueued
+2021-10-15 17:07:05,303 | asyncio | DEBUG | Using selector: EpollSelector
+2021-10-15 17:07:05,304 | bot | DEBUG | created bot base.
+2021-10-15 17:07:05,325 | constant | DEBUG | init database succesful
+2021-10-15 17:07:05,379 | utils.planner | DEBUG | triggered update
+2021-10-15 17:07:05,386 | bot | DEBUG | bot subclass Created.
+2021-10-15 17:07:05,389 | bot | INFO | Cog loaded: Assignments
+2021-10-15 17:07:05,391 | bot | INFO | Cog loaded: AdminCommands
+2021-10-15 17:07:05,393 | bot | INFO | Cog loaded: Help
+2021-10-15 17:07:05,394 | bot | INFO | Cog loaded: Latency
+2021-10-15 17:07:05,396 | bot | INFO | Cog loaded: Updater
+2021-10-15 17:07:05,854 | bot | INFO | Cog loaded: Music
+2021-10-15 17:07:05,855 | bot | INFO | Cog loaded: VoiceChannel
+2021-10-15 17:07:05,915 | bot | INFO | Cog loaded: KUSNews
+2021-10-15 17:07:05,916 | bot | INFO | Cog loaded: Debug
+2021-10-15 17:07:05,917 | bot | INFO | Cog loaded: NewPatch
+2021-10-15 17:07:05,918 | bot | INFO | Cog loaded: SetUp
+2021-10-15 17:07:05,919 | bot | INFO | Cog loaded: ErrorHandler
+2021-10-15 17:07:05,920 | bot | INFO | Cog loaded: DayLoop
+2021-10-15 17:07:05,922 | bot | INFO | Cog loaded: Utility
+2021-10-15 17:07:05,925 | bot | INFO | Cog loaded: Snekbox
+2021-10-15 17:07:05,969 | exts.kus | DEBUG | loaded data
+2021-10-15 17:07:06,947 | bot | DEBUG | exts.kus Unable to fetch kus data, disabled system.
+2021-10-15 17:07:08,656 | utils.planner | DEBUG | returning sorted date for 562976873685057546
+2021-10-15 17:07:08,665 | bot | INFO | Connected successfully
+2021-10-15 17:07:08,820 | bot | DEBUG | changed bot status
+2021-10-15 17:07:08,822 | bot | DEBUG | creating assignment embed...
+2021-10-15 17:07:08,823 | bot | DEBUG | successfully created assignment embed
+2021-10-15 17:07:08,975 | exts.kus | DEBUG | trying to update news but is not enable, passing...
+2021-10-15 17:07:09,915 | bot | DEBUG | exts.update :white_check_mark: Sucessfully update works at 562976873685057546 :
+22E
+2021-10-15 17:07:10,054 | exts.update | DEBUG | updated active-works for 562976873685057546
+2021-10-15 17:07:10,055 | utils.planner | DEBUG | returning sorted date for 728482381215826000
+2021-10-15 17:07:10,207 | utils.planner | DEBUG | returning sorted date for 676256965650808873
+2021-10-15 17:07:10,283 | utils.planner | DEBUG | returning sorted date for 829749071891005512
+2021-10-15 17:07:10,363 | utils.planner | DEBUG | returning sorted date for 773426467492069386
+2021-10-15 17:07:10,468 | bot | DEBUG | creating assignment embed...
+2021-10-15 17:07:10,468 | bot | DEBUG | successfully created assignment embed
+2021-10-15 17:07:11,572 | bot | DEBUG | exts.update :white_check_mark: Sucessfully update works at 773426467492069386 :
+11E
+2021-10-15 17:07:11,676 | exts.update | DEBUG | updated active-works for 773426467492069386
+2021-10-15 17:07:20,091 | exts.music | DEBUG | VoiceState created for 773426467492069386
+2021-10-15 17:07:22,727 | exts.music | DEBUG | 773426467492069386: Searching https://www.youtube.com/watch?v=9V2WByHOk9E&ab_channel=RespectlessSID
+2021-10-15 17:07:24,267 | exts.music | DEBUG | Enqueued
+2021-10-15 17:07:24,267 | exts.music | INFO | Audio Player Launched for 773426467492069386
+2021-10-15 17:08:26,476 | exts.music | DEBUG | 773426467492069386: Searching https://youtu.be/VB-aIYk86XQ
+2021-10-15 17:08:28,257 | exts.music | DEBUG | Enqueued
+2021-10-15 17:08:53,420 | utils.planner | DEBUG | returning sorted date for 773426467492069386
+2021-10-15 17:08:53,432 | utils.planner | DEBUG | return embed for 773426467492069386
+2021-10-15 17:08:53,432 | utils.planner | DEBUG | took 0.043907880783081055 second for 773426467492069386
+2021-10-15 17:10:47,777 | exts.music | INFO | 773426467492069386: All user left, Waiting for deletion
+2021-10-15 17:16:05,928 | exts.music | INFO | 773426467492069386: Timeout, Nobody left in vc... Disconnected
+2021-10-15 17:16:05,930 | exts.music | INFO | 773426467492069386:Left vc & cleaned up

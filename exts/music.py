@@ -336,7 +336,7 @@ class Music(commands.Cog):
                 try:
                     await self.voice_states[gid].stop()
                     del self.voice_states[gid]
-                except IndexError:
+                except KeyError:
                     log.debug(f"{gid}: Attempted to disconnect but already disconnected.")
                     pass
         
