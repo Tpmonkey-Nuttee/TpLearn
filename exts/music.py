@@ -129,7 +129,7 @@ class VoiceState:
         self._volume = 0.5
         self.skip_votes = set()
 
-        self.audio_player = bot.loop.create_task(self.audio_player_task())        
+        self.audio_player = None # bot.loop.create_task(self.audio_player_task())     
 
     def __del__(self):
         self.audio_player.cancel()
@@ -152,7 +152,11 @@ class VoiceState:
 
     @property
     def is_playing(self):
-        return self.voice and self.current    
+        return self.voice and self.current
+
+    def start_player(self):
+        if self.audio_player is None:
+            self.audio_player = self.bot.loop.create_task(self.audio_player_task())
 
     async def audio_player_task(self):
         log.info(f"Audio Player Launched for {self._ctx.guild.id}")
@@ -840,7 +844,7 @@ class Music(commands.Cog):
         
         # Anything else related to Spotify
         elif "open.spotify.com/" in search:
-            await ctx.send("Sorry, Only Spotify playlist & Album is support at the moment!")
+            return await ctx.send("Sorry, Only Spotify playlist & Album is support at the moment!")
 
         # Normal searching. 
         else:
@@ -869,6 +873,8 @@ class Music(commands.Cog):
 
             await ctx.voice_state.songs.put(song)
             await ctx.send('Enqueued {}'.format(str(source)))
+        
+        ctx.voice_state.start_player()
         log.debug(f"Enqueued")
 
     @_join.before_invoke

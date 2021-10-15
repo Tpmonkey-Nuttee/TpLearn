@@ -2971,3 +2971,106 @@ Traceback (most recent call last):
     del cog.voice_states[self._ctx.guild.id]
 KeyError: 728482381215826000
 2021-10-15 15:54:15,568 | bot | INFO | Cog loaded: Music
+2021-10-15 15:55:32,317 | exts.music | DEBUG | VoiceState created for 728482381215826000
+2021-10-15 15:55:32,318 | exts.music | INFO | Audio Player Launched for 728482381215826000
+2021-10-15 15:56:32,320 | exts.music | INFO | 728482381215826000:Left vc & cleaned up
+2021-10-15 15:59:16,645 | exts.music | DEBUG | VoiceState created for 773426467492069386
+2021-10-15 15:59:16,646 | exts.music | INFO | Audio Player Launched for 773426467492069386
+2021-10-15 15:59:19,284 | exts.music | DEBUG | 773426467492069386: Searching วายร้าย
+2021-10-15 15:59:21,905 | exts.music | DEBUG | Enqueued
+2021-10-15 16:05:39,515 | asyncio | DEBUG | Using selector: EpollSelector
+2021-10-15 16:05:39,516 | bot | DEBUG | created bot base.
+2021-10-15 16:05:39,544 | constant | DEBUG | init database succesful
+2021-10-15 16:05:39,732 | utils.planner | DEBUG | triggered update
+2021-10-15 16:05:39,776 | bot | DEBUG | bot subclass Created.
+2021-10-15 16:05:39,780 | bot | INFO | Cog loaded: Snekbox
+2021-10-15 16:05:39,782 | bot | INFO | Cog loaded: AdminCommands
+2021-10-15 16:05:39,783 | bot | INFO | Cog loaded: Latency
+2021-10-15 16:05:39,785 | bot | INFO | Cog loaded: Updater
+2021-10-15 16:05:39,786 | bot | INFO | Cog loaded: DayLoop
+2021-10-15 16:05:39,787 | bot | INFO | Cog loaded: VoiceChannel
+2021-10-15 16:05:39,788 | bot | INFO | Cog loaded: SetUp
+2021-10-15 16:05:39,790 | bot | INFO | Cog loaded: Assignments
+2021-10-15 16:05:39,869 | bot | INFO | Cog loaded: KUSNews
+2021-10-15 16:05:39,870 | bot | INFO | Cog loaded: Debug
+2021-10-15 16:05:39,871 | bot | INFO | Cog loaded: NewPatch
+2021-10-15 16:05:39,872 | bot | INFO | Cog loaded: ErrorHandler
+2021-10-15 16:05:40,356 | bot | INFO | Cog loaded: Music
+2021-10-15 16:05:40,361 | bot | INFO | Cog loaded: Help
+2021-10-15 16:05:40,364 | bot | INFO | Cog loaded: Utility
+2021-10-15 16:05:40,420 | exts.kus | DEBUG | loaded data
+2021-10-15 16:05:41,167 | bot | DEBUG | exts.kus Unable to fetch kus data, disabled system.
+2021-10-15 16:05:42,982 | utils.planner | DEBUG | returning sorted date for 562976873685057546
+2021-10-15 16:05:42,994 | bot | INFO | Connected successfully
+2021-10-15 16:05:43,037 | bot | DEBUG | changed bot status
+2021-10-15 16:05:43,064 | utils.planner | DEBUG | returning sorted date for 728482381215826000
+2021-10-15 16:05:43,261 | exts.kus | DEBUG | trying to update news but is not enable, passing...
+2021-10-15 16:05:43,336 | utils.planner | DEBUG | returning sorted date for 676256965650808873
+2021-10-15 16:05:43,407 | utils.planner | DEBUG | returning sorted date for 829749071891005512
+2021-10-15 16:05:43,494 | utils.planner | DEBUG | returning sorted date for 773426467492069386
+2021-10-15 16:05:52,838 | exts.music | DEBUG | VoiceState created for 773426467492069386
+2021-10-15 16:05:52,841 | bot | ERROR | Traceback (most recent call last):
+  File "/opt/virtualenvs/python3/lib/python3.8/site-packages/discord/client.py", line 343, in _run_event
+    await coro(*args, **kwargs)
+  File "/home/runner/TpLearn/bot.py", line 174, in on_message
+    if not message.author.bot: await self.process_commands(message)
+  File "/opt/virtualenvs/python3/lib/python3.8/site-packages/discord/ext/commands/bot.py", line 976, in process_commands
+    await self.invoke(ctx)
+  File "/opt/virtualenvs/python3/lib/python3.8/site-packages/discord/ext/commands/bot.py", line 939, in invoke
+    await ctx.command.invoke(ctx)
+  File "/opt/virtualenvs/python3/lib/python3.8/site-packages/discord/ext/commands/core.py", line 855, in invoke
+    await self.prepare(ctx)
+  File "/opt/virtualenvs/python3/lib/python3.8/site-packages/discord/ext/commands/core.py", line 791, in prepare
+    await self.call_before_hooks(ctx)
+  File "/opt/virtualenvs/python3/lib/python3.8/site-packages/discord/ext/commands/core.py", line 739, in call_before_hooks
+    await hook(ctx)
+  File "/home/runner/TpLearn/exts/music.py", line 322, in cog_before_invoke
+    ctx.voice_state = self.get_voice_state(ctx)
+  File "/home/runner/TpLearn/exts/music.py", line 306, in get_voice_state
+    state = VoiceState(self.bot, ctx)
+  File "/home/runner/TpLearn/exts/music.py", line 125, in __init__
+    self.songs = SongQueue()
+AttributeError: can't set attribute
+
+2021-10-15 16:06:44,465 | asyncio | DEBUG | Using selector: EpollSelector
+2021-10-15 16:06:44,465 | bot | DEBUG | created bot base.
+2021-10-15 16:06:44,492 | constant | DEBUG | init database succesful
+2021-10-15 16:06:44,658 | utils.planner | DEBUG | triggered update
+2021-10-15 16:06:44,688 | bot | DEBUG | bot subclass Created.
+2021-10-15 16:06:44,691 | bot | INFO | Cog loaded: VoiceChannel
+2021-10-15 16:06:44,692 | bot | INFO | Cog loaded: ErrorHandler
+2021-10-15 16:06:44,694 | bot | INFO | Cog loaded: Updater
+2021-10-15 16:06:44,698 | bot | INFO | Cog loaded: Utility
+2021-10-15 16:06:44,801 | bot | INFO | Cog loaded: KUSNews
+2021-10-15 16:06:44,803 | bot | INFO | Cog loaded: AdminCommands
+2021-10-15 16:06:44,806 | bot | INFO | Cog loaded: Assignments
+2021-10-15 16:06:44,808 | bot | INFO | Cog loaded: Snekbox
+2021-10-15 16:06:44,809 | bot | INFO | Cog loaded: SetUp
+2021-10-15 16:06:44,810 | bot | INFO | Cog loaded: DayLoop
+2021-10-15 16:06:44,813 | bot | INFO | Cog loaded: Help
+2021-10-15 16:06:44,813 | bot | INFO | Cog loaded: NewPatch
+2021-10-15 16:06:45,300 | bot | INFO | Cog loaded: Music
+2021-10-15 16:06:45,302 | bot | INFO | Cog loaded: Debug
+2021-10-15 16:06:45,304 | bot | INFO | Cog loaded: Latency
+2021-10-15 16:06:45,325 | exts.kus | DEBUG | loaded data
+2021-10-15 16:06:46,148 | bot | DEBUG | exts.kus Unable to fetch kus data, disabled system.
+2021-10-15 16:06:47,931 | utils.planner | DEBUG | returning sorted date for 562976873685057546
+2021-10-15 16:06:47,941 | bot | INFO | Connected successfully
+2021-10-15 16:06:47,977 | bot | DEBUG | changed bot status
+2021-10-15 16:06:48,028 | utils.planner | DEBUG | returning sorted date for 728482381215826000
+2021-10-15 16:06:48,303 | exts.kus | DEBUG | trying to update news but is not enable, passing...
+2021-10-15 16:06:48,336 | utils.planner | DEBUG | returning sorted date for 676256965650808873
+2021-10-15 16:06:48,403 | utils.planner | DEBUG | returning sorted date for 829749071891005512
+2021-10-15 16:06:48,525 | utils.planner | DEBUG | returning sorted date for 773426467492069386
+2021-10-15 16:08:29,584 | bot | INFO | Cog loaded: Music
+2021-10-15 16:08:34,379 | exts.music | DEBUG | VoiceState created for 773426467492069386
+2021-10-15 16:08:37,057 | exts.music | DEBUG | 773426467492069386: Searching peace sign op
+2021-10-15 16:08:39,141 | exts.errorhand | TRACE | Command: p peace sign op; Already handled locally.
+2021-10-15 16:08:51,552 | bot | INFO | Cog loaded: Music
+2021-10-15 16:08:51,571 | exts.music | INFO | 773426467492069386:Left vc & cleaned up
+2021-10-15 16:08:54,544 | exts.music | DEBUG | VoiceState created for 773426467492069386
+2021-10-15 16:08:56,490 | exts.music | DEBUG | 773426467492069386: Searching peace sign op
+2021-10-15 16:08:57,758 | exts.music | DEBUG | Enqueued
+2021-10-15 16:08:57,759 | exts.music | INFO | Audio Player Launched for 773426467492069386
+2021-10-15 16:09:09,023 | exts.music | DEBUG | 773426467492069386: Searching the day op
+2021-10-15 16:09:10,351 | exts.music | DEBUG | Enqueued
