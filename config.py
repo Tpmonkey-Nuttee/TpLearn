@@ -5,21 +5,19 @@ Made by Tpmonkey
 
 ### ---------- General ---------- ###
 
-version = "1.4"
+version = "1.4.1"
 note = [
-    "**Spotify support!**",
-    "- now support Spotify Playlist and Album!",
-    "**Note:**",
-    "You could use normal play command to find an individual song, so Support for normal track will not be implemented.",
-    "But, Artist support maybe coming soon!",
-    "",
-    "**New Command!**",
-    "- skipto command, Can now jump directly to song that you like!",
-    "",
-    "**Changes**",
-    "- Some optimization.",
-    "- Bot can now play *age-restricted* song, I don't know why but okay...",
-    "- Play command can now be use as a resume command."
+    "**QoL**",
+    "- YouTube playlist now display video name instead of \"Not yet loaded\""
+    "- All Playlist (Youtube, Spotify) will not be loaded before so It doesn't cause performance issue.",
+    "- Automatically retry if the video is geo-restricted.",
+    "- Bot will now leave Vc automactically if everybody left.", 
+    "**Commands**",
+    "- Clear queue command is added. (aliases is clearq)"
+    "",    
+    "**Bugs**",
+    "- Queue page sometimes display 1/0 page.",
+    "- Passed Assignment shown invalid date in passed-works channel."
 ]
 
 prefix = "," # Bot Prefix.

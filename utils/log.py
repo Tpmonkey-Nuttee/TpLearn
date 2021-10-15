@@ -12,6 +12,8 @@ import logging
 import sys
 import os
 
+__all__ = ("setup", )
+
 TRACE_LEVEL = 5
 
 DATE = str(datetime.date.today())[:-3]

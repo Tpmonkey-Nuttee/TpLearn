@@ -11,6 +11,8 @@ import pkgutil
 
 import exts
 
+__all__ = ("EXTENSIONS", )
+
 
 def unqualify(name: str) -> str:
     """ Return an unqualified name given a qualified module/package `name`. """

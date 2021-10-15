@@ -9,6 +9,8 @@ import functools
 # Silence useless bug reports messages
 youtube_dl.utils.bug_reports_message = lambda: ''
 
+__all__ = ("YTDLError", "YTDLSource", "DownloadError", "getTracks", "getAlbum")
+
 class YTDLError(Exception):
     pass
 
@@ -175,7 +177,6 @@ def getAlbum(albumURL):
             name = i["name"]
 
             trackList.append(f"{name} {artist}")
-
         offset += 50
 
         results = spotify.album_tracks(albumURL, offset=offset)

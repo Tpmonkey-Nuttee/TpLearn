@@ -9,6 +9,8 @@ import shlex
 import sys
 import os
 
+__all__ = ("post_eval", )
+
 def format_str(text: str, uid: int) -> str:
     """ Format output to hide file location. """
     text = text.replace(f"evals/{uid}.py", "<string>")

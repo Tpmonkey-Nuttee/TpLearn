@@ -25,7 +25,7 @@ import googleapiclient.discovery
 from urllib.parse import parse_qs, urlparse
 
 # YouTube DL
-from utils.audio import YTDLSource, YTDLError, DownloadError, getTracks, getAlbum
+from utils.audio import *
 
 YOUTUBE_API_KEY = os.getenv("YOUTUBE_API_KEY")
 
@@ -203,9 +203,22 @@ class VoiceState:
                     try:
                         source = await YTDLSource.create_source(self.current.ctx, self.current.url, loop=self.bot.loop)
                     except Exception:
-                        log.warning(traceback.format_exc())
-                        await self._ctx.send(f":x: **Unable to load:** {self.current.url}")
-                        continue
+                        log.info(f"{self._ctx.guild.id}: Unable to load playlist song, retrying...")
+                        url = self.current.url
+
+                        if "http" not in url: # It's actually the song name
+                            try:
+                                source = await YTDLSource.create_source(self.current.ctx, url+" lyric", loop=self.bot.loop)
+                            except Exception:
+                                await self._ctx.send(f":x: **Unable to load:** {self.current.url}")
+                                log.info(f"{self._ctx.guild.id}: Download fail, Skipped")
+                                continue
+                            log.info(f"{self._ctx.guild.id}: Sucessfully loaded the song, continue playing...")
+                        else:
+                            await self._ctx.send(f":x: **Unable to load:** {self.current.url}")
+                            log.info(f"{self._ctx.guild.id}: It was an url, skipping...")
+                            continue
+                        
                     self.current = Song(source)
                 
                 # Already loaded? play it.
@@ -253,8 +266,9 @@ class VoiceState:
         if cog is not None:
             try:
                 del cog.voice_states[self._ctx.guild.id]
-            except IndexError:
+            except KeyError:
                 pass
+        log.info(f"{self._ctx.guild.id}:Left vc & cleaned up")
 
 class Music(commands.Cog):
     """
@@ -266,10 +280,15 @@ class Music(commands.Cog):
 
         # For keeping track of all voice states
         self.voice_states = {}
+        self.errors_count = {}
 
         # disconnecting when bot is alone, what a sad life.
         self.wait_for_disconnect = {}
         self.loop_for_deletion.start()
+    
+    def play_error(self, guid_id: int) -> None:
+        count = self.errors_count.get(guild_id, 0)
+        self.errors_count[guild_id] = count + 1
 
     def cog_unload(self) -> None:
         self.loop_for_deletion.stop() 
@@ -322,8 +341,18 @@ class Music(commands.Cog):
 
     @commands.Cog.listener()
     async def on_voice_state_update(self, member: discord.Member, before: discord.VoiceState, after: discord.VoiceState) -> None:
-        if member.guild.id not in self.voice_states or member.id == self.bot.user.id:
+        if member.guild.id not in self.voice_states:
             return
+        
+        if member.id == self.bot.user.id:
+            if member.guild.id in self.wait_for_disconnect:
+                log.info(f"{member.guild.id}: Bot got disconnected, removing wait for disconnect")
+                try:
+                    del self.wait_for_disconnect[member.guild.id]
+                except KeyError:
+                    return
+            return
+
         
         # Check if user switched to bot vc or joined the bot vc
         if (before.channel is None and after.channel is not None) or (before.channel != after.channel and after.channel is not None):
@@ -388,6 +417,8 @@ class Music(commands.Cog):
         elif name is not None and value is not None:
             try:
                 name = name.replace(" ", "_").lower()
+                if name == "timeout" and value <= 60:
+                    return await ctx.send(":x: **Timeout need to be more than 60 seconds!**")
                 self.bot.msettings.set(ctx.guild.id, name, value)
             except ValueError:
                 return await ctx.send(":x: **Invalid Setting name or Value**")
@@ -816,9 +847,11 @@ class Music(commands.Cog):
             try:
                 source = await YTDLSource.create_source(ctx, search, loop=self.bot.loop)
             except YTDLError as e:
+                self.play_error(ctx.guild.id)
                 return await ctx.send('An error occurred while processing this request: {}'.format(str(e)))
             except DownloadError:
                 # maybe it's geo restricted, so retry again but this time put "lyric" behind.
+                
                 await ctx.send(f":x: **Could not download that video, Retrying...**")
                 await ctx.trigger_typing() 
 
@@ -826,6 +859,10 @@ class Music(commands.Cog):
                     source = await YTDLSource.create_source(ctx, search + " lyric", loop=self.bot.loop)
                 except (DownloadError, YTDLError):
                     # Idk anymore...
+                    self.play_error(ctx.guild.id)
+                    if self.errors_count.get(guild_id, 0) >= 2:
+                        log.warning(f"Download problem detected, Couldn't play video in server {ctx.guild.id}")
+                        return await ctx.send("Download problem detected, Youtube service may be down... Please try again in a few hours.")
                     return await ctx.send(":x: **Download fail, Please try using an url.**")
             
             song = Song(source)

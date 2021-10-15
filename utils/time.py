@@ -4,6 +4,8 @@ import datetime
 
 from dateutil.relativedelta import relativedelta
 
+__all__ = ("time_since", )
+
 def _stringify_time_unit(value: int, unit: str):
     if unit == "seconds" and value == 0:
         return "0 seconds"
@@ -21,6 +23,7 @@ def time_since(past_datetime: datetime.datetime, precision: str = "seconds", max
     humanized = humanize_delta(delta, precision, max_units)
 
     return f"{humanized} ago"
+
 def humanize_delta(delta: relativedelta, precision: str = "seconds", max_units: int = 6):
     if max_units <= 0:
         raise ValueError("max_units must be positive")

@@ -9,7 +9,6 @@ from discord import Embed, Colour
 from bot import Bot
 from utils import time as timef
 
-
 import random
 import textwrap
 

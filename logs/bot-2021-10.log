@@ -1773,3 +1773,1201 @@ foo(pass=True, **a)
 2021-10-14 05:28:58,073 | exts.kus | DEBUG | trying to update news but is not enable, passing...
 2021-10-14 05:47:32,831 | exts.music | INFO | 773426467492069386: User joined back, Stopping deletion
 2021-10-14 05:47:58,601 | exts.music | INFO | 773426467492069386: User joined back, Stopping deletion
+2021-10-14 05:58:51,621 | exts.music | INFO | 773426467492069386: User joined back, Stopping deletion
+2021-10-14 06:08:44,958 | exts.music | INFO | 773426467492069386: User joined back, Stopping deletion
+2021-10-14 06:11:49,587 | exts.music | INFO | 773426467492069386: User joined back, Stopping deletion
+2021-10-14 06:22:02,423 | exts.admin | DEBUG | Admin Eval from Tpmonkey#2682; code: self.bot.trust_session
+2021-10-14 06:22:36,802 | exts.admin | DEBUG | Admin Eval from Tpmonkey#2682; code: await self.bot.trust_session.get("https://www.youtube.com/youtubei/v1/search?key=hello")
+2021-10-14 06:31:47,054 | exts.music | INFO | 773426467492069386: User joined back, Stopping deletion
+2021-10-14 06:35:04,595 | exts.music | INFO | 773426467492069386: User joined back, Stopping deletion
+2021-10-14 06:42:01,126 | exts.music | DEBUG | 773426467492069386: Searching https://www.youtube.com/watch?v=p6CcM245bEY
+2021-10-14 06:42:02,432 | exts.music | DEBUG | Enqueued
+2021-10-14 06:43:24,049 | exts.music | DEBUG | VoiceState created for 773426467492069386
+2021-10-14 06:43:24,051 | exts.music | INFO | Audio Player Launched for 773426467492069386
+2021-10-14 06:43:25,767 | exts.music | INFO | 773426467492069386: User joined back, Stopping deletion
+2021-10-14 06:43:25,984 | exts.music | DEBUG | 773426467492069386: Searching https://www.youtube.com/watch?v=p6CcM245bEY
+2021-10-14 06:43:27,429 | exts.music | DEBUG | Enqueued
+2021-10-14 06:43:53,490 | exts.music | DEBUG | VoiceState created for 773426467492069386
+2021-10-14 06:43:53,491 | exts.music | INFO | Audio Player Launched for 773426467492069386
+2021-10-14 06:43:55,408 | exts.music | DEBUG | 773426467492069386: Searching https://www.youtube.com/watch?v=p6CcM245bEY
+2021-10-14 06:43:56,709 | exts.music | DEBUG | Enqueued
+2021-10-14 06:44:08,645 | exts.music | DEBUG | VoiceState created for 773426467492069386
+2021-10-14 06:44:08,646 | exts.music | INFO | Audio Player Launched for 773426467492069386
+2021-10-14 06:44:10,583 | exts.music | DEBUG | 773426467492069386: Searching https://www.youtube.com/watch?v=p6CcM245bEY
+2021-10-14 06:44:11,953 | exts.music | DEBUG | Enqueued
+2021-10-14 06:47:44,788 | exts.music | INFO | 773426467492069386: User joined back, Stopping deletion
+2021-10-14 06:47:48,564 | exts.music | INFO | 773426467492069386: User joined back, Stopping deletion
+2021-10-14 07:30:49,873 | bot | INFO | Resumed Connection
+2021-10-14 07:30:50,041 | bot | DEBUG | changed bot status
+2021-10-14 07:41:43,394 | exts.music | DEBUG | VoiceState created for 780423376149676032
+2021-10-14 07:41:43,395 | exts.music | INFO | Audio Player Launched for 780423376149676032
+2021-10-14 07:41:46,105 | exts.music | DEBUG | 780423376149676032: Searching overwhelmed
+2021-10-14 07:41:47,975 | exts.music | DEBUG | Enqueued
+2021-10-14 08:12:47,690 | bot | INFO | Resumed Connection
+2021-10-14 08:12:47,887 | bot | DEBUG | changed bot status
+2021-10-14 08:13:34,650 | exts.music | DEBUG | VoiceState created for 773426467492069386
+2021-10-14 08:13:34,651 | exts.music | INFO | Audio Player Launched for 773426467492069386
+2021-10-14 08:13:55,887 | exts.music | DEBUG | VoiceState created for 773426467492069386
+2021-10-14 08:13:55,888 | exts.music | INFO | Audio Player Launched for 773426467492069386
+2021-10-14 08:13:57,944 | exts.music | DEBUG | 773426467492069386: Searching https://www.youtube.com/watch?v=PDSkFeMVNFs&ab_channel=RADWIMPS
+2021-10-14 08:13:59,433 | exts.music | DEBUG | Enqueued
+2021-10-14 08:15:07,973 | exts.music | DEBUG | 773426467492069386: Searching https://www.youtube.com/watch?v=PDSkFeMVNFs&ab_channel=RADWIMPS
+2021-10-14 08:15:09,675 | exts.music | DEBUG | Enqueued
+2021-10-14 08:15:33,852 | exts.music | DEBUG | 773426467492069386: Searching https://www.youtube.com/watch?v=PDSkFeMVNFs&ab_channel=RADWIMPS
+2021-10-14 08:15:35,654 | exts.music | DEBUG | Enqueued
+2021-10-14 08:18:44,309 | exts.music | DEBUG | VoiceState created for 773426467492069386
+2021-10-14 08:18:44,311 | exts.music | INFO | Audio Player Launched for 773426467492069386
+2021-10-14 08:18:46,457 | exts.music | DEBUG | 773426467492069386: Searching https://www.youtube.com/watch?v=pyDCubgU57g&ab_channel=Eve
+2021-10-14 08:18:48,185 | exts.music | DEBUG | Enqueued
+2021-10-14 08:19:28,213 | exts.music | DEBUG | VoiceState created for 773426467492069386
+2021-10-14 08:19:28,215 | exts.music | INFO | Audio Player Launched for 773426467492069386
+2021-10-14 08:19:28,472 | exts.errorhand | TRACE | Command: p https://www.youtube.com/watch?v=pyDCubgU57g&ab_channel=Eve; Already handled locally.
+2021-10-14 08:19:38,605 | exts.music | DEBUG | VoiceState created for 773426467492069386
+2021-10-14 08:19:38,606 | exts.music | INFO | Audio Player Launched for 773426467492069386
+2021-10-14 08:19:40,113 | discord.voice_client | ERROR | Failed to connect to voice... Retrying...
+Traceback (most recent call last):
+  File "/opt/virtualenvs/python3/lib/python3.8/site-packages/discord/voice_client.py", line 353, in connect
+    self.ws = await self.connect_websocket()
+  File "/opt/virtualenvs/python3/lib/python3.8/site-packages/discord/voice_client.py", line 324, in connect_websocket
+    await ws.poll_event()
+  File "/opt/virtualenvs/python3/lib/python3.8/site-packages/discord/gateway.py", line 895, in poll_event
+    raise ConnectionClosed(self.ws, shard_id=None, code=self._close_code)
+discord.errors.ConnectionClosed: Shard ID None WebSocket closed with 4006
+2021-10-14 08:19:43,063 | exts.music | DEBUG | 773426467492069386: Searching https://www.youtube.com/watch?v=pyDCubgU57g&ab_channel=Eve
+2021-10-14 08:19:44,726 | exts.music | DEBUG | Enqueued
+2021-10-14 08:20:39,878 | discord.gateway | WARNING | Shard ID None has stopped responding to the gateway. Closing and restarting.
+2021-10-14 08:21:19,119 | exts.music | DEBUG | VoiceState created for 773426467492069386
+2021-10-14 08:21:19,119 | exts.music | INFO | Audio Player Launched for 773426467492069386
+2021-10-14 08:21:42,397 | discord.gateway | WARNING | Shard ID None has stopped responding to the gateway. Closing and restarting.
+2021-10-14 08:22:45,743 | exts.music | INFO | 773426467492069386: User joined back, Stopping deletion
+2021-10-14 08:24:28,221 | asyncio | ERROR | Task exception was never retrieved
+future: <Task finished name='Task-12770' coro=<VoiceState.stop() done, defined at /home/runner/TpLearn/exts/music.py:234> exception=KeyError(773426467492069386)>
+Traceback (most recent call last):
+  File "/home/runner/TpLearn/exts/music.py", line 246, in stop
+KeyError: 773426467492069386
+2021-10-14 08:24:28,472 | asyncio | ERROR | Task exception was never retrieved
+future: <Task finished name='Task-12771' coro=<VoiceState.stop() done, defined at /home/runner/TpLearn/exts/music.py:234> exception=KeyError(773426467492069386)>
+Traceback (most recent call last):
+  File "/home/runner/TpLearn/exts/music.py", line 246, in stop
+KeyError: 773426467492069386
+2021-10-14 08:25:03,830 | exts.music | DEBUG | VoiceState created for 773426467492069386
+2021-10-14 08:25:03,831 | exts.music | INFO | Audio Player Launched for 773426467492069386
+2021-10-14 08:25:06,719 | exts.music | DEBUG | 773426467492069386: Searching https://www.youtube.com/watch?v=Woorod1gJ_w&ab_channel=%E5%A4%A9%E6%9C%88-%E3%81%82%E3%81%BE%E3%81%A4%E3%81%8D-YouTubeOfficialChannel
+2021-10-14 08:25:08,531 | exts.music | DEBUG | Enqueued
+2021-10-14 08:25:13,501 | exts.music | DEBUG | VoiceState created for 773426467492069386
+2021-10-14 08:25:13,501 | exts.music | INFO | Audio Player Launched for 773426467492069386
+2021-10-14 08:29:34,310 | asyncio | ERROR | Task exception was never retrieved
+future: <Task finished name='Task-13030' coro=<VoiceState.stop() done, defined at /home/runner/TpLearn/exts/music.py:234> exception=KeyError(773426467492069386)>
+Traceback (most recent call last):
+  File "/home/runner/TpLearn/exts/music.py", line 246, in stop
+KeyError: 773426467492069386
+2021-10-14 08:30:13,504 | asyncio | ERROR | Task exception was never retrieved
+future: <Task finished name='Task-13055' coro=<VoiceState.stop() done, defined at /home/runner/TpLearn/exts/music.py:234> exception=KeyError(773426467492069386)>
+Traceback (most recent call last):
+  File "/home/runner/TpLearn/exts/music.py", line 246, in stop
+KeyError: 773426467492069386
+2021-10-14 08:34:47,951 | asyncio | ERROR | Task exception was never retrieved
+future: <Task finished name='Task-13209' coro=<VoiceState.stop() done, defined at /home/runner/TpLearn/exts/music.py:234> exception=KeyError(773426467492069386)>
+Traceback (most recent call last):
+  File "/home/runner/TpLearn/exts/music.py", line 246, in stop
+KeyError: 773426467492069386
+2021-10-14 09:28:58,575 | bot | DEBUG | exts.kus successfully fecthed kus data, enabled system.
+2021-10-14 09:29:13,254 | bot | INFO | Resumed Connection
+2021-10-14 09:29:13,378 | bot | DEBUG | changed bot status
+2021-10-14 11:16:08,053 | bot | INFO | Resumed Connection
+2021-10-14 11:16:08,110 | bot | DEBUG | changed bot status
+2021-10-14 12:03:42,208 | exts.music | DEBUG | VoiceState created for 834711685834342472
+2021-10-14 12:03:42,209 | exts.music | INFO | Audio Player Launched for 834711685834342472
+2021-10-14 12:03:44,156 | exts.music | DEBUG | 834711685834342472: Searching https://www.youtube.com/watch?v=ejtWXDm5uNI&list=PLmya2lDOFA6A-HegDt9EkXMFQ_ruMWiwN
+2021-10-14 12:03:45,786 | exts.music | DEBUG | Enqueued
+2021-10-14 12:04:19,416 | exts.music | DEBUG | 834711685834342472: Searching elephant gym audiotree live
+2021-10-14 12:04:41,236 | exts.music | DEBUG | 834711685834342472: Searching https://www.youtube.com/watch?v=HW367HtrXE0
+2021-10-14 12:06:00,239 | exts.music | DEBUG | 834711685834342472: Searching https://www.youtube.com/watch?v=HW367HtrXE0
+2021-10-14 12:06:17,403 | exts.music | DEBUG | 834711685834342472: Searching https://www.youtube.com/watch?v=qaf1BDi5f3U
+2021-10-14 12:06:54,099 | exts.music | INFO | 834711685834342472: All user left, Waiting for deletion
+2021-10-14 12:07:23,572 | exts.music | INFO | 834711685834342472: User joined back, Stopping deletion
+2021-10-14 12:07:55,710 | exts.music | DEBUG | 834711685834342472: Searching https://youtu.be/HW367HtrXE0
+2021-10-14 12:09:13,841 | exts.music | INFO | 834711685834342472: All user left, Waiting for deletion
+2021-10-14 12:09:52,503 | asyncio | ERROR | Task exception was never retrieved
+future: <Task finished name='Task-17478' coro=<VoiceState.stop() done, defined at /home/runner/TpLearn/exts/music.py:234> exception=KeyError(834711685834342472)>
+Traceback (most recent call last):
+  File "/home/runner/TpLearn/exts/music.py", line 246, in stop
+KeyError: 834711685834342472
+2021-10-14 12:16:57,116 | exts.music | INFO | 834711685834342472: Timeout, Nobody left in vc... Disconnected
+2021-10-14 13:13:56,663 | exts.music | DEBUG | VoiceState created for 728482381215826000
+2021-10-14 13:13:56,664 | exts.music | INFO | Audio Player Launched for 728482381215826000
+2021-10-14 13:13:58,602 | exts.music | DEBUG | 728482381215826000: Searching สุดที่รัก
+2021-10-14 13:14:29,625 | exts.music | DEBUG | 728482381215826000: Searching https://www.youtube.com/watch?v=a__R_dumrMc
+2021-10-14 13:14:41,356 | exts.music | DEBUG | 728482381215826000: Searching https://www.youtube.com/watch?v=6MdBbuVXv_I
+2021-10-14 13:14:51,431 | exts.music | DEBUG | 728482381215826000: Searching https://www.youtube.com/watch?v=Udz_jjzUqfQ
+2021-10-14 13:15:07,009 | exts.music | DEBUG | 728482381215826000: Searching someone you loved
+2021-10-14 13:15:43,088 | asyncio | DEBUG | Using selector: EpollSelector
+2021-10-14 13:15:43,089 | bot | DEBUG | created bot base.
+2021-10-14 13:15:43,112 | constant | DEBUG | init database succesful
+2021-10-14 13:15:43,249 | utils.planner | DEBUG | triggered update
+2021-10-14 13:15:43,259 | bot | DEBUG | bot subclass Created.
+2021-10-14 13:15:43,261 | bot | INFO | Cog loaded: VoiceChannel
+2021-10-14 13:15:43,264 | bot | INFO | Cog loaded: Utility
+2021-10-14 13:15:43,266 | bot | INFO | Cog loaded: DayLoop
+2021-10-14 13:15:43,268 | bot | INFO | Cog loaded: Assignments
+2021-10-14 13:15:43,269 | bot | INFO | Cog loaded: ErrorHandler
+2021-10-14 13:15:43,270 | bot | INFO | Cog loaded: SetUp
+2021-10-14 13:15:43,352 | bot | INFO | Cog loaded: KUSNews
+2021-10-14 13:15:43,354 | bot | INFO | Cog loaded: Snekbox
+2021-10-14 13:15:43,785 | bot | INFO | Cog loaded: Music
+2021-10-14 13:15:43,787 | bot | INFO | Cog loaded: Latency
+2021-10-14 13:15:43,788 | bot | INFO | Cog loaded: Updater
+2021-10-14 13:15:43,790 | bot | INFO | Cog loaded: Help
+2021-10-14 13:15:43,791 | bot | INFO | Cog loaded: Debug
+2021-10-14 13:15:43,791 | bot | INFO | Cog loaded: NewPatch
+2021-10-14 13:15:43,793 | bot | INFO | Cog loaded: AdminCommands
+2021-10-14 13:15:44,027 | exts.kus | DEBUG | loaded data
+2021-10-14 13:15:44,975 | bot | DEBUG | exts.kus Unable to fetch kus data, disabled system.
+2021-10-14 13:15:46,641 | utils.planner | DEBUG | returning sorted date for 562976873685057546
+2021-10-14 13:15:46,766 | bot | INFO | Connected successfully
+2021-10-14 13:15:46,836 | bot | DEBUG | changed bot status
+2021-10-14 13:15:46,840 | utils.planner | DEBUG | returning sorted date for 728482381215826000
+2021-10-14 13:15:46,941 | utils.planner | DEBUG | returning sorted date for 676256965650808873
+2021-10-14 13:15:46,978 | exts.kus | DEBUG | trying to update news but is not enable, passing...
+2021-10-14 13:15:47,022 | utils.planner | DEBUG | returning sorted date for 829749071891005512
+2021-10-14 13:15:47,148 | utils.planner | DEBUG | returning sorted date for 773426467492069386
+2021-10-14 13:15:56,254 | exts.music | DEBUG | VoiceState created for 728482381215826000
+2021-10-14 13:15:56,255 | exts.music | INFO | Audio Player Launched for 728482381215826000
+2021-10-14 13:15:58,208 | exts.music | DEBUG | 728482381215826000: Searching สุดที่รัก
+2021-10-14 13:16:09,040 | exts.music | DEBUG | 728482381215826000: Searching gurenge
+2021-10-14 13:20:27,219 | asyncio | DEBUG | Using selector: EpollSelector
+2021-10-14 13:20:27,220 | bot | DEBUG | created bot base.
+2021-10-14 13:20:27,246 | constant | DEBUG | init database succesful
+2021-10-14 13:20:27,281 | utils.planner | DEBUG | triggered update
+2021-10-14 13:20:27,287 | bot | DEBUG | bot subclass Created.
+2021-10-14 13:20:27,290 | bot | INFO | Cog loaded: Help
+2021-10-14 13:20:27,293 | bot | INFO | Cog loaded: Snekbox
+2021-10-14 13:20:27,295 | bot | INFO | Cog loaded: AdminCommands
+2021-10-14 13:20:27,296 | bot | INFO | Cog loaded: ErrorHandler
+2021-10-14 13:20:27,296 | bot | INFO | Cog loaded: Debug
+2021-10-14 13:20:27,674 | bot | INFO | Cog loaded: Music
+2021-10-14 13:20:27,678 | bot | INFO | Cog loaded: Assignments
+2021-10-14 13:20:27,679 | bot | INFO | Cog loaded: NewPatch
+2021-10-14 13:20:27,680 | bot | INFO | Cog loaded: DayLoop
+2021-10-14 13:20:27,681 | bot | INFO | Cog loaded: Latency
+2021-10-14 13:20:27,682 | bot | INFO | Cog loaded: Updater
+2021-10-14 13:20:27,683 | bot | INFO | Cog loaded: VoiceChannel
+2021-10-14 13:20:27,758 | bot | INFO | Cog loaded: KUSNews
+2021-10-14 13:20:27,760 | bot | INFO | Cog loaded: Utility
+2021-10-14 13:20:27,761 | bot | INFO | Cog loaded: SetUp
+2021-10-14 13:20:27,787 | exts.kus | DEBUG | loaded data
+2021-10-14 13:20:28,510 | bot | DEBUG | exts.kus Unable to fetch kus data, disabled system.
+2021-10-14 13:20:30,415 | utils.planner | DEBUG | returning sorted date for 562976873685057546
+2021-10-14 13:20:30,424 | bot | INFO | Connected successfully
+2021-10-14 13:20:30,455 | bot | DEBUG | changed bot status
+2021-10-14 13:20:30,521 | utils.planner | DEBUG | returning sorted date for 728482381215826000
+2021-10-14 13:20:30,643 | utils.planner | DEBUG | returning sorted date for 676256965650808873
+2021-10-14 13:20:30,664 | exts.kus | DEBUG | trying to update news but is not enable, passing...
+2021-10-14 13:20:30,758 | utils.planner | DEBUG | returning sorted date for 829749071891005512
+2021-10-14 13:20:30,892 | utils.planner | DEBUG | returning sorted date for 773426467492069386
+2021-10-14 13:20:32,222 | exts.music | DEBUG | VoiceState created for 728482381215826000
+2021-10-14 13:20:32,223 | exts.music | INFO | Audio Player Launched for 728482381215826000
+2021-10-14 13:20:41,684 | exts.music | DEBUG | VoiceState created for 728482381215826000
+2021-10-14 13:20:41,685 | exts.music | INFO | Audio Player Launched for 728482381215826000
+2021-10-14 13:20:43,604 | exts.music | DEBUG | 728482381215826000: Searching สุดที่รัก
+2021-10-14 13:29:27,267 | asyncio | DEBUG | Using selector: EpollSelector
+2021-10-14 13:29:27,268 | bot | DEBUG | created bot base.
+2021-10-14 13:29:27,293 | constant | DEBUG | init database succesful
+2021-10-14 13:29:27,484 | utils.planner | DEBUG | triggered update
+2021-10-14 13:29:27,490 | bot | DEBUG | bot subclass Created.
+2021-10-14 13:29:27,495 | bot | INFO | Cog loaded: AdminCommands
+2021-10-14 13:29:27,495 | bot | INFO | Cog loaded: NewPatch
+2021-10-14 13:29:27,497 | bot | INFO | Cog loaded: Help
+2021-10-14 13:29:27,498 | bot | INFO | Cog loaded: VoiceChannel
+2021-10-14 13:29:27,501 | bot | INFO | Cog loaded: Snekbox
+2021-10-14 13:29:27,503 | bot | INFO | Cog loaded: Assignments
+2021-10-14 13:29:27,946 | bot | INFO | Cog loaded: Music
+2021-10-14 13:29:27,947 | bot | INFO | Cog loaded: ErrorHandler
+2021-10-14 13:29:27,948 | bot | INFO | Cog loaded: SetUp
+2021-10-14 13:29:27,953 | bot | INFO | Cog loaded: Utility
+2021-10-14 13:29:27,954 | bot | INFO | Cog loaded: Latency
+2021-10-14 13:29:27,956 | bot | INFO | Cog loaded: Updater
+2021-10-14 13:29:27,957 | bot | INFO | Cog loaded: DayLoop
+2021-10-14 13:29:27,958 | bot | INFO | Cog loaded: Debug
+2021-10-14 13:29:28,035 | bot | INFO | Cog loaded: KUSNews
+2021-10-14 13:29:28,112 | exts.kus | DEBUG | loaded data
+2021-10-14 13:29:28,863 | bot | DEBUG | exts.kus Unable to fetch kus data, disabled system.
+2021-10-14 13:29:30,646 | utils.planner | DEBUG | returning sorted date for 562976873685057546
+2021-10-14 13:29:30,672 | bot | INFO | Connected successfully
+2021-10-14 13:29:30,750 | bot | DEBUG | changed bot status
+2021-10-14 13:29:30,753 | utils.planner | DEBUG | returning sorted date for 728482381215826000
+2021-10-14 13:29:30,866 | utils.planner | DEBUG | returning sorted date for 676256965650808873
+2021-10-14 13:29:31,124 | utils.planner | DEBUG | returning sorted date for 829749071891005512
+2021-10-14 13:29:31,226 | utils.planner | DEBUG | returning sorted date for 773426467492069386
+2021-10-14 13:29:31,522 | exts.kus | DEBUG | trying to update news but is not enable, passing...
+2021-10-14 13:30:08,826 | exts.admin | DEBUG | Admin Eval from Tpmonkey#2682; code: import utils
+2021-10-14 13:30:15,414 | exts.admin | DEBUG | Admin Eval from Tpmonkey#2682; code: dir(self.mod.extension)
+2021-10-14 13:30:17,189 | exts.admin | DEBUG | Admin Eval from Tpmonkey#2682; code: dir(self.mod.extensions)
+2021-10-14 13:30:42,425 | exts.admin | DEBUG | Admin Eval from Tpmonkey#2682; code: import utils.extensions
+2021-10-14 13:30:48,397 | exts.admin | DEBUG | Admin Eval from Tpmonkey#2682; code: dir(self.mod)
+2021-10-14 13:30:54,409 | exts.admin | DEBUG | Admin Eval from Tpmonkey#2682; code: self.bot.pkgutil
+2021-10-14 13:30:59,427 | exts.admin | DEBUG | Admin Eval from Tpmonkey#2682; code: self.mod.pkgutil
+2021-10-14 15:59:44,088 | asyncio | DEBUG | Using selector: EpollSelector
+2021-10-14 15:59:44,090 | bot | DEBUG | created bot base.
+2021-10-14 15:59:44,125 | constant | DEBUG | init database succesful
+2021-10-14 15:59:44,159 | utils.planner | DEBUG | triggered update
+2021-10-14 15:59:44,166 | bot | DEBUG | bot subclass Created.
+2021-10-14 15:59:44,172 | bot | INFO | Cog loaded: Help
+2021-10-14 15:59:44,174 | bot | INFO | Cog loaded: ErrorHandler
+2021-10-14 15:59:44,176 | bot | INFO | Cog loaded: DayLoop
+2021-10-14 15:59:44,181 | bot | INFO | Cog loaded: Snekbox
+2021-10-14 15:59:44,182 | bot | INFO | Cog loaded: NewPatch
+2021-10-14 15:59:44,183 | bot | INFO | Cog loaded: VoiceChannel
+2021-10-14 15:59:44,185 | bot | INFO | Cog loaded: Latency
+2021-10-14 15:59:44,784 | bot | INFO | Cog loaded: Music
+2021-10-14 15:59:44,787 | bot | INFO | Cog loaded: Utility
+2021-10-14 15:59:44,790 | bot | INFO | Cog loaded: Assignments
+2021-10-14 15:59:44,791 | bot | INFO | Cog loaded: SetUp
+2021-10-14 15:59:44,793 | bot | INFO | Cog loaded: Updater
+2021-10-14 15:59:44,794 | bot | INFO | Cog loaded: Debug
+2021-10-14 15:59:44,796 | bot | INFO | Cog loaded: AdminCommands
+2021-10-14 15:59:44,888 | bot | INFO | Cog loaded: KUSNews
+2021-10-14 15:59:44,945 | exts.kus | DEBUG | loaded data
+2021-10-14 15:59:45,980 | bot | DEBUG | exts.kus Unable to fetch kus data, disabled system.
+2021-10-14 15:59:47,481 | utils.planner | DEBUG | returning sorted date for 562976873685057546
+2021-10-14 15:59:47,493 | bot | INFO | Connected successfully
+2021-10-14 15:59:47,533 | bot | DEBUG | changed bot status
+2021-10-14 15:59:47,594 | utils.planner | DEBUG | returning sorted date for 728482381215826000
+2021-10-14 15:59:47,668 | utils.planner | DEBUG | returning sorted date for 676256965650808873
+2021-10-14 15:59:47,845 | utils.planner | DEBUG | returning sorted date for 829749071891005512
+2021-10-14 15:59:47,879 | exts.kus | DEBUG | trying to update news but is not enable, passing...
+2021-10-14 15:59:47,939 | utils.planner | DEBUG | returning sorted date for 773426467492069386
+2021-10-14 17:00:44,919 | bot | DEBUG | exts.dayloop New day [UTC+7] detected.
+2021-10-14 17:00:45,055 | utils.planner | DEBUG | triggered update
+2021-10-14 17:01:44,918 | utils.planner | DEBUG | returning sorted date for 562976873685057546
+2021-10-14 17:01:45,022 | utils.planner | DEBUG | returning sorted date for 728482381215826000
+2021-10-14 17:01:45,150 | utils.planner | DEBUG | returning sorted date for 676256965650808873
+2021-10-14 17:01:45,360 | utils.planner | DEBUG | returning sorted date for 829749071891005512
+2021-10-14 17:01:45,472 | utils.planner | DEBUG | returning sorted date for 773426467492069386
+2021-10-14 17:13:30,296 | bot | INFO | Resumed Connection
+2021-10-14 17:13:30,503 | bot | DEBUG | changed bot status
+2021-10-14 18:58:37,946 | bot | INFO | Resumed Connection
+2021-10-14 18:58:38,015 | bot | DEBUG | changed bot status
+2021-10-14 19:59:45,976 | exts.kus | DEBUG | trying to update news but is not enable, passing...
+2021-10-14 20:46:59,527 | bot | INFO | Resumed Connection
+2021-10-14 20:46:59,611 | bot | DEBUG | changed bot status
+2021-10-14 21:50:07,000 | bot | INFO | Resumed Connection
+2021-10-14 21:50:07,054 | bot | DEBUG | changed bot status
+2021-10-14 23:00:44,920 | bot | DEBUG | exts.dayloop New day [UTC+1] detected.
+2021-10-14 23:00:45,203 | exts.dayloop | DEBUG | updating passed work
+2021-10-14 23:00:45,204 | utils.planner | DEBUG | looping througth all assignment...
+2021-10-14 23:00:45,238 | utils.planner | DEBUG | checking old work to delete
+2021-10-14 23:00:45,251 | utils.planner | TRACE | removed 35cdb16a from 773426467492069386
+2021-10-14 23:00:45,272 | utils.planner | DEBUG | found 1
+2021-10-14 23:00:45,273 | bot | DEBUG | exts.dayloop Deleted passed works with amount: 1
+2021-10-14 23:00:45,447 | utils.planner | DEBUG | triggered update
+2021-10-14 23:01:44,938 | utils.planner | DEBUG | returning sorted date for 562976873685057546
+2021-10-14 23:01:45,075 | utils.planner | DEBUG | returning sorted date for 728482381215826000
+2021-10-14 23:01:45,143 | utils.planner | DEBUG | returning sorted date for 676256965650808873
+2021-10-14 23:01:45,240 | utils.planner | DEBUG | returning sorted date for 829749071891005512
+2021-10-14 23:01:45,337 | utils.planner | DEBUG | returning sorted date for 773426467492069386
+2021-10-14 23:59:46,350 | bot | DEBUG | exts.kus successfully fecthed kus data, enabled system.
+2021-10-15 00:04:46,721 | bot | INFO | Resumed Connection
+2021-10-15 00:04:46,776 | bot | DEBUG | changed bot status
+2021-10-15 01:31:18,000 | exts.music | DEBUG | VoiceState created for 728482381215826000
+2021-10-15 01:31:18,000 | exts.music | INFO | Audio Player Launched for 728482381215826000
+2021-10-15 01:31:19,928 | exts.music | DEBUG | 728482381215826000: Searching kaikai kitan
+2021-10-15 01:31:23,759 | exts.music | DEBUG | Enqueued
+2021-10-15 01:34:16,253 | exts.music | DEBUG | 728482381215826000: Searching https://open.spotify.com/playlist/7u7AZf0i6W9vK7o7PuotFy?si=d2238268b2ef4e07
+2021-10-15 01:34:16,991 | exts.music | DEBUG | Enqueued
+2021-10-15 01:55:13,804 | exts.music | INFO | 728482381215826000: All user left, Waiting for deletion
+2021-10-15 01:55:51,800 | exts.music | INFO | 728482381215826000: User joined back, Stopping deletion
+2021-10-15 01:59:36,445 | exts.music | WARNING | Traceback (most recent call last):
+  File "/opt/virtualenvs/python3/lib/python3.8/site-packages/youtube_dl/YoutubeDL.py", line 815, in wrapper
+    return func(self, *args, **kwargs)
+  File "/opt/virtualenvs/python3/lib/python3.8/site-packages/youtube_dl/YoutubeDL.py", line 836, in __extract_info
+    ie_result = ie.extract(url)
+  File "/opt/virtualenvs/python3/lib/python3.8/site-packages/youtube_dl/extractor/common.py", line 534, in extract
+    ie_result = self._real_extract(url)
+  File "/opt/virtualenvs/python3/lib/python3.8/site-packages/youtube_dl/extractor/youtube.py", line 1715, in _real_extract
+    self._sort_formats(formats)
+  File "/opt/virtualenvs/python3/lib/python3.8/site-packages/youtube_dl/extractor/common.py", line 1374, in _sort_formats
+    raise ExtractorError('No video formats found')
+youtube_dl.utils.ExtractorError: No video formats found
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/home/runner/TpLearn/exts/music.py", line 204, in audio_player_task
+    source = await YTDLSource.create_source(self.current.ctx, self.current.url, loop=self.bot.loop)
+  File "/home/runner/TpLearn/utils/audio.py", line 93, in create_source
+    processed_info = await loop.run_in_executor(None, partial)
+  File "/usr/lib/python3.8/concurrent/futures/thread.py", line 57, in run
+    result = self.fn(*self.args, **self.kwargs)
+  File "/opt/virtualenvs/python3/lib/python3.8/site-packages/youtube_dl/YoutubeDL.py", line 808, in extract_info
+    return self.__extract_info(url, ie, download, extra_info, process)
+  File "/opt/virtualenvs/python3/lib/python3.8/site-packages/youtube_dl/YoutubeDL.py", line 815, in wrapper
+    return func(self, *args, **kwargs)
+  File "/opt/virtualenvs/python3/lib/python3.8/site-packages/youtube_dl/YoutubeDL.py", line 847, in __extract_info
+    return self.process_ie_result(ie_result, download, extra_info)
+  File "/opt/virtualenvs/python3/lib/python3.8/site-packages/youtube_dl/YoutubeDL.py", line 885, in process_ie_result
+    return self.extract_info(ie_result['url'],
+  File "/opt/virtualenvs/python3/lib/python3.8/site-packages/youtube_dl/YoutubeDL.py", line 808, in extract_info
+    return self.__extract_info(url, ie, download, extra_info, process)
+  File "/opt/virtualenvs/python3/lib/python3.8/site-packages/youtube_dl/YoutubeDL.py", line 815, in wrapper
+    return func(self, *args, **kwargs)
+  File "/opt/virtualenvs/python3/lib/python3.8/site-packages/youtube_dl/YoutubeDL.py", line 847, in __extract_info
+    return self.process_ie_result(ie_result, download, extra_info)
+  File "/opt/virtualenvs/python3/lib/python3.8/site-packages/youtube_dl/YoutubeDL.py", line 933, in process_ie_result
+    return self.__process_playlist(ie_result, download)
+  File "/opt/virtualenvs/python3/lib/python3.8/site-packages/youtube_dl/YoutubeDL.py", line 1067, in __process_playlist
+    entry_result = self.__process_iterable_entry(entry, download, extra)
+  File "/opt/virtualenvs/python3/lib/python3.8/site-packages/youtube_dl/YoutubeDL.py", line 815, in wrapper
+    return func(self, *args, **kwargs)
+  File "/opt/virtualenvs/python3/lib/python3.8/site-packages/youtube_dl/YoutubeDL.py", line 1076, in __process_iterable_entry
+    return self.process_ie_result(
+  File "/opt/virtualenvs/python3/lib/python3.8/site-packages/youtube_dl/YoutubeDL.py", line 885, in process_ie_result
+    return self.extract_info(ie_result['url'],
+  File "/opt/virtualenvs/python3/lib/python3.8/site-packages/youtube_dl/YoutubeDL.py", line 808, in extract_info
+    return self.__extract_info(url, ie, download, extra_info, process)
+  File "/opt/virtualenvs/python3/lib/python3.8/site-packages/youtube_dl/YoutubeDL.py", line 824, in wrapper
+    self.report_error(compat_str(e), e.format_traceback())
+  File "/opt/virtualenvs/python3/lib/python3.8/site-packages/youtube_dl/YoutubeDL.py", line 628, in report_error
+    self.trouble(error_message, tb)
+  File "/opt/virtualenvs/python3/lib/python3.8/site-packages/youtube_dl/YoutubeDL.py", line 598, in trouble
+    raise DownloadError(message, exc_info)
+youtube_dl.utils.DownloadError: [0;31mERROR:[0m No video formats found
+
+2021-10-15 01:59:37,729 | exts.music | WARNING | Traceback (most recent call last):
+  File "/opt/virtualenvs/python3/lib/python3.8/site-packages/youtube_dl/YoutubeDL.py", line 815, in wrapper
+    return func(self, *args, **kwargs)
+  File "/opt/virtualenvs/python3/lib/python3.8/site-packages/youtube_dl/YoutubeDL.py", line 836, in __extract_info
+    ie_result = ie.extract(url)
+  File "/opt/virtualenvs/python3/lib/python3.8/site-packages/youtube_dl/extractor/common.py", line 534, in extract
+    ie_result = self._real_extract(url)
+  File "/opt/virtualenvs/python3/lib/python3.8/site-packages/youtube_dl/extractor/youtube.py", line 1715, in _real_extract
+    self._sort_formats(formats)
+  File "/opt/virtualenvs/python3/lib/python3.8/site-packages/youtube_dl/extractor/common.py", line 1374, in _sort_formats
+    raise ExtractorError('No video formats found')
+youtube_dl.utils.ExtractorError: No video formats found
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/home/runner/TpLearn/exts/music.py", line 204, in audio_player_task
+    source = await YTDLSource.create_source(self.current.ctx, self.current.url, loop=self.bot.loop)
+  File "/home/runner/TpLearn/utils/audio.py", line 93, in create_source
+    processed_info = await loop.run_in_executor(None, partial)
+  File "/usr/lib/python3.8/concurrent/futures/thread.py", line 57, in run
+    result = self.fn(*self.args, **self.kwargs)
+  File "/opt/virtualenvs/python3/lib/python3.8/site-packages/youtube_dl/YoutubeDL.py", line 808, in extract_info
+    return self.__extract_info(url, ie, download, extra_info, process)
+  File "/opt/virtualenvs/python3/lib/python3.8/site-packages/youtube_dl/YoutubeDL.py", line 815, in wrapper
+    return func(self, *args, **kwargs)
+  File "/opt/virtualenvs/python3/lib/python3.8/site-packages/youtube_dl/YoutubeDL.py", line 847, in __extract_info
+    return self.process_ie_result(ie_result, download, extra_info)
+  File "/opt/virtualenvs/python3/lib/python3.8/site-packages/youtube_dl/YoutubeDL.py", line 885, in process_ie_result
+    return self.extract_info(ie_result['url'],
+  File "/opt/virtualenvs/python3/lib/python3.8/site-packages/youtube_dl/YoutubeDL.py", line 808, in extract_info
+    return self.__extract_info(url, ie, download, extra_info, process)
+  File "/opt/virtualenvs/python3/lib/python3.8/site-packages/youtube_dl/YoutubeDL.py", line 815, in wrapper
+    return func(self, *args, **kwargs)
+  File "/opt/virtualenvs/python3/lib/python3.8/site-packages/youtube_dl/YoutubeDL.py", line 847, in __extract_info
+    return self.process_ie_result(ie_result, download, extra_info)
+  File "/opt/virtualenvs/python3/lib/python3.8/site-packages/youtube_dl/YoutubeDL.py", line 933, in process_ie_result
+    return self.__process_playlist(ie_result, download)
+  File "/opt/virtualenvs/python3/lib/python3.8/site-packages/youtube_dl/YoutubeDL.py", line 1067, in __process_playlist
+    entry_result = self.__process_iterable_entry(entry, download, extra)
+  File "/opt/virtualenvs/python3/lib/python3.8/site-packages/youtube_dl/YoutubeDL.py", line 815, in wrapper
+    return func(self, *args, **kwargs)
+  File "/opt/virtualenvs/python3/lib/python3.8/site-packages/youtube_dl/YoutubeDL.py", line 1076, in __process_iterable_entry
+    return self.process_ie_result(
+  File "/opt/virtualenvs/python3/lib/python3.8/site-packages/youtube_dl/YoutubeDL.py", line 885, in process_ie_result
+    return self.extract_info(ie_result['url'],
+  File "/opt/virtualenvs/python3/lib/python3.8/site-packages/youtube_dl/YoutubeDL.py", line 808, in extract_info
+    return self.__extract_info(url, ie, download, extra_info, process)
+  File "/opt/virtualenvs/python3/lib/python3.8/site-packages/youtube_dl/YoutubeDL.py", line 824, in wrapper
+    self.report_error(compat_str(e), e.format_traceback())
+  File "/opt/virtualenvs/python3/lib/python3.8/site-packages/youtube_dl/YoutubeDL.py", line 628, in report_error
+    self.trouble(error_message, tb)
+  File "/opt/virtualenvs/python3/lib/python3.8/site-packages/youtube_dl/YoutubeDL.py", line 598, in trouble
+    raise DownloadError(message, exc_info)
+youtube_dl.utils.DownloadError: [0;31mERROR:[0m No video formats found
+
+2021-10-15 01:59:39,354 | exts.music | WARNING | Traceback (most recent call last):
+  File "/opt/virtualenvs/python3/lib/python3.8/site-packages/youtube_dl/YoutubeDL.py", line 815, in wrapper
+    return func(self, *args, **kwargs)
+  File "/opt/virtualenvs/python3/lib/python3.8/site-packages/youtube_dl/YoutubeDL.py", line 836, in __extract_info
+    ie_result = ie.extract(url)
+  File "/opt/virtualenvs/python3/lib/python3.8/site-packages/youtube_dl/extractor/common.py", line 534, in extract
+    ie_result = self._real_extract(url)
+  File "/opt/virtualenvs/python3/lib/python3.8/site-packages/youtube_dl/extractor/youtube.py", line 1715, in _real_extract
+    self._sort_formats(formats)
+  File "/opt/virtualenvs/python3/lib/python3.8/site-packages/youtube_dl/extractor/common.py", line 1374, in _sort_formats
+    raise ExtractorError('No video formats found')
+youtube_dl.utils.ExtractorError: No video formats found
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/home/runner/TpLearn/exts/music.py", line 204, in audio_player_task
+    source = await YTDLSource.create_source(self.current.ctx, self.current.url, loop=self.bot.loop)
+  File "/home/runner/TpLearn/utils/audio.py", line 93, in create_source
+    processed_info = await loop.run_in_executor(None, partial)
+  File "/usr/lib/python3.8/concurrent/futures/thread.py", line 57, in run
+    result = self.fn(*self.args, **self.kwargs)
+  File "/opt/virtualenvs/python3/lib/python3.8/site-packages/youtube_dl/YoutubeDL.py", line 808, in extract_info
+    return self.__extract_info(url, ie, download, extra_info, process)
+  File "/opt/virtualenvs/python3/lib/python3.8/site-packages/youtube_dl/YoutubeDL.py", line 815, in wrapper
+    return func(self, *args, **kwargs)
+  File "/opt/virtualenvs/python3/lib/python3.8/site-packages/youtube_dl/YoutubeDL.py", line 847, in __extract_info
+    return self.process_ie_result(ie_result, download, extra_info)
+  File "/opt/virtualenvs/python3/lib/python3.8/site-packages/youtube_dl/YoutubeDL.py", line 885, in process_ie_result
+    return self.extract_info(ie_result['url'],
+  File "/opt/virtualenvs/python3/lib/python3.8/site-packages/youtube_dl/YoutubeDL.py", line 808, in extract_info
+    return self.__extract_info(url, ie, download, extra_info, process)
+  File "/opt/virtualenvs/python3/lib/python3.8/site-packages/youtube_dl/YoutubeDL.py", line 815, in wrapper
+    return func(self, *args, **kwargs)
+  File "/opt/virtualenvs/python3/lib/python3.8/site-packages/youtube_dl/YoutubeDL.py", line 847, in __extract_info
+    return self.process_ie_result(ie_result, download, extra_info)
+  File "/opt/virtualenvs/python3/lib/python3.8/site-packages/youtube_dl/YoutubeDL.py", line 933, in process_ie_result
+    return self.__process_playlist(ie_result, download)
+  File "/opt/virtualenvs/python3/lib/python3.8/site-packages/youtube_dl/YoutubeDL.py", line 1067, in __process_playlist
+    entry_result = self.__process_iterable_entry(entry, download, extra)
+  File "/opt/virtualenvs/python3/lib/python3.8/site-packages/youtube_dl/YoutubeDL.py", line 815, in wrapper
+    return func(self, *args, **kwargs)
+  File "/opt/virtualenvs/python3/lib/python3.8/site-packages/youtube_dl/YoutubeDL.py", line 1076, in __process_iterable_entry
+    return self.process_ie_result(
+  File "/opt/virtualenvs/python3/lib/python3.8/site-packages/youtube_dl/YoutubeDL.py", line 885, in process_ie_result
+    return self.extract_info(ie_result['url'],
+  File "/opt/virtualenvs/python3/lib/python3.8/site-packages/youtube_dl/YoutubeDL.py", line 808, in extract_info
+    return self.__extract_info(url, ie, download, extra_info, process)
+  File "/opt/virtualenvs/python3/lib/python3.8/site-packages/youtube_dl/YoutubeDL.py", line 824, in wrapper
+    self.report_error(compat_str(e), e.format_traceback())
+  File "/opt/virtualenvs/python3/lib/python3.8/site-packages/youtube_dl/YoutubeDL.py", line 628, in report_error
+    self.trouble(error_message, tb)
+  File "/opt/virtualenvs/python3/lib/python3.8/site-packages/youtube_dl/YoutubeDL.py", line 598, in trouble
+    raise DownloadError(message, exc_info)
+youtube_dl.utils.DownloadError: [0;31mERROR:[0m No video formats found
+
+2021-10-15 01:59:40,826 | exts.music | WARNING | Traceback (most recent call last):
+  File "/opt/virtualenvs/python3/lib/python3.8/site-packages/youtube_dl/YoutubeDL.py", line 815, in wrapper
+    return func(self, *args, **kwargs)
+  File "/opt/virtualenvs/python3/lib/python3.8/site-packages/youtube_dl/YoutubeDL.py", line 836, in __extract_info
+    ie_result = ie.extract(url)
+  File "/opt/virtualenvs/python3/lib/python3.8/site-packages/youtube_dl/extractor/common.py", line 534, in extract
+    ie_result = self._real_extract(url)
+  File "/opt/virtualenvs/python3/lib/python3.8/site-packages/youtube_dl/extractor/youtube.py", line 1715, in _real_extract
+    self._sort_formats(formats)
+  File "/opt/virtualenvs/python3/lib/python3.8/site-packages/youtube_dl/extractor/common.py", line 1374, in _sort_formats
+    raise ExtractorError('No video formats found')
+youtube_dl.utils.ExtractorError: No video formats found
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/home/runner/TpLearn/exts/music.py", line 204, in audio_player_task
+    source = await YTDLSource.create_source(self.current.ctx, self.current.url, loop=self.bot.loop)
+  File "/home/runner/TpLearn/utils/audio.py", line 93, in create_source
+    processed_info = await loop.run_in_executor(None, partial)
+  File "/usr/lib/python3.8/concurrent/futures/thread.py", line 57, in run
+    result = self.fn(*self.args, **self.kwargs)
+  File "/opt/virtualenvs/python3/lib/python3.8/site-packages/youtube_dl/YoutubeDL.py", line 808, in extract_info
+    return self.__extract_info(url, ie, download, extra_info, process)
+  File "/opt/virtualenvs/python3/lib/python3.8/site-packages/youtube_dl/YoutubeDL.py", line 815, in wrapper
+    return func(self, *args, **kwargs)
+  File "/opt/virtualenvs/python3/lib/python3.8/site-packages/youtube_dl/YoutubeDL.py", line 847, in __extract_info
+    return self.process_ie_result(ie_result, download, extra_info)
+  File "/opt/virtualenvs/python3/lib/python3.8/site-packages/youtube_dl/YoutubeDL.py", line 885, in process_ie_result
+    return self.extract_info(ie_result['url'],
+  File "/opt/virtualenvs/python3/lib/python3.8/site-packages/youtube_dl/YoutubeDL.py", line 808, in extract_info
+    return self.__extract_info(url, ie, download, extra_info, process)
+  File "/opt/virtualenvs/python3/lib/python3.8/site-packages/youtube_dl/YoutubeDL.py", line 815, in wrapper
+    return func(self, *args, **kwargs)
+  File "/opt/virtualenvs/python3/lib/python3.8/site-packages/youtube_dl/YoutubeDL.py", line 847, in __extract_info
+    return self.process_ie_result(ie_result, download, extra_info)
+  File "/opt/virtualenvs/python3/lib/python3.8/site-packages/youtube_dl/YoutubeDL.py", line 933, in process_ie_result
+    return self.__process_playlist(ie_result, download)
+  File "/opt/virtualenvs/python3/lib/python3.8/site-packages/youtube_dl/YoutubeDL.py", line 1067, in __process_playlist
+    entry_result = self.__process_iterable_entry(entry, download, extra)
+  File "/opt/virtualenvs/python3/lib/python3.8/site-packages/youtube_dl/YoutubeDL.py", line 815, in wrapper
+    return func(self, *args, **kwargs)
+  File "/opt/virtualenvs/python3/lib/python3.8/site-packages/youtube_dl/YoutubeDL.py", line 1076, in __process_iterable_entry
+    return self.process_ie_result(
+  File "/opt/virtualenvs/python3/lib/python3.8/site-packages/youtube_dl/YoutubeDL.py", line 885, in process_ie_result
+    return self.extract_info(ie_result['url'],
+  File "/opt/virtualenvs/python3/lib/python3.8/site-packages/youtube_dl/YoutubeDL.py", line 808, in extract_info
+    return self.__extract_info(url, ie, download, extra_info, process)
+  File "/opt/virtualenvs/python3/lib/python3.8/site-packages/youtube_dl/YoutubeDL.py", line 824, in wrapper
+    self.report_error(compat_str(e), e.format_traceback())
+  File "/opt/virtualenvs/python3/lib/python3.8/site-packages/youtube_dl/YoutubeDL.py", line 628, in report_error
+    self.trouble(error_message, tb)
+  File "/opt/virtualenvs/python3/lib/python3.8/site-packages/youtube_dl/YoutubeDL.py", line 598, in trouble
+    raise DownloadError(message, exc_info)
+youtube_dl.utils.DownloadError: [0;31mERROR:[0m No video formats found
+
+2021-10-15 01:59:42,831 | exts.music | WARNING | Traceback (most recent call last):
+  File "/opt/virtualenvs/python3/lib/python3.8/site-packages/youtube_dl/YoutubeDL.py", line 815, in wrapper
+    return func(self, *args, **kwargs)
+  File "/opt/virtualenvs/python3/lib/python3.8/site-packages/youtube_dl/YoutubeDL.py", line 836, in __extract_info
+    ie_result = ie.extract(url)
+  File "/opt/virtualenvs/python3/lib/python3.8/site-packages/youtube_dl/extractor/common.py", line 534, in extract
+    ie_result = self._real_extract(url)
+  File "/opt/virtualenvs/python3/lib/python3.8/site-packages/youtube_dl/extractor/youtube.py", line 1715, in _real_extract
+    self._sort_formats(formats)
+  File "/opt/virtualenvs/python3/lib/python3.8/site-packages/youtube_dl/extractor/common.py", line 1374, in _sort_formats
+    raise ExtractorError('No video formats found')
+youtube_dl.utils.ExtractorError: No video formats found
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/home/runner/TpLearn/exts/music.py", line 204, in audio_player_task
+    source = await YTDLSource.create_source(self.current.ctx, self.current.url, loop=self.bot.loop)
+  File "/home/runner/TpLearn/utils/audio.py", line 93, in create_source
+    processed_info = await loop.run_in_executor(None, partial)
+  File "/usr/lib/python3.8/concurrent/futures/thread.py", line 57, in run
+    result = self.fn(*self.args, **self.kwargs)
+  File "/opt/virtualenvs/python3/lib/python3.8/site-packages/youtube_dl/YoutubeDL.py", line 808, in extract_info
+    return self.__extract_info(url, ie, download, extra_info, process)
+  File "/opt/virtualenvs/python3/lib/python3.8/site-packages/youtube_dl/YoutubeDL.py", line 815, in wrapper
+    return func(self, *args, **kwargs)
+  File "/opt/virtualenvs/python3/lib/python3.8/site-packages/youtube_dl/YoutubeDL.py", line 847, in __extract_info
+    return self.process_ie_result(ie_result, download, extra_info)
+  File "/opt/virtualenvs/python3/lib/python3.8/site-packages/youtube_dl/YoutubeDL.py", line 885, in process_ie_result
+    return self.extract_info(ie_result['url'],
+  File "/opt/virtualenvs/python3/lib/python3.8/site-packages/youtube_dl/YoutubeDL.py", line 808, in extract_info
+    return self.__extract_info(url, ie, download, extra_info, process)
+  File "/opt/virtualenvs/python3/lib/python3.8/site-packages/youtube_dl/YoutubeDL.py", line 815, in wrapper
+    return func(self, *args, **kwargs)
+  File "/opt/virtualenvs/python3/lib/python3.8/site-packages/youtube_dl/YoutubeDL.py", line 847, in __extract_info
+    return self.process_ie_result(ie_result, download, extra_info)
+  File "/opt/virtualenvs/python3/lib/python3.8/site-packages/youtube_dl/YoutubeDL.py", line 933, in process_ie_result
+    return self.__process_playlist(ie_result, download)
+  File "/opt/virtualenvs/python3/lib/python3.8/site-packages/youtube_dl/YoutubeDL.py", line 1067, in __process_playlist
+    entry_result = self.__process_iterable_entry(entry, download, extra)
+  File "/opt/virtualenvs/python3/lib/python3.8/site-packages/youtube_dl/YoutubeDL.py", line 815, in wrapper
+    return func(self, *args, **kwargs)
+  File "/opt/virtualenvs/python3/lib/python3.8/site-packages/youtube_dl/YoutubeDL.py", line 1076, in __process_iterable_entry
+    return self.process_ie_result(
+  File "/opt/virtualenvs/python3/lib/python3.8/site-packages/youtube_dl/YoutubeDL.py", line 885, in process_ie_result
+    return self.extract_info(ie_result['url'],
+  File "/opt/virtualenvs/python3/lib/python3.8/site-packages/youtube_dl/YoutubeDL.py", line 808, in extract_info
+    return self.__extract_info(url, ie, download, extra_info, process)
+  File "/opt/virtualenvs/python3/lib/python3.8/site-packages/youtube_dl/YoutubeDL.py", line 824, in wrapper
+    self.report_error(compat_str(e), e.format_traceback())
+  File "/opt/virtualenvs/python3/lib/python3.8/site-packages/youtube_dl/YoutubeDL.py", line 628, in report_error
+    self.trouble(error_message, tb)
+  File "/opt/virtualenvs/python3/lib/python3.8/site-packages/youtube_dl/YoutubeDL.py", line 598, in trouble
+    raise DownloadError(message, exc_info)
+youtube_dl.utils.DownloadError: [0;31mERROR:[0m No video formats found
+
+2021-10-15 01:59:53,597 | exts.music | WARNING | Traceback (most recent call last):
+  File "/opt/virtualenvs/python3/lib/python3.8/site-packages/youtube_dl/YoutubeDL.py", line 815, in wrapper
+    return func(self, *args, **kwargs)
+  File "/opt/virtualenvs/python3/lib/python3.8/site-packages/youtube_dl/YoutubeDL.py", line 836, in __extract_info
+    ie_result = ie.extract(url)
+  File "/opt/virtualenvs/python3/lib/python3.8/site-packages/youtube_dl/extractor/common.py", line 534, in extract
+    ie_result = self._real_extract(url)
+  File "/opt/virtualenvs/python3/lib/python3.8/site-packages/youtube_dl/extractor/youtube.py", line 1715, in _real_extract
+    self._sort_formats(formats)
+  File "/opt/virtualenvs/python3/lib/python3.8/site-packages/youtube_dl/extractor/common.py", line 1374, in _sort_formats
+    raise ExtractorError('No video formats found')
+youtube_dl.utils.ExtractorError: No video formats found
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/home/runner/TpLearn/exts/music.py", line 204, in audio_player_task
+    source = await YTDLSource.create_source(self.current.ctx, self.current.url, loop=self.bot.loop)
+  File "/home/runner/TpLearn/utils/audio.py", line 93, in create_source
+    processed_info = await loop.run_in_executor(None, partial)
+  File "/usr/lib/python3.8/concurrent/futures/thread.py", line 57, in run
+    result = self.fn(*self.args, **self.kwargs)
+  File "/opt/virtualenvs/python3/lib/python3.8/site-packages/youtube_dl/YoutubeDL.py", line 808, in extract_info
+    return self.__extract_info(url, ie, download, extra_info, process)
+  File "/opt/virtualenvs/python3/lib/python3.8/site-packages/youtube_dl/YoutubeDL.py", line 815, in wrapper
+    return func(self, *args, **kwargs)
+  File "/opt/virtualenvs/python3/lib/python3.8/site-packages/youtube_dl/YoutubeDL.py", line 847, in __extract_info
+    return self.process_ie_result(ie_result, download, extra_info)
+  File "/opt/virtualenvs/python3/lib/python3.8/site-packages/youtube_dl/YoutubeDL.py", line 885, in process_ie_result
+    return self.extract_info(ie_result['url'],
+  File "/opt/virtualenvs/python3/lib/python3.8/site-packages/youtube_dl/YoutubeDL.py", line 808, in extract_info
+    return self.__extract_info(url, ie, download, extra_info, process)
+  File "/opt/virtualenvs/python3/lib/python3.8/site-packages/youtube_dl/YoutubeDL.py", line 815, in wrapper
+    return func(self, *args, **kwargs)
+  File "/opt/virtualenvs/python3/lib/python3.8/site-packages/youtube_dl/YoutubeDL.py", line 847, in __extract_info
+    return self.process_ie_result(ie_result, download, extra_info)
+  File "/opt/virtualenvs/python3/lib/python3.8/site-packages/youtube_dl/YoutubeDL.py", line 933, in process_ie_result
+    return self.__process_playlist(ie_result, download)
+  File "/opt/virtualenvs/python3/lib/python3.8/site-packages/youtube_dl/YoutubeDL.py", line 1067, in __process_playlist
+    entry_result = self.__process_iterable_entry(entry, download, extra)
+  File "/opt/virtualenvs/python3/lib/python3.8/site-packages/youtube_dl/YoutubeDL.py", line 815, in wrapper
+    return func(self, *args, **kwargs)
+  File "/opt/virtualenvs/python3/lib/python3.8/site-packages/youtube_dl/YoutubeDL.py", line 1076, in __process_iterable_entry
+    return self.process_ie_result(
+  File "/opt/virtualenvs/python3/lib/python3.8/site-packages/youtube_dl/YoutubeDL.py", line 885, in process_ie_result
+    return self.extract_info(ie_result['url'],
+  File "/opt/virtualenvs/python3/lib/python3.8/site-packages/youtube_dl/YoutubeDL.py", line 808, in extract_info
+    return self.__extract_info(url, ie, download, extra_info, process)
+  File "/opt/virtualenvs/python3/lib/python3.8/site-packages/youtube_dl/YoutubeDL.py", line 824, in wrapper
+    self.report_error(compat_str(e), e.format_traceback())
+  File "/opt/virtualenvs/python3/lib/python3.8/site-packages/youtube_dl/YoutubeDL.py", line 628, in report_error
+    self.trouble(error_message, tb)
+  File "/opt/virtualenvs/python3/lib/python3.8/site-packages/youtube_dl/YoutubeDL.py", line 598, in trouble
+    raise DownloadError(message, exc_info)
+youtube_dl.utils.DownloadError: [0;31mERROR:[0m No video formats found
+
+2021-10-15 01:59:54,219 | exts.music | DEBUG | 728482381215826000: Searching https://www.youtube.com/watch?v=C3TbEu5yVQs
+2021-10-15 01:59:54,851 | exts.music | WARNING | Traceback (most recent call last):
+  File "/opt/virtualenvs/python3/lib/python3.8/site-packages/youtube_dl/YoutubeDL.py", line 815, in wrapper
+    return func(self, *args, **kwargs)
+  File "/opt/virtualenvs/python3/lib/python3.8/site-packages/youtube_dl/YoutubeDL.py", line 836, in __extract_info
+    ie_result = ie.extract(url)
+  File "/opt/virtualenvs/python3/lib/python3.8/site-packages/youtube_dl/extractor/common.py", line 534, in extract
+    ie_result = self._real_extract(url)
+  File "/opt/virtualenvs/python3/lib/python3.8/site-packages/youtube_dl/extractor/youtube.py", line 1715, in _real_extract
+    self._sort_formats(formats)
+  File "/opt/virtualenvs/python3/lib/python3.8/site-packages/youtube_dl/extractor/common.py", line 1374, in _sort_formats
+    raise ExtractorError('No video formats found')
+youtube_dl.utils.ExtractorError: No video formats found
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/home/runner/TpLearn/exts/music.py", line 204, in audio_player_task
+    source = await YTDLSource.create_source(self.current.ctx, self.current.url, loop=self.bot.loop)
+  File "/home/runner/TpLearn/utils/audio.py", line 93, in create_source
+    processed_info = await loop.run_in_executor(None, partial)
+  File "/usr/lib/python3.8/concurrent/futures/thread.py", line 57, in run
+    result = self.fn(*self.args, **self.kwargs)
+  File "/opt/virtualenvs/python3/lib/python3.8/site-packages/youtube_dl/YoutubeDL.py", line 808, in extract_info
+    return self.__extract_info(url, ie, download, extra_info, process)
+  File "/opt/virtualenvs/python3/lib/python3.8/site-packages/youtube_dl/YoutubeDL.py", line 815, in wrapper
+    return func(self, *args, **kwargs)
+  File "/opt/virtualenvs/python3/lib/python3.8/site-packages/youtube_dl/YoutubeDL.py", line 847, in __extract_info
+    return self.process_ie_result(ie_result, download, extra_info)
+  File "/opt/virtualenvs/python3/lib/python3.8/site-packages/youtube_dl/YoutubeDL.py", line 885, in process_ie_result
+    return self.extract_info(ie_result['url'],
+  File "/opt/virtualenvs/python3/lib/python3.8/site-packages/youtube_dl/YoutubeDL.py", line 808, in extract_info
+    return self.__extract_info(url, ie, download, extra_info, process)
+  File "/opt/virtualenvs/python3/lib/python3.8/site-packages/youtube_dl/YoutubeDL.py", line 815, in wrapper
+    return func(self, *args, **kwargs)
+  File "/opt/virtualenvs/python3/lib/python3.8/site-packages/youtube_dl/YoutubeDL.py", line 847, in __extract_info
+    return self.process_ie_result(ie_result, download, extra_info)
+  File "/opt/virtualenvs/python3/lib/python3.8/site-packages/youtube_dl/YoutubeDL.py", line 933, in process_ie_result
+    return self.__process_playlist(ie_result, download)
+  File "/opt/virtualenvs/python3/lib/python3.8/site-packages/youtube_dl/YoutubeDL.py", line 1067, in __process_playlist
+    entry_result = self.__process_iterable_entry(entry, download, extra)
+  File "/opt/virtualenvs/python3/lib/python3.8/site-packages/youtube_dl/YoutubeDL.py", line 815, in wrapper
+    return func(self, *args, **kwargs)
+  File "/opt/virtualenvs/python3/lib/python3.8/site-packages/youtube_dl/YoutubeDL.py", line 1076, in __process_iterable_entry
+    return self.process_ie_result(
+  File "/opt/virtualenvs/python3/lib/python3.8/site-packages/youtube_dl/YoutubeDL.py", line 885, in process_ie_result
+    return self.extract_info(ie_result['url'],
+  File "/opt/virtualenvs/python3/lib/python3.8/site-packages/youtube_dl/YoutubeDL.py", line 808, in extract_info
+    return self.__extract_info(url, ie, download, extra_info, process)
+  File "/opt/virtualenvs/python3/lib/python3.8/site-packages/youtube_dl/YoutubeDL.py", line 824, in wrapper
+    self.report_error(compat_str(e), e.format_traceback())
+  File "/opt/virtualenvs/python3/lib/python3.8/site-packages/youtube_dl/YoutubeDL.py", line 628, in report_error
+    self.trouble(error_message, tb)
+  File "/opt/virtualenvs/python3/lib/python3.8/site-packages/youtube_dl/YoutubeDL.py", line 598, in trouble
+    raise DownloadError(message, exc_info)
+youtube_dl.utils.DownloadError: [0;31mERROR:[0m No video formats found
+
+2021-10-15 01:59:56,514 | exts.music | DEBUG | Enqueued
+2021-10-15 02:00:34,176 | exts.music | WARNING | Traceback (most recent call last):
+  File "/opt/virtualenvs/python3/lib/python3.8/site-packages/youtube_dl/YoutubeDL.py", line 815, in wrapper
+    return func(self, *args, **kwargs)
+  File "/opt/virtualenvs/python3/lib/python3.8/site-packages/youtube_dl/YoutubeDL.py", line 836, in __extract_info
+    ie_result = ie.extract(url)
+  File "/opt/virtualenvs/python3/lib/python3.8/site-packages/youtube_dl/extractor/common.py", line 534, in extract
+    ie_result = self._real_extract(url)
+  File "/opt/virtualenvs/python3/lib/python3.8/site-packages/youtube_dl/extractor/youtube.py", line 1715, in _real_extract
+    self._sort_formats(formats)
+  File "/opt/virtualenvs/python3/lib/python3.8/site-packages/youtube_dl/extractor/common.py", line 1374, in _sort_formats
+    raise ExtractorError('No video formats found')
+youtube_dl.utils.ExtractorError: No video formats found
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/home/runner/TpLearn/exts/music.py", line 204, in audio_player_task
+    source = await YTDLSource.create_source(self.current.ctx, self.current.url, loop=self.bot.loop)
+  File "/home/runner/TpLearn/utils/audio.py", line 93, in create_source
+    processed_info = await loop.run_in_executor(None, partial)
+  File "/usr/lib/python3.8/concurrent/futures/thread.py", line 57, in run
+    result = self.fn(*self.args, **self.kwargs)
+  File "/opt/virtualenvs/python3/lib/python3.8/site-packages/youtube_dl/YoutubeDL.py", line 808, in extract_info
+    return self.__extract_info(url, ie, download, extra_info, process)
+  File "/opt/virtualenvs/python3/lib/python3.8/site-packages/youtube_dl/YoutubeDL.py", line 815, in wrapper
+    return func(self, *args, **kwargs)
+  File "/opt/virtualenvs/python3/lib/python3.8/site-packages/youtube_dl/YoutubeDL.py", line 847, in __extract_info
+    return self.process_ie_result(ie_result, download, extra_info)
+  File "/opt/virtualenvs/python3/lib/python3.8/site-packages/youtube_dl/YoutubeDL.py", line 885, in process_ie_result
+    return self.extract_info(ie_result['url'],
+  File "/opt/virtualenvs/python3/lib/python3.8/site-packages/youtube_dl/YoutubeDL.py", line 808, in extract_info
+    return self.__extract_info(url, ie, download, extra_info, process)
+  File "/opt/virtualenvs/python3/lib/python3.8/site-packages/youtube_dl/YoutubeDL.py", line 815, in wrapper
+    return func(self, *args, **kwargs)
+  File "/opt/virtualenvs/python3/lib/python3.8/site-packages/youtube_dl/YoutubeDL.py", line 847, in __extract_info
+    return self.process_ie_result(ie_result, download, extra_info)
+  File "/opt/virtualenvs/python3/lib/python3.8/site-packages/youtube_dl/YoutubeDL.py", line 933, in process_ie_result
+    return self.__process_playlist(ie_result, download)
+  File "/opt/virtualenvs/python3/lib/python3.8/site-packages/youtube_dl/YoutubeDL.py", line 1067, in __process_playlist
+    entry_result = self.__process_iterable_entry(entry, download, extra)
+  File "/opt/virtualenvs/python3/lib/python3.8/site-packages/youtube_dl/YoutubeDL.py", line 815, in wrapper
+    return func(self, *args, **kwargs)
+  File "/opt/virtualenvs/python3/lib/python3.8/site-packages/youtube_dl/YoutubeDL.py", line 1076, in __process_iterable_entry
+    return self.process_ie_result(
+  File "/opt/virtualenvs/python3/lib/python3.8/site-packages/youtube_dl/YoutubeDL.py", line 885, in process_ie_result
+    return self.extract_info(ie_result['url'],
+  File "/opt/virtualenvs/python3/lib/python3.8/site-packages/youtube_dl/YoutubeDL.py", line 808, in extract_info
+    return self.__extract_info(url, ie, download, extra_info, process)
+  File "/opt/virtualenvs/python3/lib/python3.8/site-packages/youtube_dl/YoutubeDL.py", line 824, in wrapper
+    self.report_error(compat_str(e), e.format_traceback())
+  File "/opt/virtualenvs/python3/lib/python3.8/site-packages/youtube_dl/YoutubeDL.py", line 628, in report_error
+    self.trouble(error_message, tb)
+  File "/opt/virtualenvs/python3/lib/python3.8/site-packages/youtube_dl/YoutubeDL.py", line 598, in trouble
+    raise DownloadError(message, exc_info)
+youtube_dl.utils.DownloadError: [0;31mERROR:[0m No video formats found
+
+2021-10-15 02:03:57,838 | bot | INFO | Cog loaded: Music
+2021-10-15 02:03:57,841 | asyncio | ERROR | Task exception was never retrieved
+future: <Task finished name='Task-5098' coro=<VoiceState.stop() done, defined at /home/runner/TpLearn/exts/music.py:243> exception=KeyError(728482381215826000)>
+Traceback (most recent call last):
+  File "/home/runner/TpLearn/exts/music.py", line 255, in stop
+    # self.loader.queue.clear()
+KeyError: 728482381215826000
+2021-10-15 02:04:03,744 | exts.music | DEBUG | VoiceState created for 728482381215826000
+2021-10-15 02:04:03,745 | exts.music | INFO | Audio Player Launched for 728482381215826000
+2021-10-15 02:04:05,798 | exts.music | DEBUG | 728482381215826000: Searching https://open.spotify.com/playlist/7u7AZf0i6W9vK7o7PuotFy?si=d2238268b2ef4e07
+2021-10-15 02:04:06,523 | exts.music | DEBUG | Enqueued
+2021-10-15 02:04:07,666 | exts.music | WARNING | Traceback (most recent call last):
+  File "/opt/virtualenvs/python3/lib/python3.8/site-packages/youtube_dl/YoutubeDL.py", line 815, in wrapper
+    return func(self, *args, **kwargs)
+  File "/opt/virtualenvs/python3/lib/python3.8/site-packages/youtube_dl/YoutubeDL.py", line 836, in __extract_info
+    ie_result = ie.extract(url)
+  File "/opt/virtualenvs/python3/lib/python3.8/site-packages/youtube_dl/extractor/common.py", line 534, in extract
+    ie_result = self._real_extract(url)
+  File "/opt/virtualenvs/python3/lib/python3.8/site-packages/youtube_dl/extractor/youtube.py", line 1715, in _real_extract
+    self._sort_formats(formats)
+  File "/opt/virtualenvs/python3/lib/python3.8/site-packages/youtube_dl/extractor/common.py", line 1374, in _sort_formats
+    raise ExtractorError('No video formats found')
+youtube_dl.utils.ExtractorError: No video formats found
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/home/runner/TpLearn/exts/music.py", line 204, in audio_player_task
+    source = await YTDLSource.create_source(self.current.ctx, self.current.url, loop=self.bot.loop)
+  File "/home/runner/TpLearn/utils/audio.py", line 93, in create_source
+    processed_info = await loop.run_in_executor(None, partial)
+  File "/usr/lib/python3.8/concurrent/futures/thread.py", line 57, in run
+    result = self.fn(*self.args, **self.kwargs)
+  File "/opt/virtualenvs/python3/lib/python3.8/site-packages/youtube_dl/YoutubeDL.py", line 808, in extract_info
+    return self.__extract_info(url, ie, download, extra_info, process)
+  File "/opt/virtualenvs/python3/lib/python3.8/site-packages/youtube_dl/YoutubeDL.py", line 815, in wrapper
+    return func(self, *args, **kwargs)
+  File "/opt/virtualenvs/python3/lib/python3.8/site-packages/youtube_dl/YoutubeDL.py", line 847, in __extract_info
+    return self.process_ie_result(ie_result, download, extra_info)
+  File "/opt/virtualenvs/python3/lib/python3.8/site-packages/youtube_dl/YoutubeDL.py", line 885, in process_ie_result
+    return self.extract_info(ie_result['url'],
+  File "/opt/virtualenvs/python3/lib/python3.8/site-packages/youtube_dl/YoutubeDL.py", line 808, in extract_info
+    return self.__extract_info(url, ie, download, extra_info, process)
+  File "/opt/virtualenvs/python3/lib/python3.8/site-packages/youtube_dl/YoutubeDL.py", line 815, in wrapper
+    return func(self, *args, **kwargs)
+  File "/opt/virtualenvs/python3/lib/python3.8/site-packages/youtube_dl/YoutubeDL.py", line 847, in __extract_info
+    return self.process_ie_result(ie_result, download, extra_info)
+  File "/opt/virtualenvs/python3/lib/python3.8/site-packages/youtube_dl/YoutubeDL.py", line 933, in process_ie_result
+    return self.__process_playlist(ie_result, download)
+  File "/opt/virtualenvs/python3/lib/python3.8/site-packages/youtube_dl/YoutubeDL.py", line 1067, in __process_playlist
+    entry_result = self.__process_iterable_entry(entry, download, extra)
+  File "/opt/virtualenvs/python3/lib/python3.8/site-packages/youtube_dl/YoutubeDL.py", line 815, in wrapper
+    return func(self, *args, **kwargs)
+  File "/opt/virtualenvs/python3/lib/python3.8/site-packages/youtube_dl/YoutubeDL.py", line 1076, in __process_iterable_entry
+    return self.process_ie_result(
+  File "/opt/virtualenvs/python3/lib/python3.8/site-packages/youtube_dl/YoutubeDL.py", line 885, in process_ie_result
+    return self.extract_info(ie_result['url'],
+  File "/opt/virtualenvs/python3/lib/python3.8/site-packages/youtube_dl/YoutubeDL.py", line 808, in extract_info
+    return self.__extract_info(url, ie, download, extra_info, process)
+  File "/opt/virtualenvs/python3/lib/python3.8/site-packages/youtube_dl/YoutubeDL.py", line 824, in wrapper
+    self.report_error(compat_str(e), e.format_traceback())
+  File "/opt/virtualenvs/python3/lib/python3.8/site-packages/youtube_dl/YoutubeDL.py", line 628, in report_error
+    self.trouble(error_message, tb)
+  File "/opt/virtualenvs/python3/lib/python3.8/site-packages/youtube_dl/YoutubeDL.py", line 598, in trouble
+    raise DownloadError(message, exc_info)
+youtube_dl.utils.DownloadError: [0;31mERROR:[0m No video formats found
+
+2021-10-15 02:17:33,948 | exts.music | WARNING | Traceback (most recent call last):
+  File "/opt/virtualenvs/python3/lib/python3.8/site-packages/youtube_dl/YoutubeDL.py", line 815, in wrapper
+    return func(self, *args, **kwargs)
+  File "/opt/virtualenvs/python3/lib/python3.8/site-packages/youtube_dl/YoutubeDL.py", line 836, in __extract_info
+    ie_result = ie.extract(url)
+  File "/opt/virtualenvs/python3/lib/python3.8/site-packages/youtube_dl/extractor/common.py", line 534, in extract
+    ie_result = self._real_extract(url)
+  File "/opt/virtualenvs/python3/lib/python3.8/site-packages/youtube_dl/extractor/youtube.py", line 1715, in _real_extract
+    self._sort_formats(formats)
+  File "/opt/virtualenvs/python3/lib/python3.8/site-packages/youtube_dl/extractor/common.py", line 1374, in _sort_formats
+    raise ExtractorError('No video formats found')
+youtube_dl.utils.ExtractorError: No video formats found
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/home/runner/TpLearn/exts/music.py", line 204, in audio_player_task
+    source = await YTDLSource.create_source(self.current.ctx, self.current.url, loop=self.bot.loop)
+  File "/home/runner/TpLearn/utils/audio.py", line 93, in create_source
+    processed_info = await loop.run_in_executor(None, partial)
+  File "/usr/lib/python3.8/concurrent/futures/thread.py", line 57, in run
+    result = self.fn(*self.args, **self.kwargs)
+  File "/opt/virtualenvs/python3/lib/python3.8/site-packages/youtube_dl/YoutubeDL.py", line 808, in extract_info
+    return self.__extract_info(url, ie, download, extra_info, process)
+  File "/opt/virtualenvs/python3/lib/python3.8/site-packages/youtube_dl/YoutubeDL.py", line 815, in wrapper
+    return func(self, *args, **kwargs)
+  File "/opt/virtualenvs/python3/lib/python3.8/site-packages/youtube_dl/YoutubeDL.py", line 847, in __extract_info
+    return self.process_ie_result(ie_result, download, extra_info)
+  File "/opt/virtualenvs/python3/lib/python3.8/site-packages/youtube_dl/YoutubeDL.py", line 885, in process_ie_result
+    return self.extract_info(ie_result['url'],
+  File "/opt/virtualenvs/python3/lib/python3.8/site-packages/youtube_dl/YoutubeDL.py", line 808, in extract_info
+    return self.__extract_info(url, ie, download, extra_info, process)
+  File "/opt/virtualenvs/python3/lib/python3.8/site-packages/youtube_dl/YoutubeDL.py", line 815, in wrapper
+    return func(self, *args, **kwargs)
+  File "/opt/virtualenvs/python3/lib/python3.8/site-packages/youtube_dl/YoutubeDL.py", line 847, in __extract_info
+    return self.process_ie_result(ie_result, download, extra_info)
+  File "/opt/virtualenvs/python3/lib/python3.8/site-packages/youtube_dl/YoutubeDL.py", line 933, in process_ie_result
+    return self.__process_playlist(ie_result, download)
+  File "/opt/virtualenvs/python3/lib/python3.8/site-packages/youtube_dl/YoutubeDL.py", line 1067, in __process_playlist
+    entry_result = self.__process_iterable_entry(entry, download, extra)
+  File "/opt/virtualenvs/python3/lib/python3.8/site-packages/youtube_dl/YoutubeDL.py", line 815, in wrapper
+    return func(self, *args, **kwargs)
+  File "/opt/virtualenvs/python3/lib/python3.8/site-packages/youtube_dl/YoutubeDL.py", line 1076, in __process_iterable_entry
+    return self.process_ie_result(
+  File "/opt/virtualenvs/python3/lib/python3.8/site-packages/youtube_dl/YoutubeDL.py", line 885, in process_ie_result
+    return self.extract_info(ie_result['url'],
+  File "/opt/virtualenvs/python3/lib/python3.8/site-packages/youtube_dl/YoutubeDL.py", line 808, in extract_info
+    return self.__extract_info(url, ie, download, extra_info, process)
+  File "/opt/virtualenvs/python3/lib/python3.8/site-packages/youtube_dl/YoutubeDL.py", line 824, in wrapper
+    self.report_error(compat_str(e), e.format_traceback())
+  File "/opt/virtualenvs/python3/lib/python3.8/site-packages/youtube_dl/YoutubeDL.py", line 628, in report_error
+    self.trouble(error_message, tb)
+  File "/opt/virtualenvs/python3/lib/python3.8/site-packages/youtube_dl/YoutubeDL.py", line 598, in trouble
+    raise DownloadError(message, exc_info)
+youtube_dl.utils.DownloadError: [0;31mERROR:[0m No video formats found
+
+2021-10-15 02:31:08,407 | exts.music | WARNING | Traceback (most recent call last):
+  File "/opt/virtualenvs/python3/lib/python3.8/site-packages/youtube_dl/YoutubeDL.py", line 815, in wrapper
+    return func(self, *args, **kwargs)
+  File "/opt/virtualenvs/python3/lib/python3.8/site-packages/youtube_dl/YoutubeDL.py", line 836, in __extract_info
+    ie_result = ie.extract(url)
+  File "/opt/virtualenvs/python3/lib/python3.8/site-packages/youtube_dl/extractor/common.py", line 534, in extract
+    ie_result = self._real_extract(url)
+  File "/opt/virtualenvs/python3/lib/python3.8/site-packages/youtube_dl/extractor/youtube.py", line 1715, in _real_extract
+    self._sort_formats(formats)
+  File "/opt/virtualenvs/python3/lib/python3.8/site-packages/youtube_dl/extractor/common.py", line 1374, in _sort_formats
+    raise ExtractorError('No video formats found')
+youtube_dl.utils.ExtractorError: No video formats found
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/home/runner/TpLearn/exts/music.py", line 204, in audio_player_task
+    source = await YTDLSource.create_source(self.current.ctx, self.current.url, loop=self.bot.loop)
+  File "/home/runner/TpLearn/utils/audio.py", line 93, in create_source
+    processed_info = await loop.run_in_executor(None, partial)
+  File "/usr/lib/python3.8/concurrent/futures/thread.py", line 57, in run
+    result = self.fn(*self.args, **self.kwargs)
+  File "/opt/virtualenvs/python3/lib/python3.8/site-packages/youtube_dl/YoutubeDL.py", line 808, in extract_info
+    return self.__extract_info(url, ie, download, extra_info, process)
+  File "/opt/virtualenvs/python3/lib/python3.8/site-packages/youtube_dl/YoutubeDL.py", line 815, in wrapper
+    return func(self, *args, **kwargs)
+  File "/opt/virtualenvs/python3/lib/python3.8/site-packages/youtube_dl/YoutubeDL.py", line 847, in __extract_info
+    return self.process_ie_result(ie_result, download, extra_info)
+  File "/opt/virtualenvs/python3/lib/python3.8/site-packages/youtube_dl/YoutubeDL.py", line 885, in process_ie_result
+    return self.extract_info(ie_result['url'],
+  File "/opt/virtualenvs/python3/lib/python3.8/site-packages/youtube_dl/YoutubeDL.py", line 808, in extract_info
+    return self.__extract_info(url, ie, download, extra_info, process)
+  File "/opt/virtualenvs/python3/lib/python3.8/site-packages/youtube_dl/YoutubeDL.py", line 815, in wrapper
+    return func(self, *args, **kwargs)
+  File "/opt/virtualenvs/python3/lib/python3.8/site-packages/youtube_dl/YoutubeDL.py", line 847, in __extract_info
+    return self.process_ie_result(ie_result, download, extra_info)
+  File "/opt/virtualenvs/python3/lib/python3.8/site-packages/youtube_dl/YoutubeDL.py", line 933, in process_ie_result
+    return self.__process_playlist(ie_result, download)
+  File "/opt/virtualenvs/python3/lib/python3.8/site-packages/youtube_dl/YoutubeDL.py", line 1067, in __process_playlist
+    entry_result = self.__process_iterable_entry(entry, download, extra)
+  File "/opt/virtualenvs/python3/lib/python3.8/site-packages/youtube_dl/YoutubeDL.py", line 815, in wrapper
+    return func(self, *args, **kwargs)
+  File "/opt/virtualenvs/python3/lib/python3.8/site-packages/youtube_dl/YoutubeDL.py", line 1076, in __process_iterable_entry
+    return self.process_ie_result(
+  File "/opt/virtualenvs/python3/lib/python3.8/site-packages/youtube_dl/YoutubeDL.py", line 885, in process_ie_result
+    return self.extract_info(ie_result['url'],
+  File "/opt/virtualenvs/python3/lib/python3.8/site-packages/youtube_dl/YoutubeDL.py", line 808, in extract_info
+    return self.__extract_info(url, ie, download, extra_info, process)
+  File "/opt/virtualenvs/python3/lib/python3.8/site-packages/youtube_dl/YoutubeDL.py", line 824, in wrapper
+    self.report_error(compat_str(e), e.format_traceback())
+  File "/opt/virtualenvs/python3/lib/python3.8/site-packages/youtube_dl/YoutubeDL.py", line 628, in report_error
+    self.trouble(error_message, tb)
+  File "/opt/virtualenvs/python3/lib/python3.8/site-packages/youtube_dl/YoutubeDL.py", line 598, in trouble
+    raise DownloadError(message, exc_info)
+youtube_dl.utils.DownloadError: [0;31mERROR:[0m No video formats found
+
+2021-10-15 02:40:49,588 | exts.admin | DEBUG | Admin Eval from Tpmonkey#2682; code: self.bot.get_guild(839147542377398306)
+2021-10-15 02:48:12,317 | bot | INFO | Resumed Connection
+2021-10-15 02:48:12,376 | bot | DEBUG | changed bot status
+2021-10-15 02:55:53,706 | exts.music | DEBUG | VoiceState created for 728482381215826000
+2021-10-15 02:55:53,707 | exts.music | INFO | Audio Player Launched for 728482381215826000
+2021-10-15 02:56:29,996 | bot | DEBUG | exts.admin Shutting down bot... by <@!518063131096907813>
+2021-10-15 02:56:30,252 | exts.admin | INFO | Shutting down bot by Tpmonkey#2682
+2021-10-15 02:56:42,720 | asyncio | DEBUG | Using selector: EpollSelector
+2021-10-15 02:56:42,721 | bot | DEBUG | created bot base.
+2021-10-15 02:56:42,745 | constant | DEBUG | init database succesful
+2021-10-15 02:56:42,777 | utils.planner | DEBUG | triggered update
+2021-10-15 02:56:42,784 | bot | DEBUG | bot subclass Created.
+2021-10-15 02:56:42,787 | bot | INFO | Cog loaded: ErrorHandler
+2021-10-15 02:56:42,788 | bot | INFO | Cog loaded: DayLoop
+2021-10-15 02:56:42,791 | bot | INFO | Cog loaded: Snekbox
+2021-10-15 02:56:42,793 | bot | INFO | Cog loaded: AdminCommands
+2021-10-15 02:56:43,304 | bot | INFO | Cog loaded: Music
+2021-10-15 02:56:43,306 | bot | INFO | Cog loaded: Debug
+2021-10-15 02:56:43,307 | bot | INFO | Cog loaded: VoiceChannel
+2021-10-15 02:56:43,308 | bot | INFO | Cog loaded: SetUp
+2021-10-15 02:56:43,309 | bot | INFO | Cog loaded: NewPatch
+2021-10-15 02:56:43,311 | bot | INFO | Cog loaded: Utility
+2021-10-15 02:56:43,395 | bot | INFO | Cog loaded: KUSNews
+2021-10-15 02:56:43,398 | bot | INFO | Cog loaded: Assignments
+2021-10-15 02:56:43,400 | bot | INFO | Cog loaded: Help
+2021-10-15 02:56:43,401 | bot | INFO | Cog loaded: Latency
+2021-10-15 02:56:43,403 | bot | INFO | Cog loaded: Updater
+2021-10-15 02:56:43,433 | exts.kus | DEBUG | loaded data
+2021-10-15 02:56:44,388 | bot | DEBUG | exts.kus Unable to fetch kus data, disabled system.
+2021-10-15 02:56:45,943 | utils.planner | DEBUG | returning sorted date for 562976873685057546
+2021-10-15 02:56:45,953 | exts.new_patch | DEBUG | Version change found, annoucing..
+2021-10-15 02:56:45,955 | bot | INFO | Connected successfully
+2021-10-15 02:56:45,996 | bot | DEBUG | changed bot status
+2021-10-15 02:56:46,060 | bot | DEBUG | creating assignment embed...
+2021-10-15 02:56:46,060 | bot | DEBUG | successfully created assignment embed
+2021-10-15 02:56:46,165 | exts.kus | DEBUG | trying to update news but is not enable, passing...
+2021-10-15 02:56:47,169 | bot | DEBUG | exts.update :white_check_mark: Sucessfully update works at 562976873685057546 :
+22E
+2021-10-15 02:56:47,368 | exts.update | DEBUG | updated active-works for 562976873685057546
+2021-10-15 02:56:47,369 | utils.planner | DEBUG | returning sorted date for 728482381215826000
+2021-10-15 02:56:47,436 | utils.planner | DEBUG | returning sorted date for 676256965650808873
+2021-10-15 02:56:47,534 | utils.planner | DEBUG | returning sorted date for 829749071891005512
+2021-10-15 02:56:47,652 | utils.planner | DEBUG | returning sorted date for 773426467492069386
+2021-10-15 02:56:47,806 | bot | DEBUG | creating assignment embed...
+2021-10-15 02:56:47,807 | bot | DEBUG | successfully created assignment embed
+2021-10-15 02:56:48,895 | bot | DEBUG | exts.update :white_check_mark: Sucessfully update works at 773426467492069386 :
+11E
+2021-10-15 02:56:49,124 | exts.update | DEBUG | updated active-works for 773426467492069386
+2021-10-15 04:07:59,313 | exts.errorhand | TRACE | Command: play jojo op; Already handled locally.
+2021-10-15 04:08:07,416 | exts.music | DEBUG | VoiceState created for 834711685834342472
+2021-10-15 04:08:07,417 | exts.music | INFO | Audio Player Launched for 834711685834342472
+2021-10-15 04:08:09,373 | exts.music | DEBUG | 834711685834342472: Searching jojo op
+2021-10-15 04:08:11,387 | exts.music | DEBUG | Enqueued
+2021-10-15 04:10:06,559 | exts.music | DEBUG | VoiceState created for 728482381215826000
+2021-10-15 04:10:06,561 | exts.music | INFO | Audio Player Launched for 728482381215826000
+2021-10-15 04:25:06,563 | exts.music | INFO | 728482381215826000:Left vc & cleaned up
+2021-10-15 04:34:14,526 | exts.music | INFO | 834711685834342472:Left vc & cleaned up
+2021-10-15 04:39:39,884 | exts.music | DEBUG | VoiceState created for 834711685834342472
+2021-10-15 04:39:39,885 | exts.music | INFO | Audio Player Launched for 834711685834342472
+2021-10-15 04:39:41,830 | exts.music | DEBUG | 834711685834342472: Searching https://www.youtube.com/watch?v=GQDt51TsGZM
+2021-10-15 04:39:43,442 | exts.music | DEBUG | Enqueued
+2021-10-15 04:44:43,400 | exts.music | INFO | 834711685834342472:Left vc & cleaned up
+2021-10-15 04:52:14,507 | exts.music | DEBUG | VoiceState created for 728482381215826000
+2021-10-15 04:52:14,508 | exts.music | INFO | Audio Player Launched for 728482381215826000
+2021-10-15 04:52:16,438 | exts.music | DEBUG | 728482381215826000: Searching https://www.youtube.com/watch?v=GQDt51TsGZM
+2021-10-15 04:52:17,743 | exts.music | DEBUG | Enqueued
+2021-10-15 04:52:33,911 | exts.music | INFO | 728482381215826000: All user left, Waiting for deletion
+2021-10-15 04:55:19,302 | bot | INFO | Resumed Connection
+2021-10-15 04:55:19,371 | bot | DEBUG | changed bot status
+2021-10-15 05:00:55,118 | bot | INFO | Cog loaded: Music
+2021-10-15 05:00:55,120 | asyncio | ERROR | Task exception was never retrieved
+future: <Task finished name='Task-3414' coro=<VoiceState.stop() done, defined at /home/runner/TpLearn/exts/music.py:256> exception=KeyError(728482381215826000)>
+Traceback (most recent call last):
+  File "/home/runner/TpLearn/exts/music.py", line 268, in stop
+    del cog.voice_states[self._ctx.guild.id]
+KeyError: 728482381215826000
+2021-10-15 05:03:34,768 | exts.music | DEBUG | VoiceState created for 728482381215826000
+2021-10-15 05:03:34,953 | exts.music | INFO | Audio Player Launched for 728482381215826000
+2021-10-15 05:03:52,692 | exts.music | DEBUG | 728482381215826000: Searching 10 sec vid
+2021-10-15 05:03:53,914 | exts.music | DEBUG | Enqueued
+2021-10-15 05:03:58,811 | exts.music | INFO | 728482381215826000: All user left, Waiting for deletion
+2021-10-15 05:04:00,899 | exts.music | INFO | 728482381215826000: Bot got disconnected, removing wait for disconnect
+2021-10-15 05:04:02,963 | exts.music | INFO | 728482381215826000:Left vc & cleaned up
+2021-10-15 05:08:42,702 | asyncio | ERROR | Task exception was never retrieved
+future: <Task finished name='Task-3627' coro=<VoiceState.stop() done, defined at /home/runner/TpLearn/exts/music.py:256> exception=KeyError(728482381215826000)>
+Traceback (most recent call last):
+  File "/home/runner/TpLearn/exts/music.py", line 268, in stop
+    del cog.voice_states[self._ctx.guild.id]
+KeyError: 728482381215826000
+2021-10-15 05:08:43,406 | exts.music | INFO | 728482381215826000: Timeout, Nobody left in vc... Disconnected
+2021-10-15 08:46:10,826 | asyncio | DEBUG | Using selector: EpollSelector
+2021-10-15 08:46:10,827 | bot | DEBUG | created bot base.
+2021-10-15 08:46:10,842 | constant | DEBUG | init database succesful
+2021-10-15 08:46:10,872 | utils.planner | DEBUG | triggered update
+2021-10-15 08:46:10,877 | bot | DEBUG | bot subclass Created.
+2021-10-15 08:46:10,881 | bot | INFO | Cog loaded: Assignments
+2021-10-15 08:46:10,883 | bot | INFO | Cog loaded: DayLoop
+2021-10-15 08:46:10,885 | bot | INFO | Cog loaded: AdminCommands
+2021-10-15 08:46:10,886 | bot | INFO | Cog loaded: NewPatch
+2021-10-15 08:46:10,887 | bot | INFO | Cog loaded: Latency
+2021-10-15 08:46:10,888 | bot | INFO | Cog loaded: SetUp
+2021-10-15 08:46:10,889 | bot | INFO | Cog loaded: Debug
+2021-10-15 08:46:10,950 | bot | INFO | Cog loaded: KUSNews
+2021-10-15 08:46:10,951 | bot | INFO | Cog loaded: Updater
+2021-10-15 08:46:10,952 | bot | INFO | Cog loaded: ErrorHandler
+2021-10-15 08:46:10,953 | bot | INFO | Cog loaded: VoiceChannel
+2021-10-15 08:46:10,956 | bot | INFO | Cog loaded: Help
+2021-10-15 08:46:11,371 | bot | INFO | Cog loaded: Music
+2021-10-15 08:46:11,374 | bot | INFO | Cog loaded: Snekbox
+2021-10-15 08:46:11,377 | bot | INFO | Cog loaded: Utility
+2021-10-15 08:46:11,402 | exts.kus | DEBUG | loaded data
+2021-10-15 08:46:12,336 | bot | DEBUG | exts.kus Unable to fetch kus data, disabled system.
+2021-10-15 08:46:13,897 | utils.planner | DEBUG | returning sorted date for 562976873685057546
+2021-10-15 08:46:13,907 | bot | INFO | Connected successfully
+2021-10-15 08:46:13,940 | bot | DEBUG | changed bot status
+2021-10-15 08:46:14,003 | utils.planner | DEBUG | returning sorted date for 728482381215826000
+2021-10-15 08:46:14,080 | utils.planner | DEBUG | returning sorted date for 676256965650808873
+2021-10-15 08:46:14,127 | exts.kus | DEBUG | trying to update news but is not enable, passing...
+2021-10-15 08:46:14,159 | utils.planner | DEBUG | returning sorted date for 829749071891005512
+2021-10-15 08:46:14,237 | utils.planner | DEBUG | returning sorted date for 773426467492069386
+2021-10-15 08:57:07,237 | exts.music | DEBUG | VoiceState created for 780423376149676032
+2021-10-15 08:57:07,238 | exts.music | INFO | Audio Player Launched for 780423376149676032
+2021-10-15 08:57:09,177 | exts.music | DEBUG | 780423376149676032: Searching https://youtu.be/hhSA9H9Iaqw
+2021-10-15 08:57:12,215 | exts.music | DEBUG | Enqueued
+2021-10-15 09:05:23,592 | discord.voice_client | ERROR | Disconnected from voice... Reconnecting in 0.53s.
+Traceback (most recent call last):
+  File "/opt/virtualenvs/python3/lib/python3.8/site-packages/discord/voice_client.py", line 414, in poll_voice_ws
+    await self.ws.poll_event()
+  File "/opt/virtualenvs/python3/lib/python3.8/site-packages/discord/gateway.py", line 895, in poll_event
+    raise ConnectionClosed(self.ws, shard_id=None, code=self._close_code)
+discord.errors.ConnectionClosed: Shard ID None WebSocket closed with 1006
+2021-10-15 09:05:24,295 | bot | INFO | Resumed Connection
+2021-10-15 09:05:24,361 | bot | DEBUG | changed bot status
+2021-10-15 09:06:24,126 | discord.voice_client | WARNING | Could not connect to voice... Retrying...
+2021-10-15 09:06:26,553 | exts.music | INFO | 780423376149676032:Left vc & cleaned up
+2021-10-15 09:08:06,681 | exts.music | DEBUG | VoiceState created for 780423376149676032
+2021-10-15 09:08:06,682 | exts.music | INFO | Audio Player Launched for 780423376149676032
+2021-10-15 09:08:09,393 | exts.music | DEBUG | 780423376149676032: Searching my universe official audio
+2021-10-15 09:08:10,948 | exts.music | DEBUG | Enqueued
+2021-10-15 09:16:59,208 | exts.music | INFO | 780423376149676032:Left vc & cleaned up
+2021-10-15 09:41:28,115 | exts.music | DEBUG | VoiceState created for 780423376149676032
+2021-10-15 09:41:28,116 | exts.music | INFO | Audio Player Launched for 780423376149676032
+2021-10-15 09:41:30,044 | exts.music | DEBUG | 780423376149676032: Searching https://youtu.be/1v5kssWT-DM
+2021-10-15 09:41:31,344 | exts.music | DEBUG | Enqueued
+2021-10-15 09:43:25,818 | exts.music | INFO | 780423376149676032: User joined back, Stopping deletion
+2021-10-15 09:43:29,189 | exts.music | INFO | 780423376149676032: User joined back, Stopping deletion
+2021-10-15 09:49:09,611 | exts.music | INFO | 780423376149676032:Left vc & cleaned up
+2021-10-15 10:29:11,351 | bot | INFO | Resumed Connection
+2021-10-15 10:29:11,409 | bot | DEBUG | changed bot status
+2021-10-15 10:56:28,128 | bot | INFO | Resumed Connection
+2021-10-15 10:56:28,191 | bot | DEBUG | changed bot status
+2021-10-15 12:46:12,345 | exts.kus | DEBUG | trying to update news but is not enable, passing...
+2021-10-15 13:36:59,300 | bot | INFO | Resumed Connection
+2021-10-15 13:36:59,367 | bot | DEBUG | changed bot status
+2021-10-15 14:13:01,742 | exts.music | DEBUG | VoiceState created for 773426467492069386
+2021-10-15 14:13:01,743 | exts.music | INFO | Audio Player Launched for 773426467492069386
+2021-10-15 14:13:04,421 | exts.music | DEBUG | 773426467492069386: Searching https://www.youtube.com/watch?v=RCdooE_pYNw&ab_channel=Zeero
+2021-10-15 14:13:05,824 | exts.music | DEBUG | Enqueued
+2021-10-15 14:13:40,871 | exts.music | INFO | 773426467492069386:Left vc & cleaned up
+2021-10-15 14:13:45,134 | exts.music | DEBUG | VoiceState created for 773426467492069386
+2021-10-15 14:13:45,135 | exts.music | INFO | Audio Player Launched for 773426467492069386
+2021-10-15 14:13:47,087 | exts.music | DEBUG | 773426467492069386: Searching https://www.youtube.com/watch?v=jLec2L2WGz8
+2021-10-15 14:13:48,881 | exts.music | DEBUG | Enqueued
+2021-10-15 14:18:40,929 | exts.music | INFO | 773426467492069386:Left vc & cleaned up
+2021-10-15 14:23:21,923 | asyncio | ERROR | Task exception was never retrieved
+future: <Task finished name='Task-5037' coro=<VoiceState.stop() done, defined at /home/runner/TpLearn/exts/music.py:256> exception=KeyError(773426467492069386)>
+Traceback (most recent call last):
+  File "/home/runner/TpLearn/exts/music.py", line 268, in stop
+    del cog.voice_states[self._ctx.guild.id]
+KeyError: 773426467492069386
+2021-10-15 14:38:55,914 | bot | INFO | Resumed Connection
+2021-10-15 14:38:56,059 | bot | DEBUG | changed bot status
+2021-10-15 14:51:28,981 | exts.music | DEBUG | VoiceState created for 728482381215826000
+2021-10-15 14:51:28,982 | exts.music | INFO | Audio Player Launched for 728482381215826000
+2021-10-15 14:51:28,983 | exts.music | INFO | 728482381215826000:Left vc & cleaned up
+2021-10-15 15:12:28,593 | bot | INFO | Resumed Connection
+2021-10-15 15:12:28,713 | bot | DEBUG | changed bot status
+2021-10-15 15:47:20,002 | exts.music | DEBUG | VoiceState created for 728482381215826000
+2021-10-15 15:47:20,003 | exts.music | INFO | Audio Player Launched for 728482381215826000
+2021-10-15 15:47:20,004 | exts.music | INFO | 728482381215826000:Left vc & cleaned up
+2021-10-15 15:47:21,995 | exts.music | DEBUG | 728482381215826000: Searching peace sign
+2021-10-15 15:47:23,777 | exts.music | DEBUG | Enqueued
+2021-10-15 15:47:47,653 | exts.music | DEBUG | VoiceState created for 728482381215826000
+2021-10-15 15:47:47,655 | exts.music | INFO | Audio Player Launched for 728482381215826000
+2021-10-15 15:47:47,655 | exts.music | INFO | 728482381215826000:Left vc & cleaned up
+2021-10-15 15:48:14,152 | exts.music | DEBUG | VoiceState created for 728482381215826000
+2021-10-15 15:48:14,153 | exts.music | INFO | Audio Player Launched for 728482381215826000
+2021-10-15 15:48:14,154 | exts.music | INFO | 728482381215826000:Left vc & cleaned up
+2021-10-15 15:48:18,514 | exts.music | DEBUG | VoiceState created for 728482381215826000
+2021-10-15 15:48:18,515 | exts.music | INFO | 728482381215826000:Left vc & cleaned up
+2021-10-15 15:48:18,516 | exts.music | INFO | Audio Player Launched for 728482381215826000
+2021-10-15 15:48:18,516 | asyncio | ERROR | Task exception was never retrieved
+future: <Task finished name='Task-6279' coro=<VoiceState.stop() done, defined at /home/runner/TpLearn/exts/music.py:256> exception=KeyError(728482381215826000)>
+Traceback (most recent call last):
+  File "/home/runner/TpLearn/exts/music.py", line 268, in stop
+    del cog.voice_states[self._ctx.guild.id]
+KeyError: 728482381215826000
+2021-10-15 15:48:20,665 | exts.music | DEBUG | 728482381215826000: Searching peace sign op
+2021-10-15 15:48:21,497 | asyncio | ERROR | Task was destroyed but it is pending!
+task: <Task pending name='Task-463' coro=<Event.wait() running at /usr/lib/python3.8/asyncio/locks.py:309> wait_for=<Future pending cb=[<TaskWakeupMethWrapper object at 0x7fda314c5b80>()]>>
+2021-10-15 15:48:21,498 | asyncio | ERROR | Task was destroyed but it is pending!
+task: <Task pending name='Task-464' coro=<Event.wait() running at /usr/lib/python3.8/asyncio/locks.py:309> wait_for=<Future pending cb=[<TaskWakeupMethWrapper object at 0x7fda314c5d90>()]>>
+2021-10-15 15:48:22,219 | exts.music | DEBUG | Enqueued
+2021-10-15 15:48:41,131 | exts.music | DEBUG | VoiceState created for 728482381215826000
+2021-10-15 15:48:41,132 | exts.music | INFO | Audio Player Launched for 728482381215826000
+2021-10-15 15:48:41,133 | exts.music | INFO | 728482381215826000:Left vc & cleaned up
+2021-10-15 15:48:50,141 | asyncio | DEBUG | Using selector: EpollSelector
+2021-10-15 15:48:50,141 | bot | DEBUG | created bot base.
+2021-10-15 15:48:50,169 | constant | DEBUG | init database succesful
+2021-10-15 15:48:50,236 | utils.planner | DEBUG | triggered update
+2021-10-15 15:48:50,244 | bot | DEBUG | bot subclass Created.
+2021-10-15 15:48:50,339 | bot | INFO | Cog loaded: KUSNews
+2021-10-15 15:48:50,340 | bot | INFO | Cog loaded: ErrorHandler
+2021-10-15 15:48:50,342 | bot | INFO | Cog loaded: AdminCommands
+2021-10-15 15:48:50,342 | bot | INFO | Cog loaded: NewPatch
+2021-10-15 15:48:50,344 | bot | INFO | Cog loaded: SetUp
+2021-10-15 15:48:50,345 | bot | INFO | Cog loaded: DayLoop
+2021-10-15 15:48:50,346 | bot | INFO | Cog loaded: Assignments
+2021-10-15 15:48:50,349 | bot | INFO | Cog loaded: Utility
+2021-10-15 15:48:50,350 | bot | INFO | Cog loaded: Updater
+2021-10-15 15:48:50,351 | bot | INFO | Cog loaded: Latency
+2021-10-15 15:48:50,353 | bot | INFO | Cog loaded: Debug
+2021-10-15 15:48:50,355 | bot | INFO | Cog loaded: Help
+2021-10-15 15:48:50,356 | bot | INFO | Cog loaded: VoiceChannel
+2021-10-15 15:48:50,358 | bot | INFO | Cog loaded: Snekbox
+2021-10-15 15:48:50,813 | bot | INFO | Cog loaded: Music
+2021-10-15 15:48:50,832 | exts.kus | DEBUG | loaded data
+2021-10-15 15:48:51,940 | bot | DEBUG | exts.kus Unable to fetch kus data, disabled system.
+2021-10-15 15:48:53,561 | utils.planner | DEBUG | returning sorted date for 562976873685057546
+2021-10-15 15:48:53,678 | bot | INFO | Connected successfully
+2021-10-15 15:48:54,003 | bot | DEBUG | changed bot status
+2021-10-15 15:48:54,006 | utils.planner | DEBUG | returning sorted date for 728482381215826000
+2021-10-15 15:48:54,154 | utils.planner | DEBUG | returning sorted date for 676256965650808873
+2021-10-15 15:48:54,236 | utils.planner | DEBUG | returning sorted date for 829749071891005512
+2021-10-15 15:48:54,324 | exts.kus | DEBUG | trying to update news but is not enable, passing...
+2021-10-15 15:48:54,445 | utils.planner | DEBUG | returning sorted date for 773426467492069386
+2021-10-15 15:49:29,210 | exts.music | DEBUG | VoiceState created for 728482381215826000
+2021-10-15 15:49:29,211 | exts.music | INFO | 728482381215826000:Left vc & cleaned up
+2021-10-15 15:49:29,212 | exts.music | INFO | Audio Player Launched for 728482381215826000
+2021-10-15 15:49:29,213 | asyncio | ERROR | Task exception was never retrieved
+future: <Task finished name='Task-68' coro=<VoiceState.stop() done, defined at /home/runner/TpLearn/exts/music.py:256> exception=KeyError(728482381215826000)>
+Traceback (most recent call last):
+  File "/home/runner/TpLearn/exts/music.py", line 268, in stop
+    del cog.voice_states[self._ctx.guild.id]
+KeyError: 728482381215826000
+2021-10-15 15:49:36,685 | exts.music | DEBUG | VoiceState created for 728482381215826000
+2021-10-15 15:49:36,686 | exts.music | INFO | Audio Player Launched for 728482381215826000
+2021-10-15 15:49:36,686 | exts.music | INFO | 728482381215826000:Left vc & cleaned up
+2021-10-15 15:49:38,610 | exts.music | DEBUG | 728482381215826000: Searching peace sign op
+2021-10-15 15:49:40,380 | exts.music | DEBUG | Enqueued
+2021-10-15 15:49:55,542 | exts.music | DEBUG | VoiceState created for 728482381215826000
+2021-10-15 15:49:55,544 | exts.music | INFO | Audio Player Launched for 728482381215826000
+2021-10-15 15:49:55,545 | exts.music | INFO | 728482381215826000:Left vc & cleaned up
+2021-10-15 15:50:42,105 | exts.music | DEBUG | VoiceState created for 728482381215826000
+2021-10-15 15:50:42,156 | exts.music | INFO | Audio Player Launched for 728482381215826000
+2021-10-15 15:50:46,003 | exts.music | INFO | 728482381215826000:Left vc & cleaned up
+2021-10-15 15:50:48,866 | exts.music | DEBUG | 728482381215826000: Searching peace sign op
+2021-10-15 15:50:50,206 | exts.music | DEBUG | Enqueued
+2021-10-15 15:53:29,652 | asyncio | ERROR | Task exception was never retrieved
+future: <Task finished name='Task-320' coro=<VoiceState.stop() done, defined at /home/runner/TpLearn/exts/music.py:256> exception=KeyError(728482381215826000)>
+Traceback (most recent call last):
+  File "/home/runner/TpLearn/exts/music.py", line 268, in stop
+    del cog.voice_states[self._ctx.guild.id]
+KeyError: 728482381215826000
+2021-10-15 15:54:15,568 | bot | INFO | Cog loaded: Music
