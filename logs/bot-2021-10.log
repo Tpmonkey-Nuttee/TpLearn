@@ -3126,3 +3126,194 @@ AttributeError: can't set attribute
 2021-10-15 17:10:47,777 | exts.music | INFO | 773426467492069386: All user left, Waiting for deletion
 2021-10-15 17:16:05,928 | exts.music | INFO | 773426467492069386: Timeout, Nobody left in vc... Disconnected
 2021-10-15 17:16:05,930 | exts.music | INFO | 773426467492069386:Left vc & cleaned up
+2021-10-16 23:07:24,932 | asyncio | DEBUG | Using selector: EpollSelector
+2021-10-16 23:07:24,933 | bot | DEBUG | created bot base.
+2021-10-16 23:07:24,954 | constant | DEBUG | init database succesful
+2021-10-16 23:07:24,985 | utils.planner | DEBUG | triggered update
+2021-10-16 23:07:25,094 | bot | DEBUG | bot subclass Created.
+2021-10-16 23:07:25,559 | bot | INFO | Cog loaded: Music
+2021-10-16 23:07:25,561 | bot | INFO | Cog loaded: VoiceChannel
+2021-10-16 23:07:25,562 | bot | INFO | Cog loaded: DayLoop
+2021-10-16 23:07:25,563 | bot | INFO | Cog loaded: SetUp
+2021-10-16 23:07:25,566 | bot | INFO | Cog loaded: NewPatch
+2021-10-16 23:07:25,568 | bot | INFO | Cog loaded: Updater
+2021-10-16 23:07:25,570 | bot | INFO | Cog loaded: AdminCommands
+2021-10-16 23:07:25,571 | bot | INFO | Cog loaded: ErrorHandler
+2021-10-16 23:07:25,573 | bot | INFO | Cog loaded: Assignments
+2021-10-16 23:07:25,576 | bot | INFO | Cog loaded: Utility
+2021-10-16 23:07:25,578 | bot | INFO | Cog loaded: Help
+2021-10-16 23:07:25,647 | bot | INFO | Cog loaded: KUSNews
+2021-10-16 23:07:25,648 | bot | INFO | Cog loaded: Latency
+2021-10-16 23:07:25,651 | bot | INFO | Cog loaded: Snekbox
+2021-10-16 23:07:25,652 | bot | INFO | Cog loaded: Debug
+2021-10-16 23:07:25,684 | exts.kus | DEBUG | loaded data
+2021-10-16 23:07:28,225 | utils.planner | DEBUG | returning sorted date for 562976873685057546
+2021-10-16 23:07:28,232 | bot | INFO | Connected successfully
+2021-10-16 23:07:28,474 | bot | DEBUG | changed bot status
+2021-10-16 23:07:28,477 | bot | DEBUG | creating assignment embed...
+2021-10-16 23:07:28,478 | bot | DEBUG | successfully created assignment embed
+2021-10-16 23:07:29,575 | bot | DEBUG | exts.update :white_check_mark: Sucessfully update works at 562976873685057546 :
+22E
+2021-10-16 23:07:29,688 | exts.update | DEBUG | updated active-works for 562976873685057546
+2021-10-16 23:07:29,688 | utils.planner | DEBUG | returning sorted date for 728482381215826000
+2021-10-16 23:07:29,787 | utils.planner | DEBUG | returning sorted date for 676256965650808873
+2021-10-16 23:07:29,915 | utils.planner | DEBUG | returning sorted date for 829749071891005512
+2021-10-16 23:07:30,020 | utils.planner | DEBUG | returning sorted date for 773426467492069386
+2021-10-16 23:07:30,095 | bot | DEBUG | creating assignment embed...
+2021-10-16 23:07:30,096 | bot | DEBUG | successfully created assignment embed
+2021-10-16 23:07:31,202 | bot | DEBUG | exts.update :white_check_mark: Sucessfully update works at 773426467492069386 :
+11E
+2021-10-16 23:07:31,299 | exts.update | DEBUG | updated active-works for 773426467492069386
+2021-10-16 23:08:48,634 | bot | INFO | Resumed Connection
+2021-10-16 23:08:48,846 | bot | DEBUG | changed bot status
+2021-10-17 01:45:38,972 | bot | INFO | Resumed Connection
+2021-10-17 01:45:39,083 | bot | DEBUG | changed bot status
+2021-10-17 02:38:04,398 | bot | INFO | Resumed Connection
+2021-10-17 02:38:04,504 | bot | DEBUG | changed bot status
+2021-10-17 04:58:36,771 | bot | INFO | Resumed Connection
+2021-10-17 04:58:36,843 | bot | DEBUG | changed bot status
+2021-10-17 05:29:01,170 | bot | INFO | Resumed Connection
+2021-10-17 05:29:01,222 | bot | DEBUG | changed bot status
+2021-10-17 05:32:12,646 | bot | INFO | Resumed Connection
+2021-10-17 05:32:12,817 | bot | DEBUG | changed bot status
+2021-10-17 06:38:34,409 | exts.music | DEBUG | VoiceState created for 773426467492069386
+2021-10-17 06:38:37,096 | exts.music | DEBUG | 773426467492069386: Searching https://www.youtube.com/watch?v=9V2WByHOk9E&ab_channel=RespectlessSID
+2021-10-17 06:38:39,007 | exts.music | DEBUG | Enqueued
+2021-10-17 06:38:39,008 | exts.music | INFO | Audio Player Launched for 773426467492069386
+2021-10-17 06:45:31,551 | exts.music | INFO | 773426467492069386:Left vc & cleaned up
+2021-10-17 08:44:36,145 | bot | INFO | Resumed Connection
+2021-10-17 08:44:36,225 | bot | DEBUG | changed bot status
+2021-10-17 11:38:29,603 | bot | INFO | Resumed Connection
+2021-10-17 11:38:29,700 | bot | DEBUG | changed bot status
+2021-10-17 13:11:05,599 | exts.music | DEBUG | VoiceState created for 780423376149676032
+2021-10-17 13:11:07,548 | exts.music | DEBUG | 780423376149676032: Searching r u ok tate
+2021-10-17 13:11:11,856 | exts.music | DEBUG | Enqueued
+2021-10-17 13:11:11,856 | exts.music | INFO | Audio Player Launched for 780423376149676032
+2021-10-17 13:11:53,380 | exts.music | INFO | 780423376149676032: User joined back, Stopping deletion
+2021-10-17 13:19:32,155 | exts.music | INFO | 780423376149676032:Left vc & cleaned up
+2021-10-17 13:43:18,197 | bot | INFO | Resumed Connection
+2021-10-17 13:43:18,277 | bot | DEBUG | changed bot status
+2021-10-17 14:30:20,939 | exts.music | DEBUG | VoiceState created for 780423376149676032
+2021-10-17 14:30:22,965 | exts.music | DEBUG | 780423376149676032: Searching https://music.apple.com/th/album/shell-shocked-feat-kill-the-noise-madsonik-from/900763287?i=900763324
+2021-10-17 14:30:27,522 | exts.errorhand | TRACE | Command: p https://music.apple.com/th/album/shell-shocked-feat-kill-the-noise-madsonik-from/900763287?i=900763324; Already handled locally.
+2021-10-17 14:30:43,076 | exts.music | DEBUG | 780423376149676032: Searching shell shocked
+2021-10-17 14:30:44,663 | exts.music | DEBUG | Enqueued
+2021-10-17 14:30:44,664 | exts.music | INFO | Audio Player Launched for 780423376149676032
+2021-10-17 14:32:58,654 | exts.music | INFO | 780423376149676032: User joined back, Stopping deletion
+2021-10-17 14:33:20,362 | exts.music | DEBUG | 780423376149676032: Searching friends bts official audio
+2021-10-17 14:33:21,910 | exts.music | DEBUG | Enqueued
+2021-10-17 14:42:32,996 | exts.music | INFO | 780423376149676032:Left vc & cleaned up
+2021-10-17 14:56:18,184 | exts.music | DEBUG | VoiceState created for 780423376149676032
+2021-10-17 14:56:20,122 | exts.music | DEBUG | 780423376149676032: Searching love me like that
+2021-10-17 14:56:21,824 | exts.music | DEBUG | Enqueued
+2021-10-17 14:56:21,824 | exts.music | INFO | Audio Player Launched for 780423376149676032
+2021-10-17 15:04:53,192 | exts.music | INFO | 780423376149676032:Left vc & cleaned up
+2021-10-17 15:17:59,533 | exts.music | DEBUG | VoiceState created for 780423376149676032
+2021-10-17 15:18:01,455 | exts.music | DEBUG | 780423376149676032: Searching n.o bts audio
+2021-10-17 15:18:03,283 | exts.music | DEBUG | Enqueued
+2021-10-17 15:18:03,284 | exts.music | INFO | Audio Player Launched for 780423376149676032
+2021-10-17 15:19:32,984 | exts.music | DEBUG | 780423376149676032: Searching dancin
+2021-10-17 15:19:34,632 | exts.music | DEBUG | Enqueued
+2021-10-17 15:28:05,034 | exts.music | INFO | 780423376149676032:Left vc & cleaned up
+2021-10-17 15:32:38,633 | exts.music | DEBUG | VoiceState created for 780423376149676032
+2021-10-17 15:32:41,267 | exts.music | DEBUG | 780423376149676032: Searching n.o bts audio
+2021-10-17 15:32:43,080 | exts.music | DEBUG | Enqueued
+2021-10-17 15:32:43,080 | exts.music | INFO | Audio Player Launched for 780423376149676032
+2021-10-17 15:33:59,790 | exts.music | DEBUG | 780423376149676032: Searching follow you
+2021-10-17 15:34:02,227 | exts.music | DEBUG | Enqueued
+2021-10-17 15:39:44,142 | exts.music | DEBUG | 780423376149676032: Searching cutthroat
+2021-10-17 15:39:46,780 | exts.music | DEBUG | Enqueued
+2021-10-17 15:48:32,070 | exts.music | INFO | 780423376149676032: All user left, Waiting for deletion
+2021-10-17 15:48:36,609 | exts.music | INFO | 780423376149676032:Left vc & cleaned up
+2021-10-17 15:55:25,658 | exts.music | INFO | 780423376149676032: Timeout, Nobody left in vc... Disconnected
+2021-10-17 15:55:25,658 | exts.music | DEBUG | 780423376149676032: Attempted to disconnect but already disconnected.
+2021-10-17 17:00:25,678 | bot | DEBUG | exts.dayloop New day [UTC+7] detected.
+2021-10-17 17:00:26,135 | utils.planner | DEBUG | triggered update
+2021-10-17 17:01:25,697 | utils.planner | DEBUG | returning sorted date for 562976873685057546
+2021-10-17 17:01:25,894 | utils.planner | DEBUG | returning sorted date for 728482381215826000
+2021-10-17 17:01:25,976 | utils.planner | DEBUG | returning sorted date for 676256965650808873
+2021-10-17 17:01:26,448 | utils.planner | DEBUG | returning sorted date for 829749071891005512
+2021-10-17 17:01:26,685 | utils.planner | DEBUG | returning sorted date for 773426467492069386
+2021-10-17 17:09:22,291 | bot | INFO | Resumed Connection
+2021-10-17 17:09:22,548 | bot | DEBUG | changed bot status
+2021-10-17 22:43:19,080 | asyncio | DEBUG | Using selector: EpollSelector
+2021-10-17 22:43:19,083 | bot | DEBUG | created bot base.
+2021-10-17 22:43:19,104 | constant | DEBUG | init database succesful
+2021-10-17 22:43:19,147 | utils.planner | DEBUG | triggered update
+2021-10-17 22:43:19,414 | bot | DEBUG | bot subclass Created.
+2021-10-17 22:43:19,418 | bot | INFO | Cog loaded: Assignments
+2021-10-17 22:43:19,859 | bot | INFO | Cog loaded: Music
+2021-10-17 22:43:19,860 | bot | INFO | Cog loaded: DayLoop
+2021-10-17 22:43:19,861 | bot | INFO | Cog loaded: Latency
+2021-10-17 22:43:19,863 | bot | INFO | Cog loaded: Utility
+2021-10-17 22:43:19,864 | bot | INFO | Cog loaded: ErrorHandler
+2021-10-17 22:43:19,935 | bot | INFO | Cog loaded: KUSNews
+2021-10-17 22:43:19,936 | bot | INFO | Cog loaded: Updater
+2021-10-17 22:43:19,937 | bot | INFO | Cog loaded: Debug
+2021-10-17 22:43:19,938 | bot | INFO | Cog loaded: VoiceChannel
+2021-10-17 22:43:19,940 | bot | INFO | Cog loaded: Snekbox
+2021-10-17 22:43:19,941 | bot | INFO | Cog loaded: SetUp
+2021-10-17 22:43:19,942 | bot | INFO | Cog loaded: NewPatch
+2021-10-17 22:43:19,944 | bot | INFO | Cog loaded: Help
+2021-10-17 22:43:19,946 | bot | INFO | Cog loaded: AdminCommands
+2021-10-17 22:43:20,131 | exts.kus | DEBUG | loaded data
+2021-10-17 22:43:22,854 | utils.planner | DEBUG | returning sorted date for 562976873685057546
+2021-10-17 22:43:22,861 | bot | INFO | Connected successfully
+2021-10-17 22:43:23,136 | bot | DEBUG | changed bot status
+2021-10-17 22:43:23,140 | bot | DEBUG | creating assignment embed...
+2021-10-17 22:43:23,140 | bot | DEBUG | successfully created assignment embed
+2021-10-17 22:43:24,239 | bot | DEBUG | exts.update :white_check_mark: Sucessfully update works at 562976873685057546 :
+22E
+2021-10-17 22:43:24,373 | exts.update | DEBUG | updated active-works for 562976873685057546
+2021-10-17 22:43:24,373 | utils.planner | DEBUG | returning sorted date for 728482381215826000
+2021-10-17 22:43:24,482 | utils.planner | DEBUG | returning sorted date for 676256965650808873
+2021-10-17 22:43:24,565 | utils.planner | DEBUG | returning sorted date for 829749071891005512
+2021-10-17 22:43:24,703 | utils.planner | DEBUG | returning sorted date for 773426467492069386
+2021-10-17 22:43:25,029 | bot | DEBUG | creating assignment embed...
+2021-10-17 22:43:25,029 | bot | DEBUG | successfully created assignment embed
+2021-10-17 22:43:26,107 | bot | DEBUG | exts.update :white_check_mark: Sucessfully update works at 773426467492069386 :
+11E
+2021-10-17 22:43:26,217 | exts.update | DEBUG | updated active-works for 773426467492069386
+2021-10-17 23:00:19,965 | bot | DEBUG | exts.dayloop New day [UTC+1] detected.
+2021-10-17 23:00:20,158 | exts.dayloop | DEBUG | updating passed work
+2021-10-17 23:00:20,158 | utils.planner | DEBUG | looping througth all assignment...
+2021-10-17 23:00:20,203 | utils.planner | DEBUG | checking old work to delete
+2021-10-17 23:00:20,216 | utils.planner | TRACE | removed 1f8b4fa5 from 562976873685057546
+2021-10-17 23:00:20,500 | utils.planner | TRACE | removed 2c308976 from 562976873685057546
+2021-10-17 23:00:20,541 | utils.planner | TRACE | removed f604f37a from 728482381215826000
+2021-10-17 23:00:20,646 | utils.planner | DEBUG | found 3
+2021-10-17 23:00:20,646 | bot | DEBUG | exts.dayloop Deleted passed works with amount: 3
+2021-10-17 23:00:20,828 | utils.planner | DEBUG | triggered update
+2021-10-17 23:01:19,984 | utils.planner | DEBUG | returning sorted date for 562976873685057546
+2021-10-17 23:01:20,102 | utils.planner | DEBUG | returning sorted date for 728482381215826000
+2021-10-17 23:01:20,172 | utils.planner | DEBUG | returning sorted date for 676256965650808873
+2021-10-17 23:01:20,286 | utils.planner | DEBUG | returning sorted date for 829749071891005512
+2021-10-17 23:01:20,459 | utils.planner | DEBUG | returning sorted date for 773426467492069386
+2021-10-17 23:57:38,444 | bot | INFO | Resumed Connection
+2021-10-17 23:57:38,495 | bot | DEBUG | changed bot status
+2021-10-18 01:57:11,915 | bot | INFO | Resumed Connection
+2021-10-18 01:57:12,062 | bot | DEBUG | changed bot status
+2021-10-18 04:13:17,007 | exts.admin | DEBUG | Admin Eval from Tpmonkey#2682; code: 1 + 1
+2021-10-18 04:13:24,843 | exts.admin | DEBUG | Admin Eval from Tpmonkey#2682; code: 2 == 3
+2021-10-18 04:13:29,880 | exts.admin | DEBUG | Admin Eval from Tpmonkey#2682; code: not False
+2021-10-18 04:29:44,295 | exts.music | DEBUG | VoiceState created for 773426467492069386
+2021-10-18 04:29:46,911 | exts.music | DEBUG | 773426467492069386: Searching เป็นอดี
+2021-10-18 04:29:50,829 | exts.music | DEBUG | Enqueued
+2021-10-18 04:29:50,829 | exts.music | INFO | Audio Player Launched for 773426467492069386
+2021-10-18 04:39:46,717 | exts.music | INFO | 773426467492069386:Left vc & cleaned up
+2021-10-18 05:07:56,182 | bot | INFO | Resumed Connection
+2021-10-18 05:07:56,472 | bot | DEBUG | changed bot status
+2021-10-18 05:54:15,482 | bot | INFO | Resumed Connection
+2021-10-18 05:54:15,630 | bot | DEBUG | changed bot status
+2021-10-18 06:21:27,955 | exts.music | DEBUG | VoiceState created for 728482381215826000
+2021-10-18 06:21:58,299 | bot | INFO | Cog loaded: Music
+2021-10-18 06:21:58,301 | exts.music | INFO | 728482381215826000:Left vc & cleaned up
+2021-10-18 06:22:07,500 | exts.music | DEBUG | VoiceState created for 728482381215826000
+2021-10-18 06:22:09,453 | exts.music | DEBUG | 728482381215826000: Searching เป็นอดีต
+2021-10-18 06:22:10,854 | exts.music | DEBUG | Enqueued
+2021-10-18 06:22:10,854 | exts.music | INFO | Audio Player Launched for 728482381215826000
+2021-10-18 06:22:26,739 | exts.music | INFO | 728482381215826000:Left vc & cleaned up
+2021-10-18 06:22:27,822 | exts.music | DEBUG | VoiceState created for 728482381215826000
+2021-10-18 06:22:59,067 | exts.music | DEBUG | 728482381215826000: Searching ลาลาลอย
+2021-10-18 06:23:00,581 | exts.music | DEBUG | Enqueued
+2021-10-18 06:23:00,581 | exts.music | INFO | Audio Player Launched for 728482381215826000

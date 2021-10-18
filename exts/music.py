@@ -694,7 +694,7 @@ class Music(commands.Cog):
         # using loop because when user used play command, bot needs time to load.
         # so I will check every 0.5 for 5 times that it's loaded and ready to turn on loop.
         for i in range(5):
-            if ctx.voice_state.current is None:
+            if ctx.voice_state.audio_player is None:
                 await asyncio.sleep(0.5)
                 continue         
             break
@@ -721,7 +721,7 @@ class Music(commands.Cog):
         # again using loop because when user used play command, bot needs time to load.
         # so I will check every 0.5 for 5 times that it's loaded and ready to turn on loop.
         for i in range(5):
-            if ctx.voice_state.current is None:
+            if ctx.voice_state.audio_player is None:
                 await asyncio.sleep(0.5)
                 continue         
             break
