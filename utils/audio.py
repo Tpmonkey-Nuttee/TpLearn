@@ -9,7 +9,7 @@ import functools
 # Silence useless bug reports messages
 youtube_dl.utils.bug_reports_message = lambda: ''
 
-__all__ = ("YTDLError", "YTDLSource", "DownloadError", "getTracks", "getAlbum")
+__all__ = ("YTDLError", "YTDLSource", "DownloadError", "getTracks", "getAlbum", "getRecommend")
 
 class YTDLError(Exception):
     pass
@@ -31,7 +31,8 @@ class YTDLSource(discord.PCMVolumeTransformer):
         'no_warnings': True,
         'default_search': 'auto',
         'source_address': '0.0.0.0',
-        "cookiefile": "com_cookies.txt"
+        "cookiefile": "com_cookies.txt",
+        "cachedir": False
     }
 
     FFMPEG_OPTIONS = {
@@ -181,4 +182,25 @@ def getAlbum(albumURL):
 
         results = spotify.album_tracks(albumURL, offset=offset)
 
+    return trackList
+
+def getRecommend(name: str, amount: int = 20) -> list:    
+    # Find uri
+    r = spotify.search(q=name, limit=1)
+
+    if len(r['tracks']['items']) == 0:
+        raise NameError
+        
+    uri = r['tracks']['items'][0]['uri']
+
+    # find recommendations
+    r = spotify.recommendations(seed_tracks=[uri], limit=amount)
+    trackList = []
+    
+    for i in r['tracks']:
+        name = i['name']
+        artist = i["artists"][0]["name"]
+
+        trackList.append(f"{name} {artist}")
+    
     return trackList

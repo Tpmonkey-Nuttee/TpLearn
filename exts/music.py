@@ -734,7 +734,56 @@ class Music(commands.Cog):
         else:
             ctx.voice_state.loop = Loop.NONE
             await ctx.send("**Disable Looping!**")
+    
+    @commands.command(name="recommend", aliases=['rec'])
+    async def _recommend(self, ctx: commands.Context, name: str = None):
+        """Find a recommendation based on song name or currently playing.
         
+        This will find 20 more songs similar songs and add it to the queue.
+        Note: This command use Spotify Recommendation system.
+        """
+        
+        if name is not None and ctx.voice_state.audio_player is not None:
+            log.info(f"{ctx.guild.id}: Recommending song based on {name}")
+            try:
+                songs = getRecommend(name)
+            except NameError:
+                log.info(f"{ctx.guild.id}: Unable to find any matched")
+                return await ctx.send(":x: **Unable to find matched song.**")
+
+            amount = 0
+            for s in songs:
+                pl = PlaylistSong(s, ctx)
+                await ctx.voice_state.songs.put(pl)
+                amount += 1
+            
+            log.info(f"{ctx.guild.id}: Queued songs.")
+            return await ctx.send("Enqueued {} songs.".format(amount))
+        elif name is None and ctx.voice_state.current is not None:
+            log.info(f"{ctx.guild.id}: Recommending song based on current song...")
+
+            try:
+                name = ctx.voice_state.current.source.title
+            except AttributeError:
+                return await ctx.send(":x: **Unable to fetch song name, Please try again later.**")
+            
+            try:
+                songs = getRecommend(name)
+            except NameError:
+                log.info(f"{ctx.guild.id}: Unable to find any matched")
+                return await ctx.send(":x: **Unable to find matched song, Please try typing it directly.**")
+
+            amount = 0
+            for s in songs:
+                pl = PlaylistSong(s, ctx)
+                await ctx.voice_state.songs.put(pl)
+                amount += 1
+            
+            log.info(f"{ctx.guild.id}: Queued songs.")
+            return await ctx.send("Enqueued {} songs.".format(amount))
+        else:
+            return await ctx.send(":x: **Nothing being play right now.**")
+
 
     @commands.command(name='play', aliases=['p'])
     async def _play(self, ctx: commands.Context, *, search: str = None):
