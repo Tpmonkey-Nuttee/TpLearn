@@ -365,12 +365,12 @@ class Music(commands.Cog):
             # Wrong channel, go back
             if not self.bot.user.id in all_members: return
 
-            # Remove bot timeout, so it won't disconnect.
-            log.info(f"{member.guild.id}: User joined back, Stopping deletion")
+            # Remove bot timeout, so it won't disconnect.            
             try:
                 del self.wait_for_disconnect[member.guild.id]
-            except KeyError:
-                pass
+            except KeyError:                
+                return
+            log.info(f"{member.guild.id}: User joined back, Stopping deletion")
         
         # Check if user switched out from bot vc or left vc completelely.
         elif (before.channel is not None and after.channel is None) or  (before.channel != after.channel and before.channel is not None and after.channel is not None):

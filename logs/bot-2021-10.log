@@ -3667,3 +3667,13 @@ AttributeError: can't set attribute
 2021-10-21 18:50:26,127 | exts.music | INFO | 728482381215826000: Queued songs.
 2021-10-21 18:50:30,224 | exts.errorhand | TRACE | Command: q; Already handled locally.
 2021-10-21 18:50:49,968 | exts.music | DEBUG | VoiceState created for 773426467492069386
+2021-10-21 18:52:07,124 | exts.music | INFO | 728482381215826000: Recommending song based on current song...
+2021-10-21 18:52:07,357 | exts.music | INFO | 728482381215826000: Unable to find any matched
+2021-10-21 18:54:04,366 | exts.music | DEBUG | 773426467492069386: Searching 【MV】君色々移り／自分で歌ってみた【まふまふ】
+2021-10-21 18:54:06,299 | exts.music | DEBUG | Enqueued
+2021-10-21 18:54:06,300 | exts.music | INFO | Audio Player Launched for 773426467492069386
+2021-10-21 18:54:46,935 | exts.music | INFO | 773426467492069386: Recommending song based on takt
+2021-10-21 18:54:47,240 | exts.music | INFO | 773426467492069386: Queued songs.
+2021-10-21 18:55:22,364 | exts.music | INFO | 728482381215826000: All user left, Waiting for deletion
+2021-10-21 18:55:24,286 | exts.music | INFO | 773426467492069386: User joined back, Stopping deletion
+2021-10-21 18:56:31,488 | exts.music | INFO | 773426467492069386: All user left, Waiting for deletion
