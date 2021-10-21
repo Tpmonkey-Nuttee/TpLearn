@@ -3677,3 +3677,6 @@ AttributeError: can't set attribute
 2021-10-21 18:55:22,364 | exts.music | INFO | 728482381215826000: All user left, Waiting for deletion
 2021-10-21 18:55:24,286 | exts.music | INFO | 773426467492069386: User joined back, Stopping deletion
 2021-10-21 18:56:31,488 | exts.music | INFO | 773426467492069386: All user left, Waiting for deletion
+2021-10-21 18:58:10,640 | exts.music | INFO | 728482381215826000: User joined back, Stopping deletion
+2021-10-21 18:58:20,682 | exts.music | INFO | 728482381215826000: Recommending song based on เธอ
+2021-10-21 18:58:21,002 | exts.music | INFO | 728482381215826000: Queued songs.

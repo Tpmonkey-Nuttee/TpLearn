@@ -772,7 +772,7 @@ class Music(commands.Cog):
                 songs = getRecommend(name)
             except NameError:
                 log.info(f"{ctx.guild.id}: Unable to find any matched")
-                return await ctx.send(":x: **Unable to find matched song, Please try typing it directly.**")
+                return await ctx.send(":x: **Unable to find matched song, Please try typing it directly.**\n(Spotify URL or Song name)")
 
             amount = 0
             for s in songs:
@@ -783,7 +783,7 @@ class Music(commands.Cog):
             log.info(f"{ctx.guild.id}: Queued songs.")
             return await ctx.send("Enqueued {} songs.".format(amount))
         else:
-            return await ctx.send(":x: **Nothing being play right now.**")
+            return await ctx.send(":x: **Please use play command before using this command.**")
 
 
     @commands.command(name='play', aliases=['p'])
