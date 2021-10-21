@@ -186,15 +186,16 @@ def getAlbum(albumURL):
 
 def getRecommend(name: str, amount: int = 20) -> list:    
     # Find uri
-    r = spotify.search(q=name, limit=1)
+    if "open.spotify.com/track/" not in name:
+        r = spotify.search(q=name, limit=1)
 
-    if len(r['tracks']['items']) == 0:
-        raise NameError
-        
-    uri = r['tracks']['items'][0]['uri']
+        if len(r['tracks']['items']) == 0:
+            raise NameError
+            
+        name = r['tracks']['items'][0]['uri']
 
     # find recommendations
-    r = spotify.recommendations(seed_tracks=[uri], limit=amount)
+    r = spotify.recommendations(seed_tracks=[name], limit=amount)
     trackList = []
     
     for i in r['tracks']:

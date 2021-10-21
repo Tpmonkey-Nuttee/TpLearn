@@ -3622,3 +3622,48 @@ AttributeError: can't set attribute
 2021-10-21 18:43:25,942 | exts.music | INFO | 728482381215826000: Unable to find any matched
 2021-10-21 18:43:30,647 | exts.music | INFO | 728482381215826000: Recommending song based on เรา
 2021-10-21 18:43:30,956 | exts.music | INFO | 728482381215826000: Queued songs.
+2021-10-21 18:46:00,196 | exts.music | INFO | 728482381215826000: Recommending song based on STAY
+2021-10-21 18:46:00,581 | exts.music | INFO | 728482381215826000: Queued songs.
+2021-10-21 18:46:45,099 | exts.music | INFO | 728482381215826000: Recommending song based on INFERNO
+2021-10-21 18:46:45,458 | exts.music | INFO | 728482381215826000: Queued songs.
+2021-10-21 18:46:49,134 | exts.errorhand | TRACE | Command: q; Already handled locally.
+2021-10-21 18:47:41,534 | exts.music | DEBUG | 728482381215826000: Searching https://open.spotify.com/track/64yajM6CxtLghmgB53VeXT?si=be4008f05aea4591
+2021-10-21 18:47:45,268 | exts.music | INFO | 728482381215826000: Recommending song based on https://open.spotify.com/track/64yajM6CxtLghmgB53VeXT?si=be4008f05aea4591
+2021-10-21 18:47:45,523 | exts.music | INFO | 728482381215826000: Unable to find any matched
+2021-10-21 18:48:41,566 | exts.music | INFO | 728482381215826000:Left vc & cleaned up
+2021-10-21 18:50:01,891 | asyncio | DEBUG | Using selector: EpollSelector
+2021-10-21 18:50:01,892 | bot | DEBUG | created bot base.
+2021-10-21 18:50:01,914 | constant | DEBUG | init database succesful
+2021-10-21 18:50:02,266 | utils.planner | DEBUG | triggered update
+2021-10-21 18:50:02,339 | bot | DEBUG | bot subclass Created.
+2021-10-21 18:50:02,343 | bot | INFO | Cog loaded: AdminCommands
+2021-10-21 18:50:02,344 | bot | INFO | Cog loaded: Latency
+2021-10-21 18:50:02,346 | bot | INFO | Cog loaded: Snekbox
+2021-10-21 18:50:02,422 | bot | INFO | Cog loaded: KUSNews
+2021-10-21 18:50:02,424 | bot | INFO | Cog loaded: Debug
+2021-10-21 18:50:02,854 | bot | INFO | Cog loaded: Music
+2021-10-21 18:50:02,855 | bot | INFO | Cog loaded: ErrorHandler
+2021-10-21 18:50:02,856 | bot | INFO | Cog loaded: Updater
+2021-10-21 18:50:02,857 | bot | INFO | Cog loaded: SetUp
+2021-10-21 18:50:02,858 | bot | INFO | Cog loaded: NewPatch
+2021-10-21 18:50:02,859 | bot | INFO | Cog loaded: Assignments
+2021-10-21 18:50:02,862 | bot | INFO | Cog loaded: Utility
+2021-10-21 18:50:02,863 | bot | INFO | Cog loaded: Help
+2021-10-21 18:50:02,864 | bot | INFO | Cog loaded: DayLoop
+2021-10-21 18:50:02,865 | bot | INFO | Cog loaded: VoiceChannel
+2021-10-21 18:50:02,946 | exts.kus | DEBUG | loaded data
+2021-10-21 18:50:05,523 | utils.planner | DEBUG | returning sorted date for 562976873685057546
+2021-10-21 18:50:05,533 | bot | INFO | Connected successfully
+2021-10-21 18:50:05,685 | bot | DEBUG | changed bot status
+2021-10-21 18:50:05,687 | utils.planner | DEBUG | returning sorted date for 728482381215826000
+2021-10-21 18:50:05,790 | utils.planner | DEBUG | returning sorted date for 676256965650808873
+2021-10-21 18:50:05,898 | utils.planner | DEBUG | returning sorted date for 829749071891005512
+2021-10-21 18:50:06,132 | utils.planner | DEBUG | returning sorted date for 773426467492069386
+2021-10-21 18:50:12,374 | exts.music | DEBUG | VoiceState created for 728482381215826000
+2021-10-21 18:50:21,610 | exts.music | DEBUG | 728482381215826000: Searching something
+2021-10-21 18:50:25,096 | exts.music | DEBUG | Enqueued
+2021-10-21 18:50:25,097 | exts.music | INFO | Audio Player Launched for 728482381215826000
+2021-10-21 18:50:25,943 | exts.music | INFO | 728482381215826000: Recommending song based on https://open.spotify.com/track/64yajM6CxtLghmgB53VeXT?si=be4008f05aea4591
+2021-10-21 18:50:26,127 | exts.music | INFO | 728482381215826000: Queued songs.
+2021-10-21 18:50:30,224 | exts.errorhand | TRACE | Command: q; Already handled locally.
+2021-10-21 18:50:49,968 | exts.music | DEBUG | VoiceState created for 773426467492069386

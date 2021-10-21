@@ -740,6 +740,7 @@ class Music(commands.Cog):
         """Find a recommendation based on song name or currently playing.
         
         This will find 20 more songs similar songs and add it to the queue.
+        You can also use the song url from spotify to search.
         Note: This command use Spotify Recommendation system.
         """
         
