@@ -5,19 +5,21 @@ Made by Tpmonkey
 
 ### ---------- General ---------- ###
 
-version = "1.4.1"
+version = "1.5"
 note = [
+    "**New Command!**",
+    "- Recommendation command (aliase is `rec`)",
+    "Recommend next song based on __current song__ or __name/spotify track url__ that was given.",
+    "This command uses Spotify Recommendation System and Will queue 20 more tracks for you!",
+    "*Dev Note:*",
+    "*- Before using command, __You need to use play command first__.*"
+    "*- Normally, Youtube title is bad. So try to search it yourself is a better option.*",
+    "",
     "**QoL**",
-    "- YouTube playlist now display video name instead of \"Not yet loaded\""
-    "- All Playlist (Youtube, Spotify) will not be loaded before so It doesn't cause performance issue.",
-    "- Automatically retry if the video is geo-restricted.",
-    "- Bot will now leave Vc automactically if everybody left.", 
-    "**Commands**",
-    "- Clear queue command is added. (aliases is clearq)"
-    "",    
+    "- Bot auto-disconnect and timeout system have been improved.",
+    "",
     "**Bugs**",
-    "- Queue page sometimes display 1/0 page.",
-    "- Passed Assignment shown invalid date in passed-works channel."
+    "- Fixed Loop & Loop queue commands sometimes don't work at all(?)"
 ]
 
 prefix = "," # Bot Prefix.

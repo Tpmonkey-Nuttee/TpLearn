@@ -3680,3 +3680,9 @@ AttributeError: can't set attribute
 2021-10-21 18:58:10,640 | exts.music | INFO | 728482381215826000: User joined back, Stopping deletion
 2021-10-21 18:58:20,682 | exts.music | INFO | 728482381215826000: Recommending song based on เธอ
 2021-10-21 18:58:21,002 | exts.music | INFO | 728482381215826000: Queued songs.
+2021-10-21 19:00:48,206 | exts.music | INFO | 728482381215826000: Recommending song based on current song...
+2021-10-21 19:00:48,397 | exts.music | INFO | 728482381215826000: Unable to find any matched
+2021-10-21 19:02:02,866 | exts.music | INFO | 773426467492069386: Timeout, Nobody left in vc... Disconnected
+2021-10-21 19:02:02,868 | exts.music | INFO | 773426467492069386:Left vc & cleaned up
+2021-10-21 19:02:02,868 | exts.music | DEBUG | 773426467492069386: Attempted to disconnect but already disconnected.
+2021-10-21 19:07:02,920 | exts.music | INFO | 773426467492069386:Left vc & cleaned up
