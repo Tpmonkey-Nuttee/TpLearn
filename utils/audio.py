@@ -71,7 +71,9 @@ class YTDLSource(discord.PCMVolumeTransformer):
     async def create_source(cls, ctx: commands.Context, search: str, *, loop: asyncio.BaseEventLoop = None):
         loop = loop or asyncio.get_event_loop()
 
-        partial = functools.partial(cls.ytdl.extract_info, search, download=False, process=False)
+        # This bit of code seems to do nothing except make the load time longer.
+        # To be sure, I will just comment it out and if somethign went wrong, I will check it again.
+        """partial = functools.partial(cls.ytdl.extract_info, search, download=False, process=False)
         data = await loop.run_in_executor(None, partial)
 
         if data is None:
@@ -87,9 +89,9 @@ class YTDLSource(discord.PCMVolumeTransformer):
                     break
 
             if process_info is None:
-                raise YTDLError('Couldn\'t find anything that matches `{}`'.format(search))
+                raise YTDLError('Couldn\'t find anything that matches `{}`'.format(search))"""
 
-        webpage_url = process_info['webpage_url']
+        webpage_url = search # process_info['webpage_url']
         partial = functools.partial(cls.ytdl.extract_info, webpage_url, download=False)
         processed_info = await loop.run_in_executor(None, partial)
 
@@ -105,6 +107,10 @@ class YTDLSource(discord.PCMVolumeTransformer):
                     info = processed_info['entries'].pop(0)
                 except IndexError:
                     raise YTDLError('Couldn\'t retrieve any matches for `{}`'.format(webpage_url))
+        
+        if info['is_live']:
+            raise YTDLError("Couldn't fetch live video.")
+
         print("Created Source YouTubeDL", search.strip("https://www.youtube.com/watch?"))
         return cls(ctx, discord.FFmpegPCMAudio(info['url'], **cls.FFMPEG_OPTIONS), data=info)
 
@@ -184,18 +190,26 @@ def getAlbum(albumURL):
 
     return trackList
 
-def getRecommend(name: str, amount: int = 20) -> list:    
+def getRecommend(names: list, amount: int = 20) -> list:    
     # Find uri
-    if "open.spotify.com/track/" not in name:
+    uris = []
+    for name in names:
+        if "open.spotify.com/track/" in name:
+            uris.append(name)
+            continue
+
         r = spotify.search(q=name, limit=1)
 
         if len(r['tracks']['items']) == 0:
-            raise NameError
+            continue
             
-        name = r['tracks']['items'][0]['uri']
+        uris.append(r['tracks']['items'][0]['uri'])
+    
+    if len(uris) == 0:
+        raise NameError
 
     # find recommendations
-    r = spotify.recommendations(seed_tracks=[name], limit=amount)
+    r = spotify.recommendations(seed_tracks=uris, limit=amount)
     trackList = []
     
     for i in r['tracks']:

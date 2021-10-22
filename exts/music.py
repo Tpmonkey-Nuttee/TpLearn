@@ -24,7 +24,7 @@ from discord.ext import commands, tasks
 import googleapiclient.discovery
 from urllib.parse import parse_qs, urlparse
 
-# YouTube DL
+# Audio system (Youtube DL & Spotipy)
 from utils.audio import *
 
 YOUTUBE_API_KEY = os.getenv("YOUTUBE_API_KEY")
@@ -290,7 +290,7 @@ class Music(commands.Cog):
         self.wait_for_disconnect = {}
         self.loop_for_deletion.start()
     
-    def play_error(self, guid_id: int) -> None:
+    def play_error(self, guild_id: int) -> None:
         count = self.errors_count.get(guild_id, 0)
         self.errors_count[guild_id] = count + 1
 
@@ -736,7 +736,7 @@ class Music(commands.Cog):
             await ctx.send("**Disable Looping!**")
     
     @commands.command(name="recommend", aliases=['rec'])
-    async def _recommend(self, ctx: commands.Context, name: str = None):
+    async def _recommend(self, ctx: commands.Context, *, name: str = None):
         """Find a recommendation based on song name or currently playing.
         
         This will find 20 more songs similar songs and add it to the queue.
@@ -747,7 +747,7 @@ class Music(commands.Cog):
         if name is not None and ctx.voice_state.audio_player is not None:
             log.info(f"{ctx.guild.id}: Recommending song based on {name}")
             try:
-                songs = getRecommend(name)
+                songs = getRecommend( name.split() )
             except NameError:
                 log.info(f"{ctx.guild.id}: Unable to find any matched")
                 return await ctx.send(":x: **Unable to find matched song.**")
@@ -769,7 +769,7 @@ class Music(commands.Cog):
                 return await ctx.send(":x: **Unable to fetch song name, Please try again later.**")
             
             try:
-                songs = getRecommend(name)
+                songs = getRecommend( [name] )
             except NameError:
                 log.info(f"{ctx.guild.id}: Unable to find any matched")
                 return await ctx.send(":x: **Unable to find matched song, Please try typing it directly.**\n(Spotify URL or Song name)")
@@ -901,8 +901,7 @@ class Music(commands.Cog):
             try:
                 source = await YTDLSource.create_source(ctx, search, loop=self.bot.loop)
             except YTDLError as e:
-                self.play_error(ctx.guild.id)
-                return await ctx.send('An error occurred while processing this request: {}'.format(str(e)))
+                return await ctx.send(':x: **{}**'.format(str(e)))
             except DownloadError:
                 # maybe it's geo restricted, so retry again but this time put "lyric" behind.
                 

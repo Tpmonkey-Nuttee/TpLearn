@@ -3686,3 +3686,283 @@ AttributeError: can't set attribute
 2021-10-21 19:02:02,868 | exts.music | INFO | 773426467492069386:Left vc & cleaned up
 2021-10-21 19:02:02,868 | exts.music | DEBUG | 773426467492069386: Attempted to disconnect but already disconnected.
 2021-10-21 19:07:02,920 | exts.music | INFO | 773426467492069386:Left vc & cleaned up
+2021-10-22 00:18:26,451 | asyncio | DEBUG | Using selector: EpollSelector
+2021-10-22 00:18:26,452 | bot | DEBUG | created bot base.
+2021-10-22 00:18:26,473 | constant | DEBUG | init database succesful
+2021-10-22 00:18:26,513 | utils.planner | DEBUG | triggered update
+2021-10-22 00:18:26,520 | bot | DEBUG | bot subclass Created.
+2021-10-22 00:18:26,948 | bot | INFO | Cog loaded: Music
+2021-10-22 00:18:26,949 | bot | INFO | Cog loaded: NewPatch
+2021-10-22 00:18:26,950 | bot | INFO | Cog loaded: Latency
+2021-10-22 00:18:26,953 | bot | INFO | Cog loaded: Updater
+2021-10-22 00:18:26,954 | bot | INFO | Cog loaded: ErrorHandler
+2021-10-22 00:18:26,955 | bot | INFO | Cog loaded: DayLoop
+2021-10-22 00:18:26,956 | bot | INFO | Cog loaded: Debug
+2021-10-22 00:18:26,958 | bot | INFO | Cog loaded: Snekbox
+2021-10-22 00:18:27,017 | bot | INFO | Cog loaded: KUSNews
+2021-10-22 00:18:27,019 | bot | INFO | Cog loaded: Assignments
+2021-10-22 00:18:27,021 | bot | INFO | Cog loaded: Help
+2021-10-22 00:18:27,023 | bot | INFO | Cog loaded: VoiceChannel
+2021-10-22 00:18:27,024 | bot | INFO | Cog loaded: SetUp
+2021-10-22 00:18:27,025 | bot | INFO | Cog loaded: AdminCommands
+2021-10-22 00:18:27,027 | bot | INFO | Cog loaded: Utility
+2021-10-22 00:18:27,052 | exts.kus | DEBUG | loaded data
+2021-10-22 00:18:29,605 | utils.planner | DEBUG | returning sorted date for 562976873685057546
+2021-10-22 00:18:29,611 | bot | INFO | Connected successfully
+2021-10-22 00:18:29,629 | bot | DEBUG | changed bot status
+2021-10-22 00:18:29,696 | utils.planner | DEBUG | returning sorted date for 728482381215826000
+2021-10-22 00:18:29,795 | utils.planner | DEBUG | returning sorted date for 676256965650808873
+2021-10-22 00:18:29,872 | utils.planner | DEBUG | returning sorted date for 829749071891005512
+2021-10-22 00:18:30,297 | utils.planner | DEBUG | returning sorted date for 773426467492069386
+2021-10-22 03:17:55,365 | bot | INFO | Resumed Connection
+2021-10-22 03:17:55,549 | bot | DEBUG | changed bot status
+2021-10-22 05:06:34,091 | bot | INFO | Resumed Connection
+2021-10-22 05:06:34,255 | bot | DEBUG | changed bot status
+2021-10-22 05:29:57,831 | exts.music | DEBUG | VoiceState created for 773426467492069386
+2021-10-22 05:29:59,826 | exts.music | DEBUG | 773426467492069386: Searching 恋愛裁判 Love Trial
+2021-10-22 05:30:04,056 | exts.music | DEBUG | Enqueued
+2021-10-22 05:30:04,058 | exts.music | INFO | Audio Player Launched for 773426467492069386
+2021-10-22 05:30:07,097 | exts.music | INFO | 773426467492069386: Recommending song based on 恋愛裁判
+2021-10-22 05:30:08,088 | exts.music | INFO | 773426467492069386: Queued songs.
+2021-10-22 06:42:11,440 | bot | INFO | Resumed Connection
+2021-10-22 06:42:11,576 | bot | DEBUG | changed bot status
+2021-10-22 06:51:05,367 | exts.music | INFO | 773426467492069386:Left vc & cleaned up
+2021-10-22 06:51:29,177 | exts.music | DEBUG | VoiceState created for 773426467492069386
+2021-10-22 06:51:31,191 | exts.music | DEBUG | 773426467492069386: Searching Hazy Moon / Mafumafu
+2021-10-22 06:51:32,660 | exts.music | DEBUG | Enqueued
+2021-10-22 06:51:32,661 | exts.music | INFO | Audio Player Launched for 773426467492069386
+2021-10-22 06:51:38,485 | exts.music | INFO | 773426467492069386: Recommending song based on Hazy
+2021-10-22 06:51:38,902 | exts.music | INFO | 773426467492069386: Queued songs.
+2021-10-22 07:27:09,739 | exts.music | DEBUG | VoiceState created for 562976873685057546
+2021-10-22 07:27:11,770 | exts.music | DEBUG | 562976873685057546: Searching https://www.youtube.com/playlist?list=PLsQ-ipbXoFYm88bmZy4eyhuIZoTtU_I_Z
+2021-10-22 07:27:11,888 | googleapiclient.discovery_cache | INFO | file_cache is only supported with oauth2client<4.0.0
+2021-10-22 07:27:11,898 | googleapiclient.discovery | DEBUG | URL being requested: GET https://youtube.googleapis.com/youtube/v3/playlistItems?part=snippet&playlistId=PLsQ-ipbXoFYm88bmZy4eyhuIZoTtU_I_Z&maxResults=25&key=AIzaSyAdxWpkjawZwkOoLZNdBKnaUQ1o3Wov2cg&alt=json
+2021-10-22 07:27:12,104 | googleapiclient.discovery | DEBUG | Next page request URL: list_next https://youtube.googleapis.com/youtube/v3/playlistItems?part=snippet&playlistId=PLsQ-ipbXoFYm88bmZy4eyhuIZoTtU_I_Z&maxResults=25&key=AIzaSyAdxWpkjawZwkOoLZNdBKnaUQ1o3Wov2cg&alt=json&pageToken=EAAaBlBUOkNCaw
+2021-10-22 07:27:12,189 | googleapiclient.discovery | DEBUG | Next page request URL: list_next https://youtube.googleapis.com/youtube/v3/playlistItems?part=snippet&playlistId=PLsQ-ipbXoFYm88bmZy4eyhuIZoTtU_I_Z&maxResults=25&key=AIzaSyAdxWpkjawZwkOoLZNdBKnaUQ1o3Wov2cg&alt=json&pageToken=EAAaBlBUOkNESQ
+2021-10-22 07:27:12,240 | googleapiclient.discovery | DEBUG | Next page request URL: list_next https://youtube.googleapis.com/youtube/v3/playlistItems?part=snippet&playlistId=PLsQ-ipbXoFYm88bmZy4eyhuIZoTtU_I_Z&maxResults=25&key=AIzaSyAdxWpkjawZwkOoLZNdBKnaUQ1o3Wov2cg&alt=json&pageToken=EAAaBlBUOkNFcw
+2021-10-22 07:27:12,340 | googleapiclient.discovery | DEBUG | Next page request URL: list_next https://youtube.googleapis.com/youtube/v3/playlistItems?part=snippet&playlistId=PLsQ-ipbXoFYm88bmZy4eyhuIZoTtU_I_Z&maxResults=25&key=AIzaSyAdxWpkjawZwkOoLZNdBKnaUQ1o3Wov2cg&alt=json&pageToken=EAAaBlBUOkNHUQ
+2021-10-22 07:27:12,393 | googleapiclient.discovery | DEBUG | Next page request URL: list_next https://youtube.googleapis.com/youtube/v3/playlistItems?part=snippet&playlistId=PLsQ-ipbXoFYm88bmZy4eyhuIZoTtU_I_Z&maxResults=25&key=AIzaSyAdxWpkjawZwkOoLZNdBKnaUQ1o3Wov2cg&alt=json&pageToken=EAAaBlBUOkNIMA
+2021-10-22 07:27:12,450 | googleapiclient.discovery | DEBUG | Next page request URL: list_next https://youtube.googleapis.com/youtube/v3/playlistItems?part=snippet&playlistId=PLsQ-ipbXoFYm88bmZy4eyhuIZoTtU_I_Z&maxResults=25&key=AIzaSyAdxWpkjawZwkOoLZNdBKnaUQ1o3Wov2cg&alt=json&pageToken=EAAaB1BUOkNKWUI
+2021-10-22 07:27:12,736 | exts.music | DEBUG | Enqueued
+2021-10-22 07:27:12,737 | exts.music | INFO | Audio Player Launched for 562976873685057546
+2021-10-22 07:46:10,902 | exts.music | INFO | 773426467492069386:Left vc & cleaned up
+2021-10-22 08:12:12,608 | exts.music | INFO | 562976873685057546: Unable to load playlist song, retrying...
+2021-10-22 08:12:12,866 | exts.music | INFO | 562976873685057546: It was an url, skipping...
+2021-10-22 08:26:52,687 | bot | INFO | Resumed Connection
+2021-10-22 08:26:52,797 | bot | DEBUG | changed bot status
+2021-10-22 08:40:04,945 | exts.music | DEBUG | VoiceState created for 728482381215826000
+2021-10-22 08:40:27,553 | exts.music | DEBUG | 728482381215826000: Searching gurenge
+2021-10-22 08:40:29,146 | exts.music | DEBUG | Enqueued
+2021-10-22 08:40:29,146 | exts.music | INFO | Audio Player Launched for 728482381215826000
+2021-10-22 08:40:30,200 | exts.music | INFO | 728482381215826000: Recommending song based on gurenge
+2021-10-22 08:40:30,688 | exts.music | INFO | 728482381215826000: Queued songs.
+2021-10-22 09:04:06,723 | discord.voice_client | ERROR | Disconnected from voice... Reconnecting in 0.76s.
+Traceback (most recent call last):
+  File "/opt/virtualenvs/python3/lib/python3.8/site-packages/discord/voice_client.py", line 414, in poll_voice_ws
+    await self.ws.poll_event()
+  File "/opt/virtualenvs/python3/lib/python3.8/site-packages/discord/gateway.py", line 895, in poll_event
+    raise ConnectionClosed(self.ws, shard_id=None, code=self._close_code)
+discord.errors.ConnectionClosed: Shard ID None WebSocket closed with 1006
+2021-10-22 09:04:39,704 | discord.voice_client | ERROR | Disconnected from voice... Reconnecting in 0.21s.
+Traceback (most recent call last):
+  File "/opt/virtualenvs/python3/lib/python3.8/site-packages/discord/voice_client.py", line 414, in poll_voice_ws
+    await self.ws.poll_event()
+  File "/opt/virtualenvs/python3/lib/python3.8/site-packages/discord/gateway.py", line 895, in poll_event
+    raise ConnectionClosed(self.ws, shard_id=None, code=self._close_code)
+discord.errors.ConnectionClosed: Shard ID None WebSocket closed with 1006
+2021-10-22 09:04:40,099 | bot | INFO | Resumed Connection
+2021-10-22 09:04:40,178 | bot | DEBUG | changed bot status
+2021-10-22 09:05:04,950 | exts.music | INFO | 728482381215826000: All user left, Waiting for deletion
+2021-10-22 09:05:08,769 | exts.music | INFO | 728482381215826000: User joined back, Stopping deletion
+2021-10-22 09:05:21,399 | exts.music | INFO | 562976873685057546: All user left, Waiting for deletion
+2021-10-22 09:05:39,925 | discord.voice_client | WARNING | Could not connect to voice... Retrying...
+2021-10-22 09:05:48,278 | exts.music | INFO | 562976873685057546: User joined back, Stopping deletion
+2021-10-22 09:06:03,658 | exts.music | INFO | 728482381215826000:Left vc & cleaned up
+2021-10-22 09:12:52,465 | asyncio | DEBUG | Using selector: EpollSelector
+2021-10-22 09:12:52,467 | bot | DEBUG | created bot base.
+2021-10-22 09:12:52,495 | constant | DEBUG | init database succesful
+2021-10-22 09:12:52,534 | utils.planner | DEBUG | triggered update
+2021-10-22 09:12:52,708 | bot | DEBUG | bot subclass Created.
+2021-10-22 09:12:52,713 | bot | INFO | Cog loaded: Assignments
+2021-10-22 09:12:52,715 | bot | INFO | Cog loaded: Debug
+2021-10-22 09:12:52,715 | bot | INFO | Cog loaded: NewPatch
+2021-10-22 09:12:52,717 | bot | INFO | Cog loaded: VoiceChannel
+2021-10-22 09:12:52,719 | bot | INFO | Cog loaded: Help
+2021-10-22 09:12:52,721 | bot | INFO | Cog loaded: AdminCommands
+2021-10-22 09:12:52,723 | bot | INFO | Cog loaded: SetUp
+2021-10-22 09:12:52,725 | bot | INFO | Cog loaded: Latency
+2021-10-22 09:12:52,727 | bot | INFO | Cog loaded: Updater
+2021-10-22 09:12:52,828 | bot | INFO | Cog loaded: KUSNews
+2021-10-22 09:12:52,832 | bot | INFO | Cog loaded: Snekbox
+2021-10-22 09:12:52,836 | bot | INFO | Cog loaded: Utility
+2021-10-22 09:12:53,470 | bot | INFO | Cog loaded: Music
+2021-10-22 09:12:53,471 | bot | INFO | Cog loaded: ErrorHandler
+2021-10-22 09:12:53,472 | bot | INFO | Cog loaded: DayLoop
+2021-10-22 09:12:53,643 | exts.kus | DEBUG | loaded data
+2021-10-22 09:12:56,340 | utils.planner | DEBUG | returning sorted date for 562976873685057546
+2021-10-22 09:12:56,355 | bot | INFO | Connected successfully
+2021-10-22 09:12:56,448 | bot | DEBUG | changed bot status
+2021-10-22 09:12:56,451 | utils.planner | DEBUG | returning sorted date for 728482381215826000
+2021-10-22 09:12:56,577 | utils.planner | DEBUG | returning sorted date for 676256965650808873
+2021-10-22 09:12:56,652 | utils.planner | DEBUG | returning sorted date for 829749071891005512
+2021-10-22 09:12:56,764 | utils.planner | DEBUG | returning sorted date for 773426467492069386
+2021-10-22 09:12:59,465 | exts.music | DEBUG | VoiceState created for 562976873685057546
+2021-10-22 09:13:01,471 | exts.music | DEBUG | 562976873685057546: Searching https://www.youtube.com/playlist?list=PLsQ-ipbXoFYm88bmZy4eyhuIZoTtU_I_Z
+2021-10-22 09:13:01,555 | googleapiclient.discovery_cache | INFO | file_cache is only supported with oauth2client<4.0.0
+2021-10-22 09:13:01,569 | googleapiclient.discovery | DEBUG | URL being requested: GET https://youtube.googleapis.com/youtube/v3/playlistItems?part=snippet&playlistId=PLsQ-ipbXoFYm88bmZy4eyhuIZoTtU_I_Z&maxResults=25&key=AIzaSyAdxWpkjawZwkOoLZNdBKnaUQ1o3Wov2cg&alt=json
+2021-10-22 09:13:01,749 | googleapiclient.discovery | DEBUG | Next page request URL: list_next https://youtube.googleapis.com/youtube/v3/playlistItems?part=snippet&playlistId=PLsQ-ipbXoFYm88bmZy4eyhuIZoTtU_I_Z&maxResults=25&key=AIzaSyAdxWpkjawZwkOoLZNdBKnaUQ1o3Wov2cg&alt=json&pageToken=EAAaBlBUOkNCaw
+2021-10-22 09:13:01,804 | googleapiclient.discovery | DEBUG | Next page request URL: list_next https://youtube.googleapis.com/youtube/v3/playlistItems?part=snippet&playlistId=PLsQ-ipbXoFYm88bmZy4eyhuIZoTtU_I_Z&maxResults=25&key=AIzaSyAdxWpkjawZwkOoLZNdBKnaUQ1o3Wov2cg&alt=json&pageToken=EAAaBlBUOkNESQ
+2021-10-22 09:13:01,854 | googleapiclient.discovery | DEBUG | Next page request URL: list_next https://youtube.googleapis.com/youtube/v3/playlistItems?part=snippet&playlistId=PLsQ-ipbXoFYm88bmZy4eyhuIZoTtU_I_Z&maxResults=25&key=AIzaSyAdxWpkjawZwkOoLZNdBKnaUQ1o3Wov2cg&alt=json&pageToken=EAAaBlBUOkNFcw
+2021-10-22 09:13:01,896 | googleapiclient.discovery | DEBUG | Next page request URL: list_next https://youtube.googleapis.com/youtube/v3/playlistItems?part=snippet&playlistId=PLsQ-ipbXoFYm88bmZy4eyhuIZoTtU_I_Z&maxResults=25&key=AIzaSyAdxWpkjawZwkOoLZNdBKnaUQ1o3Wov2cg&alt=json&pageToken=EAAaBlBUOkNHUQ
+2021-10-22 09:13:01,934 | googleapiclient.discovery | DEBUG | Next page request URL: list_next https://youtube.googleapis.com/youtube/v3/playlistItems?part=snippet&playlistId=PLsQ-ipbXoFYm88bmZy4eyhuIZoTtU_I_Z&maxResults=25&key=AIzaSyAdxWpkjawZwkOoLZNdBKnaUQ1o3Wov2cg&alt=json&pageToken=EAAaBlBUOkNIMA
+2021-10-22 09:13:01,983 | googleapiclient.discovery | DEBUG | Next page request URL: list_next https://youtube.googleapis.com/youtube/v3/playlistItems?part=snippet&playlistId=PLsQ-ipbXoFYm88bmZy4eyhuIZoTtU_I_Z&maxResults=25&key=AIzaSyAdxWpkjawZwkOoLZNdBKnaUQ1o3Wov2cg&alt=json&pageToken=EAAaB1BUOkNKWUI
+2021-10-22 09:13:02,017 | googleapiclient.discovery | DEBUG | Next page request URL: list_next https://youtube.googleapis.com/youtube/v3/playlistItems?part=snippet&playlistId=PLsQ-ipbXoFYm88bmZy4eyhuIZoTtU_I_Z&maxResults=25&key=AIzaSyAdxWpkjawZwkOoLZNdBKnaUQ1o3Wov2cg&alt=json&pageToken=EAAaB1BUOkNLOEI
+2021-10-22 09:13:02,263 | exts.music | DEBUG | Enqueued
+2021-10-22 09:13:02,264 | exts.music | INFO | Audio Player Launched for 562976873685057546
+2021-10-22 09:14:30,965 | exts.music | DEBUG | VoiceState created for 728482381215826000
+2021-10-22 09:14:36,410 | exts.music | DEBUG | 728482381215826000: Searching something
+2021-10-22 09:14:38,045 | exts.music | DEBUG | Enqueued
+2021-10-22 09:14:38,046 | exts.music | INFO | Audio Player Launched for 728482381215826000
+2021-10-22 09:14:38,860 | exts.music | INFO | 728482381215826000: Recommending song based on https://open.spotify.com/track/64yajM6CxtLghmgB53VeXT?si=9a17db2d12c74854 https://open.spotify.com/track/1f6HC5dTviPmopQjYi4uVT?si=52be78d81e984b1e https://open.spotify.com/track/3txqYlzoDZGLoW8MGll9tQ?si=ffee546853a04946
+2021-10-22 09:14:39,091 | exts.music | INFO | 728482381215826000: Queued songs.
+2021-10-22 09:14:42,313 | exts.errorhand | TRACE | Command: q; Already handled locally.
+2021-10-22 09:14:57,512 | exts.music | INFO | 728482381215826000: Recommending song based on current song...
+2021-10-22 09:14:57,709 | exts.music | INFO | 728482381215826000: Unable to find any matched
+2021-10-22 09:15:41,799 | exts.music | DEBUG | 728482381215826000: Searching เพื่อนเล่นไม่เล่นเพื่อน ถ้าเธอรักฉันจริง
+2021-10-22 09:15:43,655 | exts.music | DEBUG | Enqueued
+2021-10-22 09:15:50,952 | exts.music | INFO | 728482381215826000: Recommending song based on เพื่อนเล่นไม่เล่นเพื่อน ถ้าเธอรักฉันจริง
+2021-10-22 09:15:51,548 | exts.music | INFO | 728482381215826000: Queued songs.
+2021-10-22 09:15:52,639 | exts.errorhand | TRACE | Command: q; Already handled locally.
+2021-10-22 09:16:06,181 | exts.music | DEBUG | 728482381215826000: Searching เพื่อนเล่นไม่เล่นเพื่อน
+2021-10-22 09:16:08,065 | exts.music | DEBUG | Enqueued
+2021-10-22 09:16:09,832 | exts.music | DEBUG | 728482381215826000: Searching ถ้าเธอรักฉันจริง
+2021-10-22 09:16:11,673 | exts.music | DEBUG | Enqueued
+2021-10-22 09:27:51,720 | exts.music | INFO | 728482381215826000: Recommending song based on asmr
+2021-10-22 09:27:52,185 | exts.music | INFO | 728482381215826000: Queued songs.
+2021-10-22 09:28:38,525 | exts.music | DEBUG | 728482381215826000: Searching asmr
+2021-10-22 09:28:40,344 | exts.music | DEBUG | Enqueued
+2021-10-22 09:30:11,654 | exts.music | INFO | 728482381215826000:Left vc & cleaned up
+2021-10-22 09:30:31,798 | exts.music | DEBUG | VoiceState created for 728482381215826000
+2021-10-22 09:30:33,798 | exts.music | DEBUG | 728482381215826000: Searching asmr
+2021-10-22 09:30:35,412 | exts.music | DEBUG | Enqueued
+2021-10-22 09:30:35,413 | exts.music | INFO | Audio Player Launched for 728482381215826000
+2021-10-22 09:30:36,341 | exts.music | DEBUG | 728482381215826000: Searching https://open.spotify.com/track/2hSMGn99o6N7nDCKfGc817?si=3a48714f5b88426f
+2021-10-22 09:30:53,119 | exts.music | DEBUG | 728482381215826000: Searching asmr ear cleaning
+2021-10-22 09:30:54,623 | exts.music | DEBUG | Enqueued
+2021-10-22 09:33:54,249 | exts.music | INFO | 728482381215826000:Left vc & cleaned up
+2021-10-22 09:34:55,282 | exts.music | INFO | 728482381215826000:Left vc & cleaned up
+2021-10-22 09:46:09,795 | bot | INFO | Resumed Connection
+2021-10-22 09:46:09,900 | bot | DEBUG | changed bot status
+2021-10-22 10:18:19,046 | exts.music | INFO | 562976873685057546:Left vc & cleaned up
+2021-10-22 10:28:19,070 | exts.music | INFO | 562976873685057546:Left vc & cleaned up
+2021-10-22 11:00:12,523 | exts.music | DEBUG | VoiceState created for 728482381215826000
+2021-10-22 11:00:14,548 | exts.music | DEBUG | 728482381215826000: Searching ข้างกัน
+2021-10-22 11:00:16,118 | exts.music | DEBUG | Enqueued
+2021-10-22 11:00:16,118 | exts.music | INFO | Audio Player Launched for 728482381215826000
+2021-10-22 11:00:17,485 | exts.music | INFO | 728482381215826000: Recommending song based on https://open.spotify.com/track/3vdZ30MzgeTe5PiJXEmqjr?si=170748b624984274
+2021-10-22 11:00:17,688 | exts.music | INFO | 728482381215826000: Queued songs.
+2021-10-22 11:01:38,877 | discord.voice_client | ERROR | Disconnected from voice... Reconnecting in 0.92s.
+Traceback (most recent call last):
+  File "/opt/virtualenvs/python3/lib/python3.8/site-packages/discord/voice_client.py", line 414, in poll_voice_ws
+    await self.ws.poll_event()
+  File "/opt/virtualenvs/python3/lib/python3.8/site-packages/discord/gateway.py", line 895, in poll_event
+    raise ConnectionClosed(self.ws, shard_id=None, code=self._close_code)
+discord.errors.ConnectionClosed: Shard ID None WebSocket closed with 1006
+2021-10-22 11:01:39,982 | bot | INFO | Resumed Connection
+2021-10-22 11:01:40,159 | bot | DEBUG | changed bot status
+2021-10-22 11:02:13,371 | exts.music | INFO | 728482381215826000:Left vc & cleaned up
+2021-10-22 11:02:39,800 | discord.voice_client | WARNING | Could not connect to voice... Retrying...
+2021-10-22 11:03:04,146 | exts.music | DEBUG | VoiceState created for 562976873685057546
+2021-10-22 11:03:06,144 | exts.music | DEBUG | 562976873685057546: Searching ข้างกัน
+2021-10-22 11:03:07,597 | exts.music | DEBUG | Enqueued
+2021-10-22 11:03:07,597 | exts.music | INFO | Audio Player Launched for 562976873685057546
+2021-10-22 11:03:08,409 | exts.music | INFO | 562976873685057546: Recommending song based on https://open.spotify.com/track/3vdZ30MzgeTe5PiJXEmqjr?si=170748b624984274
+2021-10-22 11:03:08,533 | exts.music | INFO | 562976873685057546: Queued songs.
+2021-10-22 11:27:27,107 | bot | DEBUG | exts.admin Shutting down bot... by <@!518063131096907813>
+2021-10-22 11:27:27,413 | exts.admin | INFO | Shutting down bot by Tpmonkey#2682
+2021-10-22 11:27:27,431 | exts.music | INFO | 562976873685057546:Left vc & cleaned up
+2021-10-22 11:27:34,360 | asyncio | DEBUG | Using selector: EpollSelector
+2021-10-22 11:27:34,362 | bot | DEBUG | created bot base.
+2021-10-22 11:27:34,398 | constant | DEBUG | init database succesful
+2021-10-22 11:27:34,586 | utils.planner | DEBUG | triggered update
+2021-10-22 11:27:34,625 | bot | DEBUG | bot subclass Created.
+2021-10-22 11:27:34,749 | bot | INFO | Cog loaded: KUSNews
+2021-10-22 11:27:34,752 | bot | INFO | Cog loaded: Utility
+2021-10-22 11:27:34,755 | bot | INFO | Cog loaded: AdminCommands
+2021-10-22 11:27:34,756 | bot | INFO | Cog loaded: ErrorHandler
+2021-10-22 11:27:34,757 | bot | INFO | Cog loaded: DayLoop
+2021-10-22 11:27:34,758 | bot | INFO | Cog loaded: VoiceChannel
+2021-10-22 11:27:34,759 | bot | INFO | Cog loaded: Debug
+2021-10-22 11:27:34,761 | bot | INFO | Cog loaded: Help
+2021-10-22 11:27:34,764 | bot | INFO | Cog loaded: Snekbox
+2021-10-22 11:27:34,765 | bot | INFO | Cog loaded: SetUp
+2021-10-22 11:27:34,766 | bot | INFO | Cog loaded: Updater
+2021-10-22 11:27:34,767 | bot | INFO | Cog loaded: Latency
+2021-10-22 11:27:35,347 | bot | INFO | Cog loaded: Music
+2021-10-22 11:27:35,352 | bot | INFO | Cog loaded: Assignments
+2021-10-22 11:27:35,353 | bot | INFO | Cog loaded: NewPatch
+2021-10-22 11:27:35,389 | exts.kus | DEBUG | loaded data
+2021-10-22 11:27:38,089 | utils.planner | DEBUG | returning sorted date for 562976873685057546
+2021-10-22 11:27:38,242 | bot | INFO | Connected successfully
+2021-10-22 11:27:38,289 | bot | DEBUG | changed bot status
+2021-10-22 11:27:38,355 | utils.planner | DEBUG | returning sorted date for 728482381215826000
+2021-10-22 11:27:38,436 | utils.planner | DEBUG | returning sorted date for 676256965650808873
+2021-10-22 11:27:38,535 | utils.planner | DEBUG | returning sorted date for 829749071891005512
+2021-10-22 11:27:38,617 | utils.planner | DEBUG | returning sorted date for 773426467492069386
+2021-10-22 11:28:02,002 | exts.music | DEBUG | VoiceState created for 562976873685057546
+2021-10-22 11:28:04,039 | exts.music | DEBUG | 562976873685057546: Searching ข้างกัน
+2021-10-22 11:28:08,347 | exts.music | DEBUG | Enqueued
+2021-10-22 11:28:08,357 | exts.music | INFO | Audio Player Launched for 562976873685057546
+2021-10-22 11:32:52,098 | exts.admin | DEBUG | Admin Eval from Tpmonkey#2682; code: "\u0e02\u0e49\u0e32\u0e07\u0e01\u0e31\u0e19"
+2021-10-22 11:33:37,506 | exts.music | INFO | 562976873685057546: All user left, Waiting for deletion
+2021-10-22 11:40:30,597 | exts.admin | DEBUG | Admin Eval from Tpmonkey#2682; code: "\u0e02\u0e49\u0e32\u0e07\u0e01\u0e31\u0e19"
+2021-10-22 11:43:20,068 | exts.music | INFO | 562976873685057546:Left vc & cleaned up
+2021-10-22 11:45:35,363 | exts.music | INFO | 562976873685057546: Timeout, Nobody left in vc... Disconnected
+2021-10-22 11:45:35,363 | exts.music | DEBUG | 562976873685057546: Attempted to disconnect but already disconnected.
+2021-10-22 11:54:17,097 | exts.music | DEBUG | VoiceState created for 728482381215826000
+2021-10-22 11:54:19,967 | asyncio | DEBUG | Using selector: EpollSelector
+2021-10-22 11:54:19,968 | bot | DEBUG | created bot base.
+2021-10-22 11:54:19,999 | constant | DEBUG | init database succesful
+2021-10-22 11:54:20,141 | utils.planner | DEBUG | triggered update
+2021-10-22 11:54:20,163 | bot | DEBUG | bot subclass Created.
+2021-10-22 11:54:20,166 | bot | INFO | Cog loaded: ErrorHandler
+2021-10-22 11:54:20,168 | bot | INFO | Cog loaded: Updater
+2021-10-22 11:54:20,170 | bot | INFO | Cog loaded: DayLoop
+2021-10-22 11:54:20,172 | bot | INFO | Cog loaded: Debug
+2021-10-22 11:54:20,288 | bot | INFO | Cog loaded: KUSNews
+2021-10-22 11:54:20,289 | bot | INFO | Cog loaded: SetUp
+2021-10-22 11:54:20,290 | bot | INFO | Cog loaded: Latency
+2021-10-22 11:54:20,294 | bot | INFO | Cog loaded: Utility
+2021-10-22 11:54:20,296 | bot | INFO | Cog loaded: Assignments
+2021-10-22 11:54:20,298 | bot | INFO | Cog loaded: AdminCommands
+2021-10-22 11:54:20,301 | bot | INFO | Cog loaded: Snekbox
+2021-10-22 11:54:20,303 | bot | INFO | Cog loaded: Help
+2021-10-22 11:54:20,894 | bot | INFO | Cog loaded: Music
+2021-10-22 11:54:20,895 | bot | INFO | Cog loaded: VoiceChannel
+2021-10-22 11:54:20,896 | bot | INFO | Cog loaded: NewPatch
+2021-10-22 11:54:21,267 | exts.kus | DEBUG | loaded data
+2021-10-22 11:54:23,858 | utils.planner | DEBUG | returning sorted date for 562976873685057546
+2021-10-22 11:54:23,869 | bot | INFO | Connected successfully
+2021-10-22 11:54:24,051 | bot | DEBUG | changed bot status
+2021-10-22 11:54:24,056 | utils.planner | DEBUG | returning sorted date for 728482381215826000
+2021-10-22 11:54:24,162 | utils.planner | DEBUG | returning sorted date for 676256965650808873
+2021-10-22 11:54:24,248 | utils.planner | DEBUG | returning sorted date for 829749071891005512
+2021-10-22 11:54:24,342 | utils.planner | DEBUG | returning sorted date for 773426467492069386
+2021-10-22 11:54:32,046 | exts.music | DEBUG | VoiceState created for 728482381215826000
+2021-10-22 11:54:34,053 | exts.music | DEBUG | 728482381215826000: Searching gurenge
+2021-10-22 11:54:38,254 | exts.music | DEBUG | Enqueued
+2021-10-22 11:54:38,255 | exts.music | INFO | Audio Player Launched for 728482381215826000
+2021-10-22 11:54:56,234 | exts.music | DEBUG | 728482381215826000: Searching gurenge
+2021-10-22 11:54:57,751 | exts.music | DEBUG | Enqueued
+2021-10-22 11:55:36,344 | exts.music | DEBUG | 728482381215826000: Searching https://www.youtube.com/watch?v=5qap5aO4i9A
+2021-10-22 11:55:37,548 | exts.errorhand | TRACE | Command: p https://www.youtube.com/watch?v=5qap5aO4i9A; Already handled locally.
+2021-10-22 11:57:05,754 | bot | INFO | Cog loaded: Music
+2021-10-22 11:57:05,784 | exts.music | INFO | 728482381215826000:Left vc & cleaned up
+2021-10-22 11:57:08,940 | exts.music | DEBUG | VoiceState created for 728482381215826000
+2021-10-22 11:57:10,942 | exts.music | DEBUG | 728482381215826000: Searching https://www.youtube.com/watch?v=5qap5aO4i9A
+2021-10-22 11:57:39,633 | exts.music | DEBUG | 728482381215826000: Searching https://www.youtube.com/watch?v=5qap5aO4i9A
+2021-10-22 11:57:44,453 | exts.music | DEBUG | 728482381215826000: Searching https://www.youtube.com/watch?v=5qap5aO4i9A
+2021-10-22 11:57:48,943 | exts.music | DEBUG | 728482381215826000: Searching https://www.youtube.com/watch?v=5qap5aO4i9A
+2021-10-22 11:57:54,466 | exts.music | DEBUG | 728482381215826000: Searching https://www.youtube.com/watch?v=5qap5aO4i9A
+2021-10-22 11:58:06,841 | exts.music | INFO | 728482381215826000:Left vc & cleaned up
+2021-10-22 11:58:32,043 | bot | INFO | Cog loaded: Music
