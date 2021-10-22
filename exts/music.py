@@ -163,6 +163,7 @@ class VoiceState:
                         self.current = await self.songs.get()
                     
                 except asyncio.TimeoutError:
+                    log.debug(f"{self._ctx.guild.id}: No more song, stopping")
                     self.bot.loop.create_task(self.stop())
                     return
 
@@ -253,7 +254,7 @@ class VoiceState:
 
         if self.voice:
             await self.voice.disconnect()
-            self.voice = None
+            # self.voice = None
         
         # Delete the reference
         cog = self.bot.get_cog("Music")
@@ -280,6 +281,14 @@ class Music(commands.Cog):
         self.wait_for_disconnect = {}
         self.loop_for_deletion.start()
     
+    def cog_unload(self) -> None:
+        # when cog is unload (normally to reload command bc replit sucks)
+        # stop all the loop and disconnect the bot from all vcs
+        log.info("Unloading Cog")
+        self.loop_for_deletion.stop() 
+        for state in self.voice_states.values():
+            self.bot.loop.create_task(state.stop())
+    
     def play_error(self, guild_id: int) -> None:
         count = self.errors_count.get(guild_id, 0)
         self.errors_count[guild_id] = count + 1
@@ -291,14 +300,7 @@ class Music(commands.Cog):
             state = VoiceState(self.bot, ctx)
             self.voice_states[ctx.guild.id] = state
 
-        return state
-
-    def cog_unload(self):
-        # when cog is unload (normally to reload command bc replit sucks)
-        # stop all the loop and disconnect the bot from all vcs
-        self.loop_for_deletion.stop() 
-        for state in self.voice_states.values():
-            self.bot.loop.create_task(state.stop())
+        return state    
 
     def cog_check(self, ctx: commands.Context):
         if not ctx.guild:
@@ -328,6 +330,8 @@ class Music(commands.Cog):
                 except KeyError:
                     log.debug(f"{gid}: Attempted to disconnect but already disconnected.")
                     pass
+                else:
+                    log.info(f"{gid}: Successfully disconneceted")
         
         for i in delete: 
             del self.wait_for_disconnect[i]
@@ -452,6 +456,7 @@ class Music(commands.Cog):
                     return await ctx.send(':x: **Not connected to any voice channel.**')
 
         await ctx.voice_state.stop()
+        log.debug(f"{ctx.guild.id}: stopped from leave command")
         await ctx.message.add_reaction("👋")
 
     @commands.command(name='volume')
