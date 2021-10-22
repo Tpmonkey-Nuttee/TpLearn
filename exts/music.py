@@ -26,6 +26,7 @@ from urllib.parse import parse_qs, urlparse
 
 # Audio system (Youtube DL & Spotipy)
 from utils.audio import *
+from spotipy.client import SpotifyException
 
 YOUTUBE_API_KEY = os.getenv("YOUTUBE_API_KEY")
 log = logging.getLogger(__name__)
@@ -110,6 +111,7 @@ class VoiceState:
         self._loop = Loop.NONE
         self._volume = 0.5
         self.skip_votes = set()
+        self.announce_message = None
 
         self.audio_player = None # bot.loop.create_task(self.audio_player_task())     
 
@@ -145,6 +147,11 @@ class VoiceState:
         log.info(f"Audio Player Launched for {self._ctx.guild.id}")
         while True:
             self.next.clear()
+            
+            try:
+                await self.announce_message.delete()
+            except Exception:
+                pass
 
             if self._loop == Loop.NONE:
                 # Try to get the next song within timeout limit (defeault 3 mins).
@@ -219,10 +226,11 @@ class VoiceState:
             # Set the volume, that nobody cares and play it
             self.current.source.volume = self._volume
             self.voice.play(self.current.source, after=self.play_next_song)
+            
 
             # If option "annouce next song" is on, annouce it
             if self.bot.msettings.get(self._ctx.guild.id, "annouce_next_song"):
-                await self.current.source.channel.send(embed=self.current.create_embed())     
+                self.announce_message = await self.current.source.channel.send(embed=self.current.create_embed())    
 
             await self.next.wait()
 
@@ -523,8 +531,8 @@ class Music(commands.Cog):
         3 skip votes are needed for the song to be skipped.
         """
 
-        if not ctx.voice_state.is_playing:
-            return await ctx.send(':x: **Not playing any music right now...**')
+        if len(ctx.voice_state.songs) == 0:
+            return await ctx.send(':x: **I have nothing to skip!**')
 
         voter = ctx.message.author
 
@@ -573,7 +581,7 @@ class Music(commands.Cog):
         You can optionally specify the page to show. Each page contains 10 elements.
         """
 
-        if len(ctx.voice_state.songs) == 0 and ctx.voice_state.current is None:
+        if len(ctx.voice_state.songs) == 0:
             return await ctx.send(':x: **Empty queue.**')
 
         items_per_page = 8
@@ -735,6 +743,9 @@ class Music(commands.Cog):
             except NameError: # couldn't find any match
                 log.info(f"{ctx.guild.id}: Unable to find any matched")
                 return await ctx.send(":x: **Unable to find matched song.**")
+            except SpotifyException as e:
+                log.info(f"{ctx.guild.id}: Request fail, {e}")
+                return await ctx.send(":x: **Request fail, Try using Spotify URL.**")
 
             amount = 0
             for s in songs: # load the song
@@ -759,6 +770,9 @@ class Music(commands.Cog):
             except NameError:
                 log.info(f"{ctx.guild.id}: Unable to find any matched")
                 return await ctx.send(":x: **Unable to find matched song, Please try typing it directly.**\n(Spotify URL or Song name)")
+            except SpotifyException as e:
+                log.info(f"{ctx.guild.id}: Request fail, {e}")
+                return await ctx.send(":x: **Request fail, Try using Spotify URL.**")
 
             amount = 0
             for s in songs: # load the song
@@ -922,11 +936,11 @@ class Music(commands.Cog):
     async def ensure_voice_state(self, ctx: commands.Context):
         # make sure user is in vc.
         if not ctx.author.voice or not ctx.author.voice.channel:
-            raise commands.CommandError(':x: **You are not connected to any voice channel.**')
+            raise commands.CommandError('**You are not connected to any voice channel.**')
 
         if ctx.voice_client:
             if ctx.voice_client.channel != ctx.author.voice.channel:
-                raise commands.CommandError(':x: **Bot is already in a voice channel.**')
+                raise commands.CommandError('**Bot is already in a voice channel.**')
 
 
 def setup(bot):

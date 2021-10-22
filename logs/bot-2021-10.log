@@ -4112,3 +4112,118 @@ discord.errors.ConnectionClosed: Shard ID None WebSocket closed with 1006
 2021-10-22 12:27:12,647 | utils.planner | DEBUG | returning sorted date for 676256965650808873
 2021-10-22 12:27:12,744 | utils.planner | DEBUG | returning sorted date for 829749071891005512
 2021-10-22 12:27:13,442 | utils.planner | DEBUG | returning sorted date for 773426467492069386
+2021-10-22 12:59:02,358 | exts.music | DEBUG | VoiceState created for 773426467492069386
+2021-10-22 12:59:04,367 | exts.music | DEBUG | 773426467492069386: Searching 君色々移り／自分で歌ってみた
+2021-10-22 12:59:07,087 | exts.music | DEBUG | Enqueued
+2021-10-22 12:59:07,088 | exts.music | INFO | Audio Player Launched for 773426467492069386
+2021-10-22 12:59:15,623 | exts.music | INFO | 773426467492069386: Recommending song based on 君色々移り／自分で歌ってみた
+2021-10-22 12:59:15,837 | exts.music | INFO | 773426467492069386: Unable to find any matched
+2021-10-22 12:59:40,720 | exts.music | INFO | 773426467492069386: Recommending song based on 君色々移り
+2021-10-22 12:59:41,153 | exts.music | INFO | 773426467492069386: Queued songs.
+2021-10-22 13:03:17,284 | exts.music | INFO | 773426467492069386: Unable to load playlist song, retrying...
+2021-10-22 13:03:18,014 | exts.music | INFO | 773426467492069386: Download fail, Skipped
+2021-10-22 13:03:44,379 | exts.music | DEBUG | 773426467492069386: Searching ヒプノシスマイク -Division Rap Battle- HYPNOSISMIC -D.R.B- (Division All Stars)
+2021-10-22 14:21:51,130 | exts.music | INFO | 773426467492069386:Left vc & cleaned up
+2021-10-22 14:44:01,924 | exts.music | DEBUG | VoiceState created for 773426467492069386
+2021-10-22 14:44:03,917 | exts.music | DEBUG | 773426467492069386: Searching KING＠歌ってみた
+2021-10-22 14:44:05,778 | exts.music | DEBUG | Enqueued
+2021-10-22 14:44:05,778 | exts.music | INFO | Audio Player Launched for 773426467492069386
+2021-10-22 14:44:06,765 | exts.music | INFO | 773426467492069386: Recommending song based on KING＠歌ってみた
+2021-10-22 14:44:07,021 | exts.music | INFO | 773426467492069386: Unable to find any matched
+2021-10-22 14:45:01,954 | exts.music | INFO | 773426467492069386: Recommending song based on 恋愛裁判 Love Trial Little love song/MONGOL 800 (cover) by Amatsuki
+2021-10-22 14:45:04,130 | spotipy.client | ERROR | HTTP Error for GET to https://api.spotify.com/v1/recommendations with Params: {'limit': 20, 'seed_tracks': '1beLpdTbBaZuP4BBJu6Eah,2Xr1dTzJee307rmrkt8c0g,6V1Jx3o0S2MtBI9yIDXsJS,2Y0iGXY6m6immVb2ktbseM,2Xr1dTzJee307rmrkt8c0g,5l8SdTqXKliKXjRS3NkzoL,2MLuFz9Y3Vg3PF0Yf93M5c,0mKnuxVkPi5h0kuvZl44VM,62bOmKYxYg7dhrC6gH9vFn,3sLv2VOXsJnGj0cfxUvgsZ'} returned 400 due to invalid request
+2021-10-22 14:45:04,411 | exts.errorhand | TRACE | Command: rec 恋愛裁判 Love Trial Little love song/MONGOL 800 (cover) by Amatsuki; Already handled locally.
+2021-10-22 14:46:34,034 | exts.music | INFO | 773426467492069386: Recommending song based on LoveTrial Littlelovesong
+2021-10-22 14:46:34,559 | exts.music | INFO | 773426467492069386: Queued songs.
+2021-10-22 14:48:03,628 | exts.music | INFO | 773426467492069386:Left vc & cleaned up
+2021-10-22 14:48:39,545 | exts.music | DEBUG | VoiceState created for 773426467492069386
+2021-10-22 14:48:41,561 | exts.music | DEBUG | 773426467492069386: Searching Love Trial
+2021-10-22 14:48:43,377 | exts.music | DEBUG | Enqueued
+2021-10-22 14:48:43,382 | exts.music | INFO | Audio Player Launched for 773426467492069386
+2021-10-22 14:49:05,272 | exts.music | DEBUG | 773426467492069386: Searching 恋愛裁判
+2021-10-22 14:49:07,223 | exts.music | DEBUG | Enqueued
+2021-10-22 14:49:14,091 | exts.music | INFO | 773426467492069386: Recommending song based on 恋愛裁判
+2021-10-22 14:49:14,399 | exts.music | INFO | 773426467492069386: Queued songs.
+2021-10-22 14:53:03,654 | exts.music | INFO | 773426467492069386:Left vc & cleaned up
+2021-10-22 14:53:11,737 | exts.music | DEBUG | VoiceState created for 773426467492069386
+2021-10-22 14:57:08,415 | exts.admin | DEBUG | Admin Eval from Tpmonkey#2682; code: self.bot.get_cog("Music").voice_states[ctx.guild.id].voice
+2021-10-22 15:01:39,922 | exts.errorhand | TRACE | Command: p; Already handled locally.
+2021-10-22 15:01:42,216 | exts.errorhand | TRACE | Command: join; Already handled locally.
+2021-10-22 15:01:46,697 | exts.errorhand | TRACE | Command: join; Already handled locally.
+2021-10-22 15:06:33,590 | exts.music | DEBUG | 773426467492069386: Searching mafumafu
+2021-10-22 15:06:35,838 | exts.music | DEBUG | Enqueued
+2021-10-22 15:06:35,839 | exts.music | INFO | Audio Player Launched for 773426467492069386
+2021-10-22 15:06:39,125 | exts.music | INFO | 773426467492069386: Recommending song based on mafumafu
+2021-10-22 15:06:39,523 | exts.music | INFO | 773426467492069386: Queued songs.
+2021-10-22 15:09:10,931 | exts.music | DEBUG | 773426467492069386: Searching https://open.spotify.com/track/2F2t5p9wRHpl8q16uv6uZb?si=aa93a3bed1ff42c6
+2021-10-22 15:09:39,652 | exts.music | DEBUG | 773426467492069386: Searching mafumafu
+2021-10-22 15:09:41,416 | exts.music | DEBUG | Enqueued
+2021-10-22 15:09:43,860 | exts.music | INFO | 773426467492069386: Recommending song based on https://open.spotify.com/track/2F2t5p9wRHpl8q16uv6uZb?si=aa93a3bed1ff42c6
+2021-10-22 15:09:43,976 | exts.music | INFO | 773426467492069386: Queued songs.
+2021-10-22 15:10:51,204 | exts.music | DEBUG | 773426467492069386: Searching mafumafu
+2021-10-22 15:10:53,196 | exts.music | DEBUG | Enqueued
+2021-10-22 15:11:32,890 | exts.music | INFO | 773426467492069386: Recommending song based on https://open.spotify.com/track/2F2t5p9wRHpl8q16uv6uZb?si=bb422709df344936 
+https://open.spotify.com/track/0XIYbqXIlWlBHXnvOhiNBF?si=baf4e41a6dc34648 https://open.spotify.com/track/3RTYVXp2dk2lWuERIUrD76?si=b286bbd0ecb440a3 https://open.spotify.com/track/3UpHW2joNoKO2HfEv8Mchp?si=cae56c44805649be
+2021-10-22 15:11:33,086 | exts.music | INFO | 773426467492069386: Queued songs.
+2021-10-22 15:12:46,388 | exts.music | DEBUG | 773426467492069386: Searching STAY
+2021-10-22 15:12:49,633 | exts.music | DEBUG | Enqueued
+2021-10-22 15:12:50,685 | exts.music | INFO | 773426467492069386: Recommending song based on STAY
+2021-10-22 15:12:51,098 | exts.music | INFO | 773426467492069386: Queued songs.
+2021-10-22 15:12:52,342 | exts.music | INFO | 773426467492069386: Recommending song based on roar
+2021-10-22 15:12:52,724 | exts.music | INFO | 773426467492069386: Queued songs.
+2021-10-22 15:13:09,997 | exts.music | DEBUG | 773426467492069386: Searching roar
+2021-10-22 15:13:12,090 | exts.music | DEBUG | Enqueued
+2021-10-22 15:13:22,119 | exts.music | INFO | 773426467492069386: Recommending song based on roar
+2021-10-22 15:13:22,726 | exts.music | INFO | 773426467492069386: Queued songs.
+2021-10-22 15:15:20,120 | exts.music | DEBUG | 773426467492069386: Searching Violet Evergarden The Movie - Theme Song Full - Will - by TRUE
+2021-10-22 15:15:21,997 | exts.music | DEBUG | Enqueued
+2021-10-22 15:15:23,827 | exts.music | INFO | 773426467492069386: Recommending song based on Violet Evergarden The Movie - Theme Song Full - Will - by TRUE
+2021-10-22 15:15:26,571 | spotipy.client | ERROR | HTTP Error for GET to https://api.spotify.com/v1/recommendations with Params: {'limit': 20, 'seed_tracks': '6CHENx8iqzMwavTIz8s0gm,0fsb37XCuEDiF1oPNq4arG,51pshtuYkgUQnt5huMPbKL,6pxElwU80zhjbCC77Vn8EI,2v4OZx6CBj631eoyayjYn1,3QksrtI9VFCBHWA4rgvcV8,1FTSo4v6BOZH9QxKc3MbVM,5OBLr2gSCMx0EjDtHxEgXO,2v4OZx6CBj631eoyayjYn1,2DSmYNVEvoHWiVSd9YB5A2,2v4OZx6CBj631eoyayjYn1,62bOmKYxYg7dhrC6gH9vFn,1oGdVdYjeQvojGKDddxLQQ'} returned 400 due to invalid request
+2021-10-22 15:15:26,876 | exts.errorhand | TRACE | Command: rec Violet Evergarden The Movie - Theme Song Full - Will - by TRUE; Already handled locally.
+2021-10-22 15:15:42,937 | exts.music | INFO | 773426467492069386: Recommending song based on VioletEvergarden
+2021-10-22 15:15:43,229 | exts.music | INFO | 773426467492069386: Queued songs.
+2021-10-22 15:22:00,673 | bot | DEBUG | exts.admin Shutting down bot... by <@!518063131096907813>
+2021-10-22 15:22:01,063 | exts.admin | INFO | Shutting down bot by Tpmonkey#2682
+2021-10-22 15:22:01,084 | exts.music | INFO | 773426467492069386:Left vc & cleaned up
+2021-10-22 15:22:09,540 | asyncio | DEBUG | Using selector: EpollSelector
+2021-10-22 15:22:09,541 | bot | DEBUG | created bot base.
+2021-10-22 15:22:09,581 | constant | DEBUG | init database succesful
+2021-10-22 15:22:09,841 | utils.planner | DEBUG | triggered update
+2021-10-22 15:22:09,983 | bot | DEBUG | bot subclass Created.
+2021-10-22 15:22:09,986 | bot | INFO | Cog loaded: ErrorHandler
+2021-10-22 15:22:09,987 | bot | INFO | Cog loaded: VoiceChannel
+2021-10-22 15:22:09,989 | bot | INFO | Cog loaded: Help
+2021-10-22 15:22:10,463 | bot | INFO | Cog loaded: Music
+2021-10-22 15:22:10,465 | bot | INFO | Cog loaded: Updater
+2021-10-22 15:22:10,468 | bot | INFO | Cog loaded: Utility
+2021-10-22 15:22:10,469 | bot | INFO | Cog loaded: AdminCommands
+2021-10-22 15:22:10,471 | bot | INFO | Cog loaded: Assignments
+2021-10-22 15:22:10,472 | bot | INFO | Cog loaded: Latency
+2021-10-22 15:22:10,473 | bot | INFO | Cog loaded: SetUp
+2021-10-22 15:22:10,474 | bot | INFO | Cog loaded: DayLoop
+2021-10-22 15:22:10,477 | bot | INFO | Cog loaded: Snekbox
+2021-10-22 15:22:10,478 | bot | INFO | Cog loaded: Debug
+2021-10-22 15:22:10,545 | bot | INFO | Cog loaded: KUSNews
+2021-10-22 15:22:10,546 | bot | INFO | Cog loaded: NewPatch
+2021-10-22 15:22:10,958 | exts.kus | DEBUG | loaded data
+2021-10-22 15:22:13,685 | utils.planner | DEBUG | returning sorted date for 562976873685057546
+2021-10-22 15:22:13,718 | bot | INFO | Connected successfully
+2021-10-22 15:22:13,967 | bot | DEBUG | changed bot status
+2021-10-22 15:22:13,971 | utils.planner | DEBUG | returning sorted date for 728482381215826000
+2021-10-22 15:22:14,077 | utils.planner | DEBUG | returning sorted date for 676256965650808873
+2021-10-22 15:22:14,189 | utils.planner | DEBUG | returning sorted date for 829749071891005512
+2021-10-22 15:22:14,277 | utils.planner | DEBUG | returning sorted date for 773426467492069386
+2021-10-22 15:22:44,753 | exts.music | DEBUG | VoiceState created for 773426467492069386
+2021-10-22 15:22:46,541 | exts.music | DEBUG | 773426467492069386: Searching gurenge
+2021-10-22 15:22:50,778 | exts.music | DEBUG | Enqueued
+2021-10-22 15:22:50,778 | exts.music | INFO | Audio Player Launched for 773426467492069386
+2021-10-22 15:22:57,991 | exts.music | INFO | 773426467492069386: Recommending song based on gurenge
+2021-10-22 15:22:58,500 | exts.music | INFO | 773426467492069386: Queued songs.
+2021-10-22 15:28:29,523 | bot | INFO | Cog loaded: Music
+2021-10-22 15:28:29,526 | exts.music | INFO | 773426467492069386:Left vc & cleaned up
+2021-10-22 15:28:36,343 | exts.music | DEBUG | VoiceState created for 773426467492069386
+2021-10-22 15:28:50,896 | exts.music | DEBUG | 773426467492069386: Searching parasyte op
+2021-10-22 15:28:52,262 | exts.music | DEBUG | Enqueued
+2021-10-22 15:28:52,263 | exts.music | INFO | Audio Player Launched for 773426467492069386
+2021-10-22 15:29:02,984 | exts.music | INFO | 773426467492069386: Recommending song based on parasyteop
+2021-10-22 15:29:03,300 | exts.music | INFO | 773426467492069386: Queued songs.

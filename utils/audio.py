@@ -6,6 +6,8 @@ import youtube_dl
 import asyncio
 import functools
 
+from random import randint
+
 # Silence useless bug reports messages
 youtube_dl.utils.bug_reports_message = lambda: ''
 
@@ -209,7 +211,7 @@ def getRecommend(names: list, amount: int = 20) -> list:
         raise NameError
 
     # find recommendations
-    r = spotify.recommendations(seed_tracks=uris, limit=amount)
+    r = spotify.recommendations(seed_tracks=uris, limit=randint(amount, 100))
     trackList = []
     
     for i in r['tracks']:
