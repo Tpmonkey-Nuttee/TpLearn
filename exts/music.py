@@ -32,7 +32,6 @@ YOUTUBE_API_KEY = os.getenv("YOUTUBE_API_KEY")
 log = logging.getLogger(__name__)
 
 
-
 class Loop(enum.Enum):
     NONE = 0
     SINGLE = 1
@@ -45,21 +44,9 @@ class VoiceError(Exception):
 
 class PlaylistSong:
     """
-    A Singleton class for storing Playlist Song in case of a ton of songs is queued in a short peroid of time.
+    Just a dataclass.
     """
-    _loaded = {}
-
-    def __new__(cls, url: str, ctx: commands.Context, title: str = None):
-        if (a := cls._loaded.get(url)) is not None:
-            a.ctx = ctx
-            return a
-        
-        a = super().__new__(cls)
-        cls._loaded[url] = a
-        a._init(url, ctx, title)
-        return a   
-
-    def _init(self, url: str, ctx: commands.Context, title: str = None):
+    def __init__(self, url: str, ctx: commands.Context, title: str = None):
         self.url = url
         self.ctx = ctx
         self.title = title
@@ -310,8 +297,7 @@ class Music(commands.Cog):
 
     def cog_check(self, ctx: commands.Context):
         if not ctx.guild:
-            raise commands.NoPrivateMessage('This command can\'t be used in DM channels.')
-
+            raise commands.NoPrivateMessage('This command can\'t be used in DM.')
         return True
 
     async def cog_before_invoke(self, ctx: commands.Context):
@@ -346,7 +332,7 @@ class Music(commands.Cog):
         if member.guild.id not in self.voice_states:
             return
         
-        if member.id == self.bot.user.id:
+        if member.id == self.bot.user.id: # Bot disconnected?
             if member.guild.id in self.wait_for_disconnect:
                 log.info(f"{member.guild.id}: Bot got disconnected, removing wait for disconnect")
                 try:
@@ -384,6 +370,7 @@ class Music(commands.Cog):
     
     @staticmethod
     def shorten_title(title: str) -> str:
+        # To make sure that embed field wouldn't contain more than 1024 letters.
         return title if len(title) < 24 else title[:24] + "..."
 
     @commands.command(name="musicdebug", hidden=True)
@@ -404,7 +391,7 @@ class Music(commands.Cog):
                 colour = discord.Colour.default(),
                 timestamp = ctx.message.created_at
             )
-
+            # Get settings from bot, then add field one by one.
             settings = self.bot.msettings[str(ctx.guild.id)]
             for sett in settings:
                 embed.add_field(
@@ -451,6 +438,7 @@ class Music(commands.Cog):
                 await ctx.voice_client.move_to(None)
             except Exception:
                 # can't leave? try loop thru all the voice clients that is connected and then disconnect.
+                # tbh, this doesn't work... but still at least I tried. :)
                 try:
                     for x in self.bot.voice_clients:
                         if(x.guild == ctx.guild):
@@ -624,6 +612,7 @@ class Music(commands.Cog):
 
         queue = queue or "Nothing \:("
 
+        # A large embed... madness
         embed = (
             discord.Embed(
                 title = f"Queue for {ctx.guild}",
@@ -741,29 +730,31 @@ class Music(commands.Cog):
         You can also use the song url from spotify to search.
         Note: This command use Spotify Recommendation system.
         """
-        
+        # name is define, recommend base on it
         if name is not None and ctx.voice_state.audio_player is not None:
             log.info(f"{ctx.guild.id}: Recommending song based on {name}")
             try:
                 songs = getRecommend( name.split() )
-            except NameError:
+            except NameError: # couldn't find any match
                 log.info(f"{ctx.guild.id}: Unable to find any matched")
                 return await ctx.send(":x: **Unable to find matched song.**")
 
             amount = 0
-            for s in songs:
+            for s in songs: # load the song
                 pl = PlaylistSong(s, ctx)
                 await ctx.voice_state.songs.put(pl)
                 amount += 1
             
             log.info(f"{ctx.guild.id}: Queued songs.")
             return await ctx.send("Enqueued {} songs.".format(amount))
+        # name is not define, but there is a song playing...
+        # Note: this works 1% of the time, so good luck.
         elif name is None and ctx.voice_state.current is not None:
             log.info(f"{ctx.guild.id}: Recommending song based on current song...")
 
             try:
                 name = ctx.voice_state.current.source.title
-            except AttributeError:
+            except AttributeError: 
                 return await ctx.send(":x: **Unable to fetch song name, Please try again later.**")
             
             try:
@@ -773,7 +764,7 @@ class Music(commands.Cog):
                 return await ctx.send(":x: **Unable to find matched song, Please try typing it directly.**\n(Spotify URL or Song name)")
 
             amount = 0
-            for s in songs:
+            for s in songs: # load the song
                 pl = PlaylistSong(s, ctx)
                 await ctx.voice_state.songs.put(pl)
                 amount += 1
@@ -781,6 +772,11 @@ class Music(commands.Cog):
             log.info(f"{ctx.guild.id}: Queued songs.")
             return await ctx.send("Enqueued {} songs.".format(amount))
         else:
+            # The reason that play command need to be ran before using it because
+            # the Audio player will only be run only if play command has been ran
+            # so If we tried to put a song in the queue, the song wouldn't actually be play.
+            # It's a good thing because we can test if the audio player is running to check 
+            # the commands that need a song being play.
             return await ctx.send(":x: **Please use play command before using this command.**")
 
 
@@ -927,6 +923,7 @@ class Music(commands.Cog):
     @_join.before_invoke
     @_play.before_invoke
     async def ensure_voice_state(self, ctx: commands.Context):
+        # make sure user is in vc.
         if not ctx.author.voice or not ctx.author.voice.channel:
             raise commands.CommandError(':x: **You are not connected to any voice channel.**')
 

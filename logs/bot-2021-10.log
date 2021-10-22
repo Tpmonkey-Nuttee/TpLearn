@@ -3978,3 +3978,4 @@ discord.errors.ConnectionClosed: Shard ID None WebSocket closed with 1006
 2021-10-22 12:03:03,530 | exts.music | DEBUG | 728482381215826000: Searching stay
 2021-10-22 12:03:06,935 | exts.music | DEBUG | Enqueued
 2021-10-22 12:03:49,937 | exts.music | INFO | 728482381215826000:Left vc & cleaned up
+2021-10-22 12:11:48,970 | exts.music | INFO | 728482381215826000:Left vc & cleaned up
