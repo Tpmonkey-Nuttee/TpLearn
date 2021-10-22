@@ -3966,3 +3966,15 @@ discord.errors.ConnectionClosed: Shard ID None WebSocket closed with 1006
 2021-10-22 11:57:54,466 | exts.music | DEBUG | 728482381215826000: Searching https://www.youtube.com/watch?v=5qap5aO4i9A
 2021-10-22 11:58:06,841 | exts.music | INFO | 728482381215826000:Left vc & cleaned up
 2021-10-22 11:58:32,043 | bot | INFO | Cog loaded: Music
+2021-10-22 12:01:22,215 | exts.music | DEBUG | VoiceState created for 728482381215826000
+2021-10-22 12:01:24,894 | exts.music | DEBUG | 728482381215826000: Searching https://open.spotify.com/playlist/37i9dQZEVXbMnz8KIWsvf9?si=3ffffa62949c44eb
+2021-10-22 12:01:25,359 | exts.music | DEBUG | Enqueued
+2021-10-22 12:01:25,359 | exts.music | INFO | Audio Player Launched for 728482381215826000
+2021-10-22 12:02:48,886 | exts.music | INFO | 728482381215826000:Left vc & cleaned up
+2021-10-22 12:02:54,949 | exts.music | DEBUG | VoiceState created for 728482381215826000
+2021-10-22 12:02:56,949 | exts.music | DEBUG | 728482381215826000: Searching ข้างกัน
+2021-10-22 12:02:58,590 | exts.music | DEBUG | Enqueued
+2021-10-22 12:02:58,603 | exts.music | INFO | Audio Player Launched for 728482381215826000
+2021-10-22 12:03:03,530 | exts.music | DEBUG | 728482381215826000: Searching stay
+2021-10-22 12:03:06,935 | exts.music | DEBUG | Enqueued
+2021-10-22 12:03:49,937 | exts.music | INFO | 728482381215826000:Left vc & cleaned up

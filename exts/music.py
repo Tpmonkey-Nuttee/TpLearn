@@ -293,9 +293,6 @@ class Music(commands.Cog):
     def play_error(self, guild_id: int) -> None:
         count = self.errors_count.get(guild_id, 0)
         self.errors_count[guild_id] = count + 1
-
-    def cog_unload(self) -> None:
-        self.loop_for_deletion.stop() 
         
     def get_voice_state(self, ctx: commands.Context):
         # Get voice state and embeded it to context.
@@ -307,6 +304,7 @@ class Music(commands.Cog):
         return state
 
     def cog_unload(self):
+        self.loop_for_deletion.stop() 
         for state in self.voice_states.values():
             self.bot.loop.create_task(state.stop())
 
