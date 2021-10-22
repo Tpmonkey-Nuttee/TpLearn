@@ -3979,3 +3979,136 @@ discord.errors.ConnectionClosed: Shard ID None WebSocket closed with 1006
 2021-10-22 12:03:06,935 | exts.music | DEBUG | Enqueued
 2021-10-22 12:03:49,937 | exts.music | INFO | 728482381215826000:Left vc & cleaned up
 2021-10-22 12:11:48,970 | exts.music | INFO | 728482381215826000:Left vc & cleaned up
+2021-10-22 12:19:21,839 | exts.admin | DEBUG | Admin Eval from Tpmonkey#2682; code: self.bot.cogs
+2021-10-22 12:19:33,444 | exts.admin | DEBUG | Admin Eval from Tpmonkey#2682; code: self.bot.cogs["ErrorHandler"]
+2021-10-22 12:19:39,018 | exts.admin | DEBUG | Admin Eval from Tpmonkey#2682; code: dir(self.bot.cogs["ErrorHandler"])
+2021-10-22 12:20:28,273 | exts.admin | DEBUG | Admin Eval from Tpmonkey#2682; code: dir(self.bot)
+2021-10-22 12:20:55,586 | exts.admin | DEBUG | Admin Eval from Tpmonkey#2682; code: self.bot.extensions
+2021-10-22 12:22:30,118 | exts.music | DEBUG | VoiceState created for 728482381215826000
+2021-10-22 12:22:32,682 | asyncio | DEBUG | Using selector: EpollSelector
+2021-10-22 12:22:32,683 | bot | DEBUG | created bot base.
+2021-10-22 12:22:32,707 | constant | DEBUG | init database succesful
+2021-10-22 12:22:32,747 | utils.planner | DEBUG | triggered update
+2021-10-22 12:22:32,825 | bot | DEBUG | bot subclass Created.
+2021-10-22 12:22:33,438 | bot | INFO | Cog loaded: Music
+2021-10-22 12:22:33,525 | bot | INFO | Cog loaded: KUSNews
+2021-10-22 12:22:33,527 | bot | INFO | Cog loaded: Updater
+2021-10-22 12:22:33,529 | bot | INFO | Cog loaded: Assignments
+2021-10-22 12:22:33,531 | bot | INFO | Cog loaded: SetUp
+2021-10-22 12:22:33,536 | bot | INFO | Cog loaded: Help
+2021-10-22 12:22:33,541 | bot | INFO | Cog loaded: AdminCommands
+2021-10-22 12:22:33,544 | bot | INFO | Cog loaded: Snekbox
+2021-10-22 12:22:33,546 | bot | INFO | Cog loaded: Utility
+2021-10-22 12:22:33,547 | bot | INFO | Cog loaded: VoiceChannel
+2021-10-22 12:22:33,548 | bot | INFO | Cog loaded: ErrorHandler
+2021-10-22 12:22:33,549 | bot | INFO | Cog loaded: DayLoop
+2021-10-22 12:22:33,550 | bot | INFO | Cog loaded: Debug
+2021-10-22 12:22:33,551 | bot | INFO | Cog loaded: NewPatch
+2021-10-22 12:22:33,551 | bot | INFO | Cog loaded: Latency
+2021-10-22 12:22:33,573 | exts.kus | DEBUG | loaded data
+2021-10-22 12:22:36,190 | utils.planner | DEBUG | returning sorted date for 562976873685057546
+2021-10-22 12:22:36,199 | bot | INFO | Connected successfully
+2021-10-22 12:22:36,247 | bot | DEBUG | changed bot status
+2021-10-22 12:22:36,304 | utils.planner | DEBUG | returning sorted date for 728482381215826000
+2021-10-22 12:22:36,385 | utils.planner | DEBUG | returning sorted date for 676256965650808873
+2021-10-22 12:22:36,473 | utils.planner | DEBUG | returning sorted date for 829749071891005512
+2021-10-22 12:22:36,576 | utils.planner | DEBUG | returning sorted date for 773426467492069386
+2021-10-22 12:22:43,022 | exts.music | DEBUG | VoiceState created for 728482381215826000
+2021-10-22 12:22:51,538 | bot | DEBUG | exts.admin Shutting down bot... by <@!518063131096907813>
+2021-10-22 12:22:51,829 | exts.admin | INFO | Shutting down bot by Tpmonkey#2682
+2021-10-22 12:22:51,834 | exts.music | INFO | 728482381215826000:Left vc & cleaned up
+2021-10-22 12:22:51,962 | exts.errorhand | DEBUG | Command shutdown invoked by Tpmonkey#2682 with error CommandInvokeError: Command raised an exception: RuntimeError: dictionary changed size during iteration
+2021-10-22 12:22:51,962 | bot | DEBUG | exts.errorhand :negative_squared_cross_mark: Command `shutdown` invoked by `Tpmonkey#2682` with error 
+`CommandInvokeError`: Command raised an exception: RuntimeError: dictionary changed size during iteration
+2021-10-22 12:24:10,539 | asyncio | DEBUG | Using selector: EpollSelector
+2021-10-22 12:24:10,539 | bot | DEBUG | created bot base.
+2021-10-22 12:24:10,561 | constant | DEBUG | init database succesful
+2021-10-22 12:24:10,739 | utils.planner | DEBUG | triggered update
+2021-10-22 12:24:10,774 | bot | DEBUG | bot subclass Created.
+2021-10-22 12:24:10,777 | bot | INFO | Cog loaded: ErrorHandler
+2021-10-22 12:24:10,780 | bot | INFO | Cog loaded: Updater
+2021-10-22 12:24:10,782 | bot | INFO | Cog loaded: Assignments
+2021-10-22 12:24:10,917 | bot | INFO | Cog loaded: KUSNews
+2021-10-22 12:24:10,918 | bot | INFO | Cog loaded: Debug
+2021-10-22 12:24:10,920 | bot | INFO | Cog loaded: Help
+2021-10-22 12:24:10,923 | bot | INFO | Cog loaded: Utility
+2021-10-22 12:24:10,926 | bot | INFO | Cog loaded: Snekbox
+2021-10-22 12:24:10,927 | bot | INFO | Cog loaded: SetUp
+2021-10-22 12:24:11,451 | bot | INFO | Cog loaded: Music
+2021-10-22 12:24:11,453 | bot | INFO | Cog loaded: Latency
+2021-10-22 12:24:11,456 | bot | INFO | Cog loaded: AdminCommands
+2021-10-22 12:24:11,457 | bot | INFO | Cog loaded: VoiceChannel
+2021-10-22 12:24:11,458 | bot | INFO | Cog loaded: NewPatch
+2021-10-22 12:24:11,458 | bot | INFO | Cog loaded: DayLoop
+2021-10-22 12:24:11,529 | exts.kus | DEBUG | loaded data
+2021-10-22 12:24:14,360 | utils.planner | DEBUG | returning sorted date for 562976873685057546
+2021-10-22 12:24:14,412 | bot | INFO | Connected successfully
+2021-10-22 12:24:14,494 | bot | DEBUG | changed bot status
+2021-10-22 12:24:14,497 | utils.planner | DEBUG | returning sorted date for 728482381215826000
+2021-10-22 12:24:14,568 | utils.planner | DEBUG | returning sorted date for 676256965650808873
+2021-10-22 12:24:14,688 | utils.planner | DEBUG | returning sorted date for 829749071891005512
+2021-10-22 12:24:14,843 | utils.planner | DEBUG | returning sorted date for 773426467492069386
+2021-10-22 12:24:38,382 | exts.music | DEBUG | VoiceState created for 728482381215826000
+2021-10-22 12:24:41,553 | bot | DEBUG | exts.admin Shutting down bot... by <@!518063131096907813>
+2021-10-22 12:24:41,930 | exts.admin | INFO | Shutting down bot by Tpmonkey#2682
+2021-10-22 12:24:41,962 | exts.music | INFO | 728482381215826000:Left vc & cleaned up
+2021-10-22 12:26:06,018 | asyncio | DEBUG | Using selector: EpollSelector
+2021-10-22 12:26:06,025 | bot | DEBUG | created bot base.
+2021-10-22 12:26:06,052 | constant | DEBUG | init database succesful
+2021-10-22 12:26:06,222 | utils.planner | DEBUG | triggered update
+2021-10-22 12:26:06,238 | bot | DEBUG | bot subclass Created.
+2021-10-22 12:26:06,242 | bot | INFO | Cog loaded: Latency
+2021-10-22 12:26:06,244 | bot | INFO | Cog loaded: Help
+2021-10-22 12:26:06,337 | bot | INFO | Cog loaded: KUSNews
+2021-10-22 12:26:06,339 | bot | INFO | Cog loaded: VoiceChannel
+2021-10-22 12:26:06,342 | bot | INFO | Cog loaded: Snekbox
+2021-10-22 12:26:06,344 | bot | INFO | Cog loaded: Utility
+2021-10-22 12:26:06,346 | bot | INFO | Cog loaded: ErrorHandler
+2021-10-22 12:26:06,814 | bot | INFO | Cog loaded: Music
+2021-10-22 12:26:06,814 | bot | INFO | Cog loaded: NewPatch
+2021-10-22 12:26:06,820 | bot | INFO | Cog loaded: AdminCommands
+2021-10-22 12:26:06,821 | bot | INFO | Cog loaded: SetUp
+2021-10-22 12:26:06,822 | bot | INFO | Cog loaded: Debug
+2021-10-22 12:26:06,823 | bot | INFO | Cog loaded: Updater
+2021-10-22 12:26:06,824 | bot | INFO | Cog loaded: Assignments
+2021-10-22 12:26:06,825 | bot | INFO | Cog loaded: DayLoop
+2021-10-22 12:26:07,022 | exts.kus | DEBUG | loaded data
+2021-10-22 12:26:09,648 | utils.planner | DEBUG | returning sorted date for 562976873685057546
+2021-10-22 12:26:09,766 | bot | INFO | Connected successfully
+2021-10-22 12:26:09,859 | bot | DEBUG | changed bot status
+2021-10-22 12:26:09,861 | utils.planner | DEBUG | returning sorted date for 728482381215826000
+2021-10-22 12:26:09,963 | utils.planner | DEBUG | returning sorted date for 676256965650808873
+2021-10-22 12:26:10,029 | utils.planner | DEBUG | returning sorted date for 829749071891005512
+2021-10-22 12:26:10,621 | utils.planner | DEBUG | returning sorted date for 773426467492069386
+2021-10-22 12:26:31,709 | exts.music | DEBUG | VoiceState created for 728482381215826000
+2021-10-22 12:26:37,172 | bot | DEBUG | exts.admin Shutting down bot... by <@!518063131096907813>
+2021-10-22 12:26:37,449 | exts.admin | INFO | Shutting down bot by Tpmonkey#2682
+2021-10-22 12:26:37,471 | exts.music | INFO | 728482381215826000:Left vc & cleaned up
+2021-10-22 12:27:08,014 | asyncio | DEBUG | Using selector: EpollSelector
+2021-10-22 12:27:08,014 | bot | DEBUG | created bot base.
+2021-10-22 12:27:08,038 | constant | DEBUG | init database succesful
+2021-10-22 12:27:08,477 | utils.planner | DEBUG | triggered update
+2021-10-22 12:27:08,486 | bot | DEBUG | bot subclass Created.
+2021-10-22 12:27:08,491 | bot | INFO | Cog loaded: VoiceChannel
+2021-10-22 12:27:08,495 | bot | INFO | Cog loaded: Utility
+2021-10-22 12:27:08,498 | bot | INFO | Cog loaded: DayLoop
+2021-10-22 12:27:08,503 | bot | INFO | Cog loaded: Debug
+2021-10-22 12:27:08,504 | bot | INFO | Cog loaded: Latency
+2021-10-22 12:27:08,617 | bot | INFO | Cog loaded: KUSNews
+2021-10-22 12:27:08,618 | bot | INFO | Cog loaded: SetUp
+2021-10-22 12:27:08,620 | bot | INFO | Cog loaded: Help
+2021-10-22 12:27:08,620 | bot | INFO | Cog loaded: NewPatch
+2021-10-22 12:27:08,623 | bot | INFO | Cog loaded: AdminCommands
+2021-10-22 12:27:08,624 | bot | INFO | Cog loaded: Updater
+2021-10-22 12:27:09,161 | bot | INFO | Cog loaded: Music
+2021-10-22 12:27:09,163 | bot | INFO | Cog loaded: Assignments
+2021-10-22 12:27:09,164 | bot | INFO | Cog loaded: ErrorHandler
+2021-10-22 12:27:09,166 | bot | INFO | Cog loaded: Snekbox
+2021-10-22 12:27:09,404 | exts.kus | DEBUG | loaded data
+2021-10-22 12:27:12,124 | utils.planner | DEBUG | returning sorted date for 562976873685057546
+2021-10-22 12:27:12,138 | bot | INFO | Connected successfully
+2021-10-22 12:27:12,329 | bot | DEBUG | changed bot status
+2021-10-22 12:27:12,332 | utils.planner | DEBUG | returning sorted date for 728482381215826000
+2021-10-22 12:27:12,647 | utils.planner | DEBUG | returning sorted date for 676256965650808873
+2021-10-22 12:27:12,744 | utils.planner | DEBUG | returning sorted date for 829749071891005512
+2021-10-22 12:27:13,442 | utils.planner | DEBUG | returning sorted date for 773426467492069386

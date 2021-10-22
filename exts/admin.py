@@ -315,8 +315,8 @@ class AdminCommands(Cog):
         await self.bot.log(__name__, "Shutting down bot... by {}".format(ctx.author.mention))
 
         await ctx.send("Shutting down...")
-        log.info("Shutting down bot by {}".format(ctx.author))
-
+        log.info("Shutting down bot by {}".format(ctx.author))   
+        self.bot.unload_cogs()     
         await self.bot.logout()
 
     @command(hidden=True)

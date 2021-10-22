@@ -6,15 +6,15 @@ Update and Develop by Tpmonkey for Education purpose.
 """
 
 import os
+import time
 import enum
-import asyncio
-import datetime
-import itertools
 import math
 import random
 import logging
+import asyncio
+import datetime
+import itertools
 import traceback
-import time
 
 import discord
 from async_timeout import timeout
@@ -28,19 +28,15 @@ from urllib.parse import parse_qs, urlparse
 from utils.audio import *
 
 YOUTUBE_API_KEY = os.getenv("YOUTUBE_API_KEY")
-
 log = logging.getLogger(__name__)
-
 
 class Loop(enum.Enum):
     NONE = 0
     SINGLE = 1
     QUEUE = 2
 
-
 class VoiceError(Exception):
     pass
-
 
 class PlaylistSong:
     """
@@ -50,8 +46,7 @@ class PlaylistSong:
         self.url = url
         self.ctx = ctx
         self.title = title
-        self.song = None
-         
+        self.song = None         
 
 class Song:
     """Song class for storing the Source and Requester"""
@@ -146,6 +141,7 @@ class VoiceState:
             self.audio_player = self.bot.loop.create_task(self.audio_player_task())
 
     async def audio_player_task(self):
+        # Note: This is madness. Who ever try to read this, Good luck.
         log.info(f"Audio Player Launched for {self._ctx.guild.id}")
         while True:
             self.next.clear()
@@ -234,7 +230,6 @@ class VoiceState:
         # Call when the song ended or and exception has been raised
         if error:
             raise VoiceError(str(error))
-
         self.next.set()
 
     def skip(self):
@@ -291,6 +286,8 @@ class Music(commands.Cog):
         return state
 
     def cog_unload(self):
+        # when cog is unload (normally to reload command bc replit sucks)
+        # stop all the loop and disconnect the bot from all vcs
         self.loop_for_deletion.stop() 
         for state in self.voice_states.values():
             self.bot.loop.create_task(state.stop())

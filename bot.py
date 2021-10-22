@@ -145,6 +145,17 @@ class Bot(commands.AutoShardedBot):
         )
         return random.choice(statuses)
     
+    def unload_cogs(self) -> None:
+        """Unload all extension."""
+        extensions = [ext for ext in self.extensions]
+        # haha, RuntimeError again!
+        for extension in extensions:
+            if extension == "exts.admin": continue
+            try:
+                self.unload_extension(extension)
+            except Exception:
+                pass
+    
     async def on_ready(self) -> None:
         """ on Ready event, Use to log and change bot status. """
         log.info("Connected successfully")
