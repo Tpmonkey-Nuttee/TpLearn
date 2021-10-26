@@ -51,6 +51,7 @@ news_url = "http://www.kus.ku.ac.th/news.php?type=0"
 
 assignment_limit = 24 # Assignment limit in one guild.
 maximum_days = 30 # Maximum days of assignment to stay in the system, once passed it will be delete.
+MAX_REMINDER_PER_DAY = 5 # Idk why those 2 are lower case. but this is the maximum reminder per day.
 # --------------------------------- #
 
 ### -- Random Facts and Quotes -- ###
