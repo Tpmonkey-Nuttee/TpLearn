@@ -591,8 +591,8 @@ class Music(commands.Cog):
         You can optionally specify the page to show. Each page contains 10 elements.
         """
 
-        if len(ctx.voice_state.songs) == 0:
-            return await ctx.send(':x: **Empty queue.**')
+        if len(ctx.voice_state.songs) == 0 and ctx.voice_state.current is None:
+            return await ctx.send('Empty queue.')
 
         items_per_page = 8
         pages = max(1, math.ceil(len(ctx.voice_state.songs) / items_per_page)) # use max to prevent 1/0 page
