@@ -29,6 +29,11 @@ from utils.audio import *
 from spotipy.client import SpotifyException
 
 YOUTUBE_API_KEY = os.getenv("YOUTUBE_API_KEY")
+if YOUTUBE_API_KEY is None:
+    raise ImportError(
+        "Youtube API key is not set, Please head to https://console.cloud.google.com/apis/ to setup one."
+    )
+
 log = logging.getLogger(__name__)
 
 class Loop(enum.Enum):
