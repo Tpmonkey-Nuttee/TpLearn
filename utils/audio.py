@@ -143,6 +143,13 @@ import os
 cid = os.getenv("CID")
 secret = os.getenv("SECRET")
 
+if cid is None or secret is None:
+    raise ImportError(
+        "Spotify Client ID and Client Secret is not setup.\n"
+        "Please head to https://developer.spotify.com/dashboard/ to setup Spotify Service.\n"
+        "Then, Set environment name CID (Client ID) and SECRET (Client Secret)"
+    )
+
 # Creating and authenticating our Spotify app.
 client_credentials_manager = SpotifyClientCredentials(cid, secret)
 spotify = spotipy.Spotify(client_credentials_manager=client_credentials_manager)
