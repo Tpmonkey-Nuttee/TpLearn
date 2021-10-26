@@ -4,7 +4,10 @@ Made by Tpmonkey
 """
 
 from typing import Any, Optional
-from replit import db
+try:
+    from replit import db
+except ImportError:
+    raise ImportError("This bot uses replit database system. Please run it on replit.com")
 
 import traceback
 import datetime
