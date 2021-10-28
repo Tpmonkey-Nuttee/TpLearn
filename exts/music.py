@@ -879,7 +879,7 @@ class Music(commands.Cog):
                 tracks = getTracks(search)
             except Exception:
                 log.warning(traceback.format_exc())
-                await ctx.send(":x: **Failed to load Spotify Plalist!**")
+                return await ctx.send(":x: **Failed to load Spotify Plalist!**")
             
             amount = 0
             for s in tracks:                    
@@ -896,7 +896,7 @@ class Music(commands.Cog):
                 tracks = getAlbum(search)
             except Exception:
                 log.warning(traceback.format_exc())
-                await ctx.send(":x: **Failed to load Spotify Album!**")
+                return await ctx.send(":x: **Failed to load Spotify Album!**")
             
             amount = 0
             for s in tracks:                    
