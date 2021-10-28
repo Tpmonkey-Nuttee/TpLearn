@@ -828,6 +828,11 @@ class Music(commands.Cog):
         log.debug(f"{ctx.guild.id}: Searching {search}")
         await ctx.trigger_typing() 
 
+        # Anxiety in a nutshell.
+        if type(search) is str:
+            # Remove <> in the url, because some people want to hide the embed.
+            search = search.lstrip("<").rstrip(">")
+
         # Youtube Playlist
         if "youtube.com/playlist?" in search or "&start_radio" in search: 
             # actually get playlist id
