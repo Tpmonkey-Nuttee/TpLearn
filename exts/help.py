@@ -117,7 +117,11 @@ class CustomHelpCommand(HelpCommand):
                 joined_lines = "".join(truncated_lines)
                 cog_or_category_pages.append((f"**{cog_or_category}**{joined_lines}", len(truncated_lines)))
 
-        pages = [f"To find tutorial, Use **{bot.config.prefix}ttr**"]
+        pages = [
+            f"To find tutorial, Use **{bot.config.prefix}ttr**\n\n"
+            f"Found a bugs? Try checking it using **{bot.config.prefix}bugs**\n"
+            "It's not there? Report it by Dm-ing the bot!"
+        ]
         counter = 0
         page = ""
         for page_details, length in cog_or_category_pages:
