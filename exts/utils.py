@@ -67,7 +67,7 @@ class Utility(Cog):
         """List of known bugs."""
         embed = Embed(
             title = "Known Bugs",
-            description = "This embed shows list of known bugs, Please dm the bot if you find more bug.",
+            description = "This embed shows list of known bugs, Please dm the bot if you found more.",
             colour = Colour.dark_red(),
             timestamp = ctx.message.created_at
         )
