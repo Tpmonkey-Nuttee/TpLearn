@@ -371,7 +371,7 @@ class Music(commands.Cog):
     @staticmethod
     def shorten_title(title: str) -> str:
         # To make sure that embed field wouldn't contain more than 1024 letters.
-        return title if len(title) < 24 else title[:24] + "..."
+        return title if len(title) < 100 else title[:100] + "..."
 
     @commands.command(name="musicdebug", hidden=True)
     @commands.is_owner()
