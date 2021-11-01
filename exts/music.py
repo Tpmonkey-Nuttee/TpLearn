@@ -694,7 +694,7 @@ class Music(commands.Cog):
 
         if ctx.voice_state.loop == Loop.NONE:
             ctx.voice_state.loop = Loop.SINGLE
-            await ctx.send(":repeat_one:*Now Looping **Current Song**!")
+            await ctx.send(":repeat_one: Now Looping **Current Song**!")
         elif ctx.voice_state.loop ==  Loop.SINGLE:
             ctx.voice_state.loop = Loop.QUEUE
             await ctx.send(":repeat: Now Looping **Queue**!")
