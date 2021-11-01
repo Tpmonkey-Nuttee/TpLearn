@@ -168,71 +168,48 @@ class VoiceState:
                         self.current = await self.songs.get()
                     
                 except asyncio.TimeoutError:
-                    log.debug(f"{self._ctx.guild.id}: No more song, stopping")
+                    log.debug(f"{self._ctx.guild.id}: No more track, stopping")
                     self.bot.loop.create_task(self.stop())
                     return
-
-            else:
-                # If loop is on, get the source again. I don't know why but apparently 
-                # You can't use the same source twice, you need to create a new source everytime :/
-
-                song = None
-                if not isinstance(self.current, PlaylistSong):
-                    # if on loop, create new soure and store it temporary.
-                    try:
-                        source = await YTDLSource.create_source(self._ctx, self.current.source.url, loop=self.bot.loop)
-                    except DownloadError:                        
-                        if len(self.songs) == 0:
-                            self.current = None
-                            self._loop = Loop.NONE
-                            await self._ctx.send(":x: **Fail to download the video and no more tracks are in the queue. Disabled looping!**")
-                        else:
-                            await self._ctx.send(":x: **Fail to download the video, skipping...**")
-                        continue
-                        
-                    except Exception as e:
-                        await self._ctx.send(':x: **An error occurred while processing this request:** {}'.format(str(e)))
-                        continue
+            else: # Loop is on                
+                # Loop Logic: Try to load the ended song agian,
+                # Then put it behind the queue if loop queue is enable
+                # or Set current track to be the loaded song if loop single
+                try:
+                    source = await YTDLSource.create_source(self.current.source.ctx, self.current.source.url)
+                except Exception:
+                    await self._ctx.send(f"Couldn't load track & Removed from the queue.\n{self.current.source.url}")
+                else:
                     song = Song(source)
 
-                if self._loop == Loop.SINGLE:
-                    # Set the current song to be the same as last one.
-                    # So it will play the same song again and again
-                    self.current = song
-                elif self._loop == Loop.QUEUE:
-                    # Loop queue simply work by putting the ended song at the end of the queue.
-                    if song is not None:
+                    if self._loop == Loop.SINGLE:
+                        self.current = song
+                    else: # Loop queue.
                         await self.songs.put(song)
-                    # Get next song
-                    self.current = await self.songs.get()
+                        self.current = await self.songs.get()
             
             if isinstance(self.current, PlaylistSong):
                 # If It's playlist song and is not loaded yet, load it.
-                if self.current.song is None:
-                    try:
-                        source = await YTDLSource.create_source(self.current.ctx, self.current.url, loop=self.bot.loop)
-                    except Exception:
-                        log.info(f"{self._ctx.guild.id}: Unable to load playlist song, retrying...")
-                        url = self.current.url
+                try:
+                    source = await YTDLSource.create_source(self.current.ctx, self.current.url)
+                except Exception:
+                    log.info(f"{self._ctx.guild.id}: Unable to load playlist song, retrying...")
+                    url = self.current.url
 
-                        if "http" not in url: # It's actually the song name
-                            try:
-                                source = await YTDLSource.create_source(self.current.ctx, url+" lyric", loop=self.bot.loop)
-                            except Exception:
-                                await self._ctx.send(f":x: **Unable to load:** {self.current.url}")
-                                log.info(f"{self._ctx.guild.id}: Download fail, Skipped")
-                                continue
-                            log.info(f"{self._ctx.guild.id}: Sucessfully loaded the song, continue playing...")
-                        else:
-                            await self._ctx.send(f":x: **Unable to load:** {self.current.url}")
-                            log.info(f"{self._ctx.guild.id}: It was an url, skipping...")
+                    if "http" not in url: # It's actually the song name
+                        try:
+                            source = await YTDLSource.create_source(self.current.ctx, url+" lyric")
+                        except Exception:
+                            await self._ctx.send(f"Couldn't load track: {self.current.url}")
+                            log.info(f"{self._ctx.guild.id}: Download fail, Skipped")
                             continue
+                        log.info(f"{self._ctx.guild.id}: Sucessfully loaded the song, continue playing...")
+                    else:
+                        await self._ctx.send(f"Couldn't load track: {self.current.url}")
+                        log.info(f"{self._ctx.guild.id}: It was an url, skipping...")
+                        continue
                         
-                    self.current = Song(source)
-                
-                # Already loaded? play it.
-                else:
-                    self.current = self.current.song
+                self.current = Song(source)
 
             # super shuffle.
             if self.super_shuffle:
@@ -411,6 +388,7 @@ class Music(commands.Cog):
         if name is None:
             embed = discord.Embed(
                 title = "Music Settings",
+                description = "To set boolean settings, use 1 as True and 0 as False.",
                 colour = discord.Colour.default(),
                 timestamp = ctx.message.created_at
             )
@@ -467,7 +445,7 @@ class Music(commands.Cog):
                         if(x.guild == ctx.guild):
                             return await x.disconnect()
                 except Exception: # Idk anymore
-                    return await ctx.send(':x: **Not connected to any voice channel.**')
+                    return await ctx.send("I'm not connected to any voice channel!")
 
         await ctx.voice_state.stop()
         log.debug(f"{ctx.guild.id}: stopped from leave command")
@@ -478,7 +456,7 @@ class Music(commands.Cog):
         """Sets the volume of the player."""
 
         if not ctx.voice_state.is_playing:
-            return await ctx.send(':x: **Nothing being played at the moment.**')
+            return await ctx.send('Nothing being played at the moment...')
         
         if volume is None:
             return await ctx.send(f"**Current Volume:** {ctx.voice_state.volume * 100}%")
@@ -492,20 +470,20 @@ class Music(commands.Cog):
         except AttributeError:
             pass
 
-        await ctx.send('**Volume of the player set to** {}%'.format(volume))
+        await ctx.send('Volume of the player set to **{}%**'.format(volume))
 
     @commands.command(name='now', aliases=['current', 'playing'])
     async def _now(self, ctx: commands.Context):
-        """Displays the currently playing song."""
+        """Displays the currentl track."""
 
         if hasattr(ctx.voice_state.current, "create_embed"): # it's being played.
             await ctx.send(embed=ctx.voice_state.current.create_embed())
         else:
-            await ctx.send(":x: **Nothing being play at the moment!** ¯\_(ツ)_/¯")
+            await ctx.send("Nothing being play at the moment! ¯\_(ツ)_/¯")
 
     @commands.command(name='pause')
     async def _pause(self, ctx: commands.Context):
-        """Pauses the currently playing song."""
+        """Pauses."""
 
         if ctx.voice_state.voice.is_playing(): # if it's playing, pause else just ignore.
             ctx.voice_state.voice.pause()
@@ -513,9 +491,9 @@ class Music(commands.Cog):
 
     @commands.command(name='resume', invoke_without_subcommand=True)
     async def _resume(self, ctx: commands.Context):
-        """Resumes a currently paused song."""
+        """Resumes."""
         if ctx.voice_state.voice is None:
-            return await ctx.send(":x: **Nothing is paused**")
+            return await ctx.send("I'm not connected to any voice channel!")
 
         if ctx.voice_state.voice.is_paused(): # if it's paused, resume else just ignore.
             ctx.voice_state.voice.resume()
@@ -523,7 +501,7 @@ class Music(commands.Cog):
 
     @commands.command(name='stop', aliases=['clear'])
     async def _stop(self, ctx: commands.Context):
-        """Stops playing song and clears the queue."""
+        """Stops playing & Clears the queue."""
 
         # clear queue and set loop to none.
         ctx.voice_state.songs.clear()
@@ -535,10 +513,12 @@ class Music(commands.Cog):
     
     @commands.command(name='clearqueue', aliases=['clearq'])
     async def _clearq(self, ctx: commands.Context):
-        """Clear queue but keep the current song."""
+        """Clear queue but keep playing current track."""
 
+        # well, I can use == 0 but I don't know why I used < 1
+        # But I will leave it like this ;)
         if len(ctx.voice_state.songs) < 1:
-            return await ctx.send(":x: **Queue is empty!**")
+            return await ctx.send("Queue is empty!")
 
         # clear queue.
         ctx.voice_state.songs.clear()
@@ -547,11 +527,11 @@ class Music(commands.Cog):
     @commands.command(name='skip')
     async def _skip(self, ctx: commands.Context):
         """Vote to skip a song. The requester can automatically skip.
-        3 skip votes are needed for the song to be skipped.
+        half of all users in voice channel are needed for the song to be skipped.
         """
 
         if len(ctx.voice_state.songs) == 0:
-            return await ctx.send(':x: **I have nothing to skip!**')
+            return await ctx.send('I have nothing to skip!')
 
         voter = ctx.message.author
 
@@ -575,13 +555,13 @@ class Music(commands.Cog):
                 await ctx.send('Skip vote added, currently at **{}/{}**'.format(total_votes, needed_votes))
 
         else:
-            await ctx.send(':x: **You have already voted to skip this song.** ._.')
+            await ctx.send('You have already voted! ._.')
     
     @commands.command(name="skipto")
     async def _skipto(self, ctx: commands.Context, index: int):
-        """Skip to the index song."""
+        """Skip to the index track."""
         if len(ctx.voice_state.songs) < 2:
-            return await ctx.send(":x: **You need more song in queue to use this command!**")
+            return await ctx.send("You need at least 2 tracks in queue to use this command!")
         
         # to work around the "asyncio.Queue" we need to dig deep into the actual code itself.
         # from https://github.com/python/cpython/blob/main/Lib/asyncio/queues.py#L48
@@ -601,7 +581,7 @@ class Music(commands.Cog):
         """
 
         if len(ctx.voice_state.songs) == 0 and ctx.voice_state.current is None:
-            return await ctx.send('Empty queue.')
+            return await ctx.send('Empty queue. ¯\_(ツ)_/¯')
 
         items_per_page = 8
         pages = max(1, math.ceil(len(ctx.voice_state.songs) / items_per_page)) # use max to prevent 1/0 page
@@ -610,7 +590,7 @@ class Music(commands.Cog):
             # display queue even if there is only 1 song being play.
             pass
         elif 0 < page > pages:
-            return await ctx.send(":x: **Page is out of range!**")
+            return await ctx.send(f"Page is out of range, I currently have {pages}.")
 
         start = (page - 1) * items_per_page
         end = start + items_per_page
@@ -667,7 +647,7 @@ class Music(commands.Cog):
         """Shuffles the queue."""
 
         if len(ctx.voice_state.songs) == 0:
-            return await ctx.send(':x: **Empty queue.**')
+            return await ctx.send('Empty queue. ¯\_(ツ)_/¯')
 
         ctx.voice_state.songs.shuffle() # random.shuffle() moment :)
         await ctx.message.add_reaction('✅')
@@ -676,20 +656,20 @@ class Music(commands.Cog):
     async def _sshuffle(self, ctx: commands.Context):
         """Shuffles the queue everytimes the song ended."""
         if len(ctx.voice_state.songs) == 0:
-            return await ctx.send(':x: **Not enough song to enable this!**')
+            return await ctx.send('I need more tracks to enable this feature!')
 
         # switch it, nothing more, nothing less.
         ctx.voice_state.super_shuffle = not ctx.voice_state.super_shuffle
         await ctx.send(
-            f"✅ **Turn {'on' if ctx.voice_state.super_shuffle else 'off'} super shuffle!**"
+            f"Turn **{'on' if ctx.voice_state.super_shuffle else 'off'}** super shuffle!"
         )
 
     @commands.command(name='removes')
     async def _remove(self, ctx: commands.Context, index: int):
-        """Removes a song from the queue at a given index."""
+        """Removes a track from the queue at a given index."""
 
         if len(ctx.voice_state.songs) == 0:
-            return await ctx.send(':x: **Empty queue.**')
+            return await ctx.send('Empty queue. ¯\_(ツ)_/¯')
         
         # don't forget index starts with 0 not 1
         ctx.voice_state.songs.remove(index - 1)
@@ -710,17 +690,17 @@ class Music(commands.Cog):
                 continue         
             break
         else: # 2.5 sec passed, still nothing.
-            return await ctx.send(':x: **Nothing being played at the moment.**')
+            return await ctx.send('Nothing is being play right now. \:(')
 
         if ctx.voice_state.loop == Loop.NONE:
             ctx.voice_state.loop = Loop.SINGLE
-            await ctx.send(":repeat_one: **Now Looping Current Song!**")
+            await ctx.send(":repeat_one:*Now Looping **Current Song**!")
         elif ctx.voice_state.loop ==  Loop.SINGLE:
             ctx.voice_state.loop = Loop.QUEUE
-            await ctx.send(":repeat: **Now Looping Queue!**")
+            await ctx.send(":repeat: Now Looping **Queue**!")
         else:
             ctx.voice_state.loop = Loop.NONE
-            await ctx.send("**Disable Looping!**")
+            await ctx.send(":arrow_forward: Disable looping!")
     
     @commands.command(name='loopqueue', aliases=['loopq', 'lq'])
     async def _loopq(self, ctx: commands.Context):
@@ -737,14 +717,14 @@ class Music(commands.Cog):
                 continue         
             break
         else:
-            return await ctx.send(':x: **Nothing being played at the moment.**')
+            return await ctx.send('Nothing is being play right now. \:(')
 
         if ctx.voice_state.loop == Loop.SINGLE or ctx.voice_state.loop == Loop.NONE:
             ctx.voice_state.loop = Loop.QUEUE
-            await ctx.send(":repeat: **Now Looping Queue!**")
+            await ctx.send(":repeat: Now Looping **Queue**!")
         else:
             ctx.voice_state.loop = Loop.NONE
-            await ctx.send("**Disable Looping!**")
+            await ctx.send(":arrow_forward: Disable looping!")
     
     @commands.command(name="recommend", aliases=['rec'])
     async def _recommend(self, ctx: commands.Context, *, name: str = None):
@@ -960,11 +940,11 @@ class Music(commands.Cog):
     async def ensure_voice_state(self, ctx: commands.Context):
         # make sure user is in vc.
         if not ctx.author.voice or not ctx.author.voice.channel:
-            raise commands.CommandError('**You are not connected to any voice channel.**')
+            raise commands.CommandError('You are not connected to any voice channel.')
 
         if ctx.voice_client:
             if ctx.voice_client.channel != ctx.author.voice.channel:
-                raise commands.CommandError('**Bot is already in a voice channel.**')
+                raise commands.CommandError('Bot is already in a voice channel.')
 
 
 def setup(bot):
