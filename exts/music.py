@@ -369,9 +369,10 @@ class Music(commands.Cog):
                 self.wait_for_disconnect[member.guild.id] = time.time() + self.bot.msettings.get(member.guild.id, "timeout")
     
     @staticmethod
-    def shorten_title(title: str) -> str:
+    def shorten_title(title: str, url: str) -> str:
         # To make sure that embed field wouldn't contain more than 1024 letters.
-        return title if len(title) < 100 else title[:100] + "..."
+        space_left = 110 - len(url)
+        return title if len(title) < space_left else title[:space_left] + "..."
 
     @commands.command(name="musicdebug", hidden=True)
     @commands.is_owner()
@@ -598,16 +599,16 @@ class Music(commands.Cog):
         queue = ''
         for i, song in enumerate(ctx.voice_state.songs[start:end], start=start):
             if isinstance(song, Song):      # requested one by one
-                title = self.shorten_title(song.source.title)
+                title = self.shorten_title(song.source.title, song.source.url)
                 queue += '**{0}.** [{1}]({2.source.url})\n'.format(i + 1, title, song)
             else:
                 # song = PlaylistSong
                 # Attrs: url, ctx, song
                 if song.song is not None:    # is loaded
-                    title = self.shorten_title(song.song.source.title)
+                    title = self.shorten_title(song.song.source.title, song.song.source.url)
                     queue += '**{0}.** [{1}]({2.song.source.url})\n'.format(i + 1, title, song)
                 elif song.title is not None:
-                    title = self.shorten_title(song.title)
+                    title = self.shorten_title(song.title, song.url)
                     queue += '**{0}.** [{1}]({2.url})\n'.format(i + 1, title, song) 
                 elif "http" in song.url:     # not loaded, but have the url
                     queue += f"**{i+1}.** [Couldn't load this song]({song.url})\n"  
@@ -908,7 +909,7 @@ class Music(commands.Cog):
         # Normal searching. 
         else:
             try:
-                source = await YTDLSource.create_source(ctx, search, loop=self.bot.loop)
+                source = await YTDLSource.create_source(ctx, search)
             except YTDLError as e:
                 return await ctx.send(':x: **{}**'.format(str(e)))
             except DownloadError:
@@ -918,7 +919,7 @@ class Music(commands.Cog):
                 await ctx.trigger_typing() 
 
                 try:
-                    source = await YTDLSource.create_source(ctx, search + " lyric", loop=self.bot.loop)
+                    source = await YTDLSource.create_source(ctx, search + " lyric")
                 except (DownloadError, YTDLError):
                     # Idk anymore...
                     self.play_error(ctx.guild.id)
