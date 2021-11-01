@@ -181,6 +181,15 @@ class VoiceState:
                     # if on loop, create new soure and store it temporary.
                     try:
                         source = await YTDLSource.create_source(self._ctx, self.current.source.url, loop=self.bot.loop)
+                    except DownloadError:                        
+                        if len(self.songs) == 0:
+                            self.current = None
+                            self._loop = Loop.NONE
+                            await self._ctx.send(":x: **Fail to download the video and no more tracks are in the queue. Disabled looping!**")
+                        else:
+                            await self._ctx.send(":x: **Fail to download the video, skipping...**")
+                        continue
+                        
                     except Exception as e:
                         await self._ctx.send(':x: **An error occurred while processing this request:** {}'.format(str(e)))
                         continue
@@ -827,7 +836,7 @@ class Music(commands.Cog):
 
         log.debug(f"{ctx.guild.id}: Searching {search}")
         await ctx.trigger_typing() 
-
+        
         # Anxiety in a nutshell.
         if type(search) is str:
             # Remove <> in the url, because some people want to hide the embed.
@@ -933,7 +942,7 @@ class Music(commands.Cog):
                 except (DownloadError, YTDLError):
                     # Idk anymore...
                     self.play_error(ctx.guild.id)
-                    if self.errors_count.get(guild_id, 0) >= 2:
+                    if self.errors_count.get(ctx.guild.id, 0) >= 2:
                         log.warning(f"Download problem detected, Couldn't play video in server {ctx.guild.id}")
                         return await ctx.send("Download problem detected, Youtube service may be down... Please try again in a few hours.")
                     return await ctx.send(":x: **Download fail, Please try using an url.**")
