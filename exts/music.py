@@ -48,6 +48,8 @@ class PlaylistSong:
     """
     Just a dataclass.
     """
+    __slots__ = "url", "ctx", "title", "song"
+    
     def __init__(self, url: str, ctx: commands.Context, title: str = None):
         self.url = url
         self.ctx = ctx
