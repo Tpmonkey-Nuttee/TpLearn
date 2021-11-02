@@ -42,6 +42,10 @@ class YTDLSource(discord.PCMVolumeTransformer):
         'options': '-vn',
     }
 
+    __slots__ = "ctx", "requester", "channel", "data", "uploader", "uploader_url", \
+        "date", "upload_date", "title", "thumbnail", "description", "duration", "tags", \
+        "url", "views", "likes", "dislikes", "stream_url"
+
     ytdl = youtube_dl.YoutubeDL(YTDL_OPTIONS)
 
     def __init__(self, ctx: commands.Context, source: discord.FFmpegPCMAudio, *, data: dict, volume: float = 0.5):
