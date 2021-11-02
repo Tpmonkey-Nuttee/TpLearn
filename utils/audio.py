@@ -3,15 +3,59 @@ from discord.ext import commands
 
 import youtube_dl
 
+# YouTube Playlist
+import googleapiclient.discovery
+from urllib.parse import parse_qs, urlparse
+
 import asyncio
 import functools
 
-from random import randint
+
+from typing import List, Tuple
 
 # Silence useless bug reports messages
 youtube_dl.utils.bug_reports_message = lambda: ''
 
-__all__ = ("YTDLError", "YTDLSource", "DownloadError", "getTracks", "getAlbum", "getRecommend")
+__all__ = ("YTDLError", "YTDLSource", "DownloadError", "getYtPlaylist")
+
+import os
+
+YOUTUBE_API_KEY = os.getenv("YOUTUBE_API_KEY")
+if YOUTUBE_API_KEY is None:
+    raise ImportError(
+        "Youtube API key is not set, Please head to https://console.cloud.google.com/apis/ to setup one."
+    )
+
+def getYtPlaylist(url: str) -> Tuple[List[str]]:
+    # actually get playlist id
+    query = parse_qs(urlparse(url).query, keep_blank_values=True)
+    playlist_id = query["list"][0]
+
+    youtube = googleapiclient.discovery.build("youtube", "v3", developerKey = YOUTUBE_API_KEY)
+    request = youtube.playlistItems().list(
+        part = "snippet",
+        playlistId = playlist_id,
+        maxResults = 25 # 25 vid per request.
+    )
+    response = request.execute()    
+    maximum = 1 if "&start_radio" in url else 8
+
+    playlist_items = []
+    current = 0
+    while request is not None: # there're more vid to fetch? get it all!!!!
+        response = request.execute()
+        playlist_items += response["items"]
+        request = youtube.playlistItems().list_next(request, response)
+
+        current += 1
+        if current >= maximum: # it's too much now... stop at 200 vid.
+            break
+
+    # get title and the urls.
+    sources = [f'https://www.youtube.com/watch?v={t["snippet"]["resourceId"]["videoId"]}&list={playlist_id}' for t in playlist_items]
+    titles = [t["snippet"]["title"] for t in playlist_items]
+
+    return sources, titles
 
 class YTDLError(Exception):
     pass
@@ -78,26 +122,6 @@ class YTDLSource(discord.PCMVolumeTransformer):
     async def create_source(cls, ctx: commands.Context, search: str, *, loop: asyncio.BaseEventLoop = None):
         loop = loop or asyncio.get_event_loop()
 
-        # This bit of code seems to do nothing except make the load time longer.
-        # To be sure, I will just comment it out and if somethign went wrong, I will check it again.
-        """partial = functools.partial(cls.ytdl.extract_info, search, download=False, process=False)
-        data = await loop.run_in_executor(None, partial)
-
-        if data is None:
-            raise YTDLError('Couldn\'t find anything that matches `{}`'.format(search))
-
-        if 'entries' not in data:
-            process_info = data
-        else:
-            process_info = None
-            for entry in data['entries']:
-                if entry:
-                    process_info = entry
-                    break
-
-            if process_info is None:
-                raise YTDLError('Couldn\'t find anything that matches `{}`'.format(search))"""
-
         webpage_url = search # process_info['webpage_url']
         partial = functools.partial(cls.ytdl.extract_info, webpage_url, download=False)
         processed_info = await loop.run_in_executor(None, partial)
@@ -128,6 +152,7 @@ class YTDLSource(discord.PCMVolumeTransformer):
         days, hours = divmod(hours, 24)
 
         duration = []
+        
         if days > 0:
             duration.append('{} days'.format(days))
         if hours > 0:
@@ -136,100 +161,5 @@ class YTDLSource(discord.PCMVolumeTransformer):
             duration.append('{} minutes'.format(minutes))
         if seconds > 0:
             duration.append('{} seconds'.format(seconds))
-
+        
         return ', '.join(duration)
-
-# Spotify library.
-import spotipy
-from spotipy.oauth2 import SpotifyClientCredentials
-
-import os
-
-cid = os.getenv("CID")
-secret = os.getenv("SECRET")
-
-if cid is None or secret is None:
-    raise ImportError(
-        "Spotify Client ID and Client Secret is not setup.\n"
-        "Please head to https://developer.spotify.com/dashboard/ to setup Spotify Service.\n"
-        "Then, Set environment name CID (Client ID) and SECRET (Client Secret)"
-    )
-
-# Creating and authenticating our Spotify app.
-client_credentials_manager = SpotifyClientCredentials(cid, secret)
-spotify = spotipy.Spotify(client_credentials_manager=client_credentials_manager)
-
-
-def getTracks(playlistURL):   
-    # Getting a playlist.
-    results = spotify.user_playlist_tracks(user="",playlist_id=playlistURL, offset=0)
-
-    trackList = []
-    offset = 0
-    
-    # Loop untils all the tacks are extracted from playlist.
-    # The reason behind is, Spotify API has limit at 100 tracks at a time, 
-    # So to work around, We use offset insated
-    while len(results["items"]) != 0:
-        for i in results["items"]:
-            artist = i["track"]["artists"][0]["name"]
-            name = i["track"]["name"]
-
-            trackList.append(f"{name} {artist}")
-
-        offset += 100
-
-        # Get it again, with an offset
-        results = spotify.user_playlist_tracks(user="",playlist_id=playlistURL, offset=offset)
-
-    return trackList
-
-def getAlbum(albumURL):
-    # Getting a album.
-    results = spotify.album_tracks(albumURL, offset=0)
-
-    trackList = []
-    offset = 0
-
-    # For each track in the album.
-    while len(results["items"]) != 0:
-        for i in results["items"]:
-            artist = i["artists"][0]["name"]
-            name = i["name"]
-
-            trackList.append(f"{name} {artist}")
-        offset += 50
-
-        results = spotify.album_tracks(albumURL, offset=offset)
-
-    return trackList
-
-def getRecommend(names: list, amount: int = 20) -> list:    
-    # Find uri
-    uris = []
-    for name in names:
-        if "open.spotify.com/track/" in name:
-            uris.append(name)
-            continue
-
-        r = spotify.search(q=name, limit=1)
-
-        if len(r['tracks']['items']) == 0:
-            continue
-            
-        uris.append(r['tracks']['items'][0]['uri'])
-    
-    if len(uris) == 0:
-        raise NameError
-
-    # find recommendations
-    r = spotify.recommendations(seed_tracks=uris, limit=randint(amount, 100))
-    trackList = []
-    
-    for i in r['tracks']:
-        name = i['name']
-        artist = i["artists"][0]["name"]
-
-        trackList.append(f"{name} {artist}")
-    
-    return trackList
