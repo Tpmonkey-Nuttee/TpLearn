@@ -864,7 +864,7 @@ class Music(commands.Cog):
         log.debug(f"Enqueued")
     
     @commands.command(name="playnext", aliases=['pn', ])
-    async def _play_next(self, ctx: commands.Context, search: str) -> None:
+    async def _play_next(self, ctx: commands.Context, *, search: str) -> None:
         """Play track after current song ended.
         Only work with Youtube video!
         """
