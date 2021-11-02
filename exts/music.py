@@ -4,7 +4,6 @@ Link: https://gist.github.com/vbe0201/ade9b80f2d3b64643d854938d40a0a2d
 
 Update and Develop by Tpmonkey for Education purpose.
 """
-
 import os
 import time
 import enum
@@ -20,19 +19,13 @@ import discord
 from async_timeout import timeout
 from discord.ext import commands, tasks
 
-# YouTube Playlist
-import googleapiclient.discovery
-from urllib.parse import parse_qs, urlparse
-
 # Audio system (Youtube DL & Spotipy)
 from utils.audio import *
-from spotipy.client import SpotifyException
+from utils.spotify import *
 
 YOUTUBE_API_KEY = os.getenv("YOUTUBE_API_KEY")
 if YOUTUBE_API_KEY is None:
-    raise ImportError(
-        "Youtube API key is not set, Please head to https://console.cloud.google.com/apis/ to setup one."
-    )
+    raise ImportError("Youtube API key is not set, Please head to https://console.cloud.google.com/apis/ to setup one.")
 
 log = logging.getLogger(__name__)
 
@@ -45,8 +38,7 @@ class VoiceError(Exception):
     pass
 
 class PlaylistSong:
-    """
-    Just a dataclass.
+    """Just a dataclass for storing Playlist song.
     """
     __slots__ = "url", "ctx", "title", "song"
     
@@ -57,7 +49,8 @@ class PlaylistSong:
         self.song = None         
 
 class Song:
-    """Song class for storing the Source and Requester"""
+    """Song class for storing the Source and Requester
+    """
     __slots__ = ('source', 'requester')
 
     def __init__(self, source: YTDLSource = None, url: str = None):
@@ -219,8 +212,7 @@ class VoiceState:
 
             # Set the volume, that nobody cares and play it
             self.current.source.volume = self._volume
-            self.voice.play(self.current.source, after=self.play_next_song)
-            
+            self.voice.play(self.current.source, after=self.play_next_song)            
 
             # If option "annouce next song" is on, annouce it
             if self.bot.msettings.get(self._ctx.guild.id, "annouce_next_song"):
@@ -259,8 +251,7 @@ class VoiceState:
         log.info(f"{self._ctx.guild.id}:Left vc & cleaned up")
 
 class Music(commands.Cog):
-    """
-    Music system
+    """Music system
     **Note:** All commands are like Groovy, Rythm bot except remove command is changed to `,removes`
     """
     def __init__(self, bot: commands.Bot):
@@ -292,7 +283,6 @@ class Music(commands.Cog):
         if not state:
             state = VoiceState(self.bot, ctx)
             self.voice_states[ctx.guild.id] = state
-
         return state    
 
     def cog_check(self, ctx: commands.Context):
@@ -342,7 +332,6 @@ class Music(commands.Cog):
                 except KeyError:
                     return
             return
-
         
         # Check if user switched to bot vc or joined the bot vc
         if (before.channel is None and after.channel is not None) or (before.channel != after.channel and after.channel is not None):
@@ -385,8 +374,8 @@ class Music(commands.Cog):
 
     @commands.command(name="settings")
     async def _settings(self, ctx: commands.Context, name: str = None, value: int = None):
-        """Music Settings."""
-
+        """Music Settings.
+        """
         # No input, display all settings
         if name is None:
             embed = discord.Embed(
@@ -403,11 +392,9 @@ class Music(commands.Cog):
                     value = settings[sett],
                     inline = False
                 )
-
-            await ctx.send(embed=embed)
+            await ctx.send(embed=embed)        
         
-        # Set new settings
-        elif name is not None and value is not None:
+        elif name is not None and value is not None: # Set new settings
             try:
                 name = name.replace(" ", "_").lower()
                 if name == "timeout" and value <= 60:
@@ -416,25 +403,23 @@ class Music(commands.Cog):
             except ValueError:
                 return await ctx.send(":x: **Invalid Setting name or Value**")
             await ctx.send("Successfully save new settings!")
-
-        # Idk, are you drunk or what?
-        else:
+        
+        else: # Idk, are you drunk or what?
             await ctx.send(":x: **Value is a must have argument!**")
 
     @commands.command(name='join', aliases=['summon', ], invoke_without_subcommand=True)
     async def _join(self, ctx: commands.Context):
-        """Joins a voice channel."""
-
+        """Joins a voice channel.
+        """
         destination = ctx.author.voice.channel
         if ctx.voice_state.voice: # already connected to another channel.
-            return await ctx.voice_state.voice.move_to(destination)            
-
+            return await ctx.voice_state.voice.move_to(destination)
         ctx.voice_state.voice = await destination.connect()
 
     @commands.command(name='leave', aliases=['disconnect'])
     async def _leave(self, ctx: commands.Context, invoke_without_subcommand=True):
-        """Clears the queue and leaves the voice channel."""
-
+        """Clears the queue and leaves the voice channel.
+        """
         if not ctx.voice_state.voice:
             # It's none, but maybe the bot just restarted.
             # so try to leave first.
@@ -456,8 +441,8 @@ class Music(commands.Cog):
 
     @commands.command(name='volume')
     async def _volume(self, ctx: commands.Context, volume: int = None):
-        """Sets the volume of the player."""
-
+        """Sets the volume of the player.
+        """
         if not ctx.voice_state.is_playing:
             return await ctx.send('Nothing being played at the moment...')
         
@@ -470,15 +455,14 @@ class Music(commands.Cog):
         ctx.voice_state.volume = volume / 100
         try: # try to change the current song, but maybe it's PlaylistSong so it doesn' loaded yet.
             ctx.voice_state.current.source.volume = volume / 100
-        except AttributeError:
-            pass
+        except AttributeError: pass
 
         await ctx.send('Volume of the player set to **{}%**'.format(volume))
 
     @commands.command(name='now', aliases=['current', 'playing'])
     async def _now(self, ctx: commands.Context):
-        """Displays the currentl track."""
-
+        """Displays the currentl track.
+        """
         if hasattr(ctx.voice_state.current, "create_embed"): # it's being played.
             await ctx.send(embed=ctx.voice_state.current.create_embed())
         else:
@@ -486,15 +470,16 @@ class Music(commands.Cog):
 
     @commands.command(name='pause')
     async def _pause(self, ctx: commands.Context):
-        """Pauses."""
-
+        """Pauses.
+        """
         if ctx.voice_state.voice.is_playing(): # if it's playing, pause else just ignore.
             ctx.voice_state.voice.pause()
             await ctx.message.add_reaction('⏯')
 
     @commands.command(name='resume', invoke_without_subcommand=True)
     async def _resume(self, ctx: commands.Context):
-        """Resumes."""
+        """Resumes.
+        """
         if ctx.voice_state.voice is None:
             return await ctx.send("I'm not connected to any voice channel!")
 
@@ -505,7 +490,6 @@ class Music(commands.Cog):
     @commands.command(name='stop', aliases=['clear'])
     async def _stop(self, ctx: commands.Context):
         """Stops playing & Clears the queue."""
-
         # clear queue and set loop to none.
         ctx.voice_state.songs.clear()
         ctx.voice_state.loop = Loop.NONE
@@ -517,7 +501,6 @@ class Music(commands.Cog):
     @commands.command(name='clearqueue', aliases=['clearq'])
     async def _clearq(self, ctx: commands.Context):
         """Clear queue but keep playing current track."""
-
         # well, I can use == 0 but I don't know why I used < 1
         # But I will leave it like this ;)
         if len(ctx.voice_state.songs) < 1:
@@ -532,7 +515,6 @@ class Music(commands.Cog):
         """Vote to skip a song. The requester can automatically skip.
         half of all users in voice channel are needed for the song to be skipped.
         """
-
         if len(ctx.voice_state.songs) == 0:
             return await ctx.send('I have nothing to skip!')
 
@@ -562,7 +544,8 @@ class Music(commands.Cog):
     
     @commands.command(name="skipto")
     async def _skipto(self, ctx: commands.Context, index: int):
-        """Skip to the index track."""
+        """Skip to the index track.
+        """
         if len(ctx.voice_state.songs) < 2:
             return await ctx.send("You need at least 2 tracks in queue to use this command!")
         
@@ -572,17 +555,14 @@ class Music(commands.Cog):
         # from https://docs.python.org/3/library/collections.html#collections.deque
         ctx.voice_state.songs._queue.rotate(-(index-1))
         # skip the current one
-        ctx.voice_state.skip()
-        
+        ctx.voice_state.skip()        
         await ctx.message.add_reaction('✅')        
 
     @commands.command(name='queue', aliases=['q', 'list'])
     async def _queue(self, ctx: commands.Context, *, page: int = 1):
         """Shows the player's queue.
-
         You can optionally specify the page to show. Each page contains 10 elements.
         """
-
         if len(ctx.voice_state.songs) == 0 and ctx.voice_state.current is None:
             return await ctx.send('Empty queue. ¯\_(ツ)_/¯')
 
@@ -604,8 +584,6 @@ class Music(commands.Cog):
                 title = self.shorten_title(song.source.title, song.source.url)
                 queue += '**{0}.** [{1}]({2.source.url})\n'.format(i + 1, title, song)
             else:
-                # song = PlaylistSong
-                # Attrs: url, ctx, song
                 if song.song is not None:    # is loaded
                     title = self.shorten_title(song.song.source.title, song.song.source.url)
                     queue += '**{0}.** [{1}]({2.song.source.url})\n'.format(i + 1, title, song)
@@ -618,7 +596,6 @@ class Music(commands.Cog):
                     queue += '**{0}.** {1.url}\n'.format(i + 1, song)
 
         queue = queue or "Nothing \:("
-
         # A large embed... madness
         embed = (
             discord.Embed(
@@ -647,8 +624,8 @@ class Music(commands.Cog):
 
     @commands.command(name='shuffle')
     async def _shuffle(self, ctx: commands.Context):
-        """Shuffles the queue."""
-
+        """Shuffles the queue.
+        """
         if len(ctx.voice_state.songs) == 0:
             return await ctx.send('Empty queue. ¯\_(ツ)_/¯')
 
@@ -657,7 +634,8 @@ class Music(commands.Cog):
     
     @commands.command(name="sshuffle")
     async def _sshuffle(self, ctx: commands.Context):
-        """Shuffles the queue everytimes the song ended."""
+        """Shuffles the queue everytimes the song ended.
+        """
         if len(ctx.voice_state.songs) == 0:
             return await ctx.send('I need more tracks to enable this feature!')
 
@@ -669,8 +647,8 @@ class Music(commands.Cog):
 
     @commands.command(name='removes')
     async def _remove(self, ctx: commands.Context, index: int):
-        """Removes a track from the queue at a given index."""
-
+        """Removes a track from the queue at a given index.
+        """
         if len(ctx.voice_state.songs) == 0:
             return await ctx.send('Empty queue. ¯\_(ツ)_/¯')
         
@@ -683,8 +661,7 @@ class Music(commands.Cog):
         """Loops the currently playing song.
 
         Invoke this command again to unloop the song.
-        """
-        
+        """        
         # using loop because when user used play command, bot needs time to load.
         # so I will check every 0.5 for 5 times that it's loaded and ready to turn on loop.
         for i in range(5):
@@ -711,7 +688,6 @@ class Music(commands.Cog):
 
         Invoke this command again to unloop the queue.
         """
-
         # again using loop because when user used play command, bot needs time to load.
         # so I will check every 0.5 for 5 times that it's loaded and ready to turn on loop.
         for i in range(5):
@@ -803,71 +779,34 @@ class Music(commands.Cog):
         This command automatically searches from various sites if no URL is provided.
         A list of these sites can be found here: https://rg3.github.io/youtube-dl/supportedsites.html
         """
-
         if not ctx.voice_state.voice:
             # not connected? try to join first
             try:
                 await ctx.invoke(self._join)             
             except Exception:
-                # huh... maybe bot restarted and still connecting to somewhere...
-                # so try to leave first and rejoin.
-                await ctx.invoke(self._leave)
-                await ctx.invoke(self._join)  
+                return await ctx.send("Couldn't connect to the voice, Please disconnect me and try again!")
         
         if search is None: # resume
+            log.debug(f"{ctx.guild.id}: Resume")
             return await ctx.invoke(self._resume)
 
+        # Remove <> in the url, because some people want to hide the embed.
+        search = search.lstrip("<").rstrip(">")
         log.debug(f"{ctx.guild.id}: Searching {search}")
-        await ctx.trigger_typing() 
-        
-        # Anxiety in a nutshell.
-        if type(search) is str:
-            # Remove <> in the url, because some people want to hide the embed.
-            search = search.lstrip("<").rstrip(">")
+        await ctx.trigger_typing()       
 
         # Youtube Playlist
         if "youtube.com/playlist?" in search or "&start_radio" in search: 
-            # actually get playlist id
-            query = parse_qs(urlparse(search).query, keep_blank_values=True)
-            playlist_id = query["list"][0]
-
-            youtube = googleapiclient.discovery.build("youtube", "v3", developerKey = YOUTUBE_API_KEY)
-
             try: # some source of insanity...
-                request = youtube.playlistItems().list(
-                    part = "snippet",
-                    playlistId = playlist_id,
-                    maxResults = 25 # 25 vid per request.
-                )
-                response = request.execute()
-                
-                maximum = 8
-                if "&start_radio" in search:
-                    maximum = 1
-
-                playlist_items = []
-                current = 0
-                while request is not None: # there're more vid to fetch? get it all!!!!
-                    response = request.execute()
-                    playlist_items += response["items"]
-                    request = youtube.playlistItems().list_next(request, response)
-
-                    current += 1
-                    if current >= maximum: # it's too much now... stop at 200 vid.
-                        break
+                results = getYtPlaylist(search)
             except Exception:
                 return await ctx.send(":x: **PlayList not found or There is a problem with the bot!**")    
 
-            # get title and the urls.
-            sources = [f'https://www.youtube.com/watch?v={t["snippet"]["resourceId"]["videoId"]}&list={playlist_id}' for t in playlist_items]
-            titles = [t["snippet"]["title"] for t in playlist_items]
             amount = 0
-
-            for s, t in zip(sources, titles):
+            for s, t in zip(results[0], results[1]):
                 pl = PlaylistSong(s, ctx, t)
                 await ctx.voice_state.songs.put(pl)
-                amount += 1
-            
+                amount += 1            
             await ctx.send("Enqueued {} songs.".format(amount))
         
         # Spotify Playlist
@@ -882,13 +821,10 @@ class Music(commands.Cog):
             for s in tracks:                    
                 pl = PlaylistSong(s, ctx)
                 await ctx.voice_state.songs.put(pl)
+                amount += 1            
+            await ctx.send("Enqueued {} songs.".format(amount))   
 
-                amount += 1
-            
-            await ctx.send("Enqueued {} songs.".format(amount))
-        
-        # Spotify Album
-        elif "open.spotify.com/album/" in search:
+        elif "open.spotify.com/album/" in search: # Spotify Album
             try: # somewhere in utils.audio
                 tracks = getAlbum(search)
             except Exception:
@@ -896,27 +832,22 @@ class Music(commands.Cog):
                 return await ctx.send(":x: **Failed to load Spotify Album!**")
             
             amount = 0
-            for s in tracks:                    
+            for s in tracks: # put in dataclass and queue               
                 pl = PlaylistSong(s, ctx)
                 await ctx.voice_state.songs.put(pl)
+                amount += 1            
+            await ctx.send("Enqueued {} songs.".format(amount))   
 
-                amount += 1
-            
-            await ctx.send("Enqueued {} songs.".format(amount))
-        
-        # Anything else related to Spotify
-        elif "open.spotify.com/" in search:
-            return await ctx.send("Sorry, Only Spotify playlist & Album is support at the moment!")
+        elif "open.spotify.com/" in search: # Anything else related to Spotify
+            return await ctx.send("Sorry, Only Spotify playlist & Album is support at the moment!") 
 
-        # Normal searching. 
-        else:
+        else: # Normal searching. 
             try:
                 source = await YTDLSource.create_source(ctx, search)
             except YTDLError as e:
                 return await ctx.send(':x: **{}**'.format(str(e)))
             except DownloadError:
-                # maybe it's geo restricted, so retry again but this time put "lyric" behind.
-                
+                # maybe it's geo restricted, so retry again but this time put "lyric" behind.                
                 await ctx.send(f":x: **Could not download that video, Retrying...**")
                 await ctx.trigger_typing() 
 
@@ -931,12 +862,55 @@ class Music(commands.Cog):
                     return await ctx.send(":x: **Download fail, Please try using an url.**")
             
             song = Song(source)
-
             await ctx.voice_state.songs.put(song)
             await ctx.send('Enqueued {}'.format(str(source)))
         
         ctx.voice_state.start_player()
         log.debug(f"Enqueued")
+    
+    @commands.command(name="playnext", aliases=['pn', ])
+    async def _play_next(self, ctx: commands.Context, search: str) -> None:
+        """Play track after current song ended.
+        Only work with Youtube video!
+        """
+        if ctx.voice_state.audio_player is None:
+            return await ctx.send("Nothing is being played...!") 
+        
+        # Remove <> in the url, because some people want to hide the embed.
+        search = search.lstrip("<").rstrip(">")        
+        log.debug(f"{ctx.guild.id}: Playnext, Searching {search}")
+        await ctx.trigger_typing() 
+
+        # Youtube Playlist
+        if "youtube.com/playlist?" in search or "&start_radio" in search: 
+            return await ctx.send("This command only work with normal searching or Youtube URL!")       
+        elif "open.spotify.com/" in search: # Spotify
+            return await ctx.send("This command only work with normal searching or Youtube URL.") 
+        else: # Normal searching.
+            try:
+                source = await YTDLSource.create_source(ctx, search)
+            except YTDLError as e:
+                return await ctx.send(':x: **{}**'.format(str(e)))
+            except DownloadError:
+                # maybe it's geo restricted, so retry again but this time put "lyric" behind.                
+                await ctx.send(f":x: **Could not download that video, Retrying...**")
+                await ctx.trigger_typing() 
+
+                try:
+                    source = await YTDLSource.create_source(ctx, search + " lyric")
+                except (DownloadError, YTDLError):
+                    # Idk anymore...
+                    self.play_error(ctx.guild.id)
+                    if self.errors_count.get(ctx.guild.id, 0) >= 2:
+                        log.warning(f"Download problem detected, Couldn't play video in server {ctx.guild.id}")
+                        return await ctx.send("Download problem detected, Youtube service may be down... Please try again in a few hours.")
+                    return await ctx.send(":x: **Download fail, Please try using an url.**")            
+            song = Song(source)
+
+            # Like how skipto works, I will manipulate this list directly at its core.
+            ctx.voice_state.songs._queue.appendleft(song)
+            await ctx.send('Enqueued {}'.format(str(source)))        
+        log.debug(f"Enqueued play next")
 
     @_join.before_invoke
     @_play.before_invoke
