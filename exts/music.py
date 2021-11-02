@@ -4,7 +4,6 @@ Link: https://gist.github.com/vbe0201/ade9b80f2d3b64643d854938d40a0a2d
 
 Update and Develop by Tpmonkey for Education purpose.
 """
-import os
 import time
 import enum
 import math
@@ -22,10 +21,6 @@ from discord.ext import commands, tasks
 # Audio system (Youtube DL & Spotipy)
 from utils.audio import *
 from utils.spotify import *
-
-YOUTUBE_API_KEY = os.getenv("YOUTUBE_API_KEY")
-if YOUTUBE_API_KEY is None:
-    raise ImportError("Youtube API key is not set, Please head to https://console.cloud.google.com/apis/ to setup one.")
 
 log = logging.getLogger(__name__)
 
