@@ -6,7 +6,9 @@ from bot import Bot
 from datetime import datetime
 import json
 import logging
-import asyncio
+import psutil
+import os
+
 
 log = logging.getLogger(__name__)
 
@@ -14,12 +16,19 @@ class Debug(Cog):
     def __init__(self, bot: Bot) -> None:
         self.bot = bot
     
+    @staticmethod
+    def memory_usage_psutil():
+        # return the memory usage in MB
+        process = psutil.Process(os.getpid())
+        mem = process.memory_info()[0] / float(2 ** 20)
+        return mem
+    
     @command(hidden=True)
     @guild_only()
     async def debug(self, ctx: Context) -> None:
         embed = Embed(
             title = "Server Debug",
-            description = "Hello, Hacker man \:)",
+            description = f"Hello, Hacker man \:)\nMemory Usage: {self.memory_usage_psutil()} MB",
             timestamp = ctx.message.created_at
         )
 
