@@ -10,7 +10,6 @@ note = [
     "**New Command!**",
     "- __Play next command!__ (aliases is pn, playnext)",
     "Directly play track after the current one ended!",
-    "Dev Note: Sometimes when you have a huge queue, it's annoying to add a new one. That's why this command is created.",
     "- __Bugs command!__ (aliases is bugs)",
     "Show all known bugs and way to fix it by yourself. (also, report it in bot dm if you can ;) )",
     "",
@@ -26,7 +25,7 @@ note = [
     "",
 
     "**Bug Fixes!**",
-    "- Fix error detection system. (Yes, There is an error detection system.)",
+    "- Fix error detection system.",
     "- Fix stop command sometimes break the bot.",
     "- Fix queue command doesn't work with only 1 track.",
     "- Fix Spotify error handler doesn't work. (tbh, there was no handler at all.)",
