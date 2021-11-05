@@ -5,21 +5,33 @@ Made by Tpmonkey
 
 ### ---------- General ---------- ###
 
-version = "1.5"
+version = "1.6"
 note = [
     "**New Command!**",
-    "- Recommendation command (aliase is `rec`)",
-    "Recommend next song based on __current song__ or __name/spotify track url__ that was given.",
-    "This command uses Spotify Recommendation System and Will queue 20 more tracks for you!",
-    "*Dev Note:*",
-    "*- Before using command, __You need to use play command first__.*"
-    "*- Normally, Youtube title is bad. So try to search it yourself is a better option.*",
+    "- __Play next command!__ (aliases is pn, playnext)",
+    "Directly play track after the current one ended!",
+    "Dev Note: Sometimes when you have a huge queue, it's annoying to add a new one. That's why this command is created.",
+    "- __Bugs command!__ (aliases is bugs)",
+    "Show all known bugs and way to fix it by yourself. (also, report it in bot dm if you can ;) )",
     "",
-    "**QoL**",
-    "- Bot auto-disconnect and timeout system have been improved.",
+
+    "**QoL!**",
+    "- \"Now Playing\" embed will now be automatically deleted after the song ended!",
+    "- You can now instantly use loop & loopq command. (in a nutshell, I removed checks. so you can use it at anytime now.)"
+    "- Loading speed is now 2 times faster!",
+    "- You can now use <url>. (some people want to hide embed.)",
+    "- New audio player logic, meaning It will be better & faster! ",
+    "- Queue now shows a (almost) all song title when it can.",
+    "- Optimize memory usage.",
     "",
-    "**Bugs**",
-    "- Fixed Loop & Loop queue commands sometimes don't work at all(?)"
+
+    "**Bug Fixes!**",
+    "- Fix error detection system. (Yes, There is an error detection system.)",
+    "- Fix stop command sometimes break the bot.",
+    "- Fix queue command doesn't work with only 1 track.",
+    "- Fix Spotify error handler doesn't work. (tbh, there was no handler at all.)",
+    "- Fix bot spamming error when the video is suddenly privated.",
+    "",    
 ]
 
 prefix = "," # Bot Prefix.
