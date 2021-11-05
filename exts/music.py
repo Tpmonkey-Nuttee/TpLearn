@@ -230,19 +230,20 @@ class VoiceState:
 
     async def stop(self):
         self.songs.clear()
-        # self.loader.queue.clear()
 
         if self.voice:
             await self.voice.disconnect()
-            # self.voice = None
+        
+        # Delete "now playing" message.
+        try:
+            await self.announce_message.delete()
+        except Exception:
+            pass
         
         # Delete the reference
         cog = self.bot.get_cog("Music")
         if cog is not None:
-            try:
-                del cog.voice_states[self._ctx.guild.id]
-            except KeyError:
-                pass
+            cog.remove_voicestate(self._ctx.guild.id)
         log.info(f"{self._ctx.guild.id}:Left vc & cleaned up")
 
 class Music(commands.Cog):
@@ -267,6 +268,9 @@ class Music(commands.Cog):
         self.loop_for_deletion.stop() 
         for state in self.voice_states.values():
             self.bot.loop.create_task(state.stop())
+    
+    def remove_voicestate(self, key: int) -> None:
+        self.voice_states.pop(key, None)
     
     def play_error(self, guild_id: int) -> None:
         count = self.errors_count.get(guild_id, 0)
