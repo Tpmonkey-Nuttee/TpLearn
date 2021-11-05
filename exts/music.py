@@ -660,17 +660,7 @@ class Music(commands.Cog):
         """Loops the currently playing song.
 
         Invoke this command again to unloop the song.
-        """        
-        # using loop because when user used play command, bot needs time to load.
-        # so I will check every 0.5 for 5 times that it's loaded and ready to turn on loop.
-        for i in range(5):
-            if ctx.voice_state.audio_player is None:
-                await asyncio.sleep(0.5)
-                continue         
-            break
-        else: # 2.5 sec passed, still nothing.
-            return await ctx.send('Nothing is being play right now. \:(')
-
+        """
         if ctx.voice_state.loop == Loop.NONE:
             ctx.voice_state.loop = Loop.SINGLE
             await ctx.send(":repeat_one: Now Looping **Current Song**!")
@@ -687,16 +677,6 @@ class Music(commands.Cog):
 
         Invoke this command again to unloop the queue.
         """
-        # again using loop because when user used play command, bot needs time to load.
-        # so I will check every 0.5 for 5 times that it's loaded and ready to turn on loop.
-        for i in range(5):
-            if ctx.voice_state.audio_player is None:
-                await asyncio.sleep(0.5)
-                continue         
-            break
-        else:
-            return await ctx.send('Nothing is being play right now. \:(')
-
         if ctx.voice_state.loop == Loop.SINGLE or ctx.voice_state.loop == Loop.NONE:
             ctx.voice_state.loop = Loop.QUEUE
             await ctx.send(":repeat: Now Looping **Queue**!")
