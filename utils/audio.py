@@ -35,7 +35,7 @@ def getYtPlaylist(url: str) -> Tuple[List[str]]:
     request = youtube.playlistItems().list(
         part = "snippet",
         playlistId = playlist_id,
-        maxResults = 25 # 25 vid per request.
+        maxResults = 50 # 50 vid per request.
     )
     response = request.execute()    
     maximum = 1 if "&start_radio" in url else 8
