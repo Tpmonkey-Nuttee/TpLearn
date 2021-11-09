@@ -47,7 +47,7 @@ class Assignments(Cog):
                     "date": kwargs.get('date', "Unknown"),
                 }},
             "info":{                
-                "ctx": ctx, "message": None
+                "ctx": ctx, "message": None, "task": None
             }}
     
     @staticmethod
@@ -136,11 +136,12 @@ class Assignments(Cog):
         self.tasks[ctx.author.id]['details']['state'] = 0
         message = self.tasks[ctx.author.id]["info"]["message"]
         try:
+            self.tasks[ctx.author.id]['info']['task'].cancel()
+            del self.tasks[ctx.author.id]
             await message.clear_reactions()
-            await message.edit(embed=self.close_embed(reason, colour))
+            await message.edit(embed=self.close_embed(reason, colour))            
         except Exception: pass
-        # Ignore all exception, Our task is already done.
-        if ctx.author.id in self.tasks: del self.tasks[ctx.author.id]
+        log.debug(f"Deleted key: {ctx.author.id}")
     
     @command()
     @guild_only()
@@ -157,7 +158,7 @@ class Assignments(Cog):
         message = await ctx.send(embed=embed)
         self.tasks[ctx.author.id]["info"]["message"] = message
         create_task(self.bot.add_reactions(message, EMOJIS))
-        await self.adding(ctx)
+        self.tasks[ctx.author.id]['info']['task'] = create_task(self.adding(ctx))         
     
     @command()
     @guild_only()
@@ -184,7 +185,8 @@ class Assignments(Cog):
         message = await ctx.send(embed=embed)
         self.tasks[ctx.author.id]["info"]["message"] = message
         create_task(self.bot.add_reactions(message, EMOJIS))
-        await self.adding(ctx)
+        create_task(self.bot.add_reactions(message, EMOJIS))
+        self.tasks[ctx.author.id]['info']['task'] = create_task(self.adding(ctx))     
     
     @command(aliases = ("delete", "del", ))
     @guild_only()
@@ -296,15 +298,12 @@ class Assignments(Cog):
         """
         A method that will get an input from target message, and delete it.
         """
-        while self.tasks[ctx.author.id]["details"]["state"] != 0:
+        while ctx.author.id in self.tasks:
             try:
                 message = await self.bot.wait_for_message(ctx, timeout = 300)
             except: # Timeout, or something went wrong.
                 await self.close(ctx)
-                return
-            
-            content = message.content
-            log.debug(f"Recieve message: {content}")
+                return           
 
             """
             Checks:
@@ -315,8 +314,12 @@ class Assignments(Cog):
             if ctx.author.id not in self.tasks or \
             self.tasks[ctx.author.id]['details']['state'] == 0:
                 return
+
+            content = message.content
+            log.debug(f"Recieve message: {content}")
                         
             if content is not None and content.startswith(self.bot.command_prefix):
+                log.debug("content startswith command prefix.")
                 return await self.close(ctx, reason = "Use another bot's command.")     
             
             # Delete message
