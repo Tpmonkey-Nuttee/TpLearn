@@ -648,10 +648,12 @@ class Music(commands.Cog):
     async def _remove(self, ctx: commands.Context, index: int):
         """Removes a track from the queue at a given index.
         """
-        if len(ctx.voice_state.songs) == 0:
+        songs = len(ctx.voice_state.songs) == 0
+        if songs == 0:
             return await ctx.send('Empty queue. ¯\_(ツ)_/¯')
+        elif songs < index:
+            return await ctx.send(f"Index out of range! I only have {songs} tracks in queue!")
         
-        # don't forget index starts with 0 not 1
         ctx.voice_state.songs.remove(index - 1)
         await ctx.message.add_reaction('✅')
 
