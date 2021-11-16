@@ -162,10 +162,8 @@ class Bot(commands.AutoShardedBot):
         # await self.log(__name__, "connected")
         await self.change_status()
         
-        text = ""
-        for i in self.unloaded_cogs:
-           text += f"Unable to load **{i}**\n"
-        if text:
+        if self.unloaded_cogs:
+            text = [f"Unable to load **{cog}**\n" for cog in self.unloaded_cogs]
             await self.log(__name__, text, True)
     
     async def on_resumed(self) -> None:
@@ -182,19 +180,22 @@ class Bot(commands.AutoShardedBot):
     async def on_message(self, message: discord.Message) -> None:
         """ on Message event. """
         # Bot will only response to normal user only, not another bot.
-        if not message.author.bot: await self.process_commands(message)
+        if not message.author.bot: 
+            await self.process_commands(message)
     
     async def on_message_edit(self, before: discord.Message, after: discord.Message) -> None:
         """ on Message Edit event. """
         # If message were edited, and content changed. Re-process command.
-        if not before.author.bot and before.content != after.content: await self.process_commands(after)
+        if not before.author.bot and before.content != after.content: 
+            await self.process_commands(after)
     
     async def on_error(self, event_method, *args, **kwargs) -> None:
         """ on Error event, Use to log in discord channel so can be easily look back. """
         log.error(traceback.format_exc())
 
         await self.wait_until_ready()
-        if self.dump_channel is None: self.dump_channel = self.get_channel(config.dump_channel_id)
+        if self.dump_channel is None: 
+            self.dump_channel = self.get_channel(config.dump_channel_id)
         
         embed = discord.Embed( timestamp = datetime.datetime.utcnow())
         embed.add_field(name="Event Method", value=str(event_method), inline=False)
@@ -203,20 +204,22 @@ class Bot(commands.AutoShardedBot):
 
         message = traceback.format_exc().replace('```', '\```')
 
-        try: await self.dump_channel.send( content = f"```py\n{message}\n```", embed=embed)
-        except:
+        try: 
+            await self.dump_channel.send( content = f"```py\n{message}\n```", embed=embed)
+        except discord.HTTPException:
             try:
                 await self.dump_channel.send(
                     "<@!518063131096907813> Unhandle error occured, Please check the bot logs." \
                     f"error with `{len(message)}` letters long."
                 )
-            except: pass
+            except discord.HTTPException: 
+                pass
     
     async def log(self, name: str, message: str = "", mention: bool = False, embed: discord.Embed = None) -> None:
         """
         Log Message to Bot's log-channel.
         
-        It will try to send message normally, If It can't set the time of exceptioon and log exception.
+        It will try to send message normally, If It can't set the time of exception and log exception.
         then, Try to send messages informing about exception and log message with original time.
         If this time, It couldn't send message. check if it's because of HTTPException (message too long)
         If that is the case, send a shorted form of it and inform the situation. If not because HTTPException,
@@ -224,15 +227,20 @@ class Bot(commands.AutoShardedBot):
         """
         log.debug(f"{name} {message}")
         await self.wait_until_ready()
-        while self.log_channel is None: self.log_channel = self.get_channel(config.log_channel_id)
+        while self.log_channel is None: 
+            self.log_channel = self.get_channel(config.log_channel_id)
         
         mention = f"<@!{self.owner_id}>\n" if mention else "\n"
-        text = f"**[{today_th(True)}] | [{name}]:** "+ mention + message
-        try: await self.log_channel.send(text, embed=embed)
-        except:
-            log.error(f"unable to log a message with error\n{traceback.format_exc()}")
+        text = f"**[{today_th(True)}] | [{name}]:** {mention} {message}"
+
+        try: 
+            await self.log_channel.send(text, embed=embed)
+        except discord.HTTPException:
+            log.error(f"unable to log a message with error:\n{traceback.format_exc()}")
             rn = today_th(True)
-        else: return
+        else: 
+            return
+
         error_text = f"**[{today_th(True)}] | [Bot] **" + f"<@!{self.owner_id}>" \
             f"\nLog connection went out for little while. ({rn})" \
             f"\n{traceback.format_exc()}"
@@ -262,15 +270,15 @@ class Bot(commands.AutoShardedBot):
         """    
         def check(m) -> bool: return m.channel == ctx.channel and m.author == ctx.author   
 
-        log.debug("waiting for message...")
-        message = await self.wait_for("message", check=check, timeout=timeout)
-        return message
+        log.debug("waiting for message...")        
+        return await self.wait_for("message", check=check, timeout=timeout)
 
     async def add_reactions(self, message: discord.Message, reactions: list) -> None:
         """ Add Set/List of Reactions to targeted message. """
         for reaction in reactions:
-            try: await message.add_reaction(reaction)
-            except Exception as e:
+            try: 
+                await message.add_reaction(reaction)
+            except (discord.HTTPException, discord.Forbidden) as e:
                 log.debug(f"could not add {reaction} reaction with exception: {e}")
                 pass
     
@@ -316,8 +324,10 @@ class Bot(commands.AutoShardedBot):
         * dark_red - needs to send today.
         * default (black) - already passed.        
         """
-        if passed: return discord.Colour.default()
-        if gap is None: gap = self.in_days(date)
+        if passed: 
+            return discord.Colour.default()
+        if gap is None: 
+            gap = self.in_days(date)
 
         if gap is None: return discord.Colour.purple()
         elif gap >= 14: return discord.Colour.teal()
@@ -330,9 +340,11 @@ class Bot(commands.AutoShardedBot):
     
     def get_title(self, title: str, date: str, passed: bool = False) -> str:
         """ Get Embed Title. """
-        if passed: return title + " [ PASSED ]"
+        if passed: 
+            return title + " [ PASSED ]"
 
         in_day = self.in_days(date)
+        
         if in_day is None: in_day = ""
         elif in_day == 0: in_day = " [❗❗ TODAY ❗❗]"
         elif in_day == 1: in_day = " [❗❗ TOMORROW ❗❗]"
