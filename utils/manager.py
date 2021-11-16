@@ -31,20 +31,20 @@ class Manager:
         
         d = self.__data[str(guild_id)]
         try: # Get the ID if possible
-            a = d['active']
-            p = d['passed']
+            a, p = d['active'], d['passed']
         except KeyError:
             return False
         
         # Get the channels.
-        return False if self.bot.get_channel(a) is None or self.bot.get_channel(p) is None else True
+        return not (self.bot.get_channel(a) is None or self.bot.get_channel(p) is None) 
     
     def get_all_guild(self) -> list:
         """ Get all Guilds ID in system. """
         return [int(i) for i in self.__data]
     
     def delete(self, guild_id: int) -> bool:
-        try: del self.__data[str(guild_id)]
+        try: 
+            del self.__data[str(guild_id)]
         except KeyError:
             log.warning(f'no valid guild called "{guild_id}"')
             return False
@@ -59,10 +59,7 @@ class Manager:
 
     def get(self, guild_id: int) -> dict:
         """ Get Guild Work Channels ID from Guild ID. """
-        try:
-            return self.__data[str(guild_id)]
-        except KeyError:
-            return {}       
+        return self.__data.get(str(guild_id), {})
 
     def set(self, guild_id: int, type_: str, channel_id: int) -> None:
         """ Set Work Channel ID into targeted Guild. """
