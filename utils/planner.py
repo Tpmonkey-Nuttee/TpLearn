@@ -29,7 +29,7 @@ class Planner:
         # Remove duplicate ID.
         p = list( dict.fromkeys( [str(i) for i in self.__need_update] ) )
         # Update value, In this case It should be reset to empty list.
-        self.__need_update = [str(i) for i in self.__need_update if str(i) not in p]
+        self.__need_update = [] # [str(i) for i in self.__need_update if str(i) not in p]
         return p
     
     def trigger_update(self) -> None:
@@ -52,13 +52,17 @@ class Planner:
         guild_id = str(guild_id)
         if guild_id not in self.__data:
             return []
-                
+
+        # TODO: After all current assignments are deleted, rewrite it as one-line for loop.
+        # PS: I forgot what it actaully call :P
         d = []
         for i in self.__data[guild_id]:
-            if self.__data[guild_id][i]['already-passed']: continue
+            if self.__data[guild_id][i]['already-passed']: 
+                # Ignore passed assignment.
+                continue
 
             value = self.__data[guild_id][i]
-            value['key'] = i
+            value['key'] = i # Remove this later
             d.append(value)
 
         return d
@@ -85,6 +89,7 @@ class Planner:
         if guild_id not in self.__data:
             return {}
         
+        # TODO: 
         d = self.__data[guild_id][key]
         d['key'] = key
 
@@ -134,7 +139,7 @@ class Planner:
         """
         Embed contained a List of all works in that targeted guild.
         """
-        t = time.time()
+        t = time.perf_counter()
         if len(self.get_all(guild_id)) == 0:
             log.debug(f'getting embed return nothing for {guild_id}')
             return discord.Embed(
@@ -144,21 +149,24 @@ class Planner:
                 timestamp = datetime.datetime.utcnow()
             ).set_footer(text = "Use add command to add one!")
         
-        print("First check", time.time() - t)
+        print("First check", time.perf_counter() - t)
         
         sorted = self.get_sorted(guild_id)
         formatted = {}
-        index = 0
+        # Idk why, but I wanted the 'formatted' dict to be
+        # {
+        #   "date that human can read": ["assignment key 1", "assignment key 2"]
+        # }
 
-        while index < len(sorted): # Sorted data first, So It can be easily use later!
-            dic = sorted[index]
-            date_key = self.try_strp_date( dic['date'] ).strftime("%d-%m-%Y") if self.strp_able( dic['readable-date'] ) else "unknown"
+        for value in sorted:
+            date_key = self.try_strp_date( value['date'] ).strftime("%d-%m-%Y") if self.strp_able( value['readable-date'] ) else "Unknown Date"
 
-            if date_key not in formatted: formatted[date_key] = [ dic['key'] ]
-            else: formatted[date_key].append( dic['key'] )
-            
-            index += 1
-        print("Second sort", time.time() - t)
+            if date_key not in formatted:
+                formatted[date_key] = [ value["key"] ]
+            else:
+                formatted[date_key].append(value["key"])
+        
+        print("Second sort", time.perf_counter() - t)
         
         # Let's create base Embed.
         embed = discord.Embed()
@@ -172,36 +180,42 @@ class Planner:
 
         for date in formatted:   
             # Create Field Name
-            if date == "unknown": name = "Unknown Date"
-            else: name = self.bot.get_title(self.get_readable_date(date), date)
+            if date == "Unknown Date": 
+                name = date
+            else:
+                name = self.bot.get_title(self.get_readable_date(date), date)
 
             # Create Field Value
             value = ""
-            for key in formatted[date]: value += f"↳`{key}` • { self.get(guild_id, key)['title'] }\n"
-            if len(value) >= 1024: value = value[:1020] + "..." # Embed Field Value cannot be longer than 1024 letters
+            for key in formatted[date]: 
+                value += f"↳`{key}` • { self.get(guild_id, key)['title'] }\n"
+
+            if len(value) >= 1024: 
+                value = value[:1020] + "..." # Embed Field Value cannot be longer than 1024 letters
 
             # Add Field
             embed.add_field(name=name, value=value, inline = False)
 
             # Track the closest day and use for Embed Colour
             in_days = self.bot.in_days(date)
-            if in_days is None: continue            
-            elif closest_day is None or in_days < closest_day: closest_day = in_days
+            if in_days is None: 
+                continue            
+            elif closest_day is None or in_days < closest_day: 
+                closest_day = in_days
         
-        print("last loop", time.time() - t)
+        print("last loop", time.perf_counter() - t)
         
         embed.colour = self.bot.get_colour(gap=closest_day)
         log.debug(f'return embed for {guild_id}')
         
-        log.debug(f"took {time.time() - t} second for {guild_id}")
+        log.debug(f"took {time.perf_counter() - t} second for {guild_id}")
         return embed
 
     def check_valid_key(self, guild_id: int, key: str) -> bool:
         """
         Check if a Assignment key valid on targeted Guild ID or not.
         """
-        guild_id = str(guild_id)
-        return False if guild_id not in self.__data else key in self.__data[guild_id]
+        return self.__data.get(str(guild_id), {}).get(key, None) is not None
 
     async def add(self, guild_id: int, **kwargs) -> str:
         """
@@ -225,7 +239,8 @@ class Planner:
             "image-url": image_url,
             "readable-date": self.get_readable_date(date),
             "already-passed": False,
-            "date-tracker": date_tracker
+            "date-tracker": date_tracker,
+            "key": key
         }
 
         log.debug("added Assignment from `{}` with key `{}`".format(guild_id, key))
@@ -240,6 +255,8 @@ class Planner:
         """
         if self._create_if_nexist(guild_id):
             return 
+        
+        # Add key to the dict before sending back.
         data = self.__data[str(guild_id)][key]
         data["key"] = key 
 
@@ -263,7 +280,8 @@ class Planner:
                 already_passed = self.check_passed_date(self.__data[guild_id][key]["date"])
 
                 if already_passed != self.__data[guild_id][key]['already-passed']:
-                    if guild_id not in changes: changes[guild_id] = {}
+                    if guild_id not in changes: 
+                        changes[guild_id] = {}
 
                     self.__data[guild_id][key]['already-passed'] = already_passed
                     changes[guild_id][key] =  self.__data[guild_id][key]
@@ -381,12 +399,14 @@ class Planner:
         if len(unreadable) < 3: return None
 
         p = unreadable[2]
-        try: strp = datetime.datetime.strptime(unreadable, f"%d{p}%m{p}%Y")
+        try: 
+            return datetime.datetime.strptime(unreadable, f"%d{p}%m{p}%Y")
         except ValueError:            
             p = unreadable[1]
-            try: strp = datetime.datetime.strptime(unreadable, f"%d{p}%m{p}%Y")
-            except ValueError: return None
-        return strp
+            try: 
+                return datetime.datetime.strptime(unreadable, f"%d{p}%m{p}%Y")
+            except ValueError: 
+                return None
 
     def get_readable_date(self, unreadable: str) -> str:
         """
