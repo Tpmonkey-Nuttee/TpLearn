@@ -30,8 +30,7 @@ def assignment_limit():
 def is_setup():
     """Check if that server is already setup the bot or not."""
     async def predicate(ctx: commands.Context):
-        a = ctx.bot.manager.get(ctx.guild.id)
-        if len(a) == 0:
+        if not ctx.bot.manager.get(ctx.guild.id):
             raise NotSetupYet(
                 f"This guild isn't setup yet! Use `{ctx.bot.config.prefix}setup` to setup!" 
             )
