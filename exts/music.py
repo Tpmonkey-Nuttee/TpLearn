@@ -364,13 +364,6 @@ class Music(commands.Cog):
         space_left = 110 - len(url)
         return title if len(title) < space_left else title[:space_left] + "..."
 
-    @commands.command(name="musicdebug", hidden=True)
-    @commands.is_owner()
-    async def _music_debug(self, ctx: commands.Context):
-        text = f"Total of {len(self.voice_states)}\n"
-        text += "\n".join([str(i) for i in self.voice_states])
-        await ctx.send(text)
-
     @commands.command(name="settings")
     async def _settings(self, ctx: commands.Context, name: str = None, value: int = None):
         """Music Settings.

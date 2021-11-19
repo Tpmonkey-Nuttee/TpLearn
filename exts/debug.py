@@ -23,6 +23,17 @@ class Debug(Cog):
         mem = process.memory_info()[0] / float(2 ** 20)
         return mem
     
+    @command(name="musicdebug")
+    @is_owner()
+    async def _music_debug(self, ctx: Context):
+        cog = self.bot.get_cog("Music")
+        if cog is None:
+            return await ctx.send("Music cog is not loaded or The name has been changed.")
+        
+        text = f"Total of {len(cog.voice_states)}\n"
+        text += "\n".join([str(i) for i in cog.voice_states])
+        await ctx.send(text)
+    
     @command(hidden=True)
     @guild_only()
     async def debug(self, ctx: Context) -> None:
