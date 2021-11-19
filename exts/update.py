@@ -49,39 +49,49 @@ class Updater(Cog):
     def check(self, message: Message, **work: dict) -> bool:
         """
         Check if the bot should update works embed or not to prevent rate limit.
-        Bot will need to check if details of the target work still the same as in embed or not.
-        If something were change, It will return False meaning that, the update system will update the embed.
+        Return True: The same embed, don't update it
+        Return False: Something is difference, Update it.
         """
-        if len(message.embeds) == 0: return False
+        if len(message.embeds) == 0: # Normal message with no embed
+            return False
         
+        # Get first embed.
         embed = message.embeds[0].to_dict()
 
-        try: key_embed = embed['footer']['text'][-8:]
-        except (KeyError, IndexError): key_embed = None
+        # Check assignment Key
+        try: 
+            key_embed = embed['description']
+        except (KeyError, IndexError): 
+            key_embed = None
         key = work.get('key')
 
+        # Assignment Colour
         colour_embed = embed['color']
         colour = self.bot.get_colour(work.get('date')).value
 
-        try: title_embed = embed['author']['name']
-        except KeyError: title_embed = None
+        # Check title.
+        try: 
+            title_embed = embed['author']['name']
+        except KeyError: 
+            title_embed = None
         title = self.bot.get_title(work.get('title'), work.get('date'))
 
+        # Check description
         try:
             desc_embed = embed['fields'][1]['value']
         except (IndexError, KeyError):
-            desc_embed = "No Description Provied"
+            desc_embed = "No Description Provided"
         desc = work.get('desc')
 
         # False if needed update, True if doesn't need an update
         try: 
-            image = embed['image']['url'] 
+            image_embed = embed['image']['url'] 
         except KeyError:
-            image = "Not Attached"
-        
+            image_embed = "Not Attached"
+        image = work.get("image-url")        
 
-        return all(
-            (key_embed == key, colour_embed == colour, title_embed == title, desc_embed == desc, work.get('image-url') == image)
+        return (
+            key_embed == key and colour_embed == colour and title_embed == title and desc_embed == desc and image_embed == image
         )
 
     @loop(minutes = MINUTES)
