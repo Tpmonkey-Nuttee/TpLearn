@@ -507,8 +507,8 @@ class Music(commands.Cog):
         """Vote to skip a song. The requester can automatically skip.
         half of all users in voice channel are needed for the song to be skipped.
         """
-        if len(ctx.voice_state.songs) == 0:
-            return await ctx.send('I have nothing to skip!')
+        if ctx.voice_state.audio_player is None:
+            return await ctx.send('Nothing is playing!')
 
         voter = ctx.message.author
 
