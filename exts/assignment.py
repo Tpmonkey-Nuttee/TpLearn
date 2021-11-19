@@ -135,11 +135,11 @@ class Assignments(Cog):
         # Preventing double close and Event Bug.
         self.tasks[ctx.author.id]['details']['state'] = 0
         message = self.tasks[ctx.author.id]["info"]["message"]
-        try:
-            self.tasks[ctx.author.id]['info']['task'].cancel()
-            del self.tasks[ctx.author.id]
+        try:            
             await message.clear_reactions()
-            await message.edit(embed=self.close_embed(reason, colour))            
+            await message.edit(embed=self.close_embed(reason, colour))     
+            self.tasks[ctx.author.id]['info']['task'].cancel()
+            del self.tasks[ctx.author.id]       
         except Exception: pass
         log.debug(f"Deleted key: {ctx.author.id}")
     
@@ -347,9 +347,9 @@ class Assignments(Cog):
                         else:
                             await ctx.send(":x: **Invalid args: state need to be between 1 - 4.**", delete_after=10)
                 elif args[0].lower() == "cancel" or args[0].lower() == "exit":
-                    return await self.close(ctx)
+                    await self.close(ctx)
                 elif args[0].lower() == "finish" or args[0].lower() == "done":
-                    return await self.finish_request(ctx)
+                    await self.finish_request(ctx)
                 else:
                     await self.handle_request(ctx, message)
             else:
