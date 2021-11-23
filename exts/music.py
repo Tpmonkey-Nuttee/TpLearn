@@ -151,16 +151,15 @@ class VoiceState:
             if self._loop == Loop.NONE:
                 # Try to get the next song within timeout limit (defeault 3 mins).
                 # If no song will be added to the queue in time,
-                # the player will disconnect due to performance
-                # reasons.
+                # the player will disconnect due to performance reasons.
                 try:                    
                     async with timeout(self.bot.msettings.get(self._ctx.guild.id, "timeout")):
                         self.current = await self.songs.get()
                     
                 except asyncio.TimeoutError:
                     log.debug(f"{self._ctx.guild.id}: No more track, stopping")
-                    self.bot.loop.create_task(self.stop())
-                    return
+                    return self.bot.loop.create_task(self.stop())
+
             else: # Loop is on                
                 # Loop Logic: Try to load the ended song agian,
                 # Then put it behind the queue if loop queue is enable
@@ -230,6 +229,7 @@ class VoiceState:
 
     async def stop(self):
         self.songs.clear()
+        self.audio_player.cancel()
 
         if self.voice:
             await self.voice.disconnect()
@@ -244,7 +244,7 @@ class VoiceState:
         cog = self.bot.get_cog("Music")
         if cog is not None:
             cog.remove_voicestate(self._ctx.guild.id)
-        log.info(f"{self._ctx.guild.id}:Left vc & cleaned up")
+        log.info(f"{self._ctx.guild.id}: Left vc & cleaned up")
 
 class Music(commands.Cog):
     """Music system
@@ -296,40 +296,46 @@ class Music(commands.Cog):
         error.handled = True # So error_handle won't be call and send message twice
         await ctx.send(':x: **An error occurred:** {}'.format(str(error)))
     
-    @tasks.loop(minutes=3)
-    async def loop_for_deletion(self) -> None:
-        delete = []
-        for gid, timeout in self.wait_for_disconnect.items():
-            if time.time() >= timeout:
+    @tasks.loop(minutes=2)
+    async def loop_for_deletion(self) -> None:        
+        copy = self.wait_for_disconnect.copy()
+        for gid in copy.keys():
+            if time.time() >= self.wait_for_disconnect[gid]:
                 log.info(f"{gid}: Timeout, Nobody left in vc... Disconnected")
                 # Remove from current dict, But need to avoid RuntimeError
-                delete.append(gid)
+                # delete.append(gid)                
 
                 # Leave channel & Clean up
                 try:
                     await self.voice_states[gid].stop()
-                    del self.voice_states[gid]
                 except KeyError:
                     log.debug(f"{gid}: Attempted to disconnect but already disconnected.")
-                    pass
                 else:
-                    log.info(f"{gid}: Successfully disconneceted")
+                    log.info(f"{gid}: Successfully disconnected")
+
+                del self.wait_for_disconnect[gid]
         
-        for i in delete: 
-            del self.wait_for_disconnect[i]
+        #for i in delete: 
+        #    del self.wait_for_disconnect[i]
 
     @commands.Cog.listener()
     async def on_voice_state_update(self, member: discord.Member, before: discord.VoiceState, after: discord.VoiceState) -> None:
         if member.guild.id not in self.voice_states:
             return
         
-        if member.id == self.bot.user.id: # Bot disconnected?
+        # Bot disconnected?
+        if member.id == self.bot.user.id: 
             if member.guild.id in self.wait_for_disconnect:
-                log.info(f"{member.guild.id}: Bot got disconnected, removing wait for disconnect")
+                # This is a mess, so I'm just gonna put sleep here.
+                # It works, trust me.
+                await asyncio.sleep(2)
+                
                 try:
                     del self.wait_for_disconnect[member.guild.id]
                 except KeyError:
                     return
+
+                log.info(f"{member.guild.id}: Bot got disconnected, removed wait for disconnect")
             return
         
         # Check if user switched to bot vc or joined the bot vc
