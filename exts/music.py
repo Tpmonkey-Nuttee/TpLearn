@@ -459,7 +459,7 @@ class Music(commands.Cog):
 
     @commands.command(name='now', aliases=['current', 'playing'])
     async def _now(self, ctx: commands.Context):
-        """Displays the currentl track.
+        """Displays the current track.
         """
         if hasattr(ctx.voice_state.current, "create_embed"): # it's being played.
             await ctx.send(embed=ctx.voice_state.current.create_embed())
