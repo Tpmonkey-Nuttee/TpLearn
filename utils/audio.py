@@ -16,7 +16,9 @@ from typing import List, Tuple
 # Silence useless bug reports messages
 youtube_dl.utils.bug_reports_message = lambda: ''
 
-__all__ = ("YTDLError", "YTDLSource", "DownloadError", "getYtPlaylist")
+__all__ = (
+    "YTDLError", "YTDLSource", "DownloadError", "getYtPlaylist", "YOUTUBE_API_KEY", "YOUTUBE_PLAYLIST_KEYWORDS"
+)
 
 import os
 
@@ -25,6 +27,7 @@ if YOUTUBE_API_KEY is None:
     raise ImportError(
         "Youtube API key is not set, Please head to https://console.cloud.google.com/apis/ to setup one."
     )
+YOUTUBE_PLAYLIST_KEYWORDS = ("youtube.com/playlist?", "&start_radio", "&list=")
 
 def getYtPlaylist(url: str) -> Tuple[List[str]]:
     # actually get playlist id

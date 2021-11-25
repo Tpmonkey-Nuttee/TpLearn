@@ -775,12 +775,12 @@ class Music(commands.Cog):
         log.debug(f"{ctx.guild.id}: Searching {search}")
         await ctx.trigger_typing()       
 
-        # Youtube Playlist
-        if "youtube.com/playlist?" in search or "&start_radio" in search: 
+        # Youtube Playlist, Mix        
+        if any(kw in search for kw in YOUTUBE_PLAYLIST_KEYWORDS): 
             try: # some source of insanity...
                 results = getYtPlaylist(search)
             except Exception:
-                return await ctx.send(":x: **PlayList not found or There is a problem with the bot!**")    
+                return await ctx.send(":x: PlayList not found (Youtube Mix?) or There is a problem with the bot!")    
 
             amount = 0
             for s, t in zip(results[0], results[1]):
