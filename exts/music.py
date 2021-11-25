@@ -524,7 +524,7 @@ class Music(commands.Cog):
             ctx.voice_state.skip()
 
         # normal vote skip.
-        elif voter.id not in ctx.voi.ce_state.skip_votes:
+        elif voter.id not in ctx.voice_state.skip_votes:
             ctx.voice_state.skip_votes.add(voter.id)
             total_votes = len(ctx.voice_state.skip_votes)
 
