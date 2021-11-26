@@ -304,8 +304,10 @@ class Bot(commands.AutoShardedBot):
         log.debug("got Image, return and deleted.")
         return image
     
-    def in_days(self, date1: str, date2: str = today_th()) -> int:
+    def in_days(self, date1: str, date2: str = None) -> int:
         """ Return amount of days between today and targeted date. """
+        if date2 is None:
+            date2 = today_th()
         strpped = self.planner.try_strp_date(date1)
         
         return None if strpped is None else (strpped - datetime.datetime.strptime(date2, "%Y-%m-%d")).days
