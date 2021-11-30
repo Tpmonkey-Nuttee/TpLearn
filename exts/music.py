@@ -103,6 +103,7 @@ class VoiceState:
         self.songs = SongQueue()
 
         self.super_shuffle = False
+        self.loading = False
         self._loop = Loop.NONE
         self._volume = 0.5
         self.skip_votes = set()
@@ -165,6 +166,7 @@ class VoiceState:
                 # Then put it behind the queue if loop queue is enable
                 # or Set current track to be the loaded song if loop single
                 try:
+                    self.loading = True
                     source = await YTDLSource.create_source(self.current.source.ctx, self.current.source.url)
                 except Exception:
                     await self._ctx.send(f"Couldn't load track & Removed from the queue.\n{self.current.source.url}")
@@ -176,10 +178,13 @@ class VoiceState:
                     else: # Loop queue.
                         await self.songs.put(song)
                         self.current = await self.songs.get()
+                finally:
+                    self.loading = False
             
             if isinstance(self.current, PlaylistSong):
                 # If It's playlist song and is not loaded yet, load it.
                 try:
+                    self.loading = True
                     source = await YTDLSource.create_source(self.current.ctx, self.current.url)
                 except Exception:
                     log.info(f"{self._ctx.guild.id}: Unable to load playlist song, retrying...")
@@ -197,6 +202,8 @@ class VoiceState:
                         await self._ctx.send(f"Couldn't load track: {self.current.url}")
                         log.info(f"{self._ctx.guild.id}: It was an url, skipping...")
                         continue
+                finally:
+                    self.loading = False
                         
                 self.current = Song(source)
 
@@ -229,7 +236,9 @@ class VoiceState:
 
     async def stop(self):
         self.songs.clear()
-        self.audio_player.cancel()
+        
+        if self.audio_player is not None:
+            self.audio_player.cancel()
 
         if self.voice:
             await self.voice.disconnect()
@@ -396,11 +405,19 @@ class Music(commands.Cog):
             try:
                 name = name.replace(" ", "_").lower()
                 if name == "timeout" and value <= 60:
-                    return await ctx.send(":x: **Timeout need to be more than 60 seconds!**")
-                self.bot.msettings.set(ctx.guild.id, name, value)
+                    return await ctx.send(":x: *imeout need to be more than 60 seconds!")
+
+                try:
+                    old = self.bot.msettings.get(ctx.guild.id, name)
+                    self.bot.msettings.set(ctx.guild.id, name, value)
+                    new = self.bot.msettings.get(ctx.guild.id, name)
+                except KeyError:
+                    return await ctx.send(":x: Unkown setting... Please try again later!")
+                    
             except ValueError:
                 return await ctx.send(":x: **Invalid Setting name or Value**")
-            await ctx.send("Successfully save new settings!")
+            
+            await ctx.send(f"Changed `{name}` from **{old}** to **{new}**")
         
         else: # Idk, are you drunk or what?
             await ctx.send(":x: **Value is a must have argument!**")
@@ -413,6 +430,7 @@ class Music(commands.Cog):
         if ctx.voice_state.voice: # already connected to another channel.
             return await ctx.voice_state.voice.move_to(destination)
         ctx.voice_state.voice = await destination.connect()
+        
 
     @commands.command(name='leave', aliases=['disconnect'])
     async def _leave(self, ctx: commands.Context, invoke_without_subcommand=True):
@@ -563,6 +581,12 @@ class Music(commands.Cog):
         """
         if len(ctx.voice_state.songs) == 0 and ctx.voice_state.current is None:
             return await ctx.send('Empty queue. ¯\_(ツ)_/¯')
+        
+        if ctx.voice_state.loading:
+            m = await ctx.send("Song is currently loading...")
+            while ctx.voice_state.loading:
+                await asyncio.sleep(0.5)
+            await m.delete()
 
         items_per_page = 8
         pages = max(1, math.ceil(len(ctx.voice_state.songs) / items_per_page)) # use max to prevent 1/0 page
