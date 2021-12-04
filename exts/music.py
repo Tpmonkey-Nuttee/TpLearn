@@ -56,8 +56,8 @@ class Song:
         # Create embed containing detail of the song.
         embed = discord.Embed(
             title = "Now Playing",
-            description = f"[**{self.source.title}**]({self.source.url})",
-            color = discord.Color.random(), # Nice
+            description = f"[{self.source.title}]({self.source.url})",
+            color = discord.Color.random(), 
             timestamp = datetime.datetime.utcnow()
         )
 
@@ -109,10 +109,12 @@ class VoiceState:
         self.skip_votes = set()
         self.announce_message = None
 
+        self.playing = False
         self.audio_player = None # bot.loop.create_task(self.audio_player_task())     
 
     def __del__(self):
-        self.audio_player.cancel()
+        if self.audio_player is not None:
+            self.audio_player.cancel()
 
     @property
     def loop(self):
@@ -135,6 +137,7 @@ class VoiceState:
         return self.voice and self.current
 
     def start_player(self):
+        self.playing = True
         if self.audio_player is None:
             self.audio_player = self.bot.loop.create_task(self.audio_player_task())
 
@@ -165,6 +168,8 @@ class VoiceState:
                 # Loop Logic: Try to load the ended song agian,
                 # Then put it behind the queue if loop queue is enable
                 # or Set current track to be the loaded song if loop single
+
+                # Load current track again.
                 try:
                     self.loading = True
                     source = await YTDLSource.create_source(self.current.source.ctx, self.current.source.url)
@@ -239,6 +244,8 @@ class VoiceState:
         
         if self.audio_player is not None:
             self.audio_player.cancel()
+        
+        self.playing = False
 
         if self.voice:
             await self.voice.disconnect()
@@ -253,6 +260,7 @@ class VoiceState:
         cog = self.bot.get_cog("Music")
         if cog is not None:
             cog.remove_voicestate(self._ctx.guild.id)
+        
         log.info(f"{self._ctx.guild.id}: Left vc & cleaned up")
 
 class Music(commands.Cog):
@@ -333,8 +341,18 @@ class Music(commands.Cog):
             return
         
         # Bot disconnected?
-        if member.id == self.bot.user.id: 
-            if member.guild.id in self.wait_for_disconnect:
+        if member.id == self.bot.user.id and before.channel is not None and after.channel is None:
+            voice_state = self.voice_states.get(member.guild.id)
+
+            if voice_state is None:
+                return
+            
+            if voice_state.playing:
+                await asyncio.sleep(2)
+                log.info(f"{member.guild.id}: Bot got disconnected why playing, Joining back!")
+                voice_state.voice = await before.channel.connect()
+
+            """if member.guild.id in self.wait_for_disconnect:
                 # This is a mess, so I'm just gonna put sleep here.
                 # It works, trust me.
                 await asyncio.sleep(2)
@@ -345,7 +363,7 @@ class Music(commands.Cog):
                     return
 
                 log.info(f"{member.guild.id}: Bot got disconnected, removed wait for disconnect")
-            return
+            return"""
         
         # Check if user switched to bot vc or joined the bot vc
         if (before.channel is None and after.channel is not None) or (before.channel != after.channel and after.channel is not None):
