@@ -66,7 +66,7 @@ class Updater(Cog):
         key = work.get('key')
 
         # Assignment Colour
-        colour_embed = embed['color']
+        colour_embed = embed.get('color')
         colour = self.bot.get_colour(work.get('date')).value
 
         # Check title.
