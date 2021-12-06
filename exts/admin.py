@@ -42,8 +42,8 @@ class AdminCommands(Cog):
     @is_owner()
     async def stop_clearing(self, ctx: Context) -> None:
         if not self.clearing:
-            await ctx.send("No clearing to stop :/")
-            return
+            return await ctx.send("No clearing to stop :/")
+            
         self.clearing = False
         await ctx.send("Should be stop now.")
 
@@ -53,8 +53,7 @@ class AdminCommands(Cog):
     async def clear_messages(self, ctx: Context, channel: TextChannel, limit: int, *kwargs: str) -> None:
         """Clear Messages that contain given keywords."""
         if self.clearing:
-            await ctx.send("There is a clearing in progres, please wait.\nto stop type: `!sc`")
-            return
+            return await ctx.send("There is a clearing in progres, please wait.\nto stop type: `!sc`")            
 
         count = 0
         total = 0
@@ -120,7 +119,6 @@ class AdminCommands(Cog):
 
             if any(word in content.lower() for word in kwargs):
                 count += 1
-
             
         await ctx.send(f"Count: {count}")
 
@@ -223,11 +221,11 @@ class AdminCommands(Cog):
             text = ''
             
             for i in result_str:
-
                 text += i
                 if len(text) > 1000:
                     results.append(text)
                     text = i
+            
             results.append(text)
         
         embeds = []
@@ -238,6 +236,7 @@ class AdminCommands(Cog):
             for i in range(len(results)):
                 if i != 0:
                     embed = await self._base_embed(ctx, code)
+
                 name = f"{i}"
                 value = f"```python\n\n{results[i]}\n\n\n```"
                 embed.add_field(name=name, value=value)
@@ -285,8 +284,7 @@ class AdminCommands(Cog):
                     v = e
 
                 embed.add_field(name = i, value = v)
-            await m.edit(content=reload, embed=embed)
-            return
+            return await m.edit(content=reload, embed=embed)            
         
         # Only one extension
         elif "exts." not in file:
@@ -309,8 +307,7 @@ class AdminCommands(Cog):
         try:
             await self.bot.wait_for('message', check=check, timeout=10)
         except:
-            await ctx.send("Canceled")
-            return
+            return await ctx.send("Canceled")            
 
         await self.bot.log(__name__, "Shutting down bot... by {}".format(ctx.author.mention))
 
