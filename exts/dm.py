@@ -21,7 +21,8 @@ class VoiceChannel(Cog):
     @Cog.listener()
     async def on_message(self, message: Message) -> None:
         """ Listening for DM. """
-        if not self.channel: self.channel = self.bot.get_channel(self.bot.config.dm_channel_id)
+        if not self.channel: 
+            self.channel = self.bot.get_channel(self.bot.config.dm_channel_id)
 
         """
         RULES/CHECKS
@@ -30,10 +31,8 @@ class VoiceChannel(Cog):
         - Guild needs to be None, that means It's on Bot DM or GROUP.
         """
 
-        if any((message.author.bot, # Author must not be a bot
-            message.author.id == self.bot.owner_id, # Ignore owner.
-            message.guild != None # Need to be direct message.
-        )):  return
+        if message.author.bot or  message.author.id == self.bot.owner_id or message.guild != None:
+            return
         
         user = message.author
 

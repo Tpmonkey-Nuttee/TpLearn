@@ -33,6 +33,7 @@ class NewPatch(Cog):
         if current_version is None:
             log.debug("Couldn't load bot version from database, ignoring...")
             return
+        
         system_version = self.bot.config.version
 
         if current_version != system_version:

@@ -32,17 +32,16 @@ class ErrorHandler(Cog):
         if isinstance(error, errors.CommandNotFound):
             return
         elif isinstance(error, errors.UserInputError):
-            await self.handle_user_input_error(ctx, error)
-            return
+            return await self.handle_user_input_error(ctx, error)            
         elif isinstance(error, errors.CheckFailure):
-            await self.handle_check_failure(ctx, error)
-            return
+            return await self.handle_check_failure(ctx, error)            
         elif isinstance(error, errors.CommandOnCooldown):
-            await ctx.send(f":x: **{error}**")
-            return
+            return await ctx.send(f":x: **{error}**")            
         else:
-            try: await ctx.send(":x: **Something went wrong while processing your request!**")        
-            except: log.warning("couldn't send message.")
+            try: 
+                await ctx.send(":x: **Something went wrong while processing your request!**")        
+            except: 
+                log.warning("couldn't send message.")
 
         log.debug(            
             f"Command {command} invoked by {ctx.author} with error "

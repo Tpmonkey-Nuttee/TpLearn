@@ -35,32 +35,37 @@ class DayLoop(Cog):
         if not self.loop.is_running():
             await self.bot.log(__name__, "DayLoop is not running, Trying to restart...")
             await self.bot.log(__name__, traceback.format_exc())
-            try: self.loop.restart()
+            try: 
+                self.loop.restart()
             except: 
                 await self.bot.log(__name__, "Restart failed with traceback:", mention=True)
                 await self.bot.log(__name__, traceback.format_exc())
             else:
-                await self.bot.log(__name__, "Restart successfully.")
-                return   
+                return await self.bot.log(__name__, "Restart successfully.")                   
     
     @tasks.loop(minutes=MINUTES)
     async def loop(self) -> None:
-        if self.today_morning is None:  self.today_morning = await self.bot.database.load("TODAY")
-        if self.today_th is None:  self.today_th = await self.bot.database.load("TODAY-TH")
+        if self.today_morning is None:  
+            self.today_morning = await self.bot.database.load("TODAY")
+
+        if self.today_th is None:  
+            self.today_th = await self.bot.database.load("TODAY-TH")
+        
         today_new = today()
 
         # Check if the date same as in database.
         if today_new != self.today_morning:
             await self.newDay()
+            await self.bot.database.dump("TODAY", today_new)    
 
-            await self.bot.database.dump("TODAY", today_new)            
             self.today_morning = today_new
         
         today_th_ = today_th()
+
         if today_th_ != self.today_th:
             await self.newDay_th()
-
             await self.bot.database.dump("TODAY-TH", today_th_)
+
             self.today_th = today_th_
 
     async def newDay_th(self) -> None:
@@ -99,7 +104,9 @@ class DayLoop(Cog):
                 if channel is None: 
                     log.debug(f'invalid channel in {guild_id}, passing')
                     continue
+
                 await channel.send(embed=embed)
+            
             log.debug(f'updated {guild_id}')
     
     async def delete_passed(self) -> None:

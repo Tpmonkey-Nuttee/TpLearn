@@ -75,11 +75,9 @@ class Snekbox(Cog):
     @staticmethod
     def format_output(output: str) -> str:        
         if ESCAPE_REGEX.findall(output):
-            return "Code block escape attempt detected; will not output result"
-        
+            return "Code block escape attempt detected; will not output result"        
 
         output = output.lstrip("\n")
-
         lines = output.count("\n")
 
         if lines > 0:
@@ -102,20 +100,18 @@ class Snekbox(Cog):
     
     @staticmethod
     def predict_colour(rcode: str) -> Colour:
-        colour = Colour.default()
         if rcode == "0":
-            colour = Colour.dark_green()
+            return Colour.dark_green()
         elif rcode == "1":
-            colour = Colour.dark_red()
-        return colour
+            return Colour.dark_red()
+        return Colour.default()
 
     @command(name="eval", aliases = ("e", ))
     @guild_only()
     @is_owner()
     async def eval_command(self, ctx: Context, *, code: str = None) -> None:
         if not code:
-            await ctx.send(":x: Invalid Args, Code is needed")
-            return
+            return await ctx.send(":x: Invalid Args, Code is needed")            
 
         embed = Embed(description="This command will only run the code for 10 seconds; futher than that will be terminate!")
         embed.set_author(name="Executing Code...")        
@@ -132,8 +128,8 @@ class Snekbox(Cog):
                 description = "Found black-listed key word in your code!\nYour Job has been canceled."
             )
             embed.set_author(name="Execution Terminated")
-            await m.edit(embed=embed)
-            return
+            return await m.edit(embed=embed)
+            
         
         log.trace(f"Eval command: {ctx.author}({ctx.author.id}) with code:\n{code}")
         

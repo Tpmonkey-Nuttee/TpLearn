@@ -38,7 +38,9 @@ class Updater(Cog):
         if not self.loop.is_running():
             await self.bot.log(__name__, "Updater Loop is not running, Trying to restart...")
             await self.bot.log(__name__, traceback.format_exc())
-            try: self.loop.restart()
+            
+            try: 
+                self.loop.restart()
             except: 
                 await self.bot.log(__name__, "Restart failed with traceback:", mention=True)
                 await self.bot.log(__name__, traceback.format_exc())
@@ -105,6 +107,7 @@ class Updater(Cog):
     async def get_messages(self, channel: TextChannel) -> list:
         """Get messages from active-works channel, Wil only get its own messages."""
         messages = []
+
         async for message in channel.history(limit=30):
             if message.author.id == self.bot.user.id: messages.append(message)
             
@@ -122,11 +125,14 @@ class Updater(Cog):
 
         for gid in need_update:
             # Check if the channel valid or not.
-            if not self.bot.manager.check(gid): continue
+            if not self.bot.manager.check(gid): 
+                continue
             
             self.bot.last_check['update'][gid] = datetime.utcnow()
             works = self.bot.planner.get_sorted(gid)
-            try: ret = await self.update_active(works, data[gid])
+
+            try: 
+                ret = await self.update_active(works, data[gid])
             except:
                 await self.bot.log(__name__, f":negative_squared_cross_mark: Unable to update works at {gid} with error: \n{traceback.format_exc()}")
             else:
@@ -178,7 +184,8 @@ class Updater(Cog):
                     await message.delete()
                     messages_output.append("D")
                 else:
-                    if self.check(message, **work) and not bypass: continue
+                    if self.check(message, **work) and not bypass: 
+                        continue
 
                     embed = self.bot.get_embed(**works[index])
                     await message.edit(embed=embed)
@@ -197,7 +204,8 @@ class Updater(Cog):
                     await channel.send(embed=embed)
                     messages_output.append("S")
                 else:
-                    if self.check(message, **work) and not bypass: continue
+                    if self.check(message, **work) and not bypass: 
+                        continue
                     
                     await messages[index].edit(embed=embed) 
                     messages_output.append("E")
@@ -207,7 +215,8 @@ class Updater(Cog):
         
         else:
             for message, work in zip(messages, works):
-                if self.check(message, **work) and not bypass: continue
+                if self.check(message, **work) and not bypass: 
+                    continue
                 
                 embed = self.bot.get_embed(**work)
                 await message.edit(embed=embed)
@@ -223,18 +232,21 @@ class Updater(Cog):
     async def _update(self, ctx: Context, gid: str, bypass: bool = False) -> None:
         """Force update command, can be bypass system."""
         if self.updating and not bypass:
-            await ctx.send("The bot currently updating data, Please try again later.\nPlease keep in mind that, bypassing the system will may result in bot getting rate limited.")
-            return
+            return await ctx.send(
+                "The bot currently updating data, Please try again later.\nPlease keep in mind that, bypassing the system will may result in bot getting rate limited."
+            )
         
         m = await ctx.send("Trying to update...")
         d = self.bot.manager.get_all()
         works = self.bot.planner.get_sorted(gid)
 
-        try: result = await self.update_active(works, d[gid], True)
+        try: 
+            result = await self.update_active(works, d[gid], True)
         except:
             await self.bot.log(__name__, f"Unable to update works at {gid} with error: {traceback.format_exc()}")
             content = "Update failed, Exception in logs."
-        else: content = "\n".join(result)
+        else: 
+            content = "\n".join(result)
 
         await m.edit(content=content)
     

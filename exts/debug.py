@@ -32,6 +32,7 @@ class Debug(Cog):
         
         text = f"Total of {len(cog.voice_states)}\n"
         text += "\n".join([str(i) for i in cog.voice_states])
+
         await ctx.send(text)
     
     @command(hidden=True)
@@ -63,9 +64,13 @@ class Debug(Cog):
 
         # Time
         kus_last = self.bot.last_check.get("kus-news")
-        if kus_last is not None: kus_last = datetime.utcnow() - kus_last
+        if kus_last is not None: 
+            kus_last = datetime.utcnow() - kus_last
+        
         update_last = self.bot.last_check["update"].get(str(ctx.guild.id))
-        if update_last is not None: update_last = datetime.utcnow() - update_last
+        if update_last is not None: 
+            update_last = datetime.utcnow() - update_last
+        
         embed.add_field(
             name="Time",
             value = f"kus-news: {kus_last}/{self.bot.config.kus_news_cooldown}\nupdate: {update_last}/{self.bot.config.update_work_cooldown}",

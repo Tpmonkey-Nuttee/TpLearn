@@ -108,18 +108,22 @@ class KUSNews(Cog):
             
             datas = [news[key] for key in new_ids] 
             embeds = [self.create_embed(n, u, p) for n, u, p in datas]
+
             await self.bot.log(__name__, f"**Found:** {datas}")
 
             if len(embeds) != 0:
                 for _ in self.channels:
                     channel = self.bot.get_channel(_)
-                    if channel is None: continue
+                    if channel is None: 
+                        continue
+
                     await self.bot.log(__name__, f"Sending news to {channel}//{_}")
 
                     # Send news
                     for embed in embeds[::-1]:
-                        try: await channel.send(embed=embed)
-                        except:
+                        try: 
+                            await channel.send(embed=embed)
+                        except Exception:
                             await self.bot.log(__name__, 
                                 f":negative_squared_cross_mark: Unable to send news embed to `{channel}`" \
                                 f"with traceback: \n{traceback.format_exc()}")
@@ -131,6 +135,7 @@ class KUSNews(Cog):
             
             ids = [id for n, u, p, id in self.data]
             await self.bot.database.dump("NEWS-IDS", ids)
+
             self.ids = ids
             await self.bot.log(__name__, "Saved new data.")
 
@@ -149,7 +154,8 @@ class KUSNews(Cog):
         return embed
     
     def create_embed(self, name, url, pic) -> Embed:
-        if url.startswith("news_detail"): url = MAIN_URL + url
+        if url.startswith("news_detail"): 
+            url = MAIN_URL + url
         
         embed = Embed(
             colour = Colour.from_rgb(170, 3, 250),
@@ -174,8 +180,7 @@ class KUSNews(Cog):
         channel_id = ctx.channel.id
 
         if channel_id in self.channels:
-            await ctx.send(":x: **This channel is already added.**")
-            return
+            return await ctx.send(":x: **This channel is already added.**")            
         
         self.channels.append(channel_id)
         await ctx.send("**Successfully Added Channel.**\nMonitoring: <http://www.kus.ku.ac.th/news.php>")
@@ -190,8 +195,7 @@ class KUSNews(Cog):
         channel_id = ctx.channel.id
 
         if channel_id not in self.channels:
-            await ctx.send(":x: **This channel is already removed.**")
-            return
+            return await ctx.send(":x: **This channel is already removed.**")            
         
         self.channels.remove(channel_id)
         await ctx.send("**Successfully Removed Channel.**")
@@ -209,11 +213,9 @@ class KUSNews(Cog):
                 timestamp = ctx.message.created_at,
                 colour = Colour.from_rgb(170, 3, 250)
             )
-            await ctx.send(embed=embed)
-            return
+            return await ctx.send(embed=embed)            
         elif self.data is None:
-            await ctx.send("กำลังโหลดข้อมูล - กรุณารอสักครู่...")
-            return
+            return await ctx.send("กำลังโหลดข้อมูล - กรุณารอสักครู่...")            
 
         amount = limit(amount, 1, 10)
         embeds = [self.create_embed(n, u, p) for n, u, p, id in self.data]
@@ -238,18 +240,6 @@ class KUSNews(Cog):
     @command(hidden=True)
     async def lenny(self, ctx: Context) -> None:
         await ctx.send("( ͡° ͜ʖ ͡°)")
-    
-    @command(hidden=True)
-    @is_owner()
-    async def quickfix(self, ctx: Context) -> None:
-        async for mess in self.bot.get_channel(728489165565591562).history(limit=3):
-            if mess.id == 841860207117074462:
-                message = mess
-                break
-            
-        n, u, p, id = self.data[0]
-        embed = self.create_embed(n, u, p)
-        await message.edit(embed=embed)
 
 
 def setup(bot: Bot) -> None:

@@ -33,16 +33,15 @@ class SetUp(Cog):
     async def setup(self, ctx: Context) -> None:
         """Setup the bot in one command."""
         if str(ctx.guild.id) in self.bot.manager.get_all():
-
-            await ctx.send(f":x: **You've already setup the bot!**\nYou can type `{ctx.prefix}fix` to fix simple problem!")
-            return
+            return await ctx.send(f":x: **You've already setup the bot!**\nYou can type `{ctx.prefix}fix` to fix simple problem!")            
         
         info = [ ("Active-Works", "active"), ("Passed-Works", "passed") ]
 
-        try: await self.create_channels(ctx, info)
+        try: 
+            await self.create_channels(ctx, info)
         except Forbidden:
-            await ctx.send(":x: **Unable to create channel, Manage Channels Perm required.**")
-            return
+            return await ctx.send(":x: **Unable to create channel, Manage Channels Perm required.**")
+            
         await self.bot.log(__name__, f'Successfully setup bot in {ctx.guild.id}')
         await ctx.send(":white_check_mark: Successfully setup the bot!")
     
@@ -55,21 +54,26 @@ class SetUp(Cog):
         fix = False
 
         if len(channels) == 0:
-            await ctx.send(f"Please use `{ctx.prefix}setup` to setup the bot first.")
-            return
+            return await ctx.send(f"Please use `{ctx.prefix}setup` to setup the bot first.")
         
         if not self.bot.manager.check(ctx.guild.id): 
             info = []
 
-            try: channel = channels['active']
-            except IndexError: info.append(("Active-Works", 'active'))
+            try: 
+                channel = channels['active']
+            except IndexError: 
+                info.append(("Active-Works", 'active'))
             else:
-                if self.bot.get_channel(channel) is None: info.append(("Active-Works", 'active'))
+                if self.bot.get_channel(channel) is None: 
+                    info.append(("Active-Works", 'active'))
             
-            try: channel = channels['passed']
-            except IndexError: info.append(("Passed-Works", 'passed'))
+            try: 
+                channel = channels['passed']
+            except IndexError: 
+                info.append(("Passed-Works", 'passed'))
             else:
-                if self.bot.get_channel(channel) is None: info.append(("Passed-Works", 'passed'))
+                if self.bot.get_channel(channel) is None: 
+                    info.append(("Passed-Works", 'passed'))
                 
             await self.create_channels(ctx, info)
             fix = True
