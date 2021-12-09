@@ -61,10 +61,7 @@ class Updater(Cog):
         embed = message.embeds[0].to_dict()
 
         # Check assignment Key
-        try: 
-            key_embed = embed['description']
-        except (KeyError, IndexError): 
-            key_embed = None
+        key_embed = embed.get('description')        
         key = work.get('key')
 
         # Assignment Colour
@@ -72,10 +69,7 @@ class Updater(Cog):
         colour = self.bot.get_colour(work.get('date')).value
 
         # Check title.
-        try: 
-            title_embed = embed['author']['name']
-        except KeyError: 
-            title_embed = None
+        title_embed = embed.get('author', {}).get('name')
         title = self.bot.get_title(work.get('title'), work.get('date'))
 
         # Check description
