@@ -348,9 +348,10 @@ class Music(commands.Cog):
                 return
             
             if voice_state.playing:
-                await asyncio.sleep(2)
-                log.info(f"{member.guild.id}: Bot got disconnected why playing, Joining back!")
-                voice_state.voice = await before.channel.connect()
+                await asyncio.sleep(5)
+                if voice_state.voice is None:
+                    log.info(f"{member.guild.id}: Bot got disconnected why playing, Joining back!")
+                    voice_state.voice = await before.channel.connect()
 
             """if member.guild.id in self.wait_for_disconnect:
                 # This is a mess, so I'm just gonna put sleep here.
