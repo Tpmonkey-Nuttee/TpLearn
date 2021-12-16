@@ -269,6 +269,7 @@ class Music(commands.Cog):
     """
     def __init__(self, bot: commands.Bot):
         self.bot = bot
+        self.disabled = True
 
         # For keeping track of all voice states
         self.voice_states = {}
@@ -870,7 +871,8 @@ class Music(commands.Cog):
             except YTDLError as e:
                 return await ctx.send(':x: **{}**'.format(str(e)))
             except DownloadError:
-                # maybe it's geo restricted, so retry again but this time put "lyric" behind.                
+                # maybe it's geo restricted, so retry again but this time put "lyric" behind.     
+                log.warning(traceback.format_exc())
                 await ctx.send(f":x: **Could not download that video, Retrying...**")
                 await ctx.trigger_typing() 
 
@@ -945,6 +947,9 @@ class Music(commands.Cog):
         if ctx.voice_client:
             if ctx.voice_client.channel != ctx.author.voice.channel:
                 raise commands.CommandError('Bot is already in a voice channel.')
+
+        if self.disabled:
+            raise commands.CommandError("This cog has been temporary disabled due to API issue.")
 
 
 def setup(bot):
