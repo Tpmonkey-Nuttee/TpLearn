@@ -152,7 +152,9 @@ class VoiceState:
             except Exception:
                 pass
 
-            if self._loop == Loop.NONE:
+            
+
+            if self._loop == Loop.NONE or self.current is None:
                 # Try to get the next song within timeout limit (defeault 3 mins).
                 # If no song will be added to the queue in time,
                 # the player will disconnect due to performance reasons.
