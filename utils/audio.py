@@ -142,7 +142,7 @@ class YTDLSource(discord.PCMVolumeTransformer):
                 except IndexError:
                     raise YTDLError('Couldn\'t retrieve any matches for `{}`'.format(webpage_url))
         
-        if info['is_live']:
+        if info.get('is_live'):
             raise YTDLError("Couldn't fetch live video.")
 
         print("Created Source YouTubeDL", search.strip("https://www.youtube.com/watch?"))
