@@ -334,7 +334,7 @@ class Assignments(Cog):
                     await self.handle_request(ctx, message)
 
                 # goto command
-                elif args[0].lower() == "goto":
+                elif args[0].lower() == "goto" or args[0].lower() == "gt":
                     try:
                         _state = int(args[1])
                     except IndexError:
