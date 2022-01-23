@@ -171,7 +171,7 @@ class Bot(commands.AutoShardedBot):
         await self.change_status()
         
         if self.unloaded_cogs:
-            text = [f"Unable to load **{cog}**\n" for cog in self.unloaded_cogs]
+            text = "".join([f"Unable to load **{cog}**\n" for cog in self.unloaded_cogs])
             await self.log(__name__, text, True)
     
     async def on_resumed(self) -> None:
