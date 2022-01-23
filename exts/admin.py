@@ -313,8 +313,9 @@ class AdminCommands(Cog):
 
         await ctx.send("Shutting down...")
         log.info("Shutting down bot by {}".format(ctx.author))   
+
         self.bot.unload_cogs()     
-        await self.bot.logout()
+        await self.bot.close()
 
     @command(hidden=True)
     async def me(self, ctx: Context) -> None:

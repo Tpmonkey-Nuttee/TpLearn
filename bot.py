@@ -4,6 +4,7 @@ Made by Tpmonkey
 """
 
 import os
+import sys
 import random
 import asyncio
 import logging
@@ -155,6 +156,13 @@ class Bot(commands.AutoShardedBot):
                 self.unload_extension(extension)
             except Exception:
                 pass
+    
+    async def close(self) -> None:
+        super().close()
+
+        await self.trust_session.close()
+        sys.exit(0)
+
     
     async def on_ready(self) -> None:
         """ on Ready event, Use to log and change bot status. """
