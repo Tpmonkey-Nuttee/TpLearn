@@ -19,7 +19,7 @@ log = logging.getLogger(__name__)
 class Planner:
     def __init__(self, bot):
         self.bot = bot
-        self.__data = dict(bot.database.loads("WORKS"))
+        self.__data = dict(bot.database.loads("WORKS", {}))
         self.__need_update = []
         self.trigger_update()
     

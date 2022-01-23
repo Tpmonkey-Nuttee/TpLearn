@@ -9,7 +9,7 @@ log = logging.getLogger(__name__)
 class Manager:
     def __init__(self, bot):
         self.bot = bot
-        self.__data = bot.database.loads("GUILD")
+        self.__data = bot.database.loads("GUILD", {})
 
     def create_guild(self, guild_id: int) -> bool:
         """
