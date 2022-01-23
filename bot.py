@@ -158,7 +158,7 @@ class Bot(commands.AutoShardedBot):
                 pass
     
     async def close(self) -> None:
-        super().close()
+        await super().close()
 
         await self.trust_session.close()
         sys.exit(0)
