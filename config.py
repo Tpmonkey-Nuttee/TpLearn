@@ -54,8 +54,8 @@ check_day_cooldown = 1 # min
 kus_news_cooldown = 4 # hours
 
 # KUS News URL
-main_url = "http://www.kus.ku.ac.th/"
-news_url = "http://www.kus.ku.ac.th/news.php?type=0"
+main_url = "https://www.kus.ku.ac.th/"
+news_url = "https://www.kus.ku.ac.th/news.php?type=0"
 # --------------------------------- #
 
 ### ----- System limitation ----- ###
