@@ -81,7 +81,9 @@ class YTDLSource(discord.PCMVolumeTransformer):
         'default_search': 'auto',
         'source_address': '0.0.0.0',
         "cookiefile": "com_cookies.txt",
-        "cachedir": False
+        "cachedir": False,
+        "geo_bypass": True, # These 2 options may do smth, but It doesn't work right now.
+        "geo_bypass_country": "TH"
     }
 
     FFMPEG_OPTIONS = {
