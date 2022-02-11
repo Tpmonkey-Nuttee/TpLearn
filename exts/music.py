@@ -156,7 +156,7 @@ class VoiceState:
 
             if self._loop == Loop.NONE or self.current is None:
                 # Try to get the next song within timeout limit (defeault 3 mins).
-                # If no song will be added to the queue in time,
+                # If no song is added to the queue in time,
                 # the player will disconnect due to performance reasons.
                 try:                    
                     async with timeout(self.bot.msettings.get(self._ctx.guild.id, "timeout")):
@@ -805,6 +805,7 @@ class Music(commands.Cog):
         This command automatically searches from various sites if no URL is provided.
         A list of these sites can be found here: https://rg3.github.io/youtube-dl/supportedsites.html
         """
+        t = time.perf_counter()
         if not ctx.voice_state.voice:
             # not connected? try to join first
             try:
@@ -880,20 +881,20 @@ class Music(commands.Cog):
 
                 try:
                     source = await YTDLSource.create_source(ctx, search + " lyric")
-                except (DownloadError, YTDLError):
+                except (DownloadError, YTDLError) as e:
                     # Idk anymore...
                     self.play_error(ctx.guild.id)
                     if self.errors_count.get(ctx.guild.id, 0) >= 2:
                         log.warning(f"Download problem detected, Couldn't play video in server {ctx.guild.id}")
                         return await ctx.send("Download problem detected, Youtube service may be down... Please try again in a few hours.")
-                    return await ctx.send(":x: **Download fail, Please try using an url.**")
+                    return await ctx.send(f":x: **Download fail** ({e})")
             
             song = Song(source)
             await ctx.voice_state.songs.put(song)
             await ctx.send('Enqueued {}'.format(str(source)))
         
         ctx.voice_state.start_player()
-        log.debug(f"Enqueued")
+        log.debug(f"Enqueued; time took {time.perf_counter() - t} sec")
     
     @commands.command(name="playnext", aliases=['pn', ])
     async def _play_next(self, ctx: commands.Context, *, search: str) -> None:
