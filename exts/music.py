@@ -805,7 +805,7 @@ class Music(commands.Cog):
         This command automatically searches from various sites if no URL is provided.
         A list of these sites can be found here: https://rg3.github.io/youtube-dl/supportedsites.html
         """
-        t = time.perf_counter()
+        _ = time.perf_counter()
         if not ctx.voice_state.voice:
             # not connected? try to join first
             try:
@@ -894,7 +894,7 @@ class Music(commands.Cog):
             await ctx.send('Enqueued {}'.format(str(source)))
         
         ctx.voice_state.start_player()
-        log.debug(f"Enqueued; time took {time.perf_counter() - t} sec")
+        log.debug(f"Enqueued; time took {time.perf_counter() - _} sec")
     
     @commands.command(name="playnext", aliases=['pn', ])
     async def _play_next(self, ctx: commands.Context, *, search: str) -> None:
