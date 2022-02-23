@@ -55,7 +55,7 @@ def getAlbum(albumURL: str) -> List[str]:
         results = spotify.album_tracks(albumURL, offset=offset)
     return trackList
 
-def getRecommend(names: List[str], amount: int = 20) -> List[str]:    
+def getRecommend(names: List[str], amount: int = 50) -> List[str]:    
     # Find uri
     uris = []
     for name in names:
