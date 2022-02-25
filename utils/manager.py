@@ -26,7 +26,7 @@ class Manager:
     def check(self, guild_id: int) -> bool:
         """ Check if Work Channels in targeted guild valid or not. """
         # If the guild is not exist, there no need to check any further.
-        if self.create_guild(guild_id):
+        if str(guild_id) not in self.__data:
             return False
         
         d = self.__data[str(guild_id)]
