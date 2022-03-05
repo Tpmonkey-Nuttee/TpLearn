@@ -25,7 +25,7 @@ note = [
     "- Fix pass-work sometimes display as \"Today\" instead of \"Passed\"",  
     "- Fix day counter not updating correctly if bot didn't restart.",    
     "- Fix an error when the bot resume connect with discord API.",     
-    "- Fix debug command stores data without permission."
+    "- Fix debug command stores data without permission.",
     "- Fix KUS website url using HTTP instead of HTTPS.",
     "- Fix assignment not updating correctly.",
     "- Fix problem with fetching live video.",
