@@ -5,31 +5,30 @@ Made by Tpmonkey
 
 ### ---------- General ---------- ###
 
-version = "1.6"
+version = "1.7"
 note = [
-    "**New Command!**",
-    "- __Play next command!__ (aliases is pn, playnext)",
-    "Directly play track after the current one ended!",
-    "- __Bugs command!__ (aliases is bugs)",
-    "Show all known bugs and way to fix it by yourself. (also, report it in bot dm if you can ;) )",
-    "",
-
     "**QoL!**",
-    "- \"Now Playing\" embed will now be automatically deleted after the song ended!",
-    "- You can now instantly use loop & loopq command. (in a nutshell, I removed checks. so you can use it at anytime now.)"
-    "- Loading speed is now 2 times faster!",
-    "- You can now use <url>. (some people want to hide embed.)",
-    "- New audio player logic, meaning It will be better & faster! ",
-    "- Queue now shows a (almost) all song title when it can.",
-    "- Optimize memory usage.",
+    "- Bot now show detail error message when failed to load a track",
+    "- Improve alone-detector when the bot is alone so that it can disconnect itself... \:(",
+    "- Improve recommendation command to fetch more track."
+    "- Improve error handler in settings command.",
+    "- Improve shutdown command (admin only)",
+    "- Improve Youtube playlist parsing.",
+    "- Add `gt` shortcut for add & edit command.",    
+    "- Some optimization.",
     "",
 
     "**Bug Fixes!**",
-    "- Fix error detection system.",
-    "- Fix stop command sometimes break the bot.",
-    "- Fix queue command doesn't work with only 1 track.",
-    "- Fix Spotify error handler doesn't work. (tbh, there was no handler at all.)",
-    "- Fix bot spamming error when the video is suddenly privated.",
+    "- Fix shortcut in add & edit command not update embed when used.",
+    "- Fix remove song, skip, queue, play, loop command not working as intended in some cases.",    
+    "- Fix add & edit command not working if spam.",
+    "- Fix pass-work sometimes display as \"Today\" instead of \"Passed\"",  
+    "- Fix day counter not updating correctly if bot didn't restart.",    
+    "- Fix an error when the bot resume connect with discord API.",     
+    "- Fix debug command stores data without permission."
+    "- Fix KUS website url using HTTP instead of HTTPS.",
+    "- Fix assignment not updating correctly.",
+    "- Fix problem with fetching live video.",
     "",    
 ]
 
