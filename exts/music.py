@@ -231,7 +231,9 @@ class VoiceState:
     def play_next_song(self, error=None):
         # Call when the song ended or and exception has been raised
         if error:
+            log.warning(str(error))
             raise VoiceError(str(error))
+            
         self.next.set()
 
     def skip(self):
@@ -737,10 +739,22 @@ class Music(commands.Cog):
         
         This will find 20 more songs similar songs and add it to the queue.
         You can also use the song url from spotify to search.
-        Note: This command use Spotify Recommendation system.
+        Note: This command uses Spotify Recommendation system.
         """
+        # NOTE: I am not sure if this will break the system or not, but for QoL I will do it.
+        # Maybe will revert it later if it breaks.
+        
+        if not ctx.voice_state.voice:
+            # not connected? try to join first
+            try:
+                await ctx.invoke(self._join)             
+            except Exception:
+                return await ctx.send("Couldn't connect to the voice, Please disconnect me and try again!")
+
+        ctx.voice_state.start_player()
+        
         # name is define, recommend base on it
-        if name is not None and ctx.voice_state.audio_player is not None:
+        if name is not None:
             log.info(f"{ctx.guild.id}: Recommending song based on {name}")
             try:
                 songs = getRecommend( name.split() )
