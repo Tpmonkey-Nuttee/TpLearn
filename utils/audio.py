@@ -10,32 +10,44 @@ from urllib.parse import parse_qs, urlparse
 import asyncio
 import functools
 
-
 from typing import List, Tuple
 
 # Silence useless bug reports messages
 youtube_dl.utils.bug_reports_message = lambda: ''
 
 __all__ = (
-    "YTDLError", "YTDLSource", "DownloadError", "getYtPlaylist", "YOUTUBE_API_KEY", "YOUTUBE_PLAYLIST_KEYWORDS"
+    "YTDLError", "YTDLSource", "DownloadError", "getYtPlaylist", "getInfo", "YOUTUBE_API_KEY", "YOUTUBE_PLAYLIST_KEYWORDS"
 )
 
 import os
 
+YOUTUBE_PLAYLIST_KEYWORDS = ("youtube.com/playlist?", "&start_radio", "&list=")
 YOUTUBE_API_KEY = os.getenv("YOUTUBE_API_KEY")
 if YOUTUBE_API_KEY is None:
     raise ImportError(
         "Youtube API key is not set, Please head to https://console.cloud.google.com/apis/ to setup one."
     )
-YOUTUBE_PLAYLIST_KEYWORDS = ("youtube.com/playlist?", "&start_radio", "&list=")
+
+
+
+youtube = googleapiclient.discovery.build("youtube", "v3", developerKey = YOUTUBE_API_KEY)
+_search = youtube.search()
+_playlistItems = youtube.playlistItems()
+
+
+def getInfo(q: str) -> dict:
+    return _search.list(
+        q = q,
+        part = "id,snippet",
+        maxResults = 1
+    ).execute()['items'].pop(0)
 
 def getYtPlaylist(url: str) -> Tuple[List[str]]:
     # actually get playlist id
     query = parse_qs(urlparse(url).query, keep_blank_values=True)
     playlist_id = query["list"][0]
-
-    youtube = googleapiclient.discovery.build("youtube", "v3", developerKey = YOUTUBE_API_KEY)
-    request = youtube.playlistItems().list(
+    
+    request = _playlistItems.list(
         part = "snippet",
         playlistId = playlist_id,
         maxResults = 50 # 50 vid per request.
@@ -82,27 +94,27 @@ class YTDLSource(discord.PCMVolumeTransformer):
         'source_address': '0.0.0.0',
         "cookiefile": "com_cookies.txt",
         "cachedir": False,
-        "geo_bypass": True, # These 2 options may do smth, but It doesn't work right now.
-        "geo_bypass_country": "TH"
     }
 
     FFMPEG_OPTIONS = {
         'before_options': '-reconnect 1 -reconnect_streamed 1 -reconnect_delay_max 5',
         'options': '-vn',
     }
+    FFMPEG_OPTIONS_NC = {
+        'before_options': '-reconnect 1 -reconnect_streamed 1 -reconnect_delay_max 5',
+        'options': '-vn -filter:a "atempo=1.25,asetrate=44100*1.25"',
+    }
 
-    __slots__ = "ctx", "requester", "channel", "data", "uploader", "uploader_url", \
+    __slots__ = "data", "uploader", "uploader_url", \
         "date", "upload_date", "title", "thumbnail", "description", "duration", "tags", \
         "url", "views", "likes", "dislikes", "stream_url"
 
     ytdl = youtube_dl.YoutubeDL(YTDL_OPTIONS)
 
-    def __init__(self, ctx: commands.Context, source: discord.FFmpegPCMAudio, *, data: dict, volume: float = 0.5):
+    def __init__(self, source: discord.FFmpegPCMAudio, *, data: dict, volume: float = 0.5):
         super().__init__(source, volume)
 
-        self.ctx = ctx
-        self.requester = ctx.author
-        self.channel = ctx.channel
+
         self.data = data
 
         self.uploader = data.get('uploader')
@@ -124,7 +136,7 @@ class YTDLSource(discord.PCMVolumeTransformer):
         return '**{0.title}** by **{0.uploader}**'.format(self)
 
     @classmethod
-    async def create_source(cls, ctx: commands.Context, search: str, *, loop: asyncio.BaseEventLoop = None):
+    async def create_source(cls, search: str, *, loop: asyncio.BaseEventLoop = None, nc: bool = False):
         loop = loop or asyncio.get_event_loop()
 
         webpage_url = search # process_info['webpage_url']
@@ -148,7 +160,9 @@ class YTDLSource(discord.PCMVolumeTransformer):
             raise YTDLError("Couldn't fetch live video.")
 
         print("Created Source YouTubeDL", search.strip("https://www.youtube.com/watch?"))
-        return cls(ctx, discord.FFmpegPCMAudio(info['url'], **cls.FFMPEG_OPTIONS), data=info)
+
+        FFMPEG_OPTS = cls.FFMPEG_OPTIONS_NC if nc else cls.FFMPEG_OPTIONS
+        return cls(discord.FFmpegPCMAudio(info['url'], **FFMPEG_OPTS), data=info)
 
     @staticmethod
     def parse_duration(duration: int):

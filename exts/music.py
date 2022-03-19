@@ -32,27 +32,29 @@ class Loop(enum.Enum):
 class VoiceError(Exception):
     pass
 
-class PlaylistSong:
-    """Just a dataclass for storing Playlist song.
+class Song:
+    """A class containing Youtube video data.
     """
-    __slots__ = "url", "ctx", "title", "song"
-    
+
+    __slots__ = "url", "title", "ctx", "requester", "source"
+
     def __init__(self, url: str, ctx: commands.Context, title: str = None):
         self.url = url
-        self.ctx = ctx
         self.title = title
-        self.song = None         
 
-class Song:
-    """Song class for storing the Source and Requester
-    """
-    __slots__ = ('source', 'requester')
+        self.ctx = ctx        
+        self.requester = ctx.author
 
-    def __init__(self, source: YTDLSource = None, url: str = None):
-        self.source = source
-        self.requester = source.requester
+        self.source = None
+    
+    async def load_audio(self, nightcore: bool = False) -> YTDLSource:
+        self.source = await YTDLSource.create_source(self.url, nc = nightcore)
+        return self.source
 
     def create_embed(self):
+        if self.source is None:
+            return discord.Embed(title = "This song is still loading!")
+
         # Create embed containing detail of the song.
         embed = discord.Embed(
             title = "Now Playing",
@@ -99,15 +101,17 @@ class VoiceState:
 
         self.current = None
         self.voice = None
+        self.announce_message = None
         self.next = asyncio.Event()
         self.songs = SongQueue()
 
         self.super_shuffle = False
         self.loading = False
+        self.nightcore = False
         self._loop = Loop.NONE
         self._volume = 0.5
         self.skip_votes = set()
-        self.announce_message = None
+        
 
         self.playing = False
         self.audio_player = None # bot.loop.create_task(self.audio_player_task())     
@@ -166,53 +170,28 @@ class VoiceState:
                     log.debug(f"{self._ctx.guild.id}: No more track, stopping")
                     return self.bot.loop.create_task(self.stop())
 
-            else: # Loop is on                
-                # Loop Logic: Try to load the ended song agian,
-                # Then put it behind the queue if loop queue is enable
-                # or Set current track to be the loaded song if loop single
+            else: # Either loop one of loop queue is on.    
+                if self._loop == Loop.SINGLE:
+                    pass
+                else: # Loop queue.
+                    await self.songs.put(self.current)
+                    self.current = await self.songs.get()
 
-                # Load current track again.
-                try:
-                    self.loading = True
-                    source = await YTDLSource.create_source(self.current.source.ctx, self.current.source.url)
-                except Exception:
-                    await self._ctx.send(f"Couldn't load track & Removed from the queue.\n{self.current.source.url}")
-                else:
-                    song = Song(source)
-
-                    if self._loop == Loop.SINGLE:
-                        self.current = song
-                    else: # Loop queue.
-                        await self.songs.put(song)
-                        self.current = await self.songs.get()
-                finally:
-                    self.loading = False
             
-            if isinstance(self.current, PlaylistSong):
-                # If It's playlist song and is not loaded yet, load it.
-                try:
-                    self.loading = True
-                    source = await YTDLSource.create_source(self.current.ctx, self.current.url)
-                except Exception:
-                    log.info(f"{self._ctx.guild.id}: Unable to load playlist song, retrying...")
-                    url = self.current.url
+            try:
+                source = await self.current.load_audio(self.nightcore)
+            except Exception as e:
+                await self._ctx.send(
+                    embed = discord.Embed(
+                        colour = discord.Colour.dark_red(),
+                        timestamp = datetime.datetime.utcnow()
+                    ).set_author(name = "Cannot load this track & Removed from the queue", url=self.current.url)
+                    .add_field(name = "Error:", value = str(e)[:300])
+                )
 
-                    if "http" not in url: # It's actually the song name
-                        try:
-                            source = await YTDLSource.create_source(self.current.ctx, url+" lyric")
-                        except Exception:
-                            await self._ctx.send(f"Couldn't load track: {self.current.url}")
-                            log.info(f"{self._ctx.guild.id}: Download fail, Skipped")
-                            continue
-                        log.info(f"{self._ctx.guild.id}: Sucessfully loaded the song, continue playing...")
-                    else:
-                        await self._ctx.send(f"Couldn't load track: {self.current.url}")
-                        log.info(f"{self._ctx.guild.id}: It was an url, skipping...")
-                        continue
-                finally:
-                    self.loading = False
-                        
-                self.current = Song(source)
+                self.current = None
+
+                continue
 
             # super shuffle.
             if self.super_shuffle:
@@ -220,11 +199,11 @@ class VoiceState:
 
             # Set the volume, that nobody cares and play it
             self.current.source.volume = self._volume
-            self.voice.play(self.current.source, after=self.play_next_song)            
+            self.voice.play(source, after=self.play_next_song)            
 
             # If option "annouce next song" is on, annouce it
             if self.bot.msettings.get(self._ctx.guild.id, "annouce_next_song"):
-                self.announce_message = await self.current.source.channel.send(embed=self.current.create_embed())    
+                self.announce_message = await self._ctx.send(embed=self.current.create_embed())    
 
             await self.next.wait()
 
@@ -242,6 +221,10 @@ class VoiceState:
 
         if self.is_playing:
             self.voice.stop()
+    
+    def toggle_nightcore(self):
+        self.nightcore = not self.nightcore
+        return self.nightcore
 
     async def stop(self):
         self.songs.clear()
@@ -277,7 +260,10 @@ class Music(commands.Cog):
 
         # For keeping track of all voice states
         self.voice_states = {}
-        self.errors_count = {}
+
+        # For monitoring Google API errors.
+        # It will also disable it untils next restart.
+        self.api_error = False
 
         # disconnecting when bot is alone, what a sad life.
         self.wait_for_disconnect = {}
@@ -294,9 +280,9 @@ class Music(commands.Cog):
     def remove_voicestate(self, key: int) -> None:
         self.voice_states.pop(key, None)
     
-    def play_error(self, guild_id: int) -> None:
-        count = self.errors_count.get(guild_id, 0)
-        self.errors_count[guild_id] = count + 1
+    def play_error(self) -> bool:
+        self.api_error = True
+        return True
         
     def get_voice_state(self, ctx: commands.Context):
         # Get voice state and embeded it to context.
@@ -478,6 +464,13 @@ class Music(commands.Cog):
         await ctx.voice_state.stop()
         log.debug(f"{ctx.guild.id}: stopped from leave command")
         await ctx.message.add_reaction("👋")
+    
+    @commands.command(name="nightcore", aliases = ["nc", ])
+    async def _nightcore(self, ctx: commands.Context):
+        """Toggle nightcore mode.
+        """
+        current = ctx.voice_state.toggle_nightcore()
+        return await ctx.send(f"🎧 Nightcore mode has been turned {'on' if current else 'off'}!")
 
     @commands.command(name='volume')
     async def _volume(self, ctx: commands.Context, volume: int = None):
@@ -626,20 +619,10 @@ class Music(commands.Cog):
 
         queue = ''
         for i, song in enumerate(ctx.voice_state.songs[start:end], start=start):
-            if isinstance(song, Song):      # requested one by one
-                title = self.shorten_title(song.source.title, song.source.url)
-                queue += '**{0}.** [{1}]({2.source.url})\n'.format(i + 1, title, song)
-            else:
-                if song.song is not None:    # is loaded
-                    title = self.shorten_title(song.song.source.title, song.song.source.url)
-                    queue += '**{0}.** [{1}]({2.song.source.url})\n'.format(i + 1, title, song)
-                elif song.title is not None:
-                    title = self.shorten_title(song.title, song.url)
-                    queue += '**{0}.** [{1}]({2.url})\n'.format(i + 1, title, song) 
-                elif "http" in song.url:     # not loaded, but have the url
-                    queue += f"**{i+1}.** [Couldn't load this song]({song.url})\n"  
-                else:                        # not loaded, have song name
-                    queue += '**{0}.** {1.url}\n'.format(i + 1, song)
+            if song.title is None: # Spotify: only name, no url
+                queue += f'**{i + 1}.** {song.url}\n'
+            else: # Youtube: have both name and url
+                queue += f'**{i + 1}.** [{self.shorten_title(song.title, song.url)}]({song.url})\n'
 
         queue = queue or "Nothing \:("
         # A large embed... madness
@@ -767,7 +750,7 @@ class Music(commands.Cog):
 
             amount = 0
             for s in songs: # load the song
-                pl = PlaylistSong(s, ctx)
+                pl = Song(s, ctx)
                 await ctx.voice_state.songs.put(pl)
                 amount += 1
             
@@ -794,7 +777,7 @@ class Music(commands.Cog):
 
             amount = 0
             for s in songs: # load the song
-                pl = PlaylistSong(s, ctx)
+                pl = Song(s, ctx)
                 await ctx.voice_state.songs.put(pl)
                 amount += 1
             
@@ -838,6 +821,9 @@ class Music(commands.Cog):
 
         # Youtube Playlist, Mix        
         if any(kw in search for kw in YOUTUBE_PLAYLIST_KEYWORDS): 
+            if self.api_error:
+                return await ctx.send(":x: Bot has reached maximum quota, Youtube Playlist will be disabled.")
+
             try: # some source of insanity...
                 results = getYtPlaylist(search)
             except Exception:
@@ -845,7 +831,7 @@ class Music(commands.Cog):
 
             amount = 0
             for s, t in zip(results[0], results[1]):
-                pl = PlaylistSong(s, ctx, t)
+                pl = Song(s, ctx, t)
                 await ctx.voice_state.songs.put(pl)
                 amount += 1            
             await ctx.send("Enqueued {} songs.".format(amount))
@@ -856,11 +842,11 @@ class Music(commands.Cog):
                 tracks = getTracks(search)
             except Exception:
                 log.warning(traceback.format_exc())
-                return await ctx.send(":x: **Failed to load Spotify Plalist!**")
+                return await ctx.send(":x: **Failed to load Spotify Playlist!**")
             
             amount = 0
             for s in tracks:                    
-                pl = PlaylistSong(s, ctx)
+                pl = Song(s, ctx)
                 await ctx.voice_state.songs.put(pl)
                 amount += 1            
             await ctx.send("Enqueued {} songs.".format(amount))   
@@ -874,38 +860,35 @@ class Music(commands.Cog):
             
             amount = 0
             for s in tracks: # put in dataclass and queue               
-                pl = PlaylistSong(s, ctx)
+                pl = Song(s, ctx)
                 await ctx.voice_state.songs.put(pl)
                 amount += 1            
             await ctx.send("Enqueued {} songs.".format(amount))   
 
         elif "open.spotify.com/" in search: # Anything else related to Spotify
-            return await ctx.send("Sorry, Only Spotify playlist & Album is support at the moment!") 
+            return await ctx.send("Sorry, Please use normal search to play this track!") 
 
         else: # Normal searching. 
             try:
-                source = await YTDLSource.create_source(ctx, search)
-            except YTDLError as e:
-                return await ctx.send(':x: **{}**'.format(str(e)))
-            except DownloadError:
-                # maybe it's geo restricted, so retry again but this time put "lyric" behind.     
-                log.warning(traceback.format_exc())
-                await ctx.send(f":x: **Could not download that video, Retrying...**")
-                await ctx.trigger_typing() 
-
-                try:
-                    source = await YTDLSource.create_source(ctx, search + " lyric")
-                except (DownloadError, YTDLError) as e:
-                    # Idk anymore...
-                    self.play_error(ctx.guild.id)
-                    if self.errors_count.get(ctx.guild.id, 0) >= 2:
-                        log.warning(f"Download problem detected, Couldn't play video in server {ctx.guild.id}")
-                        return await ctx.send("Download problem detected, Youtube service may be down... Please try again in a few hours.")
-                    return await ctx.send(f":x: **Download fail** ({e})")
-            
-            song = Song(source)
-            await ctx.voice_state.songs.put(song)
-            await ctx.send('Enqueued {}'.format(str(source)))
+                # Try catching an exception bc we may reach "quota limit" by Google API
+                # If reached, Fetch it normally instead.
+                if self.api_error: # Already error, skip to except statement
+                    raise Exception
+                
+                ret = getInfo(search)
+            except Exception:
+                self.play_error() # Call play error
+                song = Song(search, ctx)
+                await ctx.message.add_reaction('✅')
+            else:
+                song = Song(
+                    url = f"https://www.youtube.com/watch?v={ret['id']['videoId']}",
+                    ctx = ctx,
+                    title = ret['snippet']['title']
+                )
+                await ctx.send('Enqueued {}'.format(ret['snippet']['title'])) 
+            finally:
+                await ctx.voice_state.songs.put(song)
         
         ctx.voice_state.start_player()
         log.debug(f"Enqueued; time took {time.perf_counter() - _} sec")
@@ -930,28 +913,26 @@ class Music(commands.Cog):
             return await ctx.send("This command only work with normal searching or Youtube URL.") 
         else: # Normal searching.
             try:
-                source = await YTDLSource.create_source(ctx, search)
-            except YTDLError as e:
-                return await ctx.send(':x: **{}**'.format(str(e)))
-            except DownloadError:
-                # maybe it's geo restricted, so retry again but this time put "lyric" behind.                
-                await ctx.send(f":x: **Could not download that video, Retrying...**")
-                await ctx.trigger_typing() 
+                # Try catching an exception bc we may reach "quota limit" by Google API
+                # If reached, Fetch it normally instead.
+                if self.api_error: # Already error, skip to except statement
+                    raise Exception
 
-                try:
-                    source = await YTDLSource.create_source(ctx, search + " lyric")
-                except (DownloadError, YTDLError):
-                    # Idk anymore...
-                    self.play_error(ctx.guild.id)
-                    if self.errors_count.get(ctx.guild.id, 0) >= 2:
-                        log.warning(f"Download problem detected, Couldn't play video in server {ctx.guild.id}")
-                        return await ctx.send("Download problem detected, Youtube service may be down... Please try again in a few hours.")
-                    return await ctx.send(":x: **Download fail, Please try using an url.**")            
-            song = Song(source)
-
-            # Like how skipto works, I will manipulate this list directly at its core.
-            ctx.voice_state.songs._queue.appendleft(song)
-            await ctx.send('Enqueued {}'.format(str(source)))        
+                ret = getInfo(search)
+            except Exception:
+                song = Song(search, ctx)
+                await ctx.message.add_reaction('✅')
+            else:
+                song = Song(
+                    url = f"https://www.youtube.com/watch?v={ret['id']['videoId']}",
+                    ctx = ctx,
+                    title = ret['snippet']['title']
+                )
+                await ctx.send('Enqueued {}'.format(ret['snippet']['title'])) 
+            finally:
+                await ctx.voice_state.songs.put(song)
+            
+        
         log.debug(f"Enqueued play next")
 
     @_join.before_invoke
