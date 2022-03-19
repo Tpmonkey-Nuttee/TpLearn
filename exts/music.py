@@ -608,15 +608,22 @@ class Music(commands.Cog):
                 queue += f'**{i + 1}.** [{self.shorten_title(song.title, song.url)}]({song.url})\n'
 
         queue = queue or "Nothing \:("
+
+        # Emoji for loop
+        emoji = "▶️"
+        if ctx.voice_state.loop == Loop.SINGLE:
+            emoji = "🔂"
+        elif ctx.voice_state.loop == Loop.QUEUE:
+            emoji = "🔁"
+
         # A large embed... madness
         embed = (
             discord.Embed(
                 title = f"Queue for {ctx.guild}",
-                description='**{} tracks:**\nLoop: {} | Loop Queue: {} | Super Shuffle: {}'.format(
-                    len(ctx.voice_state.songs) + 1, 
-                    "✅" if ctx.voice_state.loop == Loop.SINGLE else "❌" ,
-                    "✅" if ctx.voice_state.loop == Loop.QUEUE else "❌" ,
-                    "✅" if ctx.voice_state.super_shuffle else "❌" ,
+                description='**{} tracks:**\nLoop: {} | Super Shuffle: {}'.format(
+                    len(ctx.voice_state.songs) + 1, # Included current song
+                    emoji,
+                    ":twisted_rightwards_arrows:" if ctx.voice_state.super_shuffle else "❌" ,
                     ),
                 colour = discord.Colour.random(),
                 timestamp = ctx.message.created_at
