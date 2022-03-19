@@ -4,7 +4,6 @@ import discord
 import functools
 import youtube_dl
 from typing import List, Tuple
-from discord.ext import commands
 import googleapiclient.discovery
 from urllib.parse import parse_qs, urlparse
 
@@ -105,8 +104,6 @@ class YTDLSource(discord.PCMVolumeTransformer):
 
     def __init__(self, source: discord.FFmpegPCMAudio, *, data: dict, volume: float = 0.5):
         super().__init__(source, volume)
-
-
         self.data = data
 
         self.uploader = data.get('uploader')
