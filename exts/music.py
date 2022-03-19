@@ -110,8 +110,7 @@ class VoiceState:
         self.nightcore = False
         self._loop = Loop.NONE
         self._volume = 0.5
-        self.skip_votes = set()
-        
+        self.skip_votes = set()        
 
         self.playing = False
         self.audio_player = None # bot.loop.create_task(self.audio_player_task())     
@@ -154,9 +153,7 @@ class VoiceState:
             try:
                 await self.announce_message.delete()
             except Exception:
-                pass
-
-            
+                pass            
 
             if self._loop == Loop.NONE or self.current is None:
                 # Try to get the next song within timeout limit (defeault 3 mins).
@@ -176,7 +173,6 @@ class VoiceState:
                 else: # Loop queue.
                     await self.songs.put(self.current)
                     self.current = await self.songs.get()
-
             
             try:
                 source = await self.current.load_audio(self.nightcore)
@@ -188,9 +184,7 @@ class VoiceState:
                     ).set_author(name = "Cannot load this track & Removed from the queue", url=self.current.url)
                     .add_field(name = "Error:", value = str(e)[:300])
                 )
-
                 self.current = None
-
                 continue
 
             # super shuffle.
@@ -343,19 +337,6 @@ class Music(commands.Cog):
                 if voice_state.voice is None:
                     log.info(f"{member.guild.id}: Bot got disconnected why playing, Joining back!")
                     voice_state.voice = await before.channel.connect()
-
-            """if member.guild.id in self.wait_for_disconnect:
-                # This is a mess, so I'm just gonna put sleep here.
-                # It works, trust me.
-                await asyncio.sleep(2)
-                
-                try:
-                    del self.wait_for_disconnect[member.guild.id]
-                except KeyError:
-                    return
-
-                log.info(f"{member.guild.id}: Bot got disconnected, removed wait for disconnect")
-            return"""
         
         # Check if user switched to bot vc or joined the bot vc
         if (before.channel is None and after.channel is not None) or (before.channel != after.channel and after.channel is not None):
@@ -646,9 +627,8 @@ class Music(commands.Cog):
             embed.add_field(name = "Current:", value = f"[{current.source.title}]({current.source.url})", inline=False)
         else:
             embed.add_field(name = "Current:", value = "Nothing \:(", inline=False)
-
         embed.add_field(name="Up Next:", value = queue)
-
+        
         await ctx.send(embed=embed)
 
     @commands.command(name='shuffle')

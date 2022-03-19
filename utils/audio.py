@@ -1,16 +1,12 @@
+import os
+import asyncio
 import discord
-from discord.ext import commands
-
+import functools
 import youtube_dl
-
-# YouTube Playlist
+from typing import List, Tuple
+from discord.ext import commands
 import googleapiclient.discovery
 from urllib.parse import parse_qs, urlparse
-
-import asyncio
-import functools
-
-from typing import List, Tuple
 
 # Silence useless bug reports messages
 youtube_dl.utils.bug_reports_message = lambda: ''
@@ -19,7 +15,6 @@ __all__ = (
     "YTDLError", "YTDLSource", "DownloadError", "getYtPlaylist", "getInfo", "YOUTUBE_API_KEY", "YOUTUBE_PLAYLIST_KEYWORDS"
 )
 
-import os
 
 YOUTUBE_PLAYLIST_KEYWORDS = ("youtube.com/playlist?", "&start_radio", "&list=")
 YOUTUBE_API_KEY = os.getenv("YOUTUBE_API_KEY")
@@ -28,12 +23,9 @@ if YOUTUBE_API_KEY is None:
         "Youtube API key is not set, Please head to https://console.cloud.google.com/apis/ to setup one."
     )
 
-
-
 youtube = googleapiclient.discovery.build("youtube", "v3", developerKey = YOUTUBE_API_KEY)
 _search = youtube.search()
 _playlistItems = youtube.playlistItems()
-
 
 def getInfo(q: str) -> dict:
     return _search.list(
