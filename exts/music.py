@@ -159,6 +159,8 @@ class VoiceState:
                 # Try to get the next song within timeout limit (defeault 3 mins).
                 # If no song is added to the queue in time,
                 # the player will disconnect due to performance reasons.
+                self.current = None
+                
                 try:                    
                     async with timeout(self.bot.msettings.get(self._ctx.guild.id, "timeout")):
                         self.current = await self.songs.get()
