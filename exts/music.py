@@ -50,6 +50,19 @@ class Song:
     async def load_audio(self, nightcore: bool = False) -> YTDLSource:
         self.source = await YTDLSource.create_source(self.url, nc = nightcore)
         return self.source
+    
+    async def search(self) -> None:
+        if self.ctx.cog.api_error or self.title is not None:
+            return
+        try:
+            log.debug(f"Searching {self.url}")
+            ret = getInfo(self.url)
+        except Exception:
+            self.ctx.cog.api_error = True
+            return
+        
+        self.url = f"https://www.youtube.com/watch?v={ret['id']['videoId']}"
+        self.title = ret['snippet']['title']
 
     def create_embed(self):
         if self.source is None:
@@ -579,6 +592,8 @@ class Music(commands.Cog):
         """Shows the player's queue.
         You can optionally specify the page to show. Each page contains 10 elements.
         """
+        await ctx.trigger_typing()       
+
         if len(ctx.voice_state.songs) == 0 and ctx.voice_state.current is None:
             return await ctx.send('Empty queue. ¯\_(ツ)_/¯')
         
@@ -599,6 +614,9 @@ class Music(commands.Cog):
 
         start = (page - 1) * items_per_page
         end = start + items_per_page
+
+        # Search up the song first.
+        await asyncio.gather(*[song.search() for i, song in enumerate(ctx.voice_state.songs[start:end], start=start)])
 
         queue = ''
         for i, song in enumerate(ctx.voice_state.songs[start:end], start=start):
