@@ -453,7 +453,7 @@ class Music(commands.Cog):
         """Toggle nightcore mode.
         """
         current = ctx.voice_state.toggle_nightcore()
-        return await ctx.send(f"🎧 Nightcore mode has been turned {'on' if current else 'off'}!")
+        return await ctx.send(f"🎧 Nightcore mode has been turned {'on' if current else 'off'}! (Next songs will be nightcore)")
 
     @commands.command(name='volume')
     async def _volume(self, ctx: commands.Context, volume: int = None):
@@ -875,7 +875,7 @@ class Music(commands.Cog):
                     ctx = ctx,
                     title = ret['snippet']['title']
                 )
-                await ctx.send('Enqueued {}'.format(ret['snippet']['title'])) 
+                await ctx.send('Enqueued **{}**'.format(ret['snippet']['title'].replace('&quot;', '"'))) 
             finally:
                 await ctx.voice_state.songs.put(song)
         
@@ -917,7 +917,7 @@ class Music(commands.Cog):
                     ctx = ctx,
                     title = ret['snippet']['title']
                 )
-                await ctx.send('Enqueued {}'.format(ret['snippet']['title'])) 
+                await ctx.send('Enqueued **{}**'.format(ret['snippet']['title'].replace('&quot;', '"'))) 
             finally:
                 await ctx.voice_state.songs.put(song)
             
