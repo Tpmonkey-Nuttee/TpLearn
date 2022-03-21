@@ -18,6 +18,15 @@ TRACE_LEVEL = 5
 
 DATE = str(datetime.date.today())[:-3]
 
+class RemoveNoise(logging.Filter):
+    def __init__(self):
+        super().__init__(name='discord.state')
+
+    def filter(self, record):
+        if record.levelname == 'WARNING' and 'referencing an unknown' in record.msg:
+            return False
+        return True
+
 def setup() -> None:
     """ Set up loggers. """
     logging.TRACE = TRACE_LEVEL
@@ -53,10 +62,16 @@ def setup() -> None:
 
     coloredlogs.install(logger=root_log, stream=sys.stdout)
 
-    logging.getLogger("discord").setLevel(logging.WARNING)
+    logging.getLogger('discord').setLevel(logging.INFO)
+    logging.getLogger('discord.http').setLevel(logging.WARNING)
+    logging.getLogger('discord.state').addFilter(RemoveNoise())
+
     logging.getLogger("urllib3").setLevel(logging.WARNING)
+
     logging.getLogger("spotipy.client").setLevel(logging.WARNING)
     logging.getLogger("spotipy.oauth2").setLevel(logging.WARNING)    
+
+    logging.getLogger("googleapiclient.discovery").setLevel(logging.WARNING)    
     
 
 def _monkeypatch_trace(self: logging.Logger, msg: str, *args, **kwargs) -> None:
