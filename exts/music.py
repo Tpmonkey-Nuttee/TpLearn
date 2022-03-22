@@ -937,7 +937,7 @@ class Music(commands.Cog):
                 )
                 await ctx.send('Enqueued **{}**'.format(ret['snippet']['title'].replace('&quot;', '"'))) 
             finally:
-                await ctx.voice_state.songs.put(song)
+                ctx.voice_state.songs._queue.appendleft(song)
             
         
         log.debug(f"Enqueued play next")
