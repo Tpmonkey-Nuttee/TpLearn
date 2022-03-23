@@ -194,9 +194,10 @@ class VoiceState:
             except Exception as e:
                 await self._ctx.send(
                     embed = discord.Embed(
+                        description = self.current.url,
                         colour = discord.Colour.dark_red(),
                         timestamp = datetime.datetime.utcnow()
-                    ).set_author(name = "Cannot load this track & Removed from the queue", url=self.current.url)
+                    ).set_author(name = "Cannot load this track & Removed from the queue")
                     .add_field(name = "Error:", value = str(e)[:300])
                 )
                 self.current = None
@@ -466,7 +467,7 @@ class Music(commands.Cog):
         """Toggle nightcore mode.
         """
         current = ctx.voice_state.toggle_nightcore()
-        return await ctx.send(f"🎧 Nightcore mode has been turned {'on' if current else 'off'}! (Next songs will be nightcore)")
+        return await ctx.send(f"🎧 Nightcore mode has been turned {'on' if current else 'off'}! (Next songs will be affected)")
 
     @commands.command(name='volume')
     async def _volume(self, ctx: commands.Context, volume: int = None):
