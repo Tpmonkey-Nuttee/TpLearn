@@ -1,8 +1,10 @@
 """
-Private Music bot originally created by Valentin B.
+Music Cog
+
+Origin by Valentin B.
 Link: https://gist.github.com/vbe0201/ade9b80f2d3b64643d854938d40a0a2d
 
-Update and Develop by Tpmonkey for Education purpose.
+Re-written by Tpmonkey.
 """
 import time
 import enum
@@ -887,14 +889,24 @@ class Music(commands.Cog):
             except Exception:
                 self.play_error() # Call play error
                 song = Song(search, ctx)
-                await ctx.message.add_reaction('✅')
             else:
+                url = f"https://www.youtube.com/watch?v={ret['id']['videoId']}"
+                
                 song = Song(
-                    url = f"https://www.youtube.com/watch?v={ret['id']['videoId']}",
+                    url = url,
                     ctx = ctx,
                     title = ret['snippet']['title']
                 )
-                await ctx.send('Enqueued **{}**'.format(ret['snippet']['title'].replace('&quot;', '"'))) 
+
+                # Don't reply if use link.
+                if not any(kw in search for kw in ["youtu.be/", "youtube.com/watch?v="]):
+                    title = ret['snippet']['title'].replace('&quot;', '"')
+                    await ctx.send(
+                        embed = discord.Embed(
+                            description = f"[{title}]({url})",
+                            color = discord.Color.teal()
+                        )
+                    ) 
             finally:
                 await ctx.voice_state.songs.put(song)
         
@@ -931,12 +943,23 @@ class Music(commands.Cog):
                 song = Song(search, ctx)
                 await ctx.message.add_reaction('✅')
             else:
+                url = f"https://www.youtube.com/watch?v={ret['id']['videoId']}"
+                
                 song = Song(
-                    url = f"https://www.youtube.com/watch?v={ret['id']['videoId']}",
+                    url = url,
                     ctx = ctx,
                     title = ret['snippet']['title']
                 )
-                await ctx.send('Enqueued **{}**'.format(ret['snippet']['title'].replace('&quot;', '"'))) 
+
+                # Don't reply if use link.
+                if not any(kw in search for kw in ["youtu.be/", "youtube.com/watch?v="]):
+                    title = ret['snippet']['title'].replace('&quot;', '"')
+                    await ctx.send(
+                        embed = discord.Embed(
+                            description = f"[{title}]({url})",
+                            color = discord.Color.teal()
+                        )
+                    ) 
             finally:
                 ctx.voice_state.songs._queue.appendleft(song)
             
