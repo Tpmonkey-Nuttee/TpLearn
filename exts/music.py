@@ -358,6 +358,9 @@ class Music(commands.Cog):
         
         # Check if user switched to bot vc or joined the bot vc
         if (before.channel is None and after.channel is not None) or (before.channel != after.channel and after.channel is not None):
+            if member.bot: # We don't care about bots.
+                return
+            
             all_members = [i.id for i in after.channel.members]
 
             # Wrong channel, go back
@@ -376,9 +379,10 @@ class Music(commands.Cog):
 
             # Wrong channel, go back
             if not self.bot.user.id in all_members: return
-
-            # Bot is alone ;-;
-            if len(all_members) <= 1:
+                
+            
+            # Bot is alone, recheck not counting bot.
+            if len([i.id for i in before.channel.members if not i.bot]) == 0:
                 log.info(f"{member.guild.id}: All user left, Waiting for deletion")
                 self.wait_for_disconnect[member.guild.id] = time.time() + self.bot.msettings.get(member.guild.id, "timeout")
     
