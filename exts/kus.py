@@ -13,7 +13,6 @@ from discord import Embed, Colour
 
 import config
 from bot import Bot
-from utils.utils import limit
 
 from datetime import datetime
 from bs4 import BeautifulSoup
@@ -63,10 +62,12 @@ class KUSNews(Cog):
             self.enable = False
             await self.bot.log(__name__, 'Unable to fetch kus data, disabled system.')
             return None
-        elif home is not None and not self.enable:
+
+        if home is not None and not self.enable:
             self.enable = True
             await self.bot.log(__name__, 'successfully fecthed kus data, enabled system.')
-        elif home is None and not self.enable:
+
+        if home is None and not self.enable:
             return None
 
         news = home.find_all("div", attrs={"class":"headline left"})
@@ -103,8 +104,7 @@ class KUSNews(Cog):
                 f"\n**To** `{new_ids}`")
 
             # Remove all prevoius data.
-            for _ in self.ids:
-                if _ in new_ids: new_ids.remove(_)
+            new_ids = [i for i in self.new_ids if i not in self.ids]
             
             datas = [news[key] for key in new_ids] 
             embeds = [self.create_embed(n, u, p) for n, u, p in datas]
@@ -213,11 +213,12 @@ class KUSNews(Cog):
                 timestamp = ctx.message.created_at,
                 colour = Colour.from_rgb(170, 3, 250)
             )
-            return await ctx.send(embed=embed)            
-        elif self.data is None:
+            return await ctx.send(embed=embed)        
+            
+        if self.data is None:
             return await ctx.send("กำลังโหลดข้อมูล - กรุณารอสักครู่...")            
 
-        amount = limit(amount, 1, 10)
+        amount = max(min(10, amount), 1)
         embeds = [self.create_embed(n, u, p) for n, u, p, id in self.data]
         for _ in range(amount):
             await ctx.send(embed=embeds[_])

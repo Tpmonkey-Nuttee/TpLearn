@@ -3,14 +3,14 @@ An Assignment Manger, Main Extension for input.
 Made by Tpmonkey
 """
 
-from discord.ext.commands import Cog, Context, command, guild_only, cooldown, BucketType
-from discord import Embed, Colour, RawReactionActionEvent, HTTPException, Message
+from discord.ext import commands
+import discord 
 
 from utils import checks
 from bot import Bot
 import constant
 
-from asyncio import sleep, create_task
+import asyncio 
 import traceback
 import datetime
 import logging
@@ -28,13 +28,13 @@ EMOJIS = ("1️⃣", "2️⃣", "3️⃣", "4️⃣", "✅", "❎")
 
 log = logging.getLogger(__name__)
 
-class Assignments(Cog):
+class Assignments(commands.Cog):
     """Assignment System, Need to use `,setup` first before using it."""
     def __init__(self, bot: Bot):
         self.bot = bot
         self.tasks = {}
     
-    def init_data(self, ctx: Context, type_: str, **kwargs) -> None:
+    def init_data(self, ctx: commands.Context, type_: str, **kwargs) -> None:
         """Init data when using menu."""
         log.debug(f'init dat for {ctx.author.id}')
         self.tasks[ctx.author.id] = {
@@ -51,9 +51,9 @@ class Assignments(Cog):
             }}
     
     @staticmethod
-    def close_embed(reason: str, colour: Colour = Colour.dark_red()) -> Embed:
+    def close_embed(reason: str, colour: discord.Colour = discord.Colour.dark_red()) -> discord.Embed:
         """Create a Closed Embed."""
-        embed = Embed(colour = colour)
+        embed = discord.Embed(colour = colour)
         embed.title = "[Closed Menu]" if reason is None else reason
 
         return embed
@@ -66,12 +66,12 @@ class Assignments(Cog):
         # If that title is selected, Add an arrow emoji to it.
         return f"{title.format('⭕')} {EMOJI_STRING[4]*3}" if crrent == state else title.format(EMOJI_STRING[crrent-1])
 
-    def base_embed(self, ctx: Context) -> Embed:
+    def base_embed(self, ctx: commands.Context) -> discord.Embed:
         """Create All Embed, Ready to update."""
 
-        embed = Embed(
+        embed = discord.Embed(
             description = "Click the reaction to select and edit.",
-            colour = Colour.teal(),
+            colour = discord.Colour.teal(),
             timestamp = ctx.message.created_at
         )
 
@@ -100,99 +100,118 @@ class Assignments(Cog):
             )
         return embed
     
-    async def listed_embed(self, ctx: Context, data: dict = None) -> tuple:
+    async def listed_embed(self, ctx: commands.Context, data: dict = None) -> tuple:
         """Create a list embed with all the works."""
 
         # If data wasn't provided, Get it from system
-        if data is None: data = self.bot.planner.get_all(ctx.guild.id)
+        if data is None: 
+            data = self.bot.planner.get_all(ctx.guild.id)
 
         type_ = len(data) == 0
         embed = self.bot.planner.get_embed(ctx.guild.id)
         
         return type_, embed
 
-    async def update_embed(self, ctx: Context) -> None:
+    async def update_embed(self, ctx: commands.Context) -> None:
         """Update Embed (Menu)"""
-        if ctx.author.id not in self.tasks: return
-        message = self.tasks[ctx.author.id]["info"]["message"]
-         # If embed has been deleted or not in the data yet.
-        if message is None: return
+        if ctx.author.id not in self.tasks: 
+            return
+
+        message = self.tasks[ctx.author.id]["info"]["message"]        
+        if message is None:  # If embed has been deleted or not in the data yet.
+            return
      
         embed = self.base_embed(ctx)
-        try: await message.edit(embed=embed)
-        except HTTPException: # Embed has been deleted, Will close everything.
+        try: 
+            await message.edit(embed=embed)
+        except discord.HTTPException: # Embed has been deleted, Will close everything.
             await ctx.send(":x: **Something went wrong - canceled all actions!**")
             log.warning(f"something went wrong in homework menu for {ctx.author.id}")
-            await self.close(ctx)
-            return
-        else: log.debug(f'update embed successfully for {ctx.author.id}')
+            return await self.close(ctx)            
+        else: 
+            log.debug(f'update embed successfully for {ctx.author.id}')
     
-    async def close(self, ctx: Context, reason: str = None, colour: Colour = Colour.dark_red()) -> None:
+    async def close(self, ctx: commands.Context, reason: str = None, colour: discord.Colour = discord.Colour.dark_red()) -> None:
         """Close the menu."""
-        if ctx.author.id not in self.tasks: return
-        if self.tasks[ctx.author.id]['details']['state'] == 0: return
+        if ctx.author.id not in self.tasks: 
+            return
+        if self.tasks[ctx.author.id]['details']['state'] == 0: 
+            return
         
         # Preventing double close and Event Bug.
         self.tasks[ctx.author.id]['details']['state'] = 0
         message = self.tasks[ctx.author.id]["info"]["message"]
+
         try:            
             await message.clear_reactions()
             await message.edit(embed=self.close_embed(reason, colour))     
             self.tasks[ctx.author.id]['info']['task'].cancel()
             del self.tasks[ctx.author.id]       
-        except Exception: pass
+        except (
+            # Clear reactions, edit message
+            discord.HTTPException, discord.Forbidden,
+            # Not sure if Task.cancel() will raise any exceptions.
+            # del dict
+            KeyError
+
+        ): 
+            pass
         log.debug(f"Deleted key: {ctx.author.id}")
     
-    @command()
-    @guild_only()
+    @commands.command()
+    @commands.guild_only()
     @checks.assignment_limit()
     @checks.is_setup()
-    @cooldown(3, 45, BucketType.guild)
-    async def add(self, ctx: Context) -> None:
+    @commands.cooldown(3, 45, commands.BucketType.guild)
+    async def add(self, ctx: commands.Context) -> None:
         """Add an Assignment Command."""
-        if ctx.author.id in self.tasks: del self.tasks[ctx.author.id]
+        if ctx.author.id in self.tasks: 
+            del self.tasks[ctx.author.id]
 
         self.init_data(ctx, 'add')
         embed = self.base_embed(ctx)
 
         message = await ctx.send(embed=embed)
         self.tasks[ctx.author.id]["info"]["message"] = message
-        create_task(self.bot.add_reactions(message, EMOJIS))
-        self.tasks[ctx.author.id]['info']['task'] = create_task(self.adding(ctx))         
+
+        asyncio.create_task(self.bot.add_reactions(message, EMOJIS))
+        self.tasks[ctx.author.id]['info']['task'] = asyncio.create_task(self.adding(ctx))         
     
-    @command()
-    @guild_only()
+    @commands.command()
+    @commands.guild_only()
     @checks.is_setup()
-    @cooldown(3, 45, BucketType.guild)
-    async def edit(self, ctx: Context, key: str = None) -> None:
+    @commands.cooldown(3, 45, commands.BucketType.guild)
+    async def edit(self, ctx: commands.Context, key: str = None) -> None:
         """Edit an Assignment Command."""
-        if ctx.author.id in self.tasks: del self.tasks[ctx.author.id]
+        if ctx.author.id in self.tasks: 
+            del self.tasks[ctx.author.id]
         
         if key is None or not self.bot.planner.check_valid_key(ctx.guild.id, key):
             type_, embed = await self.listed_embed(ctx) 
+
             content = None if type_ else "Please the assignment key to edit!"
-            await ctx.send(content, embed=embed)
-            return
+            return await ctx.send(content, embed=embed)
+            
         
         d = self.bot.planner.get(ctx.guild.id, key)
         if d['already-passed']:
-            await ctx.send(":x: **You shouldn't edit already passed assignment.**")
-            return
+            return await ctx.send(":x: **You shouldn't edit already passed assignment.**")
+            
         
         self.init_data(ctx, 'edit', **d)
 
         embed = self.base_embed(ctx)
-        message = await ctx.send(embed=embed)
+        message = await ctx.send(embed=embed)        
         self.tasks[ctx.author.id]["info"]["message"] = message
-        create_task(self.bot.add_reactions(message, EMOJIS))
-        create_task(self.bot.add_reactions(message, EMOJIS))
-        self.tasks[ctx.author.id]['info']['task'] = create_task(self.adding(ctx))     
+
+        asyncio.create_task(self.bot.add_reactions(message, EMOJIS))
+        self.tasks[ctx.author.id]['info']['task'] = asyncio.create_task(self.adding(ctx))     
     
-    @command(aliases = ("delete", "del", ))
-    @guild_only()
+    @commands.command(aliases = ("delete", "del", ))
+    @commands.guild_only()
     @checks.is_setup()
-    @cooldown(3, 15, BucketType.guild)
-    async def remove(self, ctx: Context, key: str = None) -> None:
+    @commands.cooldown(3, 15, commands.BucketType.guild)
+    async def remove(self, ctx: commands.Context, key: str = None) -> None:
         """Remove an Assignments"""
         data = self.bot.planner.get_all(ctx.guild.id)
     
@@ -202,8 +221,8 @@ class Assignments(Cog):
         else:
             d = await self.bot.planner.remove(ctx.guild.id, key)
 
-            embed = Embed()
-            embed.colour = Colour.blue()
+            embed = discord.Embed()
+            embed.colour = discord.Colour.blue()
             embed.timestamp = ctx.message.created_at
             embed.description = f"**Removed** `{d.get('key')}`"
 
@@ -211,51 +230,50 @@ class Assignments(Cog):
         
         await ctx.send(content, embed=embed)
     
-    @command(aliases = ("aw", "allassignments", )) # Why?
-    @guild_only()
+    @commands.command(aliases = ("aw", "allassignments", )) # Why?
+    @commands.guild_only()
     @checks.is_setup()
-    @cooldown(2, 20, BucketType.guild)
-    async def allworks(self, ctx: Context) -> None:
+    @commands.cooldown(2, 20, commands.BucketType.guild)
+    async def allworks(self, ctx: commands.Context) -> None:
         """Show all Assignments"""
 
         m = await ctx.send("Creating Embed...")
 
         d = self.bot.planner.get_all(ctx.guild.id)
-        type_, embed = await self.listed_embed(ctx, d)
+        _, embed = await self.listed_embed(ctx, d)
 
         await m.edit(content=None, embed=embed)
 
-    @command(aliases = ('inf', 'detail', 'check', ))
-    @guild_only()
+    @commands.command(aliases = ('inf', 'detail', 'check', ))
+    @commands.guild_only()
     @checks.is_setup()
-    @cooldown(5, 25, BucketType.guild)
-    async def info(self, ctx: Context, key: str = None) -> None:
+    @commands.cooldown(5, 25, commands.BucketType.guild)
+    async def info(self, ctx: commands.Context, key: str = None) -> None:
         """Info about the Assignments"""
         data = self.bot.planner.get_all(ctx.guild.id)
 
         if len(data) == 0:
-            await ctx.send("No assignment yet!")
-            return        
+            return await ctx.send("No assignment yet!")                    
 
         content = None
         if not self.bot.planner.check_valid_key(ctx.guild.id, key):
             content = "Please the assignment key to check assignment info!"
-            type_, embed = await self.listed_embed(ctx, data)
+            _, embed = await self.listed_embed(ctx, data)
         else:
             info = self.bot.planner.get(ctx.guild.id, key)
             embed = self.bot.get_embed(**info)
         
         await ctx.send(content, embed=embed)
 
-    @Cog.listener()
-    async def on_raw_reaction_add(self, payload: RawReactionActionEvent) -> None:
+    @commands.Cog.listener()
+    async def on_raw_reaction_add(self, payload: discord.RawReactionActionEvent) -> None:
         await self.process_reaction_event(payload)
     
-    @Cog.listener()
-    async def on_raw_reaction_remove(self, payload: RawReactionActionEvent) -> None:
+    @commands.Cog.listener()
+    async def on_raw_reaction_remove(self, payload: discord.RawReactionActionEvent) -> None:
         await self.process_reaction_event(payload)
     
-    async def process_reaction_event(self, payload: RawReactionActionEvent) -> None:
+    async def process_reaction_event(self, payload: discord.RawReactionActionEvent) -> None:
         """
         Process Reaction event.
 
@@ -278,10 +296,10 @@ class Assignments(Cog):
 
         if emoji == "❎": # Close menu            
             return await self.close(ctx)    
-        elif emoji == "✅":
+        if emoji == "✅":
             return await self.finish_request(ctx)
 
-        elif emoji == "1️⃣":
+        if emoji == "1️⃣":
             self.tasks[payload.user_id]["details"]["state"] = 1
         elif emoji == "2️⃣":
             self.tasks[payload.user_id]["details"]["state"] = 2
@@ -294,23 +312,20 @@ class Assignments(Cog):
             # update if the state changed.
             await self.update_embed(ctx)
 
-    async def adding(self, ctx: Context) -> None:
+    async def adding(self, ctx: commands.Context) -> None:
         """
         A method that will get an input from target message, and delete it.
         """
         while ctx.author.id in self.tasks:
             try:
                 message = await self.bot.wait_for_message(ctx, timeout = 300)
-            except: # Timeout, or something went wrong.
-                await self.close(ctx)
-                return           
+            except asyncio.TimeoutError:
+                return await self.close(ctx)       
+            
+            # Checks:
+            # -* Message content is not bot command.
+            # -* Menu is open & State is valid.
 
-            """
-            Checks:
-                * Message content is not bot command.
-                * User has menu opened.
-                * State of menu needs to be valid.
-            """
             if ctx.author.id not in self.tasks or \
             self.tasks[ctx.author.id]['details']['state'] == 0:
                 return
@@ -353,12 +368,11 @@ class Assignments(Cog):
                 else:
                     await self.handle_request(ctx, message)
             else:
-                await self.handle_request(ctx, message)                   
-
+                await self.handle_request(ctx, message)      
             
             await self.update_embed(ctx)
     
-    async def handle_request(self, ctx: Context, message: Message) -> None:
+    async def handle_request(self, ctx: commands.Context, message: discord.Message) -> None:
         content = message.content
         state = self.tasks[ctx.author.id]["details"]["state"]
 
@@ -383,20 +397,19 @@ class Assignments(Cog):
                 log.debug(f'{ctx.author.id} added image using file')
                 image = message.attachments[0]
                 image_url = await self.bot.get_image_url(image)
+            
             self.tasks[ctx.author.id]["details"]["image"] = image_url
         
         # Update state.
         self.tasks[ctx.author.id]["details"]["state"] = state + 1 if state < 4 else 1   
-
-        return
     
-    async def finish_request(self, ctx: Context) -> None:
+    async def finish_request(self, ctx: commands.Context) -> None:
         type_ = self.tasks[ctx.author.id]['details']['type']
 
         if self.bot.planner.check_passed_date(self.tasks[ctx.author.id]["details"]["headers"]["date"]):
             log.debug(f'{ctx.author.id} tried to add/edit passed assignment.')
-            await self.close(ctx, "Cannot add/edit already passed assignment.")
-            return
+            return await self.close(ctx, "Cannot add/edit already passed assignment.")
+            
         
         title = self.tasks[ctx.author.id]["details"]["headers"]["title"]
         description = self.tasks[ctx.author.id]["details"]["headers"]["description"]
@@ -408,8 +421,8 @@ class Assignments(Cog):
             date == "Unknown", image_url == "Not Attached") 
         ): 
             log.debug(f'{ctx.author.id} tried to add/edit to invalid assignement.')
-            await self.close(ctx, "Invalid Assignment")
-            return
+            return await self.close(ctx, "Invalid Assignment")
+            
         
         try:
             ret = await self.bot.planner.add(
@@ -426,22 +439,21 @@ class Assignments(Cog):
             log.warning(f'something went wrong while {ctx.author.id} add/edit in homework menu')
             log.warning(traceback.format_exc())
             await self.bot.log(__name__, f"An Exception were found while finishing adding assignment\n```py\n{traceback.format_exc()}\n```", True)
-            colour = Colour.default()
+            colour = discord.Colour.default()
 
         else:
             text = f"Successfully Added Assignment with key `{ ret }`" if type_ == 'add' \
             else "Successfully Edited Assignment."
-            colour = Colour.teal()
+            colour = discord.Colour.teal()
             log.debug(f'{ctx.author.id} add/edit new assignment and passed in successfully.')
         
         return await self.close(ctx, text, colour)
 
-    @command(hidden=True)
-    async def school(self, ctx: Context) -> None:
+    @commands.command(hidden=True)
+    async def school(self, ctx: commands.Context) -> None:
         if random.randint(1, 1000) == 1:
-            await ctx.send("Sucks")
-        else:
-            await ctx.send("Good place.")
+            return await ctx.send("Sucks")
+        await ctx.send("Good place.")
 
     @staticmethod
     def format(text: str) -> str:
@@ -452,6 +464,7 @@ class Assignments(Cog):
                 _days = int(_text)
             except ValueError:
                 return text
+            
             future = constant.today_th(True) + datetime.timedelta(days = _days)
             return "{0.day}/{0.month}/{0.year}".format(future)
         return text

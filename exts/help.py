@@ -33,8 +33,7 @@ class CustomHelpCommand(HelpCommand):
                 if command.cog.category:
                     return f"**{command.cog.category}**"
             return f"**{command.cog_name}**"
-        else:
-            return "**\u200bNo Category:**"
+        return "**\u200bNo Category:**"
     
     @staticmethod    
     def get_commands_brief_details(commands_: List[Command], return_as_list: bool = False) -> Union[List[str], str]:
@@ -47,12 +46,11 @@ class CustomHelpCommand(HelpCommand):
         for _command in commands_:
             signature = f" {_command.signature}" if _command.signature else ""
             details.append(
-                f"\n**`{PREFIX}{_command.qualified_name}{signature}`**\n*{_command.short_doc or 'No details provided'}*"
+                f"\n**`{self.PREFIX}{_command.qualified_name}{signature}`**\n*{_command.short_doc or 'No details provided'}*"
             )
         if return_as_list:
             return details
-        else:
-            return "".join(details)
+        return "".join(details)
 
     async def command_formatting(self, command: Command) -> Embed:
         # Return Embed of command
@@ -64,7 +62,7 @@ class CustomHelpCommand(HelpCommand):
         parent = command.full_parent_name
 
         name = str(command) if not parent else f"{parent} {command.name}"
-        command_details = f"**```{PREFIX}{name} {command.signature}```**\n"
+        command_details = f"**```{self.PREFIX}{name} {command.signature}```**\n"
 
         # show command aliases
         aliases = [f"`{alias}`" if not parent else f"`{parent} {alias}`" for alias in command.aliases]
@@ -163,9 +161,7 @@ class Help(Cog):
         self.old_help_command = bot.help_command
         bot.help_command = CustomHelpCommand()
         bot.help_command.cog = self
-
-        global PREFIX
-        PREFIX = self.bot.command_prefix
+        bot.help_command.PREFIX = bot.command_prefix
     
     def cog_unload(self) -> None:
         # Reset the help command when the cog is unloaded.

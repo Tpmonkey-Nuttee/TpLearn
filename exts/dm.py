@@ -24,12 +24,9 @@ class VoiceChannel(Cog):
         if not self.channel: 
             self.channel = self.bot.get_channel(self.bot.config.dm_channel_id)
 
-        """
-        RULES/CHECKS
-        - Author must not be a bot.
-        - Author must not be owner.
-        - Guild needs to be None, that means It's on Bot DM or GROUP.
-        """
+        # RULES/CHECKS
+        # - Author must not be a bot or owner.
+        # - Guild needs to be None, that means It's on Bot DM or GROUP.
 
         if message.author.bot or  message.author.id == self.bot.owner_id or message.guild != None:
             return

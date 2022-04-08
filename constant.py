@@ -29,20 +29,23 @@ def today_th(raw: bool = False) -> datetime.datetime:
     return r if raw else str(r)[:10].strip()
 
 class Database:
+    # TODO: Fix this mess please.
     def __init__(self):
         _log.debug("init database succesful")
     
     async def load(self, key: str, go_back: Any = None) -> Any:
         """ Load data safely from database. """
-        try: return db[key]
-        except:
+        try: 
+            return db[key]
+        except KeyError:
             _log.warning(traceback.format_exc())
             return go_back
 
     async def dump(self, key: str, value: Any) -> bool:
         """ Dump data safely to database. """
-        try: db[key] = value
-        except:
+        try: 
+            db[key] = value
+        except Exception: # I don't even know what are we trying to catch.
             _log.warning(traceback.format_exc())
             return False
         return True
@@ -51,14 +54,15 @@ class Database:
         """ Load data cautiously from database. """
         try: 
             return db[key]
-        except:
+        except KeyError:
             _log.warning(traceback.format_exc())        
             return go_back
 
     def dumps(self, key: str, value: Any) -> bool:
         """ Dump data cautiously to database. """
-        try: db[key] = value
-        except:
+        try: 
+            db[key] = value
+        except Exception:
             _log.warning(traceback.format_exc())
             return False
         return True

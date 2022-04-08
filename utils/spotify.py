@@ -62,9 +62,12 @@ def getRecommend(names: List[str], amount: int = 50) -> List[str]:
         if "open.spotify.com/track/" in name:
             uris.append(name)
             continue
+        
         r = spotify.search(q=name, limit=1)
 
-        if len(r['tracks']['items']) == 0: continue # Not found    
+        if len(r['tracks']['items']) == 0: 
+            continue # Not found    
+
         uris.append(r['tracks']['items'][0]['uri'])
     
     if len(uris) == 0:

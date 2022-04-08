@@ -10,6 +10,7 @@ import asyncio
 import logging
 import datetime
 import traceback
+from typing import Any
 from aiohttp import ClientSession
 
 import discord
@@ -37,7 +38,7 @@ DEFAULT_ACCEPTED_VALUE = {
 class Settings:
     def __init__(self, bot):
         self._bot = bot
-        self._settings = bot.database.loads( "MUSIC", {} )
+        self._settings = bot.database.loads("MUSIC", {})
 
     def __getitem__(self, item):
         return self._settings.get(item, DEFAULT_SETTINGS)
@@ -46,28 +47,36 @@ class Settings:
         return self._settings.__iter__()
     
     def get(self, gid, sett):
+        """Get guild setting.
+        """
         gid = str(gid)
+
         if gid not in self._settings:
             self._settings[gid] = DEFAULT_SETTINGS
         
         return self._settings[gid][sett]
     
-    def set(self, guild_id, setting, value):
+    def set(self, guild_id: int, setting: str, value: Any) -> None:
+        """Set guild setting.
+        """
+        guild_id = str(guild_id)
 
         value = DEFAULT_ACCEPTED_VALUE[setting](value)
-        if str(guild_id) not in self._settings:
-            self._settings[str(guild_id)] = DEFAULT_SETTINGS
 
-        self._settings[str(guild_id)][setting] = value
+        if guild_id not in self._settings:
+            self._settings[guild_id] = DEFAULT_SETTINGS
 
-        self._bot.database.dumps( "MUSIC", self._settings)
+        self._settings[guild_id][setting] = value
+
+        self._bot.database.dumps("MUSIC", self._settings)
 
 class Bot(commands.AutoShardedBot):
     # Subclass of commands.Bot
-    def __init__(self, command_prefix, help_command=None, description=None, **options):
+    def __init__(self, command_prefix, help_command = None, description = None, **options):
         """ Overwrite Defualt __init__ """
         # Set default Help command
-        if not help_command: help_command = commands.DefaultHelpCommand()
+        if not help_command:
+            help_command = commands.DefaultHelpCommand()
 
         super().__init__(command_prefix, help_command, description, **options)
 
@@ -100,11 +109,11 @@ class Bot(commands.AutoShardedBot):
 
         return cls(
             loop = loop,
-            command_prefix= config.prefix,
-            activity= discord.Activity(type=discord.ActivityType.watching, name="myself starting..."),
-            status= discord.Status.dnd,
-            case_insensitive= False,
-            max_messages= 10_000,
+            command_prefix = config.prefix,
+            activity = discord.Activity(type = discord.ActivityType.watching, name = "myself starting..."),
+            status = discord.Status.dnd,
+            case_insensitive = False,
+            max_messages = 10_000,
             intents = intents
         )
 
@@ -116,7 +125,7 @@ class Bot(commands.AutoShardedBot):
         for extension in extensions:
             try: 
                 self.load_extension(extension)
-            except Exception as e: 
+            except (commands.ExtensionFailed, commands.NoEntryPointError) as e: 
                 log.warning(f"Couldn't load {extension} with an error: {e}")   
                 self.unloaded_cogs.append(extension)             
 
@@ -138,11 +147,11 @@ class Bot(commands.AutoShardedBot):
         users = (len(self.users) // 10) * 10
 
         statuses = (
-            discord.Activity(type=discord.ActivityType.watching, name=f"{c} assignments"),
-            discord.Activity(type=discord.ActivityType.playing, name=f"in {len(self.guilds)} servers"),
-            discord.Activity(type=discord.ActivityType.watching, name=f"~{format(users, ',')} users"),
-            discord.Activity(type=discord.ActivityType.playing, name="with python"),
-            discord.Activity(type=discord.ActivityType.playing, name=",help command")
+            discord.Activity(type = discord.ActivityType.watching, name = f"~{format(users, ',')} users"),
+            discord.Activity(type = discord.ActivityType.watching, name = f"{c} assignments"),
+            discord.Activity(type = discord.ActivityType.playing, name = f"in {len(self.guilds)} servers"), 
+            discord.Activity(type = discord.ActivityType.playing, name = ",help command"),           
+            discord.Activity(type = discord.ActivityType.playing, name = "with python")
         )
         return random.choice(statuses)
     
@@ -151,10 +160,13 @@ class Bot(commands.AutoShardedBot):
         extensions = [ext for ext in self.extensions]
         # haha, RuntimeError again!
         for extension in extensions:
-            if extension == "exts.admin": continue
+            if extension == "exts.admin": 
+                # Ignore admin cog.
+                continue
+
             try:
                 self.unload_extension(extension)
-            except Exception:
+            except (commands.ExtensionNotLoaded, commands.ExtensionNotFound):
                 pass
     
     async def close(self) -> None:
@@ -162,7 +174,6 @@ class Bot(commands.AutoShardedBot):
 
         await self.trust_session.close()
         sys.exit(0)
-
     
     async def on_ready(self) -> None:
         """ on Ready event, Use to log and change bot status. """
@@ -206,14 +217,14 @@ class Bot(commands.AutoShardedBot):
             self.dump_channel = self.get_channel(config.dump_channel_id)
         
         embed = discord.Embed( timestamp = datetime.datetime.utcnow())
-        embed.add_field(name="Event Method", value=str(event_method), inline=False)
-        embed.add_field(name="Args", value=str(args), inline=False)
-        embed.add_field(name="Kwargs", value=str(kwargs), inline=False)
+        embed.add_field(name = "Event Method", value = str(event_method), inline = False)
+        embed.add_field(name = "Args", value = str(args), inline = False)
+        embed.add_field(name = "Kwargs", value = str(kwargs), inline = False)
 
         message = traceback.format_exc().replace('```', '\```')
 
         try: 
-            await self.dump_channel.send( content = f"```py\n{message}\n```", embed=embed)
+            await self.dump_channel.send(content = f"```py\n{message}\n```", embed = embed)
         except discord.HTTPException:
             try:
                 await self.dump_channel.send(
@@ -226,15 +237,10 @@ class Bot(commands.AutoShardedBot):
     async def log(self, name: str, message: str = "", mention: bool = False, embed: discord.Embed = None) -> None:
         """
         Log Message to Bot's log-channel.
-        
-        It will try to send message normally, If It can't set the time of exception and log exception.
-        then, Try to send messages informing about exception and log message with original time.
-        If this time, It couldn't send message. check if it's because of HTTPException (message too long)
-        If that is the case, send a shorted form of it and inform the situation. If not because HTTPException,
-        Try to connect to log channel and repeat whole process again.
         """
-        log.debug(f"{name} {message}")
+        log.info(f"{name} {message}")
         await self.wait_until_ready()
+
         while self.log_channel is None: 
             self.log_channel = self.get_channel(config.log_channel_id)
         
@@ -245,28 +251,8 @@ class Bot(commands.AutoShardedBot):
             await self.log_channel.send(text, embed=embed)
         except discord.HTTPException:
             log.error(f"unable to log a message with error:\n{traceback.format_exc()}")
-            rn = today_th(True)
         else: 
             return
-
-        error_text = f"**[{today_th(True)}] | [Bot] **" + f"<@!{self.owner_id}>" \
-            f"\nLog connection went out for little while. ({rn})" \
-            f"\n{traceback.format_exc()}"
-
-        while 1:
-            try:                              
-                await self.log_channel.send(text, embed=embed)
-                await self.log_channel.send(error_text)  
-            except discord.HTTPException:
-                log.error(traceback.format_exc())
-                await self.log_channel.send(f"<@!{self.owner_id}> An Exception is longer than 2000 characters, For more info check the log.")
-                await self.log_channel.send(error_text[:1996]+"...") # Log Error
-                await self.log_channel.send(text[:1996]+"...") # Original Log
-                break
-            except: # Retrying                    
-                log.info("retrying to send a log message in 60.00 seconds")
-                await asyncio.sleep(60.00)
-            else: break
     
     async def wait_for_message(self, ctx: commands.Context, timeout: int = None) -> discord.Message:
         """
@@ -276,10 +262,11 @@ class Bot(commands.AutoShardedBot):
         - Message is the same channel as ran command.
         - Author needs to be the person who ran command.
         """    
-        def check(m) -> bool: return m.channel == ctx.channel and m.author == ctx.author   
+        def check(m) -> bool: 
+            return m.channel == ctx.channel and m.author == ctx.author   
 
         log.debug("waiting for message...")        
-        return await self.wait_for("message", check=check, timeout=timeout)
+        return await self.wait_for("message", check=check, timeout = timeout)
 
     async def add_reactions(self, message: discord.Message, reactions: list) -> None:
         """ Add Set/List of Reactions to targeted message. """
@@ -288,7 +275,6 @@ class Bot(commands.AutoShardedBot):
                 await message.add_reaction(reaction)
             except (discord.HTTPException, discord.Forbidden) as e:
                 log.debug(f"could not add {reaction} reaction with exception: {e}")
-                pass
     
     async def get_image_url(self, image: discord.Attachment) -> str:
         """ 
@@ -339,13 +325,20 @@ class Bot(commands.AutoShardedBot):
         if gap is None: 
             gap = self.in_days(date)
 
-        if gap is None: return discord.Colour.purple()
-        elif gap >= 14: return discord.Colour.teal()
-        elif gap >= 7: return discord.Colour.dark_teal()
-        elif gap >= 4: return discord.Colour.gold()
-        elif gap >= 2: return discord.Colour.dark_gold()
-        elif gap == 1: return discord.Colour.dark_orange()
-        elif gap == 0: return discord.Colour.dark_red()
+        if gap is None: 
+            return discord.Colour.purple()
+        if gap >= 14: 
+            return discord.Colour.teal()
+        if gap >= 7: 
+            return discord.Colour.dark_teal()
+        if gap >= 4: 
+            return discord.Colour.gold()
+        if gap >= 2: 
+            return discord.Colour.dark_gold()
+        if gap == 1: 
+            return discord.Colour.dark_orange()
+        if gap == 0: 
+            return discord.Colour.dark_red()
         return discord.Colour.default()
     
     def get_title(self, title: str, date: str, passed: bool = False) -> str:
@@ -355,11 +348,16 @@ class Bot(commands.AutoShardedBot):
 
         in_day = self.in_days(date)
         
-        if in_day is None: in_day = ""
-        elif in_day == 0: in_day = " [❗❗ TODAY ❗❗]"
-        elif in_day == 1: in_day = " [❗❗ TOMORROW ❗❗]"
-        elif in_day < 0: in_day = " [ PASSED ]"
-        else: in_day = f" [In {in_day} days]"
+        if in_day is None: 
+            in_day = ""
+        elif in_day == 0: 
+            in_day = " [❗❗ TODAY ❗❗]"
+        elif in_day == 1: 
+            in_day = " [❗❗ TOMORROW ❗❗]"
+        elif in_day < 0: 
+            in_day = " [ PASSED ]"
+        else: 
+            in_day = f" [In {in_day} days]"
 
         return title + in_day
     
@@ -378,12 +376,12 @@ class Bot(commands.AutoShardedBot):
         log.debug("creating assignment embed...")
         title = self.get_title(kwargs.get('title'), kwargs.get('date'), passed=kwargs.get("already_passed"))
         
-        embed = discord.Embed( timestamp = datetime.datetime.now() )
+        embed = discord.Embed(timestamp = datetime.datetime.now())
         embed.set_author(name = title)
         embed.description = kwargs.get('key')
-        embed.colour = self.get_colour(kwargs.get('date'), passed=kwargs.get("already_passed"))    
+        embed.colour = self.get_colour(kwargs.get('date'), passed = kwargs.get("already_passed"))    
         
-        embed.add_field(name = ":calendar_spiral: Date: ", value= kwargs.get('readable-date'), inline = False)
+        embed.add_field(name = ":calendar_spiral: Date: ", value = kwargs.get('readable-date'), inline = False)
 
         desc = kwargs.get('desc')
         if desc != "No Description Provided":
@@ -391,6 +389,8 @@ class Bot(commands.AutoShardedBot):
 
         embed.set_footer(text = f"Key: {kwargs.get('key')}")
 
-        if kwargs.get('image-url') != "Not Attached": embed.set_image(url=kwargs.get('image-url'))
+        if kwargs.get('image-url') != "Not Attached": 
+            embed.set_image(url=kwargs.get('image-url'))
+        
         log.debug("successfully created assignment embed")
         return embed

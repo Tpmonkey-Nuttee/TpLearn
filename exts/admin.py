@@ -29,14 +29,13 @@ class AdminCommands(Cog):
         self.eval_jobs = {}
         self.clearing = False
     
-    def delete_eval_job(self, id: int) -> None:
+    def delete_eval_job(self, id_: int) -> None:
         """Delete existing eval job."""
         # Need except if the command has been run twice at the same time
         try:
-            del self.eval_jobs[id]
+            del self.eval_jobs[id_]
         except Exception as e:
             log.trace(f"Couldn't delete eval job; {e}")
-            pass
         
     @command(aliases = ("sc", ))
     @is_owner()
@@ -162,7 +161,7 @@ class AdminCommands(Cog):
             code_ = code.replace("import ", "")
             try:
                 self.mod = importlib.import_module(code_)
-            except:
+            except ModuleNotFoundError:
                 self.result = traceback.format_exc()
             else:
                 self.result = self.mod
@@ -170,7 +169,7 @@ class AdminCommands(Cog):
         else:            
             try:
                 self.result = await eval( str(code).replace("await ", "") ) if "await" in code else eval(code)
-            except:
+            except Exception: # because it's remote execution, we do not know what error can occur.
                 self.result = traceback.format_exc()
 
         # In case of output is longer than Discord allowed, I use list of embed and send it one by one
@@ -233,12 +232,12 @@ class AdminCommands(Cog):
         embed = await self._base_embed(ctx, code)
 
         if results != []:
-            for i in range(len(results)):
+            for i, item in enumerate(result):
                 if i != 0:
                     embed = await self._base_embed(ctx, code)
 
                 name = f"{i}"
-                value = f"```python\n\n{results[i]}\n\n\n```"
+                value = f"```python\n\n{item}\n\n\n```"
                 embed.add_field(name=name, value=value)
                 embeds.append(embed)                
         else:
@@ -287,7 +286,7 @@ class AdminCommands(Cog):
             return await m.edit(content=reload, embed=embed)            
         
         # Only one extension
-        elif "exts." not in file:
+        if "exts." not in file:
             file = f"exts.{file}"
 
         try:
@@ -306,7 +305,7 @@ class AdminCommands(Cog):
         
         try:
             await self.bot.wait_for('message', check=check, timeout=10)
-        except:
+        except asyncio.TimeoutError:
             return await ctx.send("Canceled")            
 
         await self.bot.log(__name__, "Shutting down bot... by {}".format(ctx.author.mention))

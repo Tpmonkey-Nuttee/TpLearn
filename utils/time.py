@@ -9,12 +9,11 @@ __all__ = ("time_since", )
 def _stringify_time_unit(value: int, unit: str):
     if unit == "seconds" and value == 0:
         return "0 seconds"
-    elif value == 1:
+    if value == 1:
         return f"{value} {unit[:-1]}"
-    elif value == 0:
+    if value == 0:
         return f"less than a {unit[:-1]}"
-    else:
-        return f"{value} {unit}"
+    return f"{value} {unit}"
 	
 def time_since(past_datetime: datetime.datetime, precision: str = "seconds", max_units: int = 6):
     now = datetime.datetime.utcnow()

@@ -259,16 +259,16 @@ class LinePaginator(Paginator):
                 embed.url = url
 
             return await ctx.send(embed=embed)
+
+        if footer_text:
+            embed.set_footer(text=f"{footer_text} (Page {current_page + 1}/{len(paginator.pages)})")
         else:
-            if footer_text:
-                embed.set_footer(text=f"{footer_text} (Page {current_page + 1}/{len(paginator.pages)})")
-            else:
-                embed.set_footer(text=f"Page {current_page + 1}/{len(paginator.pages)}")
+            embed.set_footer(text=f"Page {current_page + 1}/{len(paginator.pages)}")
 
-            if url:
-                embed.url = url
+        if url:
+            embed.url = url
 
-            message = await ctx.send(embed=embed)
+        message = await ctx.send(embed=embed)
 
         for emoji in PAGINATION_EMOJI:
             # Add all the applicable emoji to the message

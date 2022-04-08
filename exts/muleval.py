@@ -102,7 +102,7 @@ class Snekbox(Cog):
     def predict_colour(rcode: str) -> Colour:
         if rcode == "0":
             return Colour.dark_green()
-        elif rcode == "1":
+        if rcode == "1":
             return Colour.dark_red()
         return Colour.default()
 

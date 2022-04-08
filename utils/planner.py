@@ -53,17 +53,13 @@ class Planner:
         if guild_id not in self.__data:
             return []
 
-        # TODO: After all current assignments are deleted, rewrite it as one-line for loop.
-        # PS: I forgot what it actaully call :P
         d = []
         for i in self.__data[guild_id]:
             if self.__data[guild_id][i]['already-passed']: 
                 # Ignore passed assignment.
                 continue
 
-            value = self.__data[guild_id][i]
-            value['key'] = i # Remove this later
-            d.append(value)
+            d.append(self.__data[guild_id][i])
 
         return d
     
@@ -77,7 +73,8 @@ class Planner:
         
         d = 0
         for i in self.__data[guild_id]:
-            if self.__data[guild_id][i]['already-passed']: d += 1            
+            if self.__data[guild_id][i]['already-passed']: 
+                d += 1            
 
         return d
 
@@ -88,12 +85,8 @@ class Planner:
         guild_id = str(guild_id)
         if guild_id not in self.__data:
             return {}
-        
-        # TODO: 
-        d = self.__data[guild_id][key]
-        d['key'] = key
 
-        return d
+        return self.__data[guild_id][key]
 
     def get_all_guild(self) -> list:
         """
@@ -151,14 +144,14 @@ class Planner:
         
         print("First check", time.perf_counter() - t)
         
-        sorted = self.get_sorted(guild_id)
+        _sorted = self.get_sorted(guild_id)
         formatted = {}
         # Idk why, but I wanted the 'formatted' dict to be
         # {
         #   "date that human can read": ["assignment key 1", "assignment key 2"]
         # }
 
-        for value in sorted:
+        for value in _sorted:
             date_key = self.try_strp_date( value['date'] ).strftime("%d-%m-%Y") if self.strp_able( value['readable-date'] ) else "Unknown Date"
 
             if date_key not in formatted:
@@ -170,7 +163,7 @@ class Planner:
         
         # Let's create base Embed.
         embed = discord.Embed()
-        embed.title = "Upcoming Assignment" if len(sorted) == 1 else "Upcoming Assignments"
+        embed.title = "Upcoming Assignment" if len(_sorted) == 1 else "Upcoming Assignments"
         embed.title = ":calendar_spiral: " + embed.title + " :calendar_spiral:"
         embed.timestamp = datetime.datetime.utcnow()
         embed.set_footer(text = "Take a look at #active-works channel for more info!")
@@ -396,7 +389,8 @@ class Planner:
         """
         Try to Strip given Date, If can't return the given.
         """        
-        if len(unreadable) < 3: return None
+        if len(unreadable) < 3: 
+            return None
 
         p = unreadable[2]
         try: 

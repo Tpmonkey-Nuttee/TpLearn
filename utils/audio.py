@@ -82,7 +82,7 @@ class YTDLSource(discord.PCMVolumeTransformer):
         'quiet': True,
         'no_warnings': True,
         'default_search': 'auto',
-        'source_address': '0.0.0.0',
+        'source_address': '192.168.0.1',
         "cookiefile": "com_cookies.txt",
         "cachedir": False,
     }

@@ -36,17 +36,9 @@ class Updater(Cog):
         Check if loop running correctly.
         """
         if not self.loop.is_running():
-            await self.bot.log(__name__, "Updater Loop is not running, Trying to restart...")
-            await self.bot.log(__name__, traceback.format_exc())
-            
-            try: 
-                self.loop.restart()
-            except: 
-                await self.bot.log(__name__, "Restart failed with traceback:", mention=True)
-                await self.bot.log(__name__, traceback.format_exc())
-            else:
-                await self.bot.log(__name__, "Restart successfully.")
-                return
+            self.loop.restart()
+            await self.bot.log(__name__, "Updater Loop is not running, Restarted")
+            await self.bot.log(__name__, traceback.format_exc())          
     
     def check(self, message: Message, **work: dict) -> bool:
         """
@@ -95,15 +87,18 @@ class Updater(Cog):
         await self.bot.wait_until_ready()
 
         # We need to check if the bot already updating or not.
-        if not self.updating: await self.update()
-        else: await self.bot.log(__name__, "Cannot keep up with update work system. Some Guild maybe affected.")
+        if not self.updating: 
+            await self.update()
+        else: 
+            await self.bot.log(__name__, "Cannot keep up with update work system. Some Guild maybe affected.")
 
     async def get_messages(self, channel: TextChannel) -> list:
         """Get messages from active-works channel, Wil only get its own messages."""
         messages = []
 
         async for message in channel.history(limit=30):
-            if message.author.id == self.bot.user.id: messages.append(message)
+            if message.author.id == self.bot.user.id: 
+                messages.append(message)
             
         return messages
     
@@ -160,7 +155,8 @@ class Updater(Cog):
         """
         
         channel = self.bot.get_channel(channels['active'])
-        if channel is None: return
+        if channel is None: 
+            return
 
         messages = await self.get_messages(channel)
 
@@ -193,7 +189,8 @@ class Updater(Cog):
             works.reverse()
             for index, work in enumerate(works):        
                 embed = self.bot.get_embed(**work)
-                try: message = messages[index]                    
+                try: 
+                    message = messages[index]                    
                 except IndexError: # Ran out of embeds to edit.
                     await channel.send(embed=embed)
                     messages_output.append("S")

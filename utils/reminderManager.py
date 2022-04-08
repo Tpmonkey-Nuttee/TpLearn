@@ -1,5 +1,6 @@
 # TODO: frontend commands.
 # TODO: Hook it to exts.dayloop
+# TODO: Do not forget this file and actually finish it. :)
 
 from bot import Bot
 from constant import today_th

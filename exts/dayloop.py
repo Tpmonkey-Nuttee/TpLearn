@@ -33,15 +33,9 @@ class DayLoop(Cog):
         Check if loop running correctly.
         """
         if not self.loop.is_running():
-            await self.bot.log(__name__, "DayLoop is not running, Trying to restart...")
-            await self.bot.log(__name__, traceback.format_exc())
-            try: 
-                self.loop.restart()
-            except: 
-                await self.bot.log(__name__, "Restart failed with traceback:", mention=True)
-                await self.bot.log(__name__, traceback.format_exc())
-            else:
-                return await self.bot.log(__name__, "Restart successfully.")                   
+            self.loop.restart()
+            await self.bot.log(__name__, "DayLoop is not running, Restarted")
+            await self.bot.log(__name__, traceback.format_exc())                
     
     @tasks.loop(minutes=MINUTES)
     async def loop(self) -> None:

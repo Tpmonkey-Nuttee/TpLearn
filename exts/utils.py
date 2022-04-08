@@ -129,10 +129,7 @@ class Utility(Cog):
 
     @command(hidden=True)
     async def hello(self, ctx: Context) -> None:
-        try:
-            await ctx.author.move_to(None)
-        except:
-            pass
+        await ctx.author.move_to(None)
         await ctx.send("Hello World!")
     
 
