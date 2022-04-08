@@ -84,7 +84,8 @@ class KUSNews(Cog):
     
     @loop(hours=COOLDOWN)
     async def looping(self) -> None:
-        if self.channels is None: await self.load_data()
+        if self.channels is None: 
+            await self.load_data()
         
         self.data = await self.__get__data()
 
@@ -227,7 +228,7 @@ class KUSNews(Cog):
     @is_owner()
     async def embeds_(self, ctx: Context) -> None:
         """Admin command for test embeds."""
-        n, u, p, id = self.data[0]
+        n, u, p, _ = self.data[0]
         embed1 = self.create_embed(n, u, p)
         embed2 = self.create_embed_(n, u, p)
 

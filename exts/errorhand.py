@@ -34,15 +34,15 @@ class ErrorHandler(commands.Cog):
 
         if isinstance(error, commands.errors.UserInputError):
             return await self.handle_user_input_error(ctx, error)            
-        elif isinstance(error, commands.errors.CheckFailure):
+        if isinstance(error, commands.errors.CheckFailure):
             return await self.handle_check_failure(ctx, error)            
-        elif isinstance(error, commands.errors.CommandOnCooldown):
+        if isinstance(error, commands.errors.CommandOnCooldown):
             return await ctx.send(f":x: **{error}**")            
-        else:
-            try: 
-                await ctx.send(":x: **Something went wrong while processing your request!**")        
-            except discord.HTTPException: 
-                log.warning("couldn't send message.")
+
+        try: 
+            await ctx.send(":x: **Something went wrong while processing your request!**")        
+        except discord.HTTPException: 
+            log.warning("couldn't send message.")
 
         log.debug(            
             f"Command {command} invoked by {ctx.author} with error "

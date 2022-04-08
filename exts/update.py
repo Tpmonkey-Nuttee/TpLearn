@@ -122,7 +122,7 @@ class Updater(Cog):
 
             try: 
                 ret = await self.update_active(works, data[gid])
-            except:
+            except Exception: 
                 await self.bot.log(__name__, f":negative_squared_cross_mark: Unable to update works at {gid} with error: \n{traceback.format_exc()}")
             else:
                 if len(ret) != 2: 
@@ -231,13 +231,8 @@ class Updater(Cog):
         d = self.bot.manager.get_all()
         works = self.bot.planner.get_sorted(gid)
 
-        try: 
-            result = await self.update_active(works, d[gid], True)
-        except:
-            await self.bot.log(__name__, f"Unable to update works at {gid} with error: {traceback.format_exc()}")
-            content = "Update failed, Exception in logs."
-        else: 
-            content = "\n".join(result)
+        result = await self.update_active(works, d[gid], True)
+        content = "\n".join(result)
 
         await m.edit(content=content)
     
