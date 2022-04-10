@@ -963,6 +963,8 @@ class Music(commands.Cog):
 
     @_join.before_invoke
     @_play.before_invoke
+    @_skip.before_invoke
+    @_skipto.before_invoke
     async def ensure_voice_state(self, ctx: commands.Context):
         # make sure user is in vc.
         if not ctx.author.voice or not ctx.author.voice.channel:

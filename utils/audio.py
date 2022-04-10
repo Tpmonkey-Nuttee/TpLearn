@@ -26,13 +26,26 @@ youtube = googleapiclient.discovery.build("youtube", "v3", developerKey = YOUTUB
 _search = youtube.search()
 _playlistItems = youtube.playlistItems()
 
+chars = {
+    "&quot;": '"',
+    "&#39;": "'",
+    "&amp;": "&"
+}
+
 def getInfo(q: str) -> dict:
     _ = _search.list(
         q = q,
         part = "id,snippet",
         maxResults = 1
     ).execute()['items'].pop(0)
-    _['snippet']['title'] = _['snippet']['title'].replace('&quot;', '"').replace("&#39;", "'")
+
+    # Youtube API is just weird.
+    title = _['snippet']['title']
+    for text in chars:
+        if text in title:
+            title.replace(text, chars[text])
+
+    _['snippet']['title'] = title
     return _
 
 def getYtPlaylist(url: str) -> Tuple[List[str]]:
@@ -117,11 +130,11 @@ class YTDLSource(discord.PCMVolumeTransformer):
         self.description = data.get('description')
         
         if nc:
-            duration = int(data.get('duration') * 0.66)
+            self.raw_duration = int(data.get('duration') * 0.66)
         else:
-            duration = int(data.get('duration'))
-        self.duration = self.parse_duration(duration)
-
+            self.raw_duration = int(data.get('duration'))
+        self.duration = self.parse_duration(self.raw_duration)
+        
         self.tags = data.get('tags')
         self.url = data.get('webpage_url')
         self.views = data.get('view_count')
