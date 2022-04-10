@@ -95,7 +95,7 @@ class YTDLSource(discord.PCMVolumeTransformer):
     }
     FFMPEG_OPTIONS_NC = {
         'before_options': '-reconnect 1 -reconnect_streamed 1 -reconnect_delay_max 5',
-        'options': '-vn -filter:a "atempo=1.25,asetrate=44100*1.25"',
+        'options': '-vn -filter:a "atempo=1.5,asetrate=44100*1.5"',
     }
 
     __slots__ = "data", "uploader", "uploader_url", \
@@ -104,7 +104,7 @@ class YTDLSource(discord.PCMVolumeTransformer):
 
     ytdl = youtube_dl.YoutubeDL(YTDL_OPTIONS)
 
-    def __init__(self, source: discord.FFmpegPCMAudio, *, data: dict, volume: float = 0.5):
+    def __init__(self, source: discord.FFmpegPCMAudio, *, data: dict, volume: float = 0.5, nc: bool = False):
         super().__init__(source, volume)
         self.data = data
 
@@ -115,7 +115,13 @@ class YTDLSource(discord.PCMVolumeTransformer):
         self.title = data.get('title')
         self.thumbnail = data.get('thumbnail')
         self.description = data.get('description')
-        self.duration = self.parse_duration(int(data.get('duration')))
+        
+        if nc:
+            duration = int(data.get('duration') * 0.66)
+        else:
+            duration = int(data.get('duration'))
+        self.duration = self.parse_duration(duration)
+
         self.tags = data.get('tags')
         self.url = data.get('webpage_url')
         self.views = data.get('view_count')
@@ -153,7 +159,7 @@ class YTDLSource(discord.PCMVolumeTransformer):
         print("Created Source YouTubeDL", search.strip("https://www.youtube.com/watch?"))
 
         FFMPEG_OPTS = cls.FFMPEG_OPTIONS_NC if nc else cls.FFMPEG_OPTIONS
-        return cls(discord.FFmpegPCMAudio(info['url'], **FFMPEG_OPTS), data=info)
+        return cls(discord.FFmpegPCMAudio(info['url'], **FFMPEG_OPTS), data=info, nc=nc)
 
     @staticmethod
     def parse_duration(duration: int):
