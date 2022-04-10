@@ -32,7 +32,7 @@ def getInfo(q: str) -> dict:
         part = "id,snippet",
         maxResults = 1
     ).execute()['items'].pop(0)
-    _['snippet']['title'] = _['snippet']['title'].replace('&quot;', '"').replace("&#39", "'")
+    _['snippet']['title'] = _['snippet']['title'].replace('&quot;', '"').replace("&#39;", "'")
     return _
 
 def getYtPlaylist(url: str) -> Tuple[List[str]]:
@@ -84,7 +84,7 @@ class YTDLSource(discord.PCMVolumeTransformer):
         'quiet': True,
         'no_warnings': True,
         'default_search': 'auto',
-        'source_address': '192.168.0.1',
+        'source_address': '0.0.0.0',
         "cookiefile": "com_cookies.txt",
         "cachedir": False,
     }
