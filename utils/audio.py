@@ -27,11 +27,13 @@ _search = youtube.search()
 _playlistItems = youtube.playlistItems()
 
 def getInfo(q: str) -> dict:
-    return _search.list(
+    _ = _search.list(
         q = q,
         part = "id,snippet",
         maxResults = 1
     ).execute()['items'].pop(0)
+    _['snippet']['title'] = _['snippet']['title'].replace('&quot;', '"').replace("&#39", "'")
+    return _
 
 def getYtPlaylist(url: str) -> Tuple[List[str]]:
     # actually get playlist id

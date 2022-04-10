@@ -894,7 +894,7 @@ class Music(commands.Cog):
 
                 # Don't reply if use link.
                 if not any(kw in search for kw in ["youtu.be/", "youtube.com/watch?v="]):
-                    title = ret['snippet']['title'].replace('&quot;', '"')
+                    title = ret['snippet']['title']
                     await ctx.send(
                         embed = discord.Embed(
                             description = f"[{title}]({url})",
@@ -948,7 +948,7 @@ class Music(commands.Cog):
 
             # Don't reply if use link.
             if not any(kw in search for kw in ["youtu.be/", "youtube.com/watch?v="]):
-                title = ret['snippet']['title'].replace('&quot;', '"')
+                title = ret['snippet']['title']
                 await ctx.send(
                     embed = discord.Embed(
                         description = f"[{title}]({url})",
