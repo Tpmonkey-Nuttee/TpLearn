@@ -36,6 +36,7 @@ def getInfo(q: str) -> dict:
     _ = _search.list(
         q = q,
         part = "id,snippet",
+        type="video",
         maxResults = 1
     ).execute()['items'].pop(0)
 
@@ -108,7 +109,7 @@ class YTDLSource(discord.PCMVolumeTransformer):
     }
     FFMPEG_OPTIONS_NC = {
         'before_options': '-reconnect 1 -reconnect_streamed 1 -reconnect_delay_max 5',
-        'options': '-vn -filter:a "atempo=1.5,asetrate=44100*1.5"',
+        'options': '-vn -filter:a "atempo=1.25,asetrate=44100*1.5"',
     }
 
     __slots__ = "data", "uploader", "uploader_url", \
@@ -130,7 +131,7 @@ class YTDLSource(discord.PCMVolumeTransformer):
         self.description = data.get('description')
         
         if nc:
-            self.raw_duration = int(data.get('duration') * 0.66)
+            self.raw_duration = int(data.get('duration') * 0.8)
         else:
             self.raw_duration = int(data.get('duration'))
         self.duration = self.parse_duration(self.raw_duration)
