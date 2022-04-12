@@ -109,7 +109,7 @@ class YTDLSource(discord.PCMVolumeTransformer):
     }
     FFMPEG_OPTIONS_NC = {
         'before_options': '-reconnect 1 -reconnect_streamed 1 -reconnect_delay_max 5',
-        'options': '-vn -filter:a "asetrate=44100*1.3"',
+        'options': '-vn -filter:a "asetrate=44100*1.5,aresample=44100,atempo=1.2/1.5"',
     }
 
     __slots__ = "data", "uploader", "uploader_url", \
@@ -131,7 +131,7 @@ class YTDLSource(discord.PCMVolumeTransformer):
         self.description = data.get('description')
         
         if nc:
-            self.raw_duration = int(data.get('duration') * 10/13)
+            self.raw_duration = int(data.get('duration') * 5/6)
         else:
             self.raw_duration = int(data.get('duration'))
         self.duration = self.parse_duration(self.raw_duration)
