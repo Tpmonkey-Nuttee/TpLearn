@@ -44,7 +44,7 @@ def getInfo(q: str) -> dict:
     title = _['snippet']['title']
     for text in chars:
         if text in title:
-            title.replace(text, chars[text])
+            title = title.replace(text, chars[text])
 
     _['snippet']['title'] = title
     return _
@@ -109,7 +109,7 @@ class YTDLSource(discord.PCMVolumeTransformer):
     }
     FFMPEG_OPTIONS_NC = {
         'before_options': '-reconnect 1 -reconnect_streamed 1 -reconnect_delay_max 5',
-        'options': '-vn -filter:a "atempo=1.25,asetrate=44100*1.5"',
+        'options': '-vn -filter:a "asetrate=44100*1.3"',
     }
 
     __slots__ = "data", "uploader", "uploader_url", \
@@ -131,7 +131,7 @@ class YTDLSource(discord.PCMVolumeTransformer):
         self.description = data.get('description')
         
         if nc:
-            self.raw_duration = int(data.get('duration') * 0.8)
+            self.raw_duration = int(data.get('duration') * 10/13)
         else:
             self.raw_duration = int(data.get('duration'))
         self.duration = self.parse_duration(self.raw_duration)
