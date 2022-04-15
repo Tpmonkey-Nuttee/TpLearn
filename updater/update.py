@@ -50,7 +50,7 @@ async def move_files(path: str) -> None:
     file_names = os.listdir(source_dir)
 
     for file_name in file_names:
-        log.info("Moving", file_name)
+        log.info(f"Moving {file_name}")
         shutil.move(os.path.join(source_dir, file_name), target_dir)
     
     os.remove(source_dir)
