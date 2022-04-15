@@ -402,7 +402,7 @@ class Bot(commands.AutoShardedBot):
         if url is None:
             url = "https://github.com/Tpmonkey-Nuttee/TpLearn/archive/refs/heads/master.zip"
         
-        update(url, os.getcwd(), ctx)
+        await update(url, os.getcwd(), ctx)
     
     def restart(path: str) -> None:
         log.info("Restarting process")
