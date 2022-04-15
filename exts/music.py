@@ -449,7 +449,7 @@ class Music(commands.Cog):
     async def _leave(self, ctx: commands.Context, invoke_without_subcommand=True):
         """Clears the queue and leaves the voice channel.
         """
-        if not ctx.voice_state.voice:
+        if ctx.voice_state is not None:
             # In case smth went wrong. but if the bot just restarted, nothing would work anyways.
             await ctx.voice_client.move_to(None)
 
