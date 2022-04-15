@@ -36,6 +36,18 @@ class AdminCommands(Cog):
             del self.eval_jobs[id_]
         except Exception as e:
             log.trace(f"Couldn't delete eval job; {e}")
+    
+    @command(name = "update")
+    @is_owner()
+    async def _update(self, ctx: Context, url: str = None) -> None:
+        await self.bot.update(ctx, url)
+    
+    @command(name = "restart")
+    @is_owner()
+    async def _restart(self, ctx: Context) -> None:
+        await ctx.send("Restarting...")
+        self.bot.restart()
+
         
     @command(aliases = ("sc", ))
     @is_owner()

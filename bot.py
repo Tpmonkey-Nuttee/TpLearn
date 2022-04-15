@@ -394,3 +394,20 @@ class Bot(commands.AutoShardedBot):
         
         log.debug("successfully created assignment embed")
         return embed
+    
+    async def update(self, ctx: commands.Context, url: str = None) -> None:
+        """Update itself from github"""
+        from updater.update import update
+        
+        if url is None:
+            url = "https://github.com/Tpmonkey-Nuttee/TpLearn/archive/refs/heads/master.zip"
+        
+        update(url, os.getcwd(), ctx)
+    
+    def restart(path: str) -> None:
+        log.info("Restarting process")
+
+        args = sys.argv[:]
+        args.insert(0, sys.executable)
+
+        os.execv(sys.executable, args)
