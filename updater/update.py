@@ -4,7 +4,6 @@ Replace all files and Restart process.
 """
 
 import os
-import sys
 import shutil
 import zipfile
 import requests
@@ -50,8 +49,19 @@ async def move_files(path: str) -> None:
     file_names = os.listdir(source_dir)
 
     for file_name in file_names:
-        log.info(f"Moving {file_name}")
-        shutil.move(os.path.join(source_dir, file_name), target_dir)
+        source = os.path.join(source_dir, file_name)
+        dst = os.path.join(target_dir, file_name)
+
+        if os.path.isfile(source):
+            log.info(f"Moving file:\n{source} -> {dst}")
+            shutil.move(source, dst)
+        elif os.path.isdir(source):
+            log.info(f"Moving folder:\n{source} -> {dst}")
+            shutil.copytree(source, dst, dirs_exist_ok=True)
+        else:
+            log.warning(f"Unknown file: {source}")
     
-    os.remove(source_dir)
-    log.info("Deleted source")
+    try:
+        shutil.rmtree(source_dir)
+    except:
+        pass
