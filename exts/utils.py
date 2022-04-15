@@ -107,7 +107,7 @@ class Utility(Cog):
             embed = None
         await ctx.send(content = content, embed=embed)
     
-    @command(aliases = ('update', 'ver', 'patch', ))
+    @command(aliases = ('ver', 'patch', ))
     async def version(self, ctx: Context) -> None:
         embed = Embed(
             title = f"Version {self.bot.config.version}",
