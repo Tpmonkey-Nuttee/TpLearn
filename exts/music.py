@@ -820,11 +820,12 @@ class Music(commands.Cog):
 
         # Remove <> in the url, because some people want to hide the embed.
         search = search.lstrip("<").rstrip(">")
-        log.debug(f"{ctx.guild.id}: Searching {search}")
-        await ctx.trigger_typing()       
+        log.debug(f"{ctx.guild.id}: Searching {search}")      
 
         # Youtube Playlist, Mix        
         if any(kw in search for kw in YOUTUBE_PLAYLIST_KEYWORDS): 
+            await ctx.trigger_typing() 
+
             if self.api_error:
                 return await ctx.send(":x: Bot has reached maximum quota, Youtube Playlist will be disabled.")
 
@@ -842,6 +843,8 @@ class Music(commands.Cog):
         
         # Spotify Playlist
         elif "open.spotify.com/playlist/" in search:
+            await ctx.trigger_typing() 
+
             try: # somewhere in utils.audio
                 tracks = getTracks(search)
             except Exception:
@@ -856,6 +859,8 @@ class Music(commands.Cog):
             await ctx.send("Enqueued {} songs.".format(amount))   
 
         elif "open.spotify.com/album/" in search: # Spotify Album
+            await ctx.trigger_typing() 
+
             try: # somewhere in utils.audio
                 tracks = getAlbum(search)
             except Exception:
@@ -918,7 +923,6 @@ class Music(commands.Cog):
         # Remove <> in the url, because some people want to hide the embed.
         search = search.lstrip("<").rstrip(">")        
         log.debug(f"{ctx.guild.id}: Playnext, Searching {search}")
-        await ctx.trigger_typing() 
 
         # Youtube Playlist
         if "youtube.com/playlist?" in search or "&start_radio" in search: 
