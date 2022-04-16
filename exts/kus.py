@@ -175,7 +175,7 @@ class KUSNews(Cog):
     
     @command(name="set-news", aliases = ("add-news", ))
     @has_permissions(manage_guild=True)
-    @cd(1, 20)
+    @cd(1, 15)
     async def set_news(self, ctx: Context) -> None:
         """Add News-Channel, Run this on it"""
         channel_id = ctx.channel.id
@@ -190,7 +190,7 @@ class KUSNews(Cog):
     
     @command(name="remove-news", aliases=("delete-news", ))
     @has_permissions(manage_guild=True)
-    @cd(1, 20)
+    @cd(1, 15)
     async def remove_news(self, ctx: Context) -> None:
         """Remove News-Channel, Run this on it."""
         channel_id = ctx.channel.id
@@ -204,7 +204,7 @@ class KUSNews(Cog):
         await self.bot.log(__name__, f"New news Channel has been removed, {ctx.channel}//{channel_id}")
     
     @command(name="news")
-    @cd(1, 30, BucketType.guild)
+    @cd(3, 10, BucketType.guild)
     async def news_embed(self, ctx: Context, amount: int = 3) -> None:
         """Show 3 Newest Announcements."""
         if not self.enable:
