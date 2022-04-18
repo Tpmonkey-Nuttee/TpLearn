@@ -204,8 +204,8 @@ class Help(Cog):
         embed.add_field(
             name = "3) How to use music system?",
             value = f"After the Discord Music bots shutdown, I can now be the replacement for them!\n"
-                f"All the commands can be found in the commands session but They're all the same as the bots that have been shutting down!\n"
-                f"Please Note that, This bot is not stable yet. if you found any bugs, Please use `{bot.command_prefix}leave` and then resummon me again!\n" 
+                f"All the commands can be found in the commands session but They're all the same as Groovy, Rythm, etc. (Except `remove` command is changed to `removes`)\n"
+                f"Please Note that, This bot is made by one person. if you found any bugs, Please use `{bot.command_prefix}leave` and then resummon me again!\n" 
                 "Also, You can Direct Message bot directly to inform about the bug and I will patch it ASAP!",
             inline = False
         )
