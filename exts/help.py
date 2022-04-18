@@ -118,7 +118,8 @@ class CustomHelpCommand(HelpCommand):
         pages = [
             f"To find tutorial, Use **{self.prefix}ttr**\n\n"
             f"Found a bugs? Try checking it using **{self.prefix}bugs**\n"
-            "It's not there? Report it by Dm-ing the bot!"
+            "It's not there? Report it by Dm-ing the bot!\n"
+            "P.S. This bot is made by \"one\" person... So expect some bugs!"
         ]
         counter = 0
         page = ""
