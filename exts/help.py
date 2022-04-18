@@ -18,9 +18,8 @@ from pagination import LinePaginator
 COMMANDS_PER_PAGE = 8
 
 class CustomHelpCommand(HelpCommand):
-    def __init__(self, prefix: str):
+    def __init__(self):
         super().__init__(command_attrs={"help": "Shows help for bot commands"})
-        self.prefix = prefix
     
     @staticmethod
     def _category_key(command: Command) -> str:
@@ -62,7 +61,7 @@ class CustomHelpCommand(HelpCommand):
         parent = command.full_parent_name
 
         name = str(command) if not parent else f"{parent} {command.name}"
-        command_details = f"**```{self.prefix}{name} {command.signature}```**\n"
+        command_details = f"**```{self.context.prefix}{name} {command.signature}```**\n"
 
         # show command aliases
         aliases = [f"`{alias}`" if not parent else f"`{parent} {alias}`" for alias in command.aliases]
@@ -116,8 +115,8 @@ class CustomHelpCommand(HelpCommand):
                 cog_or_category_pages.append((f"**{cog_or_category}**{joined_lines}", len(truncated_lines)))
 
         pages = [
-            f"To find tutorial, Use **{self.prefix}ttr**\n\n"
-            f"Found a bugs? Try checking it using **{self.prefix}bugs**\n"
+            f"To find tutorial, Use **{self.context.prefix}ttr**\n\n"
+            f"Found a bugs? Try checking it using **{self.context.prefix}bugs**\n"
             "It's not there? Report it by Dm-ing the bot!\n"
             "P.S. This bot is made by \"one\" person... So expect some bugs!"
         ]
@@ -160,7 +159,7 @@ class Help(Cog):
     def __init__(self, bot: Bot):
         self.bot = bot
         self.old_help_command = bot.help_command
-        bot.help_command = CustomHelpCommand(bot.command_prefix)
+        bot.help_command = CustomHelpCommand()
         bot.help_command.cog = self
 
     def cog_unload(self) -> None:
@@ -175,7 +174,7 @@ class Help(Cog):
     async def ttr(self, ctx: Context) -> None:
         bot = ctx.bot
         embed = Embed(
-            description = f"To view all the commands, Type `{bot.command_prefix}help`",
+            description = f"To view all the commands, Type `{ctx.prefix}help`",
             colour = Colour.teal()
         )
         embed.set_author(name = "Tutorial", icon_url = bot.user.avatar_url)
@@ -188,17 +187,17 @@ class Help(Cog):
 
         embed.add_field(
             name = "1) How to use assignment system?",
-            value = f"To start using, Please type down `{bot.command_prefix}setup` to setup the bot.\n"
-                f"After that, you can use `{bot.command_prefix}add` to open assignment menu and add an assignment!\n"
-                f"You can also use `{bot.command_prefix}remove` or `{bot.command_prefix}edit` to remove/edit it!" ,
+            value = f"To start using, Please type down `{ctx.prefix}setup` to setup the bot.\n"
+                f"After that, you can use `{ctx.prefix}add` to open assignment menu and add an assignment!\n"
+                f"You can also use `{ctx.prefix}remove` or `{ctx.prefix}edit` to remove/edit it!" ,
             inline = False
         )
 
         embed.add_field(
             name = "2) How to use KUS monitor system?",
             value = f"To start using, Please go to TextChannel that you want the bot to send the news,\n"
-                f"then type down `{bot.command_prefix}set-news` to setup the bot, The bot will start sending news after it found actual **new news** Got it? :P\n"
-                f"To remove use `{bot.command_prefix}remove-news` and bot will stop sending it!" ,
+                f"then type down `{ctx.prefix}set-news` to setup the bot, The bot will start sending news after it found actual **new news** Got it? :P\n"
+                f"To remove use `{ctx.prefix}remove-news` and bot will stop sending it!" ,
             inline = False
         )
 
@@ -206,14 +205,14 @@ class Help(Cog):
             name = "3) How to use music system?",
             value = f"After the Discord Music bots shutdown, I can now be the replacement for them!\n"
                 f"All the commands can be found in the commands session but They're all the same as Groovy, Rythm, etc. (Except `remove` command is changed to `removes`)\n"
-                f"Please Note that, This bot is made by one person. if you found any bugs, Please use `{bot.command_prefix}leave` and then resummon me again!\n" 
+                f"Please Note that, This bot is made by one person. if you found any bugs, Please use `{ctx.prefix}leave` and then resummon me again!\n" 
                 "Also, You can Direct Message bot directly to inform about the bug and I will patch it ASAP!",
             inline = False
         )
 
         embed.add_field(
             name = "EXTRA) How to use assignment menu?",
-            value = f"You can open it using `{bot.command_prefix}add` `{bot.command_prefix}remove` or `{bot.command_prefix}edit`"
+            value = f"You can open it using `{ctx.prefix}add` `{ctx.prefix}remove` or `{ctx.prefix}edit`"
                 f"After it's opened, You can **type down like you're talking in a normal conversation**! The bot will delete it and input it into the system!\n"
                 f"To insert date, You have 2 ways to do. First way is to type the full date in this format `Day/Month/Year` (*Example: 1/1/2021 or 22/2/2005*)\n" 
                 f"Second way is to use `++days` (*Example: ++1 meaning tomorrow*)\n"
