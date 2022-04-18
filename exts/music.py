@@ -888,6 +888,7 @@ class Music(commands.Cog):
             except Exception:
                 self.play_error() # Call play error
                 song = Song(search, ctx)
+                await ctx.message.add_reaction('✅')
             else:
                 url = f"https://www.youtube.com/watch?v={ret['id']['videoId']}"
                 
@@ -905,7 +906,9 @@ class Music(commands.Cog):
                             description = f"[{title}]({url})",
                             color = discord.Color.teal()
                         ).set_image(url = ret["snippet"]["thumbnails"]["default"]["url"])
-                    ) 
+                    )
+                else:
+                    await ctx.message.add_reaction('✅')
             
             await ctx.voice_state.songs.put(song)
         
@@ -959,6 +962,8 @@ class Music(commands.Cog):
                         color = discord.Color.teal()
                     ).set_image(url = ret["snippet"]["thumbnails"]["default"]["url"])
                 ) 
+            else:
+                await ctx.message.add_reaction('✅')
 
         ctx.voice_state.songs._queue.appendleft(song)
             
