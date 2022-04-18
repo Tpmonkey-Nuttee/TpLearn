@@ -904,7 +904,7 @@ class Music(commands.Cog):
                         embed = discord.Embed(
                             description = f"[{title}]({url})",
                             color = discord.Color.teal()
-                        )
+                        ).set_image(url = ret["snippet"]["thumbnails"]["default"]["url"])
                     ) 
             
             await ctx.voice_state.songs.put(song)
@@ -957,7 +957,7 @@ class Music(commands.Cog):
                     embed = discord.Embed(
                         description = f"[{title}]({url})",
                         color = discord.Color.teal()
-                    )
+                    ).set_image(url = ret["snippet"]["thumbnails"]["default"]["url"])
                 ) 
 
         ctx.voice_state.songs._queue.appendleft(song)
