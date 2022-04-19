@@ -1,7 +1,7 @@
 [tool.poetry]
-name = "tplearn-beta"
-version = "1"
-description = ""
+name = "TpLearn"
+version = "1.7"
+description = "A discord bot made for Senior project."
 authors = ["Tpmonkey"]
 
 [tool.poetry.dependencies]
