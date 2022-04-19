@@ -1,0 +1,43 @@
+{
+    "_comment": "Will be moving to use this soon",
+
+    "DF_PREFIX": ",", 
+    "VERSION": "1.7",
+
+    "SECRET": {
+        "TOKEN": "BOT TOKEN",
+        "GOOGLE_API_KEY": "https://console.cloud.google.com/apis/",
+        "SPOTFY_CLIENT_ID": "https://developer.spotify.com/dashboard/applications",
+        "SPOTIFY_CLIENT_SECRET": "https://developer.spotify.com/dashboard/applications"
+    },
+
+    "CHANNEL": {
+        "LOG": 797471940411392061,
+        "DM": 797471965891264592,
+        "IMAGE": 810802238682824744,
+        "DUMP": 833825510219972638
+    },
+
+    "COOLDOWN": {
+        "ASSIGNMENT": 2,
+        "DAY": 1,
+        "KUS_NEWS": 4
+    },
+
+    "KUS": {
+        "URL": "https://www.kus.ku.ac.th/",
+        "NEWS_URL": "https://www.kus.ku.ac.th/news.php?type=0"
+    },
+
+    "LIMIT": {
+        "ASSIGNMENT_LIMIT": 24,
+        "MAX_DAYS": 30,
+        "MAX_REMINDER": 5
+    },
+
+    "REDIS": {
+        "PORT": "Redis port"
+    }
+
+    
+}
