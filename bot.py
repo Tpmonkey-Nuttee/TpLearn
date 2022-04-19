@@ -35,6 +35,10 @@ DEFAULT_ACCEPTED_VALUE = {
     "vote_skip": bool
 }
 
+def get_prefix(bot: commands.Bot, message: discord.Message) -> str:
+    # For supporting custom prefix (soon)
+    return bot.config.prefix
+
 class Settings:
     def __init__(self, bot):
         self._bot = bot
@@ -109,7 +113,7 @@ class Bot(commands.AutoShardedBot):
 
         return cls(
             loop = loop,
-            command_prefix = config.prefix,
+            command_prefix = get_prefix,
             activity = discord.Activity(type = discord.ActivityType.watching, name = "myself starting..."),
             status = discord.Status.dnd,
             case_insensitive = False,
