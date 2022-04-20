@@ -105,7 +105,7 @@ class KUSNews(Cog):
                 f"\n**To** `{new_ids}`")
 
             # Remove all prevoius data.
-            new_ids = [i for i in self.new_ids if i not in self.ids]
+            new_ids = [i for i in new_ids if i not in self.ids]
             
             datas = [news[key] for key in new_ids] 
             embeds = [self.create_embed(n, u, p) for n, u, p in datas]
