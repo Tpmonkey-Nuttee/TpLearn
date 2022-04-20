@@ -86,7 +86,7 @@ DownloadError = youtube_dl.DownloadError
 
 class YTDLSource(discord.PCMVolumeTransformer):
     YTDL_OPTIONS = {
-        'format': 'bestaudio/best',
+        'format': 'bestaudio/mp3/wav/best/worst/worstaudio',
         'extractaudio': True,
         'audioformat': 'mp3',
         'outtmpl': '%(extractor)s-%(id)s-%(title)s.%(ext)s',
