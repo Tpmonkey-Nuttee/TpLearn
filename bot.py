@@ -177,7 +177,7 @@ class Bot(commands.AutoShardedBot):
         await super().close()
 
         await self.trust_session.close()
-        sys.exit(0)
+        sys.exit(69)
     
     async def on_ready(self) -> None:
         """ on Ready event, Use to log and change bot status. """
