@@ -905,7 +905,7 @@ class Music(commands.Cog):
                         embed = discord.Embed(
                             description = f"[{title}]({url})",
                             color = discord.Color.teal()
-                        ).set_image(url = ret["snippet"]["thumbnails"]["default"]["url"])
+                        ).set_thumbnail(url = ret["snippet"]["thumbnails"]["default"]["url"])
                     )
                 else:
                     await ctx.message.add_reaction('✅')
@@ -960,7 +960,7 @@ class Music(commands.Cog):
                     embed = discord.Embed(
                         description = f"[{title}]({url})",
                         color = discord.Color.teal()
-                    ).set_image(url = ret["snippet"]["thumbnails"]["default"]["url"])
+                    ).set_thumbnail(url = ret["snippet"]["thumbnails"]["default"]["url"])
                 ) 
             else:
                 await ctx.message.add_reaction('✅')
