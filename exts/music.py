@@ -199,7 +199,8 @@ class VoiceState:
                         colour = discord.Colour.dark_red(),
                         timestamp = datetime.datetime.utcnow()
                     ).set_author(name = "Cannot load this track & Removed from the queue")
-                    .add_field(name = "Error:", value = str(e)[:300])
+                    .add_field(name = "Error:", value = str(e)[:300].replace("[0;31mERROR:[0m ", ""))
+                    # Youtube-dl uses it to change colour in stdout. But we have no need.
                 )
                 self.current = None
                 continue
