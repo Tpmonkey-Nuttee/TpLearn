@@ -63,5 +63,5 @@ async def move_files(path: str) -> None:
     
     try:
         shutil.rmtree(source_dir)
-    except:
+    except OSError:
         pass
