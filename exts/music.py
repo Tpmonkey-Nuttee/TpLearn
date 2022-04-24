@@ -877,6 +877,12 @@ class Music(commands.Cog):
 
         elif "open.spotify.com/" in search: # Anything else related to Spotify
             return await ctx.send("Sorry, Please use normal search to play this track!") 
+        
+        elif any(kw in search for kw in ["youtu.be/", "youtube.com/watch?v="]): # Youtube link
+            song = Song(url = search, ctx = ctx)
+
+            await ctx.voice_state.songs.put(song)
+            await ctx.message.add_reaction('✅')
 
         else: # Normal searching. 
             try:
@@ -899,19 +905,15 @@ class Music(commands.Cog):
                     title = ret['snippet']['title']
                 )
 
-                # Don't reply if use link.
-                if not any(kw in search for kw in ["youtu.be/", "youtube.com/watch?v="]):
-                    title = ret['snippet']['title']
-                    await ctx.send(
-                        embed = discord.Embed(
-                            description = f"[{title}]({url})",
-                            color = discord.Color.teal()
-                        ).set_thumbnail(url = ret["snippet"]["thumbnails"]["default"]["url"])
-                    )
-                else:
-                    await ctx.message.add_reaction('✅')
-            
-            await ctx.voice_state.songs.put(song)
+                title = ret['snippet']['title']
+                await ctx.send(
+                    embed = discord.Embed(
+                        description = f"[{title}]({url})",
+                        color = discord.Color.teal()
+                    ).set_thumbnail(url = ret["snippet"]["thumbnails"]["default"]["url"])
+                )
+            finally:
+                await ctx.voice_state.songs.put(song)
         
         ctx.voice_state.start_player()
         log.debug(f"Enqueued; time took {time.perf_counter() - _} sec")
