@@ -45,7 +45,7 @@ class CustomHelpCommand(HelpCommand):
         for _command in commands_:
             signature = f" {_command.signature}" if _command.signature else ""
             details.append(
-                f"\n**`{self.prefix}{_command.qualified_name}{signature}`**\n*{_command.short_doc or 'No details provided'}*"
+                f"\n**`{self.context.prefix}{_command.qualified_name}{signature}`**\n*{_command.short_doc or 'No details provided'}*"
             )
         if return_as_list:
             return details
