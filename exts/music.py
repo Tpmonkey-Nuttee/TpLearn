@@ -6,6 +6,7 @@ Link: https://gist.github.com/vbe0201/ade9b80f2d3b64643d854938d40a0a2d
 
 Re-written by Tpmonkey.
 """
+import re
 import time
 import enum
 import math
@@ -25,6 +26,9 @@ from utils.audio import *
 from utils.spotify import *
 
 log = logging.getLogger(__name__)
+
+# https://stackoverflow.com/questions/19377262/regex-for-youtube-url
+YOUTUBE_REGEX = "^((?:https?:)?\/\/)?((?:www|m)\.)?((?:youtube(-nocookie)?\.com|youtu.be))(\/(?:[\w\-]+\?v=|embed\/|v\/)?)([\w\-]+)(\S+)?$"
 
 class Loop(enum.Enum):
     NONE = 0
@@ -878,8 +882,13 @@ class Music(commands.Cog):
         elif "open.spotify.com/" in search: # Anything else related to Spotify
             return await ctx.send("Sorry, Please use normal search to play this track!") 
         
-        elif any(kw in search for kw in ["youtu.be/", "youtube.com/watch?v="]): # Youtube link
-            song = Song(url = search, ctx = ctx)
+        elif re.match(YOUTUBE_REGEX, search): # Youtube link
+            videoId = re.search(YOUTUBE_REGEX, search)
+
+            if videoId is None:
+                return await ctx.send(":x: Unable to regonize the url.")
+            
+            song = Song(url = f"https://www.youtube.com/watch?v={videoId}", ctx = ctx)
 
             await ctx.voice_state.songs.put(song)
             await ctx.message.add_reaction('✅')
