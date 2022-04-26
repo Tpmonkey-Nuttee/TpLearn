@@ -888,7 +888,7 @@ class Music(commands.Cog):
             if videoId is None:
                 return await ctx.send(":x: Unable to regonize the url.")
             
-            song = Song(url = f"https://www.youtube.com/watch?v={videoId}", ctx = ctx)
+            song = Song(url = f"https://www.youtube.com/watch?v={videoId.group(6)}", ctx = ctx)
 
             await ctx.voice_state.songs.put(song)
             await ctx.message.add_reaction('✅')
