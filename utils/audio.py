@@ -41,7 +41,7 @@ async def run_async(func) -> Any:
         POOL, functools.partial(func)
     )
 
-async def getInfo(q: str) -> dict:
+async def getInfo(q: str, async_run = True) -> dict:
     list = _search.list(
         q = q,
         part = "id,snippet",
@@ -49,7 +49,11 @@ async def getInfo(q: str) -> dict:
         maxResults = 1
     )
 
-    _ = await run_async(list.execute)
+    if async_run:
+        _ = await run_async(list.execute)
+    else:
+        _ = list.execute()
+        
     _ = _['items'].pop(0)
 
     # Youtube API is just weird.
