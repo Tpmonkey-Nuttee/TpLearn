@@ -104,7 +104,6 @@ DownloadError = youtube_dl.DownloadError
 class YTDLSource(discord.PCMVolumeTransformer):
     YTDL_OPTIONS = {
         'format': 'bestaudio/best',
-        'extractaudio': True,
         'outtmpl': '%(extractor)s-%(id)s-%(title)s.%(ext)s',
         'noplaylist': True,
         'nocheckcertificate': True,
