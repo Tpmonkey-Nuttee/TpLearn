@@ -62,7 +62,7 @@ class Song:
             return
         try:
             log.debug(f"Searching {self.url}")
-            ret = getInfo(self.url)
+            ret = await getInfo(self.url)
         except Exception:
             self.ctx.cog.api_error = True
             return
@@ -835,7 +835,7 @@ class Music(commands.Cog):
                 return await ctx.send(":x: Bot has reached maximum quota, Youtube Playlist will be disabled.")
 
             try: # some source of insanity...
-                results = getYtPlaylist(search)
+                results = await getYtPlaylist(search)
             except Exception:
                 return await ctx.send(":x: PlayList not found (Youtube Mix?) or There is a problem with the bot!")    
 
@@ -900,7 +900,7 @@ class Music(commands.Cog):
                 if self.api_error: # Already error, skip to except statement
                     raise Exception
                 
-                ret = getInfo(search)
+                ret = await getInfo(search)
             except Exception:
                 self.play_error() # Call play error
                 song = Song(search, ctx)
@@ -952,7 +952,7 @@ class Music(commands.Cog):
             if self.api_error: # Already error, skip to except statement
                 raise Exception
 
-            ret = getInfo(search)
+            ret = await getInfo(search)
         except Exception:
             song = Song(search, ctx)
             await ctx.message.add_reaction('✅')

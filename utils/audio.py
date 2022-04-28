@@ -3,17 +3,19 @@ import asyncio
 import discord
 import functools
 import youtube_dl
-from typing import List, Tuple
+from typing import List, Tuple, Any
 import googleapiclient.discovery
 from urllib.parse import parse_qs, urlparse
+from concurrent.futures import ThreadPoolExecutor
 
 # Silence useless bug reports messages
 youtube_dl.utils.bug_reports_message = lambda: ''
 
 __all__ = (
-    "YTDLError", "YTDLSource", "DownloadError", "getYtPlaylist", "getInfo", "YOUTUBE_API_KEY", "YOUTUBE_PLAYLIST_KEYWORDS"
+    "POOL", "YTDLError", "YTDLSource", "DownloadError", "getYtPlaylist", "getInfo", "YOUTUBE_API_KEY", "YOUTUBE_PLAYLIST_KEYWORDS"
 )
 
+POOL = ThreadPoolExecutor()
 
 YOUTUBE_PLAYLIST_KEYWORDS = ("youtube.com/playlist?", "&start_radio", "&list=")
 YOUTUBE_API_KEY = os.getenv("YOUTUBE_API_KEY")
@@ -32,13 +34,23 @@ chars = {
     "&amp;": "&"
 }
 
-def getInfo(q: str) -> dict:
-    _ = _search.list(
+async def run_async(func) -> Any:
+    loop = asyncio.get_event_loop()
+
+    return await loop.run_in_executor(
+        POOL, functools.partial(func)
+    )
+
+async def getInfo(q: str) -> dict:
+    list = _search.list(
         q = q,
         part = "id,snippet",
         type="video",
         maxResults = 1
-    ).execute()['items'].pop(0)
+    )
+
+    _ = await run_async(list.execute)
+    _ = _['items'].pop(0)
 
     # Youtube API is just weird.
     title = _['snippet']['title']
@@ -49,7 +61,8 @@ def getInfo(q: str) -> dict:
     _['snippet']['title'] = title
     return _
 
-def getYtPlaylist(url: str) -> Tuple[List[str]]:
+
+async def getYtPlaylist(url: str) -> Tuple[List[str]]:
     # actually get playlist id
     query = parse_qs(urlparse(url).query, keep_blank_values=True)
     playlist_id = query["list"][0]
@@ -59,13 +72,13 @@ def getYtPlaylist(url: str) -> Tuple[List[str]]:
         playlistId = playlist_id,
         maxResults = 50 # 50 vid per request.
     )
-    response = request.execute()    
+    response = await run_async(request.execute)
     maximum = 1 if "&start_radio" in url else 8
 
     playlist_items = []
     current = 0
     while request is not None: # there're more vid to fetch? get it all!!!!
-        response = request.execute()
+        response = await run_async(request.execute)
         playlist_items += response["items"]
         request = youtube.playlistItems().list_next(request, response)
 
@@ -86,7 +99,7 @@ DownloadError = youtube_dl.DownloadError
 
 class YTDLSource(discord.PCMVolumeTransformer):
     YTDL_OPTIONS = {
-        'format': 'bestaudio/mp3/wav/best/worst/worstaudio',
+        'format': 'bestaudio/best',
         'extractaudio': True,
         'outtmpl': '%(extractor)s-%(id)s-%(title)s.%(ext)s',
         'noplaylist': True,
@@ -146,7 +159,7 @@ class YTDLSource(discord.PCMVolumeTransformer):
 
         webpage_url = search # process_info['webpage_url']
         partial = functools.partial(cls.ytdl.extract_info, webpage_url, download=False)
-        processed_info = await loop.run_in_executor(None, partial)
+        processed_info = await loop.run_in_executor(POOL, partial)
 
         if processed_info is None:
             raise YTDLError('Couldn\'t fetch `{}`'.format(webpage_url))
