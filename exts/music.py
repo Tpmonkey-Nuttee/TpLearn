@@ -60,10 +60,16 @@ class Song:
     async def search(self) -> None:
         if self.ctx.cog.api_error or self.title is not None:
             return
+        
         try:
             log.debug(f"Searching {self.url}")
-            ret = await getInfo(self.url, False)
+            async with timeout(3):
+                ret = await getInfo(self.url)
+        except asyncio.TimeoutError:
+            log.debug(f"Failed searching {self.url}")
+            return
         except Exception:
+            traceback.print_exc()
             self.ctx.cog.api_error = True
             return
         
@@ -394,7 +400,7 @@ class Music(commands.Cog):
     @staticmethod
     def shorten_title(title: str, url: str) -> str:
         # To make sure that embed field wouldn't contain more than 1024 letters.
-        space_left = 75 - len(url)
+        space_left = 100 - len(url)
         return title if len(title) < space_left else title[:space_left] + "..."
 
     @commands.command(name="settings")
