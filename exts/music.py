@@ -703,15 +703,18 @@ class Music(commands.Cog):
         await ctx.message.add_reaction('✅')
 
     @commands.command(name='loop')
-    async def _loop(self, ctx: commands.Context):
+    async def _loop(self, ctx: commands.Context, option: str = None):
         """Loops the currently playing song.
 
-        Invoke this command again to unloop the song.
+        Invoke this command again to cycle thru all options.
         """
-        if ctx.voice_state.loop == Loop.NONE:
+        if option != None:
+            option = option[0].lower()
+
+        if ctx.voice_state.loop == Loop.NONE or option in ["1", "s", "t"]:
             ctx.voice_state.loop = Loop.SINGLE
             await ctx.send(":repeat_one: Now Looping **Current Song**!")
-        elif ctx.voice_state.loop ==  Loop.SINGLE:
+        elif ctx.voice_state.loop ==  Loop.SINGLE or option in ["2", "a", "q"]:
             ctx.voice_state.loop = Loop.QUEUE
             await ctx.send(":repeat: Now Looping **Queue**!")
         else:
