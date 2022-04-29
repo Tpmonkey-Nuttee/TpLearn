@@ -928,7 +928,12 @@ class Music(commands.Cog):
                     embed = discord.Embed(
                         description = f"[{title}]({url})",
                         color = discord.Color.teal()
-                    ).set_thumbnail(url = ret["snippet"]["thumbnails"]["default"]["url"])
+                    ).set_thumbnail(url = ret["snippet"]["thumbnails"]["default"]["url"]
+                    ).add_field(
+                        name = "By", value = ret['snippet']['channelTitle']
+                    ).add_field(
+                        name = "Requested by", value = ctx.author.mention
+                    )
                 )
             finally:
                 await ctx.voice_state.songs.put(song)
@@ -981,7 +986,12 @@ class Music(commands.Cog):
                     embed = discord.Embed(
                         description = f"[{title}]({url})",
                         color = discord.Color.teal()
-                    ).set_thumbnail(url = ret["snippet"]["thumbnails"]["default"]["url"])
+                    ).set_thumbnail(url = ret["snippet"]["thumbnails"]["default"]["url"]
+                    ).add_field(
+                        name = "By", value = ret['snippet']['channelTitle']
+                    ).add_field(
+                        name = "Requested by", value = ctx.author.mention
+                    )
                 ) 
             else:
                 await ctx.message.add_reaction('✅')
