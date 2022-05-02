@@ -16,7 +16,7 @@ sudo apt-get install redis
 
 # For pyproject.toml file
 sudo apt install python3-poetry
-sudo apt install python3-cachecontro
+sudo apt install python3-cachecontrol
 
 # Creating Bot directory
 mkdir TpLearn
