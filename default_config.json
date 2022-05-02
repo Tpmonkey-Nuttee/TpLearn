@@ -33,11 +33,5 @@
         "ASSIGNMENT_LIMIT": 24,
         "MAX_DAYS": 30,
         "MAX_REMINDER": 5
-    },
-
-    "REDIS": {
-        "PORT": "Redis port"
-    }
-
-    
+    }    
 }
