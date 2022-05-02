@@ -17,5 +17,3 @@ sudo apt install python3-cachecontrol
 
 # Install poetry
 poetry install
-
-echo "Please clone `default_config.json` and rename to `config.json` then set up the config file."
