@@ -301,6 +301,7 @@ class Music(commands.Cog):
     
     def remove_voicestate(self, key: int) -> None:
         self.voice_states.pop(key, None)
+        self.wait_for_disconnect.pop(key, None)
     
     def play_error(self) -> bool:
         self.api_error = True
