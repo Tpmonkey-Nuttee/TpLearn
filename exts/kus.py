@@ -44,8 +44,8 @@ class KUSNews(Cog):
         log.debug('saved news channels')
     
     async def load_data(self) -> None:
-        self.channels = await self.bot.database.load("NEWS-CHANNELS")
-        self.ids = await self.bot.database.load("NEWS-IDS")
+        self.channels = await self.bot.database.load("NEWS-CHANNELS", {})
+        self.ids = await self.bot.database.load("NEWS-IDS", {})
         log.debug('loaded data')
 
     async def __fetch__(self):
