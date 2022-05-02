@@ -1,11 +1,23 @@
-# Credit to Python Bot from python discord
-
+import pytz
 import datetime
 
 from dateutil.relativedelta import relativedelta
 
 __all__ = ("time_since", )
 
+def today(raw: bool = False) -> datetime.datetime:
+    """ Return today date/time. """
+    r = pytz.utc.localize(datetime.datetime.utcnow()).astimezone(
+        pytz.timezone("Etc/GMT-1"))
+    return r if raw else str(r)[:10].strip()
+
+def today_th(raw: bool = False) -> datetime.datetime:
+    """ Return today date/time. """
+    r = pytz.utc.localize(datetime.datetime.utcnow()).astimezone(
+        pytz.timezone("Etc/GMT-7"))
+    return r if raw else str(r)[:10].strip()
+
+# Credit to Python Bot from python discord
 def _stringify_time_unit(value: int, unit: str):
     if unit == "seconds" and value == 0:
         return "0 seconds"
