@@ -16,7 +16,8 @@ from aiohttp import ClientSession
 import discord
 from discord.ext import commands
 
-from constant import Database, today_th
+from db import Database
+from utils.time import today_th
 from utils import planner, manager
 import config
 

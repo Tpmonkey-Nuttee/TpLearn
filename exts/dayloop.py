@@ -8,7 +8,7 @@ from discord.ext import tasks
 
 import config
 from bot import Bot
-from constant import today, today_th
+from utils.time import today, today_th
 
 import traceback
 import logging

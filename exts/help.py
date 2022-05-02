@@ -144,8 +144,7 @@ class CustomHelpCommand(HelpCommand):
         # sort commands by name, and remove any the user can't run or are hidden.
         commands_ = await self.filter_commands(cog.get_commands(), sort=True)
 
-        embed = Embed(title = ":grey_question: Command Help",)
-        # embed.set_author(name="Command Help", icon_url=constants.Icons.questionmark)
+        embed = Embed(title = ":grey_question: Command Help")
         embed.description = f"**{cog.qualified_name}**\n*{cog.description}*"
 
         command_details = self.get_commands_brief_details(commands_)

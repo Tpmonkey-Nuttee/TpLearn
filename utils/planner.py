@@ -11,7 +11,7 @@ import discord
 import random
 import time
 
-from constant import today_th
+from utils.time import today_th
 
 import logging
 log = logging.getLogger(__name__)

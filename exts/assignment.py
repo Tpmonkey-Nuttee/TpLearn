@@ -7,8 +7,8 @@ from discord.ext import commands
 import discord 
 
 from utils import checks
+from utils.time import today_th
 from bot import Bot
-import constant
 
 import asyncio 
 import traceback
@@ -465,7 +465,7 @@ class Assignments(commands.Cog):
             except ValueError:
                 return text
             
-            future = constant.today_th(True) + datetime.timedelta(days = _days)
+            future = today_th(True) + datetime.timedelta(days = _days)
             return "{0.day}/{0.month}/{0.year}".format(future)
         return text
 

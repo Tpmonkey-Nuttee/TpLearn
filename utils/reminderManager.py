@@ -3,7 +3,7 @@
 # TODO: Do not forget this file and actually finish it. :)
 
 from bot import Bot
-from constant import today_th
+from utils.time import today_th
 from config import MAX_REMINDER_PER_DAY
 
 from enum import Enum
