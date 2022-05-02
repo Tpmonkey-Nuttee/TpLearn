@@ -128,6 +128,8 @@ class ReplitDatabase:
 try:
     import replit
 except (ImportError, ModuleNotFoundError):
+    log.info("Database: REDIS")
     Database = RedisDatabase
 else:
+    log.info("Database: REPLIT")
     Database = ReplitDatabase
