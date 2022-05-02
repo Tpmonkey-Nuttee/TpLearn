@@ -12,13 +12,9 @@ log = getLogger(__name__)
 class RedisDatabase:
     def __init__(self, bot: commands.Bot):
         self.bot = bot
-        self.pool = redis.Redis(
-            host = "localhost", 
-            port = 6379, # TODO: replace with new config file
-            db = 0
-        )
+        self.pool = redis.Redis()
     
-    def get(self, key: str, backoff: Any = None) -> Any:
+    def loads(self, key: str, backoff: Any = None) -> Any:
         """Get value at a key. If doesn't exist, return backoff.
 
         Args:
@@ -34,7 +30,7 @@ class RedisDatabase:
             return backoff
         return pickle.loads(ret)
     
-    async def gets(self, key :str, backoff: Any = None) -> Any:
+    async def load(self, key :str, backoff: Any = None) -> Any:
         """(Async) Get value at a key. If doesn't exist, return backoff.
 
         Args:
@@ -50,7 +46,7 @@ class RedisDatabase:
             return backoff
         return pickle.loads(ret)
     
-    def set(self, key: str, value: Any, **kwargs) -> bool:
+    def dumps(self, key: str, value: Any, **kwargs) -> bool:
         """Set value at a key.
 
         Args:
@@ -72,7 +68,7 @@ class RedisDatabase:
             return False
         return True
 
-    async def sets(self, key: str, value: Any, **kwargs) -> bool:
+    async def dump(self, key: str, value: Any, **kwargs) -> bool:
         """(Async) Set value at a key.
 
         Args:
