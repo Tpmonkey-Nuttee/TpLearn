@@ -1,17 +1,13 @@
 import redis
 import pickle
-from typing import Any
+import traceback
 from logging import getLogger
-
-from discord.ext import commands
+from typing import Any, Optional
 
 log = getLogger(__name__)
 
-# TODO: new config file
-
 class RedisDatabase:
-    def __init__(self, bot: commands.Bot):
-        self.bot = bot
+    def __init__(self):
         self.pool = redis.Redis()
     
     def loads(self, key: str, backoff: Any = None) -> Any:
@@ -89,3 +85,49 @@ class RedisDatabase:
             log.warning(f"Cannot set key {key}; {e}")
             return False
         return True
+
+
+class ReplitDatabase:
+    def __init__(self):
+        log.debug("init database succesful")
+    
+    async def load(self, key: str, go_back: Any = None) -> Any:
+        """ Load data safely from database. """
+        try: 
+            return replit.db[key]
+        except KeyError:
+            log.warning(traceback.format_exc())
+            return go_back
+
+    async def dump(self, key: str, value: Any) -> bool:
+        """ Dump data safely to database. """
+        try: 
+            replit.db[key] = value
+        except Exception: # I don't even know what are we trying to catch.
+            log.warning(traceback.format_exc())
+            return False
+        return True
+    
+    def loads(self, key: str, go_back: Any = None) -> Optional[Any]:
+        """ Load data cautiously from database. """
+        try: 
+            return replit.db[key]
+        except KeyError:
+            log.warning(traceback.format_exc())        
+            return go_back
+
+    def dumps(self, key: str, value: Any) -> bool:
+        """ Dump data cautiously to database. """
+        try: 
+            replit.db[key] = value
+        except Exception:
+            log.warning(traceback.format_exc())
+            return False
+        return True
+
+try:
+    import replit
+except (ImportError, ModuleNotFoundError):
+    Database = RedisDatabase
+else:
+    Database = ReplitDatabase
