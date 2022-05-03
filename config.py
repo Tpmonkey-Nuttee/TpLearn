@@ -5,30 +5,36 @@ Made by Tpmonkey
 
 ### ---------- General ---------- ###
 
-version = "1.7"
+version = "1.8"
 note = [
+    "**New command!**",
+    "- Nightcore support! (nightcore, nc) - Enable nightcore for the next tracks. [x1.2 speed & 1.5 pitch]",
+    "",
+
     "**QoL!**",
-    "- Bot now show detail error message when failed to load a track",
-    "- Improve alone-detector when the bot is alone so that it can disconnect itself... \:(",
-    "- Improve recommendation command to fetch more track."
-    "- Improve error handler in settings command.",
-    "- Improve shutdown command (admin only)",
-    "- Improve Youtube playlist parsing.",
-    "- Add `gt` shortcut for add & edit command.",    
-    "- Some optimization.",
+    "- Recommend command can now be use alone.",
+    "- Improve track title not in human language. (?)",
+    "- Bot will now use reaction more often to minimize message send.",
+    "- Reduce KUS-monitor related command cooldown.",
+    "- Updated help and tutorial commands.",    
+    "- Play & Playnext command now show video thumbnail & channel.",
+    "- Update 'cannot load this track' error message so that human can actually understand.",
+    "- Better detection when use youtube url.",
+    "- Improve loading speed.",
+    "- Loop command now has options.",
+    "- And many more!"
     "",
 
     "**Bug Fixes!**",
-    "- Fix shortcut in add & edit command not update embed when used.",
-    "- Fix remove song, skip, queue, play, loop command not working as intended in some cases.",    
-    "- Fix add & edit command not working if spam.",
-    "- Fix pass-work sometimes display as \"Today\" instead of \"Passed\"",  
-    "- Fix day counter not updating correctly if bot didn't restart.",    
-    "- Fix an error when the bot resume connect with discord API.",     
-    "- Fix debug command stores data without permission.",
-    "- Fix KUS website url using HTTP instead of HTTPS.",
-    "- Fix assignment not updating correctly.",
-    "- Fix problem with fetching live video.",
+    "- Fix queue command didn't update correctly.",
+    "- Fix playnext wasn't working as intended.",    
+    "- Fix auto-disconnect doesn't work with bot(s).",
+    "- Fix searching track not working as intended.",    
+    "- Fix leave command raising errors.",     
+    "- Fix 'bot is typing' but did not send any messages.",
+    "- Fix bot duplicating its instance.",
+    "- Fix errors when requesting too many songs.",
+    "- And many more!",
     "",    
 ]
 
