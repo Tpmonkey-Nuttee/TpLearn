@@ -22,7 +22,7 @@ note = [
     "- Better detection when use youtube url.",
     "- Improve loading speed.",
     "- Loop command now has options.",
-    "- And many more!"
+    "- And many more!",
     "",
 
     "**Bug Fixes!**",
