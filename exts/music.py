@@ -54,6 +54,10 @@ class Song:
         self.source = None
     
     async def load_audio(self, nightcore: bool = False) -> YTDLSource:
+        if self.title is None:
+            # Youtube-dl thought it was an url and then commit suicide.
+            self.url = self.url.replace(":", "")
+
         self.source = await YTDLSource.create_source(self.url, nc = nightcore)
         return self.source
     
