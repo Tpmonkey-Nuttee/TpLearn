@@ -8,11 +8,13 @@ Made by Tpmonkey (Nuttee) KUS48
 
 import os
 
+# Setting up Logging.
 from utils.log import setup
+
+setup()
+
 from bot import Bot
 
-# Setting up Logging.
-setup()
 # Create and Run the Bot.
 bot = Bot.create()
 bot.load_extensions()
