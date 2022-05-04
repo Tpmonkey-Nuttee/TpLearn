@@ -68,10 +68,7 @@ class Song:
         
         try:
             log.debug(f"Searching {self.url}")
-            ret = getInfo(self.url, False)
-        except asyncio.TimeoutError:
-            log.debug(f"Failed searching {self.url}")
-            return
+            ret = getInfo(self.url)
         except Exception:
             traceback.print_exc()
             self.ctx.cog.api_error = True
@@ -628,10 +625,11 @@ class Music(commands.Cog):
 
         # Search up the song first.
         future_search = {POOL.submit(song.search): song for i, song in enumerate(ctx.voice_state.songs[start:end], start=start)}
+        
         for future in as_completed(future_search):
+            # Make sure all task is finished. (Just in case.)
             future.result()
-            
-        # await asyncio.gather(*[song.search() for i, song in enumerate(ctx.voice_state.songs[start:end], start=start)])
+
 
         queue = ''
         for i, song in enumerate(ctx.voice_state.songs[start:end], start=start):
