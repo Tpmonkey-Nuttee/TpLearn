@@ -17,6 +17,7 @@ async def update(url: str, path: str, ctx: Context) -> None:
     await download(url, ctx)
 
     await move_files(path)
+    shutil.rmtree("./updater/TpLearn-master")
     await ctx.send("All files are ready.")
     
 
@@ -38,7 +39,6 @@ async def download(url: str, ctx: Context) -> None:
     log.info("Unpacked")
 
     os.remove("./updater/new.zip")
-    shutil.rmtree("./updater/TpLearn-master")
 
     log.info("Deleted zip file")
     
