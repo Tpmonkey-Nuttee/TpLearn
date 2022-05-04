@@ -1,6 +1,7 @@
 #! /bin/bash
 
 # Not finished, For moving on to VPS in the future.
+# Only works on Ubuntu.
 
 sudo apt update
 sudo apt upgrade
