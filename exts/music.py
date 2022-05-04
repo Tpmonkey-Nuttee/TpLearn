@@ -16,6 +16,7 @@ import asyncio
 import datetime
 import itertools
 import traceback
+from concurrent.futures import as_completed
 
 import discord
 from async_timeout import timeout
@@ -61,14 +62,13 @@ class Song:
         self.source = await YTDLSource.create_source(self.url, nc = nightcore)
         return self.source
     
-    async def search(self) -> None:
+    def search(self) -> None:
         if self.ctx.cog.api_error or self.title is not None:
             return
         
         try:
             log.debug(f"Searching {self.url}")
-            async with timeout(3):
-                ret = await getInfo(self.url, False)
+            ret = getInfo(self.url, False)
         except asyncio.TimeoutError:
             log.debug(f"Failed searching {self.url}")
             return
@@ -627,7 +627,11 @@ class Music(commands.Cog):
         end = start + items_per_page
 
         # Search up the song first.
-        await asyncio.gather(*[song.search() for i, song in enumerate(ctx.voice_state.songs[start:end], start=start)])
+        future_search = {POOL.submit(song.search): song for i, song in enumerate(ctx.voice_state.songs[start:end], start=start)}
+        for future in as_completed(future_search):
+            future.result()
+            
+        # await asyncio.gather(*[song.search() for i, song in enumerate(ctx.voice_state.songs[start:end], start=start)])
 
         queue = ''
         for i, song in enumerate(ctx.voice_state.songs[start:end], start=start):
@@ -847,7 +851,7 @@ class Music(commands.Cog):
                 return await ctx.send(":x: Bot has reached maximum quota, Youtube Playlist will be disabled.")
 
             try: # some source of insanity...
-                results = await getYtPlaylist(search)
+                results = getYtPlaylist(search)
             except Exception:
                 return await ctx.send(":x: PlayList not found (Youtube Mix?) or There is a problem with the bot!")    
 
@@ -916,7 +920,7 @@ class Music(commands.Cog):
                 if self.api_error: # Already error, skip to except statement
                     raise Exception
                 
-                ret = await getInfo(search)
+                ret = getInfo(search)
             except Exception:
                 self.play_error() # Call play error
                 song = Song(search, ctx)
@@ -973,7 +977,7 @@ class Music(commands.Cog):
             if self.api_error: # Already error, skip to except statement
                 raise Exception
 
-            ret = await getInfo(search)
+            ret = getInfo(search)
         except Exception:
             song = Song(search, ctx)
             await ctx.message.add_reaction('✅')

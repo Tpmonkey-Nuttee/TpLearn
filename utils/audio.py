@@ -3,7 +3,7 @@ import asyncio
 import discord
 import functools
 import youtube_dl
-from typing import List, Tuple, Any
+from typing import List, Tuple
 import googleapiclient.discovery
 from urllib.parse import parse_qs, urlparse
 from concurrent.futures import ThreadPoolExecutor
@@ -34,25 +34,14 @@ chars = {
     "&amp;": "&"
 }
 
-async def run_async(func) -> Any:
-    loop = asyncio.get_event_loop()
 
-    return await loop.run_in_executor(
-        POOL, functools.partial(func)
-    )
-
-async def getInfo(q: str, async_run = True) -> dict:
-    list = _search.list(
+def getInfo(q: str) -> dict:
+    _ = _search.list(
         q = q,
         part = "id,snippet",
         type="video",
         maxResults = 1
-    )
-
-    if async_run:
-        _ = await run_async(list.execute)
-    else:
-        _ = list.execute()
+    ).execute()
         
     _ = _['items'].pop(0)
 
@@ -66,7 +55,7 @@ async def getInfo(q: str, async_run = True) -> dict:
     return _
 
 
-async def getYtPlaylist(url: str) -> Tuple[List[str]]:
+def getYtPlaylist(url: str) -> Tuple[List[str]]:
     # actually get playlist id
     query = parse_qs(urlparse(url).query, keep_blank_values=True)
     playlist_id = query["list"][0]
@@ -76,13 +65,13 @@ async def getYtPlaylist(url: str) -> Tuple[List[str]]:
         playlistId = playlist_id,
         maxResults = 50 # 50 vid per request.
     )
-    response = await run_async(request.execute)
+    response = request.execute()
     maximum = 1 if "&start_radio" in url else 8
 
     playlist_items = []
     current = 0
     while request is not None: # there're more vid to fetch? get it all!!!!
-        response = await run_async(request.execute)
+        response = request.execute()
         playlist_items += response["items"]
         request = youtube.playlistItems().list_next(request, response)
 
