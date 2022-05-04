@@ -38,6 +38,7 @@ async def download(url: str, ctx: Context) -> None:
     log.info("Unpacked")
 
     os.remove("./updater/new.zip")
+    shutil.rmtree("./updater/TpLearn-master")
 
     log.info("Deleted zip file")
     
