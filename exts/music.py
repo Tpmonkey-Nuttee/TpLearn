@@ -347,8 +347,6 @@ class Music(commands.Cog):
                     log.debug(f"{gid}: Attempted to disconnect but already disconnected.")
                 else:
                     log.info(f"{gid}: Successfully disconnected")
-
-                del self.wait_for_disconnect[gid]
         
         #for i in delete: 
         #    del self.wait_for_disconnect[i]
