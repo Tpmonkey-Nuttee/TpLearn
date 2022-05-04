@@ -897,7 +897,7 @@ class Music(commands.Cog):
         elif re.match(YOUTUBE_REGEX, search) or search.startswith("https://youtu.be/"): # Youtube link
             if search.startswith("https://youtu.be/"):
                 # REGEX DOESNT MATCH!
-                search = search.replace("https://")
+                search = search.replace("https://", "")
 
             videoId = re.search(YOUTUBE_REGEX, search)
 
