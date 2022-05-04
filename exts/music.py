@@ -68,7 +68,7 @@ class Song:
         try:
             log.debug(f"Searching {self.url}")
             async with timeout(3):
-                ret = await getInfo(self.url)
+                ret = await getInfo(self.url, False)
         except asyncio.TimeoutError:
             log.debug(f"Failed searching {self.url}")
             return
