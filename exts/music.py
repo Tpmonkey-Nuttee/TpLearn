@@ -896,7 +896,11 @@ class Music(commands.Cog):
         elif "open.spotify.com/" in search: # Anything else related to Spotify
             return await ctx.send("Sorry, Please use normal search to play this track!") 
         
-        elif re.match(YOUTUBE_REGEX, search): # Youtube link
+        elif re.match(YOUTUBE_REGEX, search) or search.startswith("https://youtu.be/"): # Youtube link
+            if search.startswith("https://youtu.be/"):
+                # REGEX DOESNT MATCH!
+                search = search.replace("https://")
+
             videoId = re.search(YOUTUBE_REGEX, search)
 
             if videoId is None:
