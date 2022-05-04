@@ -13,16 +13,19 @@ from discord.ext.commands import Context
 
 log = getLogger(__name__)
 
-async def update(url: str, path: str, ctx: Context) -> None:
+async def update(url: str, path: str, ctx: Context = None) -> None:
     await download(url, ctx)
 
     await move_files(path)
+
     shutil.rmtree("./updater/TpLearn-master")
+
     await ctx.send("All files are ready.")
     
 
-async def download(url: str, ctx: Context) -> None:
+async def download(url: str, ctx: Context = None) -> None:
     log.info(f"Downloading... {url}")
+
     await ctx.send("Downloading new version.")
 
     r = requests.get(url)
@@ -31,6 +34,7 @@ async def download(url: str, ctx: Context) -> None:
         f.write(r.content)
 
     log.info("Unpacking zip file")
+
     await ctx.send("Unpacking zip file")
 
     with zipfile.ZipFile("./updater/new.zip","r") as zip_ref:
