@@ -9,6 +9,15 @@ log = getLogger(__name__)
 class RedisDatabase:
     def __init__(self):
         self.pool = redis.Redis()
+
+        assert self.ping(), "Cannot connect to Redis server."
+    
+    def ping(self) -> bool:
+        try:
+            self.pool.ping()
+        except (redis.exceptions.ConnectionError, ConnectionRefusedError):
+            return False
+        return True
     
     def loads(self, key: str, backoff: Any = None) -> Any:
         """Get value at a key. If doesn't exist, return backoff.
