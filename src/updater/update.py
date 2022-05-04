@@ -43,7 +43,7 @@ async def download(url: str, ctx: Context) -> None:
     
 
 async def move_files(path: str) -> None:
-    source_dir = "./updater/TpLearn-master"
+    source_dir = "./updater/TpLearn-master/src"
     target_dir = path # "./test"
 
     file_names = os.listdir(source_dir)
