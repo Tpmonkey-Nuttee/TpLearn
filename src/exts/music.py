@@ -16,7 +16,7 @@ import asyncio
 import datetime
 import itertools
 import traceback
-from concurrent.futures import as_completed
+from concurrent.futures import as_completed, _base
 
 import discord
 from async_timeout import timeout
@@ -630,7 +630,7 @@ class Music(commands.Cog):
             for _ in as_completed(future_search, timeout = 1):
                 # Skip task if it's unfinished
                 pass
-        except asyncio.TimeoutError:
+        except _base.TimeoutError:
             # Ignore the error.
             pass
 
