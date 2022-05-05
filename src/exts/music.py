@@ -316,7 +316,7 @@ class Music(commands.Cog):
         # Get voice state and embeded it to context.
         state = self.voice_states.get(ctx.guild.id)
         if not state:
-            self.voice_states[ctx.guild.id] = VoiceState(self.bot, ctx)
+            self.voice_states[ctx.guild.id] = state = VoiceState(self.bot, ctx)
         return state    
 
     def cog_check(self, ctx: commands.Context):
