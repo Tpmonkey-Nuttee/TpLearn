@@ -138,6 +138,7 @@ class VoiceState:
         self.skip_votes = set()        
 
         self.playing = False
+        self.terminate = False
         self.audio_player = None # bot.loop.create_task(self.audio_player_task())     
 
     def __del__(self):
@@ -254,12 +255,16 @@ class VoiceState:
         return self.nightcore
 
     async def stop(self):
+        if self.terminate:
+            return
+
         self.songs.clear()
         
         if self.audio_player is not None:
             self.audio_player.cancel()
         
         self.playing = False
+        self.terminate = True
 
         if self.voice:
             await self.voice.disconnect()
@@ -361,15 +366,12 @@ class Music(commands.Cog):
 
             if voice_state is None:
                 return
-            
-            if voice_state.playing:
 
-                await asyncio.sleep(5)
+            await asyncio.sleep(3)
 
-                if voice_state.voice is None:
-
-                    log.info(f"{member.guild.id}: Bot got disconnected why playing, Terminate!")
-                    voice_state.voice = await voice_state.stop()
+            if not voice_state.voice.is_connected() and not voice_state.terminate:
+                log.info(f"{member.guild.id}: Bot got disconnected why playing, Terminate!")
+                voice_state.voice = await voice_state.stop()
         
         # Check if user switched to bot vc or joined the bot vc
         if (before.channel is None and after.channel is not None) or (before.channel != after.channel and after.channel is not None):
