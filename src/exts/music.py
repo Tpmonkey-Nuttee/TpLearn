@@ -626,9 +626,9 @@ class Music(commands.Cog):
         # Search up the song first.
         future_search = {POOL.submit(song.search): song for i, song in enumerate(ctx.voice_state.songs[start:end], start=start)}
         
-        for future in as_completed(future_search):
+        for future in as_completed(future_search, timeout = 1):
             # Make sure all task is finished. (Just in case.)
-            future.result()
+            pass
 
 
         queue = ''
