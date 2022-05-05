@@ -70,8 +70,8 @@ class Song:
             log.debug(f"Searching {self.url}")
             ret = getInfo(self.url)
         except Exception:
-            traceback.print_exc()
-            self.ctx.cog.api_error = True
+            log.error(traceback.format_exc())
+            self.ctx.cog.play_error()
             return
         
         self.url = f"https://www.youtube.com/watch?v={ret['id']['videoId']}"
@@ -202,6 +202,7 @@ class VoiceState:
                     self.current = await self.songs.get()
             
             try:
+                self.loading = True
                 source = await self.current.load_audio(self.nightcore)
             except Exception as e:
                 await self._ctx.send(
@@ -213,8 +214,11 @@ class VoiceState:
                     .add_field(name = "Error:", value = str(e)[:300].replace("[0;31mERROR:[0m ", ""))
                     # Youtube-dl uses it to change colour in stdout. But we have no need.
                 )
+
                 self.current = None
                 continue
+            finally:
+                self.loading = False
 
             # super shuffle.
             if self.super_shuffle:
@@ -312,8 +316,7 @@ class Music(commands.Cog):
         # Get voice state and embeded it to context.
         state = self.voice_states.get(ctx.guild.id)
         if not state:
-            state = VoiceState(self.bot, ctx)
-            self.voice_states[ctx.guild.id] = state
+            self.voice_states[ctx.guild.id] = VoiceState(self.bot, ctx)
         return state    
 
     def cog_check(self, ctx: commands.Context):
@@ -326,16 +329,18 @@ class Music(commands.Cog):
 
     async def cog_command_error(self, ctx: commands.Context, error: commands.CommandError):
         error.handled = True # So error_handle won't be call and send message twice
+        log.error(traceback.format_exc())
         await ctx.send(':x: **An error occurred:** {}'.format(str(error)))
     
     @tasks.loop(minutes=2)
     async def loop_for_deletion(self) -> None:        
+        # TODO: Use schedule task.
+
         copy = self.wait_for_disconnect.copy()
         for gid in copy.keys():
             if time.time() >= self.wait_for_disconnect[gid]:
                 log.info(f"{gid}: Timeout, Nobody left in vc... Disconnected")
-                # Remove from current dict, But need to avoid RuntimeError
-                # delete.append(gid)                
+                # Remove from current dict, But need to avoid RuntimeError             
 
                 # Leave channel & Clean up
                 try:
@@ -344,9 +349,6 @@ class Music(commands.Cog):
                     log.debug(f"{gid}: Attempted to disconnect but already disconnected.")
                 else:
                     log.info(f"{gid}: Successfully disconnected")
-        
-        #for i in delete: 
-        #    del self.wait_for_disconnect[i]
 
     @commands.Cog.listener()
     async def on_voice_state_update(self, member: discord.Member, before: discord.VoiceState, after: discord.VoiceState) -> None:
@@ -361,10 +363,13 @@ class Music(commands.Cog):
                 return
             
             if voice_state.playing:
+
                 await asyncio.sleep(5)
+
                 if voice_state.voice is None:
-                    log.info(f"{member.guild.id}: Bot got disconnected why playing, Joining back!")
-                    voice_state.voice = await before.channel.connect()
+
+                    log.info(f"{member.guild.id}: Bot got disconnected why playing, Terminate!")
+                    voice_state.voice = await voice_state.stop()
         
         # Check if user switched to bot vc or joined the bot vc
         if (before.channel is None and after.channel is not None) or (before.channel != after.channel and after.channel is not None):
@@ -377,11 +382,8 @@ class Music(commands.Cog):
             if not self.bot.user.id in all_members: 
                 return
 
-            # Remove bot timeout, so it won't disconnect.            
-            try:
-                del self.wait_for_disconnect[member.guild.id]
-            except KeyError:                
-                return
+            # Remove bot timeout, so it won't disconnect.  
+            self.wait_for_disconnect.pop(member.guild.id, None)
             log.info(f"{member.guild.id}: User joined back, Stopping deletion")
         
         # Check if user switched out from bot vc or left vc completelely.
@@ -401,6 +403,7 @@ class Music(commands.Cog):
     def shorten_title(title: str, url: str) -> str:
         # To make sure that embed field wouldn't contain more than 1024 letters.
         space_left = 100 - len(url)
+        # TODO: tbh, this doesn't work sometimes. idk why, didn't check yet.
         return title if len(title) < space_left else title[:space_left] + "..."
 
     @commands.command(name="settings")
@@ -489,7 +492,7 @@ class Music(commands.Cog):
             return await ctx.send(':x: **Volume must be between `0` and `100`**')
 
         ctx.voice_state.volume = volume / 100
-        try: # try to change the current song, but maybe it's PlaylistSong so it doesn' loaded yet.
+        try: # try to change the current song, but the track maybe loading...
             ctx.voice_state.current.source.volume = volume / 100
         except AttributeError: 
             pass
@@ -590,7 +593,8 @@ class Music(commands.Cog):
         # from https://github.com/python/cpython/blob/main/Lib/asyncio/queues.py#L48
         # I found out that the queue is based on `collections.deque()` so I access the attribute directly and use its method.
         # from https://docs.python.org/3/library/collections.html#collections.deque
-        ctx.voice_state.songs._queue.rotate(-(index-1))
+        ctx.voice_state.songs._queue.rotate(-(index-1)) # <- quick math time (?)
+
         # skip the current one
         ctx.voice_state.skip()        
         await ctx.message.add_reaction('✅')        
@@ -607,8 +611,11 @@ class Music(commands.Cog):
         
         if ctx.voice_state.loading:
             m = await ctx.send("Song is currently loading...")
+
             while ctx.voice_state.loading:
+                # Wait until finished, and continue
                 await asyncio.sleep(0.5)
+
             await m.delete()
 
         items_per_page = 8
@@ -630,7 +637,8 @@ class Music(commands.Cog):
             for _ in as_completed(future_search, timeout = 1):
                 # Skip task if it's unfinished
                 pass
-        except TimeoutError: # from concurrent lib, not asyncio
+        except TimeoutError as e: # from concurrent lib, not asyncio
+            log.warning(f"{ctx.guild.id}: Queue command raised {e}")
             # Ignore the error.
             pass
 
@@ -758,6 +766,7 @@ class Music(commands.Cog):
             try:
                 await ctx.invoke(self._join)             
             except Exception:
+                log.warning(traceback.format_exc())
                 return await ctx.send("Couldn't connect to the voice, Please disconnect me and try again!")
 
         ctx.voice_state.start_player()
@@ -810,14 +819,6 @@ class Music(commands.Cog):
             log.info(f"{ctx.guild.id}: Queued songs.")
             return await ctx.send("Enqueued {} songs.".format(amount))
 
-        # The reason that play command need to be ran before using it because
-        # the Audio player will only be run only if play command has been ran
-        # so If we tried to put a song in the queue, the song wouldn't actually be play.
-        # It's a good thing because we can test if the audio player is running to check 
-        # the commands that need a song being play.
-        return await ctx.send(":x: **Please use play command before using this command.**")
-
-
     @commands.command(name='play', aliases=['p'])
     async def _play(self, ctx: commands.Context, *, search: str = None):
         """Plays a song.
@@ -834,6 +835,7 @@ class Music(commands.Cog):
             try:
                 await ctx.invoke(self._join)             
             except Exception:
+                log.warning(traceback.format_exc())
                 return await ctx.send("Couldn't connect to the voice, Please disconnect me and try again!")
         
         if search is None: # resume
@@ -854,13 +856,16 @@ class Music(commands.Cog):
             try: # some source of insanity...
                 results = getYtPlaylist(search)
             except Exception:
+                log.warning(traceback.format_exc())
                 return await ctx.send(":x: PlayList not found (Youtube Mix?) or There is a problem with the bot!")    
 
             amount = 0
             for s, t in zip(results[0], results[1]):
-                pl = Song(s, ctx, t)
-                await ctx.voice_state.songs.put(pl)
-                amount += 1            
+                await ctx.voice_state.songs.put(
+                    Song(s, ctx, t)
+                )
+                amount += 1  
+       
             await ctx.send("Enqueued {} songs.".format(amount))
         
         # Spotify Playlist
@@ -875,9 +880,11 @@ class Music(commands.Cog):
             
             amount = 0
             for s in tracks:                    
-                pl = Song(s, ctx)
-                await ctx.voice_state.songs.put(pl)
-                amount += 1            
+                await ctx.voice_state.songs.put(
+                    Song(s, ctx)
+                )
+                amount += 1  
+                        
             await ctx.send("Enqueued {} songs.".format(amount))   
 
         elif "open.spotify.com/album/" in search: # Spotify Album
@@ -891,9 +898,11 @@ class Music(commands.Cog):
             
             amount = 0
             for s in tracks: # put in dataclass and queue               
-                pl = Song(s, ctx)
-                await ctx.voice_state.songs.put(pl)
-                amount += 1            
+                await ctx.voice_state.songs.put(
+                    Song(s, ctx)
+                )
+                amount += 1     
+                   
             await ctx.send("Enqueued {} songs.".format(amount))   
 
         elif "open.spotify.com/" in search: # Anything else related to Spotify
@@ -904,12 +913,13 @@ class Music(commands.Cog):
                 # REGEX DOESNT MATCH!
                 search = search.replace("https://", "")
 
-            videoId = re.search(YOUTUBE_REGEX, search)
+            videoId = re.search(YOUTUBE_REGEX, search).group(6)
+            log.debug(f"{ctx.guild.id}: Searching regex, found {videoId}")
 
             if videoId is None:
                 return await ctx.send(":x: Unable to regonize the url.")
             
-            song = Song(url = f"https://www.youtube.com/watch?v={videoId.group(6)}", ctx = ctx)
+            song = Song(url = f"https://www.youtube.com/watch?v={videoId}", ctx = ctx)
 
             await ctx.voice_state.songs.put(song)
             await ctx.message.add_reaction('✅')
