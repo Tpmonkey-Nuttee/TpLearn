@@ -626,10 +626,13 @@ class Music(commands.Cog):
         # Search up the song first.
         future_search = {POOL.submit(song.search): song for i, song in enumerate(ctx.voice_state.songs[start:end], start=start)}
         
-        for future in as_completed(future_search, timeout = 1):
-            # Make sure all task is finished. (Just in case.)
+        try:
+            for _ in as_completed(future_search, timeout = 1):
+                # Skip task if it's unfinished
+                pass
+        except asyncio.TimeoutError:
+            # Ignore the error.
             pass
-
 
         queue = ''
         for i, song in enumerate(ctx.voice_state.songs[start:end], start=start):
