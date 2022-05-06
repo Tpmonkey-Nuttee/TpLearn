@@ -640,9 +640,8 @@ class Music(commands.Cog):
                 # Skip task if it's unfinished
                 pass
         except TimeoutError as e: # from concurrent lib, not asyncio
-            log.warning(f"{ctx.guild.id}: Queue command raised {e}")
             # Ignore the error.
-            pass
+            log.warning(f"{ctx.guild.id}: Queue command raised {e}")            
 
         queue = ''
         for i, song in enumerate(ctx.voice_state.songs[start:end], start=start):
