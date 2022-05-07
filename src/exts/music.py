@@ -369,15 +369,15 @@ class Music(commands.Cog):
 
             if voice_state is None:
                 return
-
-            await asyncio.sleep(3)
-
-            if not voice_state.voice.is_connected() and not voice_state.terminate:
-                log.info(f"{member.guild.id}: Bot got disconnected why playing, Terminate!")
-                voice_state.voice = await voice_state.stop()
-        
-        # Check if user switched to bot vc or joined the bot vc
-        if (before.channel is None and after.channel is not None) or (before.channel != after.channel and after.channel is not None):
+            
+            if voice_state.playing:
+                await asyncio.sleep(5)
+                if voice_state.voice is None:
+                    log.info(f"{member.guild.id}: Bot got disconnected why playing, Joining back!")
+                    voice_state.voice = await before.channel.connect()
+                    
+        # Join vc.
+        if before.channel is None and after.channel is not None:
             if member.bot: # We don't care about bots.
                 return
             
@@ -387,22 +387,45 @@ class Music(commands.Cog):
             if not self.bot.user.id in all_members: 
                 return
 
-            # Remove bot timeout, so it won't disconnect.  
-            self.wait_for_disconnect.pop(member.guild.id, None)
-            log.info(f"{member.guild.id}: User joined back, Stopping deletion")
+            # Remove bot timeout, so it won't disconnect.            
+            if self.wait_for_disconnect.pop(member.guild.id, None) is not None:
+                log.info(f"{member.guild.id}: User joined back, Stopping deletion")
         
-        # Check if user switched out from bot vc or left vc completelely.
-        elif (before.channel is not None and after.channel is None) or  (before.channel != after.channel and before.channel is not None and after.channel is not None):
+        # Left vc.
+        elif before.channel is not None and after.channel is None:
             all_members = [i.id for i in before.channel.members]
 
             # Wrong channel, go back
-            if not self.bot.user.id in all_members: 
-                return                
-            
-            # Bot is alone, recheck not counting bot.
+            if not self.bot.user.id in all_members:
+                return
+
+            # Nobody left (Not count the bots)
             if len([i.id for i in before.channel.members if not i.bot]) == 0:
                 log.info(f"{member.guild.id}: All user left, Waiting for deletion")
                 self.wait_for_disconnect[member.guild.id] = time.time() + self.bot.msettings.get(member.guild.id, "timeout")
+            
+        # Switch vc.
+        elif (before.channel is not None and after.channel is not None) and (before.channel.id != after.channel.id):
+            if member.bot:
+                return
+            
+            all_members = [i.id for i in before.channel.members + after.channel.members] 
+
+            # Wrong channel, go back
+            if not self.bot.user.id in all_members: 
+                return
+            
+            # Switch out, bot is alone (not counting other bots)
+            if (len([i.id for i in before.channel.members if not i.bot]) == 0) and (self.bot.user.id in [i.id for i in before.channel.members]):
+                log.info(f"{member.guild.id}: All user left, Waiting for deletion")
+                self.wait_for_disconnect[member.guild.id] = time.time() + self.bot.msettings.get(member.guild.id, "timeout")
+                return
+
+            # Switch in, back with bot.
+            after_members = [i.id for i in after.channel.members]
+            if self.bot.user.id in after_members and member.id in after_members:
+                if self.wait_for_disconnect.pop(member.guild.id, None) is not None:
+                    log.info(f"{member.guild.id}: User joined back, Stopping deletion")
     
     @staticmethod
     def shorten_title(title: str, url: str) -> str:
