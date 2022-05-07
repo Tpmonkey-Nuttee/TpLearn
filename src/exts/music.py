@@ -55,7 +55,10 @@ class Song:
         self.source = None
     
     async def load_audio(self, nightcore: bool = False) -> YTDLSource:
-        if self.title is None:
+        if self.title is None and not "http" in self.url:
+            # | gotta add http check bc
+            # | attempt to fix error in spotify playlist
+            # v but searching using link is effected... (fixed 7/5/2022)
             # Youtube-dl thought it was an url and then commit suicide.
             self.url = self.url.replace(":", "")
 
