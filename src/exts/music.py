@@ -56,10 +56,10 @@ class Song:
     
     async def load_audio(self, nightcore: bool = False) -> YTDLSource:
         if self.title is None and not "http" in self.url:
-            # | gotta add http check bc
+            # | commit `ca1f719ca0ccad3f010fd4229a1f5f134831b10f`
             # | attempt to fix error in spotify playlist
             # v but searching using link is effected... (fixed 7/5/2022)
-            # Youtube-dl thought it was an url and then commit suicide.
+            # Youtube-dl thought it was an url and then commit suicide. (3/5/2022)
             self.url = self.url.replace(":", "")
 
         self.source = await YTDLSource.create_source(self.url, nc = nightcore)
