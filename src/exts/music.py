@@ -936,9 +936,10 @@ class Music(commands.Cog):
             return await ctx.send("Sorry, Please use normal search to play this track!") 
         
         elif re.match(YOUTUBE_REGEX, search) or search.startswith("https://youtu.be/"): # Youtube link
-            if search.startswith("https://youtu.be/"):
-                # REGEX DOESNT MATCH!
-                search = search.replace("https://", "")
+            # if search.startswith("https://youtu.be/"):
+            #     # REGEX DOESNT MATCH!
+            #     search = search.replace("https://", "")
+            # ^ This match sometimes and Idk why. Just gonna comment it out.
 
             videoId = re.search(YOUTUBE_REGEX, search).group(6)
             log.debug(f"{ctx.guild.id}: Searching regex, found {videoId}")
