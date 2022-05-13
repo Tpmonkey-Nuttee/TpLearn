@@ -960,6 +960,8 @@ class Music(commands.Cog):
                     raise Exception
                 
                 ret = getInfo(search)
+            except IndexError:
+                return await ctx.send(":x: No video found!")
             except Exception:
                 self.play_error() # Call play error
                 song = Song(search, ctx)
