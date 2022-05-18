@@ -104,10 +104,16 @@ class KUSNews(Cog):
                 f"\n**From** `{self.ids}`" \
                 f"\n**To** `{new_ids}`")
 
-            # Remove all prevoius data.
+            # Remove all prevoius data by checking if ids match the one we have.
             new_ids = [i for i in new_ids if i not in self.ids]
-            
-            datas = [news[key] for key in new_ids] 
+            # Convert back, using ids to [(News Detail, URL, Picture URL), (...), ...]
+            datas = []
+            for key in new_ids:
+                new = news[key]
+                # Replace URL with a new one.
+                new[2] = await self.bot.get_image_from_gif(new[2])
+                datas.append(new)
+
             embeds = [self.create_embed(n, u, p) for n, u, p in datas]
 
             await self.bot.log(__name__, f"**Found:** {datas}")
@@ -141,18 +147,6 @@ class KUSNews(Cog):
             await self.bot.log(__name__, "Saved new data.")
 
         self.bot.last_check['kus-news'] = datetime.utcnow()
-    
-    def create_embed_(self, name, url, pic) -> Embed:        
-        embed = Embed(
-            colour = Colour.from_rgb(170, 3, 250),
-            description = name.replace("...อ่านต่อ", f"[...อ่านต่อ]({url})"),
-            timestamp = datetime.utcnow()
-        )
-        embed.set_author(name = "ข่าวประชาสัมพันธ์", url = MAIN_URL, icon_url= MAIN_URL + "images_kus/kus_logo.png")
-        embed.set_thumbnail(url=pic)
-        embed.set_footer(text = "โรงเรียนสาธิตแห่งมหาวิทยาลัยเกษตรศาสตร์")
-
-        return embed
     
     def create_embed(self, name, url, pic) -> Embed:
         if url.startswith("news_detail"): 
@@ -220,20 +214,9 @@ class KUSNews(Cog):
             return await ctx.send("กำลังโหลดข้อมูล - กรุณารอสักครู่...")            
 
         amount = max(min(10, amount), 1)
-        embeds = [self.create_embed(n, u, p) for n, u, p, id in self.data]
-        for _ in range(amount):
-            await ctx.send(embed=embeds[_])
-    
-    @command(name="embeds")
-    @is_owner()
-    async def embeds_(self, ctx: Context) -> None:
-        """Admin command for test embeds."""
-        n, u, p, _ = self.data[0]
-        embed1 = self.create_embed(n, u, p)
-        embed2 = self.create_embed_(n, u, p)
-
-        await ctx.send(embed=embed1)
-        await ctx.send(embed=embed2)
+        embeds = [self.create_embed(n, u, p) for n, u, p, _ in self.data]
+        for new in range(amount):
+            await ctx.send(embed=embeds[new])
     
     @command(hidden=True)
     async def tada(self, ctx: Context) -> None:
