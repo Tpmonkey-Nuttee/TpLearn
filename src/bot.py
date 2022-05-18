@@ -11,6 +11,7 @@ import logging
 import datetime
 import traceback
 from typing import Any
+from PIL import Image
 from aiohttp import ClientSession
 
 import discord
@@ -101,6 +102,7 @@ class Bot(commands.AutoShardedBot):
 
         self.log_channel = None
         self.dump_channel = None
+        self.image_channel = None
 
         log.debug("bot subclass Created.")
 
@@ -281,21 +283,50 @@ class Bot(commands.AutoShardedBot):
             except (discord.HTTPException, discord.Forbidden) as e:
                 log.debug(f"could not add {reaction} reaction with exception: {e}")
     
+    async def get_image_from_gif(self, gif_url: str) -> str:
+        """Returns first frame of gif in url
+
+        Args:
+            gif_url (str): GIF url
+
+        Returns:
+            str: Image url
+        """
+        if self.image_channel is None:
+            self.image_channel = self.get_channel(config.image_channel_id)
+        
+        r = await self.trust_session.get(gif_url)
+
+        with open("evals/gif.gif", "wb") as f:
+            # Save gif into file.
+            f.write(r.content)
+            f.close()
+        
+        # Save first frame into png.
+        im = Image.open("evals/gif.gif")
+        im.seek(0) # First frame.
+        im.save("gif.png")
+
+        message = await self.image_channel.send(
+            file = discord.File("gif.png")
+        ) 
+        # Will override the old one everytime, No need to delete.
+        return message.attachments[0].url    
+    
     async def get_image_url(self, image: discord.Attachment) -> str:
         """ 
-        Get Image URL from normal message. 
-        
-        because the original message needs to be delete so Image URL will be invalid too.
-        To handle this problem, The bot will save the image and send it to place-holder channel.
-        then Use Image URL from that instead of original one.
-
-        Once the process is finished, Image will be deleted but still be kept in place-holder channel.        
+        Get Image URL from discord.Attachment or discord.File object.
         """
-        # Save the image.
+        if self.image_channel is None:
+            self.image_channel = self.get_channel(config.image_channel_id)
+
+
+        # Save the image, turn it into a File object.
         await image.save(open("evals/image.jpg", "wb"))
+        image = discord.File("evals/image.jpg")
 
         # Sent it to image-placeholder channel then get the url.
-        image = await self.get_channel(config.image_channel_id).send(file=discord.File(open("evals/image.jpg", "rb")))
+        image = await self.image_channel.send(file=image)
         image = image.attachments[0].url
 
         # Delete it.
