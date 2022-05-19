@@ -306,10 +306,10 @@ class Bot(commands.AutoShardedBot):
         # Save first frame into png.
         im = Image.open("evals/gif.gif")
         im.seek(0) # First frame.
-        im.save("gif.png")
+        im.save("evals/gif.png")
 
         message = await self.image_channel.send(
-            file = discord.File("gif.png")
+            file = discord.File("evals/gif.png")
         ) 
         # Will override the old one everytime, No need to delete.
         return message.attachments[0].url    
