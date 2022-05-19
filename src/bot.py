@@ -299,7 +299,8 @@ class Bot(commands.AutoShardedBot):
 
         with open("evals/gif.gif", "wb") as f:
             # Save gif into file.
-            f.write(r.content)
+            byte = await r.content.read()
+            f.write(byte)
             f.close()
         
         # Save first frame into png.
