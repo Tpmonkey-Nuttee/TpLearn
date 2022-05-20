@@ -1011,28 +1011,39 @@ class Music(commands.Cog):
         if "open.spotify.com/" in search: # Spotify
             return await ctx.send("This command only work with normal searching or Youtube URL.") 
         
-         # Normal searching.
-        try:
-            # Try catching an exception bc we may reach "quota limit" by Google API
-            # If reached, Fetch it normally instead.
-            if self.api_error: # Already error, skip to except statement
-                raise Exception
+        if re.match(YOUTUBE_REGEX, search) or search.startswith("https://youtu.be/"): # Youtube link
+            videoId = re.search(YOUTUBE_REGEX, search).group(6)
+            log.debug(f"{ctx.guild.id}: Searching regex, found {videoId}")
 
-            ret = getInfo(search)
-        except Exception:
-            song = Song(search, ctx)
-            await ctx.message.add_reaction('✅')
-        else:
-            url = f"https://www.youtube.com/watch?v={ret['id']['videoId']}"
+            if videoId is None:
+                return await ctx.send(":x: Unable to regonize the url.")
             
-            song = Song(
-                url = url,
-                ctx = ctx,
-                title = ret['snippet']['title']
-            )
+            song = Song(url = f"https://www.youtube.com/watch?v={videoId}", ctx = ctx)
+            await ctx.message.add_reaction('✅')
 
-            # Don't reply if use link.
-            if not any(kw in search for kw in ["youtu.be/", "youtube.com/watch?v="]):
+        else: # Normal searching. 
+            try:
+                # Try catching an exception bc we may reach "quota limit" by Google API
+                # If reached, Fetch it normally instead.
+                if self.api_error: # Already error, skip to except statement
+                    raise Exception
+                
+                ret = getInfo(search)
+            except IndexError:
+                return await ctx.send(":x: No video found!")
+            except Exception:
+                self.play_error() # Call play error
+                song = Song(search, ctx)
+                await ctx.message.add_reaction('✅')
+            else:
+                url = f"https://www.youtube.com/watch?v={ret['id']['videoId']}"
+                
+                song = Song(
+                    url = url,
+                    ctx = ctx,
+                    title = ret['snippet']['title']
+                )
+
                 title = ret['snippet']['title']
                 await ctx.send(
                     embed = discord.Embed(
@@ -1044,12 +1055,9 @@ class Music(commands.Cog):
                     ).add_field(
                         name = "Requested by", value = ctx.author.mention
                     )
-                ) 
-            else:
-                await ctx.message.add_reaction('✅')
+                )
 
         ctx.voice_state.songs._queue.appendleft(song)
-            
         
         log.debug(f"Enqueued play next")
 
