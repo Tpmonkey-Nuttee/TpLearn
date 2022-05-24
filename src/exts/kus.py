@@ -239,8 +239,13 @@ class KUSNews(Cog):
             return await ctx.send("Fetch successful!")
         
         self.enable = False
-        await ctx.send("Unable to fetch data, Disabled system.")        
+        await ctx.send("Unable to fetch data, Disabled system.")      
 
+    @coomand(name="reloadkus")
+    @is_owner()
+    async def reloadkus(self, ctx: Context) -> None:
+        self.looping.restart()
+        await ctx.send("Reloaded.")  
     
     @command(hidden=True)
     async def tada(self, ctx: Context) -> None:
