@@ -247,7 +247,7 @@ class AdminCommands(Cog):
         embed = await self._base_embed(ctx, code)
 
         if results != []:
-            for i, item in enumerate(result):
+            for i, item in enumerate(results):
                 if i != 0:
                     embed = await self._base_embed(ctx, code)
 
