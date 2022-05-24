@@ -98,7 +98,7 @@ class KUSNews(Cog):
             log.debug('trying to update news but is not enable, passing...')
             return
 
-        news = {id: (n, u, p) for n, u, p, id in self.data}
+        news = {id: [n, u, p] for n, u, p, id in self.data}
         new_ids = [i for n, u, p, i in self.data]
 
         # If the existing data in database is not the same as present one.
@@ -241,7 +241,7 @@ class KUSNews(Cog):
         self.enable = False
         await ctx.send("Unable to fetch data, Disabled system.")      
 
-    @coomand(name="reloadkus")
+    @command(name="reloadkus")
     @is_owner()
     async def reloadkus(self, ctx: Context) -> None:
         self.looping.restart()
