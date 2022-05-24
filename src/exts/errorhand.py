@@ -17,7 +17,7 @@ log = logging.getLogger(__name__)
 
 class ErrorHandler(commands.Cog):
     def __init__(self, bot: Bot):
-        self.bot =  bot
+        self.bot = bot
 
     @commands.Cog.listener()
     async def on_command_error(self, ctx: commands.Context, error: commands.errors.CommandError) -> None:

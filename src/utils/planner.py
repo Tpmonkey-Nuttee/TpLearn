@@ -120,9 +120,9 @@ class Planner:
         final = []
         for i in sorteddates:
             keys = [i.get('key') for i in final]
-            for l in data:
-                if l['readable-date'] == i and l['key'] not in keys:
-                    final.append(l)
+            for j in data:
+                if j['readable-date'] == i and j['key'] not in keys:
+                    final.append(j)
         
         # Unknown date should be in front of the Known date.
         log.debug(f'returning sorted date for {guild_id}')
@@ -277,7 +277,7 @@ class Planner:
                         changes[guild_id] = {}
 
                     self.__data[guild_id][key]['already-passed'] = already_passed
-                    changes[guild_id][key] =  self.__data[guild_id][key]
+                    changes[guild_id][key] = self.__data[guild_id][key]
         
         self._save()
         self.__need_update.append([int(i) for i in changes])

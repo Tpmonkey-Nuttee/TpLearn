@@ -79,7 +79,7 @@ class SetUp(Cog):
             fix = True
         
         await self.bot.log(__name__, 
-            f"Command `,setup` has been ran on {ctx.guild.id}, maybe something went wrong... " \
+            f"Command `,setup` has been ran on {ctx.guild.id}, maybe something went wrong... \n"
             f"\nFix has returned `{fix}`")
         await ctx.send(":white_check_mark: **Fix Completed.**\nStill have a problem? Dm me!")
 

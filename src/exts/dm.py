@@ -28,7 +28,7 @@ class VoiceChannel(Cog):
         # - Author must not be a bot or owner.
         # - Guild needs to be None, that means It's on Bot DM or GROUP.
 
-        if message.author.bot or  message.author.id == self.bot.owner_id or message.guild != None:
+        if message.author.bot or message.author.id == self.bot.owner_id or message.guild != None:
             return
         
         user = message.author

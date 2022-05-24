@@ -235,7 +235,7 @@ class Bot(commands.AutoShardedBot):
         except discord.HTTPException:
             try:
                 await self.dump_channel.send(
-                    "<@!518063131096907813> Unhandle error occured, Please check the bot logs." \
+                    "<@!518063131096907813> Unhandle error occured, Please check the bot logs.\n"
                     f"error with `{len(message)}` letters long."
                 )
             except discord.HTTPException: 

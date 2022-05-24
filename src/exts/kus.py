@@ -115,8 +115,9 @@ class KUSNews(Cog):
         if new_ids != self.ids:
             await self.bot.log(__name__, "New data detected")
             await self.bot.log(__name__, 
-                f"\n**From** `{self.ids}`" \
-                f"\n**To** `{new_ids}`")
+                f"\n**From** `{self.ids}`\n"
+                f"\n**To** `{new_ids}`"
+            )
 
             # Remove all prevoius data by checking if ids match the one we have.
             new_ids = [i for i in new_ids if i not in self.ids]
@@ -146,7 +147,7 @@ class KUSNews(Cog):
                             await channel.send(embed=embed)
                         except Exception:
                             await self.bot.log(__name__, 
-                                f":negative_squared_cross_mark: Unable to send news embed to `{channel}`" \
+                                f":negative_squared_cross_mark: Unable to send news embed to `{channel}`\n"
                                 f"with traceback: \n{traceback.format_exc()}")
                             break        
                         
