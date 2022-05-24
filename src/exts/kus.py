@@ -41,6 +41,16 @@ class KUSNews(Cog):
     def cog_unload(self):
         self.looping.cancel()
     
+    @Cog.listener()
+    async def on_resumed(self) -> None:
+        """
+        Check if loop running correctly.
+        """
+        if not self.looping.is_running():
+            self.looping.restart()
+            await self.bot.log(__name__, "KUS monitor is not running, Restarted", True)
+            await self.bot.log(__name__, traceback.format_exc())
+    
     async def save(self) -> None:
         await self.bot.database.dump("KUS-COOKIES", self.cookies)
         await self.bot.database.dump("NEWS-CHANNELS", self.channels)
