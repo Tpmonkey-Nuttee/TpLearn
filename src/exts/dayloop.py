@@ -34,7 +34,7 @@ class DayLoop(Cog):
         """
         if not self.loop.is_running():
             self.loop.restart()
-            await self.bot.log(__name__, "DayLoop is not running, Restarted")
+            await self.bot.log(__name__, "DayLoop is not running, Restarted", True)
             await self.bot.log(__name__, traceback.format_exc())                
     
     @tasks.loop(minutes=MINUTES)

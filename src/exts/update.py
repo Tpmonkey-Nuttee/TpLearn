@@ -37,7 +37,7 @@ class Updater(Cog):
         """
         if not self.loop.is_running():
             self.loop.restart()
-            await self.bot.log(__name__, "Updater Loop is not running, Restarted")
+            await self.bot.log(__name__, "Updater Loop is not running, Restarted", True)
             await self.bot.log(__name__, traceback.format_exc())          
     
     def check(self, message: Message, **work: dict) -> bool:
