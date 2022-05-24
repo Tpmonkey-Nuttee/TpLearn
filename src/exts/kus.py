@@ -16,6 +16,7 @@ from bot import Bot
 
 from datetime import datetime
 from bs4 import BeautifulSoup
+from typing import Optional
 import traceback
 import logging
 
@@ -34,25 +35,28 @@ class KUSNews(Cog):
         self.ids = None
         self.channels = None
         self.enable = True
+        self.cookies = None
         self.looping.start()
     
     def cog_unload(self):
         self.looping.cancel()
     
     async def save(self) -> None:
+        await self.bot.database.dump("KUS-COOKIES", self.cookies)
         await self.bot.database.dump("NEWS-CHANNELS", self.channels)
         log.debug('saved news channels')
     
     async def load_data(self) -> None:
+        self.cookies = await self.bot.database.load("KUS-COOKIES", None)
         self.channels = await self.bot.database.load("NEWS-CHANNELS", {})
         self.ids = await self.bot.database.load("NEWS-IDS", {})
         log.debug('loaded data')
 
-    async def __fetch__(self):
-        r = await self.bot.trust_session.get(NEWS_URL)
+    async def __fetch__(self) -> str:
+        r = await self.bot.trust_session.get(NEWS_URL, cookies=self.cookies)
         return await r.text()
     
-    async def __get__data(self):
+    async def __get__data(self) -> Optional[list]:
         respone_text = await self.__fetch__()
 
         soup = BeautifulSoup(respone_text, "html.parser")
@@ -60,7 +64,7 @@ class KUSNews(Cog):
 
         if home is None and self.enable:
             self.enable = False
-            await self.bot.log(__name__, 'Unable to fetch kus data, disabled system.')
+            await self.bot.log(__name__, 'Unable to fetch kus data, disabled system until cookie is set.', mention=True)
             return None
 
         if home is not None and not self.enable:
@@ -217,6 +221,26 @@ class KUSNews(Cog):
         embeds = [self.create_embed(n, u, p) for n, u, p, _ in self.data]
         for new in range(amount):
             await ctx.send(embed=embeds[new])
+    
+    @command(name="setcookie")
+    @is_owner()
+    async def setcookie(self, ctx: Context, cookie: str) -> None:
+        """Set PHPSESSID cookie.
+        """
+        self.cookies = {
+            "PHPSESSID": cookie
+        }
+        await self.save()
+        self.enable = True
+        await ctx.send("Saved cookie, Trying to fetch data.")
+
+        ret = await self.__get__data()
+        if ret is not None:
+            return await ctx.send("Fetch successful!")
+        
+        self.enable = False
+        await ctx.send("Unable to fetch data, Disabled system.")        
+
     
     @command(hidden=True)
     async def tada(self, ctx: Context) -> None:
