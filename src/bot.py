@@ -119,7 +119,7 @@ class Bot(commands.AutoShardedBot):
             command_prefix = get_prefix,
             activity = discord.Activity(type = discord.ActivityType.watching, name = "myself starting..."),
             status = discord.Status.dnd,
-            case_insensitive = False,
+            case_insensitive = True,
             max_messages = 10_000,
             intents = intents
         )
