@@ -48,10 +48,11 @@ class DupeCheck(commands.Cog):
         min_latency = min(self.messages)
 
         if min_latency != self.ping:
-            await self.bot.log(__name__, "Dupe instance found, Shutdowning this instance.")
-            return await self.bot.close()
-        await self.bot.log(__name__, f"Instance {self.ping}: I will remain online")
-
+            return await self.bot.log(__name__, f"Instance {self.ping}: I will remain online")
+        
+        await self.bot.log(__name__, "Dupe instance found, Shutdowning this instance.")
+        await self.bot.logout()
+        await self.bot.close()          
 
     @tasks.loop(minutes = 1)
     async def loop(self) -> None:
@@ -71,12 +72,6 @@ class DupeCheck(commands.Cog):
     async def before_invoke(self) -> None:
         await self.bot.wait_until_ready()
         self.channel = self.bot.get_channel(CHANNEL_ID)
-    
-
-    
-
-
-    
 
 
 def setup(bot: commands.Bot) -> None:
