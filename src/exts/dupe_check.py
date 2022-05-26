@@ -47,12 +47,12 @@ class DupeCheck(commands.Cog):
         
         min_latency = min(self.messages)
 
-        if min_latency != self.ping:
+        if min_latency == self.ping:
             return await self.bot.log(__name__, f"Instance {self.ping}: I will remain online")
         
         await self.bot.log(__name__, "Dupe instance found, Shutdowning this instance.")
-        await self.bot.logout()
-        await self.bot.close()          
+        self.bot.unload_cogs()
+        await self.bot.close()
 
     @tasks.loop(minutes = 1)
     async def loop(self) -> None:
