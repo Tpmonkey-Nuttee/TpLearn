@@ -941,7 +941,11 @@ class Music(commands.Cog):
             #     search = search.replace("https://", "")
             # ^ This match sometimes and Idk why. Just gonna comment it out.
 
-            videoId = re.search(YOUTUBE_REGEX, search).group(6)
+            match = re.search(YOUTUBE_REGEX, search)
+            if match is None:
+                return await ctx.send("Cannot regonize the url, Please re-check it!")
+            videoId = match.group(6)
+
             log.debug(f"{ctx.guild.id}: Searching regex, found {videoId}")
 
             if videoId is None:
