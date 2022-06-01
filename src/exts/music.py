@@ -935,14 +935,8 @@ class Music(commands.Cog):
         elif "open.spotify.com/" in search: # Anything else related to Spotify
             return await ctx.send("Sorry, Please use normal search to play this track!") 
         
-        elif re.match(YOUTUBE_REGEX, search) or search.startswith("https://youtu.be/"): # Youtube link
-            # if search.startswith("https://youtu.be/"):
-            #     # REGEX DOESNT MATCH!
-            #     search = search.replace("https://", "")
-            # ^ This match sometimes and Idk why. Just gonna comment it out.
-
-            match = re.search(YOUTUBE_REGEX, search)
-            if match is None:
+        elif match := re.match(YOUTUBE_REGEX, search) or search.startswith("https://youtu.be/"): # Youtube link            
+            if match is True:
                 return await ctx.send("Cannot regonize the url, Please re-check it!")
             videoId = match.group(6)
 
