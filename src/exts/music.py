@@ -488,7 +488,7 @@ class Music(commands.Cog):
         
 
     @commands.command(name='leave', aliases=['disconnect'])
-    async def _leave(self, ctx: commands.Context, invoke_without_subcommand=True):
+    async def _leave(self, ctx: commands.Context):
         """Clears the queue and leaves the voice channel.
         """
         if ctx.voice_client is not None:
