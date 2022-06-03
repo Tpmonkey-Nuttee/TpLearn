@@ -429,8 +429,11 @@ class Music(commands.Cog):
     @staticmethod
     def shorten_title(title: str, url: str) -> str:
         # To make sure that embed field wouldn't contain more than 1024 letters.
-        space_left = 100 - len(url)
-        # TODO: tbh, this doesn't work sometimes. idk why, didn't check yet.
+        space_left = 120 - len(url)
+
+        # Escape [ in video.
+        title = title.replace("[", "\[")
+
         return title if len(title) < space_left else title[:space_left] + "..."
 
     @commands.command(name="settings")
