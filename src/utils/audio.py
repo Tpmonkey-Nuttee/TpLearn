@@ -4,6 +4,7 @@ import discord
 import functools
 import youtube_dl
 from typing import List, Tuple
+from functools import lru_cache
 import googleapiclient.discovery
 from urllib.parse import parse_qs, urlparse
 from concurrent.futures import ThreadPoolExecutor
@@ -34,7 +35,7 @@ chars = {
     "&amp;": "&"
 }
 
-
+@lru_cache(maxsize = None)
 def getInfo(q: str) -> dict:
     _ = _search.list(
         q = q,
@@ -54,7 +55,7 @@ def getInfo(q: str) -> dict:
     _['snippet']['title'] = title
     return _
 
-
+@lru_cache(maxsize = None)
 def getYtPlaylist(url: str) -> Tuple[List[str]]:
     # actually get playlist id
     query = parse_qs(urlparse(url).query, keep_blank_values=True)

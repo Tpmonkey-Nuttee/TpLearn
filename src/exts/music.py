@@ -659,15 +659,19 @@ class Music(commands.Cog):
         end = start + items_per_page
 
         # Search up the song first.
-        future_search = {POOL.submit(song.search): song for i, song in enumerate(ctx.voice_state.songs[start:end], start=start)}
+        for song in ctx.voice_state.songs[start:end]:
+            song.search()
         
-        try:
-            for _ in as_completed(future_search, timeout = 1):
-                # Skip task if it's unfinished
-                pass
-        except TimeoutError as e: # from concurrent lib, not asyncio
-            # Ignore the error.
-            log.warning(f"{ctx.guild.id}: Queue command raised {e}")            
+        ### Got removed, SSL Error.
+        # future_search = {POOL.submit(song.search): song for i, song in enumerate(ctx.voice_state.songs[start:end], start=start)}
+        #
+        # try:
+        #     for _ in as_completed(future_search, timeout = 1):
+        #         # Skip task if it's unfinished
+        #         pass
+        # except TimeoutError as e: # from concurrent lib, not asyncio
+        #     # Ignore the error.
+        #     log.warning(f"{ctx.guild.id}: Queue command raised {e}")            
 
         queue = ''
         for i, song in enumerate(ctx.voice_state.songs[start:end], start=start):
