@@ -4,13 +4,13 @@ Used for logging and moderating.
 Made by Tpmonkey
 """
 
-from discord.ext.commands import Cog
 from discord import Embed, Colour
+from discord.ext.commands import Cog
 
 from bot import Bot
 
-from datetime import datetime
 import logging
+from datetime import datetime
 
 log = logging.getLogger(__name__)
 

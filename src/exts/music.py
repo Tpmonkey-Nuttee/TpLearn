@@ -16,7 +16,6 @@ import asyncio
 import datetime
 import itertools
 import traceback
-from concurrent.futures import as_completed, TimeoutError
 
 import discord
 from async_timeout import timeout

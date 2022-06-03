@@ -3,15 +3,15 @@ A Day detection system, Use to check new day.
 Made by Tpmonkey
 """
 
-from discord.ext.commands import Cog, Context, command
 from discord.ext import tasks
+from discord.ext.commands import Cog, Context, command
 
 import config
 from bot import Bot
 from utils.time import today, today_th
 
-import traceback
 import logging
+import traceback
 
 log = logging.getLogger(__name__)
 

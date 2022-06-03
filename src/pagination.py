@@ -4,14 +4,13 @@ Made by Python Discord Bot team on Github.
 Credit: https://github.com/python-discord/bot
 """
 
-from discord.ext.commands import Context, Paginator
-from discord.abc import User
 import discord
+from discord.ext.commands import Context, Paginator
 
-from contextlib import suppress
-import typing as t
-import logging
 import asyncio
+import logging
+import typing as t
+from contextlib import suppress
 
 FIRST_EMOJI = "\u23EE"   # [:track_previous:]
 LEFT_EMOJI = "\u2B05"    # [:arrow_left:]

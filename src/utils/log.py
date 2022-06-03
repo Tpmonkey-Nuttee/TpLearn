@@ -4,13 +4,13 @@ Made by Python Discord Bot team on Github.
 Credit: https://github.com/python-discord/bot
 """
 
-from logging import Logger, handlers
-from pathlib import Path
-import coloredlogs
-import datetime
-import logging
-import sys
 import os
+import sys
+import logging
+import datetime
+import coloredlogs
+from pathlib import Path
+from logging import Logger, handlers
 
 __all__ = ("setup", )
 

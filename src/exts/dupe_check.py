@@ -4,12 +4,12 @@ Because bot is running on replit, and sometimes replit dupe the bot instance.
 """
 
 import discord
-from discord.ext import commands
 from discord.ext import tasks
+from discord.ext import commands
 
-from datetime import datetime
-import asyncio
 import json
+import asyncio
+from datetime import datetime
 
 CHANNEL_ID = 966245810033549342
 

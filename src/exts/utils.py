@@ -3,8 +3,8 @@ Utility and Fun Commands.
 Made by Tpmonkey
 """
 
-from discord.ext.commands import Cog, Context, command, guild_only
 from discord import Embed, Colour
+from discord.ext.commands import Cog, Context, command, guild_only
 
 from bot import Bot
 from utils import time as timef

@@ -4,22 +4,22 @@ Monitoring: http://www.kus.ku.ac.th/news.php
 Made by Tpmonkey
 """
 
+from discord import Embed, Colour
+from discord.ext.tasks import loop
+from discord.ext.commands import cooldown as cd
 from discord.ext.commands import (
     Cog, Context, command, is_owner, has_permissions, BucketType
 )
-from discord.ext.commands import cooldown as cd
-from discord.ext.tasks import loop
-from discord import Embed, Colour
 
-from bot import Bot
 import config
+from bot import Bot
 
-from bs4 import BeautifulSoup
-from datetime import datetime
-from typing import Optional
-import traceback
-import asyncio
 import logging
+import asyncio
+import traceback
+from typing import Optional
+from datetime import datetime
+from bs4 import BeautifulSoup
 
 log = logging.getLogger(__name__)
 

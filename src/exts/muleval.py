@@ -5,14 +5,14 @@ Credit: https://github.com/python-discord/bot
 Re-created by Tpmonkey
 """
 
-from discord.ext.commands import Cog, command, Context, guild_only, is_owner
 from discord import Embed, Colour
+from discord.ext.commands import Cog, command, Context, guild_only, is_owner
 
 from utils.post_eval import post_eval
 
-import textwrap
-import logging
 import re
+import logging
+import textwrap
 
 ESCAPE_REGEX = re.compile("[`\u202E\u200B]{3,}")
 

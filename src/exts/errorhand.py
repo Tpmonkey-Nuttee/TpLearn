@@ -5,8 +5,8 @@ Credit: https://github.com/python-discord/bot
 Re-created By Tpmonkey
 """
 
-from discord.ext import commands
 import discord
+from discord.ext import commands
 
 from bot import Bot
 

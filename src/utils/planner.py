@@ -4,12 +4,12 @@ Add, Remove, Keep track of all assignments.
 Made by Tpmonkey
 """
 
-from typing import Optional
-import datetime
-import secrets
-import discord
-import random
 import time
+import random
+import discord
+import secrets
+import datetime
+from typing import Optional
 
 from utils.time import today_th
 

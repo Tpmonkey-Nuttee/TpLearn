@@ -3,18 +3,18 @@ An Assignment Manger, Main Extension for input.
 Made by Tpmonkey
 """
 
-from discord.ext import commands
 import discord 
+from discord.ext import commands
 
+from bot import Bot
 from utils import checks
 from utils.time import today_th
-from bot import Bot
 
-import asyncio 
-import traceback
-import datetime
-import logging
 import random
+import asyncio 
+import logging
+import datetime
+import traceback
 
 # Setup some value to use later. :)
 TITLES = {

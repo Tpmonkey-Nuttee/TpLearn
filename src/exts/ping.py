@@ -3,13 +3,13 @@ Bot Ping Display, and Socket Session command for Admin
 Made by Tpmonkey
 """
 
-from discord.ext.commands import command, Cog, Context, is_owner
 from discord import Embed, Color
+from discord.ext.commands import command, Cog, Context, is_owner
 
 from bot import Bot
 
-from collections import Counter
 from datetime import datetime
+from collections import Counter
 
 DESCRIPTION = (
     "Discord API latency",

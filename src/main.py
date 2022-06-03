@@ -10,7 +10,6 @@ import os
 
 # Setting up Logging.
 from utils.log import setup
-
 setup()
 
 from bot import Bot

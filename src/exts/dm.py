@@ -3,8 +3,8 @@ Bot DM Manager.
 Made by Tpmonkey
 """
 
-from discord.ext.commands import Cog, Context, command, is_owner
 from discord import Message, Embed, Colour, User
+from discord.ext.commands import Cog, Context, command, is_owner
 
 from bot import Bot
 

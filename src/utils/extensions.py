@@ -4,10 +4,10 @@ Made by Python Discord Bot team on Github.
 Credit: https://github.com/python-discord/bot
 """
 
-from typing import Iterator, NoReturn
-import importlib
 import inspect
 import pkgutil
+import importlib
+from typing import Iterator, NoReturn
 
 import exts
 

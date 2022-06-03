@@ -5,12 +5,12 @@ Credit: https://github.com/python-discord/bot
 Re-created by Tpmonkey
 """
 
-from contextlib import suppress
-from typing import List, Union
 import itertools
+from typing import List, Union
+from contextlib import suppress
 
-from discord.ext.commands import Cog, HelpCommand, Command, command, Context
 from discord import Embed, Colour
+from discord.ext.commands import Cog, HelpCommand, Command, command, Context
 
 from bot import Bot
 from pagination import LinePaginator

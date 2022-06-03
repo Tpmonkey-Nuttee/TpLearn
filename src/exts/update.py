@@ -3,18 +3,18 @@ Bot's Active-Works Updater.
 Made by Tpmonkey
 """
 
-from discord.ext.commands import Cog, Context, command, is_owner
 from discord.ext.tasks import loop
 from discord import Message, TextChannel
+from discord.ext.commands import Cog, Context, command, is_owner
 
 import config
 from bot import Bot
 
-from datetime import datetime
-import traceback
-import asyncio
-import logging
 import time
+import logging
+import asyncio
+import traceback
+from datetime import datetime
 
 log = logging.getLogger(__name__)
 MINUTES = config.update_work_cooldown

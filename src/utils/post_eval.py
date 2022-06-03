@@ -4,10 +4,10 @@ Idea by Python Discord Team (https://github.com/python-discord/snekbox)
 Re-create by Tpmonkey
 """
 
-import subprocess
-import shlex
-import sys
 import os
+import sys
+import shlex
+import subprocess
 
 __all__ = ("post_eval", )
 

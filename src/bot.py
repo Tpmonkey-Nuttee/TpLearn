@@ -17,10 +17,10 @@ from aiohttp import ClientSession
 import discord
 from discord.ext import commands
 
+import config
 from db import Database
 from utils.time import today_th
 from utils import planner, manager
-import config
 
 log = logging.getLogger(__name__)
 
