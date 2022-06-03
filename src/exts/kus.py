@@ -11,13 +11,14 @@ from discord.ext.commands import cooldown as cd
 from discord.ext.tasks import loop
 from discord import Embed, Colour
 
-import config
 from bot import Bot
+import config
 
-from datetime import datetime
 from bs4 import BeautifulSoup
+from datetime import datetime
 from typing import Optional
 import traceback
+import asyncio
 import logging
 
 log = logging.getLogger(__name__)
@@ -145,6 +146,7 @@ class KUSNews(Cog):
                     for embed in embeds[::-1]:
                         try: 
                             await channel.send(embed=embed)
+                            await asyncio.sleep(1)
                         except Exception:
                             await self.bot.log(__name__, 
                                 f":negative_squared_cross_mark: Unable to send news embed to `{channel}`\n"
