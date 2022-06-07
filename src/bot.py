@@ -75,6 +75,16 @@ class Settings:
         self._settings[guild_id][setting] = value
 
         self._bot.database.dumps("MUSIC", self._settings)
+    
+    def delete(self, guild_id: int) -> None:
+        """Delete guild settings
+        """
+        try:
+            del self._settings[str(guild_id)]
+            self._bot.database.dumps("MUSIC", self._settings)
+        except KeyError:
+            pass
+
 
 class Bot(commands.AutoShardedBot):
     # Subclass of commands.Bot
