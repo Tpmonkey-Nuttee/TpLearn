@@ -402,13 +402,18 @@ class Bot(commands.AutoShardedBot):
         if in_day is None: 
             in_day = ""
         elif in_day > 1:
-            in_day = f" [In {in_day} days]"
+            if lasted == 1:
+                in_day = f" [In {in_day} days]"
+            else:
+                in_day = f" [Starts in {in_day} days]"
         elif in_day == 1: 
             in_day = " [❗❗ TOMORROW ❗❗]"
         elif in_day == 0 and lasted == 1:
             in_day = " [❗❗ TODAY ❗❗]"
         elif in_day <= 0 and lasted > 1: 
-            in_day = f" [ Ends in {abs(in_day)} days ]"
+            # 0 + lasted = 3
+            # -1 + lasted = 2
+            in_day = f" [ Ends in {abs(in_day + lasted)} days ]"
         elif in_day <= 0 and lasted == 1:
             in_day = " [ PASSED ]"
         else: 

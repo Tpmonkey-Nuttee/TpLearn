@@ -39,16 +39,25 @@ class Assignments(commands.Cog):
         log.debug(f'init dat for {ctx.author.id}')
         self.tasks[ctx.author.id] = {
             "details":{
-                "type": type_, "state": 1, "key": kwargs.get("key"),
-                "image": kwargs.get('image-url', "Not Attached"),
-                "date": [kwargs.get('date', "Unknown"), 1],
+                "type": type_, # either "edit" or "add"
+                "state": 1, # 1: Title, 2: Description, 3: Date, 4: Image
+                "key": kwargs.get("key"), # str: homework key (can be None)
+                "image": kwargs.get('image-url', "Not Attached"), # str: Image url
+                "date": [
+                    kwargs.get('date', "Unknown"), # str: Assignment date
+                    1 # int: how long will assignment last for.
+                ],
                 "headers":{
-                    "title": kwargs.get('title', "Untitled"),
-                    "description": kwargs.get('desc', "No Description Provided"),
-                }},
-            "info":{                
-                "ctx": ctx, "message": None, "task": None
-            }}
+                    "title": kwargs.get('title', "Untitled"), # str: Title
+                    "description": kwargs.get('desc', "No Description Provided"), # str: Description
+                }
+            },
+            "info":{
+                "ctx": ctx, # discord.ext.commands.Context: client's context
+                "message": None, # discord.Message: keep track of hw menu (edit, delete, reactions)
+                "task": None # asyncio.Task: for adding reactions in parallel
+            }
+        }
     
     @staticmethod
     def close_embed(reason: str, colour: discord.Colour = discord.Colour.dark_red()) -> discord.Embed:
@@ -91,10 +100,14 @@ class Assignments(commands.Cog):
 
         # Date
         lasted = details['date'][1]
-        date = self.bot.planner.get_readable_date(details['date'][0])
+        before = details['date'][0]
+        date = self.bot.planner.get_readable_date(before)
+
+        value = f"Starts at **{date}** and lasts **{lasted}** day{'s' if lasted > 1 else ''}." if before != date else before
+
         embed.add_field(
             name = self.get_title_from_key("date", state),
-            value = f"Starts at {date} and will last {lasted} day{'s' if lasted > 1 else ''}.", 
+            value = value, 
             inline = False
         )
 
@@ -171,7 +184,7 @@ class Assignments(commands.Cog):
     @commands.guild_only()
     @checks.assignment_limit()
     @checks.is_setup()
-    @commands.cooldown(3, 45, commands.BucketType.guild)
+    @commands.cooldown(3, 20, commands.BucketType.guild)
     async def add(self, ctx: commands.Context) -> None:
         """Add an Assignment Command."""
         if ctx.author.id in self.tasks: 
@@ -189,7 +202,7 @@ class Assignments(commands.Cog):
     @commands.command()
     @commands.guild_only()
     @checks.is_setup()
-    @commands.cooldown(3, 45, commands.BucketType.guild)
+    @commands.cooldown(3, 20, commands.BucketType.guild)
     async def edit(self, ctx: commands.Context, key: str = None) -> None:
         """Edit an Assignment Command."""
         if ctx.author.id in self.tasks: 
@@ -219,7 +232,7 @@ class Assignments(commands.Cog):
     @commands.command(aliases = ("delete", "del", ))
     @commands.guild_only()
     @checks.is_setup()
-    @commands.cooldown(3, 15, commands.BucketType.guild)
+    @commands.cooldown(3, 6, commands.BucketType.guild)
     async def remove(self, ctx: commands.Context, key: str = None) -> None:
         """Remove an Assignments"""
         data = self.bot.planner.get_all(ctx.guild.id)
@@ -256,7 +269,7 @@ class Assignments(commands.Cog):
     @commands.command(aliases = ('inf', 'detail', 'check', ))
     @commands.guild_only()
     @checks.is_setup()
-    @commands.cooldown(5, 25, commands.BucketType.guild)
+    @commands.cooldown(5, 15, commands.BucketType.guild)
     async def info(self, ctx: commands.Context, key: str = None) -> None:
         """Info about the Assignments"""
         data = self.bot.planner.get_all(ctx.guild.id)
@@ -342,7 +355,7 @@ class Assignments(commands.Cog):
             content = message.content
             log.debug(f"Recieve message: {content}")
                         
-            if content is not None and content.startswith(self.bot.command_prefix):
+            if content is not None and content.startswith(self.bot.config.prefix):
                 log.debug("content startswith command prefix.")
                 return await self.close(ctx, reason = "Use another bot's command.")     
             
@@ -395,7 +408,7 @@ class Assignments(commands.Cog):
         elif state == 2:
             self.tasks[ctx.author.id]["details"]["headers"]["description"] = content
         elif state == 3:
-            self.tasks[ctx.author.id]["details"]["headers"]["date"] = self.format(content)
+            self.tasks[ctx.author.id]["details"]["date"] = self.format(content)
         else:
             image_url = self.tasks[ctx.author.id]["details"]["image"] 
             if len(message.attachments) < 1:
@@ -415,7 +428,7 @@ class Assignments(commands.Cog):
     async def finish_request(self, ctx: commands.Context) -> None:
         type_ = self.tasks[ctx.author.id]['details']['type']
 
-        if self.bot.planner.check_passed_date(self.tasks[ctx.author.id]["details"]["headers"]["date"]):
+        if self.bot.planner.check_passed_date(self.tasks[ctx.author.id]["details"]["date"]):
             log.debug(f'{ctx.author.id} tried to add/edit passed assignment.')
             return await self.close(ctx, "Cannot add/edit already passed assignment.")
             
@@ -469,13 +482,16 @@ class Assignments(commands.Cog):
     def format(text: str) -> str:
         if text.startswith("++"): # using shortcut
             _text = text.lstrip("++").lstrip("-").split()
+            _lasted = 1
 
             try:
                 _days = int(_text[0]) # get days
-                if len(_text) >= 1: # get lasted
-                    _lasted = min(int(_text[1]), 1)
+
+                if len(_text) > 1: # get lasted
+                    _lasted = max(int(_text[1]), 1)
+
             except ValueError: # one of which failed
-                return [text, 1]
+                return [text, _lasted]
 
             future = today_th(True) + datetime.timedelta(days = _days)
             return ["{0.day}/{0.month}/{0.year}".format(future), _lasted]
@@ -485,9 +501,9 @@ class Assignments(commands.Cog):
             _text = _texts[0]
 
             try:
-                _lasted = int(_texts[1])
+                _lasted = max(int(_texts[1]), 1)
             except ValueError:
-                return [_text, 1]
+                return [text, 1]
             return [_text, _lasted]
         
         return [text, 1]
