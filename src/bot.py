@@ -407,15 +407,17 @@ class Bot(commands.AutoShardedBot):
             else:
                 in_day = f" [Starts in {in_day} days]"
         elif in_day == 1: 
-            in_day = " [❗❗ TOMORROW ❗❗]"
-        elif in_day == 0 and lasted == 1:
-            in_day = " [❗❗ TODAY ❗❗]"
-        elif in_day <= 0 and lasted > 1: 
-            # 0 + lasted = 3
-            # -1 + lasted = 2
-            in_day = f" [ Ends in {abs(in_day + lasted)} days ]"
-        elif in_day <= 0 and lasted == 1:
-            in_day = " [ PASSED ]"
+            if lasted == 1:
+                in_day = " [❗❗ TOMORROW ❗❗]"
+            else:
+                in_day = f" [❗❗ STARTING TOMORROW ❗❗]"
+        elif in_day <= 0: 
+            if in_day == 0 and lasted == 1:
+                in_day = " [❗❗ TODAY ❗❗]"
+            elif in_day < 0 and lasted == 1:
+                in_day = " [ PASSED ]"
+            else:
+                in_day = f" [ Ends in {abs(in_day + lasted)} days ]"
         else: 
             in_day = f" [In {in_day} days]"
 
@@ -441,7 +443,20 @@ class Bot(commands.AutoShardedBot):
         embed.description = kwargs.get('key')
         embed.colour = self.get_colour(kwargs.get('date'), passed = kwargs.get("already_passed"), lasted=kwargs.get("lasted", 1))    
         
-        embed.add_field(name = ":calendar_spiral: Date: ", value = kwargs.get('readable-date'), inline = False)
+        # Date
+        readable_date = kwargs.get('readable-date')
+        lasted = kwargs.get("lasted", 1)
+
+        if lasted == 1:
+            value = readable_date
+        else:
+            value = f"Starts at **{readable_date}** and lasts for **{lasted}** day{'s' if lasted > 1 else ''}."
+
+        embed.add_field(
+            name = ":calendar_spiral: Date: ", 
+            value = value, 
+            inline = False
+        )
 
         desc = kwargs.get('desc')
         if desc != "No Description Provided":
