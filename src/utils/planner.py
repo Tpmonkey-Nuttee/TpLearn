@@ -220,6 +220,7 @@ class Planner:
         title = kwargs.get("title", "Untitled")
         description = kwargs.get("description", "No Description Provided")
         date = kwargs.get("date", "Unknown")
+        lasted = kwargs.get("lasted", 1)
         image_url = kwargs.get("image_url")
         key = kwargs.get('key') or self.generate_key()
 
@@ -233,6 +234,7 @@ class Planner:
             "readable-date": self.get_readable_date(date),
             "already-passed": False,
             "date-tracker": date_tracker,
+            "lasted": lasted,
             "key": key
         }
 
@@ -270,7 +272,10 @@ class Planner:
         changes = dict()
         for guild_id in self.__data:
             for key in self.__data[guild_id]:
-                already_passed = self.check_passed_date(self.__data[guild_id][key]["date"])
+                already_passed = self.check_passed_date(
+                    self.__data[guild_id][key]["date"], 
+                    self.__data[guild_id][key].get("lasted", 1)
+                )
 
                 if already_passed != self.__data[guild_id][key]['already-passed']:
                     if guild_id not in changes: 
@@ -351,13 +356,13 @@ class Planner:
             return True
         return False
 
-    def check_passed_date(self, date: str) -> bool:
+    def check_passed_date(self, date: str, lasted: int = 1) -> bool:
         """
         Check if the given date passed or not.
         """
 
         try:
-            return self.try_strp_date(date) < datetime.datetime.strptime(today_th(), "%Y-%m-%d")    
+            return self.try_strp_date(date) < datetime.datetime.strptime(today_th(), "%Y-%m-%d") + datetime.datetime(day=lasted)
         except TypeError:
             return False
 

@@ -356,7 +356,7 @@ class Bot(commands.AutoShardedBot):
         
         return None if strpped is None else (strpped - datetime.datetime.strptime(date2, "%Y-%m-%d")).days
     
-    def get_colour(self, date: str = "", gap: int = None, passed: bool = False) -> discord.Colour:
+    def get_colour(self, date: str = "", gap: int = None, passed: bool = False, lasted: int = 1) -> discord.Colour:
         """
         Get Embed Colour base on Deathline of assignment.
 
@@ -387,11 +387,12 @@ class Bot(commands.AutoShardedBot):
             return discord.Colour.dark_gold()
         if gap == 1: 
             return discord.Colour.dark_orange()
-        if gap == 0: 
-            return discord.Colour.dark_red()
+        if gap <= 0: 
+            if lasted == 1 or lasted + gap >= 0:
+                return discord.Colour.dark_red()
         return discord.Colour.default()
     
-    def get_title(self, title: str, date: str, passed: bool = False) -> str:
+    def get_title(self, title: str, date: str, passed: bool = False, lasted: int = 1) -> str:
         """ Get Embed Title. """
         if passed: 
             return title + " [ PASSED ]"
@@ -400,11 +401,15 @@ class Bot(commands.AutoShardedBot):
         
         if in_day is None: 
             in_day = ""
-        elif in_day == 0: 
-            in_day = " [❗❗ TODAY ❗❗]"
+        elif in_day > 1:
+            in_day = f" [In {in_day} days]"
         elif in_day == 1: 
             in_day = " [❗❗ TOMORROW ❗❗]"
-        elif in_day < 0: 
+        elif in_day == 0 and lasted == 1:
+            in_day = " [❗❗ TODAY ❗❗]"
+        elif in_day <= 0 and lasted > 1: 
+            in_day = f" [ Ends in {abs(in_day)} days ]"
+        elif in_day <= 0 and lasted == 1:
             in_day = " [ PASSED ]"
         else: 
             in_day = f" [In {in_day} days]"
@@ -424,12 +429,12 @@ class Bot(commands.AutoShardedBot):
         * image-url: str - Image URL. Set it to 'Not Attached' to disable.
         """
         log.debug("creating assignment embed...")
-        title = self.get_title(kwargs.get('title'), kwargs.get('date'), passed=kwargs.get("already_passed"))
+        title = self.get_title(kwargs.get('title'), kwargs.get('date'), passed=kwargs.get("already_passed"), lasted=kwargs.get("lasted", 1))
         
         embed = discord.Embed(timestamp = datetime.datetime.now())
         embed.set_author(name = title)
         embed.description = kwargs.get('key')
-        embed.colour = self.get_colour(kwargs.get('date'), passed = kwargs.get("already_passed"))    
+        embed.colour = self.get_colour(kwargs.get('date'), passed = kwargs.get("already_passed"), lasted=kwargs.get("lasted", 1))    
         
         embed.add_field(name = ":calendar_spiral: Date: ", value = kwargs.get('readable-date'), inline = False)
 

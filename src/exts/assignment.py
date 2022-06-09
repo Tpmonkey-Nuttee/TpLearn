@@ -41,10 +41,10 @@ class Assignments(commands.Cog):
             "details":{
                 "type": type_, "state": 1, "key": kwargs.get("key"),
                 "image": kwargs.get('image-url', "Not Attached"),
+                "date": [kwargs.get('date', "Unknown"), 1],
                 "headers":{
                     "title": kwargs.get('title', "Untitled"),
                     "description": kwargs.get('desc', "No Description Provided"),
-                    "date": kwargs.get('date', "Unknown"),
                 }},
             "info":{                
                 "ctx": ctx, "message": None, "task": None
@@ -86,8 +86,17 @@ class Assignments(commands.Cog):
         # Create a header, Not including Image because It will be process later on.
         for n in header:
             name = self.get_title_from_key(n, state)
-            value = self.bot.planner.get_readable_date(header[n])
+            value = header[n]
             embed.add_field(name=name, value=value, inline=False)
+
+        # Date
+        lasted = details['date'][1]
+        date = self.bot.planner.get_readable_date(details['date'][0])
+        embed.add_field(
+            name = self.get_title_from_key("date", state),
+            value = f"Starts at {date} and will last {lasted} day{'s' if lasted > 1 else ''}.", 
+            inline = False
+        )
 
         # Check if Image Attached or not
         if details["image"] != "Not Attached":
@@ -413,7 +422,7 @@ class Assignments(commands.Cog):
         
         title = self.tasks[ctx.author.id]["details"]["headers"]["title"]
         description = self.tasks[ctx.author.id]["details"]["headers"]["description"]
-        date = self.tasks[ctx.author.id]["details"]["headers"]["date"]
+        date, lasted = self.tasks[ctx.author.id]["details"]["date"]
         image_url = self.tasks[ctx.author.id]["details"]["image"]
 
         if all( 
@@ -430,6 +439,7 @@ class Assignments(commands.Cog):
                 title = title,
                 description = description,
                 date = date,
+                lasted = lasted,
                 image_url = image_url,
                 key = self.tasks[ctx.author.id]['details']['key']
             )
@@ -457,17 +467,30 @@ class Assignments(commands.Cog):
 
     @staticmethod
     def format(text: str) -> str:
-        if text.startswith("++") and len(text.split()) == 1:
-            _text = text.lstrip("++").lstrip("-")
+        if text.startswith("++"): # using shortcut
+            _text = text.lstrip("++").lstrip("-").split()
 
             try:
-                _days = int(_text)
-            except ValueError:
-                return text
-            
+                _days = int(_text[0]) # get days
+                if len(_text) >= 1: # get lasted
+                    _lasted = min(int(_text[1]), 1)
+            except ValueError: # one of which failed
+                return [text, 1]
+
             future = today_th(True) + datetime.timedelta(days = _days)
-            return "{0.day}/{0.month}/{0.year}".format(future)
-        return text
+            return ["{0.day}/{0.month}/{0.year}".format(future), _lasted]
+
+        if len(text.split()) > 1: # normal format
+            _texts = text.split()
+            _text = _texts[0]
+
+            try:
+                _lasted = int(_texts[1])
+            except ValueError:
+                return [_text, 1]
+            return [_text, _lasted]
+        
+        return [text, 1]
 
 
 def setup(bot: Bot) -> None:
