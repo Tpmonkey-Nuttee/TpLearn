@@ -362,7 +362,7 @@ class Planner:
         """
 
         try:
-            return self.try_strp_date(date) < datetime.datetime.strptime(today_th(), "%Y-%m-%d") + datetime.datetime(day=lasted - 1)
+            return self.try_strp_date(date) + datetime.timedelta(days = lasted - 1) < datetime.datetime.strptime(today_th(), "%Y-%m-%d") 
         except TypeError:
             return False
 
