@@ -387,9 +387,10 @@ class Bot(commands.AutoShardedBot):
             return discord.Colour.dark_gold()
         if gap == 1: 
             return discord.Colour.dark_orange()
-        if gap <= 0: 
-            if lasted == 1 or lasted + gap >= 0:
-                return discord.Colour.dark_red()
+        if gap == 0 and lasted == 1: # today 
+            return discord.Colour.dark_red()
+        if gap + lasted > 0:
+            return discord.Colour.dark_red
         return discord.Colour.default()
     
     def get_title(self, title: str, date: str, passed: bool = False, lasted: int = 1) -> str:
