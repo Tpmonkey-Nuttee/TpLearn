@@ -442,7 +442,7 @@ class Bot(commands.AutoShardedBot):
         embed = discord.Embed(timestamp = datetime.datetime.now())
         embed.set_author(name = title)
         embed.description = kwargs.get('key')
-        embed.colour = self.get_colour(kwargs.get('date'), passed = kwargs.get("already_passed"), lasted=kwargs.get("lasted", 1))    
+        embed.colour = self.get_colour(kwargs.get('date'), passed = kwargs.get("already_passed"), lasted = kwargs.get("lasted", 1))    
         
         # Date
         readable_date = kwargs.get('readable-date')
