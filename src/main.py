@@ -12,9 +12,13 @@ import os
 from utils.log import setup
 setup()
 
-from bot import Bot
+# Setting up webserver
+from webserver import keep_alive
+keep_alive()
 
 # Create and Run the Bot.
+from bot import Bot
+
 bot = Bot.create()
 bot.load_extensions()
 
