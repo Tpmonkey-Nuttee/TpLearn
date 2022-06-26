@@ -62,7 +62,10 @@ class Updater(Cog):
 
         # Check title.
         title_embed = embed.get('author', {}).get('name')
-        title = self.bot.get_title(work.get('title'), work.get('date'))
+        title = self.bot.get_title(
+            work.get('title'), work.get('date'), 
+            passed=work.get("already_passed"), lasted=work.get("lasted", 1)
+        )
 
         # Check description
         try:
