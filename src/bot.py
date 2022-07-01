@@ -418,7 +418,10 @@ class Bot(commands.AutoShardedBot):
             elif in_day < 0 and lasted == 1:
                 in_day = " [ PASSED ]"
             else:
-                in_day = f" [ Ends in {abs(in_day + lasted)} days ]"
+                if in_day + lasted == 0:
+                    in_day = "[ PASSED ]"
+                else:
+                    in_day = f" [ Ends in {abs(in_day + lasted)} days ]"
         else: 
             in_day = f" [In {in_day} days]"
 
