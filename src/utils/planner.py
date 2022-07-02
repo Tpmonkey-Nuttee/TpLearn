@@ -114,7 +114,9 @@ class Planner:
                 invalidDate.append(i)
         
         validDate = sorted(
-            validDate, key = lambda item: (-item['strp_date'].year, -item['strp_date'].month, -item['strp_date'].day, -item.get('lasted', 1))
+            validDate, 
+            key = lambda item: (-item['strp_date'].year, -item['strp_date'].month, -item['strp_date'].day, -item.get('lasted', 1)),
+            reverse = True
         )
 
         return invalidDate + validDate
