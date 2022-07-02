@@ -107,8 +107,8 @@ class Planner:
             # i is ObservedDict from replit db.
             # if we did not change the type here, Circular reference will happen.
             i = dict(i) 
-            if self.strp_able(i['readable_date']):
-                i['strp_date'] = self.try_strp_date(i['readable_date'])
+            if self.strp_able(i['readable-date']):
+                i['strp_date'] = datetime.datetime.strptime(i['readable-date'], "%A %d %B %Y")
                 validDate.append(i)
             else:
                 invalidDate.append(i)
