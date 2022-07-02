@@ -93,40 +93,67 @@ class Planner:
         Get all Guild IDs.
         """
         return [int(key) for key in self.__data]
-
+    
     def get_sorted(self, guild_id: int) -> list:
         """
-        Get sorted assignment base on date of targeted Guild ID.
-        The undefined date will be in front of defined date.
+        Get sorted assignment by GuildID
+        Sort by: invalidDates, Times and How long the event last.
         """
         data = self.get_all(guild_id)
-        dates = list()
-        unknown_date = list()
+        validDate = []
+        invalidDate = []
 
-        # Convert it to datetime type first, using readable date that it has.
-        for ts in data:
-            if self.strp_able(ts['readable-date']):
-                dates.append(datetime.datetime.strptime(ts['readable-date'], "%A %d %B %Y"))
+        for i in data:
+            # i is ObservedDict from replit db.
+            # if we did not change the type here, Circular reference will happen.
+            i = dict(i) 
+            if self.strp_able(i['readable_date']):
+                i['strp_date'] = self.try_strp_date(i['readable_date'])
+                validDate.append(i)
             else:
-                unknown_date.append(ts)
-
-        # Sort it
-        dates.sort()
-        # now convert it back
-        sorteddates = [datetime.datetime.strftime(ts, "%A %d %B %Y") for ts in dates]
-
-        # Make a list of all the date
-        # All the data will be in one list in dict type
-        final = []
-        for i in sorteddates:
-            keys = [i.get('key') for i in final]
-            for j in data:
-                if j['readable-date'] == i and j['key'] not in keys:
-                    final.append(j)
+                invalidDate.append(i)
         
-        # Unknown date should be in front of the Known date.
-        log.debug(f'returning sorted date for {guild_id}')
-        return unknown_date + final
+        validDate = sorted(
+            validDate, key = lambda item: (-item['strp_date'].year, -item['strp_date'].month, -item['strp_date'].day, -item.get('lasted', 1))
+        )
+
+        return invalidDate + validDate
+
+    # ^ New Sorting algorithm, Will comment it out in case smth breaks.
+    #
+    # def get_sorted(self, guild_id: int) -> list:
+    #     """
+    #     Get sorted assignment base on date of targeted Guild ID.
+    #     The undefined date will be in front of defined date.
+    #     """
+    #     data = self.get_all(guild_id)
+    #     dates = list()
+    #     unknown_date = list()
+
+    #     # Convert it to datetime type first, using readable date that it has.
+    #     for ts in data:
+    #         if self.strp_able(ts['readable-date']):
+    #             dates.append(datetime.datetime.strptime(ts['readable-date'], "%A %d %B %Y"))
+    #         else:
+    #             unknown_date.append(ts)
+
+    #     # Sort it
+    #     dates.sort()
+    #     # now convert it back
+    #     sorteddates = [datetime.datetime.strftime(ts, "%A %d %B %Y") for ts in dates]
+        
+    #     # Make a list of all the date
+    #     # All the data will be in one list in dict type
+    #     final = []
+    #     for i in sorteddates:
+    #         keys = [i.get('key') for i in final]
+    #         for j in data:
+    #             if j['readable-date'] == i and j['key'] not in keys:
+    #                 final.append(j)
+        
+    #     # Unknown date should be in front of the Known date.
+    #     log.debug(f'returning sorted date for {guild_id}')
+    #     return unknown_date + final
     
     def get_embed(self, guild_id: int) -> discord.Embed:
         """
@@ -155,9 +182,11 @@ class Planner:
             date_key = self.try_strp_date( value['date'] ).strftime("%d-%m-%Y") if self.strp_able( value['readable-date'] ) else "Unknown Date"
 
             if date_key not in formatted:
-                formatted[date_key] = [ value["key"] ]
-            else:
-                formatted[date_key].append(value["key"])
+                # formatted[date_key] = [ value["key"] ]
+                formatted[date_key] = {}
+            
+            # TODO:
+            formatted[date_key][value['key']] = value['lasted']
         
         print("Second sort", time.perf_counter() - t)
         
