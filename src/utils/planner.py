@@ -112,8 +112,7 @@ class Planner:
         invalidDate = []
 
         for i in data:
-            # i is ObservedDict from replit db.
-            # if we did not change the type here, Circular reference will happen.
+            # i is ObservedDict from replit db. if we did not change the type here, Circular reference will happen.
             i = dict(i) 
             if self.strp_able(i['readable-date']):
                 i['strp_date'] = datetime.datetime.strptime(i['readable-date'], "%A %d %B %Y")
@@ -123,7 +122,6 @@ class Planner:
         
         validDate = sorted(
             validDate, 
-            # key = lambda item: (-item['strp_date'].year, -item['strp_date'].month, -item['strp_date'].day, -item.get('lasted', 1)),
             key = lambda item: self.sort_format_date(item['strp_date'], item.get('lasted', 1)),
             reverse = True
         )
