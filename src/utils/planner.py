@@ -93,6 +93,14 @@ class Planner:
         Get all Guild IDs.
         """
         return [int(key) for key in self.__data]
+
+    @staticmethod
+    def sort_format_date(dt: datetime.datetime, lasted: int) -> tuple:
+        today = datetime.datetime.utcnow()
+        
+        if today < dt: # Not started.
+            return (-dt.year, -dt.month, -dt.day, -lasted)
+        return (-today.year, -today.month, -today.day, -lasted)
     
     def get_sorted(self, guild_id: int) -> list:
         """
@@ -115,48 +123,13 @@ class Planner:
         
         validDate = sorted(
             validDate, 
-            key = lambda item: (-item['strp_date'].year, -item['strp_date'].month, -item['strp_date'].day, -item.get('lasted', 1)),
+            # key = lambda item: (-item['strp_date'].year, -item['strp_date'].month, -item['strp_date'].day, -item.get('lasted', 1)),
+            key = lambda item: self.sort_format_date(item['strp_date'], item.get('lasted', 1)),
             reverse = True
         )
 
         return invalidDate + validDate
 
-    # ^ New Sorting algorithm, Will comment it out in case smth breaks.
-    #
-    # def get_sorted(self, guild_id: int) -> list:
-    #     """
-    #     Get sorted assignment base on date of targeted Guild ID.
-    #     The undefined date will be in front of defined date.
-    #     """
-    #     data = self.get_all(guild_id)
-    #     dates = list()
-    #     unknown_date = list()
-
-    #     # Convert it to datetime type first, using readable date that it has.
-    #     for ts in data:
-    #         if self.strp_able(ts['readable-date']):
-    #             dates.append(datetime.datetime.strptime(ts['readable-date'], "%A %d %B %Y"))
-    #         else:
-    #             unknown_date.append(ts)
-
-    #     # Sort it
-    #     dates.sort()
-    #     # now convert it back
-    #     sorteddates = [datetime.datetime.strftime(ts, "%A %d %B %Y") for ts in dates]
-        
-    #     # Make a list of all the date
-    #     # All the data will be in one list in dict type
-    #     final = []
-    #     for i in sorteddates:
-    #         keys = [i.get('key') for i in final]
-    #         for j in data:
-    #             if j['readable-date'] == i and j['key'] not in keys:
-    #                 final.append(j)
-        
-    #     # Unknown date should be in front of the Known date.
-    #     log.debug(f'returning sorted date for {guild_id}')
-    #     return unknown_date + final
-    
     def get_embed(self, guild_id: int) -> discord.Embed:
         """
         Embed contained a List of all works in that targeted guild.
@@ -177,7 +150,9 @@ class Planner:
         formatted = {}
         # Idk why, but I wanted the 'formatted' dict to be
         # {
-        #   "date that human can read": ["assignment key 1", "assignment key 2"]
+        #   "date": {
+        #       "key": lasted: int
+        #   }
         # }
 
         for value in _sorted:
@@ -187,8 +162,8 @@ class Planner:
                 # formatted[date_key] = [ value["key"] ]
                 formatted[date_key] = {}
             
-            # TODO:
-            formatted[date_key][value['key']] = value['lasted']
+            # TODO: split between hw and event.
+            formatted[date_key][value['key']] = value.get('lastted', 1)
         
         print("Second sort", time.perf_counter() - t)
         
