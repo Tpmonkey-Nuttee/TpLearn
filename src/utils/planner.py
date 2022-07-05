@@ -163,7 +163,7 @@ class Planner:
                 formatted[date_key] = {}
             
             # TODO: split between hw and event.
-            formatted[date_key][value['key']] = value.get('lastted', 1)
+            formatted[date_key][value['key']] = value.get('lasted', 1)
         
         print("Second sort", time.perf_counter() - t)
         
