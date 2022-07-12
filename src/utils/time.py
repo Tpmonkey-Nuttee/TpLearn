@@ -15,15 +15,17 @@ class StatsInTime:
     
     def append(self, item: Any):
         if len(self.stats) > self.limit:
-            self.stats.pop(0)
-        self.stats.append(
+            self.stats.pop()
+        
+        self.stats.insert(
+            0,
             (item, time.time())
         )
     
     def get_in_last(self, second: int) -> None:
         rn = time.time()
         n = 0
-        for _, j in self.stats.reverse():
+        for _, j in self.stats:
             if rn - second < j:
                 break
             n += 1
