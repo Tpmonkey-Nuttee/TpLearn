@@ -10,6 +10,7 @@ from bot import Bot
 
 from datetime import datetime
 from collections import Counter
+from utils.time import StatsInTime
 
 DESCRIPTION = (
     "Discord API latency",
@@ -23,12 +24,14 @@ class Latency(Cog):
         self.socket_since = datetime.utcnow()
         self.socket_event_total = 0
         self.socket_events = Counter()
+        self.in_time = StatsInTime(limit = 5_000)
     
     @Cog.listener()
     async def on_socket_response(self, msg: dict) -> None:
         if event_type := msg.get("t"):
             self.socket_event_total += 1
             self.socket_events[event_type] += 1
+            self.in_time.append("0")
     
     @command()
     async def ping(self, ctx: Context) -> None:
@@ -55,10 +58,12 @@ class Latency(Cog):
         running_s = (datetime.utcnow() - self.socket_since).total_seconds()
 
         per_s = self.socket_event_total / running_s
+        per_t = self.in_time.get_in_last(10 * 60)
 
         stats_embed = Embed(
             title = "WebSocket statistics",
-            description = f"Receiving {per_s:0.2f} event per second.",
+            description = f"Receiving {per_s:0.2f} event per second.\n"
+                            "Receiving {per_t:0.2f} event in the last 10 mins.\n ",
             color = Color.blurple(),
             timestamp = self.bot.start_time
         )

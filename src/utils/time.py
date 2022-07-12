@@ -1,9 +1,35 @@
 import pytz
+import time
 import datetime
+from typing import Any
 
 from dateutil.relativedelta import relativedelta
 
 __all__ = ("time_since", )
+
+
+class StatsInTime:
+    def __init__(self, limit: int = 10_000) -> None:
+        self.limit = limit
+        self.stats = []
+    
+    def append(self, item: Any):
+        if len(self.stats) > self.limit:
+            self.stats.pop(0)
+        self.stats.append(
+            (item, time.time())
+        )
+    
+    def get_in_last(self, second: int) -> None:
+        rn = time.time()
+        n = 0
+        for _, j in self.stats.reverse():
+            if rn - second < j:
+                break
+            n += 1
+        
+        return n
+    
 
 def today(raw: bool = False) -> datetime.datetime:
     """ Return today date/time. """
