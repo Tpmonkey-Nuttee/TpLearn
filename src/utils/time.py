@@ -26,7 +26,7 @@ class StatsInTime:
         rn = time.time()
         n = 0
         for _, j in self.stats:
-            if rn - second < j:
+            if rn - second > j:
                 break
             n += 1
         
