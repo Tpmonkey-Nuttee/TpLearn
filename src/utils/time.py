@@ -5,7 +5,7 @@ from typing import Any
 
 from dateutil.relativedelta import relativedelta
 
-__all__ = ("time_since", )
+__all__ = ("time_since", "StatsInTime")
 
 
 class StatsInTime:

@@ -62,8 +62,7 @@ class Latency(Cog):
 
         stats_embed = Embed(
             title = "WebSocket statistics",
-            description = f"Receiving {per_s:0.2f} event per second.\n"
-                            "Receiving {per_t:0.2f} event in the last 10 mins.\n ",
+            description = f"Receiving {per_s:0.2f} event per second.\nReceiving {per_t:0.2f} event in the last 10 mins.\n ",
             color = Color.blurple(),
             timestamp = self.bot.start_time
         )
