@@ -75,4 +75,5 @@ class DupeCheck(commands.Cog):
 
 
 def setup(bot: commands.Bot) -> None:
+    return
     bot.add_cog(DupeCheck(bot))
