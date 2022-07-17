@@ -21,7 +21,10 @@ class SetUp(Cog):
         self.bot = bot
     
     async def create_channels(self, ctx: Context, info: list) -> None:
-        overwrites = { ctx.guild.default_role: PermissionOverwrite(send_messages=False) }
+        overwrites = { 
+            ctx.guild.default_role: PermissionOverwrite(send_messages = False),
+            ctx.guild.me: PermissionOverwrite(send_messages = True) 
+        }
         for name, type_ in info:
             ch = await ctx.guild.create_text_channel(name, overwrites = overwrites)
             self.bot.manager.set(ctx.guild.id, type_, ch.id)
