@@ -103,7 +103,11 @@ class Assignments(commands.Cog):
         before = details['date'][0]
         date = self.bot.planner.get_readable_date(before)
 
-        value = f"Starts at **{date}** and lasts **{lasted}** day{'s' if lasted > 1 else ''}." if before != date else before
+        if date != before:
+            value = f"Starts at **{date}** and lasts **{lasted}** day{'s' if lasted > 1 else ''}." if lasted > 1 else date
+        else:
+            # Cannot regcognize date
+            value = before
 
         embed.add_field(
             name = self.get_title_from_key("date", state),
