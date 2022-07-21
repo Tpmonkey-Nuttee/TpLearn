@@ -185,7 +185,7 @@ class Updater(Cog):
                     messages_output.append("E")
                 
                 # Wait a bit before doing next operation.
-                await asyncio.sleep(1)
+                await asyncio.sleep(3)
 
         elif cw > cm: # Case 2
             messages.reverse()
@@ -205,7 +205,7 @@ class Updater(Cog):
                     messages_output.append("E")
                 
                 # Wait a bit before doing next operation.
-                await asyncio.sleep(1)
+                await asyncio.sleep(3)
         
         else:
             for message, work in zip(messages, works):
@@ -217,7 +217,7 @@ class Updater(Cog):
                 messages_output.append("E")
 
                 # Wait a bit before doing next operation.
-                await asyncio.sleep(1)
+                await asyncio.sleep(3)
         
         return messages_output
 
