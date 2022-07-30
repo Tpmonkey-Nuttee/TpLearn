@@ -1,10 +1,11 @@
-import redis
+from ast import Import
 import pickle
 import traceback
 from logging import getLogger
 from typing import Any, Optional
 
 log = getLogger(__name__)
+
 
 class RedisDatabase:
     def __init__(self):
@@ -133,12 +134,27 @@ class ReplitDatabase:
             log.warning(traceback.format_exc())
             return False
         return True
+    
+HAS_REPLIT, HAS_REDIS = False
 
 try:
     import replit
 except (ImportError, ModuleNotFoundError):
-    log.info("Database: REDIS")
+    HAS_REPLIT = True
+
+try:
+    import redis
+except (ImportError, ModuleNotFoundError):
+    HAS_REDIS = True
+
+if HAS_REPLIT:
+    log.info("Selected: Replit Database")
+    Database = ReplitDatabase
+elif HAS_REDIS:
+    log.info("Selected: Redis Database")
     Database = RedisDatabase
 else:
-    log.info("Database: REPLIT")
-    Database = ReplitDatabase
+    raise Exception(
+        "Cannot import either Replit or Redis database.\n"
+        "Please make sure to has either one of the databases installed."
+    )
