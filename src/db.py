@@ -135,17 +135,17 @@ class ReplitDatabase:
             return False
         return True
     
-HAS_REPLIT, HAS_REDIS = False
+HAS_REPLIT = HAS_REDIS = True
 
 try:
     import replit
 except (ImportError, ModuleNotFoundError):
-    HAS_REPLIT = True
+    HAS_REPLIT = False
 
 try:
     import redis
 except (ImportError, ModuleNotFoundError):
-    HAS_REDIS = True
+    HAS_REDIS = False
 
 if HAS_REPLIT:
     log.info("Selected: Replit Database")
