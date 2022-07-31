@@ -32,9 +32,28 @@ class Planner:
         self.__need_update = [] # [str(i) for i in self.__need_update if str(i) not in p]
         return p
     
-    def trigger_update(self) -> None:
-        log.debug(f'triggered update')
-        self.__need_update = self.get_all_guild()
+    def trigger_update(self, all: bool = False) -> None:        
+        if all: # All guilds need update
+            log.info("Triggered update: All guilds")
+            self.__need_update = self.get_all_guild()
+            return
+        
+        need_update = []
+
+        # Select only guild with an actual update.
+        for id in self.get_all_guild():
+            works = self.get_sorted(id)
+            
+            if len(works) == 0:
+                continue
+            
+            # Invalid date will always be in front.
+            date = works[0].get("readable-date", "Unknown")
+            if self.strp_able(date):
+                log.info(f"Triggered update for {id}")
+                need_update.append(id)           
+
+        self.__need_update = need_update
 
     def get_number_all(self) -> int:
         """
