@@ -72,8 +72,6 @@ class DayLoop(Cog):
         await self.bot.log(__name__, "New day [UTC+1] detected.")
         await self.update_passed()
         await self.delete_passed()  
-
-        self.bot.planner.trigger_update()
     
     async def update_passed(self) -> None:
         """Update passed works, Will be run daily."""
