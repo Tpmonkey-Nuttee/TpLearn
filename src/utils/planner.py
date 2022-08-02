@@ -161,8 +161,6 @@ class Planner:
                 timestamp = datetime.datetime.utcnow()
             ).set_footer(text = "Use add command to add one!")
         
-        print("First check", time.perf_counter() - t)
-        
         _sorted = self.get_sorted(guild_id)
         formatted = {}
         # Idk why, but I wanted the 'formatted' dict to be
@@ -181,8 +179,6 @@ class Planner:
             
             # TODO: split between hw and event.
             formatted[date_key][value['key']] = value.get('lasted', 1)
-        
-        print("Second sort", time.perf_counter() - t)
         
         # Let's create base Embed.
         embed = discord.Embed()
@@ -218,8 +214,6 @@ class Planner:
                 continue            
             elif closest_day is None or in_days < closest_day: 
                 closest_day = in_days
-        
-        print("last loop", time.perf_counter() - t)
         
         embed.colour = self.bot.get_colour(gap=closest_day)
         log.debug(f'return embed for {guild_id}')
