@@ -114,6 +114,7 @@ class Updater(Cog):
         # Get data
         data = self.bot.manager.get_all()
         need_update = self.bot.planner.need_update
+        log_msg = ""
 
         for gid in need_update:
             # Check if the channel valid or not.
@@ -126,15 +127,19 @@ class Updater(Cog):
             try: 
                 ret = await self.update_active(works, data[gid])
             except Exception: 
-                await self.bot.log(__name__, f":negative_squared_cross_mark: Unable to update works at {gid} with error: \n{traceback.format_exc()}")
+                log_msg += f"[x] {gid}: {traceback.format_exc(limit = -1)}\n"
+                
             else:
                 if len(ret) != 2: 
-                    await self.bot.log(__name__, f":white_check_mark: Sucessfully update works at {gid} :\n"+"".join(ret))
-                    log.debug(f"updated active-works for {gid}")
+                    log_msg += f"[/] {gid}: {''.join(ret)}\n"
+
+    
+        if log_msg:
+            await self.bot.log(__name__, log_msg)
 
         # If Actually updated something, log it
         if len(need_update) > 0 and time.time() - _s_ > 30: 
-            await self.bot.log(__name__, f"Time took to update all works: {time.time() - _s_} sec")
+            await self.bot.log(__name__, f"Time took to update all works: {time.time() - _s_}s")
 
         # Enable this function again
         self.updating = False

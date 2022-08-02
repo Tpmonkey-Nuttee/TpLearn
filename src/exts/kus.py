@@ -114,12 +114,6 @@ class KUSNews(Cog):
 
         # If the existing data in database is not the same as present one.
         if new_ids != self.ids:
-            await self.bot.log(__name__, "New data detected")
-            await self.bot.log(__name__, 
-                f"\n**From** `{self.ids}`\n"
-                f"\n**To** `{new_ids}`"
-            )
-
             # Remove all prevoius data by checking if ids match the one we have.
             new_ids = [i for i in new_ids if i not in self.ids]
             # Convert back, using ids to [(News Detail, URL, Picture URL), (...), ...]
@@ -132,15 +126,15 @@ class KUSNews(Cog):
 
             embeds = [self.create_embed(n, u, p) for n, u, p in datas]
 
-            await self.bot.log(__name__, f"**Found:** {datas}")
+            await self.bot.log(__name__, f"New data detected\n**Found:** {datas}")
 
+            log_msg = ""
+            
             if len(embeds) != 0:
                 for _ in self.channels:
                     channel = self.bot.get_channel(_)
                     if channel is None: 
                         continue
-
-                    await self.bot.log(__name__, f"Sending news to {channel}//{_}")
 
                     # Send news
                     for embed in embeds[::-1]:
@@ -148,14 +142,13 @@ class KUSNews(Cog):
                             await channel.send(embed=embed)
                             await asyncio.sleep(1)
                         except Exception:
-                            await self.bot.log(__name__, 
-                                f":negative_squared_cross_mark: Unable to send news embed to `{channel}`\n"
-                                f"with traceback: \n{traceback.format_exc()}")
+                            log_msg += f"[x] {channel}: {traceback.format_exc(limit = -1)}\n"
                             break        
-                        
-                await self.bot.log(__name__, f"Sended news to all channels. (Total of {len(self.channels)})")
-            else:
-                await self.bot.log(__name__, "Ghost-News detected, No messages were sended.")
+                        else:
+                            log_msg += f"[/] {channel}\n"
+                
+                log_msg += f"total {len(self.channels)} channels"
+                await self.bot.log(__name__, log_msg)
             
             ids = [id for n, u, p, id in self.data]
             await self.bot.database.dump("NEWS-IDS", ids)
