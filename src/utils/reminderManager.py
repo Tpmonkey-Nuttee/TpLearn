@@ -1,6 +1,5 @@
 # TODO: frontend commands.
 # TODO: Hook it to exts.dayloop
-# TODO: Do not forget this file and actually finish it. :)
 
 from bot import Bot
 from utils.time import today_th
@@ -9,7 +8,6 @@ from config import MAX_REMINDER_PER_DAY
 from enum import Enum
 
 DB_KEY = "REMINDERS"
-DAYS = ("Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday", "Sunday")
 
 class Day(Enum):
     MONDAY = 0
@@ -19,6 +17,10 @@ class Day(Enum):
     FRIDAY = 4
     SATURDAY = 5
     SUNDAY = 6
+
+DAYS = ("Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday", "Sunday")
+DAYS_ENUM = (Day.MONDAY, Day.TUESDAY, Day.WEDNESDAY, Day.THURSDAY, Day.FRIDAY, Day.SATURDAY, Day.SUNDAY)
+DEFAULT_PROFILE = {i: [] for i in DAYS}
 
 class TooManyReminders(Exception):
     "An exception raise when user exceed reminders limit."
@@ -59,7 +61,7 @@ class ReminderManager:
     
     def save(self) -> None:
         """Save Data."""
-        self.bot.database.dumps(self.__data)
+        self.bot.database.dumps(DB_KEY, self.__data)
 
     def init_profile(self, uid: int) -> None:
         """
@@ -75,9 +77,20 @@ class ReminderManager:
         if uid in self.__data:
             return
 
-        self.__data[uid] = {}
-        for day in DAYS:
-            self.__data[uid][day] = []
+        self.__data[uid] = DEFAULT_PROFILE
+    
+    def del_profile(self, uid: int) -> None:
+        """
+        Delete User Profile.
+
+        Args:
+            uid (int): Discord User ID
+        """
+        
+        try:
+            del self.__data[str(uid)]
+        except KeyError:
+            pass
 
     def add(self, uid: int, day: Day, text: str) -> dict:
         """
@@ -201,8 +214,8 @@ class ReminderManager:
         data: <class 'dict'>
             A data like structure containing all data for that User.
         """
-        self.init_profile()
-        return self.__data[str(uid)]
+        
+        return self.__data.get(str(uid), DEFAULT_PROFILE)
     
     def getToday(self) -> dict:
         """
