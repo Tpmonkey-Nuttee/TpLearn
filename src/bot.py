@@ -20,7 +20,7 @@ from discord.ext import commands
 import config
 from db import Database
 from utils.time import today_th
-from utils import planner, manager
+from utils import planner, manager, reminderManager
 
 log = logging.getLogger(__name__)
 
@@ -104,7 +104,8 @@ class Bot(commands.AutoShardedBot):
         self.msettings = Settings(self)
         self.planner = planner.Planner(self)
         self.manager = manager.Manager(self)
-        
+        self.reminder = reminderManager.ReminderManager(self)
+
         self.config = config
 
         self.unloaded_cogs = []
