@@ -5,35 +5,32 @@ Made by Tpmonkey
 
 ### ---------- General ---------- ###
 
-version = "1.8"
+version = "1.9"
 note = [
     "**New command!**",
-    "- Nightcore support! (nightcore, nc) - Enable nightcore for the next tracks. [x1.2 speed & 1.5 pitch]",
+    "- Terminate command! (terminate, getout) - Delete server data & Leave server.",
+    "",
+    
+    "**New Feature!**",
+    "- Assignment can now last longer than a day.",
+    "*to use it simply add the event lenght when inputting date.*",
+    "Example: \n• `22/2/2022 7` = event starts at 22/2/2022 and lasts 7 days. \n• `++2 2` = event starts overmorrow and last 2 days.",
     "",
 
     "**QoL!**",
-    "- Recommend command can now be use alone.",
-    "- Improve track title not in human language. (?)",
-    "- Bot will now use reaction more often to minimize message send.",
-    "- Reduce KUS-monitor related command cooldown.",
-    "- Updated help and tutorial commands.",    
-    "- Play & Playnext command now show video thumbnail & channel.",
-    "- Update 'cannot load this track' error message so that human can actually understand.",
-    "- Better detection when use youtube url.",
-    "- Improve loading speed.",
-    "- Loop command now has options.",
-    "- And many more!",
+    "- Add handler when bot cannot find any video.",
+    "- Improve playnext command.",
+    "- Bot commands now case-insensitive."
+    "- Some optimizations & New sorting algorithm.",
     "",
 
     "**Bug Fixes!**",
-    "- Fix queue command didn't update correctly.",
-    "- Fix playnext wasn't working as intended.",    
-    "- Fix auto-disconnect doesn't work with bot(s).",
-    "- Fix searching track not working as intended.",    
-    "- Fix leave command raising errors.",     
-    "- Fix 'bot is typing' but did not send any messages.",
-    "- Fix bot duplicating its instance.",
-    "- Fix errors when requesting too many songs.",
+    "- Fix bot (sometimes) cannot understand youtube url.",
+    "- Fix a rare error when using leave command.",    
+    "- Fix force-disconnecting bot can result in an error.",
+    "- Fix kus-news embed doesn't show thumbnail.",    
+    "- Fix rare case related to hyperlink in queue command.",     
+    "- Fix permission error when setting up server.",
     "- And many more!",
     "",    
 ]
