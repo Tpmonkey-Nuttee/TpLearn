@@ -135,7 +135,9 @@ class KUSNews(Cog):
                     channel = self.bot.get_channel(_)
                     if channel is None: 
                         continue
-
+                    
+                    log_msg += f"[->] {_}"
+                    
                     # Send news
                     for embed in embeds[::-1]:
                         try: 
@@ -144,8 +146,8 @@ class KUSNews(Cog):
                         except Exception:
                             log_msg += f"[x] {channel}: {traceback.format_exc(limit = -1)}\n"
                             break        
-                        else:
-                            log_msg += f"[/] {channel}\n"
+
+                            
                 
                 log_msg += f"total {len(self.channels)} channels"
                 await self.bot.log(__name__, log_msg)
