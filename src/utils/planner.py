@@ -47,11 +47,7 @@ class Planner:
             if len(works) == 0:
                 continue
             
-            # Invalid date will always be in front.
-            date = works[0].get("readable-date", "Unknown")
-            if self.strp_able(date):
-                log.info(f"Triggered update for {id}")
-                need_update.append(id)           
+            need_update.append(id)           
 
         self.__need_update = need_update
 
