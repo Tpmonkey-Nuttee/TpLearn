@@ -1,7 +1,6 @@
 # TODO: frontend commands.
 # TODO: Hook it to exts.dayloop
 
-from bot import Bot
 from utils.time import today_th
 from config import MAX_REMINDER_PER_DAY
 
@@ -50,7 +49,7 @@ class ReminderManager:
     }
 
     """
-    def __init__(self, bot: Bot):
+    def __init__(self, bot):
         self.bot = bot
         self.__data = bot.database.loads(DB_KEY, {})
 
