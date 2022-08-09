@@ -35,8 +35,11 @@ class KUSNews(Cog):
         self.data = None
         self.ids = None
         self.channels = None
-        self.enable = True
         self.cookies = None
+        
+        self.enable = True
+        self.sendEmbed = True
+        
         self.looping.start()
     
     def cog_unload(self):
@@ -90,10 +93,10 @@ class KUSNews(Cog):
 
         return [
             ( 
-                new.get_text(), 
-                new.find('a').get("href"), 
-                MAIN_URL + pic.find("img").get("src"),
-                new.find('a').get("href")
+                new.get_text(), # Header
+                new.find('a').get("href"), # url
+                MAIN_URL + pic.find("img").get("src"), # Thumbnail url
+                new.find('a').get("href") # News IDs
             ) for new, pic in zip(news, pics)
         ]
     
@@ -109,17 +112,21 @@ class KUSNews(Cog):
             log.debug('trying to update news but is not enable, passing...')
             return
 
-        news = {id: [n, u, p] for n, u, p, id in self.data}
-        new_ids = [i for n, u, p, i in self.data]
+        news = {n: [id, u, p] for n, u, p, id in self.data}
+        new_titles = [n for n, u, p, i in self.data]
+        
+        new_title_hash = [hash(i) for i in new_titles]
 
         # If the existing data in database is not the same as present one.
-        if new_ids != self.ids:
+        if new_title_hash != self.ids:
             # Remove all prevoius data by checking if ids match the one we have.
-            new_ids = [i for i in new_ids if i not in self.ids]
+            new_ids = [i for i in new_titles if hash(i) not in self.ids]
             # Convert back, using ids to [(News Detail, URL, Picture URL), (...), ...]
             datas = []
             for key in new_ids:
                 new = news[key]
+                
+                new[0] = key
                 # Replace URL with a new one.
                 new[2] = await self.bot.get_image_from_gif(new[2])
                 datas.append(new)
@@ -130,7 +137,8 @@ class KUSNews(Cog):
 
             log_msg = ""
             
-            if len(embeds) != 0:
+            # Do not send an embed(s) if it's the first fetch.
+            if len(embeds) != 0 and self.sendEmbed:
                 for _ in self.channels:
                     channel = self.bot.get_channel(_)
                     if channel is None: 
@@ -152,7 +160,7 @@ class KUSNews(Cog):
                 log_msg += f"total {len(self.channels)} channels"
                 await self.bot.log(__name__, log_msg)
             
-            ids = [id for n, u, p, id in self.data]
+            ids = [hash(n) for n, u, p, id in self.data]
             await self.bot.database.dump("NEWS-IDS", ids)
 
             self.ids = ids
