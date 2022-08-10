@@ -112,7 +112,7 @@ class KUSNews(Cog):
             log.debug('trying to update news but is not enable, passing...')
             return
 
-        news = {n: [id, u, p] for n, u, p, id in self.data}
+        news = {hash(n): [n, u, p] for n, u, p, id in self.data}
         new_titles = [n for n, u, p, i in self.data]
         
         new_title_hash = [hash(i) for i in new_titles]
@@ -120,13 +120,12 @@ class KUSNews(Cog):
         # If the existing data in database is not the same as present one.
         if new_title_hash != self.ids:
             # Remove all prevoius data by checking if ids match the one we have.
-            new_ids = [i for i in new_titles if hash(i) not in self.ids]
+            new_ids = [i for i in new_title_hash if i not in self.ids]
             # Convert back, using ids to [(News Detail, URL, Picture URL), (...), ...]
             datas = []
             for key in new_ids:
                 new = news[key]
                 
-                new[0] = key
                 # Replace URL with a new one.
                 new[2] = await self.bot.get_image_from_gif(new[2])
                 datas.append(new)
@@ -144,7 +143,7 @@ class KUSNews(Cog):
                     if channel is None: 
                         continue
                     
-                    log_msg += f"[->] {_}"
+                    log_msg += f"[->] {channel.name}: {_}\n"
                     
                     # Send news
                     for embed in embeds[::-1]:
