@@ -121,6 +121,11 @@ class KUSNews(Cog):
         if new_title_hash != self.ids:
             # Remove all prevoius data by checking if ids match the one we have.
             new_ids = [i for i in new_title_hash if i not in self.ids]
+            
+            if len(new_ids) > 6:
+                await self.bot.log(__name__, f"Canceling: Too many news, Something may went wrong ({len(new_ids)} news).", True)
+                self.sendEmbed = False
+            
             # Convert back, using ids to [(News Detail, URL, Picture URL), (...), ...]
             datas = []
             for key in new_ids:
