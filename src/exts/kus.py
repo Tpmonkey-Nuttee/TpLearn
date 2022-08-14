@@ -17,6 +17,7 @@ from bot import Bot
 import logging
 import asyncio
 import traceback
+from hashlib import sha1
 from typing import Optional
 from datetime import datetime
 from bs4 import BeautifulSoup
@@ -27,6 +28,9 @@ MAIN_URL = config.main_url
 NEWS_URL = config.news_url
 
 COOLDOWN = config.kus_news_cooldown
+
+def hash(text: str) -> str:
+    return sha1(bytes(text, "utf-8")).hexdigest()
 
 class KUSNews(Cog):
     """KUS monitor system, Use command below to set it up!"""
