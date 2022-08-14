@@ -263,7 +263,7 @@ class Bot(commands.AutoShardedBot):
             self.log_channel = self.get_channel(config.log_channel_id)
         
         mention = f"<@!{self.owner_id}>\n" if mention else "\n"
-        text = f"**[{today_th(True)}] | [{name}]:** {mention} {message}"
+        text = f"**[{today_th(True)}] | [{name}]:** {mention}{message}"
 
         if len(text) > 1024:
             text = text[:1020] + "..."
