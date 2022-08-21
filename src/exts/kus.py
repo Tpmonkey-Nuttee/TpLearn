@@ -138,6 +138,9 @@ class KUSNews(Cog):
                 # Replace URL with a new one.
                 new[2] = await self.bot.get_image_from_gif(new[2])
                 datas.append(new)
+                
+                # Prevent rate-limit.
+                await asyncio.sleep(2)
 
             embeds = [self.create_embed(n, u, p) for n, u, p in datas]
 
