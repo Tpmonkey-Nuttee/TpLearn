@@ -155,7 +155,7 @@ class Bot(commands.AutoShardedBot):
     @property
     def uptime(self):
         """ Bot Uptime Property, Can be acces using Admin Command only. """
-        return datetime.datetime.now() - self.start_time
+        return datetime.datetime.utcnow() - self.start_time
     
     def get_random_status(self) -> discord.Activity:
         """ Get random Bot statuses. """
@@ -234,7 +234,7 @@ class Bot(commands.AutoShardedBot):
         if self.dump_channel is None: 
             self.dump_channel = self.get_channel(config.dump_channel_id)
         
-        embed = discord.Embed( timestamp = datetime.datetime.utcnow())
+        embed = discord.Embed( timestamp = discord.utils.utcnow())
         embed.add_field(name = "Event Method", value = str(event_method), inline = False)
         embed.add_field(name = "Args", value = str(args), inline = False)
         embed.add_field(name = "Kwargs", value = str(kwargs), inline = False)
@@ -443,7 +443,7 @@ class Bot(commands.AutoShardedBot):
         log.debug("creating assignment embed...")
         title = self.get_title(kwargs.get('title'), kwargs.get('date'), passed=kwargs.get("already_passed"), lasted=kwargs.get("lasted", 1))
         
-        embed = discord.Embed(timestamp = datetime.datetime.now())
+        embed = discord.Embed(timestamp = discord.utils.utcnow())
         embed.set_author(name = title)
         embed.description = kwargs.get('key')
         embed.colour = self.get_colour(kwargs.get('date'), passed = kwargs.get("already_passed"), lasted = kwargs.get("lasted", 1))    

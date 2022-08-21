@@ -57,7 +57,7 @@ class Utility(Cog):
         for field_name, field_content in fields:
             embed.add_field(name=field_name, value=field_content, inline=False)
 
-        embed.set_thumbnail(url=ctx.author.avatar_url_as(static_format="png"))
+        embed.set_thumbnail(url=ctx.author.avatar.url_as(static_format="png"))
         embed.colour = ctx.author.top_role.colour if roles else Colour.blue()
 
         await ctx.send(embed=embed)

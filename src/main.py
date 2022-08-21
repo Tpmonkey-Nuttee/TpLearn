@@ -7,6 +7,7 @@ Made by Tpmonkey (Nuttee) KUS48
 """
 
 import os
+import asyncio
 
 # Setting up Logging.
 from utils.log import setup
@@ -19,8 +20,14 @@ keep_alive()
 # Create and Run the Bot.
 from bot import Bot
 
-bot = Bot.create()
-bot.load_extensions()
 
-token = os.getenv("TOKEN")
-bot.run(token)
+async def main():
+
+    bot = Bot.create()
+    
+    async with bot:
+        bot.load_extensions()
+        token = os.getenv("TOKEN")
+        await bot.start(token)
+
+asyncio.run(main())

@@ -84,7 +84,7 @@ class Assignments(commands.Cog):
             timestamp = ctx.message.created_at
         )
 
-        embed.set_author(name = "Homework Menu", icon_url = ctx.author.avatar_url)
+        embed.set_author(name = "Homework Menu", icon_url = ctx.author.avatar.url)
         embed.set_footer(text = "Send message to set info!")
 
         # Declare variable to use later.
