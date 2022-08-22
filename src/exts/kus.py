@@ -59,7 +59,7 @@ class NewsManager:
         Returns:
             list: results
         """
-        log.debug(f"Comparing {new_news}")
+        log.debug(f"Comparing {len(new_news)} news.")
         results = []
         
         for new in new_news:
