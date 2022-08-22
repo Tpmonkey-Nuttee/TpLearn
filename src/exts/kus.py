@@ -32,18 +32,56 @@ COOLDOWN = config.kus_news_cooldown
 def hash(text: str) -> str:
     return sha1(bytes(text, "utf-8")).hexdigest()
 
+class NewsManager:
+    def __init__(self, bot: Bot):
+        self.bot = bot
+        self.news = list(bot.database.loads("NEWS-IDS", []))
+    
+    def save(self) -> None:
+        self.bot.database.dumps("NEWS-IDS", self.news)
+    
+    def extend(self, title: str) -> None:
+        hash_title = hash(title)
+
+        if hash_title not in self.news:
+            self.news.append(hash_title)
+        
+        if len(self.news) > 16:
+            del self.news[0]
+        
+    def compare(self, new_news: list) -> list:
+        """Compare new and old news to find a new news.
+
+        Args:
+            new_news (list): news
+            [(title, url, image, id), (...), ...]
+
+        Returns:
+            list: results
+        """
+        log.debug(f"Comparing {new_news}")
+        results = []
+        
+        for new in new_news:
+            if hash(new[0]) not in self.news:
+                log.debug(f"Found: {new[0]}")
+                results.append(new)
+                self.extend(new[0])
+        
+        return results
+
 class KUSNews(Cog):
     """KUS monitor system, Use command below to set it up!"""
     def __init__(self, bot: Bot):
         self.bot = bot
         self.data = None
-        self.ids = None
         self.channels = None
         self.cookies = None
         
         self.enable = True
         self.sendEmbed = True
         
+        self.manager = NewsManager(bot)
         self.looping.start()
     
     def cog_unload(self):
@@ -67,7 +105,6 @@ class KUSNews(Cog):
     async def load_data(self) -> None:
         self.cookies = await self.bot.database.load("KUS-COOKIES", None)
         self.channels = await self.bot.database.load("NEWS-CHANNELS", {})
-        self.ids = list(await self.bot.database.load("NEWS-IDS", []))
         log.debug('loaded data')
 
     async def __fetch__(self) -> str:
@@ -116,35 +153,30 @@ class KUSNews(Cog):
             log.debug('trying to update news but is not enable, passing...')
             return
 
-        news = {hash(n): [n, u, p] for n, u, p, id in self.data}
-        new_titles = [n for n, u, p, i in self.data]
+        news = self.manager.compare(self.data)
         
-        new_title_hash = [hash(i) for i in new_titles]
-
-        # If the existing data in database is not the same as present one.
-        if new_title_hash != self.ids:
-            # Remove all prevoius data by checking if ids match the one we have.
-            new_ids = [i for i in new_title_hash if i not in self.ids]
-            
-            if len(new_ids) > 6:
+        if news:            
+            if len(news) > 6:
                 await self.bot.log(__name__, f"Canceling: Too many news, Something may went wrong ({len(new_ids)} news).", True)
                 self.sendEmbed = False
             
-            # Convert back, using ids to [(News Detail, URL, Picture URL), (...), ...]
-            datas = []
-            for key in new_ids:
-                new = news[key]
-                
-                # Replace URL with a new one.
-                new[2] = await self.bot.get_image_from_gif(new[2])
-                datas.append(new)
+            # Format from [(title, url, image, id), ...] to [(title, url, image)]
+            # But convert the image from gif to image.
+            formatted_news = []
+            for new in news:                
+                # Convert to image, bc gif in embed is broken for some reason....
+                image_url = await self.bot.get_image_from_gif(new[2])
+
+                formatted_news.append(
+                    [new[0], new[1], image_url]
+                )
                 
                 # Prevent rate-limit.
                 await asyncio.sleep(2)
 
-            embeds = [self.create_embed(n, u, p) for n, u, p in datas]
+            embeds = [self.create_embed(n, u, p) for n, u, p in formatted_news]
 
-            await self.bot.log(__name__, f"New data detected\n**Found:** {datas}")
+            await self.bot.log(__name__, f"New data detected\n**Found:** {formatted_news}")
 
             log_msg = ""
             
@@ -166,17 +198,10 @@ class KUSNews(Cog):
                             log_msg += f"[x] {channel}: {traceback.format_exc(limit = -1)}\n"
                             break        
 
-                            
-                
+
                 log_msg += f"total {len(self.channels)} channels"
                 await self.bot.log(__name__, log_msg)
             
-            ids = [hash(n) for n, u, p, id in self.data]
-            await self.bot.database.dump("NEWS-IDS", ids)
-
-            self.ids = ids
-            await self.bot.log(__name__, "Saved new data.")
-
         self.bot.last_check['kus-news'] = datetime.utcnow()
     
     def create_embed(self, name, url, pic) -> Embed:
