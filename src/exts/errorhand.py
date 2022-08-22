@@ -87,5 +87,5 @@ class ErrorHandler(commands.Cog):
     async def _error(self, ctx: commands.Context) -> None:
         await ctx.send(":x: **Error, Command Error!**")
 
-def setup(bot: Bot) -> None:
-    bot.add_cog(ErrorHandler(bot))
+async def setup(bot: Bot) -> None:
+    await bot.add_cog(ErrorHandler(bot))

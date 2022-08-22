@@ -1082,5 +1082,5 @@ class Music(commands.Cog):
             raise commands.CommandError("This cog has been temporary disabled due to API issue.")
 
 
-def setup(bot):
-    bot.add_cog(Music(bot))
+async def setup(bot):
+    await bot.add_cog(Music(bot))

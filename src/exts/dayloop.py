@@ -116,5 +116,5 @@ class DayLoop(Cog):
         await ctx.send(self.today_th)
 
 
-def setup(bot: Bot) -> None:
-    bot.add_cog(DayLoop(bot))
+async def setup(bot: Bot) -> None:
+    await bot.add_cog(DayLoop(bot))

@@ -102,5 +102,5 @@ class Debug(Cog):
         json.dump(work, open("evals/work_debug.json", "w"), indent=2)
         await ctx.send(file=File("evals/work_debug.json"))
 
-def setup(bot: Bot) -> None:
-    bot.add_cog(Debug(bot))
+async def setup(bot: Bot) -> None:
+    await bot.add_cog(Debug(bot))

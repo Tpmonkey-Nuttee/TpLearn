@@ -56,5 +56,5 @@ class NewPatch(Cog):
         await self.bot.get_channel(762326316455821363).send(embed=embed)
         await self.bot.get_channel(889196845090365491).send(embed=embed)
 
-def setup(bot: Bot) -> None:
-    bot.add_cog(NewPatch(bot))
+async def setup(bot: Bot) -> None:
+    await bot.add_cog(NewPatch(bot))

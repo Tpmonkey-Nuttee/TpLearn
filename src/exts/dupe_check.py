@@ -51,7 +51,7 @@ class DupeCheck(commands.Cog):
             return await self.bot.log(__name__, f"Instance {self.ping}: I will remain online")
         
         await self.bot.log(__name__, "Dupe instance found, Shutdowning this instance.")
-        self.bot.unload_cogs()
+        await self.bot.unload_cogs()
         await self.bot.close()
 
     @tasks.loop(minutes = 1)
@@ -74,6 +74,6 @@ class DupeCheck(commands.Cog):
         self.channel = self.bot.get_channel(CHANNEL_ID)
 
 
-def setup(bot: commands.Bot) -> None:
+async def setup(bot: commands.Bot) -> None:
     return
-    bot.add_cog(DupeCheck(bot))
+    await bot.add_cog(DupeCheck(bot))

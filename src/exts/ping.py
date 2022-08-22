@@ -76,5 +76,5 @@ class Latency(Cog):
     async def pong(self, ctx: Context) -> None:
         await ctx.send("You meant... ping right...?")
 
-def setup(bot: Bot) -> None:
-    bot.add_cog(Latency(bot))
+async def setup(bot: Bot) -> None:
+    await bot.add_cog(Latency(bot))

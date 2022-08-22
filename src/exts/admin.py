@@ -293,7 +293,7 @@ class AdminCommands(Cog):
             for i in extensions: # Try to reload each extension one by one, and check the result.
                 v = "Succesful!"
                 try:
-                    self.bot.reload_extension(i)
+                    await self.bot.reload_extension(i)
                 except Exception as e:
                     v = e
 
@@ -305,7 +305,7 @@ class AdminCommands(Cog):
             file = f"exts.{file}"
 
         try:
-            self.bot.reload_extension(file)
+            await self.bot.reload_extension(file)
         except Exception as e:
             reload = e
         await m.edit(content=reload)
@@ -328,12 +328,12 @@ class AdminCommands(Cog):
         await ctx.send("Shutting down...")
         log.info("Shutting down bot by {}".format(ctx.author))   
 
-        self.bot.unload_cogs()     
+        await self.bot.unload_cogs()     
         await self.bot.close()
 
     @command(hidden=True)
     async def me(self, ctx: Context) -> None:
         await ctx.send("You?")
 
-def setup(bot: Bot) -> None:
-    bot.add_cog(AdminCommands(bot))
+async def setup(bot: Bot) -> None:
+    await bot.add_cog(AdminCommands(bot))

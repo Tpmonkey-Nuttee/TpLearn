@@ -87,5 +87,5 @@ class SetUp(Cog):
         await ctx.send(":white_check_mark: **Fix Completed.**\nStill have a problem? Dm me!")
 
 
-def setup(bot: Bot) -> None:
-    bot.add_cog(SetUp(bot))
+async def setup(bot: Bot) -> None:
+    await bot.add_cog(SetUp(bot))

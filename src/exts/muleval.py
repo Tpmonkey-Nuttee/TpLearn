@@ -148,5 +148,5 @@ class Snekbox(Cog):
         
 
 
-def setup(bot) -> None:
-    bot.add_cog(Snekbox(bot))
+async def setup(bot) -> None:
+    await bot.add_cog(Snekbox(bot))

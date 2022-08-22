@@ -26,7 +26,7 @@ async def main():
     bot = Bot.create()
     
     async with bot:
-        bot.load_extensions()
+        await bot.load_extensions()
         token = os.getenv("TOKEN")
         await bot.start(token)
 

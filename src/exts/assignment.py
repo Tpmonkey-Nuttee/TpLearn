@@ -84,7 +84,7 @@ class Assignments(commands.Cog):
             timestamp = ctx.message.created_at
         )
 
-        embed.set_author(name = "Homework Menu", icon_url = ctx.author.avatar.url)
+        embed.set_author(name = "Homework Menu", icon_url = ctx.author.display_avatar.url)
         embed.set_footer(text = "Send message to set info!")
 
         # Declare variable to use later.
@@ -513,5 +513,5 @@ class Assignments(commands.Cog):
         return [text, 1]
 
 
-def setup(bot: Bot) -> None:
-    bot.add_cog(Assignments(bot))
+async def setup(bot: Bot) -> None:
+    await bot.add_cog(Assignments(bot))

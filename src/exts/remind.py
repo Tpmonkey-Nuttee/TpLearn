@@ -63,5 +63,5 @@ class Reminder(commands.Cog):
     async def _remove(self, ctx: commands.Context, day: DayConverter, index: int) -> None:
         pass
 
-def setup(bot: Bot) -> None:
-    bot.add_cog(Reminder(bot)) 
+async def setup(bot: Bot) -> None:
+    await bot.add_cog(Reminder(bot)) 

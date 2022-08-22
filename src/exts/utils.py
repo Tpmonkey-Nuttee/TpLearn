@@ -57,7 +57,7 @@ class Utility(Cog):
         for field_name, field_content in fields:
             embed.add_field(name=field_name, value=field_content, inline=False)
 
-        embed.set_thumbnail(url=ctx.author.avatar.url_as(static_format="png"))
+        embed.set_thumbnail(url=ctx.author.display_avatar.url)
         embed.colour = ctx.author.top_role.colour if roles else Colour.blue()
 
         await ctx.send(embed=embed)
@@ -133,5 +133,5 @@ class Utility(Cog):
         await ctx.send("Hello World!")
     
 
-def setup(bot: Bot) -> None:
-    bot.add_cog(Utility(bot))
+async def setup(bot: Bot) -> None:
+    await bot.add_cog(Utility(bot))

@@ -280,5 +280,5 @@ class KUSNews(Cog):
         await ctx.send("( ͡° ͜ʖ ͡°)")
 
 
-def setup(bot: Bot) -> None:
-    bot.add_cog(KUSNews(bot))
+async def setup(bot: Bot) -> None:
+    await bot.add_cog(KUSNews(bot))

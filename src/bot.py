@@ -135,21 +135,21 @@ class Bot(commands.AutoShardedBot):
             intents = intents
         )
 
-    def load_extensions(self) -> None:
+    async def load_extensions(self) -> None:
         """ Load bot extensions. """
         from utils.extensions import EXTENSIONS
         extensions = set(EXTENSIONS)
 
         for extension in extensions:
             try: 
-                self.load_extension(extension)
+                await self.load_extension(extension)
             except (commands.ExtensionFailed, commands.NoEntryPointError) as e: 
                 log.warning(f"Couldn't load {extension} with an error: {e}")   
                 self.unloaded_cogs.append(extension)             
 
-    def add_cog(self, cog: commands.Cog) -> None:
+    async def add_cog(self, cog: commands.Cog) -> None:
         """ Add Cog event, Need for logging. """
-        super().add_cog(cog)
+        await super().add_cog(cog)
         log.info(f"Cog loaded: {cog.qualified_name}")
     
     @property
@@ -173,7 +173,7 @@ class Bot(commands.AutoShardedBot):
         )
         return random.choice(statuses)
     
-    def unload_cogs(self) -> None:
+    async def unload_cogs(self) -> None:
         """Unload all extension."""
         extensions = [ext for ext in self.extensions]
         # haha, RuntimeError again!
@@ -183,7 +183,7 @@ class Bot(commands.AutoShardedBot):
                 continue
 
             try:
-                self.unload_extension(extension)
+                await self.unload_extension(extension)
             except (commands.ExtensionNotLoaded, commands.ExtensionNotFound):
                 pass
     
