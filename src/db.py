@@ -46,12 +46,8 @@ class RedisDatabase:
         Returns:
             Any: Value at a key.
         """
-        ret = self.pool.get(key)
+        return self.loads(key, backoff)
 
-        if ret is None:
-            return backoff
-        return pickle.loads(ret)
-    
     def dumps(self, key: str, value: Any, **kwargs) -> bool:
         """Set value at a key.
 
@@ -85,16 +81,7 @@ class RedisDatabase:
         Returns:
             bool: Success or not.
         """
-        try:
-            self.pool.set(
-                name = key,
-                value = pickle.dumps(value),
-                **kwargs
-            )
-        except Exception as e: # A lot to expect.
-            log.warning(f"Cannot set key {key}; {e}")
-            return False
-        return True
+        return self.dumps(key, value, **kwargs)
 
 
 class ReplitDatabase:

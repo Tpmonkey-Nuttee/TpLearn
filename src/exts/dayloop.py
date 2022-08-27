@@ -24,7 +24,7 @@ class DayLoop(Cog):
         self.today_th = None
         self.loop.start()
 
-    def cog_unload(self) -> None:
+    async def cog_unload(self) -> None:
         self.loop.stop()     
 
     @Cog.listener()

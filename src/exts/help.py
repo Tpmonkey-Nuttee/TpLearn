@@ -161,7 +161,7 @@ class Help(Cog):
         bot.help_command = CustomHelpCommand()
         bot.help_command.cog = self
 
-    def cog_unload(self) -> None:
+    async def cog_unload(self) -> None:
         # Reset the help command when the cog is unloaded.
         self.bot.help_command = self.old_help_command
     

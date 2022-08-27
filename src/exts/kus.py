@@ -46,7 +46,7 @@ class KUSNews(Cog):
         
         self.looping.start()
     
-    def cog_unload(self):
+    async def cog_unload(self):
         self.looping.cancel()
     
     @Cog.listener()

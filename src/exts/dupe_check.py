@@ -23,7 +23,7 @@ class DupeCheck(commands.Cog):
 
         self.loop.start()
     
-    def cog_unload(self):
+    async def cog_unload(self):
         self.loop.cancel()
     
     @commands.Cog.listener()

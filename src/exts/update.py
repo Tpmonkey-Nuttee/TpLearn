@@ -27,7 +27,7 @@ class Updater(Cog):
         self.updating = False
         self.loop.start()
     
-    def cog_unload(self):
+    async def cog_unload(self):
         self.loop.cancel()
     
     @Cog.listener()

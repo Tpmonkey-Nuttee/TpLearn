@@ -303,7 +303,7 @@ class Music(commands.Cog):
         self.wait_for_disconnect = {}
         self.loop_for_deletion.start()
     
-    def cog_unload(self) -> None:
+    async def cog_unload(self) -> None:
         # when cog is unload (normally to reload command bc replit sucks)
         # stop all the loop and disconnect the bot from all vcs
         log.info("Unloading Cog")
