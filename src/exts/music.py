@@ -785,10 +785,8 @@ class Music(commands.Cog):
     
     @commands.command(name="recommend", aliases=['rec'])
     async def _recommend(self, ctx: commands.Context, *, urls: str = None):
-        """Find a recommendation based on song name or currently playing.
+        """Find a recommendation based on spotify urls that were given.
         
-        This will find 20 more songs similar songs and add it to the queue.
-        You can also use the song url from spotify to search.
         Note: This command uses Spotify Recommendation system.
         """
         # NOTE: I am not sure if this will break the system or not, but for QoL I will do it.
