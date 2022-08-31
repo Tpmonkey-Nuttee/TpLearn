@@ -46,7 +46,7 @@ class NewsManager:
         if hash_title not in self.news:
             self.news.append(hash_title)
         
-        if len(self.news) > 16:
+        if len(self.news) > 20:
             del self.news[0]
         
         self.save()
