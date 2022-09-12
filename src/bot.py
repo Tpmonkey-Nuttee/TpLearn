@@ -190,8 +190,11 @@ class Bot(commands.AutoShardedBot):
     async def close(self) -> None:
         await super().close()
 
-        await self.trust_session.close()
-        sys.exit(69)
+        # Work around for replit rate-limited.
+        await self.trust_session.get("https://TpLearn.nuttee.repl.co")
+        os.system("kill 0")
+        # await self.trust_session.close()
+        # sys.exit(69)
     
     async def on_ready(self) -> None:
         """ on Ready event, Use to log and change bot status. """
