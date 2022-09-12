@@ -140,7 +140,7 @@ class Utility(Cog):
         except ValueError:
             return await ctx.send(":x: Cannot convert array to valid number!")
         
-        average = sum(arrays) / len(arrays), 2
+        average = sum(arrays) / len(arrays)
         
         result = 0
         for i in arrays:
