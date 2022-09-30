@@ -192,7 +192,7 @@ class Bot(commands.AutoShardedBot):
 
         # Work around for replit rate-limited.
         await self.trust_session.get("https://TpLearn.nuttee.repl.co")
-        os.system("kill 0")
+        os.system("kill 1")
         # await self.trust_session.close()
         # sys.exit(69)
     
