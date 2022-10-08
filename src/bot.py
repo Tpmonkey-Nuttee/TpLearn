@@ -312,7 +312,7 @@ class Bot(commands.AutoShardedBot):
         if self.image_channel is None:
             self.image_channel = self.get_channel(config.image_channel_id)
         
-        r = await self.trust_session.get(gif_url)
+        r = await self.trust_session.get(gif_url, verify_ssl = False)
 
         with open("evals/gif.gif", "wb") as f:
             # Save gif into file.
