@@ -48,6 +48,12 @@ class NewsManager:
         
         if len(self.news) > 20:
             del self.news[0]
+    
+    def pop(self, times: int) -> None:
+        for _ in range(times):
+            self.news.pop(0)
+        
+        self.save()
         
     def compare(self, new_news: list) -> list:
         """Compare new and old news to find a new news.
