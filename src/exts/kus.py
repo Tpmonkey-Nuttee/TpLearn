@@ -110,7 +110,7 @@ class KUSNews(Cog):
         log.debug('loaded data')
 
     async def __fetch__(self) -> str:
-        r = await self.bot.trust_session.get(NEWS_URL, cookies=self.cookies)
+        r = await self.bot.trust_session.get(NEWS_URL, cookies=self.cookies, verify_ssl = False)
         return await r.text()
     
     async def __get__data(self) -> Optional[list]:
