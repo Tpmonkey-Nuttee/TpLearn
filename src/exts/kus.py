@@ -49,8 +49,6 @@ class NewsManager:
         if len(self.news) > 20:
             del self.news[0]
         
-        self.save()
-        
     def compare(self, new_news: list) -> list:
         """Compare new and old news to find a new news.
 
@@ -159,8 +157,10 @@ class KUSNews(Cog):
         
         if news:            
             if len(news) > 6:
-                await self.bot.log(__name__, f"Canceling: Too many news, Something may went wrong ({len(new_ids)} news).", True)
+                await self.bot.log(__name__, f"Canceling: Too many news, Something may went wrong ({len(news)} news).", True)
                 self.sendEmbed = False
+            else:
+                self.manager.save()
             
             # Format from [(title, url, image, id), ...] to [(title, url, image)]
             # But convert the image from gif to image.
