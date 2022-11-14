@@ -39,6 +39,8 @@ class DayLoop(Cog):
     
     @tasks.loop(minutes=MINUTES)
     async def loop(self) -> None:
+        await self.bot.wait_until_ready()
+        
         if self.today_morning is None:  
             self.today_morning = await self.bot.database.load("TODAY")
 

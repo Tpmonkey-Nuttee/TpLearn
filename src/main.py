@@ -8,6 +8,7 @@ Made by Tpmonkey (Nuttee) KUS48
 
 import os
 import asyncio
+os.system("python3 -m poetry install")
 
 # Setting up Logging.
 from utils.log import setup

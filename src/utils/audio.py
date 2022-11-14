@@ -105,11 +105,11 @@ class YTDLSource(discord.PCMVolumeTransformer):
 
     FFMPEG_OPTIONS = {
         'before_options': '-reconnect 1 -reconnect_streamed 1 -reconnect_delay_max 5',
-        'options': '-vn -af "volume=5dB"',
+        'options': '-vn',
     }
     FFMPEG_OPTIONS_NC = {
         'before_options': '-reconnect 1 -reconnect_streamed 1 -reconnect_delay_max 5',
-        'options': '-vn -af "volume=5dB" -filter:a "asetrate=44100*1.5,aresample=44100,atempo=1.2/1.5"',
+        'options': '-vn -filter:a "asetrate=44100*1.5,aresample=44100,atempo=1.2/1.5"',
     }
 
     __slots__ = "data", "uploader", "uploader_url", \

@@ -190,8 +190,11 @@ class Bot(commands.AutoShardedBot):
     async def close(self) -> None:
         await super().close()
 
-        await self.trust_session.close()
-        sys.exit(69)
+        # Work around for replit rate-limited.
+        await self.trust_session.get("https://TpLearn.nuttee.repl.co")
+        os.system("kill 1")
+        # await self.trust_session.close()
+        # sys.exit(69)
     
     async def on_ready(self) -> None:
         """ on Ready event, Use to log and change bot status. """
@@ -309,7 +312,7 @@ class Bot(commands.AutoShardedBot):
         if self.image_channel is None:
             self.image_channel = self.get_channel(config.image_channel_id)
         
-        r = await self.trust_session.get(gif_url)
+        r = await self.trust_session.get(gif_url, verify_ssl = False)
 
         with open("evals/gif.gif", "wb") as f:
             # Save gif into file.

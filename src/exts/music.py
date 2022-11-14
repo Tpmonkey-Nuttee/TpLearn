@@ -784,11 +784,9 @@ class Music(commands.Cog):
             await ctx.send(":arrow_forward: Disable looping!")
     
     @commands.command(name="recommend", aliases=['rec'])
-    async def _recommend(self, ctx: commands.Context, *, name: str = None):
-        """Find a recommendation based on song name or currently playing.
+    async def _recommend(self, ctx: commands.Context, *, urls: str = None):
+        """Find a recommendation based on spotify urls that were given.
         
-        This will find 20 more songs similar songs and add it to the queue.
-        You can also use the song url from spotify to search.
         Note: This command uses Spotify Recommendation system.
         """
         # NOTE: I am not sure if this will break the system or not, but for QoL I will do it.
@@ -805,40 +803,13 @@ class Music(commands.Cog):
         ctx.voice_state.start_player()
         
         # name is define, recommend base on it
-        if name is not None:
-            log.info(f"{ctx.guild.id}: Recommending song based on {name}")
+        if urls is not None:
+            log.info(f"{ctx.guild.id}: Recommending song based on {urls}")
             try:
-                songs = getRecommend( name.split() )
+                songs = getRecommend( urls.split() )
             except NameError: # couldn't find any match
                 log.info(f"{ctx.guild.id}: Unable to find any matched")
                 return await ctx.send(":x: **Unable to find matched song.**")
-            except SpotifyException as e:
-                log.info(f"{ctx.guild.id}: Request fail, {e}")
-                return await ctx.send(":x: **Request fail, Try using Spotify URL.**")
-
-            amount = 0
-            for s in songs: # load the song
-                pl = Song(s, ctx)
-                await ctx.voice_state.songs.put(pl)
-                amount += 1
-            
-            log.info(f"{ctx.guild.id}: Queued songs.")
-            return await ctx.send("Enqueued {} songs.".format(amount))
-        # name is not define, but there is a song playing...
-        # Note: this works 1% of the time, so good luck.
-        if name is None and ctx.voice_state.current is not None:
-            log.info(f"{ctx.guild.id}: Recommending song based on current song...")
-
-            try:
-                name = ctx.voice_state.current.source.title
-            except AttributeError: 
-                return await ctx.send(":x: **Unable to fetch song name, Please try again later.**")
-            
-            try:
-                songs = getRecommend( [name] )
-            except NameError:
-                log.info(f"{ctx.guild.id}: Unable to find any matched")
-                return await ctx.send(":x: **Unable to find matched song, Please try typing it directly.**\n(Spotify URL or Song name)")
             except SpotifyException as e:
                 log.info(f"{ctx.guild.id}: Request fail, {e}")
                 return await ctx.send(":x: **Request fail, Try using Spotify URL.**")
@@ -957,42 +928,9 @@ class Music(commands.Cog):
             await ctx.message.add_reaction('✅')
 
         else: # Normal searching. 
-            try:
-                # Try catching an exception bc we may reach "quota limit" by Google API
-                # If reached, Fetch it normally instead.
-                if self.api_error: # Already error, skip to except statement
-                    raise Exception
-                
-                ret = getInfo(search)
-            except IndexError:
-                return await ctx.send(":x: No video found!")
-            except Exception:
-                self.play_error() # Call play error
-                song = Song(search, ctx)
-                await ctx.message.add_reaction('✅')
-            else:
-                url = f"https://www.youtube.com/watch?v={ret['id']['videoId']}"
-                
-                song = Song(
-                    url = url,
-                    ctx = ctx,
-                    title = ret['snippet']['title']
-                )
-
-                title = ret['snippet']['title']
-                await ctx.send(
-                    embed = discord.Embed(
-                        description = f"[{title}]({url})",
-                        color = discord.Color.teal()
-                    ).set_thumbnail(url = ret["snippet"]["thumbnails"]["default"]["url"]
-                    ).add_field(
-                        name = "By", value = ret['snippet']['channelTitle']
-                    ).add_field(
-                        name = "Requested by", value = ctx.author.mention
-                    )
-                )
-            finally:
-                await ctx.voice_state.songs.put(song)
+            song = await self.normal_search(ctx, search)
+            
+            await ctx.voice_state.songs.put(song)
         
         ctx.voice_state.start_player()
         log.debug(f"Enqueued; time took {time.perf_counter() - _} sec")
@@ -1026,44 +964,49 @@ class Music(commands.Cog):
             await ctx.message.add_reaction('✅')
 
         else: # Normal searching. 
-            try:
-                # Try catching an exception bc we may reach "quota limit" by Google API
-                # If reached, Fetch it normally instead.
-                if self.api_error: # Already error, skip to except statement
-                    raise Exception
-                
-                ret = getInfo(search)
-            except IndexError:
-                return await ctx.send(":x: No video found!")
-            except Exception:
-                self.play_error() # Call play error
-                song = Song(search, ctx)
-                await ctx.message.add_reaction('✅')
-            else:
-                url = f"https://www.youtube.com/watch?v={ret['id']['videoId']}"
-                
-                song = Song(
-                    url = url,
-                    ctx = ctx,
-                    title = ret['snippet']['title']
-                )
-
-                title = ret['snippet']['title']
-                await ctx.send(
-                    embed = discord.Embed(
-                        description = f"[{title}]({url})",
-                        color = discord.Color.teal()
-                    ).set_thumbnail(url = ret["snippet"]["thumbnails"]["default"]["url"]
-                    ).add_field(
-                        name = "By", value = ret['snippet']['channelTitle']
-                    ).add_field(
-                        name = "Requested by", value = ctx.author.mention
-                    )
-                )
-
+            song = await self.normal_search(ctx, search)                
+            
         ctx.voice_state.songs._queue.appendleft(song)
         
         log.debug(f"Enqueued play next")
+    
+    async def normal_search(self, ctx: commands.Context, search: str) -> None:
+        try:
+            # Try catching an exception bc we may reach "quota limit" by Google API
+            # If reached, Fetch it normally instead.
+            if self.api_error: # Already error, skip to except statement
+                raise Exception
+            
+            ret = getInfo(search)
+        except IndexError:
+            raise commands.CommandError("No video found!")
+        except Exception:
+            self.play_error() # Call play error
+            song = Song(search, ctx)
+            await ctx.message.add_reaction('✅')
+        else:
+            url = f"https://www.youtube.com/watch?v={ret['id']['videoId']}"
+            
+            song = Song(
+                url = url,
+                ctx = ctx,
+                title = ret['snippet']['title']
+            )
+
+            title = ret['snippet']['title']
+            await ctx.send(
+                embed = discord.Embed(
+                    description = f"[{title}]({url})",
+                    color = discord.Color.teal()
+                ).set_thumbnail(url = ret["snippet"]["thumbnails"]["default"]["url"]
+                ).add_field(
+                    name = "By", value = ret['snippet']['channelTitle']
+                ).add_field(
+                    name = "Requested by", value = ctx.author.mention
+                )
+            )
+        
+        return song
 
     @_join.before_invoke
     @_play.before_invoke

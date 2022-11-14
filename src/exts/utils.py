@@ -132,6 +132,24 @@ class Utility(Cog):
         await ctx.author.move_to(None)
         await ctx.send("Hello World!")
     
+    @command()
+    async def s(self, ctx: Context, size: int, *, array: str) -> None:
+        """Find standard deviation & variance for math problem."""
+        try:
+            arrays = [float(i) for i in array.split()]
+        except ValueError:
+            return await ctx.send(":x: Cannot convert array to valid number!")
+        
+        average = sum(arrays) / len(arrays)
+        
+        result = 0
+        for i in arrays:
+            result += (i - average) ** 2
+        
+        s = round( (result / size) ** 0.5, 2)
+        s_sq = round(result / size, 2)
+        
+        await ctx.send(f"s = {s}\ns² = {s_sq}")
 
 async def setup(bot: Bot) -> None:
     await bot.add_cog(Utility(bot))
