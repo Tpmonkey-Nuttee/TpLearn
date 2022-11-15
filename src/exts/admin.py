@@ -3,13 +3,14 @@ An Admin Commands Extension.
 Made by Tpmonkey
 """
 
-from discord import Embed, Color, TextChannel
-from discord.ext.commands import is_owner, command, Cog, Context
+from discord import Embed, Color, TextChannel, Guild
+from discord.ext import commands
 
 from bot import Bot
 from utils.extensions import EXTENSIONS
 
 import logging
+from typing import Optional
 
 # These library is for admin eval command
 import os
@@ -25,7 +26,7 @@ import importlib
 
 log = logging.getLogger(__name__)
 
-class AdminCommands(Cog):
+class AdminCommands(commands.Cog):
     """Bot admin commands"""
     def __init__(self, bot: Bot):
         self.bot = bot
@@ -40,21 +41,21 @@ class AdminCommands(Cog):
         except Exception as e:
             log.trace(f"Couldn't delete eval job; {e}")
     
-    @command(name = "update")
-    @is_owner()
-    async def _update(self, ctx: Context, url: str = None) -> None:
+    @commands.hybrid_command(name = "update")
+    @commands.is_owner()
+    async def _update(self, ctx: commands.Context, url: str = None) -> None:
         await self.bot.update(ctx, url)
     
-    @command(name = "restart")
-    @is_owner()
-    async def _restart(self, ctx: Context) -> None:
+    @commands.hybrid_command(name = "restart")
+    @commands.is_owner()
+    async def _restart(self, ctx: commands.Context) -> None:
         await ctx.send("Restarting...")
         self.bot.restart()
 
         
-    @command(aliases = ("sc", ))
-    @is_owner()
-    async def stop_clearing(self, ctx: Context) -> None:
+    @commands.hybrid_command(name = "stop_clearing")
+    @commands.is_owner()
+    async def stop_clearing(self, ctx: commands.Context) -> None:
         if not self.clearing:
             return await ctx.send("No clearing to stop :/")
             
@@ -62,9 +63,9 @@ class AdminCommands(Cog):
         await ctx.send("Should be stop now.")
 
     
-    @command(aliases = ("cm", ))
-    @is_owner()
-    async def clear_messages(self, ctx: Context, channel: TextChannel, limit: int, *kwargs: str) -> None:
+    @commands.hybrid_command(name = "clear_messages")
+    @commands.is_owner()
+    async def clear_messages(self, ctx: commands.Context, channel: TextChannel, limit: int, *, kwargs: str) -> None:
         """Clear Messages that contain given keywords."""
         if self.clearing:
             return await ctx.send("There is a clearing in progres, please wait.\nto stop type: `!sc`")            
@@ -108,9 +109,9 @@ class AdminCommands(Cog):
         self.clearing = False
         await ctx.send(f"Found {count} messages, from total of {total} messages.")
     
-    @command()
-    @is_owner()
-    async def count(self, ctx: Context, channel: TextChannel, limit: int, *kwargs: str) -> None:
+    @commands.hybrid_command(name = "count")
+    @commands.is_owner()
+    async def count(self, ctx: commands.Context, channel: TextChannel, limit: int, *, kwargs: str) -> None:
         """Count Messages that contain given keywords."""
 
         count = 0
@@ -136,9 +137,9 @@ class AdminCommands(Cog):
             
         await ctx.send(f"Count: {count}")
 
-    @command(name="say")
-    @is_owner()
-    async def say(self, ctx: Context, *, text: str) -> None:
+    @commands.hybrid_command(name="say")
+    @commands.is_owner()
+    async def say(self, ctx: commands.Context, *, text: str) -> None:
         # Make the bot say something, FOR FUN (Admn only :P)
         delete = True
         text = "".join(text)
@@ -154,9 +155,9 @@ class AdminCommands(Cog):
 
         await ctx.send(text)
 
-    @command(name='admineval', aliases = ("ae", ), help = 'Admin command for testing!')
-    @is_owner()
-    async def _eval(self, ctx: Context, *,  code: str) -> None:
+    @commands.hybrid_command(name='admineval')
+    @commands.is_owner()
+    async def _eval(self, ctx: commands.Context, *,  code: str) -> None:
         # Admin eval command
         code = code.strip("```")
         send = True
@@ -202,9 +203,9 @@ class AdminCommands(Cog):
 
         self.delete_eval_job(ctx.author.id)
     
-    @command(name="adminevalstop", aliases = ("aestop", ), description = "Stop existing eval jobs")
-    @is_owner()
-    async def stop_eval(self, ctx: Context) -> None:
+    @commands.hybrid_command(name="adminevalstop")
+    @commands.is_owner()
+    async def stop_eval(self, ctx: commands.Context) -> None:
         # Stop existing Eval command
         # Sometimes the output is so long, and Bot will be spamming it
 
@@ -220,7 +221,7 @@ class AdminCommands(Cog):
 
         await ctx.send("Canceled all eval jobs!")
 
-    async def _format(self, ctx: Context, code: str, result: str) -> list:
+    async def _format(self, ctx: commands.Context, code: str, result: str) -> list:
         # Format input and output of Admin Eval Command
         # To list of embed
 
@@ -261,7 +262,7 @@ class AdminCommands(Cog):
         
         return embeds
     
-    async def _base_embed(self, ctx: Context, code: str) -> Embed:
+    async def _base_embed(self, ctx: commands.Context, code: str) -> Embed:
         # Get base embed of Admin Eval command
         embed = Embed(
             title = "Evaluate Command",
@@ -272,9 +273,16 @@ class AdminCommands(Cog):
         embed.add_field(name="Input:", value=f"```python\n\n{code}\n\n\n```", inline=False)
         return embed
 
-    @command(name = "reload")
-    @is_owner()
-    async def reload(self, ctx: Context, *, file: str) -> None:
+    @commands.hybrid_command(name = "sync")
+    @commands.is_owner()
+    async def _sync(self, ctx: commands.Context, guild: Optional[Guild] = None) -> None:
+        """Sync command(s)"""
+        cmds = await self.bot.tree.sync(guild = guild)
+        await ctx.send(f"Sync'd {len(cmds)} commands")
+
+    @commands.hybrid_command(name = "reload")
+    @commands.is_owner()
+    async def reload(self, ctx: commands.Context, *, file: str) -> None:
         # Reload bot Extensions
 
         m = await ctx.send("Reloading...")
@@ -310,9 +318,9 @@ class AdminCommands(Cog):
             reload = e
         await m.edit(content=reload)
 
-    @command(name="shutdown")
-    @is_owner()
-    async def _shutdown(self, ctx: Context):
+    @commands.hybrid_command(name="shutdown")
+    @commands.is_owner()
+    async def _shutdown(self, ctx: commands.Context):
         await ctx.send("Waiting for confirmation... \nPlease type `confirm` to confirm in `10` seconds.")
 
         def check(m):
@@ -331,9 +339,6 @@ class AdminCommands(Cog):
         await self.bot.unload_cogs()     
         await self.bot.close()
 
-    @command(hidden=True)
-    async def me(self, ctx: Context) -> None:
-        await ctx.send("You?")
 
 async def setup(bot: Bot) -> None:
     await bot.add_cog(AdminCommands(bot))
