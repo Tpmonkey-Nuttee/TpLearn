@@ -94,10 +94,10 @@ class Bot(commands.AutoShardedBot):
         if not help_command:
             help_command = commands.DefaultHelpCommand()
 
-        super().__init__(command_prefix, help_command, description, **options)
+        super().__init__(command_prefix, help_command=help_command, description=description, **options)
 
         self.start_time = datetime.datetime.utcnow()
-        self.trust_session = ClientSession()     
+        self.trust_session = None   
 
         # Define database here so It's easier to be use.
         self.database = Database()
@@ -145,7 +145,9 @@ class Bot(commands.AutoShardedBot):
                 await self.load_extension(extension)
             except (commands.ExtensionFailed, commands.NoEntryPointError) as e: 
                 log.warning(f"Couldn't load {extension} with an error: {e}")   
-                self.unloaded_cogs.append(extension)             
+                self.unloaded_cogs.append(extension)
+
+        self.trust_session = ClientSession()
 
     async def add_cog(self, cog: commands.Cog) -> None:
         """ Add Cog event, Need for logging. """
@@ -191,15 +193,13 @@ class Bot(commands.AutoShardedBot):
         await super().close()
 
         # Work around for replit rate-limited.
-        await self.trust_session.get("https://TpLearn.nuttee.repl.co")
-        os.system("kill 1")
+        # os.system("kill 1")
         # await self.trust_session.close()
-        # sys.exit(69)
     
     async def on_ready(self) -> None:
         """ on Ready event, Use to log and change bot status. """
         log.info("Connected successfully")
-        # await self.log(__name__, "connected")
+        await self.load_extensions()
         await self.change_status()
         
         if self.unloaded_cogs:
