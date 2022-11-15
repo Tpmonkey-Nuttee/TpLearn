@@ -7,28 +7,27 @@ Made by Tpmonkey (Nuttee) KUS48
 """
 
 import os
-import asyncio
+# Ensure packages are installed, work around for replit :/
 os.system("python3 -m poetry install")
 
+
 # Setting up Logging.
+from discord.utils import setup_logging
 from utils.log import setup
+
+setup_logging()
 setup()
+
 
 # Setting up webserver
 from webserver import keep_alive
 keep_alive()
 
+
 # Create and Run the Bot.
 from bot import Bot
 
-
-async def main():
-
-    bot = Bot.create()
-    
-    async with bot:
-        await bot.load_extensions()
-        token = os.getenv("TOKEN")
-        await bot.start(token)
-
-asyncio.run(main())
+if __name__ == "__main__":
+    bot = Bot.create()   
+    token = os.getenv("TOKEN")
+    bot.run(token)
