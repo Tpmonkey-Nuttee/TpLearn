@@ -193,6 +193,7 @@ class KUSNews(Cog):
                 for _ in self.channels:
                     channel = self.bot.get_channel(_)
                     if channel is None: 
+                        log_msg += f"[x] {channel}: No Channel found\n"
                         continue
                     
                     log_msg += f"[->] {channel.name}: {_}\n"
