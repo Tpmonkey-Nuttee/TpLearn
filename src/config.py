@@ -5,6 +5,7 @@ Made by Tpmonkey
 
 ### ---------- General ---------- ###
 
+fb_url = "https://forms.gle/YwwrB6ZfaD9yb45NA"
 version = "1.9"
 note = [
     "**New command!**",
