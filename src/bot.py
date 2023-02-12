@@ -242,10 +242,10 @@ class Bot(commands.AutoShardedBot):
         if ctx.command is None:
             return
         
+        desc = "A friendly reminder that this project was written by one person and is being host on a free server\nClick [here]({}) to submit a feedback!"
+        
         embed = discord.Embed(
-            description = """A friendly reminder that this project was written by one person and is being host on a free server
-            Click [here]({}) to submit a feedback!
-            """.format(self.config.fb_url),
+            description = desc.format(self.config.fb_url),
             colour = discord.Color.teal()
         ).set_author(name = "We are collecting feedback!", url = self.config.fb_url)
         
