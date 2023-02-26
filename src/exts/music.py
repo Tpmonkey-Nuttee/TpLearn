@@ -290,7 +290,7 @@ class Music(commands.Cog):
     """
     def __init__(self, bot: commands.Bot):
         self.bot = bot
-        self.disabled = True
+        self.disabled = False
 
         # For keeping track of all voice states
         self.voice_states = {}
