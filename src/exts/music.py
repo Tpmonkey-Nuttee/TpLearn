@@ -290,7 +290,7 @@ class Music(commands.Cog):
     """
     def __init__(self, bot: commands.Bot):
         self.bot = bot
-        self.disabled = False
+        self.disabled = True
 
         # For keeping track of all voice states
         self.voice_states = {}
@@ -1021,8 +1021,11 @@ class Music(commands.Cog):
             if ctx.voice_client.channel != ctx.author.voice.channel:
                 raise commands.CommandError('Bot is already in a voice channel.')
 
-        if self.disabled:
+        if self.disabled and ctx.author.id != self.bot.owner_id:
             raise commands.CommandError("This cog has been temporary disabled due to API issue.")
+
+        if self.disabled:
+            await ctx.send("Warning: this cog is disabled but due to owner permisson, you are able to use it.")
 
 
 def setup(bot):
