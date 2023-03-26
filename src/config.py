@@ -5,34 +5,24 @@ Made by Tpmonkey
 
 ### ---------- General ---------- ###
 
-version = "1.9"
+fb_url = "https://forms.gle/F82RcF1VWVLJjzMR6"
+version = "2.0"
 note = [
-    "**New command!**",
-    "- Terminate command! (terminate, getout) - Delete server data & Leave server.",
-    "",
-    
-    "**New Feature!**",
-    "- Assignment can now last longer than a day.",
-    "*to use it simply add the event lenght when inputting date.*",
-    "Example: \n• `22/2/2022 7` = event starts at 22/2/2022 and lasts 7 days. \n• `++2 2` = event starts overmorrow and last 2 days.",
-    "",
-
     "**QoL!**",
-    "- Add handler when bot cannot find any video.",
-    "- Improve playnext command.",
-    "- Bot commands now case-insensitive."
-    "- Some optimizations & New sorting algorithm.",
+    "- Improve kus news system.",
+    "- Update some commands in help command.",
+    "- Many fail-safe added to avoid a large scale failure."
     "",
 
     "**Bug Fixes!**",
-    "- Fix bot (sometimes) cannot understand youtube url.",
-    "- Fix a rare error when using leave command.",    
-    "- Fix force-disconnecting bot can result in an error.",
-    "- Fix kus-news embed doesn't show thumbnail.",    
-    "- Fix rare case related to hyperlink in queue command.",     
-    "- Fix permission error when setting up server.",
-    "- And many more!",
+    "- Fix assignment not updating correctly",
+    "- Fix music cog not working."
+    "- Many optimizations!"
     "",    
+    
+    "**Dev note**",
+    "This will be the last patch note TpLearn will get because I have graduated and done with this project but I will still be around fixing small bugs.",
+    "Also, won't be adding any new features and let the bot runs by itself. See you on the next project!",
 ]
 
 prefix = "," # Bot Prefix.

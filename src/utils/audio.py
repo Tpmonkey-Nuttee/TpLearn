@@ -2,7 +2,7 @@ import os
 import asyncio
 import discord
 import functools
-import youtube_dl
+import yt_dlp
 from typing import List, Tuple
 from functools import lru_cache
 import googleapiclient
@@ -10,7 +10,7 @@ from urllib.parse import parse_qs, urlparse
 from concurrent.futures import ThreadPoolExecutor
 
 # Silence useless bug reports messages
-youtube_dl.utils.bug_reports_message = lambda: ''
+yt_dlp.utils.bug_reports_message = lambda: ''
 
 __all__ = (
     "POOL", "YTDLError", "YTDLSource", "DownloadError", "getYtPlaylist", "getInfo", "YOUTUBE_API_KEY", "YOUTUBE_PLAYLIST_KEYWORDS"
@@ -97,7 +97,7 @@ def getYtPlaylist(url: str) -> Tuple[List[str]]:
 class YTDLError(Exception):
     pass
 
-DownloadError = youtube_dl.DownloadError
+DownloadError = yt_dlp.DownloadError
 
 class YTDLSource(discord.PCMVolumeTransformer):
     YTDL_OPTIONS = {
@@ -124,7 +124,7 @@ class YTDLSource(discord.PCMVolumeTransformer):
         "date", "upload_date", "title", "thumbnail", "description", "duration", "tags", \
         "url", "views", "likes", "dislikes", "stream_url"
 
-    ytdl = youtube_dl.YoutubeDL(YTDL_OPTIONS)
+    ytdl = yt_dlp.YoutubeDL(YTDL_OPTIONS)
 
     def __init__(self, source: discord.FFmpegPCMAudio, *, data: dict, volume: float = 0.5, nc: bool = False):
         super().__init__(source, volume)

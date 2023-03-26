@@ -5,6 +5,7 @@ Made by Tpmonkey
 
 import os
 import sys
+import time
 import random
 import asyncio
 import logging
@@ -110,6 +111,7 @@ class Bot(commands.AutoShardedBot):
 
         self.unloaded_cogs = []
         self.last_check = {}
+        self.last_send = {}
 
         self.log_channel = None
         self.dump_channel = None
@@ -228,6 +230,29 @@ class Bot(commands.AutoShardedBot):
         # If message were edited, and content changed. Re-process command.
         if not before.author.bot and before.content != after.content: 
             await self.process_commands(after)
+            
+    async def process_commands(self, message: discord.Message):
+        """ Process commands """
+        if message.author.bot:
+            return
+
+        ctx = await self.get_context(message)
+        await self.invoke(ctx)
+
+        if ctx.command is None:
+            return
+        
+        desc = "A friendly reminder that this project was written by one person and is being host on a free server\nClick [here]({}) to submit a feedback!"
+        
+        embed = discord.Embed(
+            description = desc.format(self.config.fb_url),
+            colour = discord.Color.teal()
+        ).set_author(name = "We are collecting feedback!", url = self.config.fb_url)
+        
+        if ctx.guild.id not in self.last_send or time.time() - self.last_send[ctx.guild.id] > 600:
+            self.last_send[ctx.guild.id] = time.time()
+            await ctx.send(embed = embed)
+            
     
     async def on_error(self, event_method, *args, **kwargs) -> None:
         """ on Error event, Use to log in discord channel so can be easily look back. """
