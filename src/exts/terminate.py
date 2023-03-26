@@ -30,5 +30,5 @@ class Terminate(commands.Cog):
         await ctx.send("See you later!")
         await ctx.guild.leave()
 
-def setup(bot: Bot) -> None:
-    bot.add_cog(Terminate(bot))
+async def setup(bot: Bot) -> None:
+    await bot.add_cog(Terminate(bot))

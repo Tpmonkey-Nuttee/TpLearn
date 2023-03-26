@@ -84,7 +84,7 @@ class Assignments(commands.Cog):
             timestamp = ctx.message.created_at
         )
 
-        embed.set_author(name = "Homework Menu", icon_url = ctx.author.avatar_url)
+        embed.set_author(name = "Homework Menu", icon_url = ctx.author.display_avatar.url)
         embed.set_footer(text = "Send message to set info!")
 
         # Declare variable to use later.
@@ -184,7 +184,7 @@ class Assignments(commands.Cog):
             pass
         log.debug(f"Deleted key: {ctx.author.id}")
     
-    @commands.command()
+    @commands.hybrid_command()
     @commands.guild_only()
     @checks.assignment_limit()
     @checks.is_setup()
@@ -203,7 +203,7 @@ class Assignments(commands.Cog):
         asyncio.create_task(self.bot.add_reactions(message, EMOJIS))
         self.tasks[ctx.author.id]['info']['task'] = asyncio.create_task(self.adding(ctx))         
     
-    @commands.command()
+    @commands.hybrid_command()
     @commands.guild_only()
     @checks.is_setup()
     @commands.cooldown(3, 20, commands.BucketType.guild)
@@ -233,7 +233,7 @@ class Assignments(commands.Cog):
         asyncio.create_task(self.bot.add_reactions(message, EMOJIS))
         self.tasks[ctx.author.id]['info']['task'] = asyncio.create_task(self.adding(ctx))     
     
-    @commands.command(aliases = ("delete", "del", ))
+    @commands.hybrid_command(aliases = ("delete", "del", ))
     @commands.guild_only()
     @checks.is_setup()
     @commands.cooldown(3, 6, commands.BucketType.guild)
@@ -256,7 +256,7 @@ class Assignments(commands.Cog):
         
         await ctx.send(content, embed=embed)
     
-    @commands.command(aliases = ("aw", "allassignments", )) # Why?
+    @commands.hybrid_command(aliases = ("aw", "allassignments", )) # Why?
     @commands.guild_only()
     @checks.is_setup()
     @commands.cooldown(2, 20, commands.BucketType.guild)
@@ -270,7 +270,7 @@ class Assignments(commands.Cog):
 
         await m.edit(content=None, embed=embed)
 
-    @commands.command(aliases = ('inf', 'detail', 'check', ))
+    @commands.hybrid_command(aliases = ('inf', 'detail', 'check', ))
     @commands.guild_only()
     @checks.is_setup()
     @commands.cooldown(5, 15, commands.BucketType.guild)
@@ -476,7 +476,7 @@ class Assignments(commands.Cog):
         
         return await self.close(ctx, text, colour)
 
-    @commands.command(hidden=True)
+    @commands.hybrid_command(hidden=True)
     async def school(self, ctx: commands.Context) -> None:
         if random.randint(1, 1000) == 1:
             return await ctx.send("Sucks")
@@ -513,5 +513,5 @@ class Assignments(commands.Cog):
         return [text, 1]
 
 
-def setup(bot: Bot) -> None:
-    bot.add_cog(Assignments(bot))
+async def setup(bot: Bot) -> None:
+    await bot.add_cog(Assignments(bot))

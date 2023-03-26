@@ -4,11 +4,8 @@ Made by Python Discord Bot team on Github.
 Credit: https://github.com/python-discord/bot
 """
 
-import os
-import sys
 import logging
 import datetime
-import coloredlogs
 from pathlib import Path
 from logging import Logger, handlers
 
@@ -45,22 +42,6 @@ def setup() -> None:
     root_log = logging.getLogger()
     root_log.setLevel(log_level)
     root_log.addHandler(file_handler)
-
-    if "COLOREDLOGS_LEVEL_STYLES" not in os.environ:
-        coloredlogs.DEFAULT_LEVEL_STYLES = {
-            **coloredlogs.DEFAULT_LEVEL_STYLES,
-            "trace": {"color": 246},
-            "critical": {"background": "red"},
-            "debug": coloredlogs.DEFAULT_LEVEL_STYLES["info"]
-        }
-
-    if "COLOREDLOGS_LOG_FORMAT" not in os.environ:
-        coloredlogs.DEFAULT_LOG_FORMAT = format_string
-
-    if "COLOREDLOGS_LOG_LEVEL" not in os.environ:
-        coloredlogs.DEFAULT_LOG_LEVEL = log_level
-
-    coloredlogs.install(logger=root_log, stream=sys.stdout)
 
     logging.getLogger('discord').setLevel(logging.INFO)
     logging.getLogger('discord.http').setLevel(logging.WARNING)

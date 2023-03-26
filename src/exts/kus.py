@@ -90,7 +90,7 @@ class KUSNews(Cog):
         self.manager = NewsManager(bot)
         self.looping.start()
     
-    def cog_unload(self):
+    async def cog_unload(self):
         self.looping.cancel()
     
     @Cog.listener()
@@ -193,6 +193,7 @@ class KUSNews(Cog):
                 for _ in self.channels:
                     channel = self.bot.get_channel(_)
                     if channel is None: 
+                        log_msg += f"[x] {channel}: No Channel found\n"
                         continue
                     
                     log_msg += f"[->] {channel.name}: {_}\n"
@@ -316,5 +317,5 @@ class KUSNews(Cog):
         await ctx.send("( ͡° ͜ʖ ͡°)")
 
 
-def setup(bot: Bot) -> None:
-    bot.add_cog(KUSNews(bot))
+async def setup(bot: Bot) -> None:
+    await bot.add_cog(KUSNews(bot))

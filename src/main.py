@@ -15,13 +15,16 @@ setup()
 
 # Setting up webserver
 from webserver import keep_alive
-keep_alive()
+log = keep_alive()
 
 # Create and Run the Bot.
 from bot import Bot
 
-bot = Bot.create()
-bot.load_extensions()
+import discord
+discord.utils.setup_logging()
 
+bot = Bot.create()   
+
+# await bot.load_extensions()
 token = os.getenv("TOKEN")
 bot.run(token)

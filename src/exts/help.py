@@ -161,7 +161,7 @@ class Help(Cog):
         bot.help_command = CustomHelpCommand()
         bot.help_command.cog = self
 
-    def cog_unload(self) -> None:
+    async def cog_unload(self) -> None:
         # Reset the help command when the cog is unloaded.
         self.bot.help_command = self.old_help_command
     
@@ -176,7 +176,7 @@ class Help(Cog):
             description = f"To view all the commands, Type `{ctx.prefix}help`",
             colour = Colour.teal()
         )
-        embed.set_author(name = "Tutorial", icon_url = bot.user.avatar_url)
+        embed.set_author(name = "Tutorial", icon_url = bot.user.display_avatar.url)
 
         embed.add_field(
             name = "What is this bot?", 
@@ -223,5 +223,5 @@ class Help(Cog):
         await ctx.send(embed=embed)
 
 
-def setup(bot: Bot) -> None:
-    bot.add_cog(Help(bot))
+async def setup(bot: Bot) -> None:
+    await bot.add_cog(Help(bot))

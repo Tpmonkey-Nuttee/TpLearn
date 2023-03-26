@@ -95,10 +95,10 @@ class Bot(commands.AutoShardedBot):
         if not help_command:
             help_command = commands.DefaultHelpCommand()
 
-        super().__init__(command_prefix, help_command, description, **options)
+        super().__init__(command_prefix, help_command=help_command, description=description, **options)
 
         self.start_time = datetime.datetime.utcnow()
-        self.trust_session = ClientSession()     
+        self.trust_session = None   
 
         # Define database here so It's easier to be use.
         self.database = Database()
@@ -137,27 +137,29 @@ class Bot(commands.AutoShardedBot):
             intents = intents
         )
 
-    def load_extensions(self) -> None:
+    async def load_extensions(self) -> None:
         """ Load bot extensions. """
         from utils.extensions import EXTENSIONS
         extensions = set(EXTENSIONS)
 
         for extension in extensions:
             try: 
-                self.load_extension(extension)
+                await self.load_extension(extension)
             except (commands.ExtensionFailed, commands.NoEntryPointError) as e: 
                 log.warning(f"Couldn't load {extension} with an error: {e}")   
-                self.unloaded_cogs.append(extension)             
+                self.unloaded_cogs.append(extension)
 
-    def add_cog(self, cog: commands.Cog) -> None:
+        self.trust_session = ClientSession()
+
+    async def add_cog(self, cog: commands.Cog) -> None:
         """ Add Cog event, Need for logging. """
-        super().add_cog(cog)
+        await super().add_cog(cog)
         log.info(f"Cog loaded: {cog.qualified_name}")
     
     @property
     def uptime(self):
         """ Bot Uptime Property, Can be acces using Admin Command only. """
-        return datetime.datetime.now() - self.start_time
+        return datetime.datetime.utcnow() - self.start_time
     
     def get_random_status(self) -> discord.Activity:
         """ Get random Bot statuses. """
@@ -175,7 +177,7 @@ class Bot(commands.AutoShardedBot):
         )
         return random.choice(statuses)
     
-    def unload_cogs(self) -> None:
+    async def unload_cogs(self) -> None:
         """Unload all extension."""
         extensions = [ext for ext in self.extensions]
         # haha, RuntimeError again!
@@ -185,7 +187,7 @@ class Bot(commands.AutoShardedBot):
                 continue
 
             try:
-                self.unload_extension(extension)
+                await self.unload_extension(extension)
             except (commands.ExtensionNotLoaded, commands.ExtensionNotFound):
                 pass
     
@@ -193,15 +195,13 @@ class Bot(commands.AutoShardedBot):
         await super().close()
 
         # Work around for replit rate-limited.
-        await self.trust_session.get("https://TpLearn.nuttee.repl.co")
-        os.system("kill 1")
+        # os.system("kill 1")
         # await self.trust_session.close()
-        # sys.exit(69)
     
     async def on_ready(self) -> None:
         """ on Ready event, Use to log and change bot status. """
         log.info("Connected successfully")
-        # await self.log(__name__, "connected")
+        await self.load_extensions()
         await self.change_status()
         
         if self.unloaded_cogs:
@@ -262,7 +262,7 @@ class Bot(commands.AutoShardedBot):
         if self.dump_channel is None: 
             self.dump_channel = self.get_channel(config.dump_channel_id)
         
-        embed = discord.Embed( timestamp = datetime.datetime.utcnow())
+        embed = discord.Embed( timestamp = discord.utils.utcnow())
         embed.add_field(name = "Event Method", value = str(event_method), inline = False)
         embed.add_field(name = "Args", value = str(args), inline = False)
         embed.add_field(name = "Kwargs", value = str(kwargs), inline = False)
@@ -471,7 +471,7 @@ class Bot(commands.AutoShardedBot):
         log.debug("creating assignment embed...")
         title = self.get_title(kwargs.get('title'), kwargs.get('date'), passed=kwargs.get("already_passed"), lasted=kwargs.get("lasted", 1))
         
-        embed = discord.Embed(timestamp = datetime.datetime.now())
+        embed = discord.Embed(timestamp = discord.utils.utcnow())
         embed.set_author(name = title)
         embed.description = kwargs.get('key')
         embed.colour = self.get_colour(kwargs.get('date'), passed = kwargs.get("already_passed"), lasted = kwargs.get("lasted", 1))    

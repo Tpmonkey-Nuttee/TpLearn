@@ -3,7 +3,7 @@ Bot Ping Display, and Socket Session command for Admin
 Made by Tpmonkey
 """
 
-from discord import Embed, Color
+from discord import Embed, Color, utils
 from discord.ext.commands import command, Cog, Context, is_owner
 
 from bot import Bot
@@ -38,7 +38,7 @@ class Latency(Cog):
         """Display API ping and Command Process time."""
         discord_ping = f"{ (self.bot.latency*1000):.{3}f} ms"
 
-        bot_ping = (datetime.utcnow() - ctx.message.created_at).total_seconds() * 1000
+        bot_ping = (utils.utcnow() - ctx.message.created_at).total_seconds() * 1000
         bot_ping = f"{bot_ping:.{3}f} ms"
 
         embed = Embed(
@@ -76,5 +76,5 @@ class Latency(Cog):
     async def pong(self, ctx: Context) -> None:
         await ctx.send("You meant... ping right...?")
 
-def setup(bot: Bot) -> None:
-    bot.add_cog(Latency(bot))
+async def setup(bot: Bot) -> None:
+    await bot.add_cog(Latency(bot))

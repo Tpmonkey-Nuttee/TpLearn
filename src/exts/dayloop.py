@@ -24,7 +24,7 @@ class DayLoop(Cog):
         self.today_th = None
         self.loop.start()
 
-    def cog_unload(self) -> None:
+    async def cog_unload(self) -> None:
         self.loop.stop()     
 
     @Cog.listener()
@@ -118,5 +118,5 @@ class DayLoop(Cog):
         await ctx.send(self.today_th)
 
 
-def setup(bot: Bot) -> None:
-    bot.add_cog(DayLoop(bot))
+async def setup(bot: Bot) -> None:
+    await bot.add_cog(DayLoop(bot))

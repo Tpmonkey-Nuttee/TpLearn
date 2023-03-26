@@ -35,7 +35,7 @@ class VoiceChannel(Cog):
 
         # Create an Embed
         embed = Embed(colour=Colour.blue())
-        embed.set_author(name= f"New message from {user}#{user.discriminator}", icon_url = user.avatar_url)
+        embed.set_author(name= f"New message from {user}#{user.discriminator}", icon_url = user.display_avatar.url)
         embed.description = user.id # You can hold down an embed in phone, and It will copy description
         embed.add_field(name = "Message:", value = message.content)
 
@@ -51,7 +51,7 @@ class VoiceChannel(Cog):
 
         # Send back to mod channel
         embed = Embed(colour=Colour.dark_red())
-        embed.set_author(name= f"Replied to {user}", icon_url = ctx.author.avatar_url)
+        embed.set_author(name= f"Replied to {user}", icon_url = ctx.author.display_avatar.url)
         embed.description = user.id
         embed.add_field(name = "Message:", value= message)
 
@@ -60,5 +60,5 @@ class VoiceChannel(Cog):
         # Delete the comamnd message when It's done.
         await ctx.message.delete()
 
-def setup(bot: Bot) -> None:
-    bot.add_cog(VoiceChannel(bot))
+async def setup(bot: Bot) -> None:
+    await bot.add_cog(VoiceChannel(bot))

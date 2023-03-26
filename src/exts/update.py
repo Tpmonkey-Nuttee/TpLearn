@@ -27,7 +27,7 @@ class Updater(Cog):
         self.updating = False
         self.loop.start()
     
-    def cog_unload(self):
+    async def cog_unload(self):
         self.loop.cancel()
     
     @Cog.listener()
@@ -249,5 +249,5 @@ class Updater(Cog):
         await ctx.send("Yes, I'm hiding... Don't tell anyone! :shushing_face:")
 
 
-def setup(bot: Bot) -> None:
-    bot.add_cog(Updater(bot))
+async def setup(bot: Bot) -> None:
+    await bot.add_cog(Updater(bot))

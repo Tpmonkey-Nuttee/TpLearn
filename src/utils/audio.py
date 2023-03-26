@@ -13,7 +13,7 @@ from concurrent.futures import ThreadPoolExecutor
 yt_dlp.utils.bug_reports_message = lambda: ''
 
 __all__ = (
-    "POOL", "YTDLError", "YTDLSource", "DownloadError", "getYtPlaylist", "getInfo", "YOUTUBE_API_KEY", "YOUTUBE_PLAYLIST_KEYWORDS"
+    "POOL", "YTDLError", "YTDLSource", "DownloadError", "getYtPlaylist", "getInfo", "YOUTUBE_API_KEY", "YOUTUBE_PLAYLIST_KEYWORDS", "youtubeapi"
 )
 
 POOL = ThreadPoolExecutor()
@@ -25,9 +25,14 @@ if YOUTUBE_API_KEY is None:
         "Youtube API key is not set, Please head to https://console.cloud.google.com/apis/ to setup one."
     )
 
-youtube = googleapiclient.discovery.build("youtube", "v3", developerKey = YOUTUBE_API_KEY)
-_search = youtube.search()
-_playlistItems = youtube.playlistItems()
+youtubeapi = True
+try: 
+    youtube = googleapiclient.discovery.build("youtube", "v3", developerKey = YOUTUBE_API_KEY)
+    _search = youtube.search()
+    _playlistItems = youtube.playlistItems()
+except Exception:
+    youtubeapi = False
+
 
 chars = {
     "&quot;": '"',
