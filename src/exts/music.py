@@ -834,13 +834,18 @@ class Music(commands.Cog):
         A list of these sites can be found here: https://rg3.github.io/youtube-dl/supportedsites.html
         """
         _ = time.perf_counter()
+        print(1)
         if not ctx.voice_state.voice:
             # not connected? try to join first
+            print(2)
+            
             try:
                 await ctx.invoke(self._join)             
             except Exception:
+                print('2e')
                 log.warning(traceback.format_exc())
-                return await ctx.send("Couldn't connect to the voice, Please disconnect me and try again!")
+                await ctx.send("Couldn't connect to the voice, Please disconnect me and try again!")
+            print(3)
         
         if search is None: # resume
             log.debug(f"{ctx.guild.id}: Resume")
@@ -852,6 +857,8 @@ class Music(commands.Cog):
 
         # Youtube Playlist, Mix        
         if any(kw in search for kw in YOUTUBE_PLAYLIST_KEYWORDS): 
+            if not youtubeapi:
+                return await ctx.send(":x: Cannot connect to youtube API.")
             await ctx.trigger_typing() 
 
             if self.api_error:
@@ -1022,7 +1029,7 @@ class Music(commands.Cog):
                 raise commands.CommandError('Bot is already in a voice channel.')
 
         if self.disabled and ctx.author.id != self.bot.owner_id:
-            raise commands.CommandError("This cog has been temporary disabled due to API issue.")
+            raise commands.CommandError("This cog has been disabled because of new discord API update.")
 
         if self.disabled:
             await ctx.send("Warning: this cog is disabled but due to owner permisson, you are able to use it.")

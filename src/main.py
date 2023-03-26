@@ -7,27 +7,24 @@ Made by Tpmonkey (Nuttee) KUS48
 """
 
 import os
-# Ensure packages are installed, work around for replit :/
 os.system("python3 -m poetry install")
 
-
 # Setting up Logging.
-from discord.utils import setup_logging
 from utils.log import setup
-
-setup_logging()
 setup()
-
 
 # Setting up webserver
 from webserver import keep_alive
-keep_alive()
-
+log = keep_alive()
 
 # Create and Run the Bot.
 from bot import Bot
 
-if __name__ == "__main__":
-    bot = Bot.create()   
-    token = os.getenv("TOKEN")
-    bot.run(token)
+import discord
+discord.utils.setup_logging()
+
+bot = Bot.create()   
+
+# await bot.load_extensions()
+token = os.getenv("TOKEN")
+bot.run(token)

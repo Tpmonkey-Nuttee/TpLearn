@@ -5,7 +5,7 @@ import functools
 import yt_dlp
 from typing import List, Tuple
 from functools import lru_cache
-import googleapiclient
+import googleapiclient.discovery
 from urllib.parse import parse_qs, urlparse
 from concurrent.futures import ThreadPoolExecutor
 
@@ -13,7 +13,7 @@ from concurrent.futures import ThreadPoolExecutor
 yt_dlp.utils.bug_reports_message = lambda: ''
 
 __all__ = (
-    "POOL", "YTDLError", "YTDLSource", "DownloadError", "getYtPlaylist", "getInfo", "YOUTUBE_API_KEY", "YOUTUBE_PLAYLIST_KEYWORDS"
+    "POOL", "YTDLError", "YTDLSource", "DownloadError", "getYtPlaylist", "getInfo", "YOUTUBE_API_KEY", "YOUTUBE_PLAYLIST_KEYWORDS", "youtubeapi"
 )
 
 POOL = ThreadPoolExecutor()
@@ -25,17 +25,14 @@ if YOUTUBE_API_KEY is None:
         "Youtube API key is not set, Please head to https://console.cloud.google.com/apis/ to setup one."
     )
 
-try:
-    youtube = googleapiclient.discovery.build("youtube", "v3", developerKey=YOUTUBE_API_KEY)
-except googleapiclient.errors.UnknownApiNameOrVersion:
-    # Server down, Build from doc.
-    import json
-    
-    service = json.load(open("utils/yt_service.json", "r"))
-    youtube = googleapiclient.discovery.build_from_document(service=service, developerKey=YOUTUBE_API_KEY)
-    
-_search = youtube.search()
-_playlistItems = youtube.playlistItems()
+youtubeapi = True
+try: 
+    youtube = googleapiclient.discovery.build("youtube", "v3", developerKey = YOUTUBE_API_KEY)
+    _search = youtube.search()
+    _playlistItems = youtube.playlistItems()
+except Exception:
+    youtubeapi = False
+
 
 chars = {
     "&quot;": '"',
