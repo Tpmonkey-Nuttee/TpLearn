@@ -634,7 +634,7 @@ class Music(commands.Cog):
         """Shows the player's queue.
         You can optionally specify the page to show. Each page contains 10 elements.
         """
-        await ctx.trigger_typing()       
+        await ctx.typing()       
 
         if len(ctx.voice_state.songs) == 0 and ctx.voice_state.current is None:
             return await ctx.send('Empty queue. ¯\_(ツ)_/¯')
@@ -859,7 +859,7 @@ class Music(commands.Cog):
         if any(kw in search for kw in YOUTUBE_PLAYLIST_KEYWORDS): 
             if not youtubeapi:
                 return await ctx.send(":x: Cannot connect to youtube API.")
-            await ctx.trigger_typing() 
+            await ctx.typing() 
 
             if self.api_error:
                 return await ctx.send(":x: Bot has reached maximum quota, Youtube Playlist will be disabled.")
@@ -881,7 +881,7 @@ class Music(commands.Cog):
         
         # Spotify Playlist
         elif "open.spotify.com/playlist/" in search:
-            await ctx.trigger_typing() 
+            await ctx.typing() 
 
             try: # somewhere in utils.audio
                 tracks = getTracks(search)
@@ -899,7 +899,7 @@ class Music(commands.Cog):
             await ctx.send("Enqueued {} songs.".format(amount))   
 
         elif "open.spotify.com/album/" in search: # Spotify Album
-            await ctx.trigger_typing() 
+            await ctx.typing() 
 
             try: # somewhere in utils.audio
                 tracks = getAlbum(search)
