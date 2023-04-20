@@ -53,7 +53,7 @@ class Song:
 
         self.source = None
     
-    async def load_audio(self, nightcore: bool = False) -> YTDLSource:
+    async def load_audio(self, speed: float = 1, pitch: float = 1) -> YTDLSource:
         if self.title is None and not "http" in self.url:
             # | commit `ca1f719ca0ccad3f010fd4229a1f5f134831b10f`
             # | attempt to fix error in spotify playlist
@@ -61,7 +61,7 @@ class Song:
             # Youtube-dl thought it was an url and then commit suicide. (3/5/2022)
             self.url = self.url.replace(":", "")
 
-        self.source = await YTDLSource.create_source(self.url, nc = nightcore)
+        self.source = await YTDLSource.create_source(self.url, speed = speed, pitch = pitch)
         return self.source
     
     def search(self) -> None:
@@ -134,7 +134,7 @@ class VoiceState:
 
         self.super_shuffle = False
         self.loading = False
-        self.nightcore = False
+        self.nightcore = {"speed": 1, "pitch": 1}
         self._loop = Loop.NONE
         self._volume = 0.5
         self.skip_votes = set()        
@@ -206,7 +206,7 @@ class VoiceState:
             
             try:
                 self.loading = True
-                source = await self.current.load_audio(self.nightcore)
+                source = await self.current.load_audio(self.nightcore["speed"], self.nightcore["pitch"])
             except Exception as e:
                 await self._ctx.send(
                     embed = discord.Embed(
@@ -252,9 +252,9 @@ class VoiceState:
         if self.is_playing:
             self.voice.stop()
     
-    def toggle_nightcore(self):
-        self.nightcore = not self.nightcore
-        return self.nightcore
+    def set_nightcore(self, speed: float, pitch: float):
+        self.nightcore["speed"] = speed
+        self.nightcore["pitch"] = pitch
 
     async def stop(self):
         if self.terminate:
@@ -501,12 +501,15 @@ class Music(commands.Cog):
         log.debug(f"{ctx.guild.id}: stopped from leave command")
         await ctx.message.add_reaction("👋")
     
-    @commands.command(name="nightcore", aliases = ["nc", ])
-    async def _nightcore(self, ctx: commands.Context):
-        """Toggle nightcore mode.
+    @commands.command(name="effect", aliases = ["nc", "eff"])
+    async def _effect(self, ctx: commands.Context, speed: float = 1.2, pitch: float = 1.5):
+        """Set song effect (speed, pitch)
         """
-        current = ctx.voice_state.toggle_nightcore()
-        return await ctx.send(f"🎧 Nightcore mode has been turned {'on' if current else 'off'}! (Next songs will be affected)")
+        speed = max(min(speed, 4), 0.1)
+        pitch = max(min(pitch, 4), 0.1)
+        
+        ctx.voice_state.set_nightcore(speed, pitch)
+        return await ctx.send(f"The effect is set to\n> Speed: **{speed}**\n> Pitch: **{pitch}**\nEffect will be apply on the next song!")
 
     @commands.command(name='volume')
     async def _volume(self, ctx: commands.Context, volume: int = None):
