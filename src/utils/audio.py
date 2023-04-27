@@ -27,7 +27,7 @@ if YOUTUBE_API_KEY is None:
 
 youtubeapi = True
 try: 
-    youtube = googleapiclient.discovery.build("youtube", "v3", developerKey = YOUTUBE_API_KEY)
+    youtube = googleapiclient.discovery.build("youtube", "v3", developerKey = YOUTUBE_API_KEY, static_discovery = False)
     _search = youtube.search()
     _playlistItems = youtube.playlistItems()
 except Exception:
