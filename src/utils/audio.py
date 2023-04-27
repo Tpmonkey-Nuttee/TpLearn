@@ -27,7 +27,7 @@ if YOUTUBE_API_KEY is None:
 
 youtubeapi = True
 try: 
-    youtube = googleapiclient.discovery.build("youtube", "v3", developerKey = YOUTUBE_API_KEY)
+    youtube = googleapiclient.discovery.build("youtube", "v3", developerKey = YOUTUBE_API_KEY, static_discovery = False)
     _search = youtube.search()
     _playlistItems = youtube.playlistItems()
 except Exception:
@@ -108,14 +108,11 @@ class YTDLSource(discord.PCMVolumeTransformer):
         "cachedir": False,
     }
 
-    FFMPEG_OPTIONS = {
-        'before_options': '-reconnect 1 -reconnect_streamed 1 -reconnect_delay_max 5',
-        'options': '-vn',
-    }
-    FFMPEG_OPTIONS_NC = {
-        'before_options': '-reconnect 1 -reconnect_streamed 1 -reconnect_delay_max 5',
-        'options': '-vn -filter:a "asetrate=44100*1.5,aresample=44100,atempo=1.2/1.5"',
-    }
+    # For reference.
+    # FFMPEG_DEFAULT_OPTIONS = {
+    #    'before_options': '-reconnect 1 -reconnect_streamed 1 -reconnect_delay_max 5',
+    #    'options': '-vn -filter:a "asetrate=44100*{pitch},aresample=44100,atempo={speed}/{pitch}"',
+    # }
 
     __slots__ = "data", "uploader", "uploader_url", \
         "date", "upload_date", "title", "thumbnail", "description", "duration", "tags", \
@@ -123,7 +120,7 @@ class YTDLSource(discord.PCMVolumeTransformer):
 
     ytdl = yt_dlp.YoutubeDL(YTDL_OPTIONS)
 
-    def __init__(self, source: discord.FFmpegPCMAudio, *, data: dict, volume: float = 0.5, nc: bool = False):
+    def __init__(self, source: discord.FFmpegPCMAudio, *, data: dict, volume: float = 0.5, speed: float = 1):
         super().__init__(source, volume)
         self.data = data
 
@@ -135,10 +132,7 @@ class YTDLSource(discord.PCMVolumeTransformer):
         self.thumbnail = data.get('thumbnail')
         self.description = data.get('description')
         
-        if nc:
-            self.raw_duration = int(data.get('duration') * 5/6)
-        else:
-            self.raw_duration = int(data.get('duration'))
+        self.raw_duration = int(data.get('duration') * 1/speed)
         self.duration = self.parse_duration(self.raw_duration)
         
         self.tags = data.get('tags')
@@ -152,7 +146,7 @@ class YTDLSource(discord.PCMVolumeTransformer):
         return '**{0.title}** by **{0.uploader}**'.format(self)
 
     @classmethod
-    async def create_source(cls, search: str, *, loop: asyncio.BaseEventLoop = None, nc: bool = False):
+    async def create_source(cls, search: str, *, loop: asyncio.BaseEventLoop = None, speed: float = 1, pitch: float = 1):
         loop = loop or asyncio.get_event_loop()
 
         webpage_url = search # process_info['webpage_url']
@@ -177,8 +171,11 @@ class YTDLSource(discord.PCMVolumeTransformer):
 
         print("Created Source YouTubeDL", search.strip("https://www.youtube.com/watch?"))
 
-        FFMPEG_OPTS = cls.FFMPEG_OPTIONS_NC if nc else cls.FFMPEG_OPTIONS
-        return cls(discord.FFmpegPCMAudio(info['url'], **FFMPEG_OPTS), data=info, nc=nc)
+        FFMPEG_OPTS = {
+            'before_options': '-reconnect 1 -reconnect_streamed 1 -reconnect_delay_max 5',
+            'options': f'-vn -filter:a "asetrate=44100*{pitch},aresample=44100,atempo={speed}/{pitch}"',
+        }
+        return cls(discord.FFmpegPCMAudio(info['url'], **FFMPEG_OPTS), data=info, speed=speed)
 
     @staticmethod
     def parse_duration(duration: int):

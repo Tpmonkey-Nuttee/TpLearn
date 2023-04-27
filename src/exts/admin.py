@@ -3,7 +3,7 @@ An Admin Commands Extension.
 Made by Tpmonkey
 """
 
-from discord import Embed, Color, TextChannel, Guild
+from discord import Embed, Color, TextChannel
 from discord.ext import commands
 
 from bot import Bot
@@ -275,7 +275,7 @@ class AdminCommands(commands.Cog):
 
     @commands.hybrid_command(name = "sync")
     @commands.is_owner()
-    async def _sync(self, ctx: commands.Context, guild: Optional[Guild] = None) -> None:
+    async def _sync(self, ctx: commands.Context, guild: Optional[commands.GuildConverter] = None) -> None:
         """Sync command(s)"""
         cmds = await self.bot.tree.sync(guild = guild)
         await ctx.send(f"Sync'd {len(cmds)} commands")
