@@ -170,10 +170,10 @@ class YTDLSource(discord.PCMVolumeTransformer):
             raise YTDLError("Couldn't fetch live video.")
 
         print("Created Source YouTubeDL", search.strip("https://www.youtube.com/watch?"))
-
+        division = min(max(speed / pitch, 0.5), 100)
         FFMPEG_OPTS = {
             'before_options': '-reconnect 1 -reconnect_streamed 1 -reconnect_delay_max 5',
-            'options': f'-vn -filter:a "asetrate=44100*{pitch},aresample=44100,atempo={speed}/{pitch}"',
+            'options': f'-vn -filter:a "asetrate=44100*{pitch},aresample=44100,atempo={division}"',
         }
         return cls(discord.FFmpegPCMAudio(info['url'], **FFMPEG_OPTS), data=info, speed=speed)
 
