@@ -228,8 +228,9 @@ class VoiceState:
                 self.songs.shuffle()
 
             # Set the volume, that nobody cares and play it
+            await asyncio.sleep(1)
             self.current.source.volume = self._volume
-            self.voice.play(source, after=self.play_next_song)            
+            self.voice.play(source, after=self.play_next_song)
 
             # If option "annouce next song" is on, annouce it
             if self.bot.msettings.get(self._ctx.guild.id, "annouce_next_song"):
@@ -502,7 +503,7 @@ class Music(commands.Cog):
         await ctx.message.add_reaction("👋")
     
     @commands.command(name="effect", aliases = ["nc", "eff"])
-    async def _effect(self, ctx: commands.Context, speed: float = 1.2, pitch: float = 1.5):
+    async def _nightcore(self, ctx: commands.Context, speed: float = 1.2, pitch: float = 1.5):
         """Set song effect (speed, pitch)
         """
         speed = max(min(speed, 4), 0.1)
