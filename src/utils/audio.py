@@ -99,13 +99,18 @@ DownloadError = yt_dlp.DownloadError
 class YTDLSource(discord.PCMVolumeTransformer):
     YTDL_OPTIONS = {
         'format': 'bestaudio/best',
-        'outtmpl': '%(extractor)s-%(id)s-%(title)s.%(ext)s',
-        'noplaylist': True,
+        'outtmpl': 'downloads/%(extractor)s-%(id)s-%(title)s.%(ext)s',
+        'restrictfilenames': True,
         'nocheckcertificate': True,
+        'ignoreerrors': False,
+        'logtostderr': False,
+        'quiet': True,
+        'extract_flat': True,
+        'skip_download': True,
         'default_search': 'auto',
-        'source_address': '0.0.0.0',
-        "cookiefile": "youtube.com_cookies.txt",
-        "cachedir": False,
+        'source_address': '0.0.0.0',  # ipv6 addresses cause issues sometimes
+        'force-ipv4': True,
+        'cachedir': False
     }
 
     # For reference.
@@ -171,11 +176,11 @@ class YTDLSource(discord.PCMVolumeTransformer):
 
         division = min(max(speed / pitch, 0.5), 100)
         division = f",atempo={division}" if division != 1 else "" 
-        asetrate = "44100" if pitch == 1 else f"44100*{pitch}"
+        asetrate = ",asetrate=44100" if pitch == 1 else f",asetrate=44100*{pitch}"
         print("Created Source YouTubeDL", division, asetrate, search.strip("https://www.youtube.com/watch?"))
         opts = {
             'before_options': '-reconnect 1 -reconnect_streamed 1 -reconnect_delay_max 5',
-            'options': f'-vn -filter:a "aresample=44100,asetrate={asetrate}{division}"',
+            'options': f'-vn -filter:a "aresample=44100{asetrate}{division}"',
         }
         return cls(discord.FFmpegPCMAudio(info['url'], **opts), data=info, speed=speed)
 
