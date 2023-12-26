@@ -1,51 +1,53 @@
-import pytz
-import time
 import datetime
+import time
 from typing import Any
 
 from dateutil.relativedelta import relativedelta
 
-__all__ = ("time_since", "StatsInTime")
+__all__ = ("time_since", "StatsInTime", "today", "today_th")
 
 
 class StatsInTime:
     def __init__(self, limit: int = 10_000) -> None:
         self.limit = limit
         self.stats = []
-    
+
     def append(self, item: Any):
         if len(self.stats) > self.limit:
             self.stats.pop()
-        
+
         self.stats.insert(
             0,
-            (item, time.time())
+            (item, time.perf_counter())
         )
-    
+
     def get_in_last(self, second: int) -> None:
-        rn = time.time()
+        rn = time.perf_counter()
         n = 0
         for _, j in self.stats:
             if rn - second > j:
                 break
             n += 1
-        
+
         return n
-    
+
 
 def today(raw: bool = False) -> datetime.datetime:
     """ Return today date/time. """
-    r = pytz.utc.localize(datetime.datetime.utcnow()).astimezone(
-        pytz.timezone("Etc/GMT-1"))
+    r = datetime.datetime.utcnow() - datetime.timedelta(hours=1)
     return r if raw else str(r)[:10].strip()
+
 
 def today_th(raw: bool = False) -> datetime.datetime:
     """ Return today date/time. """
-    r = pytz.utc.localize(datetime.datetime.utcnow()).astimezone(
-        pytz.timezone("Etc/GMT-7"))
+    r = datetime.datetime.utcnow() + datetime.timedelta(hours=7)
     return r if raw else str(r)[:10].strip()
 
-# Credit to Python Bot from python discord
+
+
+# Credit to Python Bot from python discord.
+# Technically, we don't need this anymore.
+# But I will keep it, why not?
 def _stringify_time_unit(value: int, unit: str):
     if unit == "seconds" and value == 0:
         return "0 seconds"
@@ -54,7 +56,8 @@ def _stringify_time_unit(value: int, unit: str):
     if value == 0:
         return f"less than a {unit[:-1]}"
     return f"{value} {unit}"
-	
+
+
 def time_since(past_datetime: datetime.datetime, precision: str = "seconds", max_units: int = 6):
     now = datetime.datetime.utcnow()
     delta = abs(relativedelta(now, past_datetime))
@@ -62,6 +65,7 @@ def time_since(past_datetime: datetime.datetime, precision: str = "seconds", max
     humanized = humanize_delta(delta, precision, max_units)
 
     return f"{humanized} ago"
+
 
 def humanize_delta(delta: relativedelta, precision: str = "seconds", max_units: int = 6):
     if max_units <= 0:
