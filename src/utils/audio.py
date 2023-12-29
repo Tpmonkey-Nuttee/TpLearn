@@ -1,14 +1,14 @@
-import asyncio
-import functools
 import os
-from concurrent.futures import ThreadPoolExecutor
-from functools import lru_cache
-from typing import List, Tuple
-from urllib.parse import parse_qs, urlparse
-
+import asyncio
 import discord
-import googleapiclient.discovery
+import functools
 import yt_dlp
+from typing import List, Tuple
+from functools import lru_cache
+import googleapiclient.discovery
+from urllib.parse import parse_qs, urlparse
+from concurrent.futures import ThreadPoolExecutor
+import json
 
 # Silence useless bug reports messages
 yt_dlp.utils.bug_reports_message = lambda: ''
@@ -27,10 +27,8 @@ if YOUTUBE_API_KEY is None:
     )
 
 youtubeapi = True
-try:
-    youtube = googleapiclient.discovery.build(
-        "youtube", "v3", developerKey=YOUTUBE_API_KEY, static_discovery=False
-    )
+try: 
+    youtube = googleapiclient.discovery.build("youtube", "v3", developerKey = YOUTUBE_API_KEY, static_discovery = False)
     _search = youtube.search()
     _playlistItems = youtube.playlistItems()
 except Exception:
@@ -45,16 +43,15 @@ chars = {
 
 COOKIES = os.getenv("Cookies")
 
-
-@lru_cache(maxsize=None)
+@lru_cache(maxsize = None)
 def getInfo(q: str) -> dict:
     _ = _search.list(
-        q=q,
-        part="id,snippet",
+        q = q,
+        part = "id,snippet",
         type="video",
-        maxResults=1
+        maxResults = 1
     ).execute()
-
+        
     _ = _['items'].pop(0)
 
     # Youtube API is just weird.
@@ -66,46 +63,41 @@ def getInfo(q: str) -> dict:
     _['snippet']['title'] = title
     return _
 
-
-@lru_cache(maxsize=None)
+@lru_cache(maxsize = None)
 def getYtPlaylist(url: str) -> Tuple[List[str]]:
     # actually get playlist id
     query = parse_qs(urlparse(url).query, keep_blank_values=True)
     playlist_id = query["list"][0]
-
+    
     request = _playlistItems.list(
-        part="snippet",
-        playlistId=playlist_id,
-        maxResults=50  # 50 vid per request.
+        part = "snippet",
+        playlistId = playlist_id,
+        maxResults = 50 # 50 vid per request.
     )
     response = request.execute()
     maximum = 1 if "&start_radio" in url else 8
 
     playlist_items = []
     current = 0
-    while request is not None:  # there're more vid to fetch? get it all!!!!
+    while request is not None: # there're more vid to fetch? get it all!!!!
         response = request.execute()
         playlist_items += response["items"]
         request = youtube.playlistItems().list_next(request, response)
 
         current += 1
-        if current >= maximum:  # it's too much now... stop at 200 vid.
+        if current >= maximum: # it's too much now... stop at 200 vid.
             break
 
     # get title and the urls.
-    sources = [
-        f'https://www.youtube.com/watch?v={t["snippet"]["resourceId"]["videoId"]}' for t in playlist_items]
+    sources = [f'https://www.youtube.com/watch?v={t["snippet"]["resourceId"]["videoId"]}' for t in playlist_items]
     titles = [t["snippet"]["title"] for t in playlist_items]
 
     return sources, titles
 
-
 class YTDLError(Exception):
     pass
 
-
 DownloadError = yt_dlp.DownloadError
-
 
 class YTDLSource(discord.PCMVolumeTransformer):
     YTDL_OPTIONS = {
@@ -123,6 +115,7 @@ class YTDLSource(discord.PCMVolumeTransformer):
         'cachedir': False,
         "cookiefile": COOKIES,
         'preferredcodec': 'mp3',
+        # 'noplaylist': True,
     }
 
     # For reference.
@@ -149,11 +142,10 @@ class YTDLSource(discord.PCMVolumeTransformer):
 
         raw_duration = data.get("duration")
         if raw_duration is None:
-            raise YTDLError("Invalid duration. (Video not found or We messed up)")
-
+            raise YTDLError("Invalid video duration. (Video not found or We messed up)")
         self.raw_duration = int(raw_duration * 1/speed)
         self.duration = self.parse_duration(self.raw_duration)
-
+        
         self.tags = data.get('tags')
         self.url = data.get('webpage_url')
         self.views = data.get('view_count')
@@ -168,10 +160,9 @@ class YTDLSource(discord.PCMVolumeTransformer):
     async def create_source(cls, search: str, *, loop: asyncio.BaseEventLoop = None, speed: float = 1, pitch: float = 1):
         loop = loop or asyncio.get_event_loop()
 
-        webpage_url = search  # process_info['webpage_url']
-        partial = functools.partial(
-            cls.ytdl.extract_info, webpage_url, download=False
-        )
+        webpage_url = search # process_info['webpage_url']
+        cls.ytdl.cache.remove()
+        partial = functools.partial(cls.ytdl.extract_info, webpage_url, download=False)
         processed_info = await loop.run_in_executor(POOL, partial)
 
         if processed_info is None:
@@ -185,25 +176,23 @@ class YTDLSource(discord.PCMVolumeTransformer):
                 try:
                     info = processed_info['entries'].pop(0)
                 except IndexError:
-                    raise YTDLError(
-                        'Couldn\'t retrieve any matches for `{}`'.format(webpage_url)
-                    )
-
+                    raise YTDLError('Couldn\'t retrieve any matches for `{}`'.format(webpage_url))
+        
         if info.get('is_live'):
             raise YTDLError("Couldn't fetch live video.")
 
         division = min(max(speed / pitch, 0.5), 100)
-        division = f",atempo={division}" if division != 1 else ""
+        division = f",atempo={division}" if division != 1 else "" 
         asetrate = ",asetrate=44100" if pitch == 1 else f",asetrate=44100*{pitch}"
-
-        print("Created Source YouTubeDL", division, asetrate,
-              search.strip("https://www.youtube.com/watch?"))
-
+        
+        print("Created Source YouTubeDL", division, asetrate, search.strip("https://www.youtube.com/watch?"))
+        
         opts = {
             'before_options': '-reconnect 1 -reconnect_streamed 1 -reconnect_delay_max 5',
             'options': f'-vn -filter:a "aresample=44100{asetrate}{division}"',
         }
-
+        
+        json.dump(info, open("test.json", "w"), indent=4)
         return cls(discord.FFmpegPCMAudio(source=info['url'], **opts), data=info, speed=speed)
 
     @staticmethod
@@ -213,7 +202,7 @@ class YTDLSource(discord.PCMVolumeTransformer):
         days, hours = divmod(hours, 24)
 
         duration = []
-
+        
         if days > 0:
             duration.append('{} days'.format(days))
         if hours > 0:
@@ -222,5 +211,5 @@ class YTDLSource(discord.PCMVolumeTransformer):
             duration.append('{} minutes'.format(minutes))
         if seconds > 0:
             duration.append('{} seconds'.format(seconds))
-
+        
         return ', '.join(duration)
