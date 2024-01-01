@@ -689,7 +689,7 @@ class Music(commands.Cog):
         if pages + 1 == page:
             # display queue even if there is only 1 song being play.
             pass
-        elif 0 < page > pages:
+        elif page <= 0 or page > pages:
             return await ctx.send(f"Page is out of range, I currently have {pages}.")
 
         start = (page - 1) * items_per_page
@@ -782,9 +782,9 @@ class Music(commands.Cog):
         """Removes a track from the queue at a given index.
         """
         songs = len(ctx.voice_state.songs)
-        if songs == 0:
+        if not songs:
             return await ctx.send('Empty queue. ¯\_(ツ)_/¯')
-        if songs < index:
+        if songs < index or index < 1:
             return await ctx.send(f"Index out of range! I only have {songs} tracks in queue!")
 
         ctx.voice_state.songs.remove(index - 1)
