@@ -24,13 +24,13 @@ class RemoveNoise(logging.Filter):
             return False
         return True
 
+
 def setup() -> None:
     """ Set up loggers. """
     logging.TRACE = TRACE_LEVEL
     logging.addLevelName(TRACE_LEVEL, "TRACE")
     Logger.trace = _monkeypatch_trace
 
-    log_level = TRACE_LEVEL
     format_string = "%(asctime)s | %(name)s | %(levelname)s | %(message)s"
     log_format = logging.Formatter(format_string)
 
@@ -39,11 +39,7 @@ def setup() -> None:
     file_handler = handlers.RotatingFileHandler(log_file, maxBytes=5242880, backupCount=7, encoding="utf8")
     file_handler.setFormatter(log_format)
 
-    root_log = logging.getLogger()
-    root_log.setLevel(log_level)
-    root_log.addHandler(file_handler)
-
-    logging.getLogger('discord').setLevel(logging.INFO)
+    logging.getLogger('discord').setLevel(logging.DEBUG)
     logging.getLogger('discord.http').setLevel(logging.WARNING)
     logging.getLogger('discord.state').addFilter(RemoveNoise())
 
@@ -53,7 +49,11 @@ def setup() -> None:
     logging.getLogger("spotipy.oauth2").setLevel(logging.WARNING)    
 
     logging.getLogger("googleapiclient.discovery").setLevel(logging.WARNING)    
-    
+
+    root_log = logging.getLogger()
+    root_log.setLevel(logging.NOTSET)
+    root_log.addHandler(file_handler)
+
 
 def _monkeypatch_trace(self: logging.Logger, msg: str, *args, **kwargs) -> None:
     """

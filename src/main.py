@@ -7,7 +7,6 @@ Made by Tpmonkey (Nuttee) KUS48
 """
 
 import os
-os.system("python3 -m poetry install")
 
 # Setting up Logging.
 from utils.log import setup
@@ -21,10 +20,9 @@ log = keep_alive()
 from bot import Bot
 
 import discord
-discord.utils.setup_logging()
+discord.utils.setup_logging(level=5)
 
-bot = Bot.create()   
+bot = Bot.create()
 
-# await bot.load_extensions()
 token = os.getenv("TOKEN")
 bot.run(token)
