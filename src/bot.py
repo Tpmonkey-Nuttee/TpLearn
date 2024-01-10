@@ -145,9 +145,11 @@ class Bot(commands.AutoShardedBot):
         for extension in extensions:
             try: 
                 await self.load_extension(extension)
-            except (commands.ExtensionFailed, commands.NoEntryPointError) as e: 
-                log.warning(f"Couldn't load {extension} with an error: {e}")   
+            except (commands.ExtensionFailed, commands.NoEntryPointError) as e:
+                log.warning(f"Couldn't load {extension} with an error: {e}")
                 self.unloaded_cogs.append(extension)
+            except commands.ExtensionAlreadyLoaded:
+                continue
 
         self.trust_session = ClientSession()
 
