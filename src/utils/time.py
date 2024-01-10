@@ -34,7 +34,7 @@ class StatsInTime:
 
 def today(raw: bool = False) -> datetime.datetime:
     """ Return today date/time. """
-    r = datetime.datetime.utcnow() - datetime.timedelta(hours=1)
+    r = datetime.datetime.utcnow() + datetime.timedelta(hours=1)
     return r if raw else str(r)[:10].strip()
 
 
