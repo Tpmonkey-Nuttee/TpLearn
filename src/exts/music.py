@@ -22,6 +22,10 @@ import discord
 from async_timeout import timeout
 from discord.ext import commands, tasks
 
+if not discord.opus.is_loaded():
+    import ctypes
+    discord.opus.load_opus(ctypes.util.find_library("opus"))
+
 # Audio system (Youtube DL & Spotipy)
 from utils.audio import *
 from utils.spotify import *
@@ -280,7 +284,8 @@ class VoiceState:
         self.terminate = True
 
         if self.voice:
-            await self.voice.disconnect()
+            await self.voice.disconnect(force=True)
+            self.voice = None
 
         # Delete "now playing" message.
         try:
@@ -336,7 +341,8 @@ class Music(commands.Cog):
         # Get voice state and embeded it to context.
         state = self.voice_states.get(ctx.guild.id)
         if not state:
-            self.voice_states[ctx.guild.id] = state = VoiceState(self.bot, ctx)
+            state = VoiceState(self.bot, ctx)
+            self.voice_states[ctx.guild.id] = state
         return state
 
     def cog_check(self, ctx: commands.Context):
@@ -512,19 +518,24 @@ class Music(commands.Cog):
         """Joins a voice channel.
         """
         destination = ctx.author.voice.channel
-        if ctx.voice_state.voice:  # already connected to another channel.
-            return await ctx.voice_state.voice.move_to(destination)
+        if ctx.voice_client:  # already connected to another channel.
+            await ctx.voice_client.move_to(destination)
+            ctx.voice_state.voice = ctx.voice_client
+            return
         ctx.voice_state.voice = await destination.connect()
 
     @commands.command(name='leave', aliases=['disconnect'])
     async def _leave(self, ctx: commands.Context):
         """Clears the queue and leaves the voice channel.
         """
-        if ctx.voice_client is not None:
+        # if ctx.voice_client is not None:
             # In case smth went wrong. but if the bot just restarted, nothing would work anyways.
-            await ctx.voice_client.move_to(None)
+        #    await ctx.voice_client.move_to(None)
+        if ctx.voice_state.voice is None:
+            ctx.voice_state.voice = ctx.voice_client
 
         await ctx.voice_state.stop()
+
         log.debug(f"{ctx.guild.id}: stopped from leave command")
         await ctx.message.add_reaction("👋")
 
@@ -880,7 +891,7 @@ class Music(commands.Cog):
                 await ctx.invoke(self._join)
             except Exception:
                 log.warning(traceback.format_exc())
-                await ctx.send("Couldn't connect to the voice, Please disconnect me and try again!")
+                return await ctx.send("Couldn't connect to the voice, Please disconnect me and try again!")
 
         if search is None:  # resume
             log.debug(f"{ctx.guild.id}: Resume")
